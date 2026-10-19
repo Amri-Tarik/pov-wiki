@@ -92,7 +92,7 @@ the box, and uses the same Markdown extensions. Zensical is still 0.0.x, so its 
 
 - [x] Repo, pipeline skeleton, DLL data extraction, i18n design
 - [x] Stat lines exactly as in game (rendered by the mod's own code)
-- [x] Passive tree: keystones, notables, masteries; glossary from the in-game wiki, with backlinks
+- [x] Passive tree: keystones, notables, masteries, a page per keystone/notable; keyword pages from the in-game wiki, with backlinks
 - [x] Unfinished game content shown with an Unimplemented / Unfinished text badge
 - [ ] Passive tree viewer (interactive map), small passives, jewels
 - [ ] Craft tree and professions

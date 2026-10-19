@@ -85,10 +85,20 @@ The wiki shows it with a badge instead of hiding it. The signals:
 - **Placeholder nodes**: no stat lines, no extra text and no options (in 5.0.10: 8 keystones,
   247 notables, often titled "In development" or blank).
 - **`Broken`** on a node or option: disabled by the game (none in 5.0.10).
+- **Reserved mastery options** (`NodeOption.Reserved`: every stat is `MasterySlot`): the game
+  shows "A reserved place in this mastery: it has no effect yet and cannot be chosen" (23 in 5.0.10).
 - **Fallback stat text**: a stat with no entry in `StatText`'s private table `I` (nor its
   `Attrs.Canon` form) is printed from its code name, e.g. `+1 reload while moving` for
   `ReloadWhileMoving` on the keystone "On the Move". The harness lists these per node as
   `unformatted`.
+
+## Mastery options as the game shows them
+
+`TreeWindow.MainOptionRow`: the row body is `MasteryPresentation.Body(option)`, which lists the
+non-flag stats with their numbers. The option's description is a hover tooltip on its title:
+`Told` when the option has extra text, or the flag stats described otherwise. The harness
+exports body as `stats` and description as `extra`. Don't show `DescribeAll(mods)` plus `Told`
+together: that repeats the same effect twice.
 
 ## In-game wiki
 

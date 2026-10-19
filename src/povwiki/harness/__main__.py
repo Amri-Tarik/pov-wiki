@@ -4,7 +4,7 @@
 
 Writes DIR/<language>.json:
     {"language", "revision", "errors": [...], "nodes": {id: {title, category, topics, stats[], extra[], broken,
-     unformatted[], options: [{id, title, stats[], extra[], broken, unformatted[]}]}}, "wiki": {key: {title, text[], forms[]}}}
+     unformatted[], options: [{id, title, stats[], extra[], broken, reserved, unformatted[]}]}}, "wiki": {key: {title, text[], forms[]}}}
 Text keeps the game's rich-text markup (<link="slug">, <color=...>, <b>); the site generator converts it.
 """
 
@@ -36,6 +36,25 @@ def _unformatted(mods, formatted: set[str]) -> list[str]:
     return sorted({str(m.Key) for m in mods if str(m.Key) not in formatted and str(Attrs.Canon(m.Key)) not in formatted})
 
 
+def render_option(o, formatted: set[str]) -> dict:
+    """As the tree window's option row (TreeWindow.MainOptionRow) shows it: the body lists the
+    non-flag stats (MasteryPresentation.Body); the description (the option's own text, or what
+    its flag stats do) is the hover tooltip of the option title."""
+    from PassiveTree import MasteryPresentation, StatText
+
+    has_flag = any(StatText.IsFlag(m.Key) for m in o.Mods)
+    description = (o.Told if o.Extra else StatText.DescribeAll(o.Mods)) if (o.Extra or has_flag) else ""
+    return {
+        "id": o.Id,
+        "title": o.Title,
+        "stats": _lines(MasteryPresentation.Body(o, None, None)),
+        "extra": _lines(description),
+        "broken": bool(o.Broken),
+        "reserved": bool(o.Reserved),  # a placeholder slot in the mastery: no effect yet
+        "unformatted": _unformatted(o.Mods, formatted),
+    }
+
+
 def render_tree(data, language: str) -> dict:
     from PassiveTree import L, StatText
 
@@ -53,17 +72,7 @@ def render_tree(data, language: str) -> dict:
                 "extra": _lines(extra),
                 "broken": bool(n.Broken),
                 "unformatted": _unformatted(n.Mods, formatted),
-                "options": [
-                    {
-                        "id": o.Id,
-                        "title": o.Title,
-                        "stats": _lines(StatText.DescribeAll(o.Mods)),
-                        "extra": _lines(o.Told),
-                        "broken": bool(o.Broken),
-                        "unformatted": _unformatted(o.Mods, formatted),
-                    }
-                    for o in (n.Options or [])
-                ],
+                "options": [render_option(o, formatted) for o in (n.Options or [])],
             }
         except Exception as ex:  # one bad node must not lose the rest
             errors.append({"node": n.Id, "error": str(ex).split("\n")[0]})

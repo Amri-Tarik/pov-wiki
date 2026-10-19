@@ -1,6 +1,6 @@
 # Items: plan
 
-Status: plan (2026-10-19), nothing built yet. Goal: a poedb-style Items section. It covers mods
+Status (2026-10-19): phase 1 (Mods) built; phases 2–4 to do. Goal: a poedb-style Items section. It covers mods
 (affixes), item classes and their mod pools, a page per item base, then uniques, currency, jewels
 and loot tables.
 
@@ -105,12 +105,26 @@ and loot tables.
    the harness item-tag step).
 4. Uniques, currency, jewels, loot tables.
 
-## Open questions
+## Decisions (user, 2026-10-19)
 
-- Valheim's item icons are Iron Gate's art. Show them (as we do with the mod's art, behind the
-  same switch), or text-only bases?
-- Which Valheim items count as bases: default to items whose tags make them rollable (weapon,
-  armour, shield, tool, trinket, belt, jewel, quiver, utility) and not `lootExclude`; consumables
-  and materials only appear inside recipes.
-- Item level: tiers depend on it, and it comes from the drop source (creature level, biome) or
-  the recipe. Show mod pools at a few reference levels, or by biome?
+- Valheim icons: extract and show them (behind the icons switch). Hosting for automated
+  deploys (a CDN) comes later.
+- Bases: start with rollable items. Adjust as we learn, since some mods may only fit certain
+  bases (e.g. stealth mods seen on troll armour).
+- Mods: a list of all mods with their min. level and a page each with the details; every item or
+  base lists all its rollable mods with weights.
+- Source-specific mods (boss essences such as Essence of Eikthyr) are shown on the mod, the item
+  and the crafting resource that applies them. Mechanism: `LootRoller.AddEssence` adds a mod of
+  the essence's element family (tiers up to its cap) or one of its boss family, and boss-family
+  mods never roll otherwise. Essences are in `RuneActions.Essences`; mod items (names, actions,
+  recipes) in `Runes.All`.
+
+## Phase 1 notes
+
+- `harness/loot.py` renders every tier like the item tooltip's details view, at min and max, for
+  each slot multiplier, then merges the two into ranges.
+- Loading `LootCatalog` runs `Runes`' static constructor, which uses Harmony's `AccessTools`.
+  BepInEx's Harmony can't start on .NET 8, so HarmonyX comes from NuGet (first in the resolver
+  path).
+- 1,207 mods roll on loot, 3 come only from Essence of Eikthyr, and 29 are never generated
+  (older attribute mods and the like). Those are marked unimplemented.

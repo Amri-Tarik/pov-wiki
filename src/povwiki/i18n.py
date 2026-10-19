@@ -94,6 +94,11 @@ class Localizer:
         return craft
 
     @cached_property
+    def loot(self) -> dict:
+        """Item mods, essences and the mod's own items (harness/loot.py)."""
+        return self.data.rendered(self.lang.mod)["loot"]
+
+    @cached_property
     def wiki(self) -> dict[str, dict]:
         """The mod's in-game wiki terms (title, text, forms), by slug."""
         return self.data.rendered(self.lang.mod)["wiki"]

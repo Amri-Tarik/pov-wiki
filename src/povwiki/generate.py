@@ -85,6 +85,9 @@ def build_language(lang: Language, default: Language, enabled: list[Language], d
     jobs = [(f"{gen.__name__} [{ctx.spec.key}]", gen, ctx)
             for ctx in ctxs for gen in [LIST_PAGES[p] for p in ctx.spec.pages] + PER_TREE]
     jobs += [(gen.__name__, gen, ctxs[0]) for gen in GLOBAL]
+    from .item_pages import page_mods
+
+    jobs.append(("page_mods", page_mods, ctxs[0]))
     for label, gen, ctx in jobs:
         with _timed(label):
             for rel, text in gen(ctx).items():

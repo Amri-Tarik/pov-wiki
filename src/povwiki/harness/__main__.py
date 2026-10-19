@@ -92,9 +92,12 @@ def render_tree(data, language: str) -> dict:
     from .quests import render_quests
 
     craft["quests"] = render_quests(craft_renderer.tree)
+    from .loot import render_loot
+
+    loot = render_loot(errors)
     return {
         "language": language, "revision": data.Revision, "errors": errors,
-        "nodes": nodes, "craft": craft, "wiki": render_wiki(errors),
+        "nodes": nodes, "craft": craft, "loot": loot, "wiki": render_wiki(errors),
     }
 
 
@@ -134,7 +137,7 @@ def main() -> None:
         (args.out / f"{language}.json").write_text(json.dumps(result, ensure_ascii=False), encoding="utf-8")
         print(
             f"rendered {language}: {len(result['nodes'])} nodes, {len(result['craft']['nodes'])} craft nodes, "
-            f"{len(result['craft']['quests']['tasks'])} craft quests, "
+            f"{len(result['craft']['quests']['tasks'])} craft quests, {len(result['loot']['affixes'])} affixes, "
             f"{len(result['wiki'])} wiki terms, {len(result['errors'])} errors"
         )
         for e in result["errors"][:5]:

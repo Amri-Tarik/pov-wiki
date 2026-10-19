@@ -103,7 +103,8 @@ the box, and uses the same Markdown extensions. Zensical is still 0.0.x, so its 
 - [ ] Jewels and sockets, small passive overview
 - [x] Craft tree: viewer, professions, notables, masteries, node and option pages (own Crafting section)
 - [x] Craft professions: areas and stages, notables, quest families with targets/rewards per areas revealed
-- [ ] Items: affixes with tiers, weights, level ranges and tag rules; uniques; currency; loot tables
+- [x] Items: mods (affixes) with tiers, item levels, weights, roll rules and values by slot
+- [ ] Items: Valheim bases, item classes and mod pools; uniques; currency; loot tables (see notes/items-plan.md)
 - [ ] Patch diffs between versions
 - [x] `povwiki fetch` (latest release from hexium) and local `povwiki deploy`
 - [ ] Automated rebuilds on new mod releases (needs Valheim DLLs in CI)

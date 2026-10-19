@@ -21,7 +21,7 @@ from .paths import CACHE, EXTRACTED
 
 DEPS = CACHE / "deps"
 BEPINEX_PACK = "denikson-BepInExPack_Valheim-5.4.2351"
-# MonoMod.RuntimeDetour and its dependency closure, for .NET 8.
+# MonoMod.RuntimeDetour and HarmonyX with their dependency closure, for .NET 8.
 NUGET = {
     "MonoMod.RuntimeDetour": "25.3.6",
     "MonoMod.Core": "1.3.6",
@@ -29,6 +29,8 @@ NUGET = {
     "MonoMod.Backports": "1.1.2",
     "MonoMod.ILHelpers": "1.1.0",
     "Mono.Cecil": "0.11.6",
+    # The mod uses Harmony (AccessTools) outside of patching too; BepInEx's copy can't start on .NET 8.
+    "HarmonyX": "2.16.1",
 }
 NUGET_FRAMEWORKS = ("net8.0", "net7.0", "net6.0", "netstandard2.1", "netstandard2.0")
 USER_AGENT = "pov-wiki (+https://github.com/Amri-Tarik/pov-wiki)"

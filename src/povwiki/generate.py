@@ -5,6 +5,7 @@ build/<code>/zensical.toml  base config + per-language overrides
 build/<code>/site/          rendered site, then copied to site/<code>/
 """
 
+import hashlib
 import shutil
 import subprocess
 import tomllib
@@ -24,9 +25,22 @@ def _nav(items, loc: Localizer) -> list:
     return [{loc.ui(key): _nav(target, loc) if isinstance(target, list) else target} for key, target in items]
 
 
+def _versioned(paths: list[str], docs) -> list[str]:
+    """Append a content hash to our own CSS/JS URLs, so browsers never run a stale copy after a
+    deploy (GitHub Pages lets them cache files for 10 minutes)."""
+    out = []
+    for path in paths:
+        f = docs / path
+        out.append(f"{path}?v={hashlib.sha256(f.read_bytes()).hexdigest()[:10]}" if f.exists() else path)
+    return out
+
+
 def _write_config(lang: Language, enabled: list[Language], loc: Localizer, out) -> None:
     cfg = tomllib.loads(BASE_CONFIG.read_text(encoding="utf-8"))
     p = cfg["project"]
+    for key in ("extra_css", "extra_javascript"):
+        if key in p:
+            p[key] = _versioned(p[key], out / "docs")
     p["docs_dir"] = "docs"
     p["site_dir"] = "site"  # Zensical requires it inside the config folder; copied to SITE after
     if p.get("site_url"):

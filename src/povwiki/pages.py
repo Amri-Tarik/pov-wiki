@@ -15,7 +15,7 @@ from functools import cached_property
 from .data import GameData
 from .i18n import Localizer
 from .icons import DOCS_DIR as ICONS_DIR
-from .icons import Icons
+from .icons import FRAME_KINDS, Icons, frame_kind
 from .markup import glossary_path, plain, rel, slugs, summary, to_html, to_md
 
 
@@ -98,11 +98,38 @@ def _badges(ctx: Ctx, r: dict) -> str:
     return " ".join(out)
 
 
-def _icon(ctx: Ctx, key: str | None, page: str, cls: str = "pov-icon") -> str:
-    """<img> for a game icon id, sized by CSS class; "" when there is none or icons are off."""
-    path = ctx.icons.path(key) if ctx.icons else None
+def _img(path: str | None, page: str, px: int) -> str:
     # The site generator resolves <img src> relative to the Markdown file, like Markdown links.
-    return f'<img class="{cls}" src="{rel(path, page)}" alt="" loading="lazy">' if path else ""
+    # Explicit width/height: the image keeps its size even before (or without) the stylesheet.
+    if not path:
+        return ""
+    return f'<img class="pov-art" src="{rel(path, page)}" width="{px}" height="{px}" alt="" loading="lazy">'
+
+
+def _node_art(ctx: Ctx, n: dict, page: str, px: int = 48) -> str:
+    """A node's icon in its in-game frame."""
+    if not ctx.icons:
+        return ""
+    return _img(ctx.icons.framed_path(n.get("icon"), frame_kind(n["size"], bool(n["r"]["options"]))), page, px)
+
+
+def _option_art(ctx: Ctx, o: dict, page: str, px: int = 40) -> str:
+    if not ctx.icons:
+        return ""
+    return _img(ctx.icons.framed_path(o.get("icon"), "mastery"), page, px)
+
+
+def _node_table(ctx: Ctx, page: str, header: list[str], nodes: list[dict], cells: Callable[[dict], list[str]]) -> list[str]:
+    """A table with one row per node, and a leading icon column when icons are on."""
+    if not ctx.icons:
+        return _table(header, [cells(n) for n in nodes])
+    return _table(["", *header], [[_node_art(ctx, n, page), *cells(n)] for n in nodes])
+
+
+def _option_table(ctx: Ctx, page: str, header: list[str], options: list[dict], cells: Callable[[dict], list[str]]) -> list[str]:
+    if not ctx.icons:
+        return _table(header, [cells(o) for o in options])
+    return _table(["", *header], [[_option_art(ctx, o, page), *cells(o)] for o in options])
 
 
 def _title(ctx: Ctx, n: dict) -> str:
@@ -114,10 +141,9 @@ def _name(ctx: Ctx, n: dict, page: str | None = None) -> str:
     """Node name in bold, linked to the node's page when it has one and `page` is given."""
     title = _title(ctx, n)
     text = f"**{_cell(title)}**" if title else f"<i>{ctx.loc.ui('page.unnamed')}</i> `{n['id']}`"
-    icon = _icon(ctx, n.get("icon"), page) if page else ""
     if page and n["size"] in PAGE_SIZES:
         text = f"[{text}]({rel(node_path(n), page)})"
-    return icon + text
+    return text
 
 
 def _branch(ctx: Ctx, n: dict) -> str:
@@ -144,7 +170,7 @@ def _option_title(ctx: Ctx, page: str, o: dict) -> str:
     if o["extra"]:
         tip = html.escape(plain(" ".join(o["extra"])), quote=True)
         title = f'<span class="pov-desc" title="{tip}">{title}</span>'
-    return _icon(ctx, o.get("icon"), page) + title
+    return title
 
 
 def _option_effect(ctx: Ctx, page: str, o: dict) -> str:
@@ -153,6 +179,22 @@ def _option_effect(ctx: Ctx, page: str, o: dict) -> str:
     lines = [to_md(s, ctx.loc, page) for s in (o["stats"] or o["extra"])]
     badges = _badges(ctx, o)
     return "<br>".join(lines) + (f"<br>{badges}" if badges else "")
+
+
+def _category_key(cat: str | None) -> str:
+    """The game spells some categories in two cases ("Armour" / "armour"): group them as one."""
+    return (cat or "").strip().lower()
+
+
+def _category_titles(cats) -> dict[str, str]:
+    """Group key -> display title, preferring a capitalised spelling."""
+    titles: dict[str, str] = {}
+    for cat in cats:
+        cat = (cat or "").strip()
+        key = _category_key(cat)
+        if key not in titles or (cat[:1].isupper() and not titles[key][:1].isupper()):
+            titles[key] = cat
+    return titles
 
 
 def _footer(ctx: Ctx) -> list[str]:
@@ -164,13 +206,17 @@ def _unimplemented_section(ctx: Ctx, nodes: list[dict], page: str) -> list[str]:
     if not nodes:
         return []
     loc = ctx.loc
-    rows = [[_name(ctx, n, page), _branch(ctx, n), n["r"]["category"] or ""] for n in sorted(nodes, key=lambda n: (n["branch"], n["id"]))]
+    table = _node_table(
+        ctx, page, [loc.ui("col.name"), loc.ui("col.branch"), loc.ui("col.category")],
+        sorted(nodes, key=lambda n: (n["branch"], n["id"])),
+        lambda n: [_name(ctx, n, page), _branch(ctx, n), n["r"]["category"] or ""],
+    )
     return [
         f"## {loc.ui('page.unimplemented')} ({len(nodes)})",
         "",
         f'??? note "{loc.ui("page.unimplemented_note")}"',
         "",
-        *("    " + line for line in _table([loc.ui("col.name"), loc.ui("col.branch"), loc.ui("col.category")], rows)),
+        *("    " + line for line in table),
     ]
 
 
@@ -182,9 +228,9 @@ def page_keystones(ctx: Ctx) -> dict[str, str]:
     nodes = [n for n in ctx.tree_nodes if n["size"] == "Keystone"]
     live = sorted((n for n in nodes if _is_implemented(n)), key=lambda n: n["r"]["title"])
     md = [f"# {loc.ui('nav.keystones')}", ""]
-    md += _table(
-        [loc.ui("col.name"), loc.ui("col.branch"), loc.ui("col.category"), loc.ui("col.effect")],
-        [[_name(ctx, n, page), _branch(ctx, n), n["r"]["category"] or "", _effect(ctx, page, n["r"])] for n in live],
+    md += _node_table(
+        ctx, page, [loc.ui("col.name"), loc.ui("col.branch"), loc.ui("col.category"), loc.ui("col.effect")], live,
+        lambda n: [_name(ctx, n, page), _branch(ctx, n), n["r"]["category"] or "", _effect(ctx, page, n["r"])],
     )
     md += _unimplemented_section(ctx, [n for n in nodes if not _is_implemented(n)], page)
     return {page: "\n".join(md + _footer(ctx))}
@@ -197,13 +243,15 @@ def page_notables(ctx: Ctx) -> dict[str, str]:
     by_cat = defaultdict(list)
     for n in nodes:
         if _is_implemented(n):
-            by_cat[n["r"]["category"] or ""].append(n)
+            by_cat[_category_key(n["r"]["category"])].append(n)
+    titles = _category_titles(n["r"]["category"] for n in nodes)
     md = [f"# {loc.ui('nav.notables')}", "", loc.ui("page.notables_intro", count=sum(map(len, by_cat.values()))), ""]
-    for cat in sorted(by_cat, key=lambda c: (c == "", c.lower())):
-        md += [f"## {cat or loc.ui('page.uncategorized')}", ""]
-        md += _table(
-            [loc.ui("col.name"), loc.ui("col.branch"), loc.ui("col.effect")],
-            [[_name(ctx, n, page), _branch(ctx, n), _effect(ctx, page, n["r"])] for n in sorted(by_cat[cat], key=lambda n: n["r"]["title"])],
+    for cat in sorted(by_cat, key=lambda c: (c == "", c)):
+        md += [f"## {titles.get(cat) or loc.ui('page.uncategorized')}", ""]
+        md += _node_table(
+            ctx, page, [loc.ui("col.name"), loc.ui("col.branch"), loc.ui("col.effect")],
+            sorted(by_cat[cat], key=lambda n: n["r"]["title"]),
+            lambda n: [_name(ctx, n, page), _branch(ctx, n), _effect(ctx, page, n["r"])],
         )
     md += _unimplemented_section(ctx, [n for n in nodes if not _is_implemented(n)], page)
     return {page: "\n".join(md + _footer(ctx))}
@@ -218,17 +266,18 @@ def page_masteries(ctx: Ctx) -> dict[str, str]:
             continue
         for o in n["r"]["options"]:
             key = (o["title"], tuple(o["stats"]), tuple(o["extra"]))
-            entry = groups[n["r"]["category"] or ""].setdefault(key, {"option": o, "nodes": set()})
+            entry = groups[_category_key(n["r"]["category"])].setdefault(key, {"option": o, "nodes": set()})
             entry["nodes"].add(n["id"])
+    titles = _category_titles(n["r"]["category"] for n in ctx.tree_nodes if n["r"]["options"])
     md = [f"# {loc.ui('nav.masteries')}", "", loc.ui("page.masteries_intro"), ""]
-    for cat in sorted(groups, key=lambda c: (c == "", c.lower())):
-        options = sorted(groups[cat].values(), key=lambda e: plain(e["option"]["title"]))
-        rows = []
-        for e in options:
-            o = e["option"]
-            rows.append([_option_title(ctx, page, o), _option_effect(ctx, page, o), str(len(e["nodes"]))])
-        md += [f"## {cat or loc.ui('page.uncategorized')}", ""]
-        md += _table([loc.ui("col.option"), loc.ui("col.effect"), loc.ui("col.offered_by")], rows)
+    for cat in sorted(groups, key=lambda c: (c == "", c)):
+        entries = sorted(groups[cat].values(), key=lambda e: plain(e["option"]["title"]))
+        count = {id(e["option"]): len(e["nodes"]) for e in entries}
+        md += [f"## {titles.get(cat) or loc.ui('page.uncategorized')}", ""]
+        md += _option_table(
+            ctx, page, [loc.ui("col.option"), loc.ui("col.effect"), loc.ui("col.offered_by")], [e["option"] for e in entries],
+            lambda o: [_option_title(ctx, page, o), _option_effect(ctx, page, o), str(count[id(o)])],
+        )
     return {page: "\n".join(md + _footer(ctx))}
 
 
@@ -243,8 +292,9 @@ def page_nodes(ctx: Ctx) -> dict[str, str]:
         md = [f"# {_title(ctx, n) or loc.ui('page.unnamed')}", ""]
         if not _is_implemented(n):
             md += ["!!! warning \"" + loc.ui("page.unimplemented") + "\"", f"    {loc.ui('page.unimplemented_node')}", ""]
+        art = _node_art(ctx, n, page, 96)
         md += [
-            _icon(ctx, n.get("icon"), page, "pov-icon-lg")
+            (f'<span class="pov-art-lg">{art}</span>' if art else "")
             + f"<b>{kind}</b> · {_branch(ctx, n)}" + (f" · {r['category']}" if r["category"] else "")
             + f" · [{loc.ui('tree.show')}]({rel(TREE_PAGE, page)}#{n['id']})",
             "",
@@ -257,9 +307,9 @@ def page_nodes(ctx: Ctx) -> dict[str, str]:
         # Mastery options, apart from the node's own effect.
         if r["options"]:
             md += [f"## {loc.ui('page.mastery_options')}", ""]
-            md += _table(
-                [loc.ui("col.option"), loc.ui("col.effect")],
-                [[_option_title(ctx, page, o), _option_effect(ctx, page, o)] for o in r["options"]],
+            md += _option_table(
+                ctx, page, [loc.ui("col.option"), loc.ui("col.effect")], r["options"],
+                lambda o: [_option_title(ctx, page, o), _option_effect(ctx, page, o)],
             )
 
         # Details.
@@ -277,9 +327,9 @@ def page_nodes(ctx: Ctx) -> dict[str, str]:
         near = [ctx.by_id[x] for x in ctx.neighbours.get(n["id"], []) if x in ctx.by_id]
         if near:
             md += [f"## {loc.ui('page.connections')}", ""]
-            md += _table(
-                [loc.ui("col.name"), loc.ui("col.type"), loc.ui("col.effect")],
-                [[_name(ctx, m, page), loc.ui(f"size.{m['size']}"), _effect(ctx, page, m["r"])] for m in near],
+            md += _node_table(
+                ctx, page, [loc.ui("col.name"), loc.ui("col.type"), loc.ui("col.effect")], near,
+                lambda m: [_name(ctx, m, page), loc.ui(f"size.{m['size']}"), _effect(ctx, page, m["r"])],
             )
 
         # Keywords.
@@ -355,6 +405,7 @@ def page_tree(ctx: Ctx) -> dict[str, str]:
             n["id"], n["x"], n["y"], SIZES.index(n["size"]) if n["size"] in SIZES else 0, branches.index(n["branch"]),
             _title(ctx, n), _tooltip_html(ctx, n), flags,
             (ctx.icons.path(n.get("icon")) or "").removeprefix(f"{ICONS_DIR}/") if ctx.icons else "",
+            FRAME_KINDS.index(frame_kind(n["size"], bool(n["r"]["options"]))),
         ])
     links = []
     for a, b in tree["links"]:
@@ -371,7 +422,9 @@ def page_tree(ctx: Ctx) -> dict[str, str]:
         "branches": [{"name": loc.text(f"@branch.{b}", b), "color": _hex(BRANCH_COLORS.get(b, DEFAULT_COLOR))} for b in branches],
         "ui": {k: loc.ui(f"tree.{k}") for k in ("search", "matches", "reset", "hint")},
         # Relative to the page's rendered URL (passives/tree/), like the attributes below.
-        "iconBase": f"../{rel(ICONS_DIR, TREE_PAGE)}/",
+        "iconBase": f"../{rel(ICONS_DIR, TREE_PAGE)}/" if ctx.icons else "",
+        # The game's painted frames: iconBase + "frame/<kind>-<locked|allocated>.webp".
+        "frames": list(FRAME_KINDS) if ctx.icons else [],
     }
     md = [
         "---",
@@ -435,16 +488,16 @@ def page_glossary(ctx: Ctx) -> dict[str, str]:
             for size, label in (("Keystone", "nav.keystones"), ("Notable", "nav.notables")):
                 if ref[size]:
                     md += [f"### {loc.ui(label)}", ""]
-                    md += _table(
-                        [loc.ui("col.name"), loc.ui("col.effect")],
-                        [[_name(ctx, n, page), _effect(ctx, page, n["r"])] for n in sorted(ref[size], key=lambda n: n["r"]["title"])],
+                    md += _node_table(
+                        ctx, page, [loc.ui("col.name"), loc.ui("col.effect")], sorted(ref[size], key=lambda n: n["r"]["title"]),
+                        lambda n: [_name(ctx, n, page), _effect(ctx, page, n["r"])],
                     )
             if ref["options"]:
                 distinct = {(o["title"], tuple(o["stats"])): o for o in ref["options"]}
                 md += [f"### {loc.ui('nav.masteries')}", ""]
-                md += _table(
-                    [loc.ui("col.option"), loc.ui("col.effect")],
-                    [[_option_title(ctx, page, o), _option_effect(ctx, page, o)] for o in sorted(distinct.values(), key=lambda o: plain(o["title"]))],
+                md += _option_table(
+                    ctx, page, [loc.ui("col.option"), loc.ui("col.effect")], sorted(distinct.values(), key=lambda o: plain(o["title"])),
+                    lambda o: [_option_title(ctx, page, o), _option_effect(ctx, page, o)],
                 )
             if ref["small"]:
                 md += [f"### {loc.ui('page.small_passives')}", ""]

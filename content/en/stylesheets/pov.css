@@ -107,32 +107,22 @@
   padding-left: 0.6em;
 }
 
-/* ---- Icons (the mod's node art) ---- */
-.pov-icon {
-  width: 1.6em;
-  height: 1.6em;
-  margin-right: 0.4em;
-  vertical-align: middle;
-  border-radius: 0.2em;
+/* ---- Node art: icons in the game's frames ---- */
+.md-typeset .pov-art {
+  display: block;
+  max-width: none;
+  margin: 0 auto;
 }
-.pov-icon-lg {
-  width: 4rem;
-  height: 4rem;
+.md-typeset td:has(> .pov-art) {
+  width: 3.4rem;
+  padding: 0.4em 0.3em !important;
+  vertical-align: middle;
+}
+.pov-art-lg {
+  display: inline-block;
+  vertical-align: middle;
   margin-right: 0.8rem;
-  vertical-align: middle;
-  border-radius: 0.3rem;
 }
-.pov-tt-icon {
-  float: left;
-  width: 2.4rem;
-  height: 2.4rem;
-  margin: 0 0.6em 0.3em 0;
-  border-radius: 0.2rem;
-}
-.pov-tt-meta {
-  clear: none;
-}
-.pov-tt-line:first-of-type,
-.pov-tt-head:first-of-type {
-  clear: left;
+.pov-art-lg .pov-art {
+  display: inline;
 }

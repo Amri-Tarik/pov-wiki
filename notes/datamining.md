@@ -16,6 +16,7 @@ manifest resources named `PassiveTree.*`:
 | `published.cfg` | Server config defaults (XP curve, etc.) |
 | `loc.<language>.txt` | Same as the shipped `Localization/*.txt` |
 | `v2.icon.<id>.png`, `v2.mastery.<id>.png` | Node / option icons, 256 px (extracted to `icons/`) |
+| `paintedframe.<kind>-<locked\|allocated>.png` | Node frames (`UiKit.NodeFrame`): keystone, notable, mastery-notable, normal, mastery, socket; silver = locked, gold = allocated (extracted to `icons/frame/`) |
 | `v2.halo.*`, `v2.crafthalo.*` | Decorative rings drawn around nodes (not extracted) |
 | other `*.png`, `*.jpg`, `*.pcm`, `bundle.*` | Jewel/slot art, textures, sounds, Unity asset bundles (not extracted yet) |
 
@@ -111,6 +112,12 @@ together: that repeats the same effect twice.
   Portal 76, Small/Travel 30. Branch colours come from `Tree.cs`.
 - Icons: a node/option `icon` of `v2:<id>` is `PassiveTree.v2.icon.<id>.png`, and `v2m:<id>` is
   `PassiveTree.v2.mastery.<id>.png` (`UiKit.V2Art`). About 100 nodes reference an id with no art.
+- How the tree window draws a node: a dark backing, then the painted icon cropped to a circle
+  (`RoundIconGraphic`; diamond for diamond nodes), inset by 6% of the box for keystones, 2% for
+  small passives and 0 for notables. The frame goes on top at box / `FrameRing` (0.82).
+  Notables offering a choice use the `mastery-notable` frame.
+- Category names come in two cases for the same category ("Armour" / "armour"). Group them
+  case-insensitively.
 - The node tooltip shows the stat lines and then `Told` in italics, even when they repeat each
   other (e.g. Eternal Pyre). That's the author's text, so we keep it.
 

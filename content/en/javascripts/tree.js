@@ -1,12 +1,16 @@
 /* Path of Valheiman DB: interactive passive tree.
  *
  * Reads the generated tree-data.json:
- *   nodes:    [id, x, y, sizeIndex, branchIndex, title, tooltipHtml, flags, iconPath]
+ *   nodes:    [id, x, y, sizeIndex, branchIndex, title, tooltipHtml, flags, iconPath, frameIndex]
  *   links:    [from, to] or [from, to, cx, cy]  (quadratic curve, control = midpoint + (cx, cy))
  *   sizes:    [{name, d}]   game node diameters
  *   branches: [{name, color}] game branch colours
  *   ui:       wiki strings
  *   iconBase: URL prefix for iconPath (icons can be turned off: then iconPath is "")
+ *   frames:   frame kinds; iconBase + "frame/<kind>-<locked|allocated>.webp" (empty when icons are off)
+ * Close up, a node is drawn like the game's tree window: dark backing, the painted icon cropped
+ * to a circle (or a branch-coloured dot), then the painted frame at node size / 0.82. Frames are
+ * silver, and gold for highlighted nodes, like allocated nodes in game.
  * Game coordinates are y-up (Unity UI); the canvas is y-down, so y is flipped.
  */
 (function () {
@@ -15,7 +19,9 @@
   var F_PAGE = 1, F_UNIMPL = 2, F_OPTIONS = 4;
   var S_SMALL = 0, S_TRAVEL = 1, S_NOTABLE = 2, S_KEYSTONE = 3, S_SOCKET = 4, S_MASTERY = 5, S_PORTAL = 7;
   var CELL = 120; // hit-test grid cell, world units
-  var ICON_MIN_PX = 9; // draw icons once a node's radius reaches this many screen pixels
+  var ICON_MIN_PX = 9; // draw icons and frames once a node's radius reaches this many screen pixels
+  var FRAME_RING = 0.82; // UiKit.FrameRing: node box / frame size
+  var INSET = { keystone: 0.06, normal: 0.02, mastery: 0.025 }; // icon inset in the node box
 
   function boot() {
     document.querySelectorAll(".pov-tree").forEach(function (root) {
@@ -46,7 +52,11 @@
       '<span class="pov-tree-count"></span>' +
       '<button type="button" class="pov-tree-reset md-button">' + ui.reset + "</button>" +
       "</div>" +
-      '<div class="pov-tree-wrap"><canvas></canvas><div class="pov-tree-tip" hidden></div></div>' +
+      // Inline layout: the canvas is taken out of the flow, so its size can never feed back into
+      // the box it is measured from, whatever the stylesheet says.
+      '<div class="pov-tree-wrap" style="position:relative;height:75vh;min-height:420px;overflow:hidden;touch-action:none">' +
+      '<canvas style="position:absolute;left:0;top:0;display:block"></canvas>' +
+      '<div class="pov-tree-tip" style="position:absolute" hidden></div></div>' +
       '<div class="pov-tree-hint">' + ui.hint + "</div>";
     this.wrap = this.root.querySelector(".pov-tree-wrap");
     this.canvas = this.root.querySelector("canvas");
@@ -63,6 +73,7 @@
       var node = {
         i: i, id: n[0], x: n[1], y: -n[2], size: n[3], branch: n[4], title: n[5], tip: n[6], flags: n[7],
         r: d.sizes[n[3]].d / 2, icon: n[8] ? d.iconBase + n[8] : null,
+        frame: d.frames.length ? d.frames[n[9]] : null,
       };
       node.text = (node.title + " " + node.tip.replace(/<[^>]+>/g, " ")).toLowerCase();
       nodes.push(node);
@@ -203,29 +214,21 @@
     }
 
     // Nodes.
-    var branches = this.data.branches;
+    var branches = this.data.branches, lit = {};
+    [this.hover, this.pinned].forEach(function (h) { if (h) lit[h.i] = true; });
     for (var i = 0; i < this.nodes.length; i++) {
       var n = this.nodes[i];
       if (!visible(n)) continue;
       var r = Math.max(n.r, 1.6 / s), unimpl = n.flags & F_UNIMPL;
       c.globalAlpha = matches && !matches[n.i] ? 0.15 : unimpl ? 0.45 : 1;
+      if (n.frame && r * s >= ICON_MIN_PX) {
+        this.drawFramed(c, n, r, unimpl, (matches && matches[n.i]) || lit[n.i]);
+        continue;
+      }
       c.fillStyle = unimpl ? "#808080" : branches[n.branch].color;
       c.beginPath();
       this.shape(c, n, r);
       c.fill();
-      var img = n.icon && r * s >= ICON_MIN_PX ? this.image(n.icon) : null;
-      if (img) {
-        // The icon fills the node; the branch colour stays as a ring around it.
-        c.save();
-        c.clip();
-        c.drawImage(img, n.x - r, n.y - r, r * 2, r * 2);
-        c.restore();
-        c.beginPath();
-        this.shape(c, n, r);
-        c.lineWidth = Math.max(r * 0.14, 1 / s);
-        c.strokeStyle = unimpl ? "#808080" : branches[n.branch].color;
-        c.stroke();
-      }
       if (n.size === S_KEYSTONE || n.size === S_NOTABLE || n.size === S_PORTAL || (n.flags & F_OPTIONS)) {
         c.lineWidth = Math.max(n.size === S_KEYSTONE ? 7 : 4, 1 / s);
         c.strokeStyle = n.flags & F_OPTIONS ? fg : bg;
@@ -282,6 +285,36 @@
     }
   };
 
+  TreeView.prototype.drawFramed = function (c, n, r, unimpl, gold) {
+    var base = this.data.iconBase, frame = this.image(base + "frame/" + n.frame + "-" + (gold ? "allocated" : "locked") + ".webp");
+    var icon = n.icon ? this.image(n.icon) : null;
+    // Backing.
+    c.fillStyle = "#16130f";
+    c.beginPath();
+    c.arc(n.x, n.y, r, 0, Math.PI * 2);
+    c.fill();
+    if (icon) {
+      var ir = r * (1 - 2 * (INSET[n.frame] || 0));
+      c.save();
+      c.beginPath();
+      c.arc(n.x, n.y, ir, 0, Math.PI * 2);
+      c.clip();
+      if (unimpl) c.filter = "grayscale(1)";
+      c.drawImage(icon, n.x - ir, n.y - ir, ir * 2, ir * 2);
+      c.restore();
+    } else {
+      // No art: a dot in the branch colour, like the game's small passives.
+      c.fillStyle = unimpl ? "#808080" : this.data.branches[n.branch].color;
+      c.beginPath();
+      c.arc(n.x, n.y, r * 0.36, 0, Math.PI * 2);
+      c.fill();
+    }
+    if (frame) {
+      var fr = r / FRAME_RING;
+      c.drawImage(frame, n.x - fr, n.y - fr, fr * 2, fr * 2);
+    }
+  };
+
   TreeView.prototype.strokeLinks = function (c, keep) {
     c.beginPath();
     for (var i = 0; i < this.links.length; i++) {
@@ -308,7 +341,8 @@
     if (!n) { this.tip.hidden = true; return; }
     var d = this.data;
     this.tip.innerHTML =
-      (n.icon ? '<img class="pov-tt-icon" src="' + n.icon + '" alt="">' : "") +
+      (n.icon ? '<img class="pov-tt-icon" src="' + n.icon + '" width="40" height="40" alt="" ' +
+        'style="float:left;width:40px;height:40px;margin:0 8px 4px 0;border-radius:50%">' : "") +
       '<div class="pov-tt-title">' + (n.title || "—") + "</div>" +
       '<div class="pov-tt-meta">' + d.sizes[n.size].name + " · " + d.branches[n.branch].name + "</div>" +
       n.tip;

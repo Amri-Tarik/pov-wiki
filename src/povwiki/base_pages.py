@@ -50,7 +50,17 @@ def bases(ctx: Ctx) -> dict[str, dict]:
         if not token.startswith("$") or "$" in name or not shared.get("icon"):
             continue
         out[prefab] = {"shared": shared, "info": info, "name": name}
-    return out
+    return _one_per_name(ctx, out)
+
+
+def _one_per_name(ctx: Ctx, found: dict[str, dict]) -> dict[str, dict]:
+    """Valheim has copies of many items under the same name (FW_* and SP_* variants, the Dvergr's
+    own arbalests): keep the one players craft, else the shortest prefab name (the plain one)."""
+    by_name: dict[str, list[str]] = defaultdict(list)
+    for prefab, b in found.items():
+        by_name[b["shared"]["m_name"]].append(prefab)
+    keep = {min(prefabs, key=lambda p: (_recipe(ctx, p) is None, len(p), p)) for prefabs in by_name.values()}
+    return {p: b for p, b in found.items() if p in keep}
 
 
 def _class(b: dict) -> tuple[str, str]:
@@ -153,8 +163,8 @@ def _level(ctx: Ctx, prefab: str) -> int | None:
 
 def _material_level(ctx: Ctx, recipe: dict) -> int:
     """The highest item level among a recipe's materials, upgrade items (Upgrader*/Mold*) left out:
-    where the item sits in progression. The mod counts those as Deep North material, which puts
-    almost every crafted item at the Deep North level."""
+    where the item sits in progression, for ordering lists. Upgrade items are rated Deep North
+    (CraftLevel.ByPrefix), so most recipes would otherwise tie."""
     return max([ctx.loc.items.get(r["item"], {}).get("craftLevel", 1)
                 for r in recipe["resources"] if not _is_upgrader(r["item"])] or [1])
 
@@ -254,12 +264,85 @@ def _base_page(ctx: Ctx, prefab: str, b: dict, found: dict) -> str:
         md += [ui("items.not_craftable"), ""]
     else:
         md += [ui("items.item_level_line", biome=biome(ctx, level), level=level), ""]
-    if recipe and any(_is_upgrader(r["item"]) for r in recipe["resources"]):
-        other = _material_level(ctx, recipe)
-        if other < level:
-            note = ui("items.upgrader_quirk_note", biome=biome(ctx, other), level=other)
-            md += [f'!!! warning "{ui("items.upgrader_quirk")}"', f"    {note}", ""]
+    md += _mods_section(ctx, b, page)
 
     md += [f"## {ui('items.tags')}", "", ui("items.tags_note"), ""]
     md += [", ".join(ui(f"tag.{t}") if ui(f"tag.{t}") != f"tag.{t}" else f"`{t}`" for t in info["tags"]), ""]
     return "\n".join(md + _footer(ctx))
+
+
+# ---- Mods that roll on a base -------------------------------------------------------------------
+
+
+def _fits(affix: dict, tags: set[str]) -> bool:
+    """The tag part of AffixDef.Fits: all of AllowAll, one of AllowAny (if any), none of DenyAny."""
+    return (all(t in tags for t in affix["allowAll"])
+            and (not affix["allowAny"] or any(t in tags for t in affix["allowAny"]))
+            and not any(t in tags for t in affix["denyAny"]))
+
+
+def _slot(tags: set[str]) -> str:
+    """Which slot multiplier the item gets (LootRoller.SlotMult): its key in the rendered tiers."""
+    for tag, slot in (("slot.chest", "chest"), ("slot.legs", "legs"), ("shield.tower", "tower"), ("shield.buckler", "buckler")):
+        if tag in tags:
+            return slot
+    if "weapon" in tags and "paired" not in tags:
+        if "two_handed" in tags:
+            return "two_handed"
+        if "one_handed" in tags:
+            return "one_handed"
+    return "base"
+
+
+def _rollable_tiers(affix: dict) -> list[dict]:
+    """Tiers that can roll (TierDef.Allows: special tiers never do; weight 0 never wins)."""
+    return [t for t in affix["tiers"] if not t["special"] and t["weight"] > 0]
+
+
+def _mods_section(ctx: Ctx, b: dict, page: str) -> list[str]:
+    """Every mod that can roll on this base, prefixes and suffixes apart, with weights. Values are
+    for this item's slot. Mods only a boss essence adds are listed after."""
+    from .item_pages import _title, _values, mod_path
+
+    ui, loot = ctx.loc.ui, ctx.loc.loot
+    tags = set(b["info"]["tags"])
+    slot = _slot(tags)
+    fitting = [a for a in loot["affixes"] if _fits(a, tags) and _rollable_tiers(a)]
+    rolls = [a for a in fitting if a["generation"]]
+    essence = [a for a in fitting if a["source"] == "essence"]
+    if not rolls and not essence:
+        return []
+
+    def values(a: dict) -> str:
+        tiers = _rollable_tiers(a)
+        low, high = (_values(t["text"].get(slot) or t["text"]["base"]) for t in (tiers[0], tiers[-1]))
+        return low if low == high else f"{low} → {high}"
+
+    def link(a: dict) -> str:
+        return f"[{_title(a)}]({rel(mod_path(a), page)})"
+
+    def level(a: dict) -> str:
+        # AffixDef.Fits wants the item level at the mod's own minimum, and a tier must allow it.
+        lvl = max(1, a["minLevel"], min(t["minLevel"] for t in _rollable_tiers(a)))
+        return f"{biome(ctx, lvl)} <small>({lvl})</small>"
+
+    md = [f"## {ui('items.mods')}", "", ui("items.base_mods_intro"), ""]
+    header = [ui("items.mod"), ui("items.value"), ui("items.min_level"), ui("items.tiers"), ui("items.weight"), ui("items.share")]
+    for place in ("prefix", "suffix"):
+        chosen = sorted((a for a in rolls if a["place"] == place), key=lambda a: (-a["weight"], _title(a)))
+        if not chosen:
+            continue
+        total = sum(a["weight"] for a in chosen)
+        md += [f"### {ui('items.' + place)} ({len(chosen)})", ""]
+        md += _table(header, [[
+            link(a), values(a), level(a), str(len(_rollable_tiers(a))), f"{a['weight']:g}", f"{100 * a['weight'] / total:.1f}%",
+        ] for a in chosen])
+    if essence:
+        from .item_pages import _essences_for
+
+        md += [f"### {ui('items.essence_only')} ({len(essence)})", "", ui("items.base_essence_note"), ""]
+        md += _table([ui("items.mod"), ui("items.place"), ui("items.value"), ui("items.source")], [
+            [link(a), ui(f"items.{a['place']}"), values(a), ", ".join(_essences_for(ctx, a))]
+            for a in sorted(essence, key=_title)
+        ])
+    return md

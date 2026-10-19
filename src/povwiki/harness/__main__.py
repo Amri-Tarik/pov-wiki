@@ -5,6 +5,7 @@
 Writes DIR/<language>.json:
     {"language", "revision", "errors": [...], "nodes": {id: {title, category, topics, stats[], extra[], broken,
      unformatted[], icon, options: [{id, title, stats[], extra[], broken, reserved, unformatted[], icon}]}},
+     "craft": {"nodes": {id: {title, shelf, sector, prof, entry, ...as above}}, "sectors": [...]},
      "wiki": {key: {title, text[], forms[]}}}
 icon: the embedded image the game shows ("PassiveTree.v2.icon.fire.png", "atlas:<tile>") or null.
 Text keeps the game's rich-text markup (<link="slug">, <color=...>, <b>); the site generator converts it.
@@ -83,7 +84,13 @@ def render_tree(data, language: str) -> dict:
             }
         except Exception as ex:  # one bad node must not lose the rest
             errors.append({"node": n.Id, "error": str(ex).split("\n")[0]})
-    return {"language": language, "revision": data.Revision, "errors": errors, "nodes": nodes, "wiki": render_wiki(errors)}
+    from .craft import CraftRenderer
+
+    craft = CraftRenderer(icons, formatted, _unformatted).render(errors)
+    return {
+        "language": language, "revision": data.Revision, "errors": errors,
+        "nodes": nodes, "craft": craft, "wiki": render_wiki(errors),
+    }
 
 
 def render_wiki(errors: list) -> dict:
@@ -120,7 +127,10 @@ def main() -> None:
         clrhost.set_language(language)
         result = render_tree(data, language)
         (args.out / f"{language}.json").write_text(json.dumps(result, ensure_ascii=False), encoding="utf-8")
-        print(f"rendered {language}: {len(result['nodes'])} nodes, {len(result['wiki'])} wiki terms, {len(result['errors'])} errors")
+        print(
+            f"rendered {language}: {len(result['nodes'])} nodes, {len(result['craft']['nodes'])} craft nodes, "
+            f"{len(result['wiki'])} wiki terms, {len(result['errors'])} errors"
+        )
         for e in result["errors"][:5]:
             print("  ", e)
 

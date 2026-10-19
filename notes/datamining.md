@@ -140,6 +140,43 @@ text, which has placeholder values filled in (e.g. fortification numbers) and `<
 (self-links removed). `Term.Said` gives the inflected forms the game auto-links.
 `pt.scale:*` links in stat text are in-game scaling tooltips, not wiki terms.
 
+## Icons: which image the game shows
+
+`TreeWindow` gets a passive node's icon from `UiKit.MasteryIcon` (travel nodes:
+`AttributeIcon(-1)`), and an option's from `UiKit.IconByKey`. That's a chain of fallbacks:
+`IconRegistry` (keyed art: `v2:`, `v2m:`, `mastery:`, `tree:`…), `ThemeArt` (`v2:`), then
+`IconSemantics.Resolve` (semantic mastery art), then `IconMap` atlas tiles by group, name or
+stat (`PassiveTree.icons.png`, 128 px, 16 per row; `art5.icon-*` replaces a few tiles).
+E.g. "Fists for Tools" has `v2m:newtry-keystone-own13705`, which has no art, so it ends on
+atlas tile 29.
+
+These functions build Unity sprites, and no sprite (not even a stand-in) can exist outside the
+engine: `UnityEngine.Object`'s static constructor is native. So `harness/icons.py` mirrors the
+chain and asks the game's own lookups (`IconRegistry.Has`, `IconSemantics.Resolve`, `IconMap`)
+at every step, ending on a resource name. `Env.Headless` can't even be JIT-compiled outside
+Unity, so the loaders that check it are mirrored rather than called.
+
+## Craft tree
+
+- Parsed like the passive tree (`CraftTree.SearchNodes` = `TreeRemote.Parse` + `NameKey =
+  "craft.<id>"`; nodes named `own123` with nothing in them are `Broken`). It is shown through
+  `TreeWindow.CraftTreeModel`: titles `craft.node.<id>.name` ("Path" for travel nodes), a
+  profession "shelf" line (`CraftShelf`: the node's or its chunk's profession, else its sector),
+  options from `CraftOptionRow` (description = `Told` or what the flag stat does; body = knob
+  line + non-flag stats + `CraftMasteries.TryLines`). Options `!CraftMasteries.Works(o)` are
+  shown as broken (11 in 5.0.10).
+- Loading outside the game: `CraftTree.Load()` first looks for an override under BepInEx's
+  `Paths.ConfigPath` (null here → throws). The harness sets `hostText`/`hostHash` (what
+  `UseHostText` sets for a server's tree) to the shipped tree instead. `UseHostText` itself
+  touches the local player.
+- `TreeWindow`'s statics can't be touched at all (its static constructor parses colours with
+  native code), so `ProfNames`, `ChunkProf`, `HasKnob` and `KnobIn` are mirrored.
+- Art (`TreeWindow.CraftArt`, `CraftNodeArt`): `craftart.*`, `craftmastery.*`,
+  `crafttravel.<sector>` images, or tiles of `PassiveTree.craftnodes.atlas.png` (256 px on a
+  260 px grid, 13 per row, 2 px padding).
+- Craft branches (forge, wood, beast, table, mead, road) aren't `Branch` enum values, so the
+  game tints the whole craft tree alike. The viewer's sector colours are the wiki's own choice.
+
 ## Reading the mod's code
 
 Decompile with ILSpy's command-line tool. No .NET SDK is needed: download the `ilspycmd` NuGet

@@ -84,6 +84,16 @@ class Localizer:
         return self.data.rendered(self.lang.mod)["nodes"]
 
     @cached_property
+    def craft(self) -> dict:
+        """The craft tree as the game shows it: {"nodes": {id: ...}, "sectors": [...]}. Nodes get
+        the same shape as passive nodes: their profession line is their category."""
+        craft = self.data.rendered(self.lang.mod)["craft"]
+        for r in craft["nodes"].values():
+            r.setdefault("category", r.get("shelf"))
+            r.setdefault("topics", [])
+        return craft
+
+    @cached_property
     def wiki(self) -> dict[str, dict]:
         """The mod's in-game wiki terms (title, text, forms), by slug."""
         return self.data.rendered(self.lang.mod)["wiki"]

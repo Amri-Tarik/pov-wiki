@@ -1,8 +1,12 @@
 """Generated pages. Each generator returns {docs path: markdown}.
 
+The site has one section per skill tree (TreeSpec): the passive tree and the craft tree. Both
+are parsed by the game the same way and get the same kinds of pages (viewer, notables, mastery
+options, node pages) under their own URL prefix, since node ids overlap between the trees.
+
 All game text comes from the rendered data (the mod's own tooltip code); all wiki text from
 loc.ui(). Content the game ships but has not finished is shown with an "Unimplemented" badge
-instead of being hidden (except in the tree viewer, which shows the playable tree only).
+instead of being hidden (except in the tree viewers, which show the playable tree only).
 Jewel-revealed slots are left out entirely: they are empty until a jewel fills them.
 """
 
@@ -11,7 +15,7 @@ import html
 import json
 from collections import Counter, defaultdict
 from collections.abc import Callable
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from functools import cached_property
 
 from .data import GameData
@@ -20,12 +24,61 @@ from .icons import DOCS_DIR as ICONS_DIR
 from .icons import FRAME_KINDS, Icons, frame_kind
 from .markup import glossary_path, plain, rel, slugs, summary, to_html, to_md
 
+# Node types that get a page of their own.
+PAGE_SIZES = ("Keystone", "Notable")
+# Node types that are part of the tree's structure even without stats.
+STRUCTURAL_SIZES = ("Root", "Starter", "Socket", "Portal")
+
+
+def _hex(c: tuple[float, float, float]) -> str:
+    return "#" + "".join(f"{round(v * 255):02x}" for v in c)
+
+
+@dataclass(frozen=True)
+class TreeSpec:
+    key: str  # URL prefix and ui string section: "passives", "crafting"
+    colors: dict[str, str]  # branch -> viewer colour
+    default_color: str
+    pages: tuple[str, ...]  # which list pages this tree has
+    sizes: str = "size"  # ui section naming node types ("Notable", "Crafting notable"...)
+
+
+PASSIVES = TreeSpec(
+    key="passives",
+    # The game's branch colours (Tree.cs).
+    colors={b: _hex(c) for b, c in {
+        "War": (0.91, 0.35, 0.27), "Steel": (0.8, 0.43, 0.61), "Flesh": (0.85, 0.68, 0.32),
+        "Wind": (0.34, 0.8, 0.78), "Eitr": (0.68, 0.5, 0.95), "Toil": (0.51, 0.65, 0.87),
+    }.items()},
+    default_color=_hex((0.96, 0.85, 0.6)),
+    pages=("tree", "keystones", "notables", "masteries"),
+)
+CRAFTING = TreeSpec(
+    key="crafting",
+    # The game tints the whole craft tree alike; the viewer colours sectors so they stand apart.
+    colors={"forge": "#d9764a", "wood": "#7cb35a", "beast": "#c95b5b", "table": "#d9b64a",
+            "mead": "#a77fd9", "road": "#4fb3c9"},
+    default_color=_hex((0.96, 0.85, 0.6)),
+    pages=("tree", "professions", "notables", "masteries"),
+    sizes="craft_size",
+)
+
 
 @dataclass
 class Ctx:
     data: GameData
     loc: Localizer
+    spec: TreeSpec = PASSIVES
     icons: Icons | None = None  # None when icons are turned off
+    others: list = field(default_factory=list)  # the other trees' contexts (for the glossary)
+
+    @cached_property
+    def raw_tree(self) -> dict:
+        return self.data.craft_tree if self.spec is CRAFTING else self.data.tree
+
+    @cached_property
+    def rendered(self) -> dict[str, dict]:
+        return self.loc.craft["nodes"] if self.spec is CRAFTING else self.loc.nodes
 
     @cached_property
     def tree_nodes(self) -> list[dict]:
@@ -33,8 +86,8 @@ class Ctx:
         raw data, so everything about an option is in one place. Jewel-revealed slots are left
         out: they have no effect of their own (the jewel provides what appears there)."""
         out = []
-        for n in self.data.tree["nodes"]:
-            r = self.loc.nodes.get(n["id"])
+        for n in self.raw_tree["nodes"]:
+            r = self.rendered.get(n["id"])
             if r is None or _jewel_slot(n):
                 continue
             for o, raw in zip(r["options"], n.get("options") or []):
@@ -73,24 +126,29 @@ class Ctx:
     @cached_property
     def neighbours(self) -> dict[str, list[str]]:
         adj = defaultdict(list)
-        for a, b in self.data.tree["links"]:
+        for a, b in self.raw_tree["links"]:
             adj[a].append(b)
             adj[b].append(a)
         return adj
 
+    @cached_property
+    def sector_names(self) -> dict[str, str]:
+        return {s["id"]: s["name"] for s in self.loc.craft["sectors"]} if self.spec is CRAFTING else {}
 
-# Node types that get a page of their own.
-PAGE_SIZES = ("Keystone", "Notable")
-# Node types that are part of the tree's structure even without stats.
-STRUCTURAL_SIZES = ("Root", "Starter", "Socket", "Portal")
+    def ui(self, key: str, **fmt) -> str:
+        """A string of this tree's ui section, e.g. ui("notables") -> crafting.notables."""
+        return self.loc.ui(f"{self.spec.key}.{key}", **fmt)
+
+    def path(self, name: str) -> str:
+        return f"{self.spec.key}/{name}"
 
 
-def node_path(n: dict) -> str:
-    return f"passives/node/{n['id']}.md"
+def node_path(ctx: Ctx, n: dict) -> str:
+    return ctx.path(f"node/{n['id']}.md")
 
 
-def option_path(group: dict) -> str:
-    return f"passives/mastery/{group['slug']}.md"
+def option_path(ctx: Ctx, group: dict) -> str:
+    return ctx.path(f"mastery/{group['slug']}.md")
 
 
 def _jewel_slot(n: dict) -> bool:
@@ -181,11 +239,18 @@ def _name(ctx: Ctx, n: dict, page: str | None = None) -> str:
     title = _title(ctx, n)
     text = f"**{_cell(title)}**" if title else f"<i>{ctx.loc.ui('page.unnamed')}</i> `{n['id']}`"
     if page and n["size"] in PAGE_SIZES:
-        text = f"[{text}]({rel(node_path(n), page)})"
+        text = f"[{text}]({rel(node_path(ctx, n), page)})"
     return text
 
 
+def _kind(ctx: Ctx, n: dict) -> str:
+    return ctx.loc.ui(f"{ctx.spec.sizes}.{n['size']}")
+
+
 def _branch(ctx: Ctx, n: dict) -> str:
+    """Passive tree: the attribute branch. Craft tree: the sector."""
+    if ctx.spec is CRAFTING:
+        return ctx.sector_names.get(n["branch"]) or ctx.ui("core")
     return ctx.loc.text(f"@branch.{n['branch']}", n["branch"])
 
 
@@ -207,13 +272,18 @@ def _option_title(ctx: Ctx, page: str, o: dict) -> str:
     """Option name in bold, linked to the option's page."""
     title = f"**{_cell(plain(o['title']))}**"
     group = ctx.group_of.get(id(o))
-    return f"[{title}]({rel(option_path(group), page)})" if group else title
+    return f"[{title}]({rel(option_path(ctx, group), page)})" if group else title
 
 
 def _describes_differently(o: dict) -> bool:
     """The game shows an option's numbers in its row and its description on hover; when both
-    exist and say different things, the wiki shows both."""
-    return bool(o["stats"] and o["extra"]) and plain(" ".join(o["stats"])) != plain(" ".join(o["extra"]))
+    exist and the description adds something, the wiki shows both. Like the game's tooltip
+    (TreeWindow.OptionTitleLink), a description the row text already contains adds nothing."""
+    if not (o["stats"] and o["extra"]):
+        return False
+    row = plain(" ".join(o["stats"])).strip().rstrip(".")
+    description = plain(" ".join(o["extra"])).strip().rstrip(".")
+    return description not in row
 
 
 def _option_effect(ctx: Ctx, page: str, o: dict) -> str:
@@ -248,8 +318,7 @@ def _tree_link(ctx: Ctx, n: dict, page: str) -> str:
     not point at tree.md: the site generator would check the anchor and warn, once per node. It
     points at the tree's directory URL instead, written relative to the .md file (the generator
     rewrites hrefs in raw HTML that way too)."""
-    tree_dir = TREE_PAGE.removesuffix(".md")
-    return f'<a href="{rel(tree_dir, page)}/#{n["id"]}">{ctx.loc.ui("tree.show")}</a>'
+    return f'<a href="{rel(ctx.path("tree"), page)}/#{n["id"]}">{ctx.loc.ui("tree.show")}</a>'
 
 
 def _footer(ctx: Ctx) -> list[str]:
@@ -262,7 +331,7 @@ def _unimplemented_section(ctx: Ctx, nodes: list[dict], page: str) -> list[str]:
         return []
     loc = ctx.loc
     table = _node_table(
-        ctx, page, [loc.ui("col.name"), loc.ui("col.branch"), loc.ui("col.category")],
+        ctx, page, [loc.ui("col.name"), ctx.ui("branch"), loc.ui("col.category")],
         sorted(nodes, key=lambda n: (n["branch"], n["id"])),
         lambda n: [_name(ctx, n, page), _branch(ctx, n), n["r"]["category"] or ""],
     )
@@ -275,16 +344,16 @@ def _unimplemented_section(ctx: Ctx, nodes: list[dict], page: str) -> list[str]:
     ]
 
 
-# ---- Passive tree ------------------------------------------------------------------------------
+# ---- List pages --------------------------------------------------------------------------------
 
 
 def page_keystones(ctx: Ctx) -> dict[str, str]:
-    page, loc = "passives/keystones.md", ctx.loc
+    page, loc = ctx.path("keystones.md"), ctx.loc
     nodes = [n for n in ctx.tree_nodes if n["size"] == "Keystone"]
     live = sorted((n for n in nodes if _is_implemented(n)), key=lambda n: n["r"]["title"])
-    md = [f"# {loc.ui('nav.keystones')}", ""]
+    md = [f"# {ctx.ui('keystones')}", ""]
     md += _node_table(
-        ctx, page, [loc.ui("col.name"), loc.ui("col.branch"), loc.ui("col.category"), loc.ui("col.effect")], live,
+        ctx, page, [loc.ui("col.name"), ctx.ui("branch"), loc.ui("col.category"), loc.ui("col.effect")], live,
         lambda n: [_name(ctx, n, page), _branch(ctx, n), n["r"]["category"] or "", _effect(ctx, page, n["r"])],
     )
     md += _unimplemented_section(ctx, [n for n in nodes if not _is_implemented(n)], page)
@@ -292,19 +361,20 @@ def page_keystones(ctx: Ctx) -> dict[str, str]:
 
 
 def page_notables(ctx: Ctx) -> dict[str, str]:
-    """Notables grouped by category. Their mastery options are on the Masteries page."""
-    page, loc = "passives/notables.md", ctx.loc
+    """Notables grouped by category (craft tree: by profession). Their mastery options are on
+    the Masteries page."""
+    page, loc = ctx.path("notables.md"), ctx.loc
     nodes = [n for n in ctx.tree_nodes if n["size"] == "Notable"]
     by_cat = defaultdict(list)
     for n in nodes:
         if _is_implemented(n):
             by_cat[_category_key(n["r"]["category"])].append(n)
     titles = _category_titles(n["r"]["category"] for n in nodes)
-    md = [f"# {loc.ui('nav.notables')}", "", loc.ui("page.notables_intro", count=sum(map(len, by_cat.values()))), ""]
+    md = [f"# {ctx.ui('notables')}", "", ctx.ui("notables_intro", count=sum(map(len, by_cat.values()))), ""]
     for cat in sorted(by_cat, key=lambda c: (c == "", c)):
         md += [f"## {titles.get(cat) or loc.ui('page.uncategorized')}", ""]
         md += _node_table(
-            ctx, page, [loc.ui("col.name"), loc.ui("col.branch"), loc.ui("col.effect")],
+            ctx, page, [loc.ui("col.name"), ctx.ui("branch"), loc.ui("col.effect")],
             sorted(by_cat[cat], key=lambda n: n["r"]["title"]),
             lambda n: [_name(ctx, n, page), _branch(ctx, n), _effect(ctx, page, n["r"])],
         )
@@ -314,13 +384,13 @@ def page_notables(ctx: Ctx) -> dict[str, str]:
 
 def page_masteries(ctx: Ctx) -> dict[str, str]:
     """Choice nodes, by category: each distinct option once, with how many nodes offer it."""
-    page, loc = "passives/masteries.md", ctx.loc
+    page, loc = ctx.path("masteries.md"), ctx.loc
     by_cat: dict[str, list[dict]] = defaultdict(list)
     for g in ctx.option_groups.values():
         if any(n["size"] != "Keystone" for n in g["nodes"]):
             by_cat[_category_key(g["category"])].append(g)
     titles = _category_titles(g["category"] for g in ctx.option_groups.values())
-    md = [f"# {loc.ui('nav.masteries')}", "", loc.ui("page.masteries_intro"), ""]
+    md = [f"# {ctx.ui('masteries')}", "", loc.ui("page.masteries_intro"), ""]
     for cat in sorted(by_cat, key=lambda c: (c == "", c)):
         groups = sorted(by_cat[cat], key=lambda g: plain(g["options"][0]["title"]))
         count = {id(g["options"][0]): len(g["nodes"]) for g in groups}
@@ -333,14 +403,37 @@ def page_masteries(ctx: Ctx) -> dict[str, str]:
     return {page: "\n".join(md + _footer(ctx))}
 
 
+def page_professions(ctx: Ctx) -> dict[str, str]:
+    """Craft tree: sectors and their professions, with each profession's notables."""
+    page, loc = ctx.path("professions.md"), ctx.loc
+    notables = [n for n in ctx.tree_nodes if n["size"] == "Notable" and _is_implemented(n)]
+    # A notable's profession is its shelf line (TreeWindow.CraftShelf): its own profession, or
+    # the one its cluster (chunk) belongs to. That line is the node's category.
+    by_shelf = defaultdict(list)
+    for n in notables:
+        by_shelf[n["r"]["category"]].append(n)
+    md = [f"# {ctx.ui('professions')}", "", ctx.ui("professions_intro"), ""]
+    for sector in loc.craft["sectors"]:
+        md += [f"## {sector['name']}", ""]
+        for prof in sector["profs"]:
+            mine = sorted(by_shelf.get(prof["name"], []), key=lambda n: n["r"]["title"])
+            md += [f"### {prof['name']}", ""]
+            if not mine:
+                md += [f"*{ctx.ui('no_notables')}*", ""]
+                continue
+            md += _node_table(ctx, page, [loc.ui("col.name"), loc.ui("col.effect")], mine,
+                              lambda n: [_name(ctx, n, page), _effect(ctx, page, n["r"])])
+    return {page: "\n".join(md + _footer(ctx))}
+
+
 def page_options(ctx: Ctx) -> dict[str, str]:
     """One page per distinct mastery option: effect, description, the nodes that offer it."""
     loc, pages = ctx.loc, {}
     for g in ctx.option_groups.values():
-        o, page = g["options"][0], option_path(g)
+        o, page = g["options"][0], option_path(ctx, g)
         md = [f"# {plain(o['title'])}", ""]
         art = _option_art(ctx, o, page, 128)
-        meta = [f"<b>{loc.ui('page.mastery_option')}</b>"] + ([g["category"]] if g["category"] else [])
+        meta = [f"<b>{ctx.ui('mastery_option')}</b>"] + ([g["category"]] if g["category"] else [])
         md += [(f'<span class="pov-art-lg">{art}</span>' if art else "") + " · ".join(meta), ""]
         if o.get("reserved") or o.get("broken"):
             md += [f'!!! warning "{loc.ui("page.unimplemented")}"', f"    {_badges(ctx, o)}", ""]
@@ -358,9 +451,8 @@ def page_options(ctx: Ctx) -> dict[str, str]:
 
         md += [f"## {loc.ui('page.offered_by')} ({len(g['nodes'])})", ""]
         md += _node_table(
-            ctx, page, [loc.ui("col.name"), loc.ui("col.type"), loc.ui("col.branch"), ""], g["nodes"],
-            lambda n: [_name(ctx, n, page), loc.ui(f"size.{n['size']}"), _branch(ctx, n),
-                       _tree_link(ctx, n, page)],
+            ctx, page, [loc.ui("col.name"), loc.ui("col.type"), ctx.ui("branch"), ""], g["nodes"],
+            lambda n: [_name(ctx, n, page), _kind(ctx, n), _branch(ctx, n), _tree_link(ctx, n, page)],
         )
         md += [f'??? abstract "{loc.ui("page.game_data")}"', "", "    ```json"]
         md += ["    " + line for line in json.dumps(o["raw"], ensure_ascii=False, indent=2).splitlines()]
@@ -378,8 +470,8 @@ def page_nodes(ctx: Ctx) -> dict[str, str]:
     for n in ctx.tree_nodes:
         if n["size"] not in PAGE_SIZES:
             continue
-        page, r = node_path(n), n["r"]
-        kind = loc.ui(f"size.{n['size']}")
+        page, r = node_path(ctx, n), n["r"]
+        kind = _kind(ctx, n)
         md = [f"# {_title(ctx, n) or loc.ui('page.unnamed')}", ""]
         if not _is_implemented(n):
             md += ["!!! warning \"" + loc.ui("page.unimplemented") + "\"", f"    {loc.ui('page.unimplemented_node')}", ""]
@@ -406,7 +498,7 @@ def page_nodes(ctx: Ctx) -> dict[str, str]:
         # Details.
         info = [
             [loc.ui("col.type"), kind],
-            [loc.ui("col.branch"), _branch(ctx, n)],
+            [ctx.ui("branch"), _branch(ctx, n)],
             [loc.ui("col.category"), r["category"] or "—"],
             [loc.ui("col.topics"), ", ".join(dict.fromkeys(t for t in r["topics"] if t)) or "—"],
             [loc.ui("col.position"), f"{n['x']:g}, {n['y']:g}"],
@@ -420,7 +512,7 @@ def page_nodes(ctx: Ctx) -> dict[str, str]:
             md += [f"## {loc.ui('page.connections')}", ""]
             md += _node_table(
                 ctx, page, [loc.ui("col.name"), loc.ui("col.type"), loc.ui("col.effect")], near,
-                lambda m: [_name(ctx, m, page), loc.ui(f"size.{m['size']}"), _effect(ctx, page, m["r"])],
+                lambda m: [_name(ctx, m, page), _kind(ctx, m), _effect(ctx, page, m["r"])],
             )
 
         # Keywords.
@@ -434,7 +526,7 @@ def page_nodes(ctx: Ctx) -> dict[str, str]:
             md.append("")
 
         # Raw game data, poedb style.
-        raw = {k: n[k] for k in ("mods", "options", "masteryId", "icon") if n.get(k)}
+        raw = {k: n[k] for k in ("mods", "options", "masteryId", "icon", "prof", "sector") if n.get(k)}
         if raw:
             md += [f'??? abstract "{loc.ui("page.game_data")}"', "", "    ```json"]
             md += ["    " + line for line in json.dumps(raw, ensure_ascii=False, indent=2).splitlines()]
@@ -445,22 +537,11 @@ def page_nodes(ctx: Ctx) -> dict[str, str]:
 
 # ---- Tree viewer -------------------------------------------------------------------------------
 
-TREE_PAGE = "passives/tree.md"
-TREE_DATA = "passives/tree-data.json"
 # Order matters: the viewer refers to sizes and branches by index.
 SIZES = ["Small", "Travel", "Notable", "Keystone", "Socket", "Mastery", "Starter", "Portal", "Root"]
-# The game's branch colours (Tree.cs) and node diameters (TreeStyle.Size).
-BRANCH_COLORS = {
-    "War": (0.91, 0.35, 0.27), "Steel": (0.8, 0.43, 0.61), "Flesh": (0.85, 0.68, 0.32),
-    "Wind": (0.34, 0.8, 0.78), "Eitr": (0.68, 0.5, 0.95), "Toil": (0.51, 0.65, 0.87),
-}
-DEFAULT_COLOR = (0.96, 0.85, 0.6)
+# The game's node diameters (TreeStyle.Size).
 DIAMETERS = {"Keystone": 58, "Notable": 43.84, "Starter": 43.84, "Portal": 76, "Mastery": 50, "Socket": 50,
              "Small": 30, "Travel": 30, "Root": 64}
-
-
-def _hex(c: tuple[float, float, float]) -> str:
-    return "#" + "".join(f"{round(v * 255):02x}" for v in c)
 
 
 def _tooltip_html(ctx: Ctx, n: dict) -> str:
@@ -483,7 +564,8 @@ def _tooltip_html(ctx: Ctx, n: dict) -> str:
 
 def page_tree(ctx: Ctx) -> dict[str, str]:
     """The interactive tree: a page with the viewer, and its data."""
-    loc, tree = ctx.loc, ctx.data.tree
+    loc, tree = ctx.loc, ctx.raw_tree
+    page, data_path = ctx.path("tree.md"), ctx.path("tree-data.json")
     hidden = set(tree.get("hiddenLinks") or [])
     curves = tree.get("linkCurve") or {}
     branches = sorted({n["branch"] for n in ctx.tree_nodes})
@@ -512,11 +594,13 @@ def page_tree(ctx: Ctx) -> dict[str, str]:
     data = {
         "nodes": nodes,
         "links": links,
-        "sizes": [{"name": loc.ui(f"size.{s}"), "d": DIAMETERS.get(s, 30)} for s in SIZES],
-        "branches": [{"name": loc.text(f"@branch.{b}", b), "color": _hex(BRANCH_COLORS.get(b, DEFAULT_COLOR))} for b in branches],
+        "sizes": [{"name": loc.ui(f"{ctx.spec.sizes}.{s}"), "d": DIAMETERS.get(s, 30)} for s in SIZES],
+        "branches": [
+            {"name": _branch(ctx, {"branch": b}), "color": ctx.spec.colors.get(b, ctx.spec.default_color)} for b in branches
+        ],
         "ui": {k: loc.ui(f"tree.{k}") for k in ("search", "matches", "reset", "hint")},
-        # Relative to the page's rendered URL (passives/tree/), like the attributes below.
-        "iconBase": f"../{rel(ICONS_DIR, TREE_PAGE)}/" if ctx.icons else "",
+        # Relative to the page's rendered URL (<tree>/tree/), like the attributes below.
+        "iconBase": f"../{rel(ICONS_DIR, page)}/" if ctx.icons else "",
         # The game's painted frames: iconBase + "frame/<kind>-<locked|allocated>.webp".
         "frames": list(FRAME_KINDS) if ctx.icons else [],
     }
@@ -527,30 +611,30 @@ def page_tree(ctx: Ctx) -> dict[str, str]:
         "  - toc",
         "---",
         "",
-        f"# {loc.ui('nav.tree')}",
+        f"# {ctx.ui('tree')}",
         "",
-        # URLs relative to the page's rendered URL, passives/tree/ (directory URLs), hence the
+        # URLs relative to the page's rendered URL, <tree>/tree/ (directory URLs), hence the
         # extra "../". (Not "data-src": the site generator rewrites *src attributes as file paths.)
-        f'<div class="pov-tree" data-tree="../{rel(TREE_DATA, TREE_PAGE)}" '
-        f'data-node-base="../{rel("passives/node", TREE_PAGE)}/"></div>',
+        f'<div class="pov-tree" data-tree="../{rel(data_path, page)}" '
+        f'data-node-base="../{rel(ctx.path("node"), page)}/"></div>',
         "",
-        loc.ui("tree.help"),
+        ctx.ui("tree_help"),
         *_footer(ctx),
     ]
-    return {TREE_PAGE: "\n".join(md), TREE_DATA: json.dumps(data, ensure_ascii=False, separators=(",", ":"))}
+    return {page: "\n".join(md), data_path: json.dumps(data, ensure_ascii=False, separators=(",", ":"))}
 
 
 # ---- Glossary ----------------------------------------------------------------------------------
 
 
 def _references(ctx: Ctx) -> dict[str, dict]:
-    """slug -> where the game text links it: {"keystones"|"notables"|"options": [...], "small": Counter, "terms": set}."""
-    refs: dict[str, dict] = defaultdict(lambda: {"Keystone": [], "Notable": [], "options": [], "small": Counter(), "terms": set()})
+    """slug -> where this tree's game text links it: notables/keystones, options, small nodes."""
+    refs: dict[str, dict] = defaultdict(lambda: {"Keystone": [], "Notable": [], "options": [], "small": Counter()})
     for n in ctx.tree_nodes:
         r = n["r"]
         own = [s for line in r["stats"] + r["extra"] for s in slugs(line)]
         for slug in set(own):
-            if n["size"] in ("Keystone", "Notable"):
+            if n["size"] in PAGE_SIZES:
                 refs[slug][n["size"]].append(n)
             else:
                 for line in r["stats"] + r["extra"]:
@@ -559,69 +643,84 @@ def _references(ctx: Ctx) -> dict[str, dict]:
         for o in r["options"]:
             for slug in {s for line in o["stats"] + o["extra"] for s in slugs(line)}:
                 refs[slug]["options"].append(o)
-    for key, term in ctx.loc.wiki.items():
-        for slug in {s for line in term["text"] for s in slugs(line)}:
-            if slug != key:
-                refs[slug]["terms"].add(key)
     return refs
 
 
-def page_glossary(ctx: Ctx) -> dict[str, str]:
-    loc, wiki = ctx.loc, ctx.loc.wiki
-    refs = _references(ctx)
-    pages = {}
-    order = sorted(wiki, key=lambda k: plain(wiki[k]["title"]).lower())
+def _references_section(ctx: Ctx, ref: dict, page: str) -> list[str]:
+    loc, md = ctx.loc, []
+    for size, label in (("Keystone", "keystones"), ("Notable", "notables")):
+        if ref[size]:
+            md += [f"### {ctx.ui(label)}", ""]
+            md += _node_table(
+                ctx, page, [loc.ui("col.name"), loc.ui("col.effect")], sorted(ref[size], key=lambda n: n["r"]["title"]),
+                lambda n: [_name(ctx, n, page), _effect(ctx, page, n["r"])],
+            )
+    if ref["options"]:
+        distinct = {(o["title"], tuple(o["stats"])): o for o in ref["options"]}
+        md += [f"### {ctx.ui('masteries')}", ""]
+        md += _option_table(
+            ctx, page, [loc.ui("col.option"), loc.ui("col.effect")], sorted(distinct.values(), key=lambda o: plain(o["title"])),
+            lambda o: [_option_title(ctx, page, o), _option_effect(ctx, page, o)],
+        )
+    if ref["small"]:
+        md += [f"### {ctx.ui('small_nodes')}", ""]
+        md += _table(
+            [loc.ui("col.stat"), loc.ui("col.nodes")],
+            [[to_md(line, loc, page), str(c)] for line, c in sorted(ref["small"].items(), key=lambda kv: -kv[1])],
+        )
+    return md
 
-    # One page per term.
-    for key in order:
-        page, term, ref = glossary_path(key), wiki[key], refs.get(key)
+
+def page_glossary(ctx: Ctx) -> dict[str, str]:
+    """A page per term of the mod's in-game wiki, with what references it in every tree."""
+    loc, wiki = ctx.loc, ctx.loc.wiki
+    trees = [ctx, *ctx.others]
+    refs = {t.spec.key: _references(t) for t in trees}
+    terms = defaultdict(set)
+    for key, term in wiki.items():
+        for slug in {s for line in term["text"] for s in slugs(line)}:
+            if slug != key:
+                terms[slug].add(key)
+
+    pages = {}
+    for key in sorted(wiki, key=lambda k: plain(wiki[k]["title"]).lower()):
+        page, term = glossary_path(key), wiki[key]
         md = [f"# {plain(term['title'])}", ""]
         md += [to_md(line, loc, page) + "\n" for line in term["text"]] or [f"*{loc.ui('page.no_text')}*", ""]
-        if ref:
+        sections = [(t, refs[t.spec.key][key]) for t in trees if key in refs[t.spec.key]]
+        if sections or terms.get(key):
             md += [f"## {loc.ui('page.referenced_by')}", ""]
-            for size, label in (("Keystone", "nav.keystones"), ("Notable", "nav.notables")):
-                if ref[size]:
-                    md += [f"### {loc.ui(label)}", ""]
-                    md += _node_table(
-                        ctx, page, [loc.ui("col.name"), loc.ui("col.effect")], sorted(ref[size], key=lambda n: n["r"]["title"]),
-                        lambda n: [_name(ctx, n, page), _effect(ctx, page, n["r"])],
-                    )
-            if ref["options"]:
-                distinct = {(o["title"], tuple(o["stats"])): o for o in ref["options"]}
-                md += [f"### {loc.ui('nav.masteries')}", ""]
-                md += _option_table(
-                    ctx, page, [loc.ui("col.option"), loc.ui("col.effect")], sorted(distinct.values(), key=lambda o: plain(o["title"])),
-                    lambda o: [_option_title(ctx, page, o), _option_effect(ctx, page, o)],
-                )
-            if ref["small"]:
-                md += [f"### {loc.ui('page.small_passives')}", ""]
-                md += _table(
-                    [loc.ui("col.stat"), loc.ui("col.nodes")],
-                    [[to_md(line, loc, page), str(c)] for line, c in sorted(ref["small"].items(), key=lambda kv: -kv[1])],
-                )
-            if ref["terms"]:
-                md += [f"### {loc.ui('page.see_also')}", ""]
-                md += [
-                    f"- [{plain(wiki[k]['title'])}]({rel(glossary_path(k), page)})"
-                    for k in sorted(ref["terms"], key=lambda k: plain(wiki[k]["title"]).lower())
-                ]
+        for t, ref in sections:
+            body = _references_section(t, ref, page)
+            if body:
+                # One heading per tree, so passive and craft references are told apart.
+                md += [f"### {t.ui('title')}", ""] + [line.replace("### ", "#### ", 1) if line.startswith("### ") else line for line in body]
+        if terms.get(key):
+            md += [f"### {loc.ui('page.see_also')}", ""]
+            md += [
+                f"- [{plain(wiki[k]['title'])}]({rel(glossary_path(k), page)})"
+                for k in sorted(terms[key], key=lambda k: plain(wiki[k]["title"]).lower())
+            ]
         pages[page] = "\n".join(md + _footer(ctx))
     return pages
 
 
-GENERATORS: list[Callable[[Ctx], dict[str, str]]] = [
-    page_tree, page_keystones, page_notables, page_masteries, page_options, page_nodes, page_glossary,
-]
+# Generators per tree, by the page names a TreeSpec lists; the rest run for every tree.
+LIST_PAGES = {
+    "tree": page_tree, "keystones": page_keystones, "notables": page_notables,
+    "masteries": page_masteries, "professions": page_professions,
+}
+PER_TREE = [page_options, page_nodes]
+# Run once, with the first tree's context (and the others in ctx.others).
+GLOBAL = [page_glossary]
+TREES = [PASSIVES, CRAFTING]
 
-# Navigation: (ui title key, page path | children). Titles are translated per language.
-# Glossary term pages are reached from keyword links and search.
-NAV = [
-    ("nav.home", "index.md"),
-    ("nav.passives", [
-        ("nav.tree", "passives/tree.md"),
-        ("nav.keystones", "passives/keystones.md"),
-        ("nav.notables", "passives/notables.md"),
-        ("nav.masteries", "passives/masteries.md"),
-    ]),
-    ("nav.about", "about.md"),
-]
+
+def nav() -> list:
+    """Navigation: (ui title key, page path | children). Titles are translated per language.
+    Glossary term pages are reached from keyword links and search."""
+    return [
+        ("nav.home", "index.md"),
+        *((f"{t.key}.title", [(f"{t.key}.{p}", f"{t.key}/{p}.md") for p in t.pages]) for t in TREES),
+        ("nav.about", "about.md"),
+    ]

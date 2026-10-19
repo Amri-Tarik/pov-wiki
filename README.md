@@ -99,9 +99,10 @@ the box, and uses the same Markdown extensions. Zensical is still 0.0.x, so its 
 - [x] Passive tree: keystones, notables, masteries, a page per keystone/notable; keyword pages from the in-game wiki, with backlinks
 - [x] Unfinished game content shown with an Unimplemented / Unfinished text badge
 - [x] Interactive passive tree viewer (game layout, colours and icons; search, deep links)
-- [x] Node and mastery icons from the mod (switch: `[tool.povwiki] icons` in `pyproject.toml`)
+- [x] Node and mastery icons, resolved through the game's own icon chain (switch: `[tool.povwiki] icons` in `pyproject.toml`)
 - [ ] Jewels and sockets, small passive overview
-- [ ] Craft tree and professions
+- [x] Craft tree: viewer, professions, notables, masteries, node and option pages (own Crafting section)
+- [ ] Craft quests, profession chunks (fog areas) and deeds
 - [ ] Items: affixes with tiers, weights, level ranges and tag rules; uniques; currency; loot tables
 - [ ] Patch diffs between versions
 - [x] `povwiki fetch` (latest release from hexium) and local `povwiki deploy`

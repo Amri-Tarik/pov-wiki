@@ -16,7 +16,7 @@ import tomli_w
 from .data import GameData
 from . import icons
 from .i18n import Language, Localizer, load_languages
-from .pages import GENERATORS, NAV, Ctx
+from .pages import GLOBAL, LIST_PAGES, PER_TREE, TREES, Ctx, nav
 from .paths import BASE_CONFIG, BUILD, CONTENT, SITE
 
 
@@ -48,7 +48,7 @@ def _write_config(lang: Language, enabled: list[Language], loc: Localizer, out) 
     if p.get("site_url"):
         p["site_url"] = p["site_url"].rstrip("/") + f"/{lang.code}/"
     p["theme"]["language"] = lang.code
-    p["nav"] = _nav(NAV, loc)
+    p["nav"] = _nav(nav(), loc)
     if len(enabled) > 1:
         p.setdefault("extra", {})["alternate"] = [
             {"name": o.name, "link": f"../{o.code}/", "lang": o.code} for o in enabled
@@ -75,19 +75,25 @@ def build_language(lang: Language, default: Language, enabled: list[Language], d
         if lang.code != default.code and (CONTENT / lang.code).exists():
             shutil.copytree(CONTENT / lang.code, docs, dirs_exist_ok=True)
 
-    ctx = Ctx(data=data, loc=loc, icons=icons.Icons(data) if icons.enabled() else None)
+    art = icons.Icons(data) if icons.enabled() else None
+    ctxs = [Ctx(data=data, loc=loc, spec=spec, icons=art) for spec in TREES]
+    ctxs[0].others = ctxs[1:]
     with _timed("load rendered game text"):
-        ctx.tree_nodes  # noqa: B018 (warm the caches, so generator timings are their own)
-        ctx.option_groups  # noqa: B018
-    for gen in GENERATORS:
-        with _timed(gen.__name__):
+        for ctx in ctxs:  # warm the caches, so generator timings are their own
+            ctx.tree_nodes  # noqa: B018
+            ctx.option_groups  # noqa: B018
+    jobs = [(f"{gen.__name__} [{ctx.spec.key}]", gen, ctx)
+            for ctx in ctxs for gen in [LIST_PAGES[p] for p in ctx.spec.pages] + PER_TREE]
+    jobs += [(gen.__name__, gen, ctxs[0]) for gen in GLOBAL]
+    for label, gen, ctx in jobs:
+        with _timed(label):
             for rel, text in gen(ctx).items():
                 path = docs / rel
                 path.parent.mkdir(parents=True, exist_ok=True)
                 path.write_text(text, encoding="utf-8")
-    if ctx.icons:
-        with _timed(f"icons ({len(ctx.icons.raw)} raw, {len(ctx.icons.framed)} framed)"):
-            ctx.icons.write(docs)
+    if art:
+        with _timed(f"icons ({len(art.raw)} raw, {len(art.framed)} framed)"):
+            art.write(docs)
 
     _write_config(lang, enabled, loc, out)
     if render:

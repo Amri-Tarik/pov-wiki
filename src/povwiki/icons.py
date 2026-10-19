@@ -2,8 +2,9 @@
 
 Which image a node or option shows is decided by `povwiki render` (harness/icons.py mirrors the
 game's icon chain): an embedded resource name ("PassiveTree.v2.icon.fire.png", extracted to
-.cache/extracted/<ver>/images/v2.icon.fire.png) or "atlas:<index>", a 128 px tile of the icon atlas
-(PassiveTree.icons.png, 16 tiles per row). Frames are `paintedframe.<kind>-<locked|allocated>.png`
+.cache/extracted/<ver>/images/v2.icon.fire.png), "atlas:<index>", a 128 px tile of the icon atlas
+(PassiveTree.icons.png, 16 tiles per row), or "craftatlas:<index>", a 256 px tile of the craft node
+atlas (PassiveTree.craftnodes.atlas.png, 13 per row on a 260 px grid). Frames are `paintedframe.<kind>-<locked|allocated>.png`
 (UiKit.NodeFrame).
 
 Pages use framed icons composited here the way the tree window draws a node (TreeWindow node
@@ -32,8 +33,11 @@ FRAME_RING = 0.82  # UiKit.FrameRing: node box / frame size
 # Icon inset inside the node box, as a fraction of the box (TreeWindow node setup).
 INSET = {"keystone": 0.06, "notable": 0.0, "mastery-notable": 0.0, "normal": 0.02, "mastery": 0.025, "socket": 0.0}
 FRAME_KINDS = ("keystone", "notable", "mastery-notable", "normal", "mastery", "socket")
-ATLAS = "icons.png"
-ATLAS_TILE, ATLAS_COLUMNS = 128, 16  # UiKit.Tile
+# Atlas id prefix -> (file, tile size, grid step, columns, padding): UiKit.Tile, CraftNodeArt.Get.
+ATLASES = {
+    "atlas": ("icons.png", 128, 128, 16, 0),
+    "craftatlas": ("craftnodes.atlas.png", 256, 260, 13, 2),
+}
 
 
 def enabled() -> bool:
@@ -51,8 +55,9 @@ def frame_kind(size: str, has_options: bool = False) -> str:
 
 def _slug(image: str) -> str:
     """Image id -> file stem: "PassiveTree.v2.icon.fire.png" -> "v2.icon.fire", "atlas:29" -> "atlas.29"."""
-    if image.startswith("atlas:"):
-        return "atlas." + image[6:]
+    prefix, _, index = image.partition(":")
+    if prefix in ATLASES:
+        return f"{prefix}.{index}"
     return image.removeprefix("PassiveTree.").removesuffix(".png")
 
 
@@ -65,8 +70,9 @@ class Icons:
     def _exists(self, image: str | None) -> bool:
         if not image:
             return False
-        if image.startswith("atlas:"):
-            return (self.src / ATLAS).exists()
+        prefix = image.partition(":")[0]
+        if prefix in ATLASES:
+            return (self.src / ATLASES[prefix][0]).exists()
         return (self.src / image.removeprefix("PassiveTree.")).exists()
 
     def path(self, image: str | None) -> str | None:
@@ -108,7 +114,8 @@ class Icons:
         # Missing images are made in parallel (Pillow releases the GIL while resizing/encoding).
         missing = [(rel, make) for rel, make in jobs if not (cache_dir / rel).exists()]
         if missing:
-            self._atlas()  # load shared images once, before threads race for them
+            for name in ATLASES:  # load shared images once, before threads race for them
+                self._atlas(name)
             for kind in FRAME_KINDS:
                 self._frame(kind, "allocated", FRAMED_SIZE * 2)
             with ThreadPoolExecutor() as pool:
@@ -120,15 +127,17 @@ class Icons:
             shutil.copyfile(cache_dir / rel, out / rel)
 
     @cache
-    def _atlas(self) -> Image.Image | None:
-        path = self.src / ATLAS
+    def _atlas(self, name: str) -> Image.Image | None:
+        path = self.src / ATLASES[name][0]
         return Image.open(path).convert("RGBA") if path.exists() else None
 
     def _load(self, image: str) -> Image.Image:
-        if image.startswith("atlas:"):
-            i = int(image[6:])
-            x, y = (i % ATLAS_COLUMNS) * ATLAS_TILE, (i // ATLAS_COLUMNS) * ATLAS_TILE  # rows from the top
-            return self._atlas().crop((x, y, x + ATLAS_TILE, y + ATLAS_TILE))
+        prefix, _, index = image.partition(":")
+        if prefix in ATLASES:
+            _, tile, step, columns, pad = ATLASES[prefix]
+            i = int(index)
+            x, y = (i % columns) * step + pad, (i // columns) * step + pad  # rows from the top
+            return self._atlas(prefix).crop((x, y, x + tile, y + tile))
         with Image.open(self.src / image.removeprefix("PassiveTree.")) as im:
             return im.convert("RGBA")
 
@@ -154,5 +163,5 @@ class Icons:
 
 def _settings_key() -> str:
     """Changes whenever the way images are made changes, so stale cached images are not reused."""
-    settings = repr((2, ICON_SIZE, FRAMED_SIZE, FRAME_RING, sorted(INSET.items()), ATLAS_TILE))
+    settings = repr((3, ICON_SIZE, FRAMED_SIZE, FRAME_RING, sorted(INSET.items()), sorted(ATLASES.items())))
     return hashlib.sha1(settings.encode()).hexdigest()[:10]

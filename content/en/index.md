@@ -8,9 +8,16 @@ code, so it matches what you see in game and updates with each patch.
 
 ## Passive tree
 
+- [Passive Tree Viewer](passives/tree.md): the full tree, searchable
 - [Keystones](passives/keystones.md): build-defining passives with a drawback
 - [Notables](passives/notables.md): the larger passives, by category
 - [Masteries](passives/masteries.md): passives where you choose one option
+
+## Crafting
+
+- [Craft Tree Viewer](crafting/tree.md): the craft tree, with sectors and professions
+- [Professions](crafting/professions.md): each profession and its notables
+- [Craft Notables](crafting/notables.md) and [Craft Masteries](crafting/masteries.md)
 
 ## Keywords
 

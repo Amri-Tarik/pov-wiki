@@ -13,11 +13,11 @@ from .markup import rel
 from .pages import Ctx, _footer, _img, _table
 
 BASES_PAGE = "items/bases.md"
-_RPG = {"weapon", "armour", "shield", "trinket", "utility", "belt"}
+_RPG = {"weapon", "armour", "shield", "trinket", "utility", "belt", "ring"}
 _NOT_RPG = {"tool", "fishing"}
 _SLOTS = ("slot.helmet", "slot.chest", "slot.legs", "slot.cape")
 _SHIELDS = ("shield.round", "shield.buckler", "shield.tower")
-_CLASSES = ("weapons", "armour", "shields", "trinkets", "utility")
+_CLASSES = ("weapons", "armour", "shields", "jewellery", "trinkets", "utility")
 # Valheim damage types in its tooltip order, with their string keys.
 _DAMAGES = [
     ("m_blunt", "inventory_blunt"), ("m_slash", "inventory_slash"), ("m_pierce", "inventory_pierce"),
@@ -41,6 +41,10 @@ def bases(ctx: Ctx) -> dict[str, dict]:
     for prefab, info in ctx.loc.items.items():
         tags = set(info["tags"])
         if not tags & _RPG or tags & _NOT_RPG:
+            continue
+        if info.get("mod"):  # the mod's own gear (rings, belts): named by the mod
+            shared = info["mod"]["shared"]
+            out[prefab] = {"shared": shared, "info": info, "name": shared["m_name"]}
             continue
         # Player items have a translated name and an inventory icon; monster attacks have
         # neither (their names are plain text like "Swing attack").
@@ -74,7 +78,10 @@ def _class(b: dict) -> tuple[str, str]:
         return "armour", next((t for t in _SLOTS if t in tags), "armour")
     if "trinket" in tags:
         return "trinkets", "trinket"
-    return "utility", "belt" if "belt" in tags else "utility"
+    for jewel in ("ring", "belt"):
+        if jewel in tags:
+            return "jewellery", jewel
+    return "utility", "utility"
 
 
 def _num(v: float) -> str:
@@ -113,6 +120,7 @@ def _summary(ctx: Ctx, b: dict) -> str:
     parts += [f"{ctx.loc.ui(label)} {_num(d[key])}" for key, label in _DEFENCES if d.get(key)]
     if "shield" in b["info"]["tags"]:
         parts.append(f"{vk('item_blockpower')} {_num(s.get('m_blockPower') or 0)}")
+    parts += [i["text"] for i in b["info"].get("implicits") or [] if "text" in i]
     return ", ".join(parts)
 
 
@@ -152,6 +160,9 @@ def _stats(ctx: Ctx, b: dict) -> list[list[str]]:
 
 
 def _recipe(ctx: Ctx, prefab: str) -> dict | None:
+    mod = ctx.loc.items.get(prefab, {}).get("mod")
+    if mod:  # the mod's own gear: its recipe at the rune carver table, if it has one
+        return mod["recipe"]
     return next((r for r in ctx.loc.valheim["recipes"] if r["item"] == prefab and r["enabled"]), None)
 
 
@@ -175,16 +186,66 @@ def _station(ctx: Ctx, recipe: dict | None) -> str:
     station = recipe and recipe.get("station")
     if not station:
         return "—"
+    if isinstance(station, dict):  # the mod's stations come with their name
+        return station["name"]
     key = station if station.startswith("piece_") else f"piece_{station}"
     return ctx.loc.vkey(key, ctx.loc.vkey(key.lower(), station))
 
 
 def _icon(ctx: Ctx, prefab: str, page: str, px: int) -> str:
-    return _img(ctx.icons.path(f"vh:{prefab}"), page, px) if ctx.icons else ""
+    """Valheim's icon, or the mod's own for its items (PT_*: PassiveTree.item.<id>.png)."""
+    if not ctx.icons:
+        return ""
+    image = f"PassiveTree.item.{prefab}.png" if prefab.startswith("PT_") else f"vh:{prefab}"
+    return _img(ctx.icons.path(image), page, px)
+
+
+def _item_name(ctx: Ctx, prefab: str) -> str:
+    """Any item's name: Valheim's, or the mod's for its own items (runes, essences, rings...)."""
+    loc = ctx.loc
+    if mod := loc.items.get(prefab, {}).get("mod"):
+        return mod["shared"]["m_name"]
+    if prefab in loc.loot["items"]:
+        return loc.loot["items"][prefab]["name"]
+    return loc.vtext((loc.valheim["items"].get(prefab) or {}).get("m_name")) or prefab
 
 
 def _is_upgrader(prefab: str) -> bool:
     return prefab.startswith(("Upgrader", "Mold"))
+
+
+def _implicits_section(ctx: Ctx, b: dict, qs: range) -> list[str]:
+    """Implicit lines (always on the item): rolled ones with their range, and the ones that grow
+    with quality as a line per quality level ("—" while the game leaves the line out)."""
+    implicits = b["info"].get("implicits") or []
+    if not implicits:
+        return []
+    ui = ctx.loc.ui
+    md = [f"## {ui('items.implicits')}", "", ui("items.implicits_note"), ""]
+    ranged = [i for i in implicits if "text" in i]
+    md += [f"- {i['text']}" for i in ranged] + ([""] if ranged else [])
+    grows = [i for i in implicits if "byQuality" in i]
+    if grows and len(qs) > 1:
+        md += _table([ui("items.implicit"), *(ui("items.quality_n", n=q) for q in qs)],
+                     [[next(t for t in reversed(i["byQuality"]) if t), *(t or "—" for t in i["byQuality"])] for i in grows])
+    elif grows:
+        md += [f"- {next(t for t in i['byQuality'] if t)}" for i in grows] + [""]
+    return md
+
+
+def _drops(ctx: Ctx, mod: dict | None) -> str:
+    """How the mod's own gear drops: rings by biome (Rings.LootBases), unique belts anywhere from
+    an item level (Belts: GlobalMinLevel)."""
+    if not mod:
+        return ""
+    ui = ctx.loc.ui
+    if mod.get("everywhere"):
+        return ui("items.drops_everywhere")
+    if mod.get("biome"):
+        return ui("items.drops_in", biome=ctx.loc.vkey(f"biome_{mod['biome'].lower()}", mod["biome"]))
+    if mod.get("globalMinLevel"):
+        return ui("items.drops_from_level", level=mod["globalMinLevel"], biome=biome(ctx, mod["globalMinLevel"]))
+    return ""
 
 
 def page_bases(ctx: Ctx) -> dict[str, str]:
@@ -237,6 +298,7 @@ def _base_page(ctx: Ctx, prefab: str, b: dict, found: dict) -> str:
         md += [f"*{loc.vtext(s['m_description'])}*".replace("\n", " "), ""]
 
     qs = _qualities(b)
+    md += _implicits_section(ctx, b, qs)
     stats = _stats(ctx, b)
     if stats:
         md += [f"## {ui('items.stats')}", ""]
@@ -249,7 +311,7 @@ def _base_page(ctx: Ctx, prefab: str, b: dict, found: dict) -> str:
         rows = []
         for res in recipe["resources"]:
             mat = res["item"]
-            name = loc.vtext((loc.valheim["items"].get(mat) or {}).get("m_name")) or mat
+            name = _item_name(ctx, mat)
             link = f"[{name}]({rel(base_path(mat), page)})" if mat in found else name
             # Valheim's Requirement.GetAmount: crafting takes the amount, upgrading to quality q
             # takes (q - 1) x the per-level amount.
@@ -264,6 +326,8 @@ def _base_page(ctx: Ctx, prefab: str, b: dict, found: dict) -> str:
         md += [ui("items.not_craftable"), ""]
     else:
         md += [ui("items.item_level_line", biome=biome(ctx, level), level=level), ""]
+    if drops := _drops(ctx, info.get("mod")):
+        md += [drops, ""]
     md += _mods_section(ctx, b, page)
 
     md += [f"## {ui('items.tags')}", "", ui("items.tags_note"), ""]

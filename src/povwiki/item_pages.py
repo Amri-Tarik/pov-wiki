@@ -17,11 +17,11 @@ MODS_PAGE = "items/mods.md"
 _CLASS_OF = {
     "weapon": "weapons", "melee": "weapons", "ranged": "weapons", "spell": "weapons", "magical": "weapons",
     "shooting": "weapons", "throwing": "weapons", "uses.stamina": "weapons",
-    "armour": "armour", "shield": "shields", "jewel": "jewels", "trinket": "trinkets", "belt": "belts",
+    "armour": "armour", "shield": "shields", "jewel": "jewels", "trinket": "trinkets", "belt": "belts", "ring": "rings",
     "tool": "tools", "fishing": "tools", "builds": "tools",
 }
 _CLASS_PREFIX = {"kind.": "weapons", "slot.": "armour", "def.": "armour", "shield.": "shields", "jewel.": "jewels"}
-_CLASS_ORDER = ["weapons", "armour", "shields", "jewels", "trinkets", "belts", "tools"]
+_CLASS_ORDER = ["weapons", "armour", "shields", "jewels", "rings", "trinkets", "belts", "tools"]
 # Which slot multipliers matter for a mod, by the classes it rolls on (LootRoller.SlotMult).
 _SLOTS_FOR = {"weapons": ["one_handed", "two_handed"], "armour": ["chest", "legs"], "shields": ["tower", "buckler"]}
 _RANGE = re.compile(r"\(([-−]?\d+(?:[.,]\d+)?)–([-−]?\d+(?:[.,]\d+)?)\)")

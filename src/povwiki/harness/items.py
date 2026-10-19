@@ -155,6 +155,116 @@ def render_items(valheim: Path, errors: list) -> dict:
                 "defence": str(EquipmentDefences.Kind(item)) if wears else None,
                 "defences": defences,
                 "craftLevel": craft_level.of(prefab),
+                "implicits": _implicits(item, prefab),
+            }
+        except Exception as ex:  # one bad item must not lose the rest
+            errors.append({"item": prefab, "error": str(ex).split("\n")[0]})
+    out.update(_mod_items(items, build, tag_set, craft_level, errors))
+    return out
+
+
+def _implicits(item, prefab: str) -> list[dict]:
+    """Implicit lines (Implicits.Rows): a range for rolled ones, a value per quality for the ones
+    the item shows from its quality (belt upgrades, Megingjord's carry weight)."""
+    import PassiveTree
+
+    Implicits = getattr(PassiveTree, "Implicits", None)
+    if Implicits is None:  # older versions
+        return []
+    for owner in ("Belts", "Rings"):  # they register their implicits on first use (Implicits.Rows)
+        if (cls := getattr(PassiveTree, owner, None)) is not None:
+            cls.Touch()
+    bases = clr.GetClrType(Implicits).GetField("bases", _ALL).GetValue(None)
+    if not bases.ContainsKey(prefab):
+        return []
+    rows = []
+    for row in bases[prefab]:
+        d, lo, hi = row.Item1, row.Item2, row.Item3
+        if d.Shown is not None:
+            values = []
+            for q in range(1, max(1, item.m_shared.m_maxQuality) + 1):
+                item.m_quality = q
+                values.append(int(d.Shown(item)))
+            item.m_quality = 1
+            if any(values):  # the tooltip leaves a line out while its value is 0
+                rows.append({"id": d.Id, "byQuality": [Implicits.Line(d, v) if v else None for v in values]})
+        else:
+            shown = Implicits.Range(lo, hi) or str(lo)
+            rows.append({"id": d.Id, "text": Implicits.Line(d, shown), "min": lo, "max": hi})
+    return rows
+
+
+def _mod_items(items: dict, build: "_Builder", tag_set, craft_level: "_CraftLevel", errors: list) -> dict:
+    """The mod's own gear (Rings.All, Belts.All): copies of Valheim's Megingjord with the mod's
+    changes (Rings.Template / Belts.Template), their recipes at the rune carver table
+    (RingRecipes, Belts.Recipes), implicits, tags and how they drop."""
+    import PassiveTree
+    from PassiveTree import L, Runes
+    from PassiveTree.Loot import ItemTags, LootCatalog
+
+    # Older versions have no rings (5.1) or no belts of their own.
+    Rings, RingRecipes, Belts = (getattr(PassiveTree, n, None) for n in ("Rings", "RingRecipes", "Belts"))
+    LootCatalog.Ensure()
+    skip = ("m_equipStatusEffect", "m_setStatusEffect")
+    template = {k: v for k, v in items.get("BeltStrength", {}).items() if k not in skip}
+    station = {"id": "PT_RuneCarverTable", "name": L.Id("piece.PT_RuneCarverTable.name", "Rune Carver Table")}
+    common = {"m_itemType": 18, "m_maxStackSize": 1, "m_setName": "", "m_setSize": 0, "m_subtitle": "",
+              "m_teleportable": True}
+    parts = clr.GetClrType(RingRecipes).GetField("parts", _ALL).GetValue(None) if RingRecipes else {}
+    known = set(items) | {str(k.Id) for k in Runes.All}
+
+    specs = []
+    for k in Rings.All if Rings else []:
+        resources = None
+        if parts.ContainsKey(k.Id):
+            metal, essence = parts[k.Id].Item1, parts[k.Id].Item2
+            resources = [{"item": metal, "amount": 10 if essence is None else 5, "perLevel": 0}]
+            if essence is not None:
+                resources.append({"item": essence, "amount": 1, "perLevel": 0})
+            resources.append({"item": "PT_AzuriteDust", "amount": 40, "perLevel": 0})
+        specs.append((k, "ring", {
+            "m_name": L.Id(f"item.{k.Id}.name", k.Name), "m_description": L.Id(f"item.{k.Id}.flavor", k.Flavor),
+            "m_maxQuality": 1, "m_weight": 0.1,
+        }, resources, {"biome": None if k.Everywhere else str(k.Biome), "everywhere": bool(k.Everywhere)}))
+    for k in Belts.All if Belts else []:
+        flavor = L.Id(f"item.{k.Id}.flavor", k.Flavor)
+        if k.Quote is not None:
+            flavor += "\n\n<i>" + L.Id(f"item.{k.Id}.quote", k.Quote) + "</i>"
+        resources = None
+        if not k.Unique and k.Recipe is not None:
+            resources = []
+            for part in k.Recipe:
+                found = next((i for i in part.Item1 if i in known), None)
+                if found is None:  # Belts.Recipe: no recipe when a material is missing
+                    resources = None
+                    break
+                resources.append({"item": found, "amount": part.Item2, "perLevel": max(1, part.Item2 // 2)})
+        specs.append((k, "belt", {
+            "m_name": L.Id(f"item.{k.Id}.name", k.Name), "m_description": flavor,
+            "m_maxQuality": 1 if k.Unique else 3, "m_weight": 1.0,
+        }, resources, {"unique": bool(k.Unique), "globalMinLevel": int(k.GlobalMinLevel) or None}))
+
+    out = {}
+    for k, kind, overrides, resources, drops in specs:
+        prefab = str(k.Id)
+        try:
+            shared = {**template, **common, **overrides}
+            item = build.item(prefab, shared)
+            if resources:
+                craft_level.recipe_of[prefab] = {"item": prefab, "enabled": True, "resources": resources}
+            out[prefab] = {
+                "tags": sorted(str(t) for t in tag_set.GetValue(ItemTags.Of(item))),
+                "defence": None,
+                "defences": [],
+                "craftLevel": craft_level.of(prefab),
+                "implicits": _implicits(item, prefab),
+                "mod": {
+                    "kind": kind,
+                    "shared": {f: shared[f] for f in ("m_name", "m_description", "m_maxQuality", "m_weight", "m_itemType")},
+                    "icon": f"PassiveTree.item.{prefab}.png",
+                    "recipe": {"station": station, "stationLevel": 1, "resources": resources} if resources else None,
+                    **drops,
+                },
             }
         except Exception as ex:  # one bad item must not lose the rest
             errors.append({"item": prefab, "error": str(ex).split("\n")[0]})

@@ -4,7 +4,9 @@
 
 Writes DIR/<language>.json:
     {"language", "revision", "errors": [...], "nodes": {id: {title, category, topics, stats[], extra[], broken,
-     unformatted[], options: [{id, title, stats[], extra[], broken, reserved, unformatted[]}]}}, "wiki": {key: {title, text[], forms[]}}}
+     unformatted[], icon, options: [{id, title, stats[], extra[], broken, reserved, unformatted[], icon}]}},
+     "wiki": {key: {title, text[], forms[]}}}
+icon: the embedded image the game shows ("PassiveTree.v2.icon.fire.png", "atlas:<tile>") or null.
 Text keeps the game's rich-text markup (<link="slug">, <color=...>, <b>); the site generator converts it.
 """
 
@@ -36,7 +38,7 @@ def _unformatted(mods, formatted: set[str]) -> list[str]:
     return sorted({str(m.Key) for m in mods if str(m.Key) not in formatted and str(Attrs.Canon(m.Key)) not in formatted})
 
 
-def render_option(o, formatted: set[str]) -> dict:
+def render_option(o, formatted: set[str], icons) -> dict:
     """As the tree window's option row (TreeWindow.MainOptionRow) shows it: the body lists the
     non-flag stats (MasteryPresentation.Body); the description (the option's own text, or what
     its flag stats do) is the hover tooltip of the option title."""
@@ -52,14 +54,18 @@ def render_option(o, formatted: set[str]) -> dict:
         "broken": bool(o.Broken),
         "reserved": bool(o.Reserved),  # a placeholder slot in the mastery: no effect yet
         "unformatted": _unformatted(o.Mods, formatted),
+        "icon": icons.by_key(o.Icon),
     }
 
 
 def render_tree(data, language: str) -> dict:
     from PassiveTree import L, StatText
 
+    from .icons import IconResolver
+
     nodes, errors = {}, []
     formatted = _formatted_stats()
+    icons = IconResolver()
     for n in data.Nodes:
         try:
             # Same as Node.Description, with stat lines and extra kept apart.
@@ -72,7 +78,8 @@ def render_tree(data, language: str) -> dict:
                 "extra": _lines(extra),
                 "broken": bool(n.Broken),
                 "unformatted": _unformatted(n.Mods, formatted),
-                "options": [render_option(o, formatted) for o in (n.Options or [])],
+                "icon": icons.tree_node(n),
+                "options": [render_option(o, formatted, icons) for o in (n.Options or [])],
             }
         except Exception as ex:  # one bad node must not lose the rest
             errors.append({"node": n.Id, "error": str(ex).split("\n")[0]})

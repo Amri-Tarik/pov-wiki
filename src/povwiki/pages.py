@@ -38,19 +38,21 @@ class Ctx:
             if r is None or _jewel_slot(n):
                 continue
             for o, raw in zip(r["options"], n.get("options") or []):
-                o["icon"] = raw.get("icon")
                 o["raw"] = raw
             out.append({**n, "r": r})
         return out
 
     @cached_property
     def option_groups(self) -> dict[tuple, dict]:
-        """Distinct mastery options (same title and text), each with the nodes that offer it.
-        Many nodes offer identical options under different ids (e.g. "+5 Strength")."""
+        """Distinct mastery options, each with the nodes that offer it. Many nodes offer the same
+        option under different ids (e.g. "+5 Strength"). Options are the same when their title
+        and stats are, even if their descriptions are worded differently (e.g. Allied
+        Adrenaline: same stat, two wordings); text-only options compare by text."""
         groups: dict[tuple, dict] = {}
         for n in self.tree_nodes:
             for o in n["r"]["options"]:
-                key = (o["title"], tuple(o["stats"]), tuple(o["extra"]))
+                mods = o["raw"].get("mods") or []
+                key = (o["title"], json.dumps(mods, sort_keys=True)) if mods else (o["title"], tuple(o["stats"]), tuple(o["extra"]))
                 g = groups.setdefault(key, {"options": [], "nodes": [], "category": n["r"]["category"]})
                 g["options"].append(o)
                 if n not in g["nodes"]:
@@ -147,13 +149,13 @@ def _node_art(ctx: Ctx, n: dict, page: str, px: int = 64) -> str:
     """A node's icon in its in-game frame."""
     if not ctx.icons:
         return ""
-    return _img(ctx.icons.framed_path(n.get("icon"), frame_kind(n["size"], bool(n["r"]["options"]))), page, px)
+    return _img(ctx.icons.framed_path(n["r"]["icon"], frame_kind(n["size"], bool(n["r"]["options"]))), page, px)
 
 
 def _option_art(ctx: Ctx, o: dict, page: str, px: int = 56) -> str:
     if not ctx.icons:
         return ""
-    return _img(ctx.icons.framed_path(o.get("icon"), "mastery"), page, px)
+    return _img(ctx.icons.framed_path(o["icon"], "mastery"), page, px)
 
 
 def _node_table(ctx: Ctx, page: str, header: list[str], nodes: list[dict], cells: Callable[[dict], list[str]]) -> list[str]:
@@ -346,10 +348,13 @@ def page_options(ctx: Ctx) -> dict[str, str]:
         if o["stats"]:
             md += [f"## {loc.ui('page.effect')}", "", '<div class="pov-tooltip" markdown>', "",
                    "<br>".join(to_md(x, loc, page) for x in o["stats"]), "", "</div>", ""]
-        if o["extra"] and (not o["stats"] or _describes_differently(o)):
-            md += [f"## {loc.ui('page.description')}", "", loc.ui("page.description_note"), "",
-                   '<div class="pov-tooltip" markdown>', "",
-                   "<br>".join(to_md(x, loc, page) for x in o["extra"]), "", "</div>", ""]
+        wordings = list(dict.fromkeys(tuple(x["extra"]) for x in g["options"] if x["extra"]))
+        if wordings and (not o["stats"] or _describes_differently(o) or len(wordings) > 1):
+            md += [f"## {loc.ui('page.description')}", "", loc.ui("page.description_note"), ""]
+            if len(wordings) > 1:
+                md += [loc.ui("page.description_variants", count=len(wordings)), ""]
+            for extra in wordings:
+                md += ['<div class="pov-tooltip" markdown>', "", "<br>".join(to_md(x, loc, page) for x in extra), "", "</div>", ""]
 
         md += [f"## {loc.ui('page.offered_by')} ({len(g['nodes'])})", ""]
         md += _node_table(
@@ -493,7 +498,7 @@ def page_tree(ctx: Ctx) -> dict[str, str]:
         nodes.append([
             n["id"], n["x"], n["y"], SIZES.index(n["size"]) if n["size"] in SIZES else 0, branches.index(n["branch"]),
             _title(ctx, n), _tooltip_html(ctx, n), flags,
-            (ctx.icons.path(n.get("icon")) or "").removeprefix(f"{ICONS_DIR}/") if ctx.icons else "",
+            (ctx.icons.path(n["r"]["icon"]) or "").removeprefix(f"{ICONS_DIR}/") if ctx.icons else "",
             FRAME_KINDS.index(frame_kind(n["size"], bool(n["r"]["options"]))),
         ])
     links = []

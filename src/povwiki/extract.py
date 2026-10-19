@@ -1,9 +1,10 @@
 """Pull the data files embedded in PathOfValheiman.dll into .cache/extracted/<version>/.
 
 The DLL carries its game data as .NET manifest resources named `PassiveTree.*`:
-tree.json.gz, crafttree.json.gz, loot.catalog.json, published.cfg and loc.<language>.txt, plus the
-node and mastery icons (v2.icon.<id>.png, v2.mastery.<id>.png) and the node frames
-(paintedframe.<kind>-<state>.png). Other images, sounds and asset bundles are skipped for now.
+tree.json.gz, crafttree.json.gz, loot.catalog.json, published.cfg and loc.<language>.txt, plus every
+embedded PNG (node and option art, the icon atlas, frames...) into images/, named by resource
+("PassiveTree.v2.icon.fire.png" -> images/v2.icon.fire.png). Which image a node shows is decided
+by `povwiki render`. Sounds and Unity asset bundles are skipped for now.
 """
 
 import gzip
@@ -19,8 +20,6 @@ import dnfile
 from .paths import EXTRACTED, MODS
 
 RESOURCE_PREFIX = "PassiveTree."
-# Resource prefix -> folder under icons/. "v2:<id>" / "v2m:<id>" node icons, and node frames.
-ICON_KINDS = {"v2.icon.": "icon", "v2.mastery.": "mastery", "paintedframe.": "frame"}
 DLL_PATH = Path("plugins/PathOfValheiman/PathOfValheiman.dll")
 
 
@@ -54,9 +53,9 @@ def extract(source: Path) -> Path:
         data = res.data
         if name.startswith("loc.") and name.endswith(".txt"):
             target = out / "loc" / name.removeprefix("loc.")
-        elif name.endswith(".png") and (prefix := next((p for p in ICON_KINDS if name.startswith(p)), None)):
-            target = out / "icons" / ICON_KINDS[prefix] / name.removeprefix(prefix)
-            target.parent.mkdir(parents=True, exist_ok=True)
+        elif name.endswith(".png"):
+            target = out / "images" / name
+            target.parent.mkdir(exist_ok=True)
         elif name.endswith(".json.gz"):
             target, data = out / name.removesuffix(".gz"), gzip.decompress(data)
         elif name.endswith((".json", ".cfg")):
@@ -64,7 +63,8 @@ def extract(source: Path) -> Path:
         else:
             continue
         target.write_bytes(data)
-        written.append(target.relative_to(out).as_posix())
+        if not name.endswith(".png"):
+            written.append(target.relative_to(out).as_posix())
 
     shutil.copy2(mod_dir / "manifest.json", out / "manifest.json")
     meta = {

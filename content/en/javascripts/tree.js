@@ -188,7 +188,7 @@
 
   TreeView.prototype.draw = function () {
     var c = this.ctx, v = this.view, s = v.s, css = getComputedStyle(this.root);
-    var bg = css.getPropertyValue("--md-default-bg-color").trim() || "#1e1e1e";
+    var bg = css.getPropertyValue("--pov-tree-bg").trim() || css.getPropertyValue("--md-default-bg-color").trim() || "#1e1e1e";
     var fg = css.getPropertyValue("--md-default-fg-color").trim() || "#ddd";
     var accent = css.getPropertyValue("--md-accent-fg-color").trim() || "#fa0";
     var matches = this.matches;

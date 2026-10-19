@@ -60,6 +60,22 @@ def to_md(s: str, loc: Localizer, page: str) -> str:
     return "".join(out)
 
 
+def to_html(s: str) -> str:
+    """Game text -> inline HTML without links (for the tree viewer's tooltips)."""
+    out, pos = [], 0
+    for m in _TAG.finditer(s):
+        out.append(html.escape(s[pos : m.start()], quote=False))
+        pos = m.end()
+        if m.group(1) is not None:
+            out.append(f'<span class="pov-kw">{to_html(m.group(2))}</span>')
+        elif m.group(3) is not None:
+            out.append(f'<span style="color:{m.group(3)}">{to_html(m.group(4))}</span>')
+        elif m.group(5) is not None:
+            out.append(f"<b>{to_html(m.group(5))}</b>")
+    out.append(html.escape(s[pos:], quote=False))
+    return "".join(out)
+
+
 def slugs(s: str) -> list[str]:
     """Keyword slugs linked from a piece of game text."""
     return re.findall(r'<link="([^"]+)">', s)

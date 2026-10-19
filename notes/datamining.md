@@ -15,7 +15,9 @@ manifest resources named `PassiveTree.*`:
 | `loot.catalog.json` | Loot generation: rarity by level, ~1.2k affixes with tiers/weights/tags, uniques, currency, drop tables |
 | `published.cfg` | Server config defaults (XP curve, etc.) |
 | `loc.<language>.txt` | Same as the shipped `Localization/*.txt` |
-| `*.png`, `*.jpg`, `*.pcm`, `bundle.*` | Icons, textures, sounds, Unity asset bundles (not extracted yet) |
+| `v2.icon.<id>.png`, `v2.mastery.<id>.png` | Node / option icons, 256 px (extracted to `icons/`) |
+| `v2.halo.*`, `v2.crafthalo.*` | Decorative rings drawn around nodes (not extracted) |
+| other `*.png`, `*.jpg`, `*.pcm`, `bundle.*` | Jewel/slot art, textures, sounds, Unity asset bundles (not extracted yet) |
 
 The `Localization/` folder also ships `template.txt` and `english-for-translators.txt`. Those
 two are only in the zip, not in the DLL.
@@ -99,6 +101,18 @@ non-flag stats with their numbers. The option's description is a hover tooltip o
 `Told` when the option has extra text, or the flag stats described otherwise. The harness
 exports body as `stats` and description as `extra`. Don't show `DescribeAll(mods)` plus `Told`
 together: that repeats the same effect twice.
+
+## Tree layout and icons
+
+- Positions are the node `x`, `y` in Unity UI space (**y up**). The viewer flips y.
+- Links are quadratic Béziers. The control point is the midpoint plus `linkCurve["a|b"]`, keyed
+  by `Tree.LinkKey` (the two ids in ordinal order). Links in `hiddenLinks` are not drawn.
+- Node diameters by size (`TreeStyle.Size`): Keystone 58, Notable/Starter 43.8, Socket/Mastery 50,
+  Portal 76, Small/Travel 30. Branch colours come from `Tree.cs`.
+- Icons: a node/option `icon` of `v2:<id>` is `PassiveTree.v2.icon.<id>.png`, and `v2m:<id>` is
+  `PassiveTree.v2.mastery.<id>.png` (`UiKit.V2Art`). About 100 nodes reference an id with no art.
+- The node tooltip shows the stat lines and then `Told` in italics, even when they repeat each
+  other (e.g. Eternal Pyre). That's the author's text, so we keep it.
 
 ## In-game wiki
 

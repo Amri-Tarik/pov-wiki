@@ -6,6 +6,7 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "dnfile>=0.15",
+    "pillow>=11",
     "pythonnet>=3.2.1",
     "tomli-w>=1.0",
     "zensical==0.0.71",
@@ -20,3 +21,7 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/povwiki"]
+
+[tool.povwiki]
+# Show the mod's node icons on the site. They are the mod author's art: turn this off if asked.
+icons = true

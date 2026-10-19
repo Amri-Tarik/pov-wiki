@@ -5,6 +5,7 @@
 home = "Home"
 about = "About"
 passives = "Passive Tree"
+tree = "Tree Viewer"
 keystones = "Keystones"
 notables = "Notables"
 masteries = "Masteries"
@@ -34,6 +35,14 @@ broken_tip = "Disabled in the game files"
 reserved_tip = "A reserved place in this mastery: it has no effect yet and cannot be chosen."
 unformatted = "Unfinished text"
 unformatted_tip = "The game has no text for {stats} yet and shows a generated fallback"
+
+[tree]
+search = "Search passives (name or stat text)"
+matches = "{count} matches"
+reset = "Reset"
+hint = "Drag to pan, scroll or pinch to zoom. Click a keystone or notable to open its page. Press Enter in search to jump between matches."
+help = "The full passive tree from the game files. Colours are the game's branch colours; dashed grey nodes are unimplemented placeholders."
+show = "Show on tree"
 
 [size]
 Keystone = "Keystone"

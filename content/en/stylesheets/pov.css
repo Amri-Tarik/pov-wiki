@@ -29,3 +29,110 @@
   border-bottom: 1px dashed currentColor;
   cursor: help;
 }
+
+/* ---- Passive tree viewer ---- */
+.pov-tree-bar {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+.pov-tree-search {
+  flex: 1;
+  min-width: 0;
+  padding: 0.4em 0.6em;
+  border: 1px solid var(--md-default-fg-color--lighter);
+  border-radius: 0.2rem;
+  background: var(--md-default-bg-color);
+  color: var(--md-default-fg-color);
+  font: inherit;
+}
+.pov-tree-count {
+  font-size: 0.75rem;
+  color: var(--md-default-fg-color--light);
+  white-space: nowrap;
+}
+.pov-tree-reset {
+  font-size: 0.7rem !important;
+  padding: 0.3em 0.8em !important;
+}
+.pov-tree-wrap {
+  position: relative;
+  height: 75vh;
+  min-height: 420px;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.2rem;
+  overflow: hidden;
+  touch-action: none;
+}
+.pov-tree-wrap canvas {
+  display: block;
+  cursor: grab;
+}
+.pov-tree-hint {
+  margin-top: 0.4rem;
+  font-size: 0.7rem;
+  color: var(--md-default-fg-color--light);
+}
+.pov-tree-tip {
+  position: absolute;
+  max-width: min(26rem, 90%);
+  padding: 0.6em 0.8em;
+  border: 1px solid var(--md-default-fg-color--lighter);
+  border-radius: 0.2rem;
+  background: var(--md-default-bg-color);
+  box-shadow: var(--md-shadow-z2);
+  font-size: 0.7rem;
+  line-height: 1.45;
+  pointer-events: none;
+  z-index: 2;
+}
+.pov-tt-title {
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+.pov-tt-meta {
+  color: var(--md-default-fg-color--light);
+  margin-bottom: 0.3em;
+}
+.pov-tt-extra {
+  font-style: italic;
+  color: var(--md-default-fg-color--light);
+}
+.pov-tt-head {
+  margin-top: 0.4em;
+  font-weight: 600;
+}
+.pov-tt-opt {
+  padding-left: 0.6em;
+}
+
+/* ---- Icons (the mod's node art) ---- */
+.pov-icon {
+  width: 1.6em;
+  height: 1.6em;
+  margin-right: 0.4em;
+  vertical-align: middle;
+  border-radius: 0.2em;
+}
+.pov-icon-lg {
+  width: 4rem;
+  height: 4rem;
+  margin-right: 0.8rem;
+  vertical-align: middle;
+  border-radius: 0.3rem;
+}
+.pov-tt-icon {
+  float: left;
+  width: 2.4rem;
+  height: 2.4rem;
+  margin: 0 0.6em 0.3em 0;
+  border-radius: 0.2rem;
+}
+.pov-tt-meta {
+  clear: none;
+}
+.pov-tt-line:first-of-type,
+.pov-tt-head:first-of-type {
+  clear: left;
+}

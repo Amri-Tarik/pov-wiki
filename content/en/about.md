@@ -7,7 +7,8 @@
 [Discord](https://discord.gg/y4wDkScu4) · [Patreon](https://www.patreon.com/c/treextr) ·
 [Boosty](https://boosty.to/treextr).
 
-This is an unofficial fan site. All game data, names and text belong to the mod author.
+This is an unofficial fan site. All game data, names, text and node art belong to the mod
+author.
 This site does not host or redistribute the mod. Get it from the official page.
 
 ## How it works

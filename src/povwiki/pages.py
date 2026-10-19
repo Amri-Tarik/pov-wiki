@@ -14,18 +14,30 @@ from functools import cached_property
 
 from .data import GameData
 from .i18n import Localizer
-from .markup import glossary_path, plain, rel, slugs, summary, to_md
+from .icons import DOCS_DIR as ICONS_DIR
+from .icons import Icons
+from .markup import glossary_path, plain, rel, slugs, summary, to_html, to_md
 
 
 @dataclass
 class Ctx:
     data: GameData
     loc: Localizer
+    icons: Icons | None = None  # None when icons are turned off
 
     @cached_property
     def tree_nodes(self) -> list[dict]:
-        """Raw tree nodes joined with their rendered text (key "r")."""
-        return [{**n, "r": self.loc.nodes[n["id"]]} for n in self.data.tree["nodes"] if n["id"] in self.loc.nodes]
+        """Raw tree nodes joined with their rendered text (key "r"). Rendered options get their
+        raw icon id, so everything shown about an option is in one place."""
+        out = []
+        for n in self.data.tree["nodes"]:
+            r = self.loc.nodes.get(n["id"])
+            if r is None:
+                continue
+            for o, raw in zip(r["options"], n.get("options") or []):
+                o["icon"] = raw.get("icon")
+            out.append({**n, "r": r})
+        return out
 
     @cached_property
     def by_id(self) -> dict[str, dict]:
@@ -86,6 +98,13 @@ def _badges(ctx: Ctx, r: dict) -> str:
     return " ".join(out)
 
 
+def _icon(ctx: Ctx, key: str | None, page: str, cls: str = "pov-icon") -> str:
+    """<img> for a game icon id, sized by CSS class; "" when there is none or icons are off."""
+    path = ctx.icons.path(key) if ctx.icons else None
+    # The site generator resolves <img src> relative to the Markdown file, like Markdown links.
+    return f'<img class="{cls}" src="{rel(path, page)}" alt="" loading="lazy">' if path else ""
+
+
 def _title(ctx: Ctx, n: dict) -> str:
     title = plain(n["r"]["title"]).strip()
     return title if title and title != n["id"] else ""
@@ -95,9 +114,10 @@ def _name(ctx: Ctx, n: dict, page: str | None = None) -> str:
     """Node name in bold, linked to the node's page when it has one and `page` is given."""
     title = _title(ctx, n)
     text = f"**{_cell(title)}**" if title else f"<i>{ctx.loc.ui('page.unnamed')}</i> `{n['id']}`"
+    icon = _icon(ctx, n.get("icon"), page) if page else ""
     if page and n["size"] in PAGE_SIZES:
-        return f"[{text}]({rel(node_path(n), page)})"
-    return text
+        text = f"[{text}]({rel(node_path(n), page)})"
+    return icon + text
 
 
 def _branch(ctx: Ctx, n: dict) -> str:
@@ -123,8 +143,8 @@ def _option_title(ctx: Ctx, page: str, o: dict) -> str:
     title = f"**{to_md(o['title'], ctx.loc, page)}**"
     if o["extra"]:
         tip = html.escape(plain(" ".join(o["extra"])), quote=True)
-        return f'<span class="pov-desc" title="{tip}">{title}</span>'
-    return title
+        title = f'<span class="pov-desc" title="{tip}">{title}</span>'
+    return _icon(ctx, o.get("icon"), page) + title
 
 
 def _option_effect(ctx: Ctx, page: str, o: dict) -> str:
@@ -223,7 +243,12 @@ def page_nodes(ctx: Ctx) -> dict[str, str]:
         md = [f"# {_title(ctx, n) or loc.ui('page.unnamed')}", ""]
         if not _is_implemented(n):
             md += ["!!! warning \"" + loc.ui("page.unimplemented") + "\"", f"    {loc.ui('page.unimplemented_node')}", ""]
-        md += [f"<b>{kind}</b> · {_branch(ctx, n)}" + (f" · {r['category']}" if r["category"] else ""), ""]
+        md += [
+            _icon(ctx, n.get("icon"), page, "pov-icon-lg")
+            + f"<b>{kind}</b> · {_branch(ctx, n)}" + (f" · {r['category']}" if r["category"] else "")
+            + f" · [{loc.ui('tree.show')}]({rel(TREE_PAGE, page)}#{n['id']})",
+            "",
+        ]
 
         effect = _effect(ctx, page, r)
         if effect:
@@ -275,6 +300,97 @@ def page_nodes(ctx: Ctx) -> dict[str, str]:
             md += ["    ```", ""]
         pages[page] = "\n".join(md + _footer(ctx))
     return pages
+
+
+# ---- Tree viewer -------------------------------------------------------------------------------
+
+TREE_PAGE = "passives/tree.md"
+TREE_DATA = "passives/tree-data.json"
+# Order matters: the viewer refers to sizes and branches by index.
+SIZES = ["Small", "Travel", "Notable", "Keystone", "Socket", "Mastery", "Starter", "Portal", "Root"]
+# The game's branch colours (Tree.cs) and node diameters (TreeStyle.Size).
+BRANCH_COLORS = {
+    "War": (0.91, 0.35, 0.27), "Steel": (0.8, 0.43, 0.61), "Flesh": (0.85, 0.68, 0.32),
+    "Wind": (0.34, 0.8, 0.78), "Eitr": (0.68, 0.5, 0.95), "Toil": (0.51, 0.65, 0.87),
+}
+DEFAULT_COLOR = (0.96, 0.85, 0.6)
+DIAMETERS = {"Keystone": 58, "Notable": 43.84, "Starter": 43.84, "Portal": 76, "Mastery": 50, "Socket": 50,
+             "Small": 30, "Travel": 30, "Root": 64}
+
+
+def _hex(c: tuple[float, float, float]) -> str:
+    return "#" + "".join(f"{round(v * 255):02x}" for v in c)
+
+
+def _tooltip_html(ctx: Ctx, n: dict) -> str:
+    r, loc = n["r"], ctx.loc
+    body = [f'<div class="pov-tt-line">{to_html(s)}</div>' for s in r["stats"]]
+    body += [f'<div class="pov-tt-extra">{to_html(s)}</div>' for s in r["extra"]]
+    if r["options"]:
+        body.append(f'<div class="pov-tt-head">{html.escape(loc.ui("page.mastery_options"))}</div>')
+        for o in r["options"]:
+            lines = o["stats"] or o["extra"]
+            text = "; ".join(to_html(s) for s in lines)
+            mark = f' <span class="pov-badge">{html.escape(loc.ui("badge.broken"))}</span>' if o.get("reserved") or o.get("broken") else ""
+            body.append(f'<div class="pov-tt-opt"><b>{to_html(o["title"])}</b>' + (f": {text}" if text else "") + f"{mark}</div>")
+    if not _is_implemented(n):
+        body.append(f'<div class="pov-tt-head"><span class="pov-badge">{html.escape(loc.ui("page.unimplemented"))}</span></div>')
+    elif r.get("unformatted"):
+        body.append(f'<div class="pov-tt-head"><span class="pov-badge">{html.escape(loc.ui("badge.unformatted"))}</span></div>')
+    return "".join(body)
+
+
+def page_tree(ctx: Ctx) -> dict[str, str]:
+    """The interactive tree: a page with the viewer, and its data."""
+    loc, tree = ctx.loc, ctx.data.tree
+    hidden = set(tree.get("hiddenLinks") or [])
+    curves = tree.get("linkCurve") or {}
+    index = {n["id"]: i for i, n in enumerate(ctx.tree_nodes)}
+    branches = sorted({n["branch"] for n in ctx.tree_nodes})
+
+    nodes = []
+    for n in ctx.tree_nodes:
+        flags = (1 if n["size"] in PAGE_SIZES else 0) | (0 if _is_implemented(n) else 2) | (4 if n["r"]["options"] else 0)
+        nodes.append([
+            n["id"], n["x"], n["y"], SIZES.index(n["size"]) if n["size"] in SIZES else 0, branches.index(n["branch"]),
+            _title(ctx, n), _tooltip_html(ctx, n), flags,
+            (ctx.icons.path(n.get("icon")) or "").removeprefix(f"{ICONS_DIR}/") if ctx.icons else "",
+        ])
+    links = []
+    for a, b in tree["links"]:
+        key = f"{min(a, b)}|{max(a, b)}"  # Tree.LinkKey: ordinal order
+        if key in hidden or a not in index or b not in index:
+            continue
+        c = curves.get(key)
+        links.append([index[a], index[b], *c] if c else [index[a], index[b]])
+
+    data = {
+        "nodes": nodes,
+        "links": links,
+        "sizes": [{"name": loc.ui(f"size.{s}"), "d": DIAMETERS.get(s, 30)} for s in SIZES],
+        "branches": [{"name": loc.text(f"@branch.{b}", b), "color": _hex(BRANCH_COLORS.get(b, DEFAULT_COLOR))} for b in branches],
+        "ui": {k: loc.ui(f"tree.{k}") for k in ("search", "matches", "reset", "hint")},
+        # Relative to the page's rendered URL (passives/tree/), like the attributes below.
+        "iconBase": f"../{rel(ICONS_DIR, TREE_PAGE)}/",
+    }
+    md = [
+        "---",
+        "hide:",
+        "  - navigation",
+        "  - toc",
+        "---",
+        "",
+        f"# {loc.ui('nav.tree')}",
+        "",
+        # URLs relative to the page's rendered URL, passives/tree/ (directory URLs), hence the
+        # extra "../". (Not "data-src": the site generator rewrites *src attributes as file paths.)
+        f'<div class="pov-tree" data-tree="../{rel(TREE_DATA, TREE_PAGE)}" '
+        f'data-node-base="../{rel("passives/node", TREE_PAGE)}/"></div>',
+        "",
+        loc.ui("tree.help"),
+        *_footer(ctx),
+    ]
+    return {TREE_PAGE: "\n".join(md), TREE_DATA: json.dumps(data, ensure_ascii=False, separators=(",", ":"))}
 
 
 # ---- Glossary ----------------------------------------------------------------------------------
@@ -346,13 +462,14 @@ def page_glossary(ctx: Ctx) -> dict[str, str]:
     return pages
 
 
-GENERATORS: list[Callable[[Ctx], dict[str, str]]] = [page_keystones, page_notables, page_masteries, page_nodes, page_glossary]
+GENERATORS: list[Callable[[Ctx], dict[str, str]]] = [page_tree, page_keystones, page_notables, page_masteries, page_nodes, page_glossary]
 
 # Navigation: (ui title key, page path | children). Titles are translated per language.
 # Glossary term pages are reached from keyword links and search.
 NAV = [
     ("nav.home", "index.md"),
     ("nav.passives", [
+        ("nav.tree", "passives/tree.md"),
         ("nav.keystones", "passives/keystones.md"),
         ("nav.notables", "passives/notables.md"),
         ("nav.masteries", "passives/masteries.md"),

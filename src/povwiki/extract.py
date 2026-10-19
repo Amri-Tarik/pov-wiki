@@ -1,8 +1,9 @@
 """Pull the data files embedded in PathOfValheiman.dll into .cache/extracted/<version>/.
 
 The DLL carries its game data as .NET manifest resources named `PassiveTree.*`:
-tree.json.gz, crafttree.json.gz, loot.catalog.json, published.cfg and loc.<language>.txt.
-Images, sounds and asset bundles are skipped for now.
+tree.json.gz, crafttree.json.gz, loot.catalog.json, published.cfg and loc.<language>.txt, plus the
+node and mastery icons (v2.icon.<id>.png, v2.mastery.<id>.png). Other images, sounds and asset
+bundles are skipped for now.
 """
 
 import gzip
@@ -18,6 +19,7 @@ import dnfile
 from .paths import EXTRACTED, MODS
 
 RESOURCE_PREFIX = "PassiveTree."
+ICON_KINDS = ("v2.icon.", "v2.mastery.")  # what a node's "v2:<id>" / "v2m:<id>" icon refers to
 DLL_PATH = Path("plugins/PathOfValheiman/PathOfValheiman.dll")
 
 
@@ -51,6 +53,10 @@ def extract(source: Path) -> Path:
         data = res.data
         if name.startswith("loc.") and name.endswith(".txt"):
             target = out / "loc" / name.removeprefix("loc.")
+        elif name.startswith(ICON_KINDS) and name.endswith(".png"):
+            kind, icon_id = name.removeprefix("v2.").removesuffix(".png").split(".", 1)
+            target = out / "icons" / kind / f"{icon_id}.png"
+            target.parent.mkdir(parents=True, exist_ok=True)
         elif name.endswith(".json.gz"):
             target, data = out / name.removesuffix(".gz"), gzip.decompress(data)
         elif name.endswith((".json", ".cfg")):

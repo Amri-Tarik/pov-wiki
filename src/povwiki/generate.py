@@ -11,6 +11,7 @@ import tomllib
 import tomli_w
 
 from .data import GameData
+from . import icons
 from .i18n import Language, Localizer, load_languages
 from .pages import GENERATORS, NAV, Ctx
 from .paths import BASE_CONFIG, BUILD, CONTENT, SITE
@@ -50,12 +51,14 @@ def build_language(lang: Language, default: Language, enabled: list[Language], d
     if lang.code != default.code and (CONTENT / lang.code).exists():
         shutil.copytree(CONTENT / lang.code, docs, dirs_exist_ok=True)
 
-    ctx = Ctx(data=data, loc=loc)
+    ctx = Ctx(data=data, loc=loc, icons=icons.Icons(data) if icons.enabled() else None)
     for gen in GENERATORS:
         for rel, text in gen(ctx).items():
             path = docs / rel
             path.parent.mkdir(parents=True, exist_ok=True)
             path.write_text(text, encoding="utf-8")
+    if ctx.icons:
+        ctx.icons.write(docs)
 
     _write_config(lang, enabled, loc, out)
     if render:

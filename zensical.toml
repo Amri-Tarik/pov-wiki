@@ -9,6 +9,7 @@ site_description = "Datamined wiki for the Path of Valheiman Valheim mod"
 site_url = "https://amri-tarik.github.io/pov-wiki/"
 repo_url = "https://github.com/Amri-Tarik/pov-wiki"
 extra_css = ["stylesheets/pov.css"]
+extra_javascript = ["javascripts/tree.js"]
 
 [project.theme]
 language = "en"

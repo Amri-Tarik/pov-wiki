@@ -1,18 +1,42 @@
 # Strings of the wiki itself (headings, table columns, nav). Game text never goes here:
-# it comes from the mod's own localization files.
+# it comes from the mod itself (rendered by its code, or its localization files).
 
 [nav]
 home = "Home"
 about = "About"
 passives = "Passive Tree"
 keystones = "Keystones"
+notables = "Notables"
+masteries = "Masteries"
+glossary = "Glossary"
 
 [page]
 data_version = "Data from Path of Valheiman {version}, extracted {date}."
 choose_one = "Choose one:"
+unnamed = "(unnamed)"
+uncategorized = "Uncategorized"
+unimplemented = "Unimplemented"
+unimplemented_note = "Nodes present in the game files that have no effect yet (placeholders or work in progress)"
+notables_intro = "{count} notable passives, grouped by category. Notables that offer a choice are listed under Masteries."
+masteries_intro = "Passives that let you choose one option. Each option is listed once per category, with the number of tree nodes that offer it."
+glossary_intro = "{count} terms from the mod's in-game wiki. Keywords in passive and item texts link here."
+referenced_by = "Referenced by"
+small_passives = "Small passives"
+see_also = "Mentioned in"
+no_text = "No description in the game files."
+
+[badge]
+broken = "Unimplemented"
+broken_tip = "Disabled in the game files"
+unformatted = "Unfinished text"
+unformatted_tip = "The game has no text for {stats} yet and shows a generated fallback"
 
 [col]
 name = "Name"
 branch = "Branch"
 category = "Category"
 effect = "Effect"
+option = "Option"
+offered_by = "Nodes"
+stat = "Stat"
+nodes = "Nodes"

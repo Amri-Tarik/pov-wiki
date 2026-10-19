@@ -82,3 +82,8 @@ class Localizer:
     def nodes(self) -> dict[str, dict]:
         """Tree nodes as the game shows them (title, category, stats, extra, options), by id."""
         return self.data.rendered(self.lang.mod)["nodes"]
+
+    @cached_property
+    def wiki(self) -> dict[str, dict]:
+        """The mod's in-game wiki terms (title, text, forms), by slug."""
+        return self.data.rendered(self.lang.mod)["wiki"]

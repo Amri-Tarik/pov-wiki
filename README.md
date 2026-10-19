@@ -59,7 +59,7 @@ Valheim's DLLs in CI (e.g. the free dedicated server via SteamCMD) and come late
 
 | Path | What |
 |---|---|
-| `src/povwiki/` | Pipeline: `fetch.py`, `extract.py` (DLL → JSON), `render.py` + `harness/` (game text via the mod's code), `data.py`, `i18n.py`, `markup.py` (game rich text → HTML), `generate.py` (pages, nav, config), `deploy.py` |
+| `src/povwiki/` | Pipeline: `fetch.py`, `extract.py` (DLL → JSON), `render.py` + `harness/` (game text via the mod's code), `data.py`, `i18n.py`, `markup.py` (game rich text → Markdown), `pages.py` (page generators, nav), `generate.py` (build, config), `deploy.py` |
 | `content/<lang>/` | Hand-written pages (home, about) |
 | `i18n/languages.toml` | Wiki languages and their mod localization file |
 | `i18n/ui/<lang>.toml` | The wiki's own strings (headings, table columns, nav) |
@@ -92,7 +92,9 @@ the box, and uses the same Markdown extensions. Zensical is still 0.0.x, so its 
 
 - [x] Repo, pipeline skeleton, DLL data extraction, i18n design
 - [x] Stat lines exactly as in game (rendered by the mod's own code)
-- [ ] Passive tree: keystones, notables, masteries, keyword/glossary pages (from `@wiki.*`)
+- [x] Passive tree: keystones, notables, masteries; glossary from the in-game wiki, with backlinks
+- [x] Unfinished game content shown with an Unimplemented / Unfinished text badge
+- [ ] Passive tree viewer (interactive map), small passives, jewels
 - [ ] Craft tree and professions
 - [ ] Items: affixes with tiers, weights, level ranges and tag rules; uniques; currency; loot tables
 - [ ] Patch diffs between versions

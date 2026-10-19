@@ -8,83 +8,12 @@ build/<code>/site/          rendered site, then copied to site/<code>/
 import shutil
 import subprocess
 import tomllib
-from collections.abc import Callable
-from dataclasses import dataclass
-
 import tomli_w
 
 from .data import GameData
 from .i18n import Language, Localizer, load_languages
-from .markup import to_html
+from .pages import GENERATORS, NAV, Ctx
 from .paths import BASE_CONFIG, BUILD, CONTENT, SITE
-
-
-@dataclass
-class Ctx:
-    data: GameData
-    loc: Localizer
-
-
-# ---- Pages -------------------------------------------------------------------------------------
-
-
-def _cell(s: str) -> str:
-    return str(s).replace("|", "\\|").replace("\n", "<br>")
-
-
-def _effect(ctx: Ctx, rendered: dict) -> str:
-    """A node's tooltip body as HTML: stat lines, its extra text in italics, then its options."""
-    lines = [to_html(s, ctx.loc) for s in rendered["stats"]]
-    lines += [f"<i>{to_html(s, ctx.loc)}</i>" for s in rendered["extra"]]
-    if rendered["options"]:
-        lines.append(ctx.loc.ui("page.choose_one"))
-        for o in rendered["options"]:
-            body = "; ".join(to_html(s, ctx.loc) for s in o["stats"] + o["extra"])
-            lines.append(f"• <b>{to_html(o['title'], ctx.loc)}</b>" + (f": {body}" if body else ""))
-    return "<br>".join(lines)
-
-
-def _is_live(node: dict) -> bool:
-    """Placeholder nodes in the tree have no effect and their id as name."""
-    return bool(node.get("mods") or node.get("options")) or node["name"] != node["id"]
-
-
-def page_keystones(ctx: Ctx) -> str:
-    loc = ctx.loc
-    nodes = sorted(
-        (n for n in ctx.data.tree["nodes"] if n["size"] == "Keystone" and _is_live(n)),
-        key=lambda n: loc.nodes[n["id"]]["title"],
-    )
-    lines = [
-        f"# {loc.ui('nav.keystones')}",
-        "",
-        f"| {loc.ui('col.name')} | {loc.ui('col.branch')} | {loc.ui('col.category')} | {loc.ui('col.effect')} |",
-        "|---|---|---|---|",
-    ]
-    for n in nodes:
-        r = loc.nodes[n["id"]]
-        branch = loc.text(f"@branch.{n['branch']}", n["branch"])
-        lines.append(f"| **{_cell(r['title'])}** | {_cell(branch)} | {_cell(r['category'])} | {_cell(_effect(ctx, r))} |")
-    lines += ["", _version_footer(ctx)]
-    return "\n".join(lines) + "\n"
-
-
-def _version_footer(ctx: Ctx) -> str:
-    meta = ctx.data.meta
-    return f"<small>{ctx.loc.ui('page.data_version', version=meta['version'], date=meta['extracted'][:10])}</small>"
-
-
-# Generated page path -> generator.
-PAGES: dict[str, Callable[[Ctx], str]] = {
-    "passives/keystones.md": page_keystones,
-}
-
-# Navigation: (ui title key, page path | children). Titles are translated per language.
-NAV = [
-    ("nav.home", "index.md"),
-    ("nav.passives", [("nav.keystones", "passives/keystones.md")]),
-    ("nav.about", "about.md"),
-]
 
 
 # ---- Build -------------------------------------------------------------------------------------
@@ -122,10 +51,11 @@ def build_language(lang: Language, default: Language, enabled: list[Language], d
         shutil.copytree(CONTENT / lang.code, docs, dirs_exist_ok=True)
 
     ctx = Ctx(data=data, loc=loc)
-    for rel, gen in PAGES.items():
-        path = docs / rel
-        path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text(gen(ctx), encoding="utf-8")
+    for gen in GENERATORS:
+        for rel, text in gen(ctx).items():
+            path = docs / rel
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text(text, encoding="utf-8")
 
     _write_config(lang, enabled, loc, out)
     if render:

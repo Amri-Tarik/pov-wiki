@@ -3,8 +3,8 @@
     python -m povwiki.harness --dll PathOfValheiman.dll --deps dir1;dir2 --out DIR --languages english,french
 
 Writes DIR/<language>.json:
-    {"language", "revision", "errors": [...], "nodes": {id: {title, category, topics, stats[], extra[],
-     options: [{id, title, stats[], extra[]}]}}}
+    {"language", "revision", "errors": [...], "nodes": {id: {title, category, topics, stats[], extra[], broken,
+     unformatted[], options: [{id, title, stats[], extra[], broken, unformatted[]}]}}, "wiki": {key: {title, text[], forms[]}}}
 Text keeps the game's rich-text markup (<link="slug">, <color=...>, <b>); the site generator converts it.
 """
 
@@ -19,10 +19,28 @@ def _lines(s) -> list[str]:
     return str(s).split("\n") if s else []
 
 
+def _formatted_stats() -> set[str]:
+    """Stats the formatter has a text entry for (StatText's private table `I`). Any other stat
+    is shown by the game as a generated fallback from its code name: unfinished content."""
+    from System import AppDomain
+    from System.Reflection import BindingFlags
+
+    asm = next(a for a in AppDomain.CurrentDomain.GetAssemblies() if a.GetName().Name == "PathOfValheiman")
+    table = asm.GetType("PassiveTree.StatText").GetField("I", BindingFlags.Static | BindingFlags.NonPublic)
+    return {str(k) for k in table.GetValue(None).Keys}
+
+
+def _unformatted(mods, formatted: set[str]) -> list[str]:
+    from PassiveTree import Attrs
+
+    return sorted({str(m.Key) for m in mods if str(m.Key) not in formatted and str(Attrs.Canon(m.Key)) not in formatted})
+
+
 def render_tree(data, language: str) -> dict:
     from PassiveTree import L, StatText
 
     nodes, errors = {}, []
+    formatted = _formatted_stats()
     for n in data.Nodes:
         try:
             # Same as Node.Description, with stat lines and extra kept apart.
@@ -33,19 +51,36 @@ def render_tree(data, language: str) -> dict:
                 "topics": list(n.Topics),
                 "stats": _lines(StatText.DescribeAll(n.Mods)),
                 "extra": _lines(extra),
+                "broken": bool(n.Broken),
+                "unformatted": _unformatted(n.Mods, formatted),
                 "options": [
                     {
                         "id": o.Id,
                         "title": o.Title,
                         "stats": _lines(StatText.DescribeAll(o.Mods)),
                         "extra": _lines(o.Told),
+                        "broken": bool(o.Broken),
+                        "unformatted": _unformatted(o.Mods, formatted),
                     }
                     for o in (n.Options or [])
                 ],
             }
         except Exception as ex:  # one bad node must not lose the rest
             errors.append({"node": n.Id, "error": str(ex).split("\n")[0]})
-    return {"language": language, "revision": data.Revision, "errors": errors, "nodes": nodes}
+    return {"language": language, "revision": data.Revision, "errors": errors, "nodes": nodes, "wiki": render_wiki(errors)}
+
+
+def render_wiki(errors: list) -> dict:
+    """The mod's in-game wiki: every term as its article shows it (values filled in, links marked)."""
+    from PassiveTree import Wiki
+
+    terms = {}
+    for t in Wiki.Terms:
+        try:
+            terms[t.Key] = {"title": t.Shown, "text": _lines(Wiki.Article(t)), "forms": list(t.Said or [])}
+        except Exception as ex:
+            errors.append({"wiki": t.Key, "error": str(ex).split("\n")[0]})
+    return terms
 
 
 def main() -> None:
@@ -69,7 +104,9 @@ def main() -> None:
         clrhost.set_language(language)
         result = render_tree(data, language)
         (args.out / f"{language}.json").write_text(json.dumps(result, ensure_ascii=False), encoding="utf-8")
-        print(f"rendered {language}: {len(result['nodes'])} nodes, {len(result['errors'])} errors")
+        print(f"rendered {language}: {len(result['nodes'])} nodes, {len(result['wiki'])} wiki terms, {len(result['errors'])} errors")
+        for e in result["errors"][:5]:
+            print("  ", e)
 
 
 if __name__ == "__main__":

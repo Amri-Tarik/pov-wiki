@@ -78,6 +78,25 @@ Things learnt getting there:
 - Output keeps TextMeshPro markup: `<link="slug">` (slug = `@wiki.<slug>.*` entry) and
   `<color=#hex>`. `markup.py` converts it.
 
+## Unfinished content
+
+The wiki shows it with a badge instead of hiding it. The signals:
+
+- **Placeholder nodes**: no stat lines, no extra text and no options (in 5.0.10: 8 keystones,
+  247 notables, often titled "In development" or blank).
+- **`Broken`** on a node or option: disabled by the game (none in 5.0.10).
+- **Fallback stat text**: a stat with no entry in `StatText`'s private table `I` (nor its
+  `Attrs.Canon` form) is printed from its code name, e.g. `+1 reload while moving` for
+  `ReloadWhileMoving` on the keystone "On the Move". The harness lists these per node as
+  `unformatted`.
+
+## In-game wiki
+
+`Wiki.Terms` (402 in 5.0.10) is a flat list: `Term.Shown` is the title, `Wiki.Article(term)` the
+text, which has placeholder values filled in (e.g. fortification numbers) and `<link>` marks
+(self-links removed). `Term.Said` gives the inflected forms the game auto-links.
+`pt.scale:*` links in stat text are in-game scaling tooltips, not wiki terms.
+
 ## Reading the mod's code
 
 Decompile with ILSpy's command-line tool. No .NET SDK is needed: download the `ilspycmd` NuGet

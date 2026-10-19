@@ -3,3 +3,15 @@
   border-bottom: 1px dotted currentColor;
   cursor: help;
 }
+
+/* Unfinished content shipped in the game files. */
+.pov-badge {
+  display: inline-block;
+  padding: 0 0.4em;
+  border-radius: 0.2em;
+  font-size: 0.75em;
+  font-weight: 600;
+  background: var(--md-accent-fg-color--transparent);
+  border: 1px solid var(--md-accent-fg-color);
+  cursor: help;
+}

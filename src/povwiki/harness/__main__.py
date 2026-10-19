@@ -101,9 +101,12 @@ def render_tree(data, language: str, valheim: Path | None = None) -> dict:
         from .items import render_items
 
         items = render_items(valheim, errors)
+    from .gear import render_gear
+
     return {
         "language": language, "revision": data.Revision, "errors": errors,
-        "nodes": nodes, "craft": craft, "loot": loot, "items": items, "wiki": render_wiki(errors),
+        "nodes": nodes, "craft": craft, "loot": loot, "items": items, "gear": render_gear(errors),
+        "wiki": render_wiki(errors),
     }
 
 

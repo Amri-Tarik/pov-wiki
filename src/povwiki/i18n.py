@@ -109,6 +109,18 @@ class Localizer:
         return self.data.rendered(self.lang.mod)["loot"]
 
     @cached_property
+    def gear(self) -> dict:
+        """Jewels, unique lines, currency details and the mod's boss names (harness/gear.py)."""
+        return self.data.rendered(self.lang.mod).get("gear") or {}
+
+    def creature(self, prefab: str) -> str:
+        """A creature's name: the mod's own bosses, else Valheim's (creatures.json)."""
+        if prefab in self.gear.get("creatures", {}):
+            return self.gear["creatures"][prefab]
+        token = (self.valheim or {}).get("creatures", {}).get(prefab, {}).get("name")
+        return self.vtext(token) if token else prefab
+
+    @cached_property
     def items(self) -> dict:
         """Valheim items as the mod sees them: tags, defences, crafted item level (harness/items.py)."""
         return self.data.rendered(self.lang.mod).get("items") or {}
@@ -129,6 +141,7 @@ class Localizer:
             "dir": folder,
             "items": json.loads((folder / "items.json").read_text(encoding="utf-8")),
             "recipes": json.loads((folder / "recipes.json").read_text(encoding="utf-8")),
+            "creatures": json.loads((folder / "creatures.json").read_text(encoding="utf-8")),
             "strings": strings,
         }
 

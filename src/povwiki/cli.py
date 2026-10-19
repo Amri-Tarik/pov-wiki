@@ -30,7 +30,7 @@ def main() -> None:
 
     p = sub.add_parser("render", help="render game text with the mod's own code (Windows)")
     p.add_argument("--version", help="game data version (default: latest extracted)")
-    p.add_argument("--lang", action="append", help="mod language name, e.g. english; repeatable (default: all)")
+    p.add_argument("--lang", action="append", help="mod language name, e.g. english, or all; repeatable (default: the published languages)")
 
     sub.add_parser("valheim", help="extract Valheim's item data, recipes, localization and icons from the install")
 

@@ -827,6 +827,8 @@ def nav() -> list:
     return [
         ("nav.home", "index.md"),
         *((f"{t.key}.title", [(f"{t.key}.{p}", f"{t.key}/{p}.md") for p in t.pages]) for t in TREES),
-        ("items.title", [("items.mods", "items/mods.md"), ("items.bases", "items/bases.md")]),
+        ("items.title", [("items.mods", "items/mods.md"), ("items.bases", "items/bases.md"),
+                         ("gear.currency", "items/currency.md"), ("gear.jewels", "items/jewels.md"),
+                         ("gear.uniques", "items/uniques.md")]),
         ("nav.about", "about.md"),
     ]

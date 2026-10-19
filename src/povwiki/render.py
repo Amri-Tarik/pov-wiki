@@ -108,15 +108,29 @@ def mod_languages(version: str) -> list[str]:
     return sorted(p.stem for p in (EXTRACTED / version / "loc").glob("*.txt"))
 
 
+def published_languages(version: str) -> list[str]:
+    """Mod languages of the wiki languages that are built (i18n/languages.toml: enabled)."""
+    from .i18n import load_languages
+
+    _, langs = load_languages()
+    have = set(mod_languages(version))
+    return sorted({lang.mod for lang in langs.values() if lang.enabled} & have)
+
+
 def render(version: str, languages: list[str] | None = None) -> Path:
+    """Render game text with the mod's code: the published languages unless asked for others
+    ("all" = every language the mod ships). Languages render in parallel, one process each:
+    every process hosts its own .NET runtime, and they share nothing."""
     out = EXTRACTED / version / "rendered"
     meta = json.loads((EXTRACTED / version / "extract.json").read_text(encoding="utf-8"))
+    if languages == ["all"]:
+        languages = mod_languages(version)
+    languages = languages or published_languages(version)
     cmd = [
         sys.executable, "-m", "povwiki.harness",
         "--dll", meta["dll"],
         "--deps", ";".join(str(d) for d in dependency_dirs(version)),
         "--out", str(out),
-        "--languages", ",".join(languages or mod_languages(version)),
     ]
     try:
         from .valheim import latest
@@ -124,5 +138,9 @@ def render(version: str, languages: list[str] | None = None) -> Path:
         cmd += ["--valheim", str(latest())]
     except SystemExit as ex:  # no Valheim install: item pages are skipped
         print(f"note: {ex}")
-    subprocess.run(cmd, check=True)
+    workers = max(1, min(len(languages), (os.cpu_count() or 2) // 2))
+    groups = [languages[i::workers] for i in range(workers)]
+    procs = [subprocess.Popen([*cmd, "--languages", ",".join(g)]) for g in groups]
+    if any(p.wait() for p in procs):
+        raise SystemExit("rendering failed (see the output above)")
     return out

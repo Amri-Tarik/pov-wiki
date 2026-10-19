@@ -96,7 +96,7 @@ class Icons:
     def frame_path(kind: str, state: str) -> str:
         return f"{DOCS_DIR}/frame/{kind}-{state}.webp"
 
-    def write(self, docs: Path) -> None:
+    def write(self, docs: Path) -> list[Path]:
         """Copy the used images into the docs. Images are generated once into a cache next to the
         extracted data (keyed by the settings above) and reused by later builds."""
         cache_dir = self.src.parent / "web" / _settings_key()
@@ -125,9 +125,15 @@ class Icons:
                 list(pool.map(lambda job: generate(*job), missing))
 
         out = docs / DOCS_DIR
+        copied = []
         for rel, _ in jobs:
-            (out / rel).parent.mkdir(parents=True, exist_ok=True)
-            shutil.copyfile(cache_dir / rel, out / rel)
+            src, dst = cache_dir / rel, out / rel
+            copied.append(dst)
+            if dst.exists() and dst.stat().st_size == src.stat().st_size:
+                continue  # generated images only change with the settings key (another cache dir)
+            dst.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(src, dst)
+        return copied
 
     @cache
     def _atlas(self, name: str) -> Image.Image | None:

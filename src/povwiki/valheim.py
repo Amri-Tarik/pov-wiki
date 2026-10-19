@@ -8,6 +8,7 @@ still carry their type trees, so UnityPy can read component data directly:
 - localization: the "localization" TextAsset in resources.assets (Valheim's own string table,
   every language);
 - status effects items apply (equip, set, attack...): class and fields;
+- creatures (Character components): their name string and whether they are a boss;
 - icons: each item's first icon sprite, as PNG.
 
 This is Iron Gate's data: it stays in .cache/valheim/<build>/, like the mod files.
@@ -44,7 +45,7 @@ def latest() -> Path:
     """The extracted data for the installed Valheim (extracting it if needed)."""
     data = data_dir()
     out = VALHEIM / build_key(data)
-    if not (out / "items.json").exists():
+    if not (out / "creatures.json").exists():  # the last file added: older extractions lack it
         extract(data, out)
     return out
 
@@ -85,7 +86,7 @@ def extract(data: Path, out: Path) -> Path:
             return [resolve(owner, v) for v in value]
         return value
 
-    items, recipes, icon_refs, effects = {}, [], {}, {}
+    items, recipes, icon_refs, effects, creatures = {}, [], {}, {}, {}
 
     def keep_effects(owner, shared: dict) -> None:
         """Status effects an item applies (equip, set, attack...): their class and fields."""
@@ -117,6 +118,9 @@ def extract(data: Path, out: Path) -> Path:
             icon_refs[prefab] = (obj, (shared.get("m_icons") or [None])[0])
             keep_effects(obj, shared)
             items[prefab] = resolve(obj, shared)
+        elif "m_faction" in tree and "m_name" in tree and "m_boss" in tree:  # Character / Humanoid
+            prefab = obj.read().m_GameObject.read().m_Name
+            creatures.setdefault(prefab, {"name": tree["m_name"], "boss": bool(tree["m_boss"])})
         elif "m_item" in tree and "m_resources" in tree and "m_craftingStation" in tree:
             item = name_of(obj, tree["m_item"])
             if item is None:
@@ -151,6 +155,7 @@ def extract(data: Path, out: Path) -> Path:
 
     stations = sorted({r["station"] for r in recipes if r["station"]})
     (out / "items.json").write_text(json.dumps(items, ensure_ascii=False), encoding="utf-8")
+    (out / "creatures.json").write_text(json.dumps(creatures, ensure_ascii=False), encoding="utf-8")
     (out / "effects.json").write_text(json.dumps(effects, ensure_ascii=False), encoding="utf-8")
     (out / "recipes.json").write_text(json.dumps(recipes, ensure_ascii=False, indent=1), encoding="utf-8")
     (out / "localization.json").write_text(json.dumps(_localization(data), ensure_ascii=False), encoding="utf-8")

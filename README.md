@@ -36,8 +36,9 @@ uv run povwiki serve --lang en  # live preview at http://localhost:8000
 
 `povwiki extract <zip>` works on any local mod zip instead, e.g. an older version.
 
-Deploys run on GitHub Actions on every push to `main` and once a day, so a new mod release is
-picked up automatically. Site: https://amri-tarik.github.io/pov-wiki/
+Deploys run on GitHub Actions and are manual for now (Actions → Build and deploy wiki → Run
+workflow). Automatic deploys (on push + daily, to pick up new mod releases) come back once the wiki
+is in shape. Site: https://amri-tarik.github.io/pov-wiki/
 
 ## Layout
 

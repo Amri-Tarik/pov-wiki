@@ -1,11 +1,10 @@
 name: Build and deploy wiki
 
-# Rebuilds on every push, and daily to pick up new mod releases from hexium.
+# Manual only while the wiki is under construction: Actions > Build and deploy wiki > Run workflow
+# (or `gh workflow run pages.yml`). To re-enable automatic deploys, add back:
+#   push: {branches: [main]}
+#   schedule: [{cron: "17 6 * * *"}]   # daily, picks up new mod releases from hexium
 on:
-  push:
-    branches: [main]
-  schedule:
-    - cron: "17 6 * * *"
   workflow_dispatch:
 
 permissions:

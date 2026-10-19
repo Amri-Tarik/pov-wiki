@@ -15,6 +15,7 @@ import tomli_w
 
 from .data import GameData
 from .i18n import Language, Localizer, load_languages
+from .markup import to_html
 from .paths import BASE_CONFIG, BUILD, CONTENT, SITE
 
 
@@ -31,10 +32,16 @@ def _cell(s: str) -> str:
     return str(s).replace("|", "\\|").replace("\n", "<br>")
 
 
-def _raw_mod(m: dict) -> str:
-    flags = [k for k in ("form", "subject") if m.get(k)]
-    flags = [f"{k}={m[k]}" for k in flags] + [k for k in ("more", "own") if m.get(k)]
-    return f"`{m['stat']}` {m.get('value', '')}" + (f" ({', '.join(flags)})" if flags else "")
+def _effect(ctx: Ctx, rendered: dict) -> str:
+    """A node's tooltip body as HTML: stat lines, its extra text in italics, then its options."""
+    lines = [to_html(s, ctx.loc) for s in rendered["stats"]]
+    lines += [f"<i>{to_html(s, ctx.loc)}</i>" for s in rendered["extra"]]
+    if rendered["options"]:
+        lines.append(ctx.loc.ui("page.choose_one"))
+        for o in rendered["options"]:
+            body = "; ".join(to_html(s, ctx.loc) for s in o["stats"] + o["extra"])
+            lines.append(f"• <b>{to_html(o['title'], ctx.loc)}</b>" + (f": {body}" if body else ""))
+    return "<br>".join(lines)
 
 
 def _is_live(node: dict) -> bool:
@@ -43,26 +50,21 @@ def _is_live(node: dict) -> bool:
 
 
 def page_keystones(ctx: Ctx) -> str:
-    tree, loc = ctx.data.tree, ctx.loc
+    loc = ctx.loc
     nodes = sorted(
-        (n for n in tree["nodes"] if n["size"] == "Keystone" and _is_live(n)),
-        key=lambda n: loc.node_name(n, tree),
+        (n for n in ctx.data.tree["nodes"] if n["size"] == "Keystone" and _is_live(n)),
+        key=lambda n: loc.nodes[n["id"]]["title"],
     )
     lines = [
         f"# {loc.ui('nav.keystones')}",
         "",
-        f"!!! warning\n    {loc.ui('page.wip')}",
-        "",
-        f"| {loc.ui('col.name')} | {loc.ui('col.branch')} | {loc.ui('col.category')} "
-        f"| {loc.ui('col.stats')} |",
+        f"| {loc.ui('col.name')} | {loc.ui('col.branch')} | {loc.ui('col.category')} | {loc.ui('col.effect')} |",
         "|---|---|---|---|",
     ]
     for n in nodes:
-        stats = "<br>".join(_raw_mod(m) for m in n.get("mods") or [])
-        lines.append(
-            f"| {_cell(loc.node_name(n, tree))} | {_cell(loc.text(f'@branch.{n['branch']}', n['branch']))} "
-            f"| {_cell(loc.text(n.get('cat') or '', n.get('cat') or ''))} | {stats} |"
-        )
+        r = loc.nodes[n["id"]]
+        branch = loc.text(f"@branch.{n['branch']}", n["branch"])
+        lines.append(f"| **{_cell(r['title'])}** | {_cell(branch)} | {_cell(r['category'])} | {_cell(_effect(ctx, r))} |")
     lines += ["", _version_footer(ctx)]
     return "\n".join(lines) + "\n"
 

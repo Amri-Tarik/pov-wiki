@@ -48,3 +48,10 @@ class GameData:
 
     def loc_file(self, mod_language: str) -> Path:
         return self.dir / "loc" / f"{mod_language}.txt"
+
+    def rendered(self, mod_language: str) -> dict:
+        """Game text rendered by the mod's own code (`povwiki render`)."""
+        path = self.dir / "rendered" / f"{mod_language}.json"
+        if not path.exists():
+            raise SystemExit(f"No rendered text for {mod_language}. Run `povwiki render` first.")
+        return json.loads(path.read_text(encoding="utf-8"))

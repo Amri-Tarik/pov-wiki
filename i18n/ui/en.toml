@@ -9,10 +9,10 @@ keystones = "Keystones"
 
 [page]
 data_version = "Data from Path of Valheiman {version}, extracted {date}."
-wip = "Work in progress: stat lines are shown as raw stat ids until stat formatting is implemented."
+choose_one = "Choose one:"
 
 [col]
 name = "Name"
 branch = "Branch"
 category = "Category"
-stats = "Stats"
+effect = "Effect"

@@ -1,0 +1,5 @@
+/* Game keywords: hover shows the mod's own wiki definition. */
+.pov-kw {
+  border-bottom: 1px dotted currentColor;
+  cursor: help;
+}

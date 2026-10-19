@@ -1,8 +1,9 @@
 """Translation layer.
 
 Two string sources, both chosen per language:
-- game text: the mod's own localization file (key<TAB>text), plus the `loc` map inside each tree
-  file. Generators always look game text up by key or node, never hard-code it.
+- game text: rendered by the mod's own code (`povwiki render`) for anything the game composes
+  (node titles, stat lines), and the mod's localization file (key<TAB>text) for plain keyed
+  strings. Generators always look game text up by key or node, never hard-code it.
 - wiki text: i18n/ui/<code>.toml (headings, table columns, nav). Missing keys fall back to the
   default language.
 """
@@ -77,11 +78,7 @@ class Localizer:
         """Game text by mod localization key, e.g. text("@stat.ArmorPct.fmt")."""
         return self.game.get(key, key if default is None else default)
 
-    def node_name(self, node: dict, tree: dict) -> str:
-        """Display name of a tree node. Node names in the tree data are in the author's source
-        language; resolve by node id first, then the source text, then the tree's own loc map."""
-        if (s := self.game.get(f"@{node['id']}")) is not None:
-            return s
-        if (s := self.game.get(node["name"])) is not None:
-            return s
-        return tree.get("loc", {}).get(self.lang.mod, {}).get(node["name"], node["name"])
+    @cached_property
+    def nodes(self) -> dict[str, dict]:
+        """Tree nodes as the game shows them (title, category, stats, extra, options), by id."""
+        return self.data.rendered(self.lang.mod)["nodes"]

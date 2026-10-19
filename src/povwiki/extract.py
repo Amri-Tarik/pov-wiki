@@ -64,6 +64,7 @@ def extract(source: Path) -> Path:
     meta = {
         "version": version,
         "extracted": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "dll": str(dll.resolve()),
         "dll_sha256": hashlib.sha256(dll.read_bytes()).hexdigest(),
         "files": sorted(written),
     }

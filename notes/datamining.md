@@ -39,14 +39,51 @@ Duplicate keys exist, and the last one wins. Key namespaces:
 
 ## Tree data quirks
 
-- Node `name`, `tags`, `topics` are in the author's **Russian** source. Resolve display names by
-  `@<id>` first, then the source text as key, then `tree.loc[<language>][<source name>]`.
-- The sources can disagree. In 5.0.10, `@own13707` = "Barbed Arrows", but its source name
-  `Удар великана` = "Giant's Punch" (it is the fist keystone). `@own11151` = "Featherlight" vs
-  "Feather". We use `@<id>` first, since the template documents it as the stable node key. Still
-  to confirm in game.
+- Node `name`, `tags`, `topics` are in the author's **Russian** source. Don't resolve names by
+  hand: `render` gets them from the game's own `Node.Title`. For the record, the game's `L.Id`
+  checks the player's override file, then the tree file's `loc` map, then the loc file. So in
+  5.0.10 the fist keystone `own13707` shows "Giant's Punch" (from `tree.loc`), even though the loc
+  file says `@own13707 Barbed Arrows`.
 - Placeholder nodes: `name == id` and no mods/options (e.g. `own9390`, `own13713`). Skip them.
 - `size`: Root, Starter, Small, Notable, Keystone, Travel, Socket, Portal.
 - `branch`: Flesh, Toil, Steel, Eitr, War, Wind, Core.
-- `mods[]`: `{stat, value, form?(inc|flat|…), subject?, more?, own?}`. Values are fractions
-  (0.1 = 10%). The exact display rules still need to be worked out against in-game tooltips.
+- `mods[]`: `{stat, value, form?, subject(s)?, cond?, kind?, per?, threshold?, after?, more?, own?, …}`.
+  Values are fractions (0.1 = 10%). Turning them into text takes ~2,000 lines of
+  `PassiveTree/StatText.cs`, which is why we run that code instead of porting it.
+
+## Rendering with the mod's code (`povwiki render`)
+
+`src/povwiki/harness/` loads `PathOfValheiman.dll` into **.NET 8 (CoreCLR) via pythonnet** and
+calls the same members the in-game tooltip uses: `TreeRemote.Parse(TreeRemote.Shipped)`,
+`L.FromTree`, then per language `L.Force = <language>; L.EnsureLoaded()`, and per node
+`Node.Title`, `Node.DisplayCategory`, `Node.Topics`, `StatText.DescribeAll(mods)`, plus the
+`<id>.extra` text, and `NodeOption.Title` / `Told` for options.
+
+Things learnt getting there:
+
+- The mod targets .NET Framework 4.8, but **Windows PowerShell / .NET Framework can't run it**.
+  The formatter uses `System.ReadOnlySpan` (present in Unity's Mono, missing in netfx). CoreCLR
+  has it and runs the netfx-targeted code fine.
+- Unity's **native** engine code (`ECall` methods) can't run outside the engine. The text code
+  only reaches it through Valheim's `Localization.instance` (getter boots from Unity
+  `Resources`) and `GetSelectedLanguage()` (→ `PlayerPrefs`). Shims: an uninitialized
+  `Localization` put into `m_instance`, and a **MonoMod.RuntimeDetour** hook returning our
+  language. pythonnet can't override default interface members, so faking Splatform's
+  platform/preferences provider instead doesn't work.
+- Assembly resolution: never load Unity's copies of `mscorlib`/`netstandard`/`System.*`.
+  Search NuGet's MonoMod first, because BepInEx ships an older MonoMod with the same names.
+- Dependencies: Valheim's `valheim_Data/Managed` (Unity + `assembly_*`), BepInExPack and the
+  mod's Thunderstore dependencies (Jotunn), and MonoMod from NuGet. All are found or downloaded
+  by `povwiki/render.py`.
+- Output keeps TextMeshPro markup: `<link="slug">` (slug = `@wiki.<slug>.*` entry) and
+  `<color=#hex>`. `markup.py` converts it.
+
+## Reading the mod's code
+
+Decompile with ILSpy's command-line tool. No .NET SDK is needed: download the `ilspycmd` NuGet
+package (9.x targets net8.0), unzip it, and run
+`dotnet tools/net8.0/any/ilspycmd.dll -p -o .cache/decompiled/<ver> PathOfValheiman.dll`.
+Keep the output in `.cache/` (it is the author's code). Useful entry points: `PassiveTree/StatText.cs`
+(stat lines), `L.cs` (localization), `TreeRemote.cs` (tree loading), `Node.cs`, `NodeOption.cs`,
+`LootAffixes.cs`, `CraftTree.cs`. `SelfTest.cs` is the author's in-game test suite and shows
+many expected outputs.

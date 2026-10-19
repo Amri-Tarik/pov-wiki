@@ -56,21 +56,24 @@ def frame_kind(size: str, has_options: bool = False) -> str:
 def _slug(image: str) -> str:
     """Image id -> file stem: "PassiveTree.v2.icon.fire.png" -> "v2.icon.fire", "atlas:29" -> "atlas.29"."""
     prefix, _, index = image.partition(":")
-    if prefix in ATLASES:
+    if prefix in ATLASES or prefix == "vh":
         return f"{prefix}.{index}"
     return image.removeprefix("PassiveTree.").removesuffix(".png")
 
 
 class Icons:
-    def __init__(self, data: GameData):
+    def __init__(self, data: GameData, valheim: Path | None = None):
         self.src = data.dir / "images"
+        self.valheim = valheim / "icons" if valheim else None  # Valheim item icons: "vh:<prefab>"
         self.raw: set[str] = set()  # image ids
         self.framed: set[tuple[str, str]] = set()  # (image id, frame kind)
 
     def _exists(self, image: str | None) -> bool:
         if not image:
             return False
-        prefix = image.partition(":")[0]
+        prefix, _, rest = image.partition(":")
+        if prefix == "vh":
+            return bool(self.valheim) and (self.valheim / f"{rest}.png").exists()
         if prefix in ATLASES:
             return (self.src / ATLASES[prefix][0]).exists()
         return (self.src / image.removeprefix("PassiveTree.")).exists()
@@ -133,6 +136,9 @@ class Icons:
 
     def _load(self, image: str) -> Image.Image:
         prefix, _, index = image.partition(":")
+        if prefix == "vh":
+            with Image.open(self.valheim / f"{index}.png") as im:
+                return im.convert("RGBA")
         if prefix in ATLASES:
             _, tile, step, columns, pad = ATLASES[prefix]
             i = int(index)

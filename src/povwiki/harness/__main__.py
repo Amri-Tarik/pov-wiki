@@ -60,7 +60,7 @@ def render_option(o, formatted: set[str], icons) -> dict:
     }
 
 
-def render_tree(data, language: str) -> dict:
+def render_tree(data, language: str, valheim: Path | None = None) -> dict:
     from PassiveTree import L, StatText
 
     from .icons import IconResolver
@@ -95,9 +95,14 @@ def render_tree(data, language: str) -> dict:
     from .loot import render_loot
 
     loot = render_loot(errors)
+    items = {}
+    if valheim is not None:
+        from .items import render_items
+
+        items = render_items(valheim, errors)
     return {
         "language": language, "revision": data.Revision, "errors": errors,
-        "nodes": nodes, "craft": craft, "loot": loot, "wiki": render_wiki(errors),
+        "nodes": nodes, "craft": craft, "loot": loot, "items": items, "wiki": render_wiki(errors),
     }
 
 
@@ -120,6 +125,7 @@ def main() -> None:
     ap.add_argument("--deps", required=True, help="';'-separated DLL folders, in search order")
     ap.add_argument("--out", required=True, type=Path)
     ap.add_argument("--languages", required=True, help="','-separated mod language names")
+    ap.add_argument("--valheim", type=Path, help="extracted Valheim data (povwiki valheim), for item pages")
     args = ap.parse_args()
 
     clrhost.boot(args.dll, [Path(d) for d in args.deps.split(";")])
@@ -133,11 +139,11 @@ def main() -> None:
     args.out.mkdir(parents=True, exist_ok=True)
     for language in args.languages.split(","):
         clrhost.set_language(language)
-        result = render_tree(data, language)
+        result = render_tree(data, language, args.valheim)
         (args.out / f"{language}.json").write_text(json.dumps(result, ensure_ascii=False), encoding="utf-8")
         print(
             f"rendered {language}: {len(result['nodes'])} nodes, {len(result['craft']['nodes'])} craft nodes, "
-            f"{len(result['craft']['quests']['tasks'])} craft quests, {len(result['loot']['affixes'])} affixes, "
+            f"{len(result['craft']['quests']['tasks'])} craft quests, {len(result['loot']['affixes'])} affixes, {len(result['items'])} items, "
             f"{len(result['wiki'])} wiki terms, {len(result['errors'])} errors"
         )
         for e in result["errors"][:5]:

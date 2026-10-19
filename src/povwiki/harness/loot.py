@@ -121,4 +121,18 @@ def render_loot(errors: list) -> dict:
         }
         for k in Runes.All
     }
-    return {"affixes": affixes, "essences": essences, "items": items, "slotMults": SLOT_MULTS}
+    return {"affixes": affixes, "essences": essences, "items": items, "slotMults": SLOT_MULTS, "biomes": _biomes()}
+
+
+def _biomes() -> list[dict]:
+    """The mod's item level per biome (BiomeLevels.Of), lowest first: Meadows 1, Black Forest 19..."""
+    from System import AppDomain, Enum
+    from PassiveTree import BiomeLevels
+
+    biome = next(a for a in AppDomain.CurrentDomain.GetAssemblies() if a.GetName().Name == "assembly_valheim").GetType("Heightmap+Biome")
+    out = []
+    for name in Enum.GetNames(biome):
+        level = int(BiomeLevels.Of(Enum.Parse(biome, name)))
+        if level > 0:
+            out.append({"id": str(name), "level": level})
+    return sorted(out, key=lambda b: (b["level"], b["id"]))

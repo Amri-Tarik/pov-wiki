@@ -75,7 +75,7 @@ def build_language(lang: Language, default: Language, enabled: list[Language], d
         if lang.code != default.code and (CONTENT / lang.code).exists():
             shutil.copytree(CONTENT / lang.code, docs, dirs_exist_ok=True)
 
-    art = icons.Icons(data) if icons.enabled() else None
+    art = icons.Icons(data, loc.valheim["dir"] if loc.valheim else None) if icons.enabled() else None
     ctxs = [Ctx(data=data, loc=loc, spec=spec, icons=art) for spec in TREES]
     ctxs[0].others = ctxs[1:]
     with _timed("load rendered game text"):
@@ -85,9 +85,10 @@ def build_language(lang: Language, default: Language, enabled: list[Language], d
     jobs = [(f"{gen.__name__} [{ctx.spec.key}]", gen, ctx)
             for ctx in ctxs for gen in [LIST_PAGES[p] for p in ctx.spec.pages] + PER_TREE]
     jobs += [(gen.__name__, gen, ctxs[0]) for gen in GLOBAL]
+    from .base_pages import page_bases
     from .item_pages import page_mods
 
-    jobs.append(("page_mods", page_mods, ctxs[0]))
+    jobs += [("page_mods", page_mods, ctxs[0]), ("page_bases", page_bases, ctxs[0])]
     for label, gen, ctx in jobs:
         with _timed(label):
             for rel, text in gen(ctx).items():

@@ -7,6 +7,7 @@ requires-python = ">=3.12"
 dependencies = [
     "dnfile>=0.15",
     "pillow>=11",
+    "unitypy>=1.25",
     "pythonnet>=3.2.1",
     "tomli-w>=1.0",
     "zensical==0.0.71",

@@ -32,6 +32,8 @@ def main() -> None:
     p.add_argument("--version", help="game data version (default: latest extracted)")
     p.add_argument("--lang", action="append", help="mod language name, e.g. english; repeatable (default: all)")
 
+    sub.add_parser("valheim", help="extract Valheim's item data, recipes, localization and icons from the install")
+
     p = sub.add_parser("build", help="generate pages and render the site")
     p.add_argument("--version", help="game data version (default: latest extracted)")
     p.add_argument("--lang", action="append", help="language code; repeatable (default: all enabled)")
@@ -57,6 +59,10 @@ def main() -> None:
         from .render import render
 
         print(f"rendered to {render(args.version or latest_version(), args.lang)}")
+    elif args.cmd == "valheim":
+        from .valheim import latest
+
+        print(f"valheim data in {latest()}")
     elif args.cmd == "build":
         from .data import latest_version
         from .generate import build

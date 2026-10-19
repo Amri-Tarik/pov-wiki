@@ -8,12 +8,22 @@ Two string sources, both chosen per language:
   default language.
 """
 
+import json
+import re
 import tomllib
 from dataclasses import dataclass
 from functools import cached_property
 
 from .data import GameData
 from .paths import I18N
+
+
+# Mod language -> Valheim's localization column (Valheim has no Vietnamese: English then).
+VALHEIM_LANGUAGES = {
+    "english": "English", "french": "French", "spanish": "Spanish", "russian": "Russian", "turkish": "Turkish",
+    "portuguese_brazilian": "Portuguese_Brazilian", "portuguese_european": "Portuguese_European",
+}
+_TOKEN = re.compile(r"\$([A-Za-z0-9_]+)")
 
 
 @dataclass(frozen=True)
@@ -97,6 +107,42 @@ class Localizer:
     def loot(self) -> dict:
         """Item mods, essences and the mod's own items (harness/loot.py)."""
         return self.data.rendered(self.lang.mod)["loot"]
+
+    @cached_property
+    def items(self) -> dict:
+        """Valheim items as the mod sees them: tags, defences, crafted item level (harness/items.py)."""
+        return self.data.rendered(self.lang.mod).get("items") or {}
+
+    @cached_property
+    def valheim(self) -> dict | None:
+        """Valheim's own data (`povwiki valheim`): items, recipes, icons folder and its strings in
+        this language. None when Valheim isn't installed: item pages are skipped then."""
+        from .valheim import latest
+
+        try:
+            folder = latest()
+        except SystemExit:
+            return None
+        table = json.loads((folder / "localization.json").read_text(encoding="utf-8"))
+        strings = {**table.get("English", {}), **table.get(VALHEIM_LANGUAGES.get(self.lang.mod, "English"), {})}
+        return {
+            "dir": folder,
+            "items": json.loads((folder / "items.json").read_text(encoding="utf-8")),
+            "recipes": json.loads((folder / "recipes.json").read_text(encoding="utf-8")),
+            "strings": strings,
+        }
+
+    def vtext(self, text: str | None) -> str:
+        """A Valheim string with its $tokens translated ("$item_axe_bronze" -> "Bronze Axe")."""
+        if not text or self.valheim is None:
+            return text or ""
+        strings = self.valheim["strings"]
+        return _TOKEN.sub(lambda m: strings.get(m.group(1), m.group(0)), text).strip()
+
+    def vkey(self, key: str, default: str | None = None) -> str:
+        """A Valheim UI string by key (no "$"), e.g. vkey("item_weight") -> "Weight"."""
+        strings = self.valheim["strings"] if self.valheim else {}
+        return strings.get(key, default if default is not None else key)
 
     @cached_property
     def wiki(self) -> dict[str, dict]:

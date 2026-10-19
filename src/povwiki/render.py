@@ -118,5 +118,11 @@ def render(version: str, languages: list[str] | None = None) -> Path:
         "--out", str(out),
         "--languages", ",".join(languages or mod_languages(version)),
     ]
+    try:
+        from .valheim import latest
+
+        cmd += ["--valheim", str(latest())]
+    except SystemExit as ex:  # no Valheim install: item pages are skipped
+        print(f"note: {ex}")
     subprocess.run(cmd, check=True)
     return out

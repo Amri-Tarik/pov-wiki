@@ -85,9 +85,25 @@ def _values(text: str) -> str:
     return ", ".join(found) if found else plain(text)
 
 
+def biome(ctx: Ctx, level: int) -> str:
+    """An item level as the biome it belongs to (the mod's BiomeLevels): the highest biome whose
+    level it reaches. Ocean shares Mistlands' level and isn't a progression step, so it's skipped."""
+    steps = [b for b in ctx.loc.loot["biomes"] if b["id"] != "Ocean"]
+    found = steps[0]
+    for b in steps:
+        if b["level"] <= level:
+            found = b
+    return ctx.loc.vkey(f"biome_{found['id'].lower()}", found["id"])
+
+
 def _levels(ctx: Ctx, lo: int, hi: int | None) -> str:
+    """An item level range as biomes, the numbers kept small: "Swamp – Plains (43–129)"."""
     lo = max(1, lo)
-    return ctx.loc.ui("items.level_range", min=lo, max=hi) if hi else ctx.loc.ui("items.level_from", min=lo)
+    if hi:
+        a, b = biome(ctx, lo), biome(ctx, hi)
+        names = a if a == b else f"{a} – {b}"
+        return f"{names} <small>({ctx.loc.ui('items.level_range', min=lo, max=hi)})</small>"
+    return f"{biome(ctx, lo)}+ <small>({ctx.loc.ui('items.level_from', min=lo)})</small>"
 
 
 def _place(ctx: Ctx, affix: dict) -> str:
@@ -119,7 +135,7 @@ def page_mods(ctx: Ctx) -> dict[str, str]:
             f"[{_cell(_title(a))}]({rel(mod_path(a), MODS_PAGE)})",
             _place(ctx, a),
             _cell(_rule(ctx, a)),
-            str(_min_level(a)),
+            f"{biome(ctx, _min_level(a))} <small>({_min_level(a)})</small>",
             str(len(a["tiers"])),
             f"{a['weight']:g}",
         ] for a in sorted(items, key=lambda a: (a["place"], _title(a).lower()))]

@@ -1,0 +1,186 @@
+/* Theme: Forge + glow. A carved serif, gold palette and separators, a soft gold glow, and
+   navigation that stands out (tabs, the left menu and the right "On this page" panel).
+   One set of rules for both modes; each mode only sets the palette below. */
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&display=swap");
+
+/* ---- Palettes ---- */
+[data-md-color-scheme="slate"] {
+  --md-default-bg-color: #0c0b09;
+  --md-default-bg-color--light: #14120e;
+  --md-default-fg-color: #e6dcc8;
+  --md-default-fg-color--light: #b8ab92;
+  --md-default-fg-color--lighter: #6f6553;
+  --md-default-fg-color--lightest: #2e2a22;
+  --md-primary-fg-color: #15120d;
+  --md-primary-bg-color: #e8c77a;
+  --md-accent-fg-color: #f0a040;
+  --md-accent-fg-color--transparent: #f0a0401f;
+  --md-typeset-a-color: #e3b763;
+  --md-code-bg-color: #17140f;
+  --pov-tree-bg: #080705;
+  --pov-gold: #c9a24a;          /* rules, bars, edges of lit things */
+  --pov-title: #f0d79a;         /* page title, active entries */
+  --pov-heading: #e8c77a;       /* section headings, table headers */
+  --pov-subheading: #d9b46a;
+  --pov-link: #e3b763;
+  --pov-link-hover: #ffd27a;
+  --pov-text-soft: #d4c6aa;     /* menu entries */
+  --pov-glow: #c9a24a55;
+  --pov-tint: #c9a24a14;        /* hover */
+  --pov-tint-strong: #c9a24a2e; /* active */
+  --pov-light: radial-gradient(ellipse 80% 40% at 50% 0%, #2a20123d, transparent 70%);
+  --pov-header: linear-gradient(#1d1810, #100e0a);
+  --pov-tabs: linear-gradient(#12100c, #0d0b08);
+  --pov-panel: linear-gradient(180deg, #19150f, #110f0b);
+  --pov-table-head: linear-gradient(#251e13, #1a1510);
+  --pov-edge: #4a3b1f;
+  --pov-edge-soft: #2a2418;
+  --pov-rule: #3a2e19;
+  --pov-shadow: 0 6px 18px #0009;
+}
+[data-md-color-scheme="default"] {
+  --md-default-bg-color: #f4efe4;
+  --md-default-bg-color--light: #faf6ee;
+  --md-default-fg-color: #2b241a;
+  --md-default-fg-color--light: #5c5140;
+  --md-default-fg-color--lighter: #8f8470;
+  --md-default-fg-color--lightest: #d9cfbd;
+  --md-primary-fg-color: #efe6d4;
+  --md-primary-bg-color: #6e521b;
+  --md-accent-fg-color: #b0641a;
+  --md-accent-fg-color--transparent: #b0641a1a;
+  --md-typeset-a-color: #8a5f12;
+  --md-code-bg-color: #ebe3d3;
+  --pov-tree-bg: #e6dcc9;
+  --pov-gold: #b08a3a;
+  --pov-title: #6e521b;
+  --pov-heading: #7a5a1c;
+  --pov-subheading: #8a6a2a;
+  --pov-link: #8a5f12;
+  --pov-link-hover: #b0641a;
+  --pov-text-soft: #4a3f2e;
+  --pov-glow: #c9a24a40;
+  --pov-tint: #b08a3a14;
+  --pov-tint-strong: #b08a3a2b;
+  --pov-light: radial-gradient(ellipse 80% 40% at 50% 0%, #fffaf0, transparent 70%);
+  --pov-header: linear-gradient(#f7f0e1, #ece2cd);
+  --pov-tabs: linear-gradient(#ece2cd, #e6dbc4);
+  --pov-panel: linear-gradient(180deg, #fbf7ef, #f1e9d9);
+  --pov-table-head: linear-gradient(#efe4cd, #e7dbc1);
+  --pov-edge: #cdb48a;
+  --pov-edge-soft: #e2d6bf;
+  --pov-rule: #d6c39c;
+  --pov-shadow: 0 4px 14px #5a42180f;
+}
+
+/* ---- Page and header ---- */
+body { background: var(--pov-light), var(--md-default-bg-color); }
+.md-header {
+  background: var(--pov-header);
+  color: var(--pov-title);
+  border-bottom: 1px solid var(--pov-edge);
+  box-shadow: 0 1px 16px var(--pov-glow);
+}
+.md-header__title, .md-typeset h1, .md-typeset h2, .md-typeset h3, .md-tabs__link, .md-nav__title {
+  font-family: "Cinzel", Georgia, serif;
+  letter-spacing: 0.02em;
+}
+
+/* ---- Tabs ---- */
+.md-tabs {
+  background: var(--pov-tabs);
+  color: var(--pov-text-soft);
+  border-bottom: 1px solid var(--pov-rule);
+}
+.md-tabs__list { padding: 0.2rem 0; }
+.md-tabs__link { font-size: 0.82rem; font-weight: 600; opacity: 1; color: var(--pov-text-soft); }
+.md-tabs__item { padding: 0 1.1em; border-radius: 6px 6px 0 0; transition: background 0.15s; }
+.md-tabs__item:hover { background: var(--pov-tint); }
+.md-tabs__item:hover .md-tabs__link { color: var(--pov-title); }
+.md-tabs__item--active {
+  background: linear-gradient(transparent, var(--pov-tint-strong));
+  box-shadow: inset 0 -2px 0 var(--pov-gold), 0 6px 14px -6px var(--pov-glow);
+}
+.md-tabs__item--active .md-tabs__link { color: var(--pov-title); text-shadow: 0 0 10px var(--pov-glow); }
+
+/* ---- Layout: room between the panels and the page ---- */
+@media screen and (min-width: 76.25em) {
+  .md-main__inner { margin-top: 1.4rem; }
+  .md-sidebar--primary { padding-right: 0.8rem; }
+  .md-sidebar--secondary { padding-left: 0.8rem; }
+}
+
+/* ---- Side panels: framed, sized to their content, only when there is something in them ---- */
+@media screen and (min-width: 76.25em) {
+  .md-sidebar--primary:has(.md-nav__link--active) .md-sidebar__inner,
+  .md-sidebar--secondary:has(.md-nav__link) .md-sidebar__inner {
+    background: var(--pov-panel);
+    border: 1px solid var(--pov-edge);
+    border-radius: 8px;
+    box-shadow: inset 0 1px 0 #ffffff08, var(--pov-shadow);
+    padding: 0.9rem 0.8rem 1rem;
+  }
+}
+.md-nav__title {
+  background: transparent !important;
+  box-shadow: none !important;
+  color: var(--pov-title) !important;
+  font-size: 0.78rem;
+  border-bottom: 1px solid transparent;
+  border-image: linear-gradient(90deg, var(--pov-gold), transparent) 1;
+  padding: 0 0.4rem 0.6em;
+  margin-bottom: 0.6em;
+}
+.md-nav__link {
+  color: var(--pov-text-soft);
+  border-left: 2px solid var(--pov-rule);
+  border-radius: 0 5px 5px 0;
+  padding: 0.4em 0.75em;
+  margin-top: 0.35em;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+.md-nav__link:hover { color: var(--pov-title); background: var(--pov-tint); border-left-color: var(--pov-gold); }
+.md-nav__link--active,
+.md-nav__item--active > .md-nav__link {
+  color: var(--pov-title) !important;
+  background: linear-gradient(90deg, var(--pov-tint-strong), transparent);
+  border-left: 3px solid var(--pov-gold);
+  text-shadow: 0 0 8px var(--pov-glow);
+  font-weight: 600;
+}
+.md-nav--secondary .md-nav__link { font-size: 0.72rem; }
+.md-nav--secondary .md-nav__list .md-nav__list { margin-left: 0.6rem; }
+
+/* ---- Headings: glowing title with a fading gold rule, more room above sections ---- */
+.md-typeset h1 {
+  color: var(--pov-title);
+  text-shadow: 0 0 18px var(--pov-glow);
+  padding-bottom: 0.4em;
+  margin-bottom: 1.1em;
+  border-bottom: 1px solid transparent;
+  border-image: linear-gradient(90deg, var(--pov-gold), transparent) 1;
+}
+.md-typeset h2 { color: var(--pov-heading); text-shadow: 0 0 12px var(--pov-glow); margin-top: 2.2em; margin-bottom: 0.9em; }
+.md-typeset h3 { color: var(--pov-subheading); margin-top: 1.8em; margin-bottom: 0.8em; }
+
+/* ---- Tables: gold-edged panels with a lit header and roomier cells ---- */
+.md-typeset table:not([class]) {
+  background: var(--pov-panel);
+  border: 1px solid var(--pov-edge);
+  border-radius: 6px;
+  box-shadow: var(--pov-shadow);
+  margin: 1.2em 0 1.8em;
+}
+.md-typeset table:not([class]) th {
+  background: var(--pov-table-head);
+  color: var(--pov-heading);
+  font-family: "Cinzel", Georgia, serif;
+  border-bottom: 1px solid var(--pov-edge);
+  padding: 1em 1.2em;
+}
+.md-typeset table:not([class]) td { border-top-color: var(--pov-edge-soft); padding: 0.95em 1.2em; }
+.md-typeset table:not([class]) tr:hover td { background: var(--pov-tint); }
+
+/* ---- Links ---- */
+.md-typeset a { color: var(--pov-link); }
+.md-typeset a:hover { color: var(--pov-link-hover); text-shadow: 0 0 8px var(--pov-glow); }

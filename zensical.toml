@@ -9,7 +9,7 @@ site_description = "Datamined wiki for the Path of Valheiman Valheim mod"
 # the gh-pages CNAME file on deploy (deploy.py).
 site_url = "https://povdb.wiki/"
 repo_url = "https://github.com/Amri-Tarik/pov-wiki"
-extra_css = ["stylesheets/pov.css"]
+extra_css = ["stylesheets/pov.css", "stylesheets/theme.css"]
 extra_javascript = ["javascripts/tree.js"]
 
 [project.theme]

@@ -61,7 +61,7 @@ def render_option(o, formatted: set[str], icons) -> dict:
 
 
 def render_tree(data, language: str, valheim: Path | None = None) -> dict:
-    from PassiveTree import L, StatText
+    from PassiveTree import L, StatText, TreeWords
 
     from .icons import IconResolver
 
@@ -74,7 +74,8 @@ def render_tree(data, language: str, valheim: Path | None = None) -> dict:
             extra = L.Id(f"{n.Id}.extra" if n.Id else None, n.Extra) if n.Extra else ""
             nodes[n.Id] = {
                 "title": n.Title,
-                "category": n.DisplayCategory,
+                # As the node card shows it (TreeWindow: TreeWords.Say(n.DisplayCategory)).
+                "category": TreeWords.Say(n.DisplayCategory) if n.DisplayCategory else n.DisplayCategory,
                 "topics": list(n.Topics),
                 "stats": _lines(StatText.DescribeAll(n.Mods)),
                 "extra": _lines(extra),

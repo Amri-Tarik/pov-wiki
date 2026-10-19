@@ -19,6 +19,11 @@ code, so it matches what you see in game and updates with each patch.
 - [Professions](crafting/professions.md): each profession and its notables
 - [Craft Notables](crafting/notables.md) and [Craft Masteries](crafting/masteries.md)
 
+## Items
+
+- [Mods](items/mods.md): every property an item can roll, with tiers and weights
+- [Item bases](items/bases.md): weapons, armour, shields and trinkets, with stats and recipes
+
 ## Keywords
 
 Underlined keywords link to their entry from the mod's in-game wiki, and show its definition

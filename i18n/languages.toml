@@ -35,7 +35,7 @@ enabled = false
 [languages.ru]
 mod = "russian"
 name = "Русский"
-enabled = false
+enabled = true
 
 [languages.tr]
 mod = "turkish"

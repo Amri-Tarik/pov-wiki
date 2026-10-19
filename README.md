@@ -1,6 +1,6 @@
 # pov-wiki
 
-**Live site: https://amri-tarik.github.io/pov-wiki/**
+**Live site: https://povdb.wiki/**
 
 A datamined wiki for **[Path of Valheiman](https://valheim.hexium.gg/mods/treextr/PathOfValheiman)**,
 the Path of Exile–style passive tree, crafting and loot overhaul for Valheim by **treextr**.
@@ -46,7 +46,7 @@ uv sync
 uv run povwiki fetch            # download the latest release from hexium, extract, render
 uv run povwiki build            # all enabled languages -> site/
 uv run povwiki serve --lang en  # fastest dev loop: generate pages (~3 s) + live preview at http://localhost:8000
-uv run povwiki deploy           # build + publish to https://amri-tarik.github.io/pov-wiki/
+uv run povwiki deploy           # build + publish to https://povdb.wiki/
 ```
 
 `povwiki extract <zip>` works on any local mod zip instead, e.g. an older version.

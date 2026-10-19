@@ -5,8 +5,9 @@
 [project]
 site_name = "Path of Valheiman DB"
 site_description = "Datamined wiki for the Path of Valheiman Valheim mod"
-# Root URL of the GitHub Pages site, without the language suffix.
-site_url = "https://amri-tarik.github.io/pov-wiki/"
+# Root URL of the site, without the language suffix. A custom domain here is also written to
+# the gh-pages CNAME file on deploy (deploy.py).
+site_url = "https://povdb.wiki/"
 repo_url = "https://github.com/Amri-Tarik/pov-wiki"
 extra_css = ["stylesheets/pov.css"]
 extra_javascript = ["javascripts/tree.js"]

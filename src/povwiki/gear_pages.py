@@ -413,3 +413,30 @@ def _unique_page(ctx: Ctx, item: str, catalog: dict) -> str:
     if item in ctx.loc.items and (ctx.loc.items[item].get("mod") or {}).get("kind"):
         md += [ui("gear.see_base", link=f"[{_unique_name(ctx, item)}]({rel(base_path(item), page)})"), ""]
     return "\n".join(md + _footer(ctx))
+
+
+# ---- Keyword references (for glossary pages) ----------------------------------------------------
+
+
+def _texts(lines: list[dict]):
+    for line in lines:
+        yield from (t for t in (line.get("text"), line.get("template")) if t)
+        yield from (p["text"] for p in line.get("pool") or [])
+        yield from _texts(line.get("oneOf") or [])
+
+
+def uniques_by_keyword(ctx: Ctx) -> dict[str, list[str]]:
+    """keyword slug -> unique items whose lines link it."""
+    from .markup import slugs
+
+    found: dict[str, list[str]] = defaultdict(list)
+    for item, u in (ctx.loc.gear.get("uniques") or {}).items():
+        for slug in {s for t in _texts(u["lines"]) for s in slugs(t)}:
+            found[slug].append(item)
+    return found
+
+
+def keyword_uniques_section(ctx: Ctx, items: list[str], page: str) -> list[str]:
+    links = sorted((_unique_name(ctx, i), unique_path(i)) for i in items)
+    return [f"#### {ctx.loc.ui('gear.uniques')} ({len(items)})", "",
+            ", ".join(f"[{name}]({rel(path, page)})" for name, path in links), ""]

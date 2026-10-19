@@ -778,9 +778,13 @@ def _references_section(ctx: Ctx, ref: dict, page: str) -> list[str]:
 
 def page_glossary(ctx: Ctx) -> dict[str, str]:
     """A page per term of the mod's in-game wiki, with what references it in every tree."""
+    from .gear_pages import keyword_uniques_section, uniques_by_keyword
+    from .item_pages import keyword_mods_section, mods_by_keyword
+
     loc, wiki = ctx.loc, ctx.loc.wiki
     trees = [ctx, *ctx.others]
     refs = {t.spec.key: _references(t) for t in trees}
+    mods, uniques = mods_by_keyword(ctx), uniques_by_keyword(ctx)  # item text links keywords too
     terms = defaultdict(set)
     for key, term in wiki.items():
         for slug in {s for line in term["text"] for s in slugs(line)}:
@@ -793,13 +797,19 @@ def page_glossary(ctx: Ctx) -> dict[str, str]:
         md = [f"# {plain(term['title'])}", ""]
         md += [to_md(line, loc, page) + "\n" for line in term["text"]] or [f"*{loc.ui('page.no_text')}*", ""]
         sections = [(t, refs[t.spec.key][key]) for t in trees if key in refs[t.spec.key]]
-        if sections or terms.get(key):
+        if sections or terms.get(key) or mods.get(key) or uniques.get(key):
             md += [f"## {loc.ui('page.referenced_by')}", ""]
         for t, ref in sections:
             body = _references_section(t, ref, page)
             if body:
                 # One heading per tree, so passive and craft references are told apart.
                 md += [f"### {t.ui('title')}", ""] + [line.replace("### ", "#### ", 1) if line.startswith("### ") else line for line in body]
+        if mods.get(key) or uniques.get(key):
+            md += [f"### {loc.ui('items.title')}", ""]
+            if mods.get(key):
+                md += keyword_mods_section(ctx, mods[key], page)
+            if uniques.get(key):
+                md += keyword_uniques_section(ctx, uniques[key], page)
         if terms.get(key):
             md += [f"### {loc.ui('page.see_also')}", ""]
             md += [

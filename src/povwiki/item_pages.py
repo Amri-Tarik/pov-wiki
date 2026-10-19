@@ -207,3 +207,34 @@ def _mod_page(ctx: Ctx, a: dict) -> dict[str, str]:
     md += ["    " + line for line in json.dumps(raw, ensure_ascii=False, indent=2).splitlines()]
     md += ["    ```", ""]
     return {page: "\n".join(md + _footer(ctx))}
+
+
+# ---- Keyword references (for glossary pages) ----------------------------------------------------
+
+
+def mods_by_keyword(ctx: Ctx) -> dict[str, list[dict]]:
+    """keyword slug -> the mods whose text links it (any tier, any slot), as the game words them."""
+    from .markup import slugs
+
+    found: dict[str, list[dict]] = defaultdict(list)
+    for a in ctx.loc.loot["affixes"]:
+        texts = [a["text"]] + [txt for t in a["tiers"] for txt in t["text"].values()]
+        for slug in {s for txt in texts for s in slugs(txt)}:
+            found[slug].append(a)
+    return found
+
+
+def keyword_mods_section(ctx: Ctx, mods: list[dict], page: str) -> list[str]:
+    """The mods that mention a keyword: a table, folded away when it is long."""
+    ui = ctx.loc.ui
+    rows = [[
+        f"[{_cell(_title(a))}]({rel(mod_path(a), page)})",
+        _place(ctx, a),
+        _cell(_rule(ctx, a)),
+        _source(ctx, a) if a["source"] != "loot" else f"{biome(ctx, _min_level(a))} <small>({_min_level(a)})</small>",
+    ] for a in sorted(mods, key=lambda a: (a["source"] != "loot", _title(a).lower()))]
+    table = _table([ui("items.mod"), ui("items.place"), ui("items.rolls_on"), ui("items.min_level")], rows)
+    title = f"{ui('items.mods')} ({len(mods)})"
+    if len(mods) <= 12:
+        return [f"#### {title}", ""] + table
+    return [f'??? note "{title}"', ""] + ["    " + line if line else "" for line in table]

@@ -112,7 +112,9 @@ body { background: var(--pov-light), var(--md-default-bg-color); }
 
 /* ---- Side panels: framed, sized to their content, only when there is something in them ---- */
 @media screen and (min-width: 76.25em) {
-  .md-sidebar--primary:has(.md-nav__link--active) .md-sidebar__inner,
+  /* Left: only when the current tab has sub-pages (Home and About have none; pages outside the
+     menu have no active entry). */
+  .md-sidebar--primary:has(.md-nav__item--active.md-nav__item--nested) .md-sidebar__inner,
   .md-sidebar--secondary:has(.md-nav__link) .md-sidebar__inner {
     background: var(--pov-panel);
     border: 1px solid var(--pov-edge);

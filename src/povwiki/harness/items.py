@@ -195,23 +195,79 @@ def _implicits(item, prefab: str) -> list[dict]:
 
 
 def _mod_items(items: dict, build: "_Builder", tag_set, craft_level: "_CraftLevel", errors: list) -> dict:
-    """The mod's own gear (Rings.All, Belts.All): copies of Valheim's Megingjord with the mod's
-    changes (Rings.Template / Belts.Template), their recipes at the rune carver table
-    (RingRecipes, Belts.Recipes), implicits, tags and how they drop."""
+    """The mod's own gear. The game builds it at run time by copying a Valheim item and changing
+    its shared data, so it is rebuilt the same way here: the source item's extracted data plus
+    the mod's changes, then the mod's own code computes tags and implicits.
+
+    - Rings.All, Belts.All: copies of Megingjord (Rings/Belts.Template), recipes at the rune
+      carver table (RingRecipes, Belts.Recipes), how they drop.
+    - Staves (StarterStaves, LinkStaves), Sceptres, rune chisels (RuneVein.Chisels): weapons and
+      tools with their own damage, attack costs, durability and recipes. Tables the mod keeps as
+      data (StarterStaves.rungs, RuneVein.Chisels) are read from it; values the mod writes inline
+      in code (Spark/Blood Seal staves, staves of bonds, the sceptre) are mirrored below.
+    Quivers (Quivers.cs) are left out: 5.1 never creates them (Quivers.Ensure is empty)."""
+    from PassiveTree import L
+    from PassiveTree.Loot import ItemTags, LootCatalog
+
+    LootCatalog.Ensure()
+    out = {}
+    for spec in _rings_and_belts(items) + _weapons(items):
+        prefab = spec["id"]
+        try:
+            source = items.get(spec["source"]) or {}
+            shared = {k: v for k, v in source.items() if k not in spec.get("drop", ())}
+            shared.update(spec["overrides"])
+            if spec.get("weaponKind"):
+                _register_kind(prefab, spec["weaponKind"])
+            item = build.item(prefab, shared)
+            recipe = spec.get("recipe")
+            if recipe:
+                craft_level.recipe_of[prefab] = {"item": prefab, "enabled": True, "resources": recipe["resources"]}
+            out[prefab] = {
+                "tags": sorted(str(t) for t in tag_set.GetValue(ItemTags.Of(item))),
+                "defence": None,
+                "defences": [],
+                "craftLevel": craft_level.of(prefab),
+                "implicits": _implicits(item, prefab),
+                "mod": {
+                    "kind": spec["kind"],
+                    "source": spec["source"],
+                    "shared": {k: v for k, v in shared.items() if k not in ("m_icons",)},
+                    "icon": spec["icon"],
+                    "recipe": recipe,
+                    **spec.get("drops", {}),
+                },
+            }
+        except Exception as ex:  # one bad item must not lose the rest
+            errors.append({"item": prefab, "error": str(ex).split("\n")[0]})
+    return out
+
+
+def _register_kind(prefab: str, kind: str) -> None:
+    """WeaponAffixes.Register: the mod tells its weapon code what kind each of its weapons is."""
+    from PassiveTree import WeaponAffixes, WeaponKind
+    from System import Enum
+
+    WeaponAffixes.Register(prefab, Enum.Parse(clr.GetClrType(WeaponKind), kind))
+
+
+def _rings_and_belts(items: dict) -> list[dict]:
     import PassiveTree
     from PassiveTree import L, Runes
-    from PassiveTree.Loot import ItemTags, LootCatalog
 
     # Older versions have no rings (5.1) or no belts of their own.
     Rings, RingRecipes, Belts = (getattr(PassiveTree, n, None) for n in ("Rings", "RingRecipes", "Belts"))
-    LootCatalog.Ensure()
-    skip = ("m_equipStatusEffect", "m_setStatusEffect")
-    template = {k: v for k, v in items.get("BeltStrength", {}).items() if k not in skip}
     station = {"id": "PT_RuneCarverTable", "name": L.Id("piece.PT_RuneCarverTable.name", "Rune Carver Table")}
     common = {"m_itemType": 18, "m_maxStackSize": 1, "m_setName": "", "m_setSize": 0, "m_subtitle": "",
               "m_teleportable": True}
+    drop = ("m_equipStatusEffect", "m_setStatusEffect")
     parts = clr.GetClrType(RingRecipes).GetField("parts", _ALL).GetValue(None) if RingRecipes else {}
     known = set(items) | {str(k.Id) for k in Runes.All}
+
+    def spec(k, kind: str, overrides: dict, resources: list | None, drops: dict) -> dict:
+        return {"id": str(k.Id), "source": "BeltStrength", "drop": drop, "kind": kind,
+                "overrides": {**common, **overrides}, "icon": f"PassiveTree.item.{k.Id}.png", "drops": drops,
+                "recipe": {"station": station, "stationLevel": 1, "resources": resources} if resources else None}
 
     specs = []
     for k in Rings.All if Rings else []:
@@ -222,7 +278,7 @@ def _mod_items(items: dict, build: "_Builder", tag_set, craft_level: "_CraftLeve
             if essence is not None:
                 resources.append({"item": essence, "amount": 1, "perLevel": 0})
             resources.append({"item": "PT_AzuriteDust", "amount": 40, "perLevel": 0})
-        specs.append((k, "ring", {
+        specs.append(spec(k, "ring", {
             "m_name": L.Id(f"item.{k.Id}.name", k.Name), "m_description": L.Id(f"item.{k.Id}.flavor", k.Flavor),
             "m_maxQuality": 1, "m_weight": 0.1,
         }, resources, {"biome": None if k.Everywhere else str(k.Biome), "everywhere": bool(k.Everywhere)}))
@@ -239,36 +295,145 @@ def _mod_items(items: dict, build: "_Builder", tag_set, craft_level: "_CraftLeve
                     resources = None
                     break
                 resources.append({"item": found, "amount": part.Item2, "perLevel": max(1, part.Item2 // 2)})
-        specs.append((k, "belt", {
+        specs.append(spec(k, "belt", {
             "m_name": L.Id(f"item.{k.Id}.name", k.Name), "m_description": flavor,
             "m_maxQuality": 1 if k.Unique else 3, "m_weight": 1.0,
         }, resources, {"unique": bool(k.Unique), "globalMinLevel": int(k.GlobalMinLevel) or None}))
+    return specs
 
-    out = {}
-    for k, kind, overrides, resources, drops in specs:
+
+def _resources(ids, amounts, upgrades, flat: bool = False) -> list[dict]:
+    """Recipe materials. flat: StarterStaves.UpgradeCost, every quality step costs the per-level
+    amount once (vanilla multiplies it by the steps)."""
+    return [{"item": i, "amount": int(a), "perLevel": int(u), **({"flat": True} if flat else {})}
+            for i, a, u in zip(ids, amounts, upgrades)]
+
+
+def _attack(source: dict, **costs) -> dict:
+    """StarterAttack: the source attack with the mod's costs and no extra spawns."""
+    attack = dict(source.get("m_attack") or {})
+    attack.update({"m_attackHealthPercentage": 0.0, "m_attackHealthLowBlockUse": True, "m_consumeItem": False,
+                   "m_destroyPreviousProjectile": False, "m_spawnOnHitChance": 0.0, "m_drawEitrDrain": 0.0,
+                   "m_drawStaminaDrain": 0.0, "m_requiresReload": False, **costs})
+    return attack
+
+
+def _weapons(items: dict) -> list[dict]:
+    """Staves, the sceptre and rune chisels (see _mod_items)."""
+    import PassiveTree
+    from PassiveTree import L
+
+    if getattr(PassiveTree, "StarterStaves", None) is None:  # older versions
+        return []
+    workbench = "piece_workbench"
+    gone = ("m_consumeStatusEffect", "m_attackStatusEffect", "m_spawnOnHit", "m_spawnOnHitTerrain")
+
+    def staff(source: str, prefab: str, name: str, skill: int, stamina: float, health: float, eitr: float) -> dict:
+        """StarterStaves.Clone."""
+        return {"m_name": L.Id(f"item.{prefab}.name", name), "m_skillType": skill, "m_weight": 1.5,
+                "m_maxQuality": 3, "m_maxDurability": 80.0, "m_durabilityPerLevel": 20.0, "m_useDurability": True,
+                "m_attack": _attack(items.get(source, {}), m_attackStamina=stamina, m_attackHealth=health,
+                                    m_attackEitr=eitr),
+                "m_secondaryAttack": {}, "m_ammoType": "", "m_attackForce": 5.0, "m_backstabBonus": 1.0}
+
+    specs = []
+    # Spark and Blood Seal staves (StarterStaves, built inline).
+    specs.append({"id": "PT_StaffSpark", "source": "StaffFireball", "drop": gone, "kind": "weapon",
+                  "weaponKind": "ElementalMagic", "icon": "vh:StaffFireball",
+                  "overrides": {**staff("StaffFireball", "PT_StaffSpark", "Посох искры", 9, 14, 0, 4),
+                                "m_description": L.Id("ui.staff.fires-a-fireball-that-explodes", "Fires a fireball that explodes on impact."),
+                                "m_damages": {"m_fire": 6.0, "m_blunt": 5.0}, "m_damagesPerLevel": {"m_fire": 3.0, "m_blunt": 1.0}},
+                  "recipe": {"station": workbench, "stationLevel": 1, "resources": _resources(
+                      ["Wood", "Resin", "Coal", "SurtlingCore"], [10, 4, 2, 1], [5, 2, 1, 0], flat=True)}})
+    blood = staff("StaffShield", "PT_StaffBloodSeal", "Посох кровавой печати", 10, 18, 6, 6)
+    blood["m_attack"].update({"m_attackType": 3, "m_attackProjectile": None})
+    specs.append({"id": "PT_StaffBloodSeal", "source": "StaffShield", "drop": gone, "kind": "weapon",
+                  "weaponKind": "BloodMagic", "icon": "vh:StaffShield",
+                  "overrides": {**blood, "m_description": L.Id("ui.staff.blood-seal-shields-you-and", "Blood Seal shields you and allies."),
+                                "m_damages": {}, "m_damagesPerLevel": {}},
+                  "recipe": {"station": workbench, "stationLevel": 1, "resources": _resources(
+                      ["Wood", "LeatherScraps", "Raspberry"], [10, 4, 4], [5, 2, 2], flat=True)}})
+
+    # The rung staves: StarterStaves.rungs (Source, CutBeam, Blow).
+    rungs = clr.GetClrType(PassiveTree.StarterStaves).GetField("rungs", _ALL).GetValue(None)
+    for r in rungs:
+        source = next((f for f in r.From if _projectile_source(items.get(f), r)), "StaffFireball")
+        attack = (items.get(source) or {}).get("m_attack") or {}
+        shots, bursts = max(1, int(attack.get("m_projectiles") or 1)), max(1, int(attack.get("m_projectileBursts") or 1))
+        if r.Volley > 0 and shots * bursts > 24:  # CutBeam
+            shots, bursts = min(shots, r.Volley), max(1, r.Volley // shots)
+        n = shots * bursts
+        element = {"Fire": "m_fire", "Poison": "m_poison", "Frost": "m_frost"}.get(str(r.Kind), "m_lightning")
+        overrides = staff(source, str(r.Id), r.Name, 9, float(r.Stamina), 0.0, float(r.Eitr))
+        overrides["m_attack"].update({"m_projectiles": shots, "m_projectileBursts": bursts})
+        overrides.update({
+            "m_description": L.Id(f"ui.staff.{r.Id}.about", r.About),
+            "m_damages": {"m_blunt": r.Blunt / n, element: r.Element / n},
+            "m_damagesPerLevel": {element: r.PerLevel / n},
+        })
+        specs.append({"id": str(r.Id), "source": source, "drop": gone, "kind": "weapon", "weaponKind": "ElementalMagic",
+                      "icon": f"vh:{source}", "overrides": overrides,
+                      "recipe": {"station": workbench, "stationLevel": int(r.Bench),
+                                 "resources": _resources(r.Mats, r.Amounts, r.Upgrades, flat=True)}})
+
+    # Staves of bonds (LinkStaves.Make), BloodMagic, no damage.
+    for prefab, source, name, desc, station, level, mats, amounts, ups in (
+        ("pov_staff_link_wood", "StaffGreenRoots", "Staff of Bonds",
+         "Hold the attack to channel a beam. Touching an ally links you: what your links carry passes between you while the beam holds. Costs eitr while channelling; never harms anyone.",
+         workbench, 2, ["Wood", "GreydwarfEye", "Resin"], [12, 4, 6], [4, 2, 2]),
+        ("pov_staff_link_runic", "StaffShield", "Runic Staff of Bonds",
+         "A reinforced staff of bonds: a longer beam and a cheaper channel. Hold the attack to link an ally you touch with the beam.",
+         "piece_magetable", 1, ["YggdrasilWood", "Eitr", "BlackCore"], [10, 6, 1], [5, 3, 0]),
+    ):
+        specs.append({"id": prefab, "source": source, "drop": gone + ("m_equipStatusEffect",), "kind": "weapon",
+                      "weaponKind": "BloodMagic", "icon": "PassiveTree.v2.icon.link.png",
+                      "overrides": {"m_name": L.Id(f"item.{prefab}.name", name),
+                                    "m_description": L.Id(f"item.{prefab}.description", desc), "m_skillType": 10,
+                                    "m_damages": {}, "m_damagesPerLevel": {}, "m_maxQuality": 4,
+                                    "m_maxDurability": 100.0, "m_durabilityPerLevel": 50.0, "m_useDurability": True,
+                                    "m_weight": 2.0, "m_ammoType": "", "m_secondaryAttack": {}},
+                      "recipe": {"station": station, "stationLevel": level, "resources": _resources(mats, amounts, ups)}})
+
+    # Sceptre of the Pious (Sceptres): a club whose blows also call down Smite.
+    if getattr(PassiveTree, "Sceptres", None) is not None:
+        club = items.get("Club") or {}
+        specs.append({"id": "PT_SceptrePious", "source": "Club", "drop": ("m_spawnOnHit", "m_spawnOnHitTerrain"),
+                      "kind": "weapon", "weaponKind": "Scepters", "icon": "PassiveTree.item.PT_SceptrePious.png",
+                      "overrides": {"m_name": L.Id("item.PT_SceptrePious.name", "Sceptre of the Pious"),
+                                    "m_description": L.Id("item.PT_SceptrePious.description", "A priest's sceptre."),
+                                    "m_damages": {"m_blunt": 10.0, "m_lightning": 20.0, "m_fire": 20.0},
+                                    "m_damagesPerLevel": {"m_blunt": 5.0, "m_lightning": 10.0, "m_fire": 10.0},
+                                    "m_attackForce": 10.0, "m_maxQuality": 4,
+                                    "m_attack": {**(club.get("m_attack") or {}), "m_attackEitr": 5.0}},
+                      "recipe": {"station": workbench, "stationLevel": 1, "resources": _resources(
+                          ["Wood", "Resin", "Flint"], [10, 4, 4], [5, 2, 2])}})
+
+    # Rune chisels (RuneVein.Chisels): azurite mining tools made from the flint knife.
+    for k in getattr(getattr(PassiveTree, "RuneVein", None), "Chisels", None) or []:
         prefab = str(k.Id)
-        try:
-            shared = {**template, **common, **overrides}
-            item = build.item(prefab, shared)
-            if resources:
-                craft_level.recipe_of[prefab] = {"item": prefab, "enabled": True, "resources": resources}
-            out[prefab] = {
-                "tags": sorted(str(t) for t in tag_set.GetValue(ItemTags.Of(item))),
-                "defence": None,
-                "defences": [],
-                "craftLevel": craft_level.of(prefab),
-                "implicits": _implicits(item, prefab),
-                "mod": {
-                    "kind": kind,
-                    "shared": {f: shared[f] for f in ("m_name", "m_description", "m_maxQuality", "m_weight", "m_itemType")},
-                    "icon": f"PassiveTree.item.{prefab}.png",
-                    "recipe": {"station": station, "stationLevel": 1, "resources": resources} if resources else None,
-                    **drops,
-                },
-            }
-        except Exception as ex:  # one bad item must not lose the rest
-            errors.append({"item": prefab, "error": str(ex).split("\n")[0]})
-    return out
+        specs.append({"id": prefab, "source": "KnifeFlint", "kind": "tool", "icon": f"PassiveTree.item.{prefab}.png",
+                      "overrides": {"m_name": L.Id(f"item.{prefab}.name", k.Name),
+                                    "m_description": L.Id(f"item.{prefab}.description", k.Desc), "m_skillType": 0,
+                                    "m_damages": {"m_pickaxe": float(k.Power), "m_pierce": float(min(k.Power, 60))},
+                                    "m_damagesPerLevel": {}, "m_toolTier": 0, "m_maxQuality": 4, "m_useDurability": True,
+                                    "m_maxDurability": float(k.Durability), "m_durabilityPerLevel": 50.0,
+                                    "m_attack": {**((items.get("SpearFlint") or items.get("KnifeFlint") or {}).get("m_attack") or {}),
+                                                 "m_speedFactor": 0.0},
+                                    "m_secondaryAttack": {}},
+                      "recipe": {"station": "forge", "stationLevel": int(k.Station), "resources": _resources(
+                          ["Wood", k.Hide, k.Metal], [2, 2, k.MetalAmount], [1, 1, k.MetalAmount // 2])}})
+    return specs
+
+
+def _projectile_source(source: dict | None, rung) -> bool:
+    """StarterStaves.Source: a source staff must shoot projectiles, and not a beam of more than
+    24 unless the rung cuts it to a volley. (Its check on projectiles that spawn something needs
+    the projectile prefab, which isn't extracted: the first projectile staff is taken.)"""
+    attack = (source or {}).get("m_attack") or {}
+    if int(attack.get("m_attackType") or 0) != 2 or not attack.get("m_attackProjectile"):
+        return False
+    shots = max(1, int(attack.get("m_projectiles") or 1)) * max(1, int(attack.get("m_projectileBursts") or 1))
+    return shots <= 24 or rung.Volley > 0
 
 
 class _CraftLevel:

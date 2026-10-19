@@ -196,7 +196,11 @@ def _icon(ctx: Ctx, prefab: str, page: str, px: int) -> str:
     """Valheim's icon, or the mod's own for its items (PT_*: PassiveTree.item.<id>.png)."""
     if not ctx.icons:
         return ""
-    image = f"PassiveTree.item.{prefab}.png" if prefab.startswith("PT_") else f"vh:{prefab}"
+    mod = ctx.loc.items.get(prefab, {}).get("mod")
+    if mod:  # the mod's own gear: its icon, or the one it keeps from the item it copies
+        image = mod["icon"]
+    else:
+        image = f"PassiveTree.item.{prefab}.png" if prefab.startswith("PT_") else f"vh:{prefab}"
     return _img(ctx.icons.path(image), page, px)
 
 
@@ -314,8 +318,9 @@ def _base_page(ctx: Ctx, prefab: str, b: dict, found: dict) -> str:
             name = _item_name(ctx, mat)
             link = f"[{name}]({rel(base_path(mat), page)})" if mat in found else name
             # Valheim's Requirement.GetAmount: crafting takes the amount, upgrading to quality q
-            # takes (q - 1) x the per-level amount.
-            upgrades = [str(res["perLevel"] * (q - 1)) for q in qs[1:]]
+            # takes (q - 1) x the per-level amount. Some of the mod's staves cost the per-level
+            # amount once per step ("flat": StarterStaves.UpgradeCost).
+            upgrades = [str(res["perLevel"] * (1 if res.get("flat") else q - 1)) for q in qs[1:]]
             rows.append([_icon(ctx, mat, page, 32), link, str(res["amount"]), *upgrades])
         header = ["", ui("items.material"), ui("items.craft"), *(ui("items.upgrade_n", n=q) for q in qs[1:])]
         md += _table(header, rows)

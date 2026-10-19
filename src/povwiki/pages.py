@@ -403,26 +403,131 @@ def page_masteries(ctx: Ctx) -> dict[str, str]:
     return {page: "\n".join(md + _footer(ctx))}
 
 
+def profession_path(ctx: Ctx, prof: str) -> str:
+    return ctx.path(f"profession/{prof}.md")
+
+
+def _profession_icon(ctx: Ctx, prof: str, page: str, px: int) -> str:
+    """The profession's badge art (craftbadge.icon-<profession>), when icons are on."""
+    if not ctx.icons:
+        return ""
+    return _img(ctx.icons.path(f"PassiveTree.craftbadge.icon-{prof}.png"), page, px)
+
+
+def _boss_gate(ctx: Ctx, boss: int) -> str:
+    return ctx.ui("boss_gate", boss=ctx.loc.ui(f"boss.{boss}")) if boss > 0 else ""
+
+
+def _quest_families(ctx: Ctx, prof: str) -> list[list[dict]]:
+    """The profession's composed quest families (the ones the game offers), first offered first."""
+    by_template = defaultdict(list)
+    for t in ctx.loc.craft["quests"]["tasks"]:
+        if t["profession"] == prof and t["template"] and t["issuable"]:
+            by_template[t["template"]].append(t)
+    first = lambda t: next((i for i, s in enumerate(t["stages"]) if s["offered"]), 99)  # noqa: E731
+    return sorted((sorted(v, key=lambda t: (first(t), t["conditions"], t["target"], t["facts"])) for v in by_template.values()),
+                  key=lambda fam: (min(first(t) for t in fam), fam[0]["action"]))
+
+
 def page_professions(ctx: Ctx) -> dict[str, str]:
-    """Craft tree: sectors and their professions, with each profession's notables."""
+    """Craft tree: an overview of sectors and professions, and a page per profession with its
+    stages, notables and quests."""
     page, loc = ctx.path("professions.md"), ctx.loc
+    quests = loc.craft["quests"]
     notables = [n for n in ctx.tree_nodes if n["size"] == "Notable" and _is_implemented(n)]
     # A notable's profession is its shelf line (TreeWindow.CraftShelf): its own profession, or
     # the one its cluster (chunk) belongs to. That line is the node's category.
     by_shelf = defaultdict(list)
     for n in notables:
         by_shelf[n["r"]["category"]].append(n)
+    unavailable = loc.text("@ui.crafttree.profession-not-available", "This profession is not available in the game yet.")
+    pages = {}
+
     md = [f"# {ctx.ui('professions')}", "", ctx.ui("professions_intro"), ""]
     for sector in loc.craft["sectors"]:
         md += [f"## {sector['name']}", ""]
+        rows = []
         for prof in sector["profs"]:
-            mine = sorted(by_shelf.get(prof["name"], []), key=lambda n: n["r"]["title"])
-            md += [f"### {prof['name']}", ""]
-            if not mine:
-                md += [f"*{ctx.ui('no_notables')}*", ""]
-                continue
-            md += _node_table(ctx, page, [loc.ui("col.name"), loc.ui("col.effect")], mine,
-                              lambda n: [_name(ctx, n, page), _effect(ctx, page, n["r"])])
+            info = quests["professions"].get(prof["id"], {"areas": [], "unavailable": False})
+            link = f"[**{prof['name']}**]({rel(profession_path(ctx, prof['id']), page)})"
+            if info["unavailable"]:
+                link += " " + _badge(loc.ui("badge.broken"), unavailable)
+            rows.append([
+                _profession_icon(ctx, prof["id"], page, 48), link, str(len(info["areas"])),
+                str(len(by_shelf.get(prof["name"], []))), str(len(_quest_families(ctx, prof["id"]))),
+            ])
+        md += _table(["", ctx.ui("profession"), ctx.ui("stages"), ctx.ui("notables"), ctx.ui("quest_families")], rows)
+    pages[page] = "\n".join(md + _footer(ctx))
+
+    for sector in loc.craft["sectors"]:
+        for prof in sector["profs"]:
+            pages.update(_profession_page(ctx, sector, prof, by_shelf.get(prof["name"], []), unavailable))
+    return pages
+
+
+def _profession_page(ctx: Ctx, sector: dict, prof: dict, notables: list[dict], unavailable: str) -> dict[str, str]:
+    loc, page = ctx.loc, profession_path(ctx, prof["id"])
+    info = ctx.loc.craft["quests"]["professions"].get(prof["id"], {"areas": [], "unavailable": False})
+    levels = len(info["areas"]) + 1  # quests scale with areas revealed: 0 .. all
+    art = _profession_icon(ctx, prof["id"], page, 96)
+    md = [f"# {prof['name']}", ""]
+    md += [(f'<span class="pov-art-lg">{art}</span>' if art else "") + f"<b>{ctx.ui('profession')}</b> · {sector['name']}", ""]
+    if info["unavailable"]:
+        md += [f'!!! warning "{loc.ui("page.unimplemented")}"', f"    {unavailable}", ""]
+
+    # Stages.
+    if info["areas"]:
+        md += [f"## {ctx.ui('stages')}", "", ctx.ui("stages_intro"), ""]
+        md += _table(
+            [ctx.ui("craft_xp"), ctx.ui("tier"), ctx.ui("area"), ctx.ui("lore")],
+            [[f"{a['xp']:,}", str(a["tier"]), str(a["number"]),
+              (f"<i>{to_md(a['lore'], loc, page)}</i>" if a["lore"] else "")
+              + (" " + _badge(loc.ui("badge.broken"), loc.ui("badge.reserved_tip")) if a["reserved"] else "")]
+             for a in sorted(info["areas"], key=lambda a: (a["xp"], a["number"]))],
+        )
+
+    # Notables.
+    if notables:
+        md += [f"## {ctx.ui('notables')}", ""]
+        md += _node_table(ctx, page, [loc.ui("col.name"), loc.ui("col.effect")], sorted(notables, key=lambda n: n["r"]["title"]),
+                          lambda n: [_name(ctx, n, page), _effect(ctx, page, n["r"])])
+
+    # Quests.
+    families = _quest_families(ctx, prof["id"])
+    if families:
+        md += [f"## {ctx.ui('quests')}", "", ctx.ui("quests_intro"), ""]
+        stage_cols = [ctx.ui("revealed_n", n=i) for i in range(levels)]
+        for fam in families:
+            lead = fam[0]
+            first = min(next((i for i, s in enumerate(t["stages"]) if s["offered"]), 99) for t in fam)
+            boss = min(t["boss"] for t in fam)
+            meta = [ctx.ui("offered_from", n=first) if first else ctx.ui("offered_start")] + ([_boss_gate(ctx, boss)] if boss else [])
+            md += [f"### {plain(lead['action'])}", "", " · ".join(meta), ""]
+            md += _table([ctx.ui("reward_by_stage"), *stage_cols],  # by areas revealed
+                         [["", *(f"{s['reward']:,}" for s in lead["stages"])]])
+            life = loc.text("@craft.composer.condition.life", "in one life (death resets progress)")
+            rows = []
+            for t in fam:
+                conditions = [*t["facts"], *([life] if "death" in t["resets"] else [])]
+                rows.append([
+                    ", ".join(conditions) or ctx.ui("none"),
+                    t["target"] or ctx.ui("any"),
+                    *(f"{s['count']:,}" if s["offered"] else ctx.ui("none") for s in t["stages"]),
+                ])
+            unit = lead["shown"].split(" · ")[1].split(" ", 1)[1] if " · " in lead["shown"] else ""
+            md += [f'??? note "{ctx.ui("variants", count=len(fam))}"', ""]
+            md += ["    " + line for line in _table(
+                [ctx.ui("conditions"), ctx.ui("target"), *(f"{c} ({unit})" if unit else c for c in stage_cols)], rows)]
+
+    # Tasks in the files that the quest system never offers.
+    dead = [t for t in ctx.loc.craft["quests"]["tasks"] if t["profession"] == prof["id"] and not t["template"]]
+    if dead:
+        md += [f"## {ctx.ui('not_offered')} ({len(dead)})", "", f'??? note "{ctx.ui("not_offered_note")}"', ""]
+        md += ["    " + line for line in _table(
+            [ctx.ui("task"), ""],
+            [[to_md(t["text"], loc, page), _badge(loc.ui("badge.broken"), ctx.ui("not_offered_note"))
+              + (f" `{ctx.ui('removed')}`" if t["removed"] else "")] for t in dead],
+        )]
     return {page: "\n".join(md + _footer(ctx))}
 
 

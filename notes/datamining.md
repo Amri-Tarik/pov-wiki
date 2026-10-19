@@ -177,6 +177,25 @@ Unity, so the loaders that check it are mirrored rather than called.
 - Craft branches (forge, wood, beast, table, mead, road) aren't `Branch` enum values, so the
   game tints the whole craft tree alike. The viewer's sector colours are the wiki's own choice.
 
+## Craft quests and profession areas (`harness/quests.py`)
+
+- **Areas:** `CraftProgressionCatalog.Areas` is replaced at load (`CraftTree.Load` →
+  `CraftProgressionModel.UseAreas`) by areas built from the craft tree's own area polygons:
+  number = order within the profession, tier and XP from the compiled entry with the same id. The
+  XP is eased a second time by the `Area` constructor. Headhunter (`road3`) areas are reserved, and
+  the tree window says the profession "is not available in the game yet". Profession stage =
+  highest tier among areas whose XP you have reached.
+- **Quests:** `CraftTaskCatalog.All` holds the hand-written tasks plus the variants
+  `CraftQuestComposer.Register` composes from templates (5,447 in 5.0.10). `IssueSlot` only offers
+  tasks whose `ConditionCount` equals what the slot asks for (`ConditionsFor` by areas revealed
+  and slot, capped by `MaxConditions`). The hand-written tasks keep `ConditionCount = -1`, so they
+  are never offered. Target = `RoundQuota(count × CountScale(revealed) × multiplier)`, reward =
+  `Math.Round(reward × 1.8 × Hardness(revealed))`. Quest text = `CraftQuestComposer.Text`. Target
+  names first go through Valheim's localization (`GameName`), which isn't available outside the
+  game, so that is hooked to fall back on the mod's own names.
+- Quest scaling counts areas *revealed* (`CraftProgress.ProfessionLevel` = opened areas), not
+  the stage.
+
 ## Reading the mod's code
 
 Decompile with ILSpy's command-line tool. No .NET SDK is needed: download the `ilspycmd` NuGet

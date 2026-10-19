@@ -1,0 +1,48 @@
+# Wiki languages. `code` (table key) is used in URLs: /<code>/...
+#   mod     = the mod's localization file name (PassiveTree.loc.<mod>.txt inside the DLL)
+#   name    = shown in the language switcher
+#   enabled = built and published
+# Enabling a language: set enabled = true, add i18n/ui/<code>.toml (missing keys fall back to
+# the default language) and optionally content/<code>/ (missing pages fall back too).
+
+default = "en"
+
+[languages.en]
+mod = "english"
+name = "English"
+enabled = true
+
+[languages.fr]
+mod = "french"
+name = "Français"
+enabled = false
+
+[languages.es]
+mod = "spanish"
+name = "Español"
+enabled = false
+
+[languages.pt-br]
+mod = "portuguese_brazilian"
+name = "Português (Brasil)"
+enabled = false
+
+[languages.pt-pt]
+mod = "portuguese_european"
+name = "Português (Portugal)"
+enabled = false
+
+[languages.ru]
+mod = "russian"
+name = "Русский"
+enabled = false
+
+[languages.tr]
+mod = "turkish"
+name = "Türkçe"
+enabled = false
+
+[languages.vi]
+mod = "vietnamese"
+name = "Tiếng Việt"
+enabled = false

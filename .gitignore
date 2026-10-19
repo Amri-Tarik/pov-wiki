@@ -1,0 +1,21 @@
+# --- Mod files: never commit (licence forbids re-publishing the mod) ---
+*.zip
+*.dll
+.cache/
+
+# --- Build output ---
+build/
+site/
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+dist/
+
+# --- Editors / OS ---
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

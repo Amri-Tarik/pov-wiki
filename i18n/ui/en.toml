@@ -1,0 +1,18 @@
+# Strings of the wiki itself (headings, table columns, nav). Game text never goes here:
+# it comes from the mod's own localization files.
+
+[nav]
+home = "Home"
+about = "About"
+passives = "Passive Tree"
+keystones = "Keystones"
+
+[page]
+data_version = "Data from Path of Valheiman {version}, extracted {date}."
+wip = "Work in progress: stat lines are shown as raw stat ids until stat formatting is implemented."
+
+[col]
+name = "Name"
+branch = "Branch"
+category = "Category"
+stats = "Stats"

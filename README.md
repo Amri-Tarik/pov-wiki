@@ -10,6 +10,17 @@ Every page is generated from the mod's own files, so the wiki matches each relea
 > Unofficial fan project. All game data and text belong to the mod author. This repo never
 > contains or redistributes the mod itself (see [Licence](#licence)).
 
+## Screenshots
+
+![Passive tree viewer: the whole tree with the game's own node art, zoomed in on a keystone](.github/screenshots/passive-tree.webp)
+
+| | |
+|---|---|
+| ![Keystones with their in-game icons and effects](.github/screenshots/keystones.webp) | ![Craft tree viewer with a craft notable and its mastery options](.github/screenshots/crafting.webp) |
+| **Keystones, notables and masteries**, with the game's icons and wording | **Crafting**: the craft tree, professions, quests and masteries |
+| ![An item base and the mods that can roll on it, with weights](.github/screenshots/item-base.webp) | ![A unique jewel with its lines, radius and drop sources](.github/screenshots/unique-jewel.webp) |
+| **Items**: every base with stats, recipe and its full mod pool | **Uniques, jewels and currency**, with drop sources |
+
 ## How it works
 
 ```

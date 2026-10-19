@@ -1,8 +1,11 @@
 name: Build and deploy wiki
 
-# Manual only until `povwiki fetch` exists (CI has no mod files to extract otherwise).
-# Then add: push to main + a schedule that rebuilds when a new mod version is out.
+# Rebuilds on every push, and daily to pick up new mod releases from hexium.
 on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "17 6 * * *"
   workflow_dispatch:
 
 permissions:
@@ -21,15 +24,14 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
-      - uses: astral-sh/setup-uv@v7
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@v10
       - run: uv sync --locked
       - run: uv run povwiki fetch
-      - run: uv run povwiki extract .cache/latest.zip
       - run: uv run povwiki build
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v4
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: site
-      - uses: actions/deploy-pages@v4
+      - uses: actions/deploy-pages@v5
         id: deployment

@@ -9,7 +9,8 @@ def main() -> None:
     ap = argparse.ArgumentParser(prog="povwiki", description="Path of Valheiman wiki pipeline")
     sub = ap.add_subparsers(dest="cmd", required=True)
 
-    sub.add_parser("fetch", help="download the latest mod release (not implemented yet)")
+    p = sub.add_parser("fetch", help="download the latest mod release from hexium and extract it")
+    p.add_argument("--no-extract", action="store_true", help="download only")
 
     p = sub.add_parser("extract", help="extract game data from a mod zip or unpacked folder")
     p.add_argument("source", type=Path)
@@ -25,10 +26,14 @@ def main() -> None:
     args = ap.parse_args()
 
     if args.cmd == "fetch":
-        # TODO: read the latest version from https://valheim.hexium.gg/mods/treextr/PathOfValheiman
-        # and download https://cdn.hexium.gg/upload/1330/<version>.zip into .cache/.
-        raise SystemExit("fetch is not implemented yet: download the zip and run `povwiki extract <zip>`.")
-    if args.cmd == "extract":
+        from .fetch import fetch
+
+        archive = fetch()
+        if not args.no_extract:
+            from .extract import extract
+
+            print(f"extracted to {extract(archive)}")
+    elif args.cmd == "extract":
         from .extract import extract
 
         print(f"extracted to {extract(args.source)}")

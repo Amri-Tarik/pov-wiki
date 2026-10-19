@@ -27,13 +27,15 @@ Needs [uv](https://docs.astral.sh/uv/). It installs Python and the dependencies.
 
 ```sh
 uv sync
-uv run povwiki extract path/to/treextr-PathOfValheiman-5.0.10.zip
+uv run povwiki fetch            # download the latest release from hexium + extract
 uv run povwiki build            # all enabled languages -> site/
 uv run povwiki serve --lang en  # live preview at http://localhost:8000
 ```
 
-`povwiki fetch` (automatic download of the latest release) is not implemented yet. For now, put
-the zip anywhere in the repo (`*.zip` is git-ignored) and run `extract` on it.
+`povwiki extract <zip>` works on any local mod zip instead, e.g. an older version.
+
+Deploys run on GitHub Actions on every push to `main` and once a day, so a new mod release is
+picked up automatically. Site: https://amri-tarik.github.io/pov-wiki/
 
 ## Layout
 
@@ -76,7 +78,7 @@ the box, uses the same Markdown extensions, and deploys to GitHub Pages from
 - [ ] Craft tree and professions
 - [ ] Items: affixes with tiers, weights, level ranges and tag rules; uniques; currency; loot tables
 - [ ] Patch diffs between versions
-- [ ] `povwiki fetch` + scheduled CI to rebuild on each new mod release
+- [x] `povwiki fetch` + scheduled CI to rebuild on each new mod release
 
 ## Licence
 

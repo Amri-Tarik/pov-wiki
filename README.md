@@ -45,11 +45,15 @@ Needs:
 uv sync
 uv run povwiki fetch            # download the latest release from hexium, extract, render
 uv run povwiki build            # all enabled languages -> site/
-uv run povwiki serve --lang en  # live preview at http://localhost:8000
+uv run povwiki serve --lang en  # fastest dev loop: generate pages (~3 s) + live preview at http://localhost:8000
 uv run povwiki deploy           # build + publish to https://amri-tarik.github.io/pov-wiki/
 ```
 
 `povwiki extract <zip>` works on any local mod zip instead, e.g. an older version.
+
+Builds print how long each step takes. A full build is about 15 s: most of it is Zensical
+rendering ~1,800 pages. Node icons are generated once per mod version and settings, and cached
+under `.cache/extracted/<ver>/web/`.
 
 Everything runs locally; `deploy` force-pushes the built site to the `gh-pages` branch, which
 GitHub Pages serves directly (no Actions). Automated rebuilds on new mod releases would need

@@ -75,7 +75,10 @@
         r: d.sizes[n[3]].d / 2, icon: n[8] ? d.iconBase + n[8] : null,
         frame: d.frames.length ? d.frames[n[9]] : null,
       };
-      node.text = (node.title + " " + node.tip.replace(/<[^>]+>/g, " ")).toLowerCase();
+      // Searchable: title and tooltip text. Jewel sockets have neither, so their type name
+      // ("Jewel socket") is searchable too.
+      node.text = [node.title, node.size === S_SOCKET ? d.sizes[node.size].name : "", node.tip.replace(/<[^>]+>/g, " ")]
+        .join(" ").toLowerCase();
       nodes.push(node);
       byId[node.id] = node;
       minX = Math.min(minX, node.x); maxX = Math.max(maxX, node.x);

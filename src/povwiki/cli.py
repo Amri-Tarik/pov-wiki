@@ -39,7 +39,7 @@ def main() -> None:
 
     sub.add_parser("deploy", help="build the site and publish it to GitHub Pages (gh-pages branch)")
 
-    p = sub.add_parser("serve", help="live-preview one language (run build first)")
+    p = sub.add_parser("serve", help="generate pages and live-preview one language (fastest dev loop)")
     p.add_argument("--lang", default="en")
 
     args = ap.parse_args()
@@ -71,4 +71,9 @@ def main() -> None:
         build(version)
         deploy(f"Deploy wiki for Path of Valheiman {version}")
     elif args.cmd == "serve":
+        from .data import latest_version
+        from .generate import build
+
+        # Markdown only (a couple of seconds); the preview server renders pages itself.
+        build(latest_version(), [args.lang], render=False)
         subprocess.run(["zensical", "serve", "-f", str(BUILD / args.lang / "zensical.toml")], check=True)

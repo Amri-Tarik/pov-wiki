@@ -95,6 +95,18 @@ The wiki shows it with a badge instead of hiding it. The signals:
   `ReloadWhileMoving` on the keystone "On the Move". The harness lists these per node as
   `unformatted`.
 
+## Gated nodes
+
+- **`JewelReveal`** (36 in 5.0.10, subject `ThreeFacesOfDelusion`): an empty slot that a
+  socketed unique jewel fills (`JewelReveal.cs` swaps in content). Their only text is "Hidden
+  until the linked socket holds the chosen jewel…". The wiki leaves them out entirely; the
+  content belongs on the jewel's page.
+- **`SubclassReveal`** (3 Portal nodes, subject `PathRunereader`): shown only while that
+  initiation path is active (`JewelReveal.PathHidden`). Initiation paths (`Subclasses.cs`,
+  `@class.<key>.*`) unlock from deeds, e.g. Runereader (`runemaster`): read 50 runestones. Each
+  path is also gated by `EarlyAccess.Open("class.<key>")` → `Link.Allowed`, decided at
+  runtime. When closed, the game says "{0} will be available in a future version."
+
 ## Mastery options as the game shows them
 
 `TreeWindow.MainOptionRow`: the row body is `MasteryPresentation.Body(option)`, which lists the

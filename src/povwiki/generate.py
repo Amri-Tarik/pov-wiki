@@ -8,6 +8,8 @@ build/<code>/site/          rendered site, then copied to site/<code>/
 import hashlib
 import shutil
 import subprocess
+import time
+from contextlib import contextmanager
 import tomllib
 import tomli_w
 
@@ -54,31 +56,46 @@ def _write_config(lang: Language, enabled: list[Language], loc: Localizer, out) 
     (out / "zensical.toml").write_text(tomli_w.dumps(cfg), encoding="utf-8")
 
 
+@contextmanager
+def _timed(label: str):
+    """Print how long a build step took, to see where build time goes."""
+    start = time.perf_counter()
+    yield
+    print(f"  {time.perf_counter() - start:6.2f}s  {label}")
+
+
 def build_language(lang: Language, default: Language, enabled: list[Language], data: GameData, render: bool) -> None:
     loc = Localizer(lang, default, data)
     out = BUILD / lang.code
     docs = out / "docs"
-    shutil.rmtree(out, ignore_errors=True)
-
-    # Hand-written pages: default language first, then the translated ones on top.
-    shutil.copytree(CONTENT / default.code, docs)
-    if lang.code != default.code and (CONTENT / lang.code).exists():
-        shutil.copytree(CONTENT / lang.code, docs, dirs_exist_ok=True)
+    with _timed("clean + copy hand-written pages"):
+        shutil.rmtree(out, ignore_errors=True)
+        # Hand-written pages: default language first, then the translated ones on top.
+        shutil.copytree(CONTENT / default.code, docs)
+        if lang.code != default.code and (CONTENT / lang.code).exists():
+            shutil.copytree(CONTENT / lang.code, docs, dirs_exist_ok=True)
 
     ctx = Ctx(data=data, loc=loc, icons=icons.Icons(data) if icons.enabled() else None)
+    with _timed("load rendered game text"):
+        ctx.tree_nodes  # noqa: B018 (warm the caches, so generator timings are their own)
+        ctx.option_groups  # noqa: B018
     for gen in GENERATORS:
-        for rel, text in gen(ctx).items():
-            path = docs / rel
-            path.parent.mkdir(parents=True, exist_ok=True)
-            path.write_text(text, encoding="utf-8")
+        with _timed(gen.__name__):
+            for rel, text in gen(ctx).items():
+                path = docs / rel
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_text(text, encoding="utf-8")
     if ctx.icons:
-        ctx.icons.write(docs)
+        with _timed(f"icons ({len(ctx.icons.raw)} raw, {len(ctx.icons.framed)} framed)"):
+            ctx.icons.write(docs)
 
     _write_config(lang, enabled, loc, out)
     if render:
-        subprocess.run(["zensical", "build", "--clean", "-f", str(out / "zensical.toml")], check=True)
-        shutil.rmtree(SITE / lang.code, ignore_errors=True)
-        shutil.copytree(out / "site", SITE / lang.code)
+        with _timed("zensical build"):
+            subprocess.run(["zensical", "build", "--clean", "-f", str(out / "zensical.toml")], check=True)
+        with _timed("copy to site/"):
+            shutil.rmtree(SITE / lang.code, ignore_errors=True)
+            shutil.copytree(out / "site", SITE / lang.code)
 
 
 def build(version: str, only: list[str] | None = None, render: bool = True) -> None:

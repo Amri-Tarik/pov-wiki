@@ -2,9 +2,11 @@
 
 All game text comes from the rendered data (the mod's own tooltip code); all wiki text from
 loc.ui(). Content the game ships but has not finished is shown with an "Unimplemented" badge
-instead of being hidden.
+instead of being hidden (except in the tree viewer, which shows the playable tree only).
+Jewel-revealed slots are left out entirely: they are empty until a jewel fills them.
 """
 
+import hashlib
 import html
 import json
 from collections import Counter, defaultdict
@@ -28,16 +30,39 @@ class Ctx:
     @cached_property
     def tree_nodes(self) -> list[dict]:
         """Raw tree nodes joined with their rendered text (key "r"). Rendered options get their
-        raw icon id, so everything shown about an option is in one place."""
+        raw data, so everything about an option is in one place. Jewel-revealed slots are left
+        out: they have no effect of their own (the jewel provides what appears there)."""
         out = []
         for n in self.data.tree["nodes"]:
             r = self.loc.nodes.get(n["id"])
-            if r is None:
+            if r is None or _jewel_slot(n):
                 continue
             for o, raw in zip(r["options"], n.get("options") or []):
                 o["icon"] = raw.get("icon")
+                o["raw"] = raw
             out.append({**n, "r": r})
         return out
+
+    @cached_property
+    def option_groups(self) -> dict[tuple, dict]:
+        """Distinct mastery options (same title and text), each with the nodes that offer it.
+        Many nodes offer identical options under different ids (e.g. "+5 Strength")."""
+        groups: dict[tuple, dict] = {}
+        for n in self.tree_nodes:
+            for o in n["r"]["options"]:
+                key = (o["title"], tuple(o["stats"]), tuple(o["extra"]))
+                g = groups.setdefault(key, {"options": [], "nodes": [], "category": n["r"]["category"]})
+                g["options"].append(o)
+                if n not in g["nodes"]:
+                    g["nodes"].append(n)
+        for key, g in groups.items():
+            ids = sorted(o["id"] for o in g["options"] if o["id"])
+            g["slug"] = ids[0] if ids else "x" + hashlib.sha1(repr(key).encode()).hexdigest()[:10]
+        return groups
+
+    @cached_property
+    def group_of(self) -> dict[int, dict]:
+        return {id(o): g for g in self.option_groups.values() for o in g["options"]}
 
     @cached_property
     def by_id(self) -> dict[str, dict]:
@@ -54,10 +79,22 @@ class Ctx:
 
 # Node types that get a page of their own.
 PAGE_SIZES = ("Keystone", "Notable")
+# Node types that are part of the tree's structure even without stats.
+STRUCTURAL_SIZES = ("Root", "Starter", "Socket", "Portal")
 
 
 def node_path(n: dict) -> str:
     return f"passives/node/{n['id']}.md"
+
+
+def option_path(group: dict) -> str:
+    return f"passives/mastery/{group['slug']}.md"
+
+
+def _jewel_slot(n: dict) -> bool:
+    """A slot a socketed unique jewel fills (e.g. Three Faces of Delusion): JewelReveal only."""
+    mods = n.get("mods") or []
+    return bool(mods) and all(m["stat"] == "JewelReveal" for m in mods)
 
 
 # ---- Helpers -----------------------------------------------------------------------------------
@@ -106,14 +143,14 @@ def _img(path: str | None, page: str, px: int) -> str:
     return f'<img class="pov-art" src="{rel(path, page)}" width="{px}" height="{px}" alt="" loading="lazy">'
 
 
-def _node_art(ctx: Ctx, n: dict, page: str, px: int = 48) -> str:
+def _node_art(ctx: Ctx, n: dict, page: str, px: int = 64) -> str:
     """A node's icon in its in-game frame."""
     if not ctx.icons:
         return ""
     return _img(ctx.icons.framed_path(n.get("icon"), frame_kind(n["size"], bool(n["r"]["options"]))), page, px)
 
 
-def _option_art(ctx: Ctx, o: dict, page: str, px: int = 40) -> str:
+def _option_art(ctx: Ctx, o: dict, page: str, px: int = 56) -> str:
     if not ctx.icons:
         return ""
     return _img(ctx.icons.framed_path(o.get("icon"), "mastery"), page, px)
@@ -165,18 +202,25 @@ def _effect(ctx: Ctx, page: str, r: dict) -> str:
 
 
 def _option_title(ctx: Ctx, page: str, o: dict) -> str:
-    """Option name in bold; like in game, its description shows on hover."""
-    title = f"**{to_md(o['title'], ctx.loc, page)}**"
-    if o["extra"]:
-        tip = html.escape(plain(" ".join(o["extra"])), quote=True)
-        title = f'<span class="pov-desc" title="{tip}">{title}</span>'
-    return title
+    """Option name in bold, linked to the option's page."""
+    title = f"**{_cell(plain(o['title']))}**"
+    group = ctx.group_of.get(id(o))
+    return f"[{title}]({rel(option_path(group), page)})" if group else title
+
+
+def _describes_differently(o: dict) -> bool:
+    """The game shows an option's numbers in its row and its description on hover; when both
+    exist and say different things, the wiki shows both."""
+    return bool(o["stats"] and o["extra"]) and plain(" ".join(o["stats"])) != plain(" ".join(o["extra"]))
 
 
 def _option_effect(ctx: Ctx, page: str, o: dict) -> str:
-    """An option's stat lines (the game's option row). Options that only grant a mechanic have
-    none: their description is the effect then."""
+    """An option's effect: its stat lines (the game's option row), then its description in
+    italics when that adds something. Options that only grant a mechanic have no stat lines:
+    the description is the effect then."""
     lines = [to_md(s, ctx.loc, page) for s in (o["stats"] or o["extra"])]
+    if _describes_differently(o):
+        lines += [f"<i>{to_md(s, ctx.loc, page)}</i>" for s in o["extra"]]
     badges = _badges(ctx, o)
     return "<br>".join(lines) + (f"<br>{badges}" if badges else "")
 
@@ -195,6 +239,15 @@ def _category_titles(cats) -> dict[str, str]:
         if key not in titles or (cat[:1].isupper() and not titles[key][:1].isupper()):
             titles[key] = cat
     return titles
+
+
+def _tree_link(ctx: Ctx, n: dict, page: str) -> str:
+    """"Show on tree" link. The #node anchor only exists in the viewer's script, so the link must
+    not point at tree.md: the site generator would check the anchor and warn, once per node. It
+    points at the tree's directory URL instead, written relative to the .md file (the generator
+    rewrites hrefs in raw HTML that way too)."""
+    tree_dir = TREE_PAGE.removesuffix(".md")
+    return f'<a href="{rel(tree_dir, page)}/#{n["id"]}">{ctx.loc.ui("tree.show")}</a>'
 
 
 def _footer(ctx: Ctx) -> list[str]:
@@ -260,25 +313,58 @@ def page_notables(ctx: Ctx) -> dict[str, str]:
 def page_masteries(ctx: Ctx) -> dict[str, str]:
     """Choice nodes, by category: each distinct option once, with how many nodes offer it."""
     page, loc = "passives/masteries.md", ctx.loc
-    groups: dict[str, dict] = defaultdict(dict)
-    for n in ctx.tree_nodes:
-        if n["size"] == "Keystone" or not n["r"]["options"]:
-            continue
-        for o in n["r"]["options"]:
-            key = (o["title"], tuple(o["stats"]), tuple(o["extra"]))
-            entry = groups[_category_key(n["r"]["category"])].setdefault(key, {"option": o, "nodes": set()})
-            entry["nodes"].add(n["id"])
-    titles = _category_titles(n["r"]["category"] for n in ctx.tree_nodes if n["r"]["options"])
+    by_cat: dict[str, list[dict]] = defaultdict(list)
+    for g in ctx.option_groups.values():
+        if any(n["size"] != "Keystone" for n in g["nodes"]):
+            by_cat[_category_key(g["category"])].append(g)
+    titles = _category_titles(g["category"] for g in ctx.option_groups.values())
     md = [f"# {loc.ui('nav.masteries')}", "", loc.ui("page.masteries_intro"), ""]
-    for cat in sorted(groups, key=lambda c: (c == "", c)):
-        entries = sorted(groups[cat].values(), key=lambda e: plain(e["option"]["title"]))
-        count = {id(e["option"]): len(e["nodes"]) for e in entries}
+    for cat in sorted(by_cat, key=lambda c: (c == "", c)):
+        groups = sorted(by_cat[cat], key=lambda g: plain(g["options"][0]["title"]))
+        count = {id(g["options"][0]): len(g["nodes"]) for g in groups}
         md += [f"## {titles.get(cat) or loc.ui('page.uncategorized')}", ""]
         md += _option_table(
-            ctx, page, [loc.ui("col.option"), loc.ui("col.effect"), loc.ui("col.offered_by")], [e["option"] for e in entries],
+            ctx, page, [loc.ui("col.option"), loc.ui("col.effect"), loc.ui("col.offered_by")],
+            [g["options"][0] for g in groups],
             lambda o: [_option_title(ctx, page, o), _option_effect(ctx, page, o), str(count[id(o)])],
         )
     return {page: "\n".join(md + _footer(ctx))}
+
+
+def page_options(ctx: Ctx) -> dict[str, str]:
+    """One page per distinct mastery option: effect, description, the nodes that offer it."""
+    loc, pages = ctx.loc, {}
+    for g in ctx.option_groups.values():
+        o, page = g["options"][0], option_path(g)
+        md = [f"# {plain(o['title'])}", ""]
+        art = _option_art(ctx, o, page, 128)
+        meta = [f"<b>{loc.ui('page.mastery_option')}</b>"] + ([g["category"]] if g["category"] else [])
+        md += [(f'<span class="pov-art-lg">{art}</span>' if art else "") + " · ".join(meta), ""]
+        if o.get("reserved") or o.get("broken"):
+            md += [f'!!! warning "{loc.ui("page.unimplemented")}"', f"    {_badges(ctx, o)}", ""]
+
+        if o["stats"]:
+            md += [f"## {loc.ui('page.effect')}", "", '<div class="pov-tooltip" markdown>', "",
+                   "<br>".join(to_md(x, loc, page) for x in o["stats"]), "", "</div>", ""]
+        if o["extra"] and (not o["stats"] or _describes_differently(o)):
+            md += [f"## {loc.ui('page.description')}", "", loc.ui("page.description_note"), "",
+                   '<div class="pov-tooltip" markdown>', "",
+                   "<br>".join(to_md(x, loc, page) for x in o["extra"]), "", "</div>", ""]
+
+        md += [f"## {loc.ui('page.offered_by')} ({len(g['nodes'])})", ""]
+        md += _node_table(
+            ctx, page, [loc.ui("col.name"), loc.ui("col.type"), loc.ui("col.branch"), ""], g["nodes"],
+            lambda n: [_name(ctx, n, page), loc.ui(f"size.{n['size']}"), _branch(ctx, n),
+                       _tree_link(ctx, n, page)],
+        )
+        md += [f'??? abstract "{loc.ui("page.game_data")}"', "", "    ```json"]
+        md += ["    " + line for line in json.dumps(o["raw"], ensure_ascii=False, indent=2).splitlines()]
+        md += ["    ```", ""]
+        if len(g["options"]) > 1:
+            ids = ", ".join(f"`{x['id']}`" for x in g["options"])
+            md += [f"<small>{loc.ui('page.option_ids')}: {ids}</small>", ""]
+        pages[page] = "\n".join(md + _footer(ctx))
+    return pages
 
 
 def page_nodes(ctx: Ctx) -> dict[str, str]:
@@ -292,11 +378,11 @@ def page_nodes(ctx: Ctx) -> dict[str, str]:
         md = [f"# {_title(ctx, n) or loc.ui('page.unnamed')}", ""]
         if not _is_implemented(n):
             md += ["!!! warning \"" + loc.ui("page.unimplemented") + "\"", f"    {loc.ui('page.unimplemented_node')}", ""]
-        art = _node_art(ctx, n, page, 96)
+        art = _node_art(ctx, n, page, 128)
         md += [
             (f'<span class="pov-art-lg">{art}</span>' if art else "")
             + f"<b>{kind}</b> · {_branch(ctx, n)}" + (f" · {r['category']}" if r["category"] else "")
-            + f" · [{loc.ui('tree.show')}]({rel(TREE_PAGE, page)}#{n['id']})",
+            + f" · {_tree_link(ctx, n, page)}",
             "",
         ]
 
@@ -395,12 +481,15 @@ def page_tree(ctx: Ctx) -> dict[str, str]:
     loc, tree = ctx.loc, ctx.data.tree
     hidden = set(tree.get("hiddenLinks") or [])
     curves = tree.get("linkCurve") or {}
-    index = {n["id"]: i for i, n in enumerate(ctx.tree_nodes)}
     branches = sorted({n["branch"] for n in ctx.tree_nodes})
 
     nodes = []
-    for n in ctx.tree_nodes:
-        flags = (1 if n["size"] in PAGE_SIZES else 0) | (0 if _is_implemented(n) else 2) | (4 if n["r"]["options"] else 0)
+    # Placeholders are left out. Starters, sockets, portals and the root have no stats of their
+    # own but are part of the playable tree.
+    shown = [n for n in ctx.tree_nodes if _is_implemented(n) or n["size"] in STRUCTURAL_SIZES]
+    index = {n["id"]: i for i, n in enumerate(shown)}
+    for n in shown:
+        flags = (1 if n["size"] in PAGE_SIZES else 0) | (4 if n["r"]["options"] else 0)
         nodes.append([
             n["id"], n["x"], n["y"], SIZES.index(n["size"]) if n["size"] in SIZES else 0, branches.index(n["branch"]),
             _title(ctx, n), _tooltip_html(ctx, n), flags,
@@ -515,7 +604,9 @@ def page_glossary(ctx: Ctx) -> dict[str, str]:
     return pages
 
 
-GENERATORS: list[Callable[[Ctx], dict[str, str]]] = [page_tree, page_keystones, page_notables, page_masteries, page_nodes, page_glossary]
+GENERATORS: list[Callable[[Ctx], dict[str, str]]] = [
+    page_tree, page_keystones, page_notables, page_masteries, page_options, page_nodes, page_glossary,
+]
 
 # Navigation: (ui title key, page path | children). Titles are translated per language.
 # Glossary term pages are reached from keyword links and search.

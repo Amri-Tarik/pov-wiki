@@ -10,7 +10,12 @@ box / FrameRing (0.82). The tree viewer composes the same layers itself, from th
 frames, so it can switch between silver (locked) and gold (allocated) frames.
 """
 
+import hashlib
+import shutil
 import tomllib
+from collections.abc import Callable
+from concurrent.futures import ThreadPoolExecutor
+from functools import cache
 from pathlib import Path
 
 from PIL import Image, ImageDraw
@@ -20,7 +25,7 @@ from .paths import ROOT
 
 DOCS_DIR = "assets/icons"
 ICON_SIZE = 96  # raw icons for the viewer
-FRAMED_SIZE = 112  # framed icons for pages; shown at 32-80 px
+FRAMED_SIZE = 160  # framed icons for pages; shown at 56-128 px
 FRAME_RING = 0.82  # UiKit.FrameRing: node box / frame size
 # Icon inset inside the node box, as a fraction of the box (TreeWindow node setup).
 INSET = {"keystone": 0.06, "notable": 0.0, "mastery-notable": 0.0, "normal": 0.02, "mastery": 0.025, "socket": 0.0}
@@ -77,19 +82,47 @@ class Icons:
         return f"{DOCS_DIR}/frame/{kind}-{state}.webp"
 
     def write(self, docs: Path) -> None:
-        out = docs / DOCS_DIR
+        """Copy the used images into the docs. Images are generated once into a cache next to the
+        extracted data (keyed by the settings above) and reused by later builds."""
+        cache = self.src.parent / "web" / _settings_key()
+        jobs: list[tuple[str, Callable[[], Image.Image]]] = []
         for src in sorted(self.raw):
-            with Image.open(self.src / f"{src}.png") as im:
-                _save(im.convert("RGBA").resize((ICON_SIZE, ICON_SIZE), Image.LANCZOS), out / f"{src}.webp")
+            jobs.append((f"{src}.webp", lambda src=src: self._raw(src)))
         for kind in FRAME_KINDS:
             for state in ("locked", "allocated"):
-                with Image.open(self.src / "frame" / f"{kind}-{state}.png") as im:
-                    _save(im.convert("RGBA").resize((FRAMED_SIZE * 2, FRAMED_SIZE * 2), Image.LANCZOS), out / "frame" / f"{kind}-{state}.webp")
+                jobs.append((f"frame/{kind}-{state}.webp", lambda kind=kind, state=state: self._frame(kind, state, FRAMED_SIZE * 2)))
         for src, kind in sorted(self.framed):
-            _save(self._compose(src, kind), out / "framed" / kind / f"{src}.webp")
+            jobs.append((f"framed/{kind}/{src}.webp", lambda src=src, kind=kind: self._compose(src, kind)))
+
+        def generate(rel: str, make: Callable[[], Image.Image]) -> None:
+            cached = cache / rel
+            cached.parent.mkdir(parents=True, exist_ok=True)
+            make().save(cached, "WEBP", quality=85, method=4)
+
+        # Missing images are made in parallel (Pillow releases the GIL while resizing/encoding).
+        missing = [(rel, make) for rel, make in jobs if not (cache / rel).exists()]
+        if missing:
+            for kind in FRAME_KINDS:  # load shared frames once, before threads race for them
+                self._frame(kind, "allocated", FRAMED_SIZE * 2)
+            with ThreadPoolExecutor() as pool:
+                list(pool.map(lambda job: generate(*job), missing))
+
+        out = docs / DOCS_DIR
+        for rel, _ in jobs:
+            (out / rel).parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(cache / rel, out / rel)
+
+    def _raw(self, src: str) -> Image.Image:
+        with Image.open(self.src / f"{src}.png") as im:
+            return im.convert("RGBA").resize((ICON_SIZE, ICON_SIZE), Image.LANCZOS)
+
+    @cache
+    def _frame(self, kind: str, state: str, size: int) -> Image.Image:
+        with Image.open(self.src / "frame" / f"{kind}-{state}.png") as im:
+            return im.convert("RGBA").resize((size, size), Image.LANCZOS)
 
     def _compose(self, src: str, kind: str) -> Image.Image:
-        size = FRAMED_SIZE * 4  # work large, scale down once
+        size = FRAMED_SIZE * 2  # work at 2x, scale down once
         box = size * FRAME_RING
         inset = box * INSET.get(kind, 0)
         icon_px = round(box - 2 * inset)
@@ -100,11 +133,11 @@ class Icons:
         ImageDraw.Draw(mask).ellipse((0, 0, icon_px - 1, icon_px - 1), fill=255)
         offset = round((size - icon_px) / 2)
         canvas.paste(icon, (offset, offset), mask)
-        with Image.open(self.src / "frame" / f"{kind}-allocated.png") as fr:
-            canvas.alpha_composite(fr.convert("RGBA").resize((size, size), Image.LANCZOS))
+        canvas.alpha_composite(self._frame(kind, "allocated", size))
         return canvas.resize((FRAMED_SIZE, FRAMED_SIZE), Image.LANCZOS)
 
 
-def _save(im: Image.Image, target: Path) -> None:
-    target.parent.mkdir(parents=True, exist_ok=True)
-    im.save(target, "WEBP", quality=85, method=6)
+def _settings_key() -> str:
+    """Changes whenever the way images are made changes, so stale cached images are not reused."""
+    settings = repr((1, ICON_SIZE, FRAMED_SIZE, FRAME_RING, sorted(INSET.items())))
+    return hashlib.sha1(settings.encode()).hexdigest()[:10]

@@ -126,6 +126,21 @@ def _complete_kvasir(unique: dict | None) -> None:
             unique["lines"].append({"affix": d.Id, "count": 1, "distinct": True, "text": d.Line(25.0)})
 
 
+def _code_only_uniques(uniques: dict) -> None:
+    """Uniques whose line is rolled in code at drop time (no catalog lines). Eye Between Worlds
+    (LootAffixes "PT_Jewel_EyeBetweenWorlds"): one JewelRiftTo line pointing at a random knowledge
+    portal of the tree (Rifts.Targets). Keep in sync with LootAffixes.uniques."""
+    import PassiveTree
+    from PassiveTree import L, LootAffixes
+
+    if "PT_Jewel_EyeBetweenWorlds" in uniques or not hasattr(PassiveTree, "Rifts"):
+        return
+    d = LootAffixes.Find("jewel.rift-to")
+    if d is not None:
+        uniques["PT_Jewel_EyeBetweenWorlds"] = {"lines": [
+            {"affix": "jewel.rift-to", "count": 1, "distinct": False, "template": L.Id("affix." + d.Id, d.Text), "pick": "portal"}]}
+
+
 def render_gear(errors: list) -> dict:
     import PassiveTree
     from PassiveTree import L, Runes
@@ -149,6 +164,7 @@ def render_gear(errors: list) -> dict:
         except Exception as ex:
             errors.append({"unique": kv.Key, "error": str(ex).split("\n")[0]})
     _complete_kvasir(out["uniques"].get("PT_BeltKvasirsBlood"))
+    _code_only_uniques(out["uniques"])
     for item, j in out["jewels"].items():
         _radius(j, out["uniques"].get(item))
 
@@ -175,4 +191,8 @@ def render_gear(errors: list) -> dict:
         except Exception as ex:
             errors.append({"sigil": str(k.Id), "error": str(ex).split("\n")[0]})
     out["sigilNoEffect"] = L.Id("sigil.no-effect", "")  # what the tooltip says in an item it does nothing for
+    from PassiveTree import Tunables
+
+    if any(k.Id == "monolith.unique-chance" for k in Tunables.All):  # 5.1.1: a won rune monolith event's unique
+        out["monolithUniqueChance"] = float(Tunables.Of("monolith.unique-chance"))
     return out

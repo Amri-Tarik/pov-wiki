@@ -52,6 +52,9 @@ def render_difficulty(errors: list) -> dict:
             "ringFar": _floats(enemy.GetField("ringFar", _ANY).GetValue(None)),
             "bossStep": [float(Tunables.Of("difficulty.boss-step-near")), float(Tunables.Of("difficulty.boss-step-far"))],
             "presets": presets,
+            # Creatures whose health the mod leaves alone (EnemyDifficulty.fixedHealth, 5.1.1: Kall's 2nd phase).
+            "fixedHealth": sorted(str(x) for x in (enemy.GetField("fixedHealth", _ANY).GetValue(None) or [])
+                                  ) if enemy.GetField("fixedHealth", _ANY) else [],
             "monsterPower": {k: float(Tunables.Of(f"monster-power.{k}")) for k in ("step", "biome-step", "max")},
             # Evasion and armour knobs (Evasion.AccuracyAt/Chance, ArmorEffect).
             "tunables": {k: float(Tunables.Of(k)) for k in (

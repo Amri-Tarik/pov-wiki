@@ -28,6 +28,10 @@ def _asm():
     return next(a for a in AppDomain.CurrentDomain.GetAssemblies() if a.GetName().Name == "PathOfValheiman")
 
 
+def _type(type_name: str):
+    return _asm().GetType(f"PassiveTree.{type_name}")
+
+
 def _static(type_name: str, field: str):
     return _asm().GetType(f"PassiveTree.{type_name}").GetField(field, _ANY).GetValue(None)
 
@@ -92,9 +96,21 @@ def render_buildings(errors: list) -> list[dict]:
 def render_veins(errors: list) -> dict:
     """Azurite veins (RuneVein, AzuriteVeins, AzuriteState): which chisel cuts which kind, and where
     each kind comes from. One vein prefab; its kind (plain, corrupted, divine) changes in the
-    world. The biome rules are written inline (AzuriteVeins.Other, AzuriteState.DivineLand
-    0x270, the strike's 10% chance, 10-roll pity and 30 m reach): keep in sync."""
+    world. The heavenly strike's chance per biome is the game's (AzuriteState.BaseStrikeChance;
+    5.1.0 had one 10% chance in the Plains and later). Written inline: the plain veins' biomes
+    (AzuriteVeins.Other), the 10-roll pity and where it applies (AzuriteState.DivineLand 0x270), the
+    30 m reach: keep in sync (formula "azurite-veins" checks the code)."""
+    from System import AppDomain, Enum
+
     try:
+        state = _type("AzuriteState")
+        base = state.GetMethod("BaseStrikeChance", _ANY) if state else None
+        biome = next(a for a in AppDomain.CurrentDomain.GetAssemblies() if a.GetName().Name == "assembly_valheim").GetType("Heightmap+Biome")
+        order = ["Meadows", "BlackForest", "Swamp", "Mountain", "Plains", "Mistlands", "AshLands", "DeepNorth"]
+        if base is not None:
+            chances = {b: float(base.Invoke(None, [Enum.Parse(biome, b)])) for b in order}
+        else:
+            chances = {b: 0.1 if b in ("Plains", "Mistlands", "AshLands", "DeepNorth") else 0.0 for b in order}
         return {
             "ores": [str(o) for o in _static("AzuriteState", "Ores")],
             "needTier": [int(t) for t in _static("RuneVein", "NeedTier")],
@@ -102,8 +118,9 @@ def render_veins(errors: list) -> dict:
             "chisels": [{"id": str(c.Id), "tier": int(c.Tier)} for c in _static("RuneVein", "Chisels")],
             "plainBiomes": ["BlackForest", "Swamp", "Mountain", "Plains", "Mistlands", "AshLands", "DeepNorth"],
             "denseBiome": "Mountain",
-            "divineBiomes": ["Plains", "Mistlands", "AshLands", "DeepNorth"],
-            "strike": {"chance": 0.1, "pity": 10, "reach": 30},
+            "strikeChance": chances,  # by biome; a passive (Stat.DivineVeinChance) adds to it anywhere
+            "pityBiomes": ["Plains", "Mistlands", "AshLands", "DeepNorth"],  # DivineLand: certain after 9 misses
+            "strike": {"pity": 10, "reach": 30},
             "divineTouch": "Divine Touch",  # the craft mastery option (raw name) that turns veins divine
         }
     except Exception as ex:

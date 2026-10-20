@@ -15,17 +15,22 @@ anchors = [
     "PassiveTree/CreatureLevels.cs :: CreatureLevels.Factor",
     "PassiveTree/BiomeLevels.cs :: BiomeLevels.Of",
     "PassiveTree/BiomeLevels.cs :: BiomeLevels.Band",
-    "PassiveTree/Plugin.cs :: \"Biome levels\"",
+    "PassiveTree/BiomeLevels.cs :: BiomeLevels.levels",
+    "PassiveTree/RaidLevels.cs :: \"Raid level scaling\"",
+    "PassiveTree/RaidLevels.cs :: Raider.Postfix",
+    "PassiveTree/BiomeLevels.cs :: BiomeLevels.BandIn",
     "PassiveTree.Loot/LootDrops.cs :: \"int num2 = CreatureLevels.Of(val);\"",
     "PassiveTree.Loot/LootDrops.cs :: \"obj.Level = BiomeLevels.Of(WorldChests.BiomeOf(c));\"",
 ]
-fingerprint = "31812f7fe18d"
-checked = "5.1.0"
+fingerprint = "a42cb8c58860"
+checked = "5.1.1"
 
 [[formula]]
 id = "creature-strength"
 anchors = [
     "PassiveTree/EnemyDifficulty.cs :: EnemyDifficulty.Desired",
+    "PassiveTree/EnemyDifficulty.cs :: EnemyDifficulty.FixedHealth",
+    "PassiveTree/EnemyDifficulty.cs :: EnemyDifficulty.fixedHealth",
     "PassiveTree/EnemyDifficulty.cs :: EnemyDifficulty.Soften",
     "PassiveTree/EnemyDifficulty.cs :: EnemyDifficulty.Graded",
     "PassiveTree/EnemyDifficulty.cs :: EnemyDifficulty.CreatureHealthFactor",
@@ -34,8 +39,8 @@ anchors = [
     "PassiveTree/EnemyDifficulty.cs :: \"Tamed creature strength\"",
     "PassiveTree/DifficultyPreset.cs :: DifficultyPreset.Lay",
 ]
-fingerprint = "00662925c27c"
-checked = "5.1.0"
+fingerprint = "928cfbd12b4f"
+checked = "5.1.1"
 
 [formula.values]
 tamed = 0.5
@@ -51,8 +56,8 @@ anchors = [
     "PassiveTree/Tunables.cs :: \"difficulty.boss-step-near\"",
     "PassiveTree/Tunables.cs :: \"difficulty.boss-step-far\"",
 ]
-fingerprint = "137a6b9e67cc"
-checked = "5.1.0"
+fingerprint = "e638acc6ba69"
+checked = "5.1.1"
 
 [[formula]]
 id = "stars"
@@ -69,7 +74,7 @@ anchors = [
     "PassiveTree/CreatureStars.cs :: Attack_GetLevelDamageFactor.Postfix",
 ]
 fingerprint = "46e2944381af"
-checked = "5.1.0"
+checked = "5.1.1"
 
 [formula.values]
 health = 1.0
@@ -88,8 +93,8 @@ anchors = [
     "PassiveTree/BossStars.cs :: BossStars.Lay",
     "PassiveTree/BossStars.cs :: BossStars.Bind",
 ]
-fingerprint = "0460235254f9"
-checked = "5.1.0"
+fingerprint = "dbe7aa0e03ad"
+checked = "5.1.1"
 
 [formula.values]
 chance = 0.25
@@ -107,14 +112,18 @@ anchors = [
     "PassiveTree/Tunables.cs :: \"monster-power.step\"",
     "PassiveTree/Tunables.cs :: \"monster-power.max\"",
 ]
-fingerprint = "0cadb2102084"
-checked = "5.1.0"
+fingerprint = "135b639ae434"
+checked = "5.1.1"
 
 [[formula]]
 id = "loot"
 anchors = [
     "PassiveTree.Loot/LootDrops.cs :: LootDrops.Grant",
     "PassiveTree.Loot/LootDrops.cs :: LootDrops.Roll",
+    "PassiveTree.Loot/LootSystem.cs :: LootSystem.DropRate",
+    "PassiveTree.Loot/LootSystem.cs :: LootSystem.GateEntry",
+    "PassiveTree.Loot/LootSystem.cs :: \"Equipment drop gate\"",
+    "PassiveTree.Loot/LootSystem.cs :: \"Currency drop gate\"",
     "PassiveTree.Loot/LootRoller.cs :: LootRoller.Curve",
     "PassiveTree.Loot/LootRoller.cs :: LootRoller.RollMagicPlus",
     "PassiveTree.Loot/LootRoller.cs :: LootRoller.MagicPlusShare",
@@ -122,11 +131,15 @@ anchors = [
     "PassiveTree/RarityRoll.cs :: RarityRoll.ModRewardShare",
     "PassiveTree/RarityRoll.cs :: \"Reward per modifier\"",
 ]
-fingerprint = "ded8e2f79f13"
-checked = "5.1.0"
+fingerprint = "bb17a0e1805d"
+checked = "5.1.1"
 
 [formula.values]
 per_modifier = 0.5
+gear_rate = 0.25
+chest = 3.5
+currency_rate = 0.125
+currency_boost = 1.25
 
 [[formula]]
 id = "vanilla-drops"
@@ -138,7 +151,7 @@ anchors = [
     "PassiveTree/RarityRoll.cs :: \"Star loot bonus\"",
 ]
 fingerprint = "8dc682c13ac8"
-checked = "5.1.0"
+checked = "5.1.1"
 
 [formula.values]
 per_star = 0.5
@@ -161,7 +174,7 @@ anchors = [
     "PassiveTree/Plugin.cs :: \"Shared experience radius\"",
 ]
 fingerprint = "54caf7d6f1fd"
-checked = "5.1.0"
+checked = "5.1.1"
 
 [formula.values]
 per_health = 0.4
@@ -181,7 +194,7 @@ anchors = [
     "PassiveTree/WeaponAffixes.cs :: WeaponAffixes.ColumnStat",
 ]
 fingerprint = "14781e338c6e"
-checked = "5.1.0"
+checked = "5.1.1"
 
 [formula.values]
 base = 1.5
@@ -196,7 +209,7 @@ anchors = [
     "PassiveTree/CriticalHits.cs :: \"Maximum critical chance\"",
 ]
 fingerprint = "60bbc5fae64b"
-checked = "5.1.0"
+checked = "5.1.1"
 
 [formula.values]
 knives = 0.15
@@ -215,7 +228,7 @@ anchors = [
     "PassiveTree/EvasionSequence.cs :: EvasionSequence.Roll",
 ]
 fingerprint = "e81cc5c0087c"
-checked = "5.1.0"
+checked = "5.1.1"
 
 [[formula]]
 id = "resistances"
@@ -225,7 +238,7 @@ anchors = [
     "PassiveTree/Effects.cs :: \"s.Get(Stat.ElementalResistPct) - num2\"",
 ]
 fingerprint = "5d7f1f7e8d83"
-checked = "5.1.0"
+checked = "5.1.1"
 
 [formula.values]
 cap = 0.75
@@ -241,8 +254,8 @@ anchors = [
     "PassiveTree/ArmorPen.cs :: Humanoid_GetBodyArmor.Postfix",
     "PassiveTree/Tunables.cs :: \"armor.effect\"",
 ]
-fingerprint = "2823763ad93a"
-checked = "5.1.0"
+fingerprint = "e9f5560c9d11"
+checked = "5.1.1"
 
 [[formula]]
 id = "build-cost"
@@ -252,7 +265,7 @@ anchors = [
     "PassiveTree/BuildingEconomy.cs :: BuildingEconomy.PaidRequirements",
 ]
 fingerprint = "5e39718266e3"
-checked = "5.1.0"
+checked = "5.1.1"
 
 [formula.values]
 cap = 0.5
@@ -267,7 +280,7 @@ anchors = [
     "PassiveTree/ArmorPen.cs :: Humanoid_GetBodyArmor.Postfix",
 ]
 fingerprint = "d8b9a9b1d323"
-checked = "5.1.0"
+checked = "5.1.1"
 
 [[formula]]
 id = "item-level"
@@ -279,7 +292,7 @@ anchors = [
     "PassiveTree.Loot/LootCatalog.cs :: TierDef.Allows",
 ]
 fingerprint = "b036e5be07b8"
-checked = "5.1.0"
+checked = "5.1.1"
 
 [[formula]]
 id = "experience-falloff"
@@ -287,14 +300,18 @@ anchors = [
     "PassiveTree/BiomeLevels.cs :: BiomeLevels.ExperienceShare",
     "PassiveTree/BiomeLevels.cs :: BiomeLevels.Share",
     "PassiveTree/BiomeLevels.cs :: BiomeLevels.ShareAt",
+    "PassiveTree/BiomeLevels.cs :: BiomeLevels.Recommended",
+    "PassiveTree/BiomeLevels.cs :: BiomeLevels.RecommendedBand",
+    "PassiveTree/BiomeLevels.cs :: BiomeLevels.BandIn",
+    "PassiveTree/Plugin.cs :: \"Recommended player levels\"",
     "PassiveTree/BiomeLevels.cs :: BiomeLevels.Band",
     "PassiveTree/Progress.cs :: Progress.AddXp#3",
     "PassiveTree/Plugin.cs :: \"Biome levels forgiven\"",
     "PassiveTree/Plugin.cs :: \"Biome gap at the floor\"",
     "PassiveTree/Plugin.cs :: \"Biome experience floor\"",
 ]
-fingerprint = "6db5408b1d0b"
-checked = "5.1.0"
+fingerprint = "c09308d9ce1e"
+checked = "5.1.1"
 
 [formula.values]
 grace = 0
@@ -315,7 +332,7 @@ anchors = [
     "PassiveTree/Plugin.cs :: \"Experience lost on death\"",
 ]
 fingerprint = "686e210e1a15"
-checked = "5.1.0"
+checked = "5.1.1"
 
 [formula.values]
 base = 20.7
@@ -323,3 +340,16 @@ exponent = 1.1
 max = 200
 points = 1
 death = 0.1
+
+[[formula]]
+id = "azurite-veins"
+anchors = [
+    "PassiveTree/AzuriteState.cs :: AzuriteState.BaseStrikeChance",
+    "PassiveTree/AzuriteState.cs :: AzuriteState.DivineLand",
+    "PassiveTree/AzuriteState.cs :: AzuriteState.Struck",
+    "PassiveTree/AzuriteVeins.cs :: AzuriteVeins.Other",
+    "PassiveTree/RuneVein.cs :: RuneVein.NeedTier",
+    "PassiveTree/Runecarver.cs :: DivineTouch.Prefix",
+]
+fingerprint = "04dfb52bc5b4"
+checked = "5.1.1"

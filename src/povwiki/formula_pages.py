@@ -88,9 +88,19 @@ def _biome(ctx: Ctx, b: dict) -> str:
     return ctx.loc.vkey(f"biome_{b['id'].lower()}", b["id"])
 
 
+def _range_start(b: dict) -> int:
+    """Where full experience starts in a biome: its recommended player level (5.1.1), else its level."""
+    return b.get("recommended", b["level"])
+
+
+def _range_end(b: dict) -> int:
+    """The last player level with full experience in a biome (before grace)."""
+    return _range_start(b) + b.get("recommendedBand", b.get("band", 0))
+
+
 def _level(ctx, page, v):
     ui = ctx.loc.ui
-    rows = [[_biome(ctx, b), str(b["level"]), str(b["level"] + b.get("band", 0))] for b in _area_biomes(ctx)]
+    rows = [[_biome(ctx, b), str(b["level"]), str(_range_end(b))] for b in _area_biomes(ctx)]
     return ([ui("formula.creature-level.text", falloff=_anchor("experience-falloff", page)), ""]
             + _table([ui("bosses.biome"), ui("formula.level"), ui("formula.creature-level.full_col")], rows))
 
@@ -114,8 +124,8 @@ def _falloff(ctx, page, v):
         return 1.0 if d <= 0 else max(floor, floor ** (d / max(1, gap - grace)))
 
     steps = (1, 2, 3, 5, 8, gap)
-    rows = [[_biome(ctx, b), f"{b['level']}–{b['level'] + b.get('band', 0) + grace}",
-             str(b["level"] + b.get("band", 0) + grace + gap)] for b in _area_biomes(ctx)]
+    rows = [[_biome(ctx, b), f"{_range_start(b)}–{_range_end(b) + grace}",
+             str(_range_end(b) + grace + gap)] for b in _area_biomes(ctx)]
     return ([ui("formula.experience-falloff.text"), ""]
             + _formula(ui("formula.experience-falloff.formula", floor=_n(floor), gap=gap))
             + [ui("formula.experience-falloff.notes", floor=_pct(floor), gap=gap), ""]
@@ -164,6 +174,8 @@ def _strength(ctx, page, v):
             + _table([ui("bosses.biome"), ui("formula.health"), ui("formula.damage"), ui("formula.boss_health"),
                       ui("formula.boss_damage")], rows)
             + [ui("formula.creature-strength.species", species=species), ""]
+            + ([ui("formula.creature-strength.fixed", creatures=", ".join(ctx.loc.creature(c) for c in d["fixedHealth"])), ""]
+               if d.get("fixedHealth") else [])
             + [f"### {ui('formula.presets')}", "", ui("formula.presets_note"), ""]
             + _formula(ui("formula.creature-strength.soften"))
             + _table([ui("formula.preset_col"), ui("formula.health_scale"), ui("formula.damage_scale"),
@@ -209,6 +221,22 @@ def _power(ctx, page, v):
             + [ui("formula.monster-power.notes", n=round((cap - 1) / step) if step else 0, loot=_anchor("loot", page)), ""])
 
 
+def _one(v: float) -> str:
+    return f"1 in {round(1 / v):,}" if 0 < v < 1 else (f"{v:.2g}" if v else "—")
+
+
+def loot_per_kill(ctx: Ctx, s: dict) -> dict[str, float]:
+    """Average drops per kill (or chest) of a source at quantity 1 and no rarity (LootDrops.Roll):
+    its expected draws (lambda) split by the group weights; equipment draws give magic-or-better
+    gear at the base drop rate (more in chests), currency at the currency rate."""
+    v = _values().get("loot", {})
+    total = max(0.0001, s.get("gear", 0) + s.get("currency", 0) + s.get("jewel", 0))
+    chest = v.get("chest", 3.5) if s["id"] in ("chest", "dungeon-chest") else 1
+    return {"gear": s["lambda"] * s.get("gear", 0) / total * v.get("gear_rate", 0.25) * chest,
+            "currency": s["lambda"] * s.get("currency", 0) / total * v.get("currency_rate", 0.125) * v.get("currency_boost", 1),
+            "gems": s["lambda"] * s.get("jewel", 0) / total}
+
+
 def _loot(ctx, page, v):
     ui, loot = ctx.loc.ui, ctx.data.loot
     stars = loot.get("stars", {})
@@ -217,15 +245,18 @@ def _loot(ctx, page, v):
         name = ui(f"gear.source.{s['id']}")
         return name if name != f"gear.source.{s['id']}" else s["id"]
 
-    sources = [[source(s), _n(s["lambda"]), _pct(s.get("jewel", 0) / (s.get("gear", 0) + s.get("currency", 0) + s.get("jewel", 0)))]
-               for s in loot.get("sources", [])]
+    sources = []
+    for s in loot.get("sources", []):
+        per = loot_per_kill(ctx, s)
+        sources.append([source(s), _one(per["gear"]), _one(per["currency"]), _one(per["gems"])])
     levels = [[str(r["level"]), _n(r["common"]), _n(r["magic"]), _n(r["rare"])] for r in loot.get("rarityByLevel", [])]
     return ([ui("formula.loot.text", quantity=_term(ctx, "item-quantity", page), rarity=_term(ctx, "item-rarity", page)), ""]
             + _formula(ui("formula.loot.quantity", star=_n(stars.get("quantityPerStar", 0)), mod=_n(v["per_modifier"])))
             + _formula(ui("formula.loot.rarity", star=_n(stars.get("rarityPerStar", 0))))
             + [ui("formula.loot.notes"), ""]
             + [f"### {ui('formula.loot.sources')}", "", ui("formula.loot.sources_note"), ""]
-            + _table([ui("gear.source_label"), ui("formula.loot.lambda"), ui("formula.loot.jewel")], sources)
+            + _table([ui("gear.source_label"), ui("formula.loot.gear"), ui("formula.loot.currency"), ui("formula.loot.jewel")], sources)
+            + [ui("formula.loot.gates"), ""]
             + [f"### {ui('formula.loot.by_level')}", "", ui("formula.loot.by_level_note"), ""]
             + _formula(ui("formula.loot.curve"))
             + _table([ui("formula.level"), ui("formula.loot.common"), ui("formula.loot.magic"), ui("formula.loot.rare")], levels)

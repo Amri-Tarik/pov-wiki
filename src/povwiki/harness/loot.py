@@ -136,5 +136,9 @@ def _biomes() -> list[dict]:
         value = Enum.Parse(biome, name)
         level = int(BiomeLevels.Of(value))
         if level > 0:
-            out.append({"id": str(name), "level": level, "band": int(BiomeLevels.Band(value))})
+            row = {"id": str(name), "level": level, "band": int(BiomeLevels.Band(value))}
+            if hasattr(BiomeLevels, "Recommended"):  # 5.1.1: experience ranges follow these, not the area levels
+                row["recommended"] = int(BiomeLevels.Recommended(value))
+                row["recommendedBand"] = int(BiomeLevels.RecommendedBand(value))
+            out.append(row)
     return sorted(out, key=lambda b: (b["level"], b["id"]))

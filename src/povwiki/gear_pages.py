@@ -43,6 +43,11 @@ def unique_path(item: str) -> str:
     return f"items/unique/{item}.md"
 
 
+def _one_in(v: float) -> str:
+    """An expected count per kill, as "1 in N" when it is below one."""
+    return f"1 in {round(1 / v):,}" if 0 < v < 1 else (f"{v:.2g}" if v else "—")
+
+
 def _pct(v: float) -> str:
     return f"{v * 100:.3g}%"
 
@@ -276,9 +281,20 @@ def _mining_section(ctx: Ctx, item: str, page: str, found: dict) -> list[str]:
     elif kind == 1:
         md += [ui("veins.corrupted", link=rel(CREATURES_PAGE, page) + "#blight"), ""]
     else:
-        s = veins["strike"]
-        md += [ui("veins.divine", biomes=names(veins["divineBiomes"]), first=names(veins["divineBiomes"][:1]),
-                  reach=s["reach"], chance=_pct(s["chance"]), misses=s["pity"] - 1), ""]
+        from .formula_pages import shown
+
+        if not shown(ctx, "azurite-veins"):
+            return md + [f'!!! warning "{ui("formula.rechecking_title")}"',
+                         f"    {ui('formula.rechecking', version=ctx.data.version)}", ""]
+        s, chances = veins["strike"], veins["strikeChance"]
+        by_chance: dict[float, list[str]] = {}
+        for b, c in chances.items():
+            if c > 0:
+                by_chance.setdefault(round(c, 4), []).append(b)
+        first = next(b for b, c in chances.items() if c > 0)
+        parts = "; ".join(f"{names(bs)}: {_pct(c)}" for c, bs in sorted(by_chance.items()))
+        md += [ui("veins.divine", first=names([first]), reach=s["reach"], chances=parts,
+                  pity=names(veins["pityBiomes"]), misses=s["pity"] - 1), ""]
         if touch := _divine_touch(ctx, page):
             md += [ui("veins.divine_touch", mastery=touch), ""]
     chisels = " / ".join(_link(ctx, c, page, found) for c in _chisels_for(ctx, kind))
@@ -399,13 +415,14 @@ def page_jewels(ctx: Ctx) -> dict[str, str]:
     if not jewels:
         return {}
     md = [f"# {ui('gear.jewels')}", "", ui("gear.jewels_intro"), ""]
+    from .formula_pages import loot_per_kill, shown
+
     sources = ctx.data.loot.get("sources") or []
-    if sources:
+    if sources and shown(ctx, "loot"):
         md += [f"### {ui('gear.jewel_chance')}", "", ui("gear.jewel_chance_note"), ""]
-        md += _table([ui("gear.source_label"), ui("gear.chance")], [
+        md += _table([ui("gear.source_label"), ui("gear.jewels_per_kill")], [
             [ui(f"gear.source.{s['id']}") if ui(f"gear.source.{s['id']}") != f"gear.source.{s['id']}" else s["id"],
-             _pct(s.get("jewel", 0) / (s.get("gear", 0) + s.get("currency", 0) + s.get("jewel", 0)))]
-            for s in sources])
+             _one_in(loot_per_kill(ctx, s)["gems"])] for s in sources])
 
     base = {k: j for k, j in jewels.items() if j["base"]}
     md += [f"## {ui('gear.base_jewels')} ({len(base)})", ""]
@@ -508,6 +525,9 @@ def _unique_sources(ctx: Ctx, item: str, catalog: dict, page: str) -> str:
                 parts.append(ui("gear.src_global", biome=biome(ctx, level), level=level))
             elif kind == "biome":
                 parts.append(ui("gear.src_biome", biome=ctx.loc.vkey(f"biome_{what.lower()}", what)))
+            elif kind == "monolith":
+                chance = ctx.loc.gear.get("monolithUniqueChance")
+                parts.append(ui("gear.src_monolith", chance=_pct(chance)) if chance else ui("gear.src_monolith_kills"))
             elif kind == "creature":
                 parts.append(ui("gear.src_creature", creature=creature_link(ctx, what, page)))
     elif j.get("globalWeight") or mod.get("globalMinLevel"):

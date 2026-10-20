@@ -91,6 +91,9 @@ def _statement(source: str, needle: str) -> str | None:
         return None
     start = source.rfind("\n", 0, hits[0]) + 1
     end = source.find(";", hits[0])
+    line_end = source.find("\n", hits[0])
+    if line_end >= 0 and source[start:line_end].rstrip().endswith(","):  # an element of a long list (Tunables)
+        return source[start:line_end].rstrip()
     return source[start:end + 1] if end >= 0 else None
 
 

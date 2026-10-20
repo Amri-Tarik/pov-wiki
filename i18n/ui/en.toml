@@ -150,8 +150,8 @@ essence_boss_mods = "Boss properties"
 essence_element_mods = "Element properties ({n})"
 jewels = "Jewels"
 jewels_intro = "Jewels go into jewel sockets on the passive tree. Base jewels roll properties from their type's pool; unique jewels have fixed lines and often change the tree around their socket."
-jewel_chance = "How often a drop is a jewel"
-jewel_chance_note = "Share of drops that are jewels, by source (the rest is gear and currency)."
+jewel_chance = "Jewels per kill"
+jewel_chance_note = "How many jewels drop on average, by source, before item quantity (jewels roll apart from gear and currency)."
 source_label = "Source"
 base_jewels = "Base jewels"
 unique_jewels = "Unique jewels"
@@ -174,6 +174,9 @@ src_biome = "drops in the {biome}"
 src_creature = "dropped by {creature}"
 no_source = "No drop source in the game files"
 see_base = "Stats, recipe and implicits: see the {link} item base."
+src_monolith = "drops in rune monolith events (not corrupted ones): from their defenders, and with a {chance} chance when you win one"
+src_monolith_kills = "drops from the defenders of rune monolith events"
+jewels_per_kill = "On average"
 
 [gear.group]
 Rune = "Runes"
@@ -201,6 +204,7 @@ keystone = "a random keystone"
 notable = "a random notable"
 theme = "a random theme"
 path-other = "another random path"
+portal = "a random knowledge portal"
 
 [slot]
 base = "Regular"
@@ -509,7 +513,7 @@ hare = "Inside a mist, a {hare} turns on you: it rushes players within {sight} m
 mining = "Mining"
 plain = "Cut from azurite veins in {biomes}; the {dense} has the most."
 corrupted = "A [Blight Mist]({link}) turns the azurite veins inside it corrupted, and raises more of its own, until the mist is gone."
-divine = "Starts appearing in the {first}: a plain azurite vein in {biomes} can be turned divine by a heavenly strike, the first time you come within {reach} m of it ({chance} chance; certain after {misses} misses in a row). Not inside a Blight Mist."
+divine = "Starts appearing in the {first}: the first time you come within {reach} m of a plain azurite vein, a heavenly strike can turn it divine. Chance by biome: {chances}. In the {pity} it is certain after {misses} misses in a row. Not inside a Blight Mist."
 divine_touch = "The craft mastery {mastery} can also turn a plain vein divine while you cut it."
 chisel = "Needs a rune chisel of this tier or higher: {chisels}. Pickaxes can't cut azurite veins."
 hardness = "These veins are ×{x} as hard to cut as plain ones."
@@ -570,7 +574,7 @@ resist = "Resistance ignored"
 
 [formula.creature-level]
 title = "Area levels"
-text = "Every biome has a level. A creature's level is the level of the biome it stands in (stars don't change it): it sets the creature's accuracy and the item level of its loot, and a chest takes the level of its biome. It doesn't scale health or damage, except for the monolith bosses. Until the next biome's level, a biome gives full experience; past it, experience [falls off]({falloff})."
+text = "Every biome has a fixed level. A creature's level is the level of the biome it stands in (stars don't change it): it sets the creature's accuracy and the item level of its loot, and a chest takes the level of its biome. It doesn't scale health or damage, except for the monolith bosses. With the Raid level scaling setting (off by default, on in Merciless), raiders take the level of the biome the raid comes from, and scale with it. Each biome also has a recommended player level: up to the next biome's, it gives full experience; past it, experience [falls off]({falloff})."
 full_col = "Full experience up to level"
 
 [formula.creature-strength]
@@ -581,6 +585,7 @@ damage = "Damage = base damage × biome × (1 + star bonus × stars) × tamed ×
 terms = "Biome: the factor of the creature's biome (table below; bosses use the boss columns). Stars: see [Stars]({stars}). Tamed: a tamed creature has {tamed} of it. Monster Power: see [Monster Power]({power}). Blight Mist: only inside a mist. Valheim's own world difficulty settings apply on top."
 species = "Some kinds have their own health factor, which replaces the biome's: {species}."
 soften = "factor = 1 + (biome factor − 1) × scale"
+fixed = "These keep their own health: {creatures}."
 
 [formula.boss-step]
 title = "After a biome's boss"
@@ -615,7 +620,7 @@ quantity = "Quantity = 1 + item quantity + {star} × stars + {mod} × modifiers 
 rarity = "Rarity = item rarity + {star} × stars"
 notes = "Item quantity and item rarity are the killer's own, from passives and gear. Modifiers and Monster Power add quantity, not rarity. The loot's item level is the creature's level."
 sources = "Drops per kill"
-sources_note = "The number of drops is random: on average this many × quantity. Part of them are jewels:"
+sources_note = "Each kind rolls its own number of drops: on average this many × quantity."
 lambda = "Drops on average"
 jewel = "Jewels"
 by_level = "Rarity by item level"
@@ -625,6 +630,9 @@ common = "Common"
 magic = "Magic"
 rare = "Rare"
 unique = "Each gear drop has a {chance} × (1 + c) chance to be a unique instead. Bosses always drop at least a magic item, a rare one from level {level}."
+gear = "Equipment"
+currency = "Currency"
+gates = "By default, a piece of equipment only drops once you know its recipe (all its materials); currency, jewels and uniques have no such gate. Servers can switch each kind off per source (enemies, bosses, chests) and change their rates."
 
 [formula.vanilla-drops]
 title = "Valheim drops"
@@ -693,7 +701,7 @@ gates = "Item level decides which [properties]({mods}) and tiers can roll (each 
 
 [formula.experience-falloff]
 title = "Experience fall-off"
-text = "Past a biome's range, the combat experience you gain there fades. The level that counts is yours; the biome is where the creature dies (for kills) or where you stand (for hits). Being below a biome's level costs nothing."
+text = "Past a biome's recommended range, the combat experience you gain there fades. The ranges follow the recommended player levels (a server setting, by default the biomes' levels). The level that counts is yours; the biome is where the creature dies (for kills) or where you stand (for hits). Being below a biome's level costs nothing."
 formula = "kept = max({floor}, {floor} ^ (levels past the range ÷ {gap}))"
 notes = "Experience fades to {floor} at {gap} levels past the range, and never lower:"
 over_col = "Levels past the range"

@@ -113,6 +113,16 @@ class Localizer:
         """Jewels, unique lines, currency details and the mod's boss names (harness/gear.py)."""
         return self.data.rendered(self.lang.mod).get("gear") or {}
 
+    @cached_property
+    def monsters(self) -> dict:
+        """Monster modifiers and rarity (harness/monsters.py)."""
+        return self.data.rendered(self.lang.mod).get("monsters") or {}
+
+    @cached_property
+    def buildings(self) -> list:
+        """The mod's buildable pieces (harness/buildings.py)."""
+        return self.data.rendered(self.lang.mod).get("buildings") or []
+
     def creature(self, prefab: str) -> str:
         """A creature's name: the mod's own bosses, else Valheim's (creatures.json)."""
         if prefab in self.gear.get("creatures", {}):
@@ -142,6 +152,8 @@ class Localizer:
             "items": json.loads((folder / "items.json").read_text(encoding="utf-8")),
             "recipes": json.loads((folder / "recipes.json").read_text(encoding="utf-8")),
             "creatures": json.loads((folder / "creatures.json").read_text(encoding="utf-8")),
+            **{name: json.loads((folder / f"{name}.json").read_text(encoding="utf-8"))
+               for name in ("pieces", "smelters", "pickables")},
             "strings": strings,
         }
 

@@ -310,7 +310,12 @@ def _base_page(ctx: Ctx, prefab: str, b: dict, found: dict) -> str:
 
     recipe = _recipe(ctx, prefab)
     if recipe:
-        station = f"{_station(ctx, recipe)} · {ui('items.station_level', n=recipe['stationLevel'])}"
+        station = _station(ctx, recipe)
+        if isinstance(recipe.get("station"), dict):  # the mod's own station has its own page
+            from .building_pages import building_path
+
+            station = f"[{station}]({rel(building_path(recipe['station']['id']), page)})"
+        station = f"{station} · {ui('items.station_level', n=recipe['stationLevel'])}"
         md += [f"## {ui('items.recipe')}", "", station, ""]
         rows = []
         for res in recipe["resources"]:

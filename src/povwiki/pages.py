@@ -554,6 +554,12 @@ def page_options(ctx: Ctx) -> dict[str, str]:
             for extra in wordings:
                 md += ['<div class="pov-tooltip" markdown>', "", "<br>".join(to_md(x, loc, page) for x in extra), "", "</div>", ""]
 
+        from .building_pages import building_link, building_of_flag
+
+        built = building_of_flag(ctx)
+        if unlocked := [built[f] for f in dict.fromkeys(x.get("flag") for x in g["options"]) if f in built]:
+            md += [f"## {loc.ui('buildings.unlocks')}", "", ", ".join(building_link(ctx, b, page) for b in unlocked), ""]
+
         md += [f"## {loc.ui('page.offered_by')} ({len(g['nodes'])})", ""]
         md += _node_table(
             ctx, page, [loc.ui("col.name"), loc.ui("col.type"), ctx.ui("branch"), ""], g["nodes"],
@@ -776,6 +782,23 @@ def _references_section(ctx: Ctx, ref: dict, page: str) -> list[str]:
     return md
 
 
+def _related_pages(ctx: Ctx) -> dict[str, list[tuple[str, str, str]]]:
+    """Wiki terms -> pages of this site about the same thing (title, path, what it is), for "See also"."""
+    from .building_pages import WILD, building_path, display_name
+    from .monster_pages import MODS_PAGE
+
+    found: dict[str, list[tuple[str, str, str]]] = defaultdict(list)
+    by_id = {b["id"]: b for b in ctx.loc.buildings}
+    links = {"craft-wild-sowing": [WILD], "craft-cuttings": [WILD], "azurite": ["PT_AzuriteKiln"]}
+    for term, ids in links.items():
+        found[term] += [(display_name(ctx, by_id[i]), building_path(i), ctx.loc.ui("buildings.kind"))
+                        for i in ids if i in by_id]
+    if ctx.loc.monsters.get("mods"):
+        for term in ("item-quantity", "item-rarity"):
+            found[term].append((ctx.loc.ui("monsters.mods"), MODS_PAGE, ctx.loc.ui("monsters.title")))
+    return found
+
+
 def page_glossary(ctx: Ctx) -> dict[str, str]:
     """A page per term of the mod's in-game wiki, with what references it in every tree."""
     from .gear_pages import keyword_uniques_section, uniques_by_keyword
@@ -785,6 +808,7 @@ def page_glossary(ctx: Ctx) -> dict[str, str]:
     trees = [ctx, *ctx.others]
     refs = {t.spec.key: _references(t) for t in trees}
     mods, uniques = mods_by_keyword(ctx), uniques_by_keyword(ctx)  # item text links keywords too
+    related = _related_pages(ctx)
     terms = defaultdict(set)
     for key, term in wiki.items():
         for slug in {s for line in term["text"] for s in slugs(line)}:
@@ -810,11 +834,12 @@ def page_glossary(ctx: Ctx) -> dict[str, str]:
                 md += keyword_mods_section(ctx, mods[key], page)
             if uniques.get(key):
                 md += keyword_uniques_section(ctx, uniques[key], page)
-        if terms.get(key):
+        if terms.get(key) or related.get(key):
             md += [f"### {loc.ui('page.see_also')}", ""]
+            md += [f"- [{title}]({rel(target, page)}) <small>{kind}</small>" for title, target, kind in related.get(key, [])]
             md += [
                 f"- [{plain(wiki[k]['title'])}]({rel(glossary_path(k), page)})"
-                for k in sorted(terms[key], key=lambda k: plain(wiki[k]["title"]).lower())
+                for k in sorted(terms.get(key, ()), key=lambda k: plain(wiki[k]["title"]).lower())
             ]
         pages[page] = "\n".join(md + _footer(ctx))
     return pages
@@ -836,9 +861,11 @@ def nav() -> list:
     Glossary term pages are reached from keyword links and search."""
     return [
         ("nav.home", "index.md"),
-        *((f"{t.key}.title", [(f"{t.key}.{p}", f"{t.key}/{p}.md") for p in t.pages]) for t in TREES),
+        *((f"{t.key}.title", [(f"{t.key}.{p}", f"{t.key}/{p}.md") for p in t.pages]
+           + ([("buildings.title", "crafting/buildings.md")] if t is CRAFTING else [])) for t in TREES),
         ("items.title", [("items.mods", "items/mods.md"), ("items.bases", "items/bases.md"),
                          ("gear.currency", "items/currency.md"), ("gear.jewels", "items/jewels.md"),
                          ("gear.uniques", "items/uniques.md")]),
+        ("monsters.title", [("monsters.mods", "monsters/mods.md")]),
         ("nav.about", "about.md"),
     ]

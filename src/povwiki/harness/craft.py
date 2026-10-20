@@ -175,6 +175,7 @@ class CraftRenderer:
             "reserved": False,
             "unformatted": self.unformatted(o.Mods, self.formatted),
             "icon": self.art_get(self.art.ArtKey(node, index)),
+            "flag": str(flag) if has_flag else None,  # what it unlocks (CraftMasteries.Flags), e.g. VacuumChest
         }
 
     def render(self, errors: list) -> dict:

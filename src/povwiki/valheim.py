@@ -9,7 +9,11 @@ still carry their type trees, so UnityPy can read component data directly:
   every language);
 - status effects items apply (equip, set, attack...): class and fields;
 - creatures (Character components): their name string and whether they are a boss;
-- icons: each item's first icon sprite, as PNG.
+- pieces (Piece components): name, description, category, build station and cost, keyed by
+  prefab; smelters (Smelter components): fuel, capacity, timing and conversions;
+- pickables (Pickable components): the item each gives and its regrow time, and whether the
+  prefab is a planted crop (has a Plant component);
+- icons: each item's first icon sprite, as PNG; each piece's as piece.<prefab>.png.
 
 This is Iron Gate's data: it stays in .cache/valheim/<build>/, like the mod files.
 """
@@ -45,7 +49,7 @@ def latest() -> Path:
     """The extracted data for the installed Valheim (extracting it if needed)."""
     data = data_dir()
     out = VALHEIM / build_key(data)
-    if not (out / "creatures.json").exists():  # the last file added: older extractions lack it
+    if not (out / "pickables.json").exists():  # the last file added: older extractions lack it
         extract(data, out)
     return out
 
@@ -86,7 +90,8 @@ def extract(data: Path, out: Path) -> Path:
             return [resolve(owner, v) for v in value]
         return value
 
-    items, recipes, icon_refs, effects, creatures = {}, [], {}, {}, {}
+    items, recipes, icon_refs, effects, creatures, pieces, smelters = {}, [], {}, {}, {}, {}, {}
+    pickables, plants = {}, set()
 
     def keep_effects(owner, shared: dict) -> None:
         """Status effects an item applies (equip, set, attack...): their class and fields."""
@@ -121,6 +126,31 @@ def extract(data: Path, out: Path) -> Path:
         elif "m_faction" in tree and "m_name" in tree and "m_boss" in tree:  # Character / Humanoid
             prefab = obj.read().m_GameObject.read().m_Name
             creatures.setdefault(prefab, {"name": tree["m_name"], "boss": bool(tree["m_boss"])})
+        elif "m_resources" in tree and "m_category" in tree and "m_icon" in tree:  # Piece
+            prefab = obj.read().m_GameObject.read().m_Name
+            if prefab in pieces:
+                continue
+            icon_refs[f"piece.{prefab}"] = (obj, tree.get("m_icon"))
+            pieces[prefab] = {
+                "name": tree["m_name"], "description": tree.get("m_description", ""), "category": tree["m_category"],
+                "station": name_of(obj, tree.get("m_craftingStation")),
+                "resources": [
+                    {"item": name_of(obj, r["m_resItem"]), "amount": r["m_amount"], "recover": bool(r.get("m_recover", True))}
+                    for r in tree["m_resources"] if r["m_resItem"].get("m_PathID")
+                ],
+            }
+        elif "m_itemPrefab" in tree and "m_respawnTimeMinutes" in tree:  # Pickable
+            prefab = obj.read().m_GameObject.read().m_Name
+            pickables.setdefault(prefab, {"item": name_of(obj, tree["m_itemPrefab"]), "respawn": tree["m_respawnTimeMinutes"]})
+        elif "m_grownPrefabs" in tree and "m_growTime" in tree:  # Plant (a sapling)
+            plants.add(obj.read().m_GameObject.read().m_Name)
+        elif "m_conversion" in tree and "m_fuelItem" in tree:  # Smelter
+            prefab = obj.read().m_GameObject.read().m_Name
+            smelters.setdefault(prefab, {
+                "fuel": name_of(obj, tree["m_fuelItem"]), "maxOre": tree.get("m_maxOre"), "maxFuel": tree.get("m_maxFuel"),
+                "fuelPerProduct": tree.get("m_fuelPerProduct"), "secPerProduct": tree.get("m_secPerProduct"),
+                "conversion": [{"from": name_of(obj, c["m_from"]), "to": name_of(obj, c["m_to"])} for c in tree["m_conversion"]],
+            })
         elif "m_item" in tree and "m_resources" in tree and "m_craftingStation" in tree:
             item = name_of(obj, tree["m_item"])
             if item is None:
@@ -138,7 +168,7 @@ def extract(data: Path, out: Path) -> Path:
                     for r in tree["m_resources"] if r["m_resItem"].get("m_PathID")
                 ],
             })
-    print(f"valheim: {len(items)} items, {len(recipes)} recipes in {time.time() - t0:.0f}s")
+    print(f"valheim: {len(items)} items, {len(pieces)} pieces, {len(recipes)} recipes in {time.time() - t0:.0f}s")
 
     out.mkdir(parents=True, exist_ok=True)
     icons = out / "icons"
@@ -149,13 +179,18 @@ def extract(data: Path, out: Path) -> Path:
         try:
             sprite = PPtr(m_FileID=ref["m_FileID"], m_PathID=ref["m_PathID"], assetsfile=obj.assets_file).deref().read()
             sprite.image.save(icons / f"{prefab}.png")
-            items[prefab]["icon"] = f"{prefab}.png"
+            (pieces[prefab.removeprefix("piece.")] if prefab.startswith("piece.") else items[prefab])["icon"] = f"{prefab}.png"
         except Exception:
             pass
 
     stations = sorted({r["station"] for r in recipes if r["station"]})
     (out / "items.json").write_text(json.dumps(items, ensure_ascii=False), encoding="utf-8")
     (out / "creatures.json").write_text(json.dumps(creatures, ensure_ascii=False), encoding="utf-8")
+    (out / "pieces.json").write_text(json.dumps(pieces, ensure_ascii=False), encoding="utf-8")
+    for prefab, p in pickables.items():
+        p["plant"] = prefab in plants
+    (out / "pickables.json").write_text(json.dumps(pickables, ensure_ascii=False), encoding="utf-8")
+    (out / "smelters.json").write_text(json.dumps(smelters, ensure_ascii=False), encoding="utf-8")
     (out / "effects.json").write_text(json.dumps(effects, ensure_ascii=False), encoding="utf-8")
     (out / "recipes.json").write_text(json.dumps(recipes, ensure_ascii=False, indent=1), encoding="utf-8")
     (out / "localization.json").write_text(json.dumps(_localization(data), ensure_ascii=False), encoding="utf-8")

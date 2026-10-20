@@ -171,7 +171,10 @@ def _currency_page(ctx: Ctx, item: str, catalog: dict, uses: dict, found: dict) 
         md += [f"*{info['flavor']}*".replace("\n", " "), ""]
 
     if parts := _recipe_parts(info.get("recipe")):
-        md += [f"## {ui('items.recipe')}", "", f"{loc.text('@piece.PT_RuneCarverTable.name', 'Rune Carver Table')}", ""]
+        from .building_pages import building_path
+
+        table = f"[{loc.text('@piece.PT_RuneCarverTable.name', 'Rune Carver Table')}]({rel(building_path('PT_RuneCarverTable'), page)})"
+        md += [f"## {ui('items.recipe')}", "", table, ""]
         md += _table(["", ui("items.material"), ui("items.craft")],
                      [[_icon(ctx, m, page, 32), _link(ctx, m, page, found), str(n)] for m, n in parts])
 
@@ -180,7 +183,24 @@ def _currency_page(ctx: Ctx, item: str, catalog: dict, uses: dict, found: dict) 
     if used := sorted(set(uses.get(item, [])), key=lambda i: _item_name(ctx, i)):
         md += [f"## {ui('gear.used_in')}", ""]
         md += [", ".join(_link(ctx, u, page, found) for u in used), ""]
+    md += buildings_section(ctx, item, page)
     return "\n".join(md + _footer(ctx))
+
+
+def buildings_section(ctx: Ctx, item: str, page: str) -> list[str]:
+    """The mod's buildings an item goes into, and the kiln that grinds or makes it."""
+    from .building_pages import building_link, used_to_build
+
+    ui, md = ctx.loc.ui, []
+    if built := used_to_build(ctx).get(item):
+        md += [f"## {ui('buildings.used_to_build')}", "", ", ".join(building_link(ctx, b, page) for b in built), ""]
+    for b in ctx.loc.buildings:
+        for c in b.get("conversion") or []:
+            if item in (c["from"], c["to"]):
+                key = "buildings.ground_into" if item == c["from"] else "buildings.ground_from"
+                other = c["to"] if item == c["from"] else c["from"]
+                md += [ui(key, building=building_link(ctx, b, page), item=_link(ctx, other, page, {}), n=c["yield"]), ""]
+    return md
 
 
 def _currency_drops(ctx: Ctx, item: str, catalog: dict) -> list[str]:

@@ -32,6 +32,7 @@
   --pov-header: linear-gradient(#1d1810, #100e0a);
   --pov-tabs: linear-gradient(#12100c, #0d0b08);
   --pov-panel: linear-gradient(180deg, #19150f, #110f0b);
+  --pov-panel-top: #19150f;
   --pov-table-head: linear-gradient(#251e13, #1a1510);
   --pov-edge: #4a3b1f;
   --pov-edge-soft: #2a2418;
@@ -66,6 +67,7 @@
   --pov-header: linear-gradient(#f7f0e1, #ece2cd);
   --pov-tabs: linear-gradient(#ece2cd, #e6dbc4);
   --pov-panel: linear-gradient(180deg, #fbf7ef, #f1e9d9);
+  --pov-panel-top: #fbf7ef;
   --pov-table-head: linear-gradient(#efe4cd, #e7dbc1);
   --pov-edge: #cdb48a;
   --pov-edge-soft: #e2d6bf;
@@ -87,19 +89,21 @@ body { background: var(--pov-light), var(--md-default-bg-color); }
 }
 
 /* ---- Tabs ---- */
+/* The bar's rule is drawn inside it (not a border below it), and the tabs sit on its bottom
+   edge, so the selected tab's gold line lies over the rule. */
 .md-tabs {
   background: var(--pov-tabs);
   color: var(--pov-text-soft);
-  border-bottom: 1px solid var(--pov-rule);
+  box-shadow: inset 0 -1px 0 var(--pov-rule);
 }
-.md-tabs__list { padding: 0.2rem 0; }
+.md-tabs__list { padding: 0.2rem 0 0; }
 .md-tabs__link { font-size: 0.82rem; font-weight: 600; opacity: 1; color: var(--pov-text-soft); }
 .md-tabs__item { padding: 0 1.1em; border-radius: 6px 6px 0 0; transition: background 0.15s; }
 .md-tabs__item:hover { background: var(--pov-tint); }
 .md-tabs__item:hover .md-tabs__link { color: var(--pov-title); }
 .md-tabs__item--active {
   background: linear-gradient(transparent, var(--pov-tint-strong));
-  box-shadow: inset 0 -2px 0 var(--pov-gold), 0 6px 14px -6px var(--pov-glow);
+  box-shadow: inset 0 -3px 0 var(--pov-gold), 0 6px 14px -6px var(--pov-glow);
 }
 .md-tabs__item--active .md-tabs__link { color: var(--pov-title); text-shadow: 0 0 10px var(--pov-glow); }
 
@@ -132,6 +136,15 @@ body { background: var(--pov-light), var(--md-default-bg-color); }
   border-image: linear-gradient(90deg, var(--pov-gold), transparent) 1;
   padding: 0 0.4rem 0.6em;
   margin-bottom: 0.6em;
+}
+/* "On this page" stays readable above the list scrolling under it. */
+.md-nav--secondary > .md-nav__title {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--pov-panel-top) !important;
+  margin-top: -0.9rem;
+  padding-top: 0.9rem;
 }
 .md-nav__link {
   color: var(--pov-text-soft);

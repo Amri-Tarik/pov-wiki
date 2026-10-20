@@ -510,6 +510,7 @@ blight_hare = "Blight Hare"
 hare = "Inside a mist, a {hare} turns on you: it rushes players within {sight} m and bursts at {burst} m, dealing {dmg} base damage ({blunt}% blunt, {poison}% poison) to everyone within {radius} m."
 
 [veins]
+quarrying = "With the {mastery} craft mastery: {text}"
 mining = "Mining"
 plain = "Cut from azurite veins in {biomes}; the {dense} has the most."
 corrupted = "A [Blight Mist]({link}) turns the azurite veins inside it corrupted, and raises more of its own, until the mist is gone."
@@ -696,8 +697,10 @@ hit_col = "Hit of {n}"
 [formula.item-level]
 title = "Item level"
 text = "A dropped item takes the level of the creature that drops it, or of the chest's biome ([area levels]({areas}))."
-crafted = "A crafted item's level is the highest level among its materials, by the biome they come from (upgrade materials and molds count as the Deep North); each [item base]({bases}) shows its own. It is the level used when runes add properties to the item."
+crafted = "A crafted item's level is the highest level among its materials, by the biome they come from; materials a recipe only needs for upgrades don't count. Moulds count as the Deep North, idols as the biome of their tier (below). Each [item base]({bases}) shows its own. It is the level used when runes add properties to the item: each rune sets it again from the recipe."
 gates = "Item level decides which [properties]({mods}) and tiers can roll (each tier has a level range), how rare drops are, and which [uniques]({uniques}) can drop."
+idols = "The level each upgrade idol counts as:"
+idol_col = "Idol"
 
 [formula.experience-falloff]
 title = "Experience fall-off"
@@ -726,6 +729,7 @@ text = "Socketed in an allocated socket (once identified), it turns the hidden n
 
 # Patch pages: what an update changed (patch_pages.py).
 [patch]
+moved = "Moved"
 history = "Patch history"
 version = "Patch"
 title = "Patch {version}"

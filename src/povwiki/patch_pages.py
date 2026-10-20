@@ -301,31 +301,62 @@ def _change(c: dict) -> list[str]:
     """One entry's change as lines of HTML: what went out struck, what came in marked."""
     old, new = c["old"], c["new"]
     if old and new:
-        return ([_words(old["name"], new["name"])] if old["name"] != new["name"] else []) + _lines(old["lines"], new["lines"])
+        renamed = [f"<del>{html.escape(old['name'])}</del> → <ins>{html.escape(new['name'])}</ins>"] if old["name"] != new["name"] else []
+        return renamed + _lines(old["lines"], new["lines"])
     if new:
         return [f"<ins>{html.escape(s)}</ins>" for s in new["lines"]]
     return [f"<del>{html.escape(s)}</del>" for s in old["lines"]]
 
 
+def _moved(changes: dict) -> dict:
+    """Entries that went away and came back under a new id with the same name and type (a cluster
+    of passives moved elsewhere in the tree) are paired up as one moved entry."""
+    gone: dict[tuple, list[str]] = {}
+    for i, c in changes.items():
+        if c["new"] is None:
+            gone.setdefault((c["old"]["name"], c["old"].get("kind") or ""), []).append(i)
+    out = {}
+    for i, c in changes.items():
+        if c["old"] is None and (ids := gone.get((c["new"]["name"], c["new"].get("kind") or ""))):
+            out[i] = {"old": changes[ids.pop(0)]["old"], "new": c["new"], "moved": True}
+        elif c["new"] is not None:
+            out[i] = c
+    paired = {id(x["old"]) for x in out.values() if x.get("moved")}
+    out.update({i: c for i, c in changes.items() if c["new"] is None and id(c["old"]) not in paired})
+    return out
+
+
+def _names(entries: list[dict], page: str, linked: bool) -> str:
+    """The name cell of a row: each name once, with how many entries carry it, linked to the first."""
+    by_name: dict[str, list[dict]] = {}
+    for e in entries:
+        by_name.setdefault(e["name"], []).append(e)
+    if linked:
+        return ", ".join(_link(es[0], page, len(es)) for es in by_name.values())
+    return ", ".join(f"**{_cell(html.escape(n))}**" + (f" ×{len(es)}" if len(es) > 1 else "") for n, es in by_name.items())
+
+
 def _section(ctx: Ctx, sid: str, changes: dict, page: str) -> list[str]:
     ui = ctx.loc.ui
+    changes = _moved(changes)
     md = [f"## {ui(SECTIONS[sid][0])}", ""]
     for title, which in (("patch.changed", "both"), ("patch.added", "new"), ("patch.removed", "old")):
-        # Entries with the same name, type and change (a dozen small passives made alike) share a row.
+        # Entries of a type with the same change share a row: a dozen small passives made alike, or
+        # every craft notable offering a changed mastery option.
         groups: dict[tuple, list[dict]] = {}
         for c in changes.values():
             if _which(c) != which:
                 continue
             e = c["new"] or c["old"]
-            groups.setdefault((e["name"], e.get("kind") or "", tuple(_change(c))), []).append(e)
+            lines = ([f"<i>{ui('patch.moved')}</i>"] if c.get("moved") else []) + _change(c)
+            groups.setdefault((e.get("kind") or "", tuple(lines)), []).append(e)
         if not groups:
             continue
-        kinds = any(k for _, k, _ in groups)
+        kinds = any(k for k, _ in groups)
         md += [f"### {ui(title)} ({sum(len(es) for es in groups.values())})", ""]
         md += _rows([ui("col.name"), *([ui("patch.kind")] if kinds else []), ui("patch.change")],
-                    [[_link(es[0], page, len(es)) if which != "old" else f"**{_cell(html.escape(name))}**" + (f" ×{len(es)}" if len(es) > 1 else ""),
-                      *([_cell(kind)] if kinds else []), "<br>".join(lines)]
-                     for (name, kind, lines), es in sorted(groups.items(), key=lambda kv: kv[0][0].lower())])
+                    [[_names(es, page, which != "old"), *([_cell(kind)] if kinds else []), "<br>".join(lines)]
+                     for (kind, lines), es in sorted(groups.items(), key=lambda kv: kv[1][0]["name"].lower())])
     return md
 
 
@@ -345,9 +376,10 @@ def history(ctx: Ctx, sid: str, ids: list[str], page: str) -> list[str]:
     ui, rows = ctx.loc.ui, []
     for v in versions():
         p = _load(v, ctx.loc.lang.code) or {}
+        changes = _moved((p.get("changes") or {}).get(sid, {}))
         for i in ids:
-            if c := (p.get("changes") or {}).get(sid, {}).get(i):
-                what = {"both": "", "new": ui("patch.added"), "old": ui("patch.removed")}[_which(c)]
+            if c := changes.get(i):
+                what = ui("patch.moved") if c.get("moved") else {"both": "", "new": ui("patch.added"), "old": ui("patch.removed")}[_which(c)]
                 rows.append([f"[{ui('patch.title', version=v)}]({rel(patch_path(v), page)})" + (f" <small>({what})</small>" if what else ""),
                              "<br>".join(_change(c))])
     if not rows:

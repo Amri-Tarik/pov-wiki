@@ -174,8 +174,8 @@ def _level(ctx: Ctx, prefab: str) -> int | None:
 
 def _material_level(ctx: Ctx, recipe: dict) -> int:
     """The highest item level among a recipe's materials, upgrade items (Upgrader*/Mold*) left out:
-    where the item sits in progression, for ordering lists. Upgrade items are rated Deep North
-    (CraftLevel.ByPrefix), so most recipes would otherwise tie."""
+    where the item sits in progression, for ordering lists. Upgrade items have levels of their own
+    (CraftLevel.ByPrefix: moulds the Deep North, idols their tier's biome) that say nothing about it."""
     return max([ctx.loc.items.get(r["item"], {}).get("craftLevel", 1)
                 for r in recipe["resources"] if not _is_upgrader(r["item"])] or [1])
 

@@ -291,8 +291,8 @@ anchors = [
     "PassiveTree.Loot/LootRoller.cs :: LootRoller.RaiseCraftLevel",
     "PassiveTree.Loot/LootCatalog.cs :: TierDef.Allows",
 ]
-fingerprint = "b036e5be07b8"
-checked = "5.1.1"
+fingerprint = "180a192855c8"
+checked = "5.1.2"
 
 [[formula]]
 id = "experience-falloff"

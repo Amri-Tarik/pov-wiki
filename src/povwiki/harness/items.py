@@ -436,6 +436,21 @@ def _projectile_source(source: dict | None, rung) -> bool:
     return shots <= 24 or rung.Volley > 0
 
 
+def _reads_field(methods: list, name: str) -> bool:
+    """Whether any of these methods loads a field of this name (an ldfld in its IL)."""
+    for m in methods:
+        il = bytes(bytearray(m.GetMethodBody().GetILAsByteArray()))
+        for i in range(len(il) - 4):
+            if il[i] != 0x7B:  # ldfld <token>
+                continue
+            try:
+                if m.Module.ResolveField(int.from_bytes(il[i + 1:i + 5], "little")).Name == name:
+                    return True
+            except Exception:  # noqa: BLE001 - a 0x7B byte that isn't an opcode
+                continue
+    return False
+
+
 class _CraftLevel:
     """CraftLevel.Of / Level, over the extracted recipes instead of the live ObjectDB. The mod's
     tables (CraftLevel.materials: material -> biome; BiomeLevels: biome -> item level) are read
@@ -446,6 +461,9 @@ class _CraftLevel:
         materials = t.GetField("materials", _ALL).GetValue(None)
         self.materials = {str(kv.Key): int(kv.Value) for kv in materials}
         self.by_prefix = t.GetMethod("ByPrefix", _ALL)
+        # 5.1.2: materials with amount 0 (Valheim lists upgrade-only materials that way) don't count.
+        # Read from the version's own code: does Level read Requirement.m_amount?
+        self.skip_empty = _reads_field([m for m in t.GetMethods(_ALL) if m.Name == "Level"], "m_amount")
         biome = _asm("assembly_valheim").GetType("Heightmap+Biome")
         self.biome_level = {int(v): int(biome_levels.Of(Enum.ToObject(biome, int(v)))) for v in Enum.GetValues(biome)}
         self.recipe_of = {}
@@ -465,6 +483,8 @@ class _CraftLevel:
         recipe = self.recipe_of.get(prefab)
         if recipe and depth < 5:
             for res in recipe["resources"]:
+                if self.skip_empty and res.get("amount", 1) <= 0:
+                    continue
                 level = max(level, self.level(res["item"], depth + 1))
         return level
 

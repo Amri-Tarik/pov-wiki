@@ -326,7 +326,23 @@ def chisel_section(ctx: Ctx, prefab: str, page: str) -> list[str]:
     if chisel is None:
         return []
     ores = [o for kind, o in enumerate(veins["ores"]) if chisel["tier"] >= veins["needTier"][kind]]
-    return [f"## {ctx.loc.ui('veins.cuts')}", "", ", ".join(_link(ctx, o, page, {}) for o in ores), ""]
+    md = [f"## {ctx.loc.ui('veins.cuts')}", "", ", ".join(_link(ctx, o, page, {}) for o in ores), ""]
+    return md + _quarrying(ctx, page)
+
+
+def _quarrying(ctx: Ctx, page: str) -> list[str]:
+    """The craft mastery that lets rune chisels mine like pickaxes (5.1.2: flag "Quarrying"), linked,
+    with its own text."""
+    from .building_pages import _craft_ctx
+    from .pages import option_path
+
+    craft = _craft_ctx(ctx)
+    for g in (craft.option_groups.values() if craft else []):
+        o = g["options"][0]
+        if o.get("flag") == "Quarrying":
+            text = " ".join(to_md(s, ctx.loc, page) for s in o["stats"] + o["extra"])
+            return [ctx.loc.ui("veins.quarrying", mastery=f"[{o['title']}]({rel(option_path(craft, g), page)})", text=text), ""]
+    return []
 
 
 def _made_section(ctx: Ctx, item: str, page: str, found: dict) -> list[str]:

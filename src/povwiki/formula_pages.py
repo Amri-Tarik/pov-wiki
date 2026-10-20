@@ -110,9 +110,29 @@ def _item_level(ctx, page, v):
     from .gear_pages import UNIQUES_PAGE
 
     ui = ctx.loc.ui
-    return [ui("formula.item-level.text", areas=_anchor("creature-level", page)), "",
-            ui("formula.item-level.crafted", bases=rel(BASES_PAGE, page)), "",
-            ui("formula.item-level.gates", mods=rel("items/mods.md", page), uniques=rel(UNIQUES_PAGE, page)), ""]
+    return ([ui("formula.item-level.text", areas=_anchor("creature-level", page)), "",
+             ui("formula.item-level.crafted", bases=rel(BASES_PAGE, page)), ""]
+            + _idols(ctx)
+            + [ui("formula.item-level.gates", mods=rel("items/mods.md", page), uniques=rel(UNIQUES_PAGE, page)), ""])
+
+
+def _idols(ctx) -> list[str]:
+    """The level each upgrade idol counts as (CraftLevel.ByPrefix: Upgrader<tier>Weapon/Armor, by
+    the tier's biome since 5.1.2), from the levels the game gives them."""
+    from .base_pages import _item_name
+
+    items, by_level = ctx.loc.items, {b["level"]: b for b in _area_biomes(ctx)}
+    rows = []
+    for tier in range(10):
+        found = [p for p in (f"Upgrader{tier}Weapon", f"Upgrader{tier}Armor") if p in items]
+        if found:
+            level = items[found[0]]["craftLevel"]
+            biome = _biome(ctx, by_level[level]) if level in by_level else "—"
+            rows.append([" / ".join(_item_name(ctx, p) for p in found), biome, str(level)])
+    if not rows:
+        return []
+    return [ctx.loc.ui("formula.item-level.idols"), ""] + _table(
+        [ctx.loc.ui("formula.item-level.idol_col"), ctx.loc.ui("bosses.biome"), ctx.loc.ui("formula.level")], rows)
 
 
 def _falloff(ctx, page, v):

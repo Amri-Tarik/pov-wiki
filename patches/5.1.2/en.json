@@ -1,0 +1,922 @@
+{
+ "changes": {
+  "crafting": {
+   "own2344": {
+    "new": {
+     "kind": "Craft notable",
+     "lines": [
+      "+5% chance for extra socket",
+      "Inscription Gate: You can build the Inscription Gate, a Runecarver portal with pink-violet runes. Shift + use on it opens the map of every portal in the world: pick one and inscribe the link, and everyone who enters the gate steps out there.",
+      "Azurite Sight: Azurite veins within your view radius are marked on the map and minimap: plain, corrupted and divine each with its own icon. A vein mined out by more than three quarters is no longer marked.",
+      "Divine Touch: +2% chance for divine azurite; Each chisel hit on a plain azurite vein outside the mist has a chance to turn it divine, with the same lightning as a heavenly strike. Any chisel works, in any biome.",
+      "Ascendant Rune: +10% chance that a property added by a rune rises one tier; When a rune adds or raises a property, it has a chance to rise one tier more as a separate step, beyond the item's level limit. You see a second flash, hear a chime and read \"+1 affix tier\".",
+      "Perfect Inscription: +10% chance that a property rolled by a rune takes the highest value of its tier; A property rolled by a rune (Fate included) has a chance to take the highest value of its tier.",
+      "Portal Crate: Away from a workbench, dismantling a portal packs it into a crate that keeps its tag, author, durability and Inscription Gate link. Place it back from the crate anywhere. A crate cannot pass through a portal.",
+      "Relic Passage: Dragon eggs for summoning, Hildir's chests and dvergr parts (charred cogwheels, dvergr needles, mechanical springs) go through portals, with no portal toll. Ore and metal are not included.",
+      "Vacuum Chest: Unlocks the Vacuum Chest at the Rune Carver Table. It takes finished goods from smelters, kilns, spinning wheels and windmills around it and feeds them from its contents. Shift + mouse wheel sets the radius, Shift + E the kind of goods it collects.",
+      "Chisel Quarrying: Rune chisels also mine stone and ore deposits, like a pickaxe of the same metal: bronze, iron or black metal (flametal hits as hard as black metal). A deposit too hard for that pickaxe is too hard for the chisel. Chisel hits do not train the Pickaxes skill. Azurite veins are mined as before."
+     ],
+     "link": "crafting/node/own2344.md",
+     "name": "Extra socket"
+    },
+    "old": {
+     "kind": "Craft notable",
+     "lines": [
+      "+5% chance for extra socket",
+      "Inscription Gate: You can build the Inscription Gate, a Runecarver portal with pink-violet runes. Shift + use on it opens the map of every portal in the world: pick one and inscribe the link, and everyone who enters the gate steps out there.",
+      "Azurite Sight: Azurite veins within your view radius are marked on the map and minimap: plain, corrupted and divine each with its own icon. A vein mined out by more than three quarters is no longer marked.",
+      "Divine Touch: +2% chance for divine azurite; Each chisel hit on a plain azurite vein outside the mist has a chance to turn it divine, with the same lightning as a heavenly strike. Works only once your chisel can mine divine azurite.",
+      "Ascendant Rune: +10% chance that a property added by a rune rises one tier; When a rune adds or raises a property, it has a chance to rise one tier more as a separate step, beyond the item's level limit. You see a second flash, hear a chime and read \"+1 affix tier\".",
+      "Perfect Inscription: +10% chance that a property rolled by a rune takes the highest value of its tier; A property rolled by a rune (Fate included) has a chance to take the highest value of its tier.",
+      "Portal Crate: Away from a workbench, dismantling a portal packs it into a crate that keeps its tag, author, durability and Inscription Gate link. Place it back from the crate anywhere. A crate cannot pass through a portal.",
+      "Relic Passage: Dragon eggs for summoning, Hildir's chests and dvergr parts (charred cogwheels, dvergr needles, mechanical springs) go through portals, with no portal toll. Ore and metal are not included.",
+      "Vacuum Chest: Unlocks the Vacuum Chest at the Rune Carver Table. It takes finished goods from smelters, kilns, spinning wheels and windmills around it and feeds them from its contents. Shift + mouse wheel sets the radius, Shift + E the kind of goods it collects."
+     ],
+     "link": "crafting/node/own2344.md",
+     "name": "Extra socket"
+    }
+   },
+   "own2348": {
+    "new": {
+     "kind": "Craft notable",
+     "lines": [
+      "7.5% reduced rune crafting cost",
+      "Inscription Gate: You can build the Inscription Gate, a Runecarver portal with pink-violet runes. Shift + use on it opens the map of every portal in the world: pick one and inscribe the link, and everyone who enters the gate steps out there.",
+      "Azurite Sight: Azurite veins within your view radius are marked on the map and minimap: plain, corrupted and divine each with its own icon. A vein mined out by more than three quarters is no longer marked.",
+      "Divine Touch: +2% chance for divine azurite; Each chisel hit on a plain azurite vein outside the mist has a chance to turn it divine, with the same lightning as a heavenly strike. Any chisel works, in any biome.",
+      "Ascendant Rune: +10% chance that a property added by a rune rises one tier; When a rune adds or raises a property, it has a chance to rise one tier more as a separate step, beyond the item's level limit. You see a second flash, hear a chime and read \"+1 affix tier\".",
+      "Perfect Inscription: +10% chance that a property rolled by a rune takes the highest value of its tier; A property rolled by a rune (Fate included) has a chance to take the highest value of its tier.",
+      "Portal Crate: Away from a workbench, dismantling a portal packs it into a crate that keeps its tag, author, durability and Inscription Gate link. Place it back from the crate anywhere. A crate cannot pass through a portal.",
+      "Relic Passage: Dragon eggs for summoning, Hildir's chests and dvergr parts (charred cogwheels, dvergr needles, mechanical springs) go through portals, with no portal toll. Ore and metal are not included.",
+      "Vacuum Chest: Unlocks the Vacuum Chest at the Rune Carver Table. It takes finished goods from smelters, kilns, spinning wheels and windmills around it and feeds them from its contents. Shift + mouse wheel sets the radius, Shift + E the kind of goods it collects.",
+      "Chisel Quarrying: Rune chisels also mine stone and ore deposits, like a pickaxe of the same metal: bronze, iron or black metal (flametal hits as hard as black metal). A deposit too hard for that pickaxe is too hard for the chisel. Chisel hits do not train the Pickaxes skill. Azurite veins are mined as before."
+     ],
+     "link": "crafting/node/own2348.md",
+     "name": "Thrifty carving"
+    },
+    "old": {
+     "kind": "Craft notable",
+     "lines": [
+      "7.5% reduced rune crafting cost",
+      "Inscription Gate: You can build the Inscription Gate, a Runecarver portal with pink-violet runes. Shift + use on it opens the map of every portal in the world: pick one and inscribe the link, and everyone who enters the gate steps out there.",
+      "Azurite Sight: Azurite veins within your view radius are marked on the map and minimap: plain, corrupted and divine each with its own icon. A vein mined out by more than three quarters is no longer marked.",
+      "Divine Touch: +2% chance for divine azurite; Each chisel hit on a plain azurite vein outside the mist has a chance to turn it divine, with the same lightning as a heavenly strike. Works only once your chisel can mine divine azurite.",
+      "Ascendant Rune: +10% chance that a property added by a rune rises one tier; When a rune adds or raises a property, it has a chance to rise one tier more as a separate step, beyond the item's level limit. You see a second flash, hear a chime and read \"+1 affix tier\".",
+      "Perfect Inscription: +10% chance that a property rolled by a rune takes the highest value of its tier; A property rolled by a rune (Fate included) has a chance to take the highest value of its tier.",
+      "Portal Crate: Away from a workbench, dismantling a portal packs it into a crate that keeps its tag, author, durability and Inscription Gate link. Place it back from the crate anywhere. A crate cannot pass through a portal.",
+      "Relic Passage: Dragon eggs for summoning, Hildir's chests and dvergr parts (charred cogwheels, dvergr needles, mechanical springs) go through portals, with no portal toll. Ore and metal are not included.",
+      "Vacuum Chest: Unlocks the Vacuum Chest at the Rune Carver Table. It takes finished goods from smelters, kilns, spinning wheels and windmills around it and feeds them from its contents. Shift + mouse wheel sets the radius, Shift + E the kind of goods it collects."
+     ],
+     "link": "crafting/node/own2348.md",
+     "name": "Thrifty carving"
+    }
+   },
+   "own2352": {
+    "new": {
+     "kind": "Craft notable",
+     "lines": [
+      "10% increased rune-crafted affix tier",
+      "Inscription Gate: You can build the Inscription Gate, a Runecarver portal with pink-violet runes. Shift + use on it opens the map of every portal in the world: pick one and inscribe the link, and everyone who enters the gate steps out there.",
+      "Azurite Sight: Azurite veins within your view radius are marked on the map and minimap: plain, corrupted and divine each with its own icon. A vein mined out by more than three quarters is no longer marked.",
+      "Divine Touch: +2% chance for divine azurite; Each chisel hit on a plain azurite vein outside the mist has a chance to turn it divine, with the same lightning as a heavenly strike. Any chisel works, in any biome.",
+      "Ascendant Rune: +10% chance that a property added by a rune rises one tier; When a rune adds or raises a property, it has a chance to rise one tier more as a separate step, beyond the item's level limit. You see a second flash, hear a chime and read \"+1 affix tier\".",
+      "Perfect Inscription: +10% chance that a property rolled by a rune takes the highest value of its tier; A property rolled by a rune (Fate included) has a chance to take the highest value of its tier.",
+      "Portal Crate: Away from a workbench, dismantling a portal packs it into a crate that keeps its tag, author, durability and Inscription Gate link. Place it back from the crate anywhere. A crate cannot pass through a portal.",
+      "Relic Passage: Dragon eggs for summoning, Hildir's chests and dvergr parts (charred cogwheels, dvergr needles, mechanical springs) go through portals, with no portal toll. Ore and metal are not included.",
+      "Vacuum Chest: Unlocks the Vacuum Chest at the Rune Carver Table. It takes finished goods from smelters, kilns, spinning wheels and windmills around it and feeds them from its contents. Shift + mouse wheel sets the radius, Shift + E the kind of goods it collects.",
+      "Chisel Quarrying: Rune chisels also mine stone and ore deposits, like a pickaxe of the same metal: bronze, iron or black metal (flametal hits as hard as black metal). A deposit too hard for that pickaxe is too hard for the chisel. Chisel hits do not train the Pickaxes skill. Azurite veins are mined as before."
+     ],
+     "link": "crafting/node/own2352.md",
+     "name": "Higher affix tiers"
+    },
+    "old": {
+     "kind": "Craft notable",
+     "lines": [
+      "10% increased rune-crafted affix tier",
+      "Inscription Gate: You can build the Inscription Gate, a Runecarver portal with pink-violet runes. Shift + use on it opens the map of every portal in the world: pick one and inscribe the link, and everyone who enters the gate steps out there.",
+      "Azurite Sight: Azurite veins within your view radius are marked on the map and minimap: plain, corrupted and divine each with its own icon. A vein mined out by more than three quarters is no longer marked.",
+      "Divine Touch: +2% chance for divine azurite; Each chisel hit on a plain azurite vein outside the mist has a chance to turn it divine, with the same lightning as a heavenly strike. Works only once your chisel can mine divine azurite.",
+      "Ascendant Rune: +10% chance that a property added by a rune rises one tier; When a rune adds or raises a property, it has a chance to rise one tier more as a separate step, beyond the item's level limit. You see a second flash, hear a chime and read \"+1 affix tier\".",
+      "Perfect Inscription: +10% chance that a property rolled by a rune takes the highest value of its tier; A property rolled by a rune (Fate included) has a chance to take the highest value of its tier.",
+      "Portal Crate: Away from a workbench, dismantling a portal packs it into a crate that keeps its tag, author, durability and Inscription Gate link. Place it back from the crate anywhere. A crate cannot pass through a portal.",
+      "Relic Passage: Dragon eggs for summoning, Hildir's chests and dvergr parts (charred cogwheels, dvergr needles, mechanical springs) go through portals, with no portal toll. Ore and metal are not included.",
+      "Vacuum Chest: Unlocks the Vacuum Chest at the Rune Carver Table. It takes finished goods from smelters, kilns, spinning wheels and windmills around it and feeds them from its contents. Shift + mouse wheel sets the radius, Shift + E the kind of goods it collects."
+     ],
+     "link": "crafting/node/own2352.md",
+     "name": "Higher affix tiers"
+    }
+   },
+   "own2356": {
+    "new": {
+     "kind": "Craft notable",
+     "lines": [
+      "15% reduced azurite, azurite dust and rune weight",
+      "Inscription Gate: You can build the Inscription Gate, a Runecarver portal with pink-violet runes. Shift + use on it opens the map of every portal in the world: pick one and inscribe the link, and everyone who enters the gate steps out there.",
+      "Azurite Sight: Azurite veins within your view radius are marked on the map and minimap: plain, corrupted and divine each with its own icon. A vein mined out by more than three quarters is no longer marked.",
+      "Divine Touch: +2% chance for divine azurite; Each chisel hit on a plain azurite vein outside the mist has a chance to turn it divine, with the same lightning as a heavenly strike. Any chisel works, in any biome.",
+      "Ascendant Rune: +10% chance that a property added by a rune rises one tier; When a rune adds or raises a property, it has a chance to rise one tier more as a separate step, beyond the item's level limit. You see a second flash, hear a chime and read \"+1 affix tier\".",
+      "Perfect Inscription: +10% chance that a property rolled by a rune takes the highest value of its tier; A property rolled by a rune (Fate included) has a chance to take the highest value of its tier.",
+      "Portal Crate: Away from a workbench, dismantling a portal packs it into a crate that keeps its tag, author, durability and Inscription Gate link. Place it back from the crate anywhere. A crate cannot pass through a portal.",
+      "Relic Passage: Dragon eggs for summoning, Hildir's chests and dvergr parts (charred cogwheels, dvergr needles, mechanical springs) go through portals, with no portal toll. Ore and metal are not included.",
+      "Vacuum Chest: Unlocks the Vacuum Chest at the Rune Carver Table. It takes finished goods from smelters, kilns, spinning wheels and windmills around it and feeds them from its contents. Shift + mouse wheel sets the radius, Shift + E the kind of goods it collects.",
+      "Chisel Quarrying: Rune chisels also mine stone and ore deposits, like a pickaxe of the same metal: bronze, iron or black metal (flametal hits as hard as black metal). A deposit too hard for that pickaxe is too hard for the chisel. Chisel hits do not train the Pickaxes skill. Azurite veins are mined as before."
+     ],
+     "link": "crafting/node/own2356.md",
+     "name": "Azurite hauling"
+    },
+    "old": {
+     "kind": "Craft notable",
+     "lines": [
+      "15% reduced azurite, azurite dust and rune weight",
+      "Inscription Gate: You can build the Inscription Gate, a Runecarver portal with pink-violet runes. Shift + use on it opens the map of every portal in the world: pick one and inscribe the link, and everyone who enters the gate steps out there.",
+      "Azurite Sight: Azurite veins within your view radius are marked on the map and minimap: plain, corrupted and divine each with its own icon. A vein mined out by more than three quarters is no longer marked.",
+      "Divine Touch: +2% chance for divine azurite; Each chisel hit on a plain azurite vein outside the mist has a chance to turn it divine, with the same lightning as a heavenly strike. Works only once your chisel can mine divine azurite.",
+      "Ascendant Rune: +10% chance that a property added by a rune rises one tier; When a rune adds or raises a property, it has a chance to rise one tier more as a separate step, beyond the item's level limit. You see a second flash, hear a chime and read \"+1 affix tier\".",
+      "Perfect Inscription: +10% chance that a property rolled by a rune takes the highest value of its tier; A property rolled by a rune (Fate included) has a chance to take the highest value of its tier.",
+      "Portal Crate: Away from a workbench, dismantling a portal packs it into a crate that keeps its tag, author, durability and Inscription Gate link. Place it back from the crate anywhere. A crate cannot pass through a portal.",
+      "Relic Passage: Dragon eggs for summoning, Hildir's chests and dvergr parts (charred cogwheels, dvergr needles, mechanical springs) go through portals, with no portal toll. Ore and metal are not included.",
+      "Vacuum Chest: Unlocks the Vacuum Chest at the Rune Carver Table. It takes finished goods from smelters, kilns, spinning wheels and windmills around it and feeds them from its contents. Shift + mouse wheel sets the radius, Shift + E the kind of goods it collects."
+     ],
+     "link": "crafting/node/own2356.md",
+     "name": "Azurite hauling"
+    }
+   },
+   "own453": {
+    "new": {
+     "kind": "Craft notable",
+     "lines": [
+      "+5% chance for divine socket",
+      "Inscription Gate: You can build the Inscription Gate, a Runecarver portal with pink-violet runes. Shift + use on it opens the map of every portal in the world: pick one and inscribe the link, and everyone who enters the gate steps out there.",
+      "Azurite Sight: Azurite veins within your view radius are marked on the map and minimap: plain, corrupted and divine each with its own icon. A vein mined out by more than three quarters is no longer marked.",
+      "Divine Touch: +2% chance for divine azurite; Each chisel hit on a plain azurite vein outside the mist has a chance to turn it divine, with the same lightning as a heavenly strike. Any chisel works, in any biome.",
+      "Ascendant Rune: +10% chance that a property added by a rune rises one tier; When a rune adds or raises a property, it has a chance to rise one tier more as a separate step, beyond the item's level limit. You see a second flash, hear a chime and read \"+1 affix tier\".",
+      "Perfect Inscription: +10% chance that a property rolled by a rune takes the highest value of its tier; A property rolled by a rune (Fate included) has a chance to take the highest value of its tier.",
+      "Portal Crate: Away from a workbench, dismantling a portal packs it into a crate that keeps its tag, author, durability and Inscription Gate link. Place it back from the crate anywhere. A crate cannot pass through a portal.",
+      "Relic Passage: Dragon eggs for summoning, Hildir's chests and dvergr parts (charred cogwheels, dvergr needles, mechanical springs) go through portals, with no portal toll. Ore and metal are not included.",
+      "Vacuum Chest: Unlocks the Vacuum Chest at the Rune Carver Table. It takes finished goods from smelters, kilns, spinning wheels and windmills around it and feeds them from its contents. Shift + mouse wheel sets the radius, Shift + E the kind of goods it collects.",
+      "Chisel Quarrying: Rune chisels also mine stone and ore deposits, like a pickaxe of the same metal: bronze, iron or black metal (flametal hits as hard as black metal). A deposit too hard for that pickaxe is too hard for the chisel. Chisel hits do not train the Pickaxes skill. Azurite veins are mined as before."
+     ],
+     "link": "crafting/node/own453.md",
+     "name": "Divine socket"
+    },
+    "old": {
+     "kind": "Craft notable",
+     "lines": [
+      "+5% chance for divine socket",
+      "Inscription Gate: You can build the Inscription Gate, a Runecarver portal with pink-violet runes. Shift + use on it opens the map of every portal in the world: pick one and inscribe the link, and everyone who enters the gate steps out there.",
+      "Azurite Sight: Azurite veins within your view radius are marked on the map and minimap: plain, corrupted and divine each with its own icon. A vein mined out by more than three quarters is no longer marked.",
+      "Divine Touch: +2% chance for divine azurite; Each chisel hit on a plain azurite vein outside the mist has a chance to turn it divine, with the same lightning as a heavenly strike. Works only once your chisel can mine divine azurite.",
+      "Ascendant Rune: +10% chance that a property added by a rune rises one tier; When a rune adds or raises a property, it has a chance to rise one tier more as a separate step, beyond the item's level limit. You see a second flash, hear a chime and read \"+1 affix tier\".",
+      "Perfect Inscription: +10% chance that a property rolled by a rune takes the highest value of its tier; A property rolled by a rune (Fate included) has a chance to take the highest value of its tier.",
+      "Portal Crate: Away from a workbench, dismantling a portal packs it into a crate that keeps its tag, author, durability and Inscription Gate link. Place it back from the crate anywhere. A crate cannot pass through a portal.",
+      "Relic Passage: Dragon eggs for summoning, Hildir's chests and dvergr parts (charred cogwheels, dvergr needles, mechanical springs) go through portals, with no portal toll. Ore and metal are not included.",
+      "Vacuum Chest: Unlocks the Vacuum Chest at the Rune Carver Table. It takes finished goods from smelters, kilns, spinning wheels and windmills around it and feeds them from its contents. Shift + mouse wheel sets the radius, Shift + E the kind of goods it collects."
+     ],
+     "link": "crafting/node/own453.md",
+     "name": "Divine socket"
+    }
+   },
+   "own755": {
+    "new": {
+     "kind": "Craft notable",
+     "lines": [
+      "+30 carry weight",
+      "Inscription Gate: You can build the Inscription Gate, a Runecarver portal with pink-violet runes. Shift + use on it opens the map of every portal in the world: pick one and inscribe the link, and everyone who enters the gate steps out there.",
+      "Azurite Sight: Azurite veins within your view radius are marked on the map and minimap: plain, corrupted and divine each with its own icon. A vein mined out by more than three quarters is no longer marked.",
+      "Divine Touch: +2% chance for divine azurite; Each chisel hit on a plain azurite vein outside the mist has a chance to turn it divine, with the same lightning as a heavenly strike. Any chisel works, in any biome.",
+      "Ascendant Rune: +10% chance that a property added by a rune rises one tier; When a rune adds or raises a property, it has a chance to rise one tier more as a separate step, beyond the item's level limit. You see a second flash, hear a chime and read \"+1 affix tier\".",
+      "Perfect Inscription: +10% chance that a property rolled by a rune takes the highest value of its tier; A property rolled by a rune (Fate included) has a chance to take the highest value of its tier.",
+      "Portal Crate: Away from a workbench, dismantling a portal packs it into a crate that keeps its tag, author, durability and Inscription Gate link. Place it back from the crate anywhere. A crate cannot pass through a portal.",
+      "Relic Passage: Dragon eggs for summoning, Hildir's chests and dvergr parts (charred cogwheels, dvergr needles, mechanical springs) go through portals, with no portal toll. Ore and metal are not included.",
+      "Vacuum Chest: Unlocks the Vacuum Chest at the Rune Carver Table. It takes finished goods from smelters, kilns, spinning wheels and windmills around it and feeds them from its contents. Shift + mouse wheel sets the radius, Shift + E the kind of goods it collects.",
+      "Chisel Quarrying: Rune chisels also mine stone and ore deposits, like a pickaxe of the same metal: bronze, iron or black metal (flametal hits as hard as black metal). A deposit too hard for that pickaxe is too hard for the chisel. Chisel hits do not train the Pickaxes skill. Azurite veins are mined as before."
+     ],
+     "link": "crafting/node/own755.md",
+     "name": "Carry weight"
+    },
+    "old": {
+     "kind": "Craft notable",
+     "lines": [
+      "+30 carry weight",
+      "Inscription Gate: You can build the Inscription Gate, a Runecarver portal with pink-violet runes. Shift + use on it opens the map of every portal in the world: pick one and inscribe the link, and everyone who enters the gate steps out there.",
+      "Azurite Sight: Azurite veins within your view radius are marked on the map and minimap: plain, corrupted and divine each with its own icon. A vein mined out by more than three quarters is no longer marked.",
+      "Divine Touch: +2% chance for divine azurite; Each chisel hit on a plain azurite vein outside the mist has a chance to turn it divine, with the same lightning as a heavenly strike. Works only once your chisel can mine divine azurite.",
+      "Ascendant Rune: +10% chance that a property added by a rune rises one tier; When a rune adds or raises a property, it has a chance to rise one tier more as a separate step, beyond the item's level limit. You see a second flash, hear a chime and read \"+1 affix tier\".",
+      "Perfect Inscription: +10% chance that a property rolled by a rune takes the highest value of its tier; A property rolled by a rune (Fate included) has a chance to take the highest value of its tier.",
+      "Portal Crate: Away from a workbench, dismantling a portal packs it into a crate that keeps its tag, author, durability and Inscription Gate link. Place it back from the crate anywhere. A crate cannot pass through a portal.",
+      "Relic Passage: Dragon eggs for summoning, Hildir's chests and dvergr parts (charred cogwheels, dvergr needles, mechanical springs) go through portals, with no portal toll. Ore and metal are not included.",
+      "Vacuum Chest: Unlocks the Vacuum Chest at the Rune Carver Table. It takes finished goods from smelters, kilns, spinning wheels and windmills around it and feeds them from its contents. Shift + mouse wheel sets the radius, Shift + E the kind of goods it collects."
+     ],
+     "link": "crafting/node/own755.md",
+     "name": "Carry weight"
+    }
+   },
+   "own771": {
+    "new": {
+     "kind": "Craft notable",
+     "lines": [
+      "+5% chance for extra azurite",
+      "Inscription Gate: You can build the Inscription Gate, a Runecarver portal with pink-violet runes. Shift + use on it opens the map of every portal in the world: pick one and inscribe the link, and everyone who enters the gate steps out there.",
+      "Azurite Sight: Azurite veins within your view radius are marked on the map and minimap: plain, corrupted and divine each with its own icon. A vein mined out by more than three quarters is no longer marked.",
+      "Divine Touch: +2% chance for divine azurite; Each chisel hit on a plain azurite vein outside the mist has a chance to turn it divine, with the same lightning as a heavenly strike. Any chisel works, in any biome.",
+      "Ascendant Rune: +10% chance that a property added by a rune rises one tier; When a rune adds or raises a property, it has a chance to rise one tier more as a separate step, beyond the item's level limit. You see a second flash, hear a chime and read \"+1 affix tier\".",
+      "Perfect Inscription: +10% chance that a property rolled by a rune takes the highest value of its tier; A property rolled by a rune (Fate included) has a chance to take the highest value of its tier.",
+      "Portal Crate: Away from a workbench, dismantling a portal packs it into a crate that keeps its tag, author, durability and Inscription Gate link. Place it back from the crate anywhere. A crate cannot pass through a portal.",
+      "Relic Passage: Dragon eggs for summoning, Hildir's chests and dvergr parts (charred cogwheels, dvergr needles, mechanical springs) go through portals, with no portal toll. Ore and metal are not included.",
+      "Vacuum Chest: Unlocks the Vacuum Chest at the Rune Carver Table. It takes finished goods from smelters, kilns, spinning wheels and windmills around it and feeds them from its contents. Shift + mouse wheel sets the radius, Shift + E the kind of goods it collects.",
+      "Chisel Quarrying: Rune chisels also mine stone and ore deposits, like a pickaxe of the same metal: bronze, iron or black metal (flametal hits as hard as black metal). A deposit too hard for that pickaxe is too hard for the chisel. Chisel hits do not train the Pickaxes skill. Azurite veins are mined as before."
+     ],
+     "link": "crafting/node/own771.md",
+     "name": "Extra azurite"
+    },
+    "old": {
+     "kind": "Craft notable",
+     "lines": [
+      "+5% chance for extra azurite",
+      "Inscription Gate: You can build the Inscription Gate, a Runecarver portal with pink-violet runes. Shift + use on it opens the map of every portal in the world: pick one and inscribe the link, and everyone who enters the gate steps out there.",
+      "Azurite Sight: Azurite veins within your view radius are marked on the map and minimap: plain, corrupted and divine each with its own icon. A vein mined out by more than three quarters is no longer marked.",
+      "Divine Touch: +2% chance for divine azurite; Each chisel hit on a plain azurite vein outside the mist has a chance to turn it divine, with the same lightning as a heavenly strike. Works only once your chisel can mine divine azurite.",
+      "Ascendant Rune: +10% chance that a property added by a rune rises one tier; When a rune adds or raises a property, it has a chance to rise one tier more as a separate step, beyond the item's level limit. You see a second flash, hear a chime and read \"+1 affix tier\".",
+      "Perfect Inscription: +10% chance that a property rolled by a rune takes the highest value of its tier; A property rolled by a rune (Fate included) has a chance to take the highest value of its tier.",
+      "Portal Crate: Away from a workbench, dismantling a portal packs it into a crate that keeps its tag, author, durability and Inscription Gate link. Place it back from the crate anywhere. A crate cannot pass through a portal.",
+      "Relic Passage: Dragon eggs for summoning, Hildir's chests and dvergr parts (charred cogwheels, dvergr needles, mechanical springs) go through portals, with no portal toll. Ore and metal are not included.",
+      "Vacuum Chest: Unlocks the Vacuum Chest at the Rune Carver Table. It takes finished goods from smelters, kilns, spinning wheels and windmills around it and feeds them from its contents. Shift + mouse wheel sets the radius, Shift + E the kind of goods it collects."
+     ],
+     "link": "crafting/node/own771.md",
+     "name": "Extra azurite"
+    }
+   },
+   "own790": {
+    "new": {
+     "kind": "Craft notable",
+     "lines": [
+      "+5% chance for extra rune",
+      "Inscription Gate: You can build the Inscription Gate, a Runecarver portal with pink-violet runes. Shift + use on it opens the map of every portal in the world: pick one and inscribe the link, and everyone who enters the gate steps out there.",
+      "Azurite Sight: Azurite veins within your view radius are marked on the map and minimap: plain, corrupted and divine each with its own icon. A vein mined out by more than three quarters is no longer marked.",
+      "Divine Touch: +2% chance for divine azurite; Each chisel hit on a plain azurite vein outside the mist has a chance to turn it divine, with the same lightning as a heavenly strike. Any chisel works, in any biome.",
+      "Ascendant Rune: +10% chance that a property added by a rune rises one tier; When a rune adds or raises a property, it has a chance to rise one tier more as a separate step, beyond the item's level limit. You see a second flash, hear a chime and read \"+1 affix tier\".",
+      "Perfect Inscription: +10% chance that a property rolled by a rune takes the highest value of its tier; A property rolled by a rune (Fate included) has a chance to take the highest value of its tier.",
+      "Portal Crate: Away from a workbench, dismantling a portal packs it into a crate that keeps its tag, author, durability and Inscription Gate link. Place it back from the crate anywhere. A crate cannot pass through a portal.",
+      "Relic Passage: Dragon eggs for summoning, Hildir's chests and dvergr parts (charred cogwheels, dvergr needles, mechanical springs) go through portals, with no portal toll. Ore and metal are not included.",
+      "Vacuum Chest: Unlocks the Vacuum Chest at the Rune Carver Table. It takes finished goods from smelters, kilns, spinning wheels and windmills around it and feeds them from its contents. Shift + mouse wheel sets the radius, Shift + E the kind of goods it collects.",
+      "Chisel Quarrying: Rune chisels also mine stone and ore deposits, like a pickaxe of the same metal: bronze, iron or black metal (flametal hits as hard as black metal). A deposit too hard for that pickaxe is too hard for the chisel. Chisel hits do not train the Pickaxes skill. Azurite veins are mined as before."
+     ],
+     "link": "crafting/node/own790.md",
+     "name": "Extra rune"
+    },
+    "old": {
+     "kind": "Craft notable",
+     "lines": [
+      "+5% chance for extra rune",
+      "Inscription Gate: You can build the Inscription Gate, a Runecarver portal with pink-violet runes. Shift + use on it opens the map of every portal in the world: pick one and inscribe the link, and everyone who enters the gate steps out there.",
+      "Azurite Sight: Azurite veins within your view radius are marked on the map and minimap: plain, corrupted and divine each with its own icon. A vein mined out by more than three quarters is no longer marked.",
+      "Divine Touch: +2% chance for divine azurite; Each chisel hit on a plain azurite vein outside the mist has a chance to turn it divine, with the same lightning as a heavenly strike. Works only once your chisel can mine divine azurite.",
+      "Ascendant Rune: +10% chance that a property added by a rune rises one tier; When a rune adds or raises a property, it has a chance to rise one tier more as a separate step, beyond the item's level limit. You see a second flash, hear a chime and read \"+1 affix tier\".",
+      "Perfect Inscription: +10% chance that a property rolled by a rune takes the highest value of its tier; A property rolled by a rune (Fate included) has a chance to take the highest value of its tier.",
+      "Portal Crate: Away from a workbench, dismantling a portal packs it into a crate that keeps its tag, author, durability and Inscription Gate link. Place it back from the crate anywhere. A crate cannot pass through a portal.",
+      "Relic Passage: Dragon eggs for summoning, Hildir's chests and dvergr parts (charred cogwheels, dvergr needles, mechanical springs) go through portals, with no portal toll. Ore and metal are not included.",
+      "Vacuum Chest: Unlocks the Vacuum Chest at the Rune Carver Table. It takes finished goods from smelters, kilns, spinning wheels and windmills around it and feeds them from its contents. Shift + mouse wheel sets the radius, Shift + E the kind of goods it collects."
+     ],
+     "link": "crafting/node/own790.md",
+     "name": "Extra rune"
+    }
+   },
+   "own802": {
+    "new": {
+     "kind": "Craft notable",
+     "lines": [
+      "+5% chance for extra azurite dust",
+      "Inscription Gate: You can build the Inscription Gate, a Runecarver portal with pink-violet runes. Shift + use on it opens the map of every portal in the world: pick one and inscribe the link, and everyone who enters the gate steps out there.",
+      "Azurite Sight: Azurite veins within your view radius are marked on the map and minimap: plain, corrupted and divine each with its own icon. A vein mined out by more than three quarters is no longer marked.",
+      "Divine Touch: +2% chance for divine azurite; Each chisel hit on a plain azurite vein outside the mist has a chance to turn it divine, with the same lightning as a heavenly strike. Any chisel works, in any biome.",
+      "Ascendant Rune: +10% chance that a property added by a rune rises one tier; When a rune adds or raises a property, it has a chance to rise one tier more as a separate step, beyond the item's level limit. You see a second flash, hear a chime and read \"+1 affix tier\".",
+      "Perfect Inscription: +10% chance that a property rolled by a rune takes the highest value of its tier; A property rolled by a rune (Fate included) has a chance to take the highest value of its tier.",
+      "Portal Crate: Away from a workbench, dismantling a portal packs it into a crate that keeps its tag, author, durability and Inscription Gate link. Place it back from the crate anywhere. A crate cannot pass through a portal.",
+      "Relic Passage: Dragon eggs for summoning, Hildir's chests and dvergr parts (charred cogwheels, dvergr needles, mechanical springs) go through portals, with no portal toll. Ore and metal are not included.",
+      "Vacuum Chest: Unlocks the Vacuum Chest at the Rune Carver Table. It takes finished goods from smelters, kilns, spinning wheels and windmills around it and feeds them from its contents. Shift + mouse wheel sets the radius, Shift + E the kind of goods it collects.",
+      "Chisel Quarrying: Rune chisels also mine stone and ore deposits, like a pickaxe of the same metal: bronze, iron or black metal (flametal hits as hard as black metal). A deposit too hard for that pickaxe is too hard for the chisel. Chisel hits do not train the Pickaxes skill. Azurite veins are mined as before."
+     ],
+     "link": "crafting/node/own802.md",
+     "name": "Rich dust"
+    },
+    "old": {
+     "kind": "Craft notable",
+     "lines": [
+      "+5% chance for extra azurite dust",
+      "Inscription Gate: You can build the Inscription Gate, a Runecarver portal with pink-violet runes. Shift + use on it opens the map of every portal in the world: pick one and inscribe the link, and everyone who enters the gate steps out there.",
+      "Azurite Sight: Azurite veins within your view radius are marked on the map and minimap: plain, corrupted and divine each with its own icon. A vein mined out by more than three quarters is no longer marked.",
+      "Divine Touch: +2% chance for divine azurite; Each chisel hit on a plain azurite vein outside the mist has a chance to turn it divine, with the same lightning as a heavenly strike. Works only once your chisel can mine divine azurite.",
+      "Ascendant Rune: +10% chance that a property added by a rune rises one tier; When a rune adds or raises a property, it has a chance to rise one tier more as a separate step, beyond the item's level limit. You see a second flash, hear a chime and read \"+1 affix tier\".",
+      "Perfect Inscription: +10% chance that a property rolled by a rune takes the highest value of its tier; A property rolled by a rune (Fate included) has a chance to take the highest value of its tier.",
+      "Portal Crate: Away from a workbench, dismantling a portal packs it into a crate that keeps its tag, author, durability and Inscription Gate link. Place it back from the crate anywhere. A crate cannot pass through a portal.",
+      "Relic Passage: Dragon eggs for summoning, Hildir's chests and dvergr parts (charred cogwheels, dvergr needles, mechanical springs) go through portals, with no portal toll. Ore and metal are not included.",
+      "Vacuum Chest: Unlocks the Vacuum Chest at the Rune Carver Table. It takes finished goods from smelters, kilns, spinning wheels and windmills around it and feeds them from its contents. Shift + mouse wheel sets the radius, Shift + E the kind of goods it collects."
+     ],
+     "link": "crafting/node/own802.md",
+     "name": "Rich dust"
+    }
+   },
+   "own843": {
+    "new": {
+     "kind": "Craft notable",
+     "lines": [
+      "10% increased rune-crafted affix item rarity",
+      "Inscription Gate: You can build the Inscription Gate, a Runecarver portal with pink-violet runes. Shift + use on it opens the map of every portal in the world: pick one and inscribe the link, and everyone who enters the gate steps out there.",
+      "Azurite Sight: Azurite veins within your view radius are marked on the map and minimap: plain, corrupted and divine each with its own icon. A vein mined out by more than three quarters is no longer marked.",
+      "Divine Touch: +2% chance for divine azurite; Each chisel hit on a plain azurite vein outside the mist has a chance to turn it divine, with the same lightning as a heavenly strike. Any chisel works, in any biome.",
+      "Ascendant Rune: +10% chance that a property added by a rune rises one tier; When a rune adds or raises a property, it has a chance to rise one tier more as a separate step, beyond the item's level limit. You see a second flash, hear a chime and read \"+1 affix tier\".",
+      "Perfect Inscription: +10% chance that a property rolled by a rune takes the highest value of its tier; A property rolled by a rune (Fate included) has a chance to take the highest value of its tier.",
+      "Portal Crate: Away from a workbench, dismantling a portal packs it into a crate that keeps its tag, author, durability and Inscription Gate link. Place it back from the crate anywhere. A crate cannot pass through a portal.",
+      "Relic Passage: Dragon eggs for summoning, Hildir's chests and dvergr parts (charred cogwheels, dvergr needles, mechanical springs) go through portals, with no portal toll. Ore and metal are not included.",
+      "Vacuum Chest: Unlocks the Vacuum Chest at the Rune Carver Table. It takes finished goods from smelters, kilns, spinning wheels and windmills around it and feeds them from its contents. Shift + mouse wheel sets the radius, Shift + E the kind of goods it collects.",
+      "Chisel Quarrying: Rune chisels also mine stone and ore deposits, like a pickaxe of the same metal: bronze, iron or black metal (flametal hits as hard as black metal). A deposit too hard for that pickaxe is too hard for the chisel. Chisel hits do not train the Pickaxes skill. Azurite veins are mined as before."
+     ],
+     "link": "crafting/node/own843.md",
+     "name": "Rare affixes"
+    },
+    "old": {
+     "kind": "Craft notable",
+     "lines": [
+      "10% increased rune-crafted affix item rarity",
+      "Inscription Gate: You can build the Inscription Gate, a Runecarver portal with pink-violet runes. Shift + use on it opens the map of every portal in the world: pick one and inscribe the link, and everyone who enters the gate steps out there.",
+      "Azurite Sight: Azurite veins within your view radius are marked on the map and minimap: plain, corrupted and divine each with its own icon. A vein mined out by more than three quarters is no longer marked.",
+      "Divine Touch: +2% chance for divine azurite; Each chisel hit on a plain azurite vein outside the mist has a chance to turn it divine, with the same lightning as a heavenly strike. Works only once your chisel can mine divine azurite.",
+      "Ascendant Rune: +10% chance that a property added by a rune rises one tier; When a rune adds or raises a property, it has a chance to rise one tier more as a separate step, beyond the item's level limit. You see a second flash, hear a chime and read \"+1 affix tier\".",
+      "Perfect Inscription: +10% chance that a property rolled by a rune takes the highest value of its tier; A property rolled by a rune (Fate included) has a chance to take the highest value of its tier.",
+      "Portal Crate: Away from a workbench, dismantling a portal packs it into a crate that keeps its tag, author, durability and Inscription Gate link. Place it back from the crate anywhere. A crate cannot pass through a portal.",
+      "Relic Passage: Dragon eggs for summoning, Hildir's chests and dvergr parts (charred cogwheels, dvergr needles, mechanical springs) go through portals, with no portal toll. Ore and metal are not included.",
+      "Vacuum Chest: Unlocks the Vacuum Chest at the Rune Carver Table. It takes finished goods from smelters, kilns, spinning wheels and windmills around it and feeds them from its contents. Shift + mouse wheel sets the radius, Shift + E the kind of goods it collects."
+     ],
+     "link": "crafting/node/own843.md",
+     "name": "Rare affixes"
+    }
+   }
+  },
+  "passives": {
+   "own1": {
+    "new": {
+     "kind": "Portal",
+     "lines": [
+      "Shown only on the chosen initiation path on the path of Runereader"
+     ],
+     "link": "passives/tree/#own1",
+     "name": "The Eastern Rift"
+    },
+    "old": {
+     "kind": "Portal",
+     "lines": [
+      "Shown only on the chosen initiation path on the path of Runereader"
+     ],
+     "link": "passives/tree/#own1",
+     "name": "Knowledge Portal"
+    }
+   },
+   "own10464": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased ring prefix values"
+     ],
+     "link": "passives/tree/#own10464",
+     "name": "Ring prefixes"
+    },
+    "old": null
+   },
+   "own10470": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased ring suffix values"
+     ],
+     "link": "passives/tree/#own10470",
+     "name": "Ring suffixes"
+    },
+    "old": null
+   },
+   "own10476": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased ring prefix values"
+     ],
+     "link": "passives/tree/#own10476",
+     "name": "Ring prefixes"
+    },
+    "old": null
+   },
+   "own10482": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+1 equipment slots for rings"
+     ],
+     "link": "passives/node/own10482.md",
+     "name": "One More Ring"
+    },
+    "old": null
+   },
+   "own10488": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "8% increased ring affix values"
+     ],
+     "link": "passives/node/own10488.md",
+     "name": "Polished Bands"
+    },
+    "old": null
+   },
+   "own10494": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased ring suffix values"
+     ],
+     "link": "passives/tree/#own10494",
+     "name": "Ring suffixes"
+    },
+    "old": null
+   },
+   "own10500": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased ring prefix values"
+     ],
+     "link": "passives/tree/#own10500",
+     "name": "Ring prefixes"
+    },
+    "old": null
+   },
+   "own10953": {
+    "new": null,
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased ring prefix values"
+     ],
+     "link": "passives/tree/#own10953",
+     "name": "Ring prefixes"
+    }
+   },
+   "own10959": {
+    "new": null,
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased ring suffix values"
+     ],
+     "link": "passives/tree/#own10959",
+     "name": "Ring suffixes"
+    }
+   },
+   "own10965": {
+    "new": null,
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased ring prefix values"
+     ],
+     "link": "passives/tree/#own10965",
+     "name": "Ring prefixes"
+    }
+   },
+   "own10971": {
+    "new": null,
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "8% increased ring affix values"
+     ],
+     "link": "passives/node/own10971.md",
+     "name": "Polished Bands"
+    }
+   },
+   "own10977": {
+    "new": null,
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased ring suffix values"
+     ],
+     "link": "passives/tree/#own10977",
+     "name": "Ring suffixes"
+    }
+   },
+   "own10983": {
+    "new": null,
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased ring prefix values"
+     ],
+     "link": "passives/tree/#own10983",
+     "name": "Ring prefixes"
+    }
+   },
+   "own10989": {
+    "new": null,
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "+1 equipment slots for rings"
+     ],
+     "link": "passives/node/own10989.md",
+     "name": "One More Ring"
+    }
+   },
+   "own11515": {
+    "new": null,
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased strike damage"
+     ],
+     "link": "passives/tree/#own11515",
+     "name": "Additional Strikes"
+    }
+   },
+   "own11521": {
+    "new": null,
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased strike damage",
+      "+1 additional strikes",
+      "Double on Crit: Critical strikes double the additional strikes of that attack: ×2; A critical strike hit doubles the additional strikes of that attack, once per attack. Strikes already made count towards the doubled number.",
+      "All on One Target: Additional strikes may hit the original target at 50% of their usual damage; All additional strikes of an attack can hit its first target, one after another, each for 50% of its damage. They stop if the target dies."
+     ],
+     "link": "passives/node/own11521.md",
+     "name": "Blade's Echo"
+    }
+   },
+   "own11527": {
+    "new": null,
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased strike damage"
+     ],
+     "link": "passives/tree/#own11527",
+     "name": "Additional Strikes"
+    }
+   },
+   "own11846": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased strike damage",
+      "+1 additional strikes",
+      "Double on Crit: Critical strikes double the additional strikes of that attack: ×2; A critical strike hit doubles the additional strikes of that attack, once per attack. Strikes already made count towards the doubled number.",
+      "All on One Target: Additional strikes may hit the original target at 50% of their usual damage; All additional strikes of an attack can hit its first target, one after another, each for 50% of its damage. They stop if the target dies."
+     ],
+     "link": "passives/node/own11846.md",
+     "name": "Blade's Echo"
+    },
+    "old": null
+   },
+   "own11852": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased strike damage"
+     ],
+     "link": "passives/tree/#own11852",
+     "name": "Additional Strikes"
+    },
+    "old": null
+   },
+   "own11858": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased strike damage"
+     ],
+     "link": "passives/tree/#own11858",
+     "name": "Additional Strikes"
+    },
+    "old": null
+   },
+   "own11916": {
+    "new": null,
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased strike damage"
+     ],
+     "link": "passives/tree/#own11916",
+     "name": "Additional Strikes"
+    }
+   },
+   "own11922": {
+    "new": null,
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased strike damage"
+     ],
+     "link": "passives/tree/#own11922",
+     "name": "Additional Strikes"
+    }
+   },
+   "own11928": {
+    "new": null,
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased strike damage"
+     ],
+     "link": "passives/tree/#own11928",
+     "name": "Additional Strikes"
+    }
+   },
+   "own11934": {
+    "new": null,
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased strike damage"
+     ],
+     "link": "passives/tree/#own11934",
+     "name": "Additional Strikes"
+    }
+   },
+   "own11940": {
+    "new": null,
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased strike damage",
+      "+1 additional strikes",
+      "Double on Crit: Critical strikes double the additional strikes of that attack: ×2; A critical strike hit doubles the additional strikes of that attack, once per attack. Strikes already made count towards the doubled number.",
+      "All on One Target: Additional strikes may hit the original target at 50% of their usual damage; All additional strikes of an attack can hit its first target, one after another, each for 50% of its damage. They stop if the target dies."
+     ],
+     "link": "passives/node/own11940.md",
+     "name": "Many-Handed Fray"
+    }
+   },
+   "own11946": {
+    "new": null,
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased strike damage"
+     ],
+     "link": "passives/tree/#own11946",
+     "name": "Additional Strikes"
+    }
+   },
+   "own11952": {
+    "new": null,
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased strike damage"
+     ],
+     "link": "passives/tree/#own11952",
+     "name": "Additional Strikes"
+    }
+   },
+   "own13272": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased ring prefix values"
+     ],
+     "link": "passives/tree/#own13272",
+     "name": "Ring prefixes"
+    },
+    "old": null
+   },
+   "own13308": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased ring suffix values"
+     ],
+     "link": "passives/tree/#own13308",
+     "name": "Ring suffixes"
+    },
+    "old": null
+   },
+   "own13320": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "8% increased ring affix values"
+     ],
+     "link": "passives/node/own13320.md",
+     "name": "Polished Bands"
+    },
+    "old": null
+   },
+   "own13332": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased ring suffix values"
+     ],
+     "link": "passives/tree/#own13332",
+     "name": "Ring suffixes"
+    },
+    "old": null
+   },
+   "own13344": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+1 equipment slots for rings"
+     ],
+     "link": "passives/node/own13344.md",
+     "name": "One More Ring"
+    },
+    "old": null
+   },
+   "own13600": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased strike damage"
+     ],
+     "link": "passives/tree/#own13600",
+     "name": "Additional Strikes"
+    },
+    "old": null
+   },
+   "own13606": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased strike damage"
+     ],
+     "link": "passives/tree/#own13606",
+     "name": "Additional Strikes"
+    },
+    "old": null
+   },
+   "own13612": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased strike damage"
+     ],
+     "link": "passives/tree/#own13612",
+     "name": "Additional Strikes"
+    },
+    "old": null
+   },
+   "own13618": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased strike damage"
+     ],
+     "link": "passives/tree/#own13618",
+     "name": "Additional Strikes"
+    },
+    "old": null
+   },
+   "own13624": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased strike damage"
+     ],
+     "link": "passives/tree/#own13624",
+     "name": "Additional Strikes"
+    },
+    "old": null
+   },
+   "own13630": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased strike damage"
+     ],
+     "link": "passives/tree/#own13630",
+     "name": "Additional Strikes"
+    },
+    "old": null
+   },
+   "own13636": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased strike damage"
+     ],
+     "link": "passives/tree/#own13636",
+     "name": "Additional Strikes"
+    },
+    "old": null
+   },
+   "own13642": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased strike damage",
+      "+1 additional strikes",
+      "Double on Crit: Critical strikes double the additional strikes of that attack: ×2; A critical strike hit doubles the additional strikes of that attack, once per attack. Strikes already made count towards the doubled number.",
+      "All on One Target: Additional strikes may hit the original target at 50% of their usual damage; All additional strikes of an attack can hit its first target, one after another, each for 50% of its damage. They stop if the target dies."
+     ],
+     "link": "passives/node/own13642.md",
+     "name": "Many-Handed Fray"
+    },
+    "old": null
+   },
+   "own2": {
+    "new": {
+     "kind": "Portal",
+     "lines": [
+      "Shown only on the chosen initiation path on the path of Runereader"
+     ],
+     "link": "passives/tree/#own2",
+     "name": "The Western Rift"
+    },
+    "old": {
+     "kind": "Portal",
+     "lines": [
+      "Shown only on the chosen initiation path on the path of Runereader"
+     ],
+     "link": "passives/tree/#own2",
+     "name": "Runereader's Way"
+    }
+   },
+   "own3": {
+    "new": {
+     "kind": "Portal",
+     "lines": [
+      "Shown only on the chosen initiation path on the path of Runereader"
+     ],
+     "link": "passives/tree/#own3",
+     "name": "The Southern Rift"
+    },
+    "old": {
+     "kind": "Portal",
+     "lines": [
+      "Shown only on the chosen initiation path on the path of Runereader"
+     ],
+     "link": "passives/tree/#own3",
+     "name": "Runereader's Threshold"
+    }
+   },
+   "own9962": {
+    "new": null,
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased ring prefix values"
+     ],
+     "link": "passives/tree/#own9962",
+     "name": "Ring prefixes"
+    }
+   },
+   "own9968": {
+    "new": null,
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "8% increased ring affix values"
+     ],
+     "link": "passives/node/own9968.md",
+     "name": "Polished Bands"
+    }
+   },
+   "own9974": {
+    "new": null,
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased ring suffix values"
+     ],
+     "link": "passives/tree/#own9974",
+     "name": "Ring suffixes"
+    }
+   },
+   "own9980": {
+    "new": null,
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "+1 equipment slots for rings"
+     ],
+     "link": "passives/node/own9980.md",
+     "name": "One More Ring"
+    }
+   },
+   "own9986": {
+    "new": null,
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased ring suffix values"
+     ],
+     "link": "passives/tree/#own9986",
+     "name": "Ring suffixes"
+    }
+   }
+  }
+ },
+ "date": "2026-10-20",
+ "from": "5.1.1",
+ "to": "5.1.2"
+}

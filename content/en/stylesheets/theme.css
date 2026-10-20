@@ -199,3 +199,8 @@ body { background: var(--pov-light), var(--md-default-bg-color); }
 /* ---- Links ---- */
 .md-typeset a { color: var(--pov-link); }
 .md-typeset a:hover { color: var(--pov-link-hover); text-shadow: 0 0 8px var(--pov-glow); }
+
+/* ---- Left menu: a section's pages indented under it (Items > Currency > Runes, Sigils...) ---- */
+@media screen and (min-width: 76.25em) {
+  .md-nav--primary .md-nav .md-nav .md-nav__list { padding-left: 0.9rem; }
+}

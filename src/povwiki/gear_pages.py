@@ -20,8 +20,15 @@ from .pages import Ctx, _badge, _footer, _img, _table
 CURRENCY_PAGE = "items/currency.md"
 JEWELS_PAGE = "items/jewels.md"
 UNIQUES_PAGE = "items/uniques.md"
-# Currency groups, in page order: Runes.Kind.Cat, then what the mod leaves uncategorised.
+# Currency groups, in page order: Runes.Kind.Cat, then what the mod leaves uncategorised. Each has
+# its own page (found first when searching for the kind: its title is the kind's name).
 _GROUPS = ("Rune", "Great", "Corrupted", "Essence", "Sigil", "Punch", "Material", "Trophy")
+GROUP_SLUGS = {"Rune": "runes", "Great": "great-runes", "Corrupted": "corrupted-runes", "Essence": "essences",
+               "Sigil": "sigils", "Punch": "punches", "Material": "materials", "Trophy": "trophies"}
+
+
+def group_path(group: str) -> str:
+    return f"items/{GROUP_SLUGS[group]}.md"
 
 
 def currency_path(item: str) -> str:
@@ -129,24 +136,71 @@ def page_currency(ctx: Ctx) -> dict[str, str]:
             groups[_group(item, info)].append(item)
 
     md = [f"# {ui('gear.currency')}", "", ui("gear.currency_intro"), ""]
-    for g in _GROUPS:
-        if g not in groups:
-            continue
-        md += [f"## {ui(f'gear.group.{g}')} ({len(groups[g])})", ""]
-        rows = []
-        for item in sorted(groups[g], key=lambda i: (-(catalog.get(i, {}).get("weight") or 0), _item_name(ctx, i))):
-            info = loot["items"][item]
-            rows.append([_icon(ctx, item, page, 40), f"[**{info['name']}**]({rel(currency_path(item), page)})",
-                         to_md(info.get("action") or "", ctx.loc, page), _obtained(ctx, item, catalog)])
-        md += _table(["", ui("col.name"), ui("col.effect"), ui("gear.obtained")], rows)
-    pages = {page: "\n".join(md + _footer(ctx))}
+    pages = {}
+    for g in (g for g in _GROUPS if g in groups):
+        md += [f"## [{ui(f'gear.group.{g}')}]({rel(group_path(g), page)}) ({len(groups[g])})", ""]
+        md += _group_table(ctx, groups[g], catalog, page)
+        pages[group_path(g)] = _group_page(ctx, g, groups[g], catalog)
+    pages[page] = "\n".join(md + _footer(ctx))
     uses = _used_in(ctx)
     for item in (i for items in groups.values() for i in items):
         pages[currency_path(item)] = _currency_page(ctx, item, catalog, uses, found)
     return pages
 
 
-def _obtained(ctx: Ctx, item: str, catalog: dict) -> str:
+def _group_table(ctx: Ctx, items: list[str], catalog: dict, page: str) -> list[str]:
+    """A currency group's items: name, what it does (a sigil: in each kind of item), how to get it."""
+    loot, ui, rows = ctx.loc.loot, ctx.loc.ui, []
+    for item in sorted(items, key=lambda i: (-(catalog.get(i, {}).get("weight") or 0), _item_name(ctx, i))):
+        info = loot["items"][item]
+        effect = "<br>".join(_sigil_lines(ctx, item, page)) or to_md(info.get("action") or "", ctx.loc, page)
+        rows.append([_icon(ctx, item, page, 40), f"[**{info['name']}**]({rel(currency_path(item), page)})",
+                     effect, _obtained(ctx, item, catalog, page)])
+    return _table(["", ui("col.name"), ui("col.effect"), ui("gear.obtained")], rows)
+
+
+def _group_page(ctx: Ctx, group: str, items: list[str], catalog: dict) -> str:
+    ui, page = ctx.loc.ui, group_path(group)
+    md = [f"# {ui(f'gear.group.{group}')}", ""]
+    intro = ui(f"gear.group_intro.{group}")
+    md += [intro if intro != f"gear.group_intro.{group}" else ui("gear.currency_intro"), ""]
+    if group == "Sigil" and (note := _divine_socket(ctx, page)):
+        md += [f'!!! tip "{ui("gear.divine_socket")}"', f"    {note}", ""]
+    md += _group_table(ctx, items, catalog, page)
+    md += [ui("gear.all_currency", link=rel(CURRENCY_PAGE, page)), ""]
+    return "\n".join(md + _footer(ctx))
+
+
+def _divine_socket(ctx: Ctx, page: str) -> str:
+    """The Divine Punch and what its socket does to a sigil, in its own words."""
+    punch = ctx.loc.loot["items"].get("PT_DivinePunch")
+    if not punch or not punch.get("action"):
+        return ""
+    return f"[{punch['name']}]({rel(currency_path('PT_DivinePunch'), page)}): {to_md(punch['action'], ctx.loc, page)}"
+
+
+def _sigil_lines(ctx: Ctx, item: str, page: str) -> list[str]:
+    """A sigil's effect in each kind of item it works in, as its tooltip lists them; a line that
+    allocates a passive links it. A sigil with no line yet says so, in the game's words."""
+    from .pages import _badge, _name
+
+    gear = ctx.loc.gear
+    sigil = gear.get("currency", {}).get(item, {}).get("sigil")
+    if sigil is None:
+        return []
+    if not sigil:
+        none = gear.get("sigilNoEffect", "")
+        return [f"{_badge(ctx.loc.ui('badge.broken'), none)} {none}"]
+    out = []
+    for line in sigil:
+        text = line["text"]
+        if line.get("node") and (n := ctx.by_id.get(line["node"])):
+            text = text.replace(line["node"], _name(ctx, n, page))
+        out.append(f"**{line['slots']}:** {text}")
+    return out
+
+
+def _obtained(ctx: Ctx, item: str, catalog: dict, page: str = CURRENCY_PAGE) -> str:
     ui, parts = ctx.loc.ui, []
     if ctx.loc.loot["items"][item].get("recipe"):
         parts.append(ui("gear.crafted"))
@@ -157,8 +211,8 @@ def _obtained(ctx: Ctx, item: str, catalog: dict) -> str:
 
     bosses = sorted({cr for t in ctx.data.loot.get("tables") or []
                      if any(e["id"] == item for e in t["entries"]) for cr in t["creatures"]}, key=ctx.loc.creature)
-    if bosses:  # on the currency list page
-        parts.append(ui("gear.drops_bosses", bosses=", ".join(creature_link(ctx, cr, CURRENCY_PAGE) for cr in bosses)))
+    if bosses:
+        parts.append(ui("gear.drops_bosses", bosses=", ".join(creature_link(ctx, cr, page) for cr in bosses)))
     return "; ".join(parts) or "—"
 
 
@@ -174,6 +228,10 @@ def _currency_page(ctx: Ctx, item: str, catalog: dict, uses: dict, found: dict) 
     if info.get("flavor"):
         md += [f"*{info['flavor']}*".replace("\n", " "), ""]
 
+    if lines := _sigil_lines(ctx, item, page):
+        md += [f"## {ui('page.effect')}", "", "<br>".join(lines), ""]
+        if ctx.loc.gear["currency"][item]["sigil"] and (note := _divine_socket(ctx, page)):
+            md += [note, ""]
     md += _mining_section(ctx, item, page, found)
     md += _made_section(ctx, item, page, found)
     md += _currency_drops(ctx, item, catalog)

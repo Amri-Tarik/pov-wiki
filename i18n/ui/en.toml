@@ -124,6 +124,9 @@ tags_note = "What the mod sees this item as. Properties choose the items they ro
 # Currency, jewels and unique items (gear_pages.py).
 [gear]
 currency = "Currency"
+currency_all = "All currency"
+divine_socket = "Divine sockets"
+all_currency = "See [all currency]({link})."
 currency_intro = "Runes, essences, sigils and the materials they are made from. Runes change items; essences add properties; sigils go into item sockets. Every item lists what it does, how to make it, how it drops and what uses it."
 obtained = "How to get"
 crafted = "crafted"
@@ -509,3 +512,13 @@ divine_touch = "The craft mastery {mastery} can also turn a plain vein divine wh
 chisel = "Needs a rune chisel of this tier or higher: {chisels}. Pickaxes can't cut azurite veins."
 hardness = "These veins are ×{x} as hard to cut as plain ones."
 cuts = "Cuts azurite veins"
+
+[gear.group_intro]
+Rune = "The common runes, each with its own effect on an item."
+Great = "The great runes, each with its own effect."
+Corrupted = "The corrupted runes, each with its own effect."
+Essence = "Essences add properties to items: each one's page lists the properties it can add."
+Sigil = "Sigils are set into an item's empty socket. A sigil does something different in each kind of item: the table lists what it does in each."
+Punch = "Punches open sockets in an item, for sigils."
+Material = "The mod's materials: each one's page shows how to get it and what it is used for."
+Trophy = "Each one's page shows how to get it and what it is used for."

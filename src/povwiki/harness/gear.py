@@ -8,7 +8,7 @@
   pick a tree node, theme or path when the item drops keep the game's wording with the pick left
   open ({0}); lines that pick a stat from a pool list every stat they can pick.
 - Currency (Runes.All): category, consumable, rarity flags (names, actions and recipes are in
-  the loot section).
+  the loot section); for sigils, their effect in each kind of item (BossSigils.Describe).
 """
 
 import clr
@@ -128,8 +128,8 @@ def _complete_kvasir(unique: dict | None) -> None:
 
 def render_gear(errors: list) -> dict:
     import PassiveTree
-    from PassiveTree import Runes
-    from PassiveTree.Loot import LootCatalog, UniqueItems
+    from PassiveTree import L, Runes
+    from PassiveTree.Loot import BossSigils, LootCatalog, UniqueItems
 
     LootCatalog.Ensure()
     out: dict = {"jewels": {}, "uniques": {}, "currency": {}}
@@ -165,4 +165,14 @@ def render_gear(errors: list) -> dict:
             "cat": str(k.Cat), "consumable": bool(k.Consumable), "trophy": bool(k.Trophy),
             "rare": bool(k.Rare), "rareResource": bool(k.RareResource),
         }
+        try:  # a sigil's effect in each kind of item, as its tooltip lists it (BossSigils.Describe)
+            # Plain text (no tooltip scaling links); a line that allocates a tree node names it by id.
+            described = BossSigils.Describe(str(k.Id), False)
+            lines = [{"slots": kv.Key, "text": kv.Value, "node": str(line.Node) if line.Node else None}
+                     for kv, line in zip(described, BossSigils.LinesOf(str(k.Id)))]
+            if lines or BossSigils.Known(str(k.Id)):
+                out["currency"][str(k.Id)]["sigil"] = lines
+        except Exception as ex:
+            errors.append({"sigil": str(k.Id), "error": str(ex).split("\n")[0]})
+    out["sigilNoEffect"] = L.Id("sigil.no-effect", "")  # what the tooltip says in an item it does nothing for
     return out

@@ -554,6 +554,8 @@ max_stars = "Most stars"
 ring_near = "From (near)"
 ring_far = "Full step (far)"
 odds = "Chance"
+experience_page = "Experience and levels"
+experience_intro = "Area levels, item levels, where experience comes from, how it falls off, and what each character level costs."
 
 [formula.preset]
 vanilla = "Vanilla"
@@ -567,8 +569,9 @@ armour = "Armour ignored"
 resist = "Resistance ignored"
 
 [formula.creature-level]
-title = "Creature level"
-text = "A creature's level is the level of the biome it stands in; stars don't change it. Its level sets its accuracy and the item level of what it drops. It does not scale its health or damage, except for the monolith bosses (see their pages)."
+title = "Area levels"
+text = "Every biome has a level. A creature's level is the level of the biome it stands in (stars don't change it): it sets the creature's accuracy and the item level of its loot, and a chest takes the level of its biome. It doesn't scale health or damage, except for the monolith bosses. Until the next biome's level, a biome gives full experience; past it, experience [falls off]({falloff})."
+full_col = "Full experience up to level"
 
 [formula.creature-strength]
 title = "Health and damage"
@@ -632,7 +635,8 @@ formula = "amount × (1 + {s} × stars), at most {cap}"
 title = "Experience"
 text = "Experience from a kill:"
 formula = "Experience = base health × {h} × (1 + {s} × stars + {m} × modifiers)"
-notes = "Base health is the Valheim health of its kind. It is shared between the players alive within {radius} m ({boss}× that for bosses). At night, every experience gain is +{night}. Creatures of a runic event give {event}. Far above a biome's level, experience there fades."
+notes = "Base health is the Valheim health of its kind. It is shared between the players alive within {radius} m ({boss}× that for bosses). At night, every experience gain is +{night}. Creatures of a runic event give {event}."
+sources = "Only combat raises your character level: kills, and the hits of your fighting skills. Everything peaceful (gathering, building, crafting, exploring, travelling) goes to {craft} instead, and the [experience fall-off]({falloff}) never cuts it."
 
 [formula.crit-multiplier]
 title = "Critical strike damage"
@@ -680,3 +684,28 @@ effective = "armour against creatures = your armour × {effect} − the creature
 notes = "Armour applies after rune shield and block. Creatures ignore part of it: see [enemy penetration]({pen}). Damage taken, by armour and hit:"
 armour_col = "Armour"
 hit_col = "Hit of {n}"
+
+[formula.item-level]
+title = "Item level"
+text = "A dropped item takes the level of the creature that drops it, or of the chest's biome ([area levels]({areas}))."
+crafted = "A crafted item's level is the highest level among its materials, by the biome they come from (upgrade materials and molds count as the Deep North); each [item base]({bases}) shows its own. It is the level used when runes add properties to the item."
+gates = "Item level decides which [properties]({mods}) and tiers can roll (each tier has a level range), how rare drops are, and which [uniques]({uniques}) can drop."
+
+[formula.experience-falloff]
+title = "Experience fall-off"
+text = "Past a biome's range, the combat experience you gain there fades. The level that counts is yours; the biome is where the creature dies (for kills) or where you stand (for hits). Being below a biome's level costs nothing."
+formula = "kept = max({floor}, {floor} ^ (levels past the range ÷ {gap}))"
+notes = "Experience fades to {floor} at {gap} levels past the range, and never lower:"
+over_col = "Levels past the range"
+share_col = "Experience kept"
+full_col = "Full experience"
+floor_col = "{floor} from level"
+
+[formula.player-levels]
+title = "Character level"
+text = "Combat experience raises your character level, up to {max}. Each level needs:"
+formula = "experience to the next level = {base} × level ^ {exp}, rounded"
+next_col = "To the next level"
+total_col = "Total to reach"
+points = "Each level gives {points} passive point; points also come from other sources."
+death = "On death you lose {death} of a level's experience ({term}), never going below the start of your level. Passives can lower the loss."

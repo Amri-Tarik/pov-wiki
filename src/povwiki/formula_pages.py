@@ -16,6 +16,7 @@ from .pages import Ctx, _footer, _table
 CREATURES_PAGE = "mechanics/creatures.md"
 LOOT_PAGE = "mechanics/loot.md"
 COMBAT_PAGE = "mechanics/combat.md"
+EXPERIENCE_PAGE = "mechanics/experience.md"
 
 
 @cache
@@ -78,10 +79,74 @@ def _anchor(fid: str, page: str) -> str:
 # ---- Formulas: each one's block, for any page ---------------------------------------------------
 
 
+def _area_biomes(ctx: Ctx) -> list[dict]:
+    """Progression biomes with their level and band (Ocean shares Mistlands'; left out)."""
+    return [b for b in ctx.loc.loot["biomes"] if b["id"] != "Ocean"]
+
+
+def _biome(ctx: Ctx, b: dict) -> str:
+    return ctx.loc.vkey(f"biome_{b['id'].lower()}", b["id"])
+
+
 def _level(ctx, page, v):
     ui = ctx.loc.ui
-    return [ui("formula.creature-level.text"), ""] + _table(
-        [ui("bosses.biome"), ui("formula.level")], [[name, str(lvl)] for name, lvl in _biomes(ctx)])
+    rows = [[_biome(ctx, b), str(b["level"]), str(b["level"] + b.get("band", 0))] for b in _area_biomes(ctx)]
+    return ([ui("formula.creature-level.text", falloff=_anchor("experience-falloff", page)), ""]
+            + _table([ui("bosses.biome"), ui("formula.level"), ui("formula.creature-level.full_col")], rows))
+
+
+def _item_level(ctx, page, v):
+    from .base_pages import BASES_PAGE
+    from .gear_pages import UNIQUES_PAGE
+
+    ui = ctx.loc.ui
+    return [ui("formula.item-level.text", areas=_anchor("creature-level", page)), "",
+            ui("formula.item-level.crafted", bases=rel(BASES_PAGE, page)), "",
+            ui("formula.item-level.gates", mods=rel("items/mods.md", page), uniques=rel(UNIQUES_PAGE, page)), ""]
+
+
+def _falloff(ctx, page, v):
+    ui = ctx.loc.ui
+    grace, gap, floor = v["grace"], v["gap"], v["floor"]
+
+    def share(over: int) -> float:  # BiomeLevels.ExperienceShare, levels past the end of the range
+        d = over - grace
+        return 1.0 if d <= 0 else max(floor, floor ** (d / max(1, gap - grace)))
+
+    steps = (1, 2, 3, 5, 8, gap)
+    rows = [[_biome(ctx, b), f"{b['level']}–{b['level'] + b.get('band', 0) + grace}",
+             str(b["level"] + b.get("band", 0) + grace + gap)] for b in _area_biomes(ctx)]
+    return ([ui("formula.experience-falloff.text"), ""]
+            + _formula(ui("formula.experience-falloff.formula", floor=_n(floor), gap=gap))
+            + [ui("formula.experience-falloff.notes", floor=_pct(floor), gap=gap), ""]
+            + _table([ui("formula.experience-falloff.over_col"), *(f"+{n}" for n in steps)],
+                     [[ui("formula.experience-falloff.share_col"), *(_pct(share(n)) for n in steps)]])
+            + _table([ui("bosses.biome"), ui("formula.experience-falloff.full_col"), ui("formula.experience-falloff.floor_col", floor=_pct(floor))], rows))
+
+
+def _player_levels(ctx, page, v):
+    import struct
+
+    ui = ctx.loc.ui
+
+    def f32(x: float) -> float:  # the game computes in single precision
+        return struct.unpack("f", struct.pack("f", x))[0]
+
+    def to_next(level: int) -> int:  # Plugin.XpForLevel: Mathf.Round(base × level^exponent)
+        return round(f32(f32(v["base"]) * f32(max(1, level) ** f32(v["exponent"]))))
+
+    total, totals = 0, {}
+    for level in range(1, int(v["max"])):
+        totals[level] = total
+        total += to_next(level)
+    totals[int(v["max"])] = total
+    shown = [lvl for lvl in (2, 10, 25, 50, 75, 100, 125, 150, 175, int(v["max"])) if lvl <= v["max"]]
+    rows = [[str(lvl), f"{to_next(lvl):,}" if lvl < v["max"] else "—", f"{totals[lvl]:,}"] for lvl in shown]
+    return ([ui("formula.player-levels.text", max=int(v["max"])), ""]
+            + _formula(ui("formula.player-levels.formula", base=_n(v["base"], 3), exp=_n(v["exponent"], 3)))
+            + _table([ui("formula.level"), ui("formula.player-levels.next_col"), ui("formula.player-levels.total_col")], rows)
+            + [ui("formula.player-levels.points", points=_n(v["points"])), "",
+               ui("formula.player-levels.death", death=_pct(v["death"]), term=_term(ctx, "death-xp", page)), ""])
 
 
 def _strength(ctx, page, v):
@@ -174,7 +239,9 @@ def _vanilla_drops(ctx, page, v):
 
 def _experience(ctx, page, v):
     ui = ctx.loc.ui
-    return ([ui("formula.experience.text"), ""]
+    return ([ui("formula.experience.sources", falloff=_anchor("experience-falloff", page),
+                craft=_term(ctx, "craft-experience", page)), ""]
+            + [ui("formula.experience.text"), ""]
             + _formula(ui("formula.experience.formula", h=_n(v["per_health"]), s=_n(v["per_star"]),
                           m=_n(_values()["loot"].get("per_modifier", 0.5))))
             + [ui("formula.experience.notes", radius=_n(v["radius"]), boss=_n(v["boss_radius"]), night=_pct(v["night"]),
@@ -260,14 +327,17 @@ def _build_cost(ctx, page, v):
 
 # Each page's formulas, in order.
 _PAGES = {
-    CREATURES_PAGE: ("creatures", [("creature-level", _level), ("creature-strength", _strength), ("boss-step", _boss_step),
+    CREATURES_PAGE: ("creatures", [("creature-strength", _strength), ("boss-step", _boss_step),
                                    ("stars", _stars), ("boss-stars", _boss_stars), ("monster-power", _power)]),
-    LOOT_PAGE: ("loot", [("loot", _loot), ("vanilla-drops", _vanilla_drops), ("experience", _experience)]),
+    LOOT_PAGE: ("loot", [("loot", _loot), ("vanilla-drops", _vanilla_drops)]),
+    EXPERIENCE_PAGE: ("experience", [("creature-level", _level), ("item-level", _item_level), ("experience", _experience),
+                                     ("experience-falloff", _falloff), ("player-levels", _player_levels)]),
     COMBAT_PAGE: ("combat", [("crit-multiplier", _crit_multiplier), ("crit-chance", _crit_chance), ("evasion", _evasion),
                              ("resistances", _resistances), ("armour", _armour), ("enemy-penetration", _penetration),
                              ("build-cost", _build_cost)]),
 }
-_TITLES = {"creatures": "formula.creatures", "loot": "formula.loot_page", "combat": "formula.combat"}
+_TITLES = {"creatures": "formula.creatures", "loot": "formula.loot_page", "combat": "formula.combat",
+           "experience": "formula.experience_page"}
 _BODIES = {fid: body for _, formulas in _PAGES.values() for fid, body in formulas}
 FORMULA_PAGES = {fid: page for page, (_, formulas) in _PAGES.items() for fid, _ in formulas}
 
@@ -284,8 +354,9 @@ TERM_FORMULAS = {
     "item-rarity": ["loot"],
     "refund": ["build-cost"],
     "boss": ["boss-stars"],
-    "xp": ["experience"],
-    "biome-level": ["creature-level", "experience"],
+    "xp": ["experience", "experience-falloff", "player-levels"],
+    "biome-level": ["creature-level", "experience-falloff"],
+    "death-xp": ["player-levels"],
 }
 
 

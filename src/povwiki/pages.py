@@ -878,7 +878,7 @@ def nav() -> list:
                          ("gear.jewels", "items/jewels.md"), ("gear.uniques", "items/uniques.md")]),
         ("monsters.title", [("monsters.mods", "monsters/mods.md"), ("bosses.title", "monsters/bosses.md"),
                             ("creatures.title", "monsters/creatures.md")]),
-        ("formula.title", [("formula.creatures", "mechanics/creatures.md"), ("formula.loot_page", "mechanics/loot.md"),
-                           ("formula.combat", "mechanics/combat.md")]),
+        ("formula.title", [("formula.creatures", "mechanics/creatures.md"), ("formula.experience_page", "mechanics/experience.md"),
+                           ("formula.loot_page", "mechanics/loot.md"), ("formula.combat", "mechanics/combat.md")]),
         ("nav.about", "about.md"),
     ]

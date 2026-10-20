@@ -14,9 +14,12 @@ anchors = [
     "PassiveTree/CreatureLevels.cs :: CreatureLevels.Of",
     "PassiveTree/CreatureLevels.cs :: CreatureLevels.Factor",
     "PassiveTree/BiomeLevels.cs :: BiomeLevels.Of",
+    "PassiveTree/BiomeLevels.cs :: BiomeLevels.Band",
     "PassiveTree/Plugin.cs :: \"Biome levels\"",
+    "PassiveTree.Loot/LootDrops.cs :: \"int num2 = CreatureLevels.Of(val);\"",
+    "PassiveTree.Loot/LootDrops.cs :: \"obj.Level = BiomeLevels.Of(WorldChests.BiomeOf(c));\"",
 ]
-fingerprint = "d879a0df5bfa"
+fingerprint = "31812f7fe18d"
 checked = "5.1.0"
 
 [[formula]]
@@ -145,6 +148,11 @@ cap = 100
 id = "experience"
 anchors = [
     "PassiveTree/XpSources.cs :: XpSources.KillXp",
+    "PassiveTree/Progress.cs :: Progress.AddXp#3",
+    "PassiveTree/Progress.cs :: Progress.SourceXpMultiplier",
+    "PassiveTree/XpSources.cs :: XpSources.Fighting",
+    "PassiveTree/Plugin.cs :: \"Experience for actions\"",
+    "PassiveTree/Plugin.cs :: \"Craft XP multiplier\"",
     "PassiveTree/SharedXp.cs :: SharedXp.LocalShare",
     "PassiveTree/Plugin.cs :: \"Experience per kill\"",
     "PassiveTree/Plugin.cs :: \"Experience per star\"",
@@ -152,7 +160,7 @@ anchors = [
     "PassiveTree/Plugin.cs :: \"Night experience bonus\"",
     "PassiveTree/Plugin.cs :: \"Shared experience radius\"",
 ]
-fingerprint = "df88bba07f35"
+fingerprint = "54caf7d6f1fd"
 checked = "5.1.0"
 
 [formula.values]
@@ -260,3 +268,58 @@ anchors = [
 ]
 fingerprint = "d8b9a9b1d323"
 checked = "5.1.0"
+
+[[formula]]
+id = "item-level"
+anchors = [
+    "PassiveTree.Loot/CraftLevel.cs :: CraftLevel.Of",
+    "PassiveTree.Loot/CraftLevel.cs :: CraftLevel.Level",
+    "PassiveTree.Loot/CraftLevel.cs :: CraftLevel.ByPrefix",
+    "PassiveTree.Loot/LootRoller.cs :: LootRoller.RaiseCraftLevel",
+    "PassiveTree.Loot/LootCatalog.cs :: TierDef.Allows",
+]
+fingerprint = "b036e5be07b8"
+checked = "5.1.0"
+
+[[formula]]
+id = "experience-falloff"
+anchors = [
+    "PassiveTree/BiomeLevels.cs :: BiomeLevels.ExperienceShare",
+    "PassiveTree/BiomeLevels.cs :: BiomeLevels.Share",
+    "PassiveTree/BiomeLevels.cs :: BiomeLevels.ShareAt",
+    "PassiveTree/BiomeLevels.cs :: BiomeLevels.Band",
+    "PassiveTree/Progress.cs :: Progress.AddXp#3",
+    "PassiveTree/Plugin.cs :: \"Biome levels forgiven\"",
+    "PassiveTree/Plugin.cs :: \"Biome gap at the floor\"",
+    "PassiveTree/Plugin.cs :: \"Biome experience floor\"",
+]
+fingerprint = "6db5408b1d0b"
+checked = "5.1.0"
+
+[formula.values]
+grace = 0
+gap = 10
+floor = 0.05
+
+[[formula]]
+id = "player-levels"
+anchors = [
+    "PassiveTree/Plugin.cs :: Plugin.XpForLevel",
+    "PassiveTree/Plugin.cs :: Plugin.PointsForLevels",
+    "PassiveTree/Progress.cs :: Progress.TotalPoints",
+    "PassiveTree/Progress.cs :: Progress.OnDeath",
+    "PassiveTree/Plugin.cs :: \"Experience for level two\"",
+    "PassiveTree/Plugin.cs :: \"Level curve exponent\"",
+    "PassiveTree/Plugin.cs :: \"Maximum level\"",
+    "PassiveTree/Plugin.cs :: \"Points per level\"",
+    "PassiveTree/Plugin.cs :: \"Experience lost on death\"",
+]
+fingerprint = "686e210e1a15"
+checked = "5.1.0"
+
+[formula.values]
+base = 20.7
+exponent = 1.1
+max = 200
+points = 1
+death = 0.1

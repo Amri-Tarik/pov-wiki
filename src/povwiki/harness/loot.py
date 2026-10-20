@@ -125,14 +125,16 @@ def render_loot(errors: list) -> dict:
 
 
 def _biomes() -> list[dict]:
-    """The mod's item level per biome (BiomeLevels.Of), lowest first: Meadows 1, Black Forest 19..."""
+    """The mod's item level per biome (BiomeLevels.Of), lowest first: Meadows 1, Black Forest 19...;
+    "band": levels until the next biome's (BiomeLevels.Band), where full experience there ends."""
     from System import AppDomain, Enum
     from PassiveTree import BiomeLevels
 
     biome = next(a for a in AppDomain.CurrentDomain.GetAssemblies() if a.GetName().Name == "assembly_valheim").GetType("Heightmap+Biome")
     out = []
     for name in Enum.GetNames(biome):
-        level = int(BiomeLevels.Of(Enum.Parse(biome, name)))
+        value = Enum.Parse(biome, name)
+        level = int(BiomeLevels.Of(value))
         if level > 0:
-            out.append({"id": str(name), "level": level})
+            out.append({"id": str(name), "level": level, "band": int(BiomeLevels.Band(value))})
     return sorted(out, key=lambda b: (b["level"], b["id"]))

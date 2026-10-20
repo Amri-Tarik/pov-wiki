@@ -174,6 +174,7 @@ def _currency_page(ctx: Ctx, item: str, catalog: dict, uses: dict, found: dict) 
     if info.get("flavor"):
         md += [f"*{info['flavor']}*".replace("\n", " "), ""]
 
+    md += _mining_section(ctx, item, page, found)
     md += _made_section(ctx, item, page, found)
     md += _currency_drops(ctx, item, catalog)
     md += _essence_section(ctx, item, page)
@@ -196,6 +197,59 @@ def buildings_section(ctx: Ctx, item: str, page: str) -> list[str]:
     if built := used_to_build(ctx).get(item):
         return [f"## {ctx.loc.ui('buildings.used_to_build')}", "", ", ".join(building_link(ctx, b, page) for b in built), ""]
     return []
+
+
+def _chisels_for(ctx: Ctx, kind: int) -> list[str]:
+    veins = ctx.loc.veins
+    return [c["id"] for c in veins["chisels"] if c["tier"] >= veins["needTier"][kind]]
+
+
+def _mining_section(ctx: Ctx, item: str, page: str, found: dict) -> list[str]:
+    """Where an azurite ore is mined (harness render_veins): its vein kind, biomes and chisel."""
+    from .monster_pages import CREATURES_PAGE
+
+    veins, ui = ctx.loc.veins, ctx.loc.ui
+    if item not in veins.get("ores", []):
+        return []
+    kind, names = veins["ores"].index(item), lambda bs: ", ".join(ctx.loc.vkey(f"biome_{b.lower()}", b) for b in bs)
+    md = [f"## {ui('veins.mining')}", ""]
+    if kind == 0:
+        md += [ui("veins.plain", biomes=names(veins["plainBiomes"]), dense=names([veins["denseBiome"]])), ""]
+    elif kind == 1:
+        md += [ui("veins.corrupted", link=rel(CREATURES_PAGE, page) + "#blight"), ""]
+    else:
+        s = veins["strike"]
+        md += [ui("veins.divine", biomes=names(veins["divineBiomes"]), first=names(veins["divineBiomes"][:1]),
+                  reach=s["reach"], chance=_pct(s["chance"]), misses=s["pity"] - 1), ""]
+        if touch := _divine_touch(ctx, page):
+            md += [ui("veins.divine_touch", mastery=touch), ""]
+    chisels = " / ".join(_link(ctx, c, page, found) for c in _chisels_for(ctx, kind))
+    md += [ui("veins.chisel", chisels=chisels), ""]
+    if veins["hardness"][kind] != 1:
+        md += [ui("veins.hardness", x=f"{veins['hardness'][kind]:g}"), ""]
+    return md
+
+
+def _divine_touch(ctx: Ctx, page: str) -> str | None:
+    """The craft mastery that turns plain veins divine while you cut them, linked."""
+    from .building_pages import _craft_ctx
+    from .pages import option_path
+
+    craft, name = _craft_ctx(ctx), ctx.loc.veins.get("divineTouch")
+    for g in (craft.option_groups.values() if craft else []):
+        if any(o["raw"].get("name") == name for o in g["options"]):
+            return f"[{g['options'][0]['title']}]({rel(option_path(craft, g), page)})"
+    return None
+
+
+def chisel_section(ctx: Ctx, prefab: str, page: str) -> list[str]:
+    """On a rune chisel's page: the azurite veins it can cut."""
+    veins = ctx.loc.veins
+    chisel = next((c for c in veins.get("chisels", []) if c["id"] == prefab), None)
+    if chisel is None:
+        return []
+    ores = [o for kind, o in enumerate(veins["ores"]) if chisel["tier"] >= veins["needTier"][kind]]
+    return [f"## {ctx.loc.ui('veins.cuts')}", "", ", ".join(_link(ctx, o, page, {}) for o in ores), ""]
 
 
 def _made_section(ctx: Ctx, item: str, page: str, found: dict) -> list[str]:

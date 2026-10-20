@@ -103,14 +103,15 @@ def render_tree(data, language: str, valheim: Path | None = None) -> dict:
         items = render_items(valheim, errors)
     from .gear import render_gear
     from .bosses import render_bosses
-    from .buildings import render_buildings
+    from .buildings import render_buildings, render_veins
     from .monsters import render_monsters
 
     return {
         "language": language, "revision": data.Revision, "errors": errors,
         "nodes": nodes, "craft": craft, "loot": loot, "items": items, "gear": render_gear(errors),
         "monsters": render_monsters(icons, errors),
-        "buildings": render_buildings(errors), "bosses": render_bosses(errors), "wiki": render_wiki(errors),
+        "buildings": render_buildings(errors), "bosses": render_bosses(errors),
+        "veins": render_veins(errors), "wiki": render_wiki(errors),
     }
 
 

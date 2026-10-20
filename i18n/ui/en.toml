@@ -499,3 +499,13 @@ creature = "Creature"
 in_mist = "In a Blight Mist"
 blight_hare = "Blight Hare"
 hare = "Inside a mist, a {hare} turns on you: it rushes players within {sight} m and bursts at {burst} m, dealing {dmg} base damage ({blunt}% blunt, {poison}% poison) to everyone within {radius} m."
+
+[veins]
+mining = "Mining"
+plain = "Cut from azurite veins in {biomes}; the {dense} has the most."
+corrupted = "A [Blight Mist]({link}) turns the azurite veins inside it corrupted, and raises more of its own, until the mist is gone."
+divine = "Starts appearing in the {first}: a plain azurite vein in {biomes} can be turned divine by a heavenly strike, the first time you come within {reach} m of it ({chance} chance; certain after {misses} misses in a row). Not inside a Blight Mist."
+divine_touch = "The craft mastery {mastery} can also turn a plain vein divine while you cut it."
+chisel = "Needs a rune chisel of this tier or higher: {chisels}. Pickaxes can't cut azurite veins."
+hardness = "These veins are ×{x} as hard to cut as plain ones."
+cuts = "Cuts azurite veins"

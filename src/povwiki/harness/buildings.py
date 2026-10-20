@@ -87,3 +87,25 @@ def render_buildings(errors: list) -> list[dict]:
     except Exception as ex:
         errors.append({"buildings": str(ex).split("\n")[0]})
     return out
+
+
+def render_veins(errors: list) -> dict:
+    """Azurite veins (RuneVein, AzuriteVeins, AzuriteState): which chisel cuts which kind, and where
+    each kind comes from. One vein prefab; its kind (plain, corrupted, divine) changes in the
+    world. The biome rules are written inline (AzuriteVeins.Other, AzuriteState.DivineLand
+    0x270, the strike's 10% chance, 10-roll pity and 30 m reach): keep in sync."""
+    try:
+        return {
+            "ores": [str(o) for o in _static("AzuriteState", "Ores")],
+            "needTier": [int(t) for t in _static("RuneVein", "NeedTier")],
+            "hardness": [float(h) for h in _static("RuneVein", "Hardness")],
+            "chisels": [{"id": str(c.Id), "tier": int(c.Tier)} for c in _static("RuneVein", "Chisels")],
+            "plainBiomes": ["BlackForest", "Swamp", "Mountain", "Plains", "Mistlands", "AshLands", "DeepNorth"],
+            "denseBiome": "Mountain",
+            "divineBiomes": ["Plains", "Mistlands", "AshLands", "DeepNorth"],
+            "strike": {"chance": 0.1, "pity": 10, "reach": 30},
+            "divineTouch": "Divine Touch",  # the craft mastery option (raw name) that turns veins divine
+        }
+    except Exception as ex:
+        errors.append({"veins": str(ex).split("\n")[0]})
+        return {}

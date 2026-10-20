@@ -338,6 +338,9 @@ def _base_page(ctx: Ctx, prefab: str, b: dict, found: dict) -> str:
         md += [ui("items.item_level_line", biome=biome(ctx, level), level=level), ""]
     if drops := _drops(ctx, info.get("mod")):
         md += [drops, ""]
+    from .gear_pages import chisel_section
+
+    md += chisel_section(ctx, prefab, page)
     md += _mods_section(ctx, b, page)
 
     md += [f"## {ui('items.tags')}", "", ui("items.tags_note"), ""]

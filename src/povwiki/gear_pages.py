@@ -174,19 +174,14 @@ def _currency_page(ctx: Ctx, item: str, catalog: dict, uses: dict, found: dict) 
     if info.get("flavor"):
         md += [f"*{info['flavor']}*".replace("\n", " "), ""]
 
-    if parts := _recipe_parts(info.get("recipe")):
-        from .building_pages import building_path
-
-        table = f"[{loc.text('@piece.PT_RuneCarverTable.name', 'Rune Carver Table')}]({rel(building_path('PT_RuneCarverTable'), page)})"
-        md += [f"## {ui('items.recipe')}", "", table, ""]
-        md += _table(["", ui("items.material"), ui("items.craft")],
-                     [[_icon(ctx, m, page, 32), _link(ctx, m, page, found), str(n)] for m, n in parts])
-
+    md += _made_section(ctx, item, page, found)
     md += _currency_drops(ctx, item, catalog)
     md += _essence_section(ctx, item, page)
-    if used := sorted(set(uses.get(item, [])), key=lambda i: _item_name(ctx, i)):
+    used = sorted(set(uses.get(item, [])), key=lambda i: _item_name(ctx, i))
+    ground = _ground_into(ctx, item, page, found)
+    if used or ground:
         md += [f"## {ui('gear.used_in')}", ""]
-        md += [", ".join(_link(ctx, u, page, found) for u in used), ""]
+        md += [", ".join([_link(ctx, u, page, found) for u in used] + ground), ""]
     md += buildings_section(ctx, item, page)
     from .monster_pages import summons_section
 
@@ -195,19 +190,39 @@ def _currency_page(ctx: Ctx, item: str, catalog: dict, uses: dict, found: dict) 
 
 
 def buildings_section(ctx: Ctx, item: str, page: str) -> list[str]:
-    """The mod's buildings an item goes into, and the kiln that grinds or makes it."""
+    """The mod's buildings an item goes into."""
     from .building_pages import building_link, used_to_build
 
-    ui, md = ctx.loc.ui, []
     if built := used_to_build(ctx).get(item):
-        md += [f"## {ui('buildings.used_to_build')}", "", ", ".join(building_link(ctx, b, page) for b in built), ""]
-    for b in ctx.loc.buildings:
+        return [f"## {ctx.loc.ui('buildings.used_to_build')}", "", ", ".join(building_link(ctx, b, page) for b in built), ""]
+    return []
+
+
+def _made_section(ctx: Ctx, item: str, page: str, found: dict) -> list[str]:
+    """How an item is made: its recipe at the rune carver table, or the kiln that grinds it."""
+    from .building_pages import building_link, building_path
+
+    loc, ui, md = ctx.loc, ctx.loc.ui, []
+    if parts := _recipe_parts(loc.loot["items"][item].get("recipe")):
+        table = f"[{loc.text('@piece.PT_RuneCarverTable.name', 'Rune Carver Table')}]({rel(building_path('PT_RuneCarverTable'), page)})"
+        md += [f"{ui('items.station')}: {table}", ""]
+        md += _table(["", ui("items.material"), ui("items.craft")],
+                     [[_icon(ctx, m, page, 32), _link(ctx, m, page, found), str(n)] for m, n in parts])
+    for b in loc.buildings:
         for c in b.get("conversion") or []:
-            if item in (c["from"], c["to"]):
-                key = "buildings.ground_into" if item == c["from"] else "buildings.ground_from"
-                other = c["to"] if item == c["from"] else c["from"]
-                md += [ui(key, building=building_link(ctx, b, page), item=_link(ctx, other, page, {}), n=c["yield"]), ""]
-    return md
+            if c["to"] == item:
+                md += [f"{ui('items.station')}: {building_link(ctx, b, page)}", ""]
+                md += _table(["", ui("items.material"), ui("buildings.amount"), ui("buildings.gives")],
+                             [[_icon(ctx, c["from"], page, 32), _link(ctx, c["from"], page, found), "1", f"×{c['yield']}"]])
+    return [f"## {ui('items.how_made')}", ""] + md if md else []
+
+
+def _ground_into(ctx: Ctx, item: str, page: str, found: dict) -> list[str]:
+    """What the kiln grinds an item into, for its "Used to make" list."""
+    from .building_pages import display_name
+
+    return [f"{_link(ctx, c['to'], page, found)} <small>({display_name(ctx, b)}, ×{c['yield']})</small>"
+            for b in ctx.loc.buildings for c in b.get("conversion") or [] if c["from"] == item]
 
 
 def _currency_drops(ctx: Ctx, item: str, catalog: dict) -> list[str]:

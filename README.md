@@ -16,8 +16,8 @@ Every page is generated from the mod's own files, so the wiki matches each relea
 
 | | |
 |---|---|
-| ![Keystones with their in-game icons and effects](.github/screenshots/keystones.webp) | ![Craft tree viewer with professions and notables](.github/screenshots/crafting.webp) |
-| **Keystones, notables and masteries**, with the game's icons and wording | **Crafting**: the craft tree, professions, quests, masteries and buildings |
+| ![Keystones with their in-game icons and effects](.github/screenshots/keystones.webp) | ![Craft tree viewer searching for azurite: the matching nodes light up](.github/screenshots/crafting.webp) |
+| **Keystones, notables and masteries**, with the game's icons and wording | **Crafting**: the craft tree, searchable by name or stat text, with professions, quests and buildings |
 | ![An item base with its stats, recipe and mods](.github/screenshots/item-base.webp) | ![Unique items with their icons, lines and drop sources](.github/screenshots/uniques.webp) |
 | **Items**: every base with stats, recipe and its full mod pool | **Uniques, jewels and currency**, with their lines and where they drop |
 | ![Monster modifiers with their icons and values](.github/screenshots/monster-mods.webp) | ![A boss page: summoning, health and damage, mechanics and drops](.github/screenshots/boss.webp) |

@@ -1,6 +1,6 @@
 ---
 title: "Path of Valheiman Wiki"
-description: "The Path of Valheiman wiki: every passive, keystone, mastery, item mod, item base, unique, rune and craft node of the Valheim mod, generated from the game files."
+description: "The Path of Valheiman wiki: every passive, keystone, mastery, item mod, item base, unique, rune, boss, monster modifier and building of the Valheim mod, generated from the game files."
 ---
 
 # Path of Valheiman DB
@@ -27,6 +27,7 @@ code, so it matches what you see in game and updates with each patch.
 - [Craft Tree Viewer](crafting/tree.md): the craft tree, with sectors and professions
 - [Professions](crafting/professions.md): each profession and its notables
 - [Craft Notables](crafting/notables.md) and [Craft Masteries](crafting/masteries.md)
+- [Buildings](crafting/buildings.md): the mod's kiln, rune carver table, gate, vacuum chest and wild sowing
 
 ## Items
 
@@ -34,6 +35,12 @@ code, so it matches what you see in game and updates with each patch.
 - [Item bases](items/bases.md): weapons, armour, shields and trinkets, with stats and recipes
 - [Currency](items/currency.md): runes, essences, sigils and crafting materials
 - [Jewels](items/jewels.md) and [Uniques](items/uniques.md): with their lines and drop sources
+
+## Monsters
+
+- [Monster Modifiers](monsters/mods.md): what starred creatures can roll, with their values
+- [Bosses](monsters/bosses.md): the mod's bosses, how to summon them and what every boss drops
+- [Creatures](monsters/creatures.md): runic kin and the creatures of the Blight Mist
 
 ## Keywords
 

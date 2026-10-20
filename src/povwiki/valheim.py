@@ -8,7 +8,8 @@ still carry their type trees, so UnityPy can read component data directly:
 - localization: the "localization" TextAsset in resources.assets (Valheim's own string table,
   every language);
 - status effects items apply (equip, set, attack...): class and fields;
-- creatures (Character components): their name string and whether they are a boss;
+- creatures (Character components): their name string, whether they are a boss, their base
+  health, and the trophy they drop (CharacterDrop), whose icon pictures them;
 - pieces (Piece components): name, description, category, build station and cost, keyed by
   prefab; smelters (Smelter components): fuel, capacity, timing and conversions;
 - pickables (Pickable components): the item each gives and its regrow time, and whether the
@@ -30,6 +31,16 @@ from .paths import CACHE
 VALHEIM = CACHE / "valheim"
 
 
+FORMAT = 3  # bump when the extraction gains data, so older extractions are redone
+
+
+def _format(out: Path) -> int | None:
+    try:
+        return json.loads((out / "build.json").read_text(encoding="utf-8")).get("format", 1)
+    except FileNotFoundError:
+        return None
+
+
 def data_dir() -> Path:
     from .render import valheim_managed
 
@@ -49,7 +60,7 @@ def latest() -> Path:
     """The extracted data for the installed Valheim (extracting it if needed)."""
     data = data_dir()
     out = VALHEIM / build_key(data)
-    if not (out / "pickables.json").exists():  # the last file added: older extractions lack it
+    if _format(out) != FORMAT:  # not extracted yet, or by an older version of this module
         extract(data, out)
     return out
 
@@ -91,7 +102,7 @@ def extract(data: Path, out: Path) -> Path:
         return value
 
     items, recipes, icon_refs, effects, creatures, pieces, smelters = {}, [], {}, {}, {}, {}, {}
-    pickables, plants = {}, set()
+    pickables, plants, trophies = {}, set(), {}
 
     def keep_effects(owner, shared: dict) -> None:
         """Status effects an item applies (equip, set, attack...): their class and fields."""
@@ -125,7 +136,11 @@ def extract(data: Path, out: Path) -> Path:
             items[prefab] = resolve(obj, shared)
         elif "m_faction" in tree and "m_name" in tree and "m_boss" in tree:  # Character / Humanoid
             prefab = obj.read().m_GameObject.read().m_Name
-            creatures.setdefault(prefab, {"name": tree["m_name"], "boss": bool(tree["m_boss"])})
+            creatures.setdefault(prefab, {"name": tree["m_name"], "boss": bool(tree["m_boss"]), "health": tree.get("m_health")})
+        elif "m_drops" in tree and "m_spawnOffset" in tree:  # CharacterDrop: its trophy is its picture
+            prefab = obj.read().m_GameObject.read().m_Name
+            drops = [name_of(obj, d.get("m_prefab")) for d in tree["m_drops"]]
+            trophies[prefab] = next((d for d in drops if d and d.startswith("Trophy")), None)
         elif "m_resources" in tree and "m_category" in tree and "m_icon" in tree:  # Piece
             prefab = obj.read().m_GameObject.read().m_Name
             if prefab in pieces:
@@ -183,6 +198,8 @@ def extract(data: Path, out: Path) -> Path:
         except Exception:
             pass
 
+    for prefab, c in creatures.items():
+        c["trophy"] = trophies.get(prefab)
     stations = sorted({r["station"] for r in recipes if r["station"]})
     (out / "items.json").write_text(json.dumps(items, ensure_ascii=False), encoding="utf-8")
     (out / "creatures.json").write_text(json.dumps(creatures, ensure_ascii=False), encoding="utf-8")
@@ -194,7 +211,7 @@ def extract(data: Path, out: Path) -> Path:
     (out / "effects.json").write_text(json.dumps(effects, ensure_ascii=False), encoding="utf-8")
     (out / "recipes.json").write_text(json.dumps(recipes, ensure_ascii=False, indent=1), encoding="utf-8")
     (out / "localization.json").write_text(json.dumps(_localization(data), ensure_ascii=False), encoding="utf-8")
-    (out / "build.json").write_text(json.dumps({"key": out.name, "stations": stations, "items": len(items),
+    (out / "build.json").write_text(json.dumps({"key": out.name, "format": FORMAT, "stations": stations, "items": len(items),
                                                 "recipes": len(recipes)}, indent=1), encoding="utf-8")
     print(f"valheim: done in {time.time() - t0:.0f}s -> {out}")
     return out

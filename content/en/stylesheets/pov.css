@@ -122,6 +122,12 @@
   max-width: none;
   margin: 0 auto;
 }
+/* A small icon in front of a name, on the same line. */
+.md-typeset .pov-inline .pov-art {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 0.35em 0 0;
+}
 .md-typeset td:has(> .pov-art) {
   width: 3.4rem;
   padding: 0.4em 0.3em !important;

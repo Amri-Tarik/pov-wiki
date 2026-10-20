@@ -793,6 +793,11 @@ def _related_pages(ctx: Ctx) -> dict[str, list[tuple[str, str, str]]]:
     for term, ids in links.items():
         found[term] += [(display_name(ctx, by_id[i]), building_path(i), ctx.loc.ui("buildings.kind"))
                         for i in ids if i in by_id]
+    from .monster_pages import BOSSES_PAGE, CREATURES_PAGE
+
+    if ctx.loc.bosses.get("mistMother"):
+        found["boss"].append((ctx.loc.ui("bosses.title"), BOSSES_PAGE, ctx.loc.ui("monsters.title")))
+        found["rune-monolith"].append((ctx.loc.ui("creatures.runic"), CREATURES_PAGE + "#runic", ctx.loc.ui("monsters.title")))
     if ctx.loc.monsters.get("mods"):
         for term in ("item-quantity", "item-rarity"):
             found[term].append((ctx.loc.ui("monsters.mods"), MODS_PAGE, ctx.loc.ui("monsters.title")))
@@ -866,6 +871,7 @@ def nav() -> list:
         ("items.title", [("items.mods", "items/mods.md"), ("items.bases", "items/bases.md"),
                          ("gear.currency", "items/currency.md"), ("gear.jewels", "items/jewels.md"),
                          ("gear.uniques", "items/uniques.md")]),
-        ("monsters.title", [("monsters.mods", "monsters/mods.md")]),
+        ("monsters.title", [("monsters.mods", "monsters/mods.md"), ("bosses.title", "monsters/bosses.md"),
+                            ("creatures.title", "monsters/creatures.md")]),
         ("nav.about", "about.md"),
     ]

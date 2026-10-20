@@ -87,8 +87,10 @@ def _used_in(ctx: Ctx) -> dict[str, list[str]]:
     return uses
 
 
-def _tables_with(ctx: Ctx, item: str) -> list[list[str]]:
+def _tables_with(ctx: Ctx, item: str, page: str) -> list[list[str]]:
     """Boss loot tables (LootCatalog.Tables) that can drop this item: creature, chance, amount."""
+    from .monster_pages import creature_link
+
     ui, rows = ctx.loc.ui, []
     for t in ctx.data.loot.get("tables") or []:
         for e in t["entries"]:
@@ -99,7 +101,7 @@ def _tables_with(ctx: Ctx, item: str) -> list[list[str]]:
             amount = f"{e.get('stackMin', 1)}–{e.get('stackMax', 1)}" if e.get("stackMax", 1) > e.get("stackMin", 1) else str(e.get("stackMin", 1))
             first = ui("gear.first_drop", n=_num(t["firstDrop"])) if t.get("firstDrop", 1) > 1 else ""
             for creature in t["creatures"]:
-                rows.append([ctx.loc.creature(creature), _pct(chance), amount, first])
+                rows.append([creature_link(ctx, creature, page), _pct(chance), amount, first])
     return rows
 
 
@@ -151,10 +153,12 @@ def _obtained(ctx: Ctx, item: str, catalog: dict) -> str:
     if (c := catalog.get(item)) and c.get("weight", 0) > 0:
         level = max(1, c.get("minLevel") or 0)
         parts.append(ui("gear.drops_from", biome=biome(ctx, level)))
-    bosses = sorted({ctx.loc.creature(cr) for t in ctx.data.loot.get("tables") or []
-                     if any(e["id"] == item for e in t["entries"]) for cr in t["creatures"]})
-    if bosses:
-        parts.append(ui("gear.drops_bosses", bosses=", ".join(bosses)))
+    from .monster_pages import creature_link
+
+    bosses = sorted({cr for t in ctx.data.loot.get("tables") or []
+                     if any(e["id"] == item for e in t["entries"]) for cr in t["creatures"]}, key=ctx.loc.creature)
+    if bosses:  # on the currency list page
+        parts.append(ui("gear.drops_bosses", bosses=", ".join(creature_link(ctx, cr, CURRENCY_PAGE) for cr in bosses)))
     return "; ".join(parts) or "—"
 
 
@@ -184,6 +188,9 @@ def _currency_page(ctx: Ctx, item: str, catalog: dict, uses: dict, found: dict) 
         md += [f"## {ui('gear.used_in')}", ""]
         md += [", ".join(_link(ctx, u, page, found) for u in used), ""]
     md += buildings_section(ctx, item, page)
+    from .monster_pages import summons_section
+
+    md += summons_section(ctx, item, page)
     return "\n".join(md + _footer(ctx))
 
 
@@ -206,7 +213,7 @@ def buildings_section(ctx: Ctx, item: str, page: str) -> list[str]:
 def _currency_drops(ctx: Ctx, item: str, catalog: dict) -> list[str]:
     ui, md = ctx.loc.ui, []
     c = catalog.get(item)
-    tables = _tables_with(ctx, item)
+    tables = _tables_with(ctx, item, currency_path(item))
     if not (c and c.get("weight", 0) > 0) and not tables:
         return []
     md += [f"## {ui('gear.drops')}", ""]
@@ -329,7 +336,7 @@ def page_uniques(ctx: Ctx) -> dict[str, str]:
     rows, pages = [], {}
     for item in sorted(uniques, key=lambda i: _unique_name(ctx, i)):
         rows.append([_unique_icon(ctx, item, page, 40), f"[**{_unique_name(ctx, item)}**]({rel(unique_path(item), page)})",
-                     _unique_kind(ctx, item), _unique_sources(ctx, item, catalog)])
+                     _unique_kind(ctx, item), _unique_sources(ctx, item, catalog, page)])
         pages[unique_path(item)] = _unique_page(ctx, item, catalog)
     md += _table(["", ui("col.name"), ui("col.type"), ui("gear.obtained")], rows)
     pages[page] = "\n".join(md + _footer(ctx))
@@ -353,8 +360,10 @@ def _unique_kind(ctx: Ctx, item: str) -> str:
     return ctx.loc.ui("tag.belt").capitalize() if "belt" in tags else "—"
 
 
-def _unique_sources(ctx: Ctx, item: str, catalog: dict) -> str:
+def _unique_sources(ctx: Ctx, item: str, catalog: dict, page: str) -> str:
     """Where a unique drops, in words: catalog sources, a jewel's own global weight, boss tables."""
+    from .monster_pages import creature_link
+
     ui, parts = ctx.loc.ui, []
     entry = catalog.get(item)
     j = ctx.loc.gear.get("jewels", {}).get(item) or {}
@@ -368,14 +377,14 @@ def _unique_sources(ctx: Ctx, item: str, catalog: dict) -> str:
             elif kind == "biome":
                 parts.append(ui("gear.src_biome", biome=ctx.loc.vkey(f"biome_{what.lower()}", what)))
             elif kind == "creature":
-                parts.append(ui("gear.src_creature", creature=ctx.loc.creature(what)))
+                parts.append(ui("gear.src_creature", creature=creature_link(ctx, what, page)))
     elif j.get("globalWeight") or mod.get("globalMinLevel"):
         level = max(1, j.get("globalMinLevel") or mod.get("globalMinLevel") or 0)
         parts.append(ui("gear.src_global", biome=biome(ctx, level), level=level))
-    bosses = sorted({ctx.loc.creature(cr) for t in ctx.data.loot.get("tables") or []
-                     if any(e["id"] == item for e in t["entries"]) for cr in t["creatures"]})
+    bosses = sorted({cr for t in ctx.data.loot.get("tables") or []
+                     if any(e["id"] == item for e in t["entries"]) for cr in t["creatures"]}, key=ctx.loc.creature)
     if bosses:
-        parts.append(ui("gear.drops_bosses", bosses=", ".join(bosses)))
+        parts.append(ui("gear.drops_bosses", bosses=", ".join(creature_link(ctx, cr, page) for cr in bosses)))
     return "; ".join(parts) or _badge(ui("badge.broken"), ui("gear.no_source"))
 
 
@@ -426,9 +435,9 @@ def _unique_page(ctx: Ctx, item: str, catalog: dict) -> str:
     flavor = j["flavor"] if j else (ctx.loc.items.get(item, {}).get("mod") or {}).get("shared", {}).get("m_description", "")
     if flavor:
         md += [f"*{flavor}*".replace("\n", " "), ""]
-    sources = _unique_sources(ctx, item, catalog)
+    sources = _unique_sources(ctx, item, catalog, page)
     md += [f"## {ui('gear.drops')}", "", sources[:1].upper() + sources[1:] + ".", ""]
-    if tables := _tables_with(ctx, item):
+    if tables := _tables_with(ctx, item, page):
         md += [ui("gear.boss_tables"), ""] + _drop_table(ctx, tables)
     if item in ctx.loc.items and (ctx.loc.items[item].get("mod") or {}).get("kind"):
         md += [ui("gear.see_base", link=f"[{_unique_name(ctx, item)}]({rel(base_path(item), page)})"), ""]

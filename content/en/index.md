@@ -1,3 +1,8 @@
+---
+title: "Path of Valheiman Wiki"
+description: "The Path of Valheiman wiki: every passive, keystone, mastery, item mod, item base, unique, rune and craft node of the Valheim mod, generated from the game files."
+---
+
 # Path of Valheiman DB
 
 A datamined reference for [Path of Valheiman](https://valheim.hexium.gg/mods/treextr/PathOfValheiman),
@@ -27,6 +32,8 @@ code, so it matches what you see in game and updates with each patch.
 
 - [Mods](items/mods.md): every property an item can roll, with tiers and weights
 - [Item bases](items/bases.md): weapons, armour, shields and trinkets, with stats and recipes
+- [Currency](items/currency.md): runes, essences, sigils and crafting materials
+- [Jewels](items/jewels.md) and [Uniques](items/uniques.md): with their lines and drop sources
 
 ## Keywords
 

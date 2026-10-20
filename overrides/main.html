@@ -1,0 +1,47 @@
+{#-
+  Theme override: what search engines and link previews see (see src/povwiki/seo.py).
+  - site_meta: the theme's own block, except that the language alternates point to this same
+    page in each language (the theme points them at each language's home page).
+  - extrahead: Open Graph / Twitter tags, so links shared on Discord, Reddit... show the page's
+    title, description and image (page.meta.image: the page's own icon, set by the build).
+-#}
+{% extends "base.html" %}
+
+{% block site_meta %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  {% if page.meta and page.meta.description %}
+    <meta name="description" content="{{ page.meta.description }}">
+  {% elif config.site_description %}
+    <meta name="description" content="{{ config.site_description }}">
+  {% endif %}
+  {% if page.canonical_url %}
+    <link rel="canonical" href="{{ page.canonical_url }}">
+  {% endif %}
+  {% if config.extra.alternate is iterable %}
+    {% for alt in config.extra.alternate %}
+      <link rel="alternate" href="{{ config.extra.pov_root }}/{{ alt.lang }}/{{ page.url }}" hreflang="{{ alt.lang }}">
+    {% endfor %}
+    <link rel="alternate" href="{{ config.extra.pov_root }}/{{ config.extra.alternate[0].lang }}/{{ page.url }}" hreflang="x-default">
+  {% endif %}
+  {% set href = config.theme.favicon | d("assets/images/favicon.png") %}
+  <link rel="icon" href="{{ href | url }}">
+  <meta name="generator" content="{{ generator }}">
+{% endblock %}
+
+{% block extrahead %}
+  {% set pov_title = (page.meta.title if page.meta and page.meta.title else (page.title | striptags if page.title else config.site_name)) %}
+  {% set pov_desc = (page.meta.description if page.meta and page.meta.description else config.site_description) %}
+  {% set pov_image = (page.meta.image if page.meta and page.meta.image else config.extra.pov_social_image) %}
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="{{ config.site_name }}">
+  <meta property="og:title" content="{{ pov_title }}">
+  <meta property="og:description" content="{{ pov_desc }}">
+  {% if page.canonical_url %}<meta property="og:url" content="{{ page.canonical_url }}">{% endif %}
+  <meta property="og:image" content="{{ pov_image }}">
+  <meta property="og:locale" content="{{ config.extra.pov_locale }}">
+  <meta name="twitter:card" content="{{ 'summary' if page.meta and page.meta.image else 'summary_large_image' }}">
+  <meta name="twitter:title" content="{{ pov_title }}">
+  <meta name="twitter:description" content="{{ pov_desc }}">
+  <meta name="twitter:image" content="{{ pov_image }}">
+{% endblock %}

@@ -334,6 +334,7 @@ description_note = "What the game shows when you hover the option, alongside the
 offered_by = "Offered by"
 description_variants = "Nodes offering this option describe it in {count} different wordings:"
 option_ids = "Option ids"
+seo_fallback = "Path of Valheiman wiki: datamined passive tree, items, mods and crafting for the Valheim mod."
 
 [badge]
 broken = "Unimplemented"

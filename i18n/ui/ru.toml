@@ -331,6 +331,7 @@ description_note = "Что игра показывает при наведени
 offered_by = "Предлагают"
 description_variants = "Узлы, предлагающие этот вариант, описывают его по-разному ({count} формулировки):"
 option_ids = "Id вариантов"
+seo_fallback = "Вики Path of Valheiman: дерево навыков, предметы, свойства и ремесло мода для Valheim из файлов игры."
 
 [badge]
 broken = "Не реализовано"

@@ -10,16 +10,17 @@ import shutil
 import subprocess
 import threading
 import time
+from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor
 from contextlib import contextmanager
 import tomllib
 import tomli_w
 
 from .data import GameData
-from . import icons
+from . import icons, seo
 from .i18n import Language, Localizer, load_languages
 from .pages import GLOBAL, LIST_PAGES, PER_TREE, TREES, Ctx, nav
-from .paths import BASE_CONFIG, BUILD, CONTENT, SITE
+from .paths import BASE_CONFIG, BUILD, CONTENT, ROOT, SITE
 
 
 # ---- Build -------------------------------------------------------------------------------------
@@ -39,6 +40,14 @@ def _versioned(paths: list[str], docs) -> list[str]:
     return out
 
 
+def _site_root() -> str:
+    return tomllib.loads(BASE_CONFIG.read_text(encoding="utf-8"))["project"]["site_url"].rstrip("/")
+
+
+def _site_url(lang: Language) -> str:
+    return f"{_site_root()}/{lang.code}/"
+
+
 def _write_config(lang: Language, enabled: list[Language], loc: Localizer, out) -> None:
     cfg = tomllib.loads(BASE_CONFIG.read_text(encoding="utf-8"))
     p = cfg["project"]
@@ -50,6 +59,11 @@ def _write_config(lang: Language, enabled: list[Language], loc: Localizer, out) 
     if p.get("site_url"):
         p["site_url"] = p["site_url"].rstrip("/") + f"/{lang.code}/"
     p["theme"]["language"] = lang.code
+    p["theme"]["custom_dir"] = str(ROOT / "overrides")  # search and link preview tags
+    extra = p.setdefault("extra", {})
+    extra["pov_root"] = _site_root()
+    extra["pov_locale"] = {"ru": "ru_RU"}.get(lang.code, "en_US")
+    extra["pov_social_image"] = f"{_site_url(lang)}assets/images/social.png"
     p["nav"] = _nav(nav(), loc)
     if len(enabled) > 1:
         p.setdefault("extra", {})["alternate"] = [
@@ -80,6 +94,9 @@ def build_language(lang: Language, default: Language, enabled: list[Language], d
         """Write a docs file only when it changed: rewriting thousands of unchanged files (and
         deleting them first) is most of a build's time on Windows."""
         written.add(path)
+        if path.suffix == ".md":  # every page gets its own search description
+            data = seo.with_description(data.decode("utf-8"), loc.ui("page.seo_fallback"),
+                                        path.relative_to(docs).as_posix(), _site_url(lang)).encode("utf-8")
         if path.exists() and path.stat().st_size == len(data) and path.read_bytes() == data:
             return
         path.parent.mkdir(parents=True, exist_ok=True)
@@ -153,3 +170,5 @@ def build(version: str, only: list[str] | None = None, render: bool = True) -> N
         f'<link rel="canonical" href="{default.code}/"><title>Path of Valheiman DB</title>',
         encoding="utf-8",
     )
+    site_url = tomllib.loads(BASE_CONFIG.read_text(encoding="utf-8"))["project"]["site_url"]
+    seo.write_root(SITE, [x.code for x in enabled], site_url)

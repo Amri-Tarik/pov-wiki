@@ -723,6 +723,8 @@ text = "В распределённом гнезде (после опознан�
 
 # Patch pages: what an update changed (patch_pages.py).
 [patch]
+history = "История патчей"
+version = "Патч"
 title = "Патч {version}"
 index = "Патчи"
 all = "Все патчи"

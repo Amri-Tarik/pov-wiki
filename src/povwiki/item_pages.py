@@ -201,6 +201,9 @@ def _mod_page(ctx: Ctx, a: dict) -> dict[str, str]:
             [[t["id"], *(_cell(_values(t["text"][s])) for s in ["base", *slots])] for t in a["tiers"]],
         )
 
+    from .patch_pages import history
+
+    md += history(ctx, "mods", [a["id"]], page)
     raw = {k: a[k] for k in ("id", "place", "target", "families", "group", "allowAll", "allowAny", "denyAny", "weight", "generation")}
     raw["tiers"] = [{k: t[k] for k in ("id", "min", "max", "step", "minLevel", "maxLevel", "weight")} for t in a["tiers"]]
     md += [f'??? abstract "{ui("page.game_data")}"', "", "    ```json"]

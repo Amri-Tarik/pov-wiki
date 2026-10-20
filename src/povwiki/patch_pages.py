@@ -11,6 +11,7 @@ mechanic) is not seen here: see the formulas' own check (povwiki.formulas).
 """
 
 import difflib
+import functools
 import html
 import json
 import re
@@ -254,7 +255,8 @@ def _words(old: str, new: str) -> str:
     """One line changed: the new line, with what went in marked and what went out struck."""
     a, b = _TOKEN.findall(old), _TOKEN.findall(new)
     match = difflib.SequenceMatcher(None, a, b, autojunk=False)
-    if match.ratio() < 0.6 and len(old) + len(new) > 160:  # a paragraph rewritten rather than changed: both whole
+    kept = sum(m.size for m in match.get_matching_blocks())
+    if kept < 0.6 * min(len(a), len(b)) and len(old) + len(new) > 160:  # a paragraph rewritten rather than changed: both whole
         return f"<del>{html.escape(old)}</del><br><ins>{html.escape(new)}</ins>"
     out = []
     for op, i1, i2, j1, j2 in match.get_opcodes():
@@ -291,6 +293,20 @@ def _link(entry: dict, page: str, count: int = 1) -> str:
     return f"[**{name}**]({rel(target, page)}{'#' + anchor if anchor else ''}){times}"
 
 
+def _which(c: dict) -> str:
+    return "both" if c["old"] and c["new"] else "new" if c["new"] else "old"
+
+
+def _change(c: dict) -> list[str]:
+    """One entry's change as lines of HTML: what went out struck, what came in marked."""
+    old, new = c["old"], c["new"]
+    if old and new:
+        return ([_words(old["name"], new["name"])] if old["name"] != new["name"] else []) + _lines(old["lines"], new["lines"])
+    if new:
+        return [f"<ins>{html.escape(s)}</ins>" for s in new["lines"]]
+    return [f"<del>{html.escape(s)}</del>" for s in old["lines"]]
+
+
 def _section(ctx: Ctx, sid: str, changes: dict, page: str) -> list[str]:
     ui = ctx.loc.ui
     md = [f"## {ui(SECTIONS[sid][0])}", ""]
@@ -298,17 +314,10 @@ def _section(ctx: Ctx, sid: str, changes: dict, page: str) -> list[str]:
         # Entries with the same name, type and change (a dozen small passives made alike) share a row.
         groups: dict[tuple, list[dict]] = {}
         for c in changes.values():
-            old, new = c["old"], c["new"]
-            if which == "both" and old and new:
-                lines = ([_words(old["name"], new["name"])] if old["name"] != new["name"] else []) + _lines(old["lines"], new["lines"])
-            elif which == "new" and not old:
-                lines = [f"<ins>{html.escape(s)}</ins>" for s in new["lines"]]
-            elif which == "old" and not new:
-                lines = [f"<del>{html.escape(s)}</del>" for s in old["lines"]]
-            else:
+            if _which(c) != which:
                 continue
-            e = new or old
-            groups.setdefault((e["name"], e.get("kind") or "", tuple(lines)), []).append(e)
+            e = c["new"] or c["old"]
+            groups.setdefault((e["name"], e.get("kind") or "", tuple(_change(c))), []).append(e)
         if not groups:
             continue
         kinds = any(k for _, k, _ in groups)
@@ -324,9 +333,26 @@ def _rows(header: list[str], rows: list[list[str]]) -> list[str]:
     return ["| " + " | ".join(header) + " |", "|" + "---|" * len(header), *("| " + " | ".join(r) + " |" for r in rows), ""]
 
 
+@functools.cache
 def _load(version: str, lang: str) -> dict | None:
     path = PATCHES / version / f"{lang}.json"
     return json.loads(path.read_text(encoding="utf-8")) if path.exists() else None
+
+
+def history(ctx: Ctx, sid: str, ids: list[str], page: str) -> list[str]:
+    """An entry's own page: what each patch changed in it (section `sid` of the patch pages; one
+    page can show several entries, e.g. a boss's drop tables), newest first, linked to the patch."""
+    ui, rows = ctx.loc.ui, []
+    for v in versions():
+        p = _load(v, ctx.loc.lang.code) or {}
+        for i in ids:
+            if c := (p.get("changes") or {}).get(sid, {}).get(i):
+                what = {"both": "", "new": ui("patch.added"), "old": ui("patch.removed")}[_which(c)]
+                rows.append([f"[{ui('patch.title', version=v)}]({rel(patch_path(v), page)})" + (f" <small>({what})</small>" if what else ""),
+                             "<br>".join(_change(c))])
+    if not rows:
+        return []
+    return [f"## {ui('patch.history')}", ""] + _rows([ui("patch.version"), ui("patch.change")], rows)
 
 
 def page_patches(ctx: Ctx) -> dict[str, str]:

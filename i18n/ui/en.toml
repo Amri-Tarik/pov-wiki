@@ -726,6 +726,8 @@ text = "Socketed in an allocated socket (once identified), it turns the hidden n
 
 # Patch pages: what an update changed (patch_pages.py).
 [patch]
+history = "Patch history"
+version = "Patch"
 title = "Patch {version}"
 index = "Patches"
 all = "All patches"

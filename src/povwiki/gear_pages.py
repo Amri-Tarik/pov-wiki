@@ -250,6 +250,9 @@ def _currency_page(ctx: Ctx, item: str, catalog: dict, uses: dict, found: dict) 
     from .monster_pages import summons_section
 
     md += summons_section(ctx, item, page)
+    from .patch_pages import history
+
+    md += history(ctx, "currency", [item], page)
     return "\n".join(md + _footer(ctx))
 
 
@@ -655,6 +658,9 @@ def _unique_page(ctx: Ctx, item: str, catalog: dict) -> str:
         md += [ui("gear.boss_tables"), ""] + _drop_table(ctx, tables)
     if item in ctx.loc.items and (ctx.loc.items[item].get("mod") or {}).get("kind"):
         md += [ui("gear.see_base", link=f"[{_unique_name(ctx, item)}]({rel(base_path(item), page)})"), ""]
+    from .patch_pages import history
+
+    md += history(ctx, "uniques", [item], page)
     return "\n".join(md + _footer(ctx))
 
 

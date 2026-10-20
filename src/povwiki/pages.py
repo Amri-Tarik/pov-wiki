@@ -636,6 +636,9 @@ def page_nodes(ctx: Ctx) -> dict[str, str]:
             md += [f"- [{plain(loc.wiki[k]['title'])}]({rel(glossary_path(k), page)}): {_cell(summary(loc.wiki[k], 160))}" for k in keys]
             md.append("")
 
+        from .patch_pages import history
+
+        md += history(ctx, ctx.spec.key, [n["id"]], page)
         # Raw game data, poedb style.
         raw = {k: n[k] for k in ("mods", "options", "masteryId", "icon", "prof", "sector") if n.get(k)}
         if raw:
@@ -848,6 +851,10 @@ def page_glossary(ctx: Ctx) -> dict[str, str]:
                 f"- [{plain(wiki[k]['title'])}]({rel(glossary_path(k), page)})"
                 for k in sorted(terms.get(key, ()), key=lambda k: plain(wiki[k]["title"]).lower())
             ]
+            md.append("")
+        from .patch_pages import history
+
+        md += history(ctx, "keywords", [key], page)
         pages[page] = "\n".join(md + _footer(ctx))
     return pages
 

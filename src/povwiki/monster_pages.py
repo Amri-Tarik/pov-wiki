@@ -156,6 +156,13 @@ def _drops(ctx: Ctx, prefab: str, page: str) -> list[list[str]]:
     return rows
 
 
+def _drops_history(ctx: Ctx, prefab: str, page: str) -> list[str]:
+    """What patches changed in this boss's drop tables."""
+    from .patch_pages import history
+
+    return history(ctx, "drops", [t["id"] for t in ctx.data.loot.get("tables") or [] if prefab in t["creatures"]], page)
+
+
 def _drops_section(ctx: Ctx, prefab: str, page: str) -> list[str]:
     ui, rows = ctx.loc.ui, _drops(ctx, prefab, page)
     if not rows:
@@ -232,6 +239,7 @@ def _mist_mother_page(ctx: Ctx, m: dict) -> str:
     md += [ui("bosses.before_difficulty"), ""]
     md += _drops_section(ctx, m["prefab"], page)
     md += [ui("bosses.see_blight", link=rel(CREATURES_PAGE, page) + "#blight"), ""]
+    md += _drops_history(ctx, m["prefab"], page)
     return "\n".join(md + _footer(ctx))
 
 
@@ -262,6 +270,7 @@ def _monolith_page(ctx: Ctx, boss: dict, shared: dict) -> str:
            f"- {ui('bosses.spikes', first=s['first'], every=s['every'], n=s['count'].get(boss['prefab'], 10), dmg=s['damage'], warn=_num(round(s['warn'], 2)), radius=_num(round(s['radius'], 2)))}",
            f"- {ui('bosses.dome', x=_num(round(t['dome-scale'], 2)))}", ""]
     md += _drops_section(ctx, boss["prefab"], page)
+    md += _drops_history(ctx, boss["prefab"], page)
     return "\n".join(md + _footer(ctx))
 
 

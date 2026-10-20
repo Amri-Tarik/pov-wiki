@@ -10,6 +10,9 @@ def _extract(source: Path, render: bool) -> None:
 
     out = extract(source)
     print(f"extracted to {out}")
+    from .decompile import decompile
+
+    print(f"decompiled to {decompile(out.name)}")  # for the formula check
     if render:
         from .render import render as render_text
 
@@ -38,6 +41,10 @@ def main() -> None:
     p.add_argument("--version", help="game data version (default: latest extracted)")
     p.add_argument("--lang", action="append", help="language code; repeatable (default: all enabled)")
     p.add_argument("--no-render", action="store_true", help="generate markdown only")
+
+    p = sub.add_parser("formulas", help="check the written-down formulas against the mod's code (formulas/registry.toml)")
+    p.add_argument("--version", help="game data version (default: latest extracted)")
+    p.add_argument("--accept", nargs="+", metavar="ID", help="record these formulas (or all) as re-checked against this version")
 
     sub.add_parser("deploy", help="build the site and publish it to GitHub Pages (gh-pages branch)")
 
@@ -68,6 +75,14 @@ def main() -> None:
         from .generate import build
 
         build(args.version or latest_version(), args.lang, render=not args.no_render)
+    elif args.cmd == "formulas":
+        from .data import latest_version
+        from .formulas import accept, report
+
+        version = args.version or latest_version()
+        if args.accept:
+            accept(version, args.accept)
+        report(version)
     elif args.cmd == "deploy":
         from .data import latest_version
         from .deploy import deploy

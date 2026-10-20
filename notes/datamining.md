@@ -198,10 +198,22 @@ Unity, so the loaders that check it are mirrored rather than called.
 
 ## Reading the mod's code
 
-Decompile with ILSpy's command-line tool. No .NET SDK is needed: download the `ilspycmd` NuGet
-package (9.x targets net8.0), unzip it, and run
-`dotnet tools/net8.0/any/ilspycmd.dll -p -o .cache/decompiled/<ver> PathOfValheiman.dll`.
-Keep the output in `.cache/` (it is the author's code). Useful entry points: `PassiveTree/StatText.cs`
+`povwiki extract` (and `fetch`) decompile the DLL into `.cache/decompiled/<ver>/` with ILSpy's
+command-line tool, downloaded once from NuGet and pinned (`decompile.ILSPY`): the formula
+fingerprints hash the decompiled text, so another ILSpy version would change them. Needs the
+.NET 8 runtime, no SDK. Keep the output in `.cache/` (it is the author's code). Useful entry points: `PassiveTree/StatText.cs`
 (stat lines), `L.cs` (localization), `TreeRemote.cs` (tree loading), `Node.cs`, `NodeOption.cs`,
 `LootAffixes.cs`, `CraftTree.cs`. `SelfTest.cs` is the author's in-game test suite and shows
 many expected outputs.
+
+## Formulas
+
+The Mechanics pages show formulas read by hand from the code: `formulas/registry.toml` lists each
+one's anchors (the methods and statements it was read from) and the numbers that aren't in the
+game data (setting defaults, numbers written inline). Their text is in `i18n/ui/*.toml`
+`[formula.*]`; tables come from the game data (`harness/difficulty.py`, the loot catalog).
+
+Every build fingerprints the anchors again. After a patch, a formula whose code changed is hidden
+from the site (its section says it is being re-checked) and the build lists it. To bring it back:
+`povwiki formulas` shows which and why; read the changed code (`.cache/decompiled/<ver>/`),
+update the text, values or anchors, then `povwiki formulas --accept <id>`.

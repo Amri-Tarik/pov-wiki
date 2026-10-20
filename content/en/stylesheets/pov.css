@@ -141,3 +141,15 @@
 .pov-art-lg .pov-art {
   display: inline;
 }
+
+/* ---- Formulas (Mechanics pages) ---- */
+.md-typeset .pov-formula {
+  font-family: var(--md-code-font-family, monospace);
+  font-size: 0.8rem;
+  background: var(--md-code-bg-color);
+  border-left: 3px solid var(--pov-gold, #c9a227);
+  border-radius: 0 4px 4px 0;
+  padding: 0.6em 0.9em;
+  margin: 0.8em 0;
+  overflow-x: auto;
+}

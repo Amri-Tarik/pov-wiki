@@ -522,3 +522,149 @@ Sigil = "Sigils are set into an item's empty socket. A sigil does something diff
 Punch = "Punches open sockets in an item, for sigils."
 Material = "The mod's materials: each one's page shows how to get it and what it is used for."
 Trophy = "Each one's page shows how to get it and what it is used for."
+
+[formula]
+title = "Mechanics"
+creatures = "Creature scaling"
+loot_page = "Loot and experience"
+combat = "Combat and building"
+creatures_intro = "How the game sets a creature's level, health and damage, and what stars, difficulty, defeated bosses and Monster Power change."
+loot_intro = "What a kill gives: Path of Valheiman loot, Valheim's own drops, and experience."
+combat_intro = "Critical strikes, evasion, resistances, what creatures pierce, and building costs."
+defaults_note = "Numbers are the defaults of the Normal difficulty; servers can change them. Every formula here is checked against the mod's code with each patch."
+rechecking_title = "Being re-checked"
+rechecking = "The code behind this formula changed in Path of Valheiman {version}. It is hidden until it has been re-checked."
+level = "Level"
+health = "Health"
+damage = "Damage"
+boss_health = "Boss health"
+boss_damage = "Boss damage"
+stage_table = "Biome factors"
+stage_note = "A creature's biome is its kind's home biome, wherever it stands: a Greydwarf counts as a Black Forest creature everywhere. Kinds the mod doesn't know take the biome they stand in."
+presets = "Difficulty presets"
+presets_note = "The difficulty preset scales how far every biome factor is from 1, and sets the star chance and the most stars a creature can have:"
+preset_col = "Preset"
+health_scale = "Health scale"
+damage_scale = "Damage scale"
+star_chance = "Star chance"
+max_stars = "Most stars"
+ring_near = "From (near)"
+ring_far = "Full step (far)"
+odds = "Chance"
+
+[formula.preset]
+vanilla = "Vanilla"
+easy = "Easy"
+normal = "Normal"
+hard = "Hard"
+merciless = "Merciless"
+
+[formula.pen]
+armour = "Armour ignored"
+resist = "Resistance ignored"
+
+[formula.creature-level]
+title = "Creature level"
+text = "A creature's level is the level of the biome it stands in; stars don't change it. Its level sets its accuracy and the item level of what it drops. It does not scale its health or damage, except for the monolith bosses (see their pages)."
+
+[formula.creature-strength]
+title = "Health and damage"
+text = "A creature's health and damage are Valheim's own, multiplied by these factors:"
+health = "Health = base health × biome × (1 + star bonus × stars) × tamed × Monster Power × Blight Mist"
+damage = "Damage = base damage × biome × (1 + star bonus × stars) × tamed × Monster Power × Blight Mist"
+terms = "Biome: the factor of the creature's biome (table below; bosses use the boss columns). Stars: see [Stars]({stars}). Tamed: a tamed creature has {tamed} of it. Monster Power: see [Monster Power]({power}). Blight Mist: only inside a mist. Valheim's own world difficulty settings apply on top."
+species = "Some kinds have their own health factor, which replaces the biome's: {species}."
+soften = "factor = 1 + (biome factor − 1) × scale"
+
+[formula.boss-step]
+title = "After a biome's boss"
+text = "Once a biome's boss has been defeated, the creatures of that biome move part of the way toward the next biome's factors (health, damage and penetration): {near} near the world centre, up to {far} far from it. Bosses don't step up, and nor does the Deep North."
+formula = "step = {near} + ({far} − {near}) × t,   t = (distance from the world centre − near) ÷ (far − near), from 0 to 1"
+species = "Wolves and Draugr keep their own health factor, so only their damage steps up."
+
+[formula.stars]
+title = "Stars"
+text = "Stars make a creature stronger, set its [rarity]({rarity}) and bring modifiers."
+health = "Health × (1 + {h} × stars)"
+damage = "Damage × (1 + {d} × stars)"
+chance = "Each star step has a {chance} chance (Valheim: 10%), rolled until it fails, up to two stars; hostile creatures in their home biome can always reach {home}. A creature with two stars then gains another star with a {above} chance each time, up to the preset's most stars. Each star brings {mods} modifier. Chances of the first roll:"
+
+[formula.boss-stars]
+title = "Boss stars"
+text = "A boss summoned at its altar can rise with stars: a {chance} chance of at least one star, and {two} of two (part of the {chance}). By default, only once that boss has been defeated in the world. The mod's [bosses]({bosses}) can also be given stars with Runes of the Blood Challenge."
+health = "Health × (1 + {h} × stars)"
+damage = "Damage × (1 + {d} × stars)"
+notes = "Modifiers per boss star: {mods} on Normal, 1 on Hard and Merciless."
+
+[formula.monster-power]
+title = "Monster Power"
+text = "Offering boss trophies at an Altar of Power makes the creatures of that biome stronger, and their loot richer:"
+formula = "Monster Power = 1 + {step} × offerings, at most ×{max}"
+notes = "It multiplies the health and damage of the biome's wild creatures, bosses included (not tamed ones), and adds Monster Power − 1 to their [loot quantity]({loot}). It reaches its maximum after {n} offerings; each offering costs one trophy more than the last."
+
+[formula.loot]
+title = "Loot"
+text = "When a creature dies, its Path of Valheiman loot is rolled with two numbers, {quantity} and {rarity}:"
+quantity = "Quantity = 1 + item quantity + {star} × stars + {mod} × modifiers + (Monster Power − 1)"
+rarity = "Rarity = item rarity + {star} × stars"
+notes = "Item quantity and item rarity are the killer's own, from passives and gear. Modifiers and Monster Power add quantity, not rarity. The loot's item level is the creature's level."
+sources = "Drops per kill"
+sources_note = "The number of drops is random: on average this many × quantity. Part of them are jewels:"
+lambda = "Drops on average"
+jewel = "Jewels"
+by_level = "Rarity by item level"
+by_level_note = "Gear never drops common: it is magic or rare, by these weights, which rarity shifts toward rare:"
+curve = "c = rarity ÷ (1 + rarity);   magic × (1 + c),   rare × (1 + 2c)"
+common = "Common"
+magic = "Magic"
+rare = "Rare"
+unique = "Each gear drop has a {chance} × (1 + c) chance to be a unique instead. Bosses always drop at least a magic item, a rare one from level {level}."
+
+[formula.vanilla-drops]
+title = "Valheim drops"
+text = "Valheim's own drops (meat, hides...) grow with stars; trophies and single items don't."
+formula = "amount × (1 + {s} × stars), at most {cap}"
+
+[formula.experience]
+title = "Experience"
+text = "Experience from a kill:"
+formula = "Experience = base health × {h} × (1 + {s} × stars + {m} × modifiers)"
+notes = "Base health is the Valheim health of its kind. It is shared between the players alive within {radius} m ({boss}× that for bosses). At night, every experience gain is +{night}. Creatures of a runic event give {event}. Far above a biome's level, experience there fades."
+
+[formula.crit-multiplier]
+title = "Critical strike damage"
+text = "A critical strike ({term}) multiplies the hit's damage by:"
+formula = "{base} + critical damage bonuses, at least 0"
+notes = "The bonuses come in parts, each its flat bonuses × (1 + increases): general ones, those for your weapon kind, for the target, and for the alternative attack. The parts are computed separately and added up, so a general \"reduced critical damage\" doesn't lower your weapon's own bonus."
+
+[formula.crit-chance]
+title = "Critical strike chance"
+text = "Critical strike chance starts from the weapon's base:"
+formula = "chance = (base + flat) × (1 + increases) × more, at most the maximum"
+bases = "Base: knives {knives}, polearms {polearms}, other weapons {other}, spells {spells}. The weapon's own critical chance properties apply to its base first. The maximum is {ceiling} by default."
+
+[formula.evasion]
+title = "Evasion"
+text = "Evasion ({evade}) is a rating. The chance it gives depends on the attacker's accuracy ({accuracy}), which grows with its level and stars:"
+accuracy = "accuracy = ({base} + {per} × level) × (1 + {star} × stars)"
+chance = "evade chance = 1 − {h} × accuracy ÷ (accuracy + evasion), at most {cap}"
+notes = "Evasion isn't a dice roll per hit: hits are evaded in a steady rhythm, so over many hits the share evaded is the chance. Damage over time in an area can't be evaded. Chance against creatures without stars, by biome:"
+acc_col = "Accuracy"
+rating_col = "{n} evasion"
+
+[formula.resistances]
+title = "Resistances"
+text = "{term} reduce damage of their type: damage × (1 − resistance)."
+formula = "resistance = min(cap, your resistance − enemy penetration);   cap = {cap} + maximum resistance, at most {hard}"
+notes = "Fire, frost and lightning also count elemental resistance. Penetration can take resistance below zero, which increases the damage taken."
+
+[formula.enemy-penetration]
+title = "Enemy penetration"
+text = "Creatures pierce your defences by their biome: they ignore flat armour ({armour}) and a share of your resistances ({resist}). Your armour counts for {effect} against creatures' hits."
+notes = "Bosses move toward the next biome's values. Creatures with the {piercing} modifier ignore more."
+
+[formula.build-cost]
+title = "Build cost"
+text = "Build cost reductions lower each material of a piece, the mod's [buildings]({buildings}) included, by at most {cap}:"
+formula = "cost = ⌈amount × (1 − reduction)⌉,   reduction at most {cap}"
+notes = "Dismantling gives back only what was paid. When a {refund} saves the materials of a placed piece, dismantling it gives nothing."

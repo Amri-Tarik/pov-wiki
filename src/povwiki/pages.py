@@ -798,6 +798,13 @@ def _related_pages(ctx: Ctx) -> dict[str, list[tuple[str, str, str]]]:
     if ctx.loc.bosses.get("mistMother"):
         found["boss"].append((ctx.loc.ui("bosses.title"), BOSSES_PAGE, ctx.loc.ui("monsters.title")))
         found["rune-monolith"].append((ctx.loc.ui("creatures.runic"), CREATURES_PAGE + "#runic", ctx.loc.ui("monsters.title")))
+    from .formula_pages import FORMULA_PAGES
+
+    for term, fid in (("crit", "crit-multiplier"), ("evade", "evasion"), ("enemy-accuracy", "evasion"),
+                      ("resist", "resistances"), ("resistance-penetration", "enemy-penetration"),
+                      ("armour-penetration", "enemy-penetration"), ("item-quantity", "loot"), ("item-rarity", "loot"),
+                      ("refund", "build-cost"), ("boss", "boss-stars")):
+        found[term].append((ctx.loc.ui(f"formula.{fid}.title"), f"{FORMULA_PAGES[fid]}#{fid}", ctx.loc.ui("formula.title")))
     if ctx.loc.monsters.get("mods"):
         for term in ("item-quantity", "item-rarity"):
             found[term].append((ctx.loc.ui("monsters.mods"), MODS_PAGE, ctx.loc.ui("monsters.title")))
@@ -877,5 +884,7 @@ def nav() -> list:
                          ("gear.uniques", "items/uniques.md")]),
         ("monsters.title", [("monsters.mods", "monsters/mods.md"), ("bosses.title", "monsters/bosses.md"),
                             ("creatures.title", "monsters/creatures.md")]),
+        ("formula.title", [("formula.creatures", "mechanics/creatures.md"), ("formula.loot_page", "mechanics/loot.md"),
+                           ("formula.combat", "mechanics/combat.md")]),
         ("nav.about", "about.md"),
     ]

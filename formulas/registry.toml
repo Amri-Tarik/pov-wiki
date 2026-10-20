@@ -1,0 +1,249 @@
+# The game's formulas, as read from the mod's code (see src/povwiki/formulas.py).
+#
+# Each formula: its page text is in i18n/ui/<lang>.toml under [formula.<id>]; "values" holds the
+# numbers that can't be read from the game data (BepInEx setting defaults, numbers written inline
+# in the code); "anchors" lists the code it was read from. The build hides a formula whose anchors
+# changed since "checked"; re-read it, update it, then `povwiki formulas --accept <id>`.
+# Anchors: "File.cs :: Type.Member" (a method, property or field; "#2" for the second overload)
+# or 'File.cs :: "text"' (the one statement holding that C# string or code).
+
+[[formula]]
+id = "creature-level"
+anchors = [
+    "PassiveTree/CreatureLevels.cs :: CreatureLevels.Of",
+    "PassiveTree/CreatureLevels.cs :: CreatureLevels.Factor",
+    "PassiveTree/BiomeLevels.cs :: BiomeLevels.Of",
+    "PassiveTree/Plugin.cs :: \"Biome levels\"",
+]
+fingerprint = "d879a0df5bfa"
+checked = "5.1.0"
+
+[[formula]]
+id = "creature-strength"
+anchors = [
+    "PassiveTree/EnemyDifficulty.cs :: EnemyDifficulty.Desired",
+    "PassiveTree/EnemyDifficulty.cs :: EnemyDifficulty.Soften",
+    "PassiveTree/EnemyDifficulty.cs :: EnemyDifficulty.Graded",
+    "PassiveTree/EnemyDifficulty.cs :: EnemyDifficulty.CreatureHealthFactor",
+    "PassiveTree/EnemyDifficulty.cs :: EnemyDifficulty.TameShareOf",
+    "PassiveTree/EnemyDifficulty.cs :: EnemyDifficulty.Defaults",
+    "PassiveTree/EnemyDifficulty.cs :: \"Tamed creature strength\"",
+    "PassiveTree/DifficultyPreset.cs :: DifficultyPreset.Lay",
+]
+fingerprint = "00662925c27c"
+checked = "5.1.0"
+
+[formula.values]
+tamed = 0.5
+
+[[formula]]
+id = "boss-step"
+anchors = [
+    "PassiveTree/EnemyDifficulty.cs :: EnemyDifficulty.BossShare#1",
+    "PassiveTree/EnemyDifficulty.cs :: EnemyDifficulty.BossShare#2",
+    "PassiveTree/EnemyDifficulty.cs :: EnemyDifficulty.HomeDistance",
+    "PassiveTree/EnemyDifficulty.cs :: EnemyDifficulty.ringNear",
+    "PassiveTree/EnemyDifficulty.cs :: EnemyDifficulty.ringFar",
+    "PassiveTree/Tunables.cs :: \"difficulty.boss-step-near\"",
+    "PassiveTree/Tunables.cs :: \"difficulty.boss-step-far\"",
+]
+fingerprint = "137a6b9e67cc"
+checked = "5.1.0"
+
+[[formula]]
+id = "stars"
+anchors = [
+    "PassiveTree/RarityRoll.cs :: RarityRoll.HealthFactor",
+    "PassiveTree/RarityRoll.cs :: RarityRoll.DamageFactor",
+    "PassiveTree/RarityRoll.cs :: RarityRoll.LevelUp",
+    "PassiveTree/RarityRoll.cs :: RarityRoll.Sync",
+    "PassiveTree/RarityRoll.cs :: \"Star health bonus\"",
+    "PassiveTree/RarityRoll.cs :: \"Star damage bonus\"",
+    "PassiveTree/RarityRoll.cs :: \"Star chance\"",
+    "PassiveTree/RarityRoll.cs :: \"Chance of each star above two\"",
+    "PassiveTree/RarityRoll.cs :: \"Modifiers per star\"",
+    "PassiveTree/CreatureStars.cs :: Attack_GetLevelDamageFactor.Postfix",
+]
+fingerprint = "46e2944381af"
+checked = "5.1.0"
+
+[formula.values]
+health = 1.0
+damage = 0.5
+chance = 0.18
+above_two = 0.5
+home_max_level = 3
+mods_per_star = 1
+
+[[formula]]
+id = "boss-stars"
+anchors = [
+    "PassiveTree/BossStars.cs :: BossStars.Roll",
+    "PassiveTree/BossStars.cs :: BossStars.HealthFactor",
+    "PassiveTree/BossStars.cs :: BossStars.DamageFactor",
+    "PassiveTree/BossStars.cs :: BossStars.Lay",
+    "PassiveTree/BossStars.cs :: BossStars.Bind",
+]
+fingerprint = "0460235254f9"
+checked = "5.1.0"
+
+[formula.values]
+chance = 0.25
+two = 0.05
+health = 0.5
+damage = 0.25
+mods_per_star = 0
+
+[[formula]]
+id = "monster-power"
+anchors = [
+    "PassiveTree/MonsterPower.cs :: MonsterPower.Factor",
+    "PassiveTree/MonsterPower.cs :: MonsterPower.Of",
+    "PassiveTree/MonsterPower.cs :: MonsterPower.Price",
+    "PassiveTree/Tunables.cs :: \"monster-power.step\"",
+    "PassiveTree/Tunables.cs :: \"monster-power.max\"",
+]
+fingerprint = "0cadb2102084"
+checked = "5.1.0"
+
+[[formula]]
+id = "loot"
+anchors = [
+    "PassiveTree.Loot/LootDrops.cs :: LootDrops.Grant",
+    "PassiveTree.Loot/LootDrops.cs :: LootDrops.Roll",
+    "PassiveTree.Loot/LootRoller.cs :: LootRoller.Curve",
+    "PassiveTree.Loot/LootRoller.cs :: LootRoller.RollMagicPlus",
+    "PassiveTree.Loot/LootRoller.cs :: LootRoller.MagicPlusShare",
+    "PassiveTree.Loot/LootCatalog.cs :: LootCatalog.RarityAt",
+    "PassiveTree/RarityRoll.cs :: RarityRoll.ModRewardShare",
+    "PassiveTree/RarityRoll.cs :: \"Reward per modifier\"",
+]
+fingerprint = "ded8e2f79f13"
+checked = "5.1.0"
+
+[formula.values]
+per_modifier = 0.5
+
+[[formula]]
+id = "vanilla-drops"
+anchors = [
+    "PassiveTree/CreatureStars.cs :: CreatureStars.VanillaLootFactor",
+    "PassiveTree/CreatureStars.cs :: CharacterDrop_GenerateDropList_Stars.Prefix",
+    "PassiveTree/CreatureStars.cs :: CharacterDrop_GenerateDropList_Stars.Postfix",
+    "PassiveTree/RarityLoot.cs :: RarityLoot.ScaleAmount",
+    "PassiveTree/RarityRoll.cs :: \"Star loot bonus\"",
+]
+fingerprint = "8dc682c13ac8"
+checked = "5.1.0"
+
+[formula.values]
+per_star = 0.5
+cap = 100
+
+[[formula]]
+id = "experience"
+anchors = [
+    "PassiveTree/XpSources.cs :: XpSources.KillXp",
+    "PassiveTree/SharedXp.cs :: SharedXp.LocalShare",
+    "PassiveTree/Plugin.cs :: \"Experience per kill\"",
+    "PassiveTree/Plugin.cs :: \"Experience per star\"",
+    "PassiveTree/Plugin.cs :: \"Boss experience multiplier\"",
+    "PassiveTree/Plugin.cs :: \"Night experience bonus\"",
+    "PassiveTree/Plugin.cs :: \"Shared experience radius\"",
+]
+fingerprint = "df88bba07f35"
+checked = "5.1.0"
+
+[formula.values]
+per_health = 0.4
+per_star = 0.5
+boss = 1.0
+night = 0.5
+radius = 40
+boss_radius = 2.5
+runic_event = 0.1
+
+[[formula]]
+id = "crit-multiplier"
+anchors = [
+    "PassiveTree/CriticalHits.cs :: CriticalHits.Scale",
+    "PassiveTree/CriticalHits.cs :: CriticalHits.DamageFactor",
+    "PassiveTree/CriticalHits.cs :: \"DamageFactor(s.Has(Stat.CritNoBonus)\"",
+    "PassiveTree/WeaponAffixes.cs :: WeaponAffixes.ColumnStat",
+]
+fingerprint = "14781e338c6e"
+checked = "5.1.0"
+
+[formula.values]
+base = 1.5
+
+[[formula]]
+id = "crit-chance"
+anchors = [
+    "PassiveTree/CritBase.cs :: CritBase.Of#1",
+    "PassiveTree/CritBase.cs :: CritBase.Of#2",
+    "PassiveTree/CriticalHits.cs :: CriticalHits.ChanceFromBase",
+    "PassiveTree/CriticalHits.cs :: CriticalHits.Ceiling",
+    "PassiveTree/CriticalHits.cs :: \"Maximum critical chance\"",
+]
+fingerprint = "60bbc5fae64b"
+checked = "5.1.0"
+
+[formula.values]
+knives = 0.15
+polearms = 0.1
+other = 0.05
+spells = 0.05
+ceiling = 1.0
+
+[[formula]]
+id = "evasion"
+anchors = [
+    "PassiveTree/Evasion.cs :: Evasion.AccuracyAt",
+    "PassiveTree/Evasion.cs :: Evasion.Chance",
+    "PassiveTree/Evasion.cs :: Evasion.Rating",
+    "PassiveTree/DefenceMath.cs :: DefenceMath.Chance",
+    "PassiveTree/EvasionSequence.cs :: EvasionSequence.Roll",
+]
+fingerprint = "e81cc5c0087c"
+checked = "5.1.0"
+
+[[formula]]
+id = "resistances"
+anchors = [
+    "PassiveTree/Resistances.cs :: Resistances.Of",
+    "PassiveTree/Resistances.cs :: Resistances.Cap",
+    "PassiveTree/Effects.cs :: \"s.Get(Stat.ElementalResistPct) - num2\"",
+]
+fingerprint = "5d7f1f7e8d83"
+checked = "5.1.0"
+
+[formula.values]
+cap = 0.75
+hard_cap = 0.9
+
+[[formula]]
+id = "enemy-penetration"
+anchors = [
+    "PassiveTree/EnemyDifficulty.cs :: EnemyDifficulty.ArmorPenOf",
+    "PassiveTree/EnemyDifficulty.cs :: EnemyDifficulty.ResistPenOf",
+    "PassiveTree/EnemyDifficulty.cs :: EnemyDifficulty.GradedPen",
+    "PassiveTree/ArmorEffect.cs :: Player_GetBodyArmor_Effect.Postfix",
+    "PassiveTree/ArmorPen.cs :: Humanoid_GetBodyArmor.Postfix",
+    "PassiveTree/Tunables.cs :: \"armor.effect\"",
+]
+fingerprint = "2823763ad93a"
+checked = "5.1.0"
+
+[[formula]]
+id = "build-cost"
+anchors = [
+    "PassiveTree/BuildingEconomy.cs :: BuildingEconomy.Cost",
+    "PassiveTree/BuildingEconomy.cs :: BuildingEconomy.Reduction",
+    "PassiveTree/BuildingEconomy.cs :: BuildingEconomy.PaidRequirements",
+]
+fingerprint = "5e39718266e3"
+checked = "5.1.0"
+
+[formula.values]
+cap = 0.5

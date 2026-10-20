@@ -42,6 +42,12 @@ code, so it matches what you see in game and updates with each patch.
 - [Bosses](monsters/bosses.md): the mod's bosses, how to summon them and what every boss drops
 - [Creatures](monsters/creatures.md): runic kin and the creatures of the Blight Mist
 
+## Mechanics
+
+- [Creature scaling](mechanics/creatures.md): level, health and damage, stars, difficulty, Monster Power
+- [Loot and experience](mechanics/loot.md): what a kill drops and the experience it gives
+- [Combat and building](mechanics/combat.md): critical strikes, evasion, resistances, enemy penetration, build cost
+
 ## Keywords
 
 Underlined keywords link to their entry from the mod's in-game wiki, and show its definition

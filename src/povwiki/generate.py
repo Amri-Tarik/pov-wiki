@@ -122,10 +122,12 @@ def build_language(lang: Language, default: Language, enabled: list[Language], d
     from .gear_pages import page_currency, page_jewels, page_uniques
     from .item_pages import page_mods
     from .building_pages import page_buildings
+    from .formula_pages import page_formulas
     from .monster_pages import page_bosses, page_creatures, page_monster_mods
 
     jobs += [(gen.__name__, gen, ctxs[0]) for gen in (page_mods, page_bases, page_currency, page_jewels, page_uniques,
-                                                      page_monster_mods, page_bosses, page_creatures, page_buildings)]
+                                                      page_monster_mods, page_bosses, page_creatures, page_buildings,
+                                                      page_formulas)]
     for label, gen, ctx in jobs:
         with _timed(label):
             for rel, text in gen(ctx).items():
@@ -162,6 +164,10 @@ def build(version: str, only: list[str] | None = None, render: bool = True) -> N
     data = GameData(version)
     # Languages build side by side: most of the time is the site generator, a separate process.
     print(f"building {', '.join(lang.code for lang in targets)} from data {version}")
+    from .formulas import check
+
+    if hidden := [st for st in check(version).values() if not st.ok]:  # re-read them, then `povwiki formulas --accept`
+        print(f"formulas hidden until re-checked: {', '.join(f'{st.id} ({st.reason})' for st in hidden)}")
     with ThreadPoolExecutor(max_workers=len(targets)) as pool:
         for job in [pool.submit(build_language, lang, default, enabled, data, render) for lang in targets]:
             job.result()

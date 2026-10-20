@@ -1,0 +1,1687 @@
+{
+ "changes": {
+  "crafting": {
+   "beast_armorer_p0": {
+    "new": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost",
+      "2% reduced mining stamina cost azurite"
+     ],
+     "link": "crafting/tree/#beast_armorer_p0",
+     "name": "Path"
+    },
+    "old": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost"
+     ],
+     "link": "crafting/tree/#beast_armorer_p0",
+     "name": "Path"
+    }
+   },
+   "beast_armorer_p11": {
+    "new": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost",
+      "2% reduced mining stamina cost azurite"
+     ],
+     "link": "crafting/tree/#beast_armorer_p11",
+     "name": "Path"
+    },
+    "old": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost"
+     ],
+     "link": "crafting/tree/#beast_armorer_p11",
+     "name": "Path"
+    }
+   },
+   "beast_armorer_p2": {
+    "new": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost",
+      "2% reduced mining stamina cost azurite"
+     ],
+     "link": "crafting/tree/#beast_armorer_p2",
+     "name": "Path"
+    },
+    "old": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost"
+     ],
+     "link": "crafting/tree/#beast_armorer_p2",
+     "name": "Path"
+    }
+   },
+   "beast_armorer_p4": {
+    "new": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost",
+      "2% reduced mining stamina cost azurite"
+     ],
+     "link": "crafting/tree/#beast_armorer_p4",
+     "name": "Path"
+    },
+    "old": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost"
+     ],
+     "link": "crafting/tree/#beast_armorer_p4",
+     "name": "Path"
+    }
+   },
+   "beast_armorer_p5": {
+    "new": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost",
+      "2% reduced mining stamina cost azurite"
+     ],
+     "link": "crafting/tree/#beast_armorer_p5",
+     "name": "Path"
+    },
+    "old": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost"
+     ],
+     "link": "crafting/tree/#beast_armorer_p5",
+     "name": "Path"
+    }
+   },
+   "beast_armorer_p7": {
+    "new": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost",
+      "2% reduced mining stamina cost azurite"
+     ],
+     "link": "crafting/tree/#beast_armorer_p7",
+     "name": "Path"
+    },
+    "old": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost"
+     ],
+     "link": "crafting/tree/#beast_armorer_p7",
+     "name": "Path"
+    }
+   },
+   "beast_armorer_p8": {
+    "new": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost",
+      "2% reduced mining stamina cost azurite"
+     ],
+     "link": "crafting/tree/#beast_armorer_p8",
+     "name": "Path"
+    },
+    "old": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost"
+     ],
+     "link": "crafting/tree/#beast_armorer_p8",
+     "name": "Path"
+    }
+   },
+   "beast_armorer_p9": {
+    "new": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost",
+      "2% reduced mining stamina cost azurite"
+     ],
+     "link": "crafting/tree/#beast_armorer_p9",
+     "name": "Path"
+    },
+    "old": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost"
+     ],
+     "link": "crafting/tree/#beast_armorer_p9",
+     "name": "Path"
+    }
+   },
+   "beast_herder_p0": {
+    "new": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost",
+      "2% reduced mining stamina cost azurite"
+     ],
+     "link": "crafting/tree/#beast_herder_p0",
+     "name": "Path"
+    },
+    "old": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost"
+     ],
+     "link": "crafting/tree/#beast_herder_p0",
+     "name": "Path"
+    }
+   },
+   "beast_herder_p11": {
+    "new": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost",
+      "2% reduced mining stamina cost azurite"
+     ],
+     "link": "crafting/tree/#beast_herder_p11",
+     "name": "Path"
+    },
+    "old": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost"
+     ],
+     "link": "crafting/tree/#beast_herder_p11",
+     "name": "Path"
+    }
+   },
+   "beast_herder_p3": {
+    "new": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost",
+      "2% reduced mining stamina cost azurite"
+     ],
+     "link": "crafting/tree/#beast_herder_p3",
+     "name": "Path"
+    },
+    "old": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost"
+     ],
+     "link": "crafting/tree/#beast_herder_p3",
+     "name": "Path"
+    }
+   },
+   "beast_herder_p4": {
+    "new": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost",
+      "2% reduced mining stamina cost azurite"
+     ],
+     "link": "crafting/tree/#beast_herder_p4",
+     "name": "Path"
+    },
+    "old": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost"
+     ],
+     "link": "crafting/tree/#beast_herder_p4",
+     "name": "Path"
+    }
+   },
+   "beast_herder_p5": {
+    "new": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost",
+      "2% reduced mining stamina cost azurite"
+     ],
+     "link": "crafting/tree/#beast_herder_p5",
+     "name": "Path"
+    },
+    "old": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost"
+     ],
+     "link": "crafting/tree/#beast_herder_p5",
+     "name": "Path"
+    }
+   },
+   "beast_herder_p7": {
+    "new": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost",
+      "2% reduced mining stamina cost azurite"
+     ],
+     "link": "crafting/tree/#beast_herder_p7",
+     "name": "Path"
+    },
+    "old": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost"
+     ],
+     "link": "crafting/tree/#beast_herder_p7",
+     "name": "Path"
+    }
+   },
+   "beast_herder_p8": {
+    "new": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost",
+      "2% reduced mining stamina cost azurite"
+     ],
+     "link": "crafting/tree/#beast_herder_p8",
+     "name": "Path"
+    },
+    "old": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost"
+     ],
+     "link": "crafting/tree/#beast_herder_p8",
+     "name": "Path"
+    }
+   },
+   "beast_herder_p9": {
+    "new": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost",
+      "2% reduced mining stamina cost azurite"
+     ],
+     "link": "crafting/tree/#beast_herder_p9",
+     "name": "Path"
+    },
+    "old": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost"
+     ],
+     "link": "crafting/tree/#beast_herder_p9",
+     "name": "Path"
+    }
+   },
+   "beast_hunter_p0": {
+    "new": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost",
+      "2% reduced mining stamina cost azurite"
+     ],
+     "link": "crafting/tree/#beast_hunter_p0",
+     "name": "Path"
+    },
+    "old": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost"
+     ],
+     "link": "crafting/tree/#beast_hunter_p0",
+     "name": "Path"
+    }
+   },
+   "beast_hunter_p11": {
+    "new": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost",
+      "2% reduced mining stamina cost azurite"
+     ],
+     "link": "crafting/tree/#beast_hunter_p11",
+     "name": "Path"
+    },
+    "old": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost"
+     ],
+     "link": "crafting/tree/#beast_hunter_p11",
+     "name": "Path"
+    }
+   },
+   "beast_hunter_p3": {
+    "new": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost",
+      "2% reduced mining stamina cost azurite"
+     ],
+     "link": "crafting/tree/#beast_hunter_p3",
+     "name": "Path"
+    },
+    "old": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost"
+     ],
+     "link": "crafting/tree/#beast_hunter_p3",
+     "name": "Path"
+    }
+   },
+   "beast_hunter_p4": {
+    "new": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost",
+      "2% reduced mining stamina cost azurite"
+     ],
+     "link": "crafting/tree/#beast_hunter_p4",
+     "name": "Path"
+    },
+    "old": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost"
+     ],
+     "link": "crafting/tree/#beast_hunter_p4",
+     "name": "Path"
+    }
+   },
+   "beast_hunter_p5": {
+    "new": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost",
+      "2% reduced mining stamina cost azurite"
+     ],
+     "link": "crafting/tree/#beast_hunter_p5",
+     "name": "Path"
+    },
+    "old": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost"
+     ],
+     "link": "crafting/tree/#beast_hunter_p5",
+     "name": "Path"
+    }
+   },
+   "beast_hunter_p7": {
+    "new": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost",
+      "2% reduced mining stamina cost azurite"
+     ],
+     "link": "crafting/tree/#beast_hunter_p7",
+     "name": "Path"
+    },
+    "old": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost"
+     ],
+     "link": "crafting/tree/#beast_hunter_p7",
+     "name": "Path"
+    }
+   },
+   "beast_hunter_p8": {
+    "new": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost",
+      "2% reduced mining stamina cost azurite"
+     ],
+     "link": "crafting/tree/#beast_hunter_p8",
+     "name": "Path"
+    },
+    "old": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost"
+     ],
+     "link": "crafting/tree/#beast_hunter_p8",
+     "name": "Path"
+    }
+   },
+   "beast_hunter_p9": {
+    "new": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost",
+      "2% reduced mining stamina cost azurite"
+     ],
+     "link": "crafting/tree/#beast_hunter_p9",
+     "name": "Path"
+    },
+    "old": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost"
+     ],
+     "link": "crafting/tree/#beast_hunter_p9",
+     "name": "Path"
+    }
+   },
+   "own1163": {
+    "new": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost",
+      "2% reduced mining stamina cost azurite"
+     ],
+     "link": "crafting/tree/#own1163",
+     "name": "Path"
+    },
+    "old": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost"
+     ],
+     "link": "crafting/tree/#own1163",
+     "name": "Path"
+    }
+   },
+   "own1164": {
+    "new": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost",
+      "2% reduced mining stamina cost azurite"
+     ],
+     "link": "crafting/tree/#own1164",
+     "name": "Path"
+    },
+    "old": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost"
+     ],
+     "link": "crafting/tree/#own1164",
+     "name": "Path"
+    }
+   },
+   "own1165": {
+    "new": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost",
+      "2% reduced mining stamina cost azurite"
+     ],
+     "link": "crafting/tree/#own1165",
+     "name": "Path"
+    },
+    "old": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost"
+     ],
+     "link": "crafting/tree/#own1165",
+     "name": "Path"
+    }
+   },
+   "own1166": {
+    "new": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost",
+      "2% reduced mining stamina cost azurite"
+     ],
+     "link": "crafting/tree/#own1166",
+     "name": "Path"
+    },
+    "old": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost"
+     ],
+     "link": "crafting/tree/#own1166",
+     "name": "Path"
+    }
+   },
+   "own1215": {
+    "new": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost",
+      "2% reduced mining stamina cost azurite"
+     ],
+     "link": "crafting/tree/#own1215",
+     "name": "Path"
+    },
+    "old": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost"
+     ],
+     "link": "crafting/tree/#own1215",
+     "name": "Path"
+    }
+   },
+   "own1239": {
+    "new": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost",
+      "2% reduced mining stamina cost azurite"
+     ],
+     "link": "crafting/tree/#own1239",
+     "name": "Path"
+    },
+    "old": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost"
+     ],
+     "link": "crafting/tree/#own1239",
+     "name": "Path"
+    }
+   },
+   "own28": {
+    "new": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost",
+      "2% reduced mining stamina cost azurite"
+     ],
+     "link": "crafting/tree/#own28",
+     "name": "Path"
+    },
+    "old": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost"
+     ],
+     "link": "crafting/tree/#own28",
+     "name": "Path"
+    }
+   },
+   "own33": {
+    "new": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost",
+      "2% reduced mining stamina cost azurite"
+     ],
+     "link": "crafting/tree/#own33",
+     "name": "Path"
+    },
+    "old": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost"
+     ],
+     "link": "crafting/tree/#own33",
+     "name": "Path"
+    }
+   },
+   "own40": {
+    "new": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost",
+      "2% reduced mining stamina cost azurite"
+     ],
+     "link": "crafting/tree/#own40",
+     "name": "Path"
+    },
+    "old": {
+     "kind": "Path",
+     "lines": [
+      "1% reduced mining stamina cost"
+     ],
+     "link": "crafting/tree/#own40",
+     "name": "Path"
+    }
+   }
+  },
+  "currency": {
+   "PT_GreatRuneOfFirstEssence": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Randomises the numeric values of an item's implicit properties"
+     ],
+     "link": "items/currency/PT_GreatRuneOfFirstEssence.md",
+     "name": "Great Rune of First Essence"
+    },
+    "old": null
+   },
+   "PT_RuneOfCorruption": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Corrupts an item: usually nothing else happens; it may warp its properties, gain a corrupted implicit, move every affix a tier up or down - or shatter"
+     ],
+     "link": "items/currency/PT_RuneOfCorruption.md",
+     "name": "Rune of Corruption"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Corrupts an item"
+     ],
+     "link": "items/currency/PT_RuneOfCorruption.md",
+     "name": "Rune of Corruption"
+    }
+   },
+   "PT_RuneOfCrimsonSeal": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Seals one random property of a rare item with four properties: it can never be changed again"
+     ],
+     "link": "items/currency/PT_RuneOfCrimsonSeal.md",
+     "name": "Rune of the Crimson Seal"
+    },
+    "old": null
+   }
+  },
+  "keywords": {
+   "shield": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "A protective layer that absorbs damage after resistances, before block and armour. Spirit and poison damage bypass it. After a pause without damage, the shield recharges; recharge delay and regeneration control this recovery."
+     ],
+     "link": "glossary/shield.md",
+     "name": "Rune shield"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "A protective layer that absorbs damage after resistances, before block and armour. Spirit damage bypasses it. After a pause without damage, the shield recharges; recharge delay and regeneration control this recovery."
+     ],
+     "link": "glossary/shield.md",
+     "name": "Rune shield"
+    }
+   }
+  },
+  "mods": {
+   "jewel.base.str-int.a35c88979b": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T3 (item level 1–96, weight 1000): +(0.016–0.02) of linked ally damage taken by you",
+      "T2 (item level 43–∞, weight 600): +(0.02–0.026) of linked ally damage taken by you",
+      "T1 (item level 97–∞, weight 250): +(0.026–0.032) of linked ally damage taken by you",
+      "T0 (item level 1–∞, weight 0): +(0.036–0.04) of linked ally damage taken by you"
+     ],
+     "link": "items/mod/jewel.base.str-int.a35c88979b.md",
+     "name": "+# of linked ally damage taken by you"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "T3 (item level 1–96, weight 1000): +(1.6–2)% of linked ally damage taken by you of base",
+      "T2 (item level 43–∞, weight 600): +(2–2.6)% of linked ally damage taken by you of base",
+      "T1 (item level 97–∞, weight 250): +(2.6–3.2)% of linked ally damage taken by you of base",
+      "T0 (item level 1–∞, weight 0): +(3.6–4)% of linked ally damage taken by you of base"
+     ],
+     "link": "items/mod/jewel.base.str-int.a35c88979b.md",
+     "name": "+#% of linked ally damage taken by you of base"
+    }
+   },
+   "ring.added-blunt": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(1–2) blunt damage",
+      "T4 (item level 19–76, weight 700): +(3–4) blunt damage",
+      "T3 (item level 43–129, weight 400): +(5–7) blunt damage",
+      "T2 (item level 77–∞, weight 180): +(8–11) blunt damage",
+      "T1 (item level 130–∞, weight 60): +(12–16) blunt damage"
+     ],
+     "link": "items/mod/ring.added-blunt.md",
+     "name": "+# blunt damage"
+    },
+    "old": null
+   },
+   "ring.added-fire": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(1–2) fire damage",
+      "T4 (item level 19–76, weight 700): +(3–4) fire damage",
+      "T3 (item level 43–129, weight 400): +(5–7) fire damage",
+      "T2 (item level 77–∞, weight 180): +(8–11) fire damage",
+      "T1 (item level 130–∞, weight 60): +(12–16) fire damage"
+     ],
+     "link": "items/mod/ring.added-fire.md",
+     "name": "+# fire damage"
+    },
+    "old": null
+   },
+   "ring.added-frost": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(1–2) frost damage",
+      "T4 (item level 19–76, weight 700): +(3–4) frost damage",
+      "T3 (item level 43–129, weight 400): +(5–7) frost damage",
+      "T2 (item level 77–∞, weight 180): +(8–11) frost damage",
+      "T1 (item level 130–∞, weight 60): +(12–16) frost damage"
+     ],
+     "link": "items/mod/ring.added-frost.md",
+     "name": "+# frost damage"
+    },
+    "old": null
+   },
+   "ring.added-lightning": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(1–2) lightning damage",
+      "T4 (item level 19–76, weight 700): +(3–4) lightning damage",
+      "T3 (item level 43–129, weight 400): +(5–7) lightning damage",
+      "T2 (item level 77–∞, weight 180): +(8–11) lightning damage",
+      "T1 (item level 130–∞, weight 60): +(12–16) lightning damage"
+     ],
+     "link": "items/mod/ring.added-lightning.md",
+     "name": "+# lightning damage"
+    },
+    "old": null
+   },
+   "ring.added-pierce": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(1–2) piercing damage",
+      "T4 (item level 19–76, weight 700): +(3–4) piercing damage",
+      "T3 (item level 43–129, weight 400): +(5–7) piercing damage",
+      "T2 (item level 77–∞, weight 180): +(8–11) piercing damage",
+      "T1 (item level 130–∞, weight 60): +(12–16) piercing damage"
+     ],
+     "link": "items/mod/ring.added-pierce.md",
+     "name": "+# piercing damage"
+    },
+    "old": null
+   },
+   "ring.added-poison": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(1–2) poison damage",
+      "T4 (item level 19–76, weight 700): +(3–4) poison damage",
+      "T3 (item level 43–129, weight 400): +(5–7) poison damage",
+      "T2 (item level 77–∞, weight 180): +(8–11) poison damage",
+      "T1 (item level 130–∞, weight 60): +(12–16) poison damage"
+     ],
+     "link": "items/mod/ring.added-poison.md",
+     "name": "+# poison damage"
+    },
+    "old": null
+   },
+   "ring.added-slash": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(1–2) slashing damage",
+      "T4 (item level 19–76, weight 700): +(3–4) slashing damage",
+      "T3 (item level 43–129, weight 400): +(5–7) slashing damage",
+      "T2 (item level 77–∞, weight 180): +(8–11) slashing damage",
+      "T1 (item level 130–∞, weight 60): +(12–16) slashing damage"
+     ],
+     "link": "items/mod/ring.added-slash.md",
+     "name": "+# slashing damage"
+    },
+    "old": null
+   },
+   "ring.added-spirit": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(1–2) spirit damage",
+      "T4 (item level 19–76, weight 700): +(3–4) spirit damage",
+      "T3 (item level 43–129, weight 400): +(5–7) spirit damage",
+      "T2 (item level 77–∞, weight 180): +(8–11) spirit damage",
+      "T1 (item level 130–∞, weight 60): +(12–16) spirit damage"
+     ],
+     "link": "items/mod/ring.added-spirit.md",
+     "name": "+# spirit damage"
+    },
+    "old": null
+   },
+   "ring.fire-resist": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(4–7)% fire resistance",
+      "T4 (item level 19–76, weight 700): +(8–11)% fire resistance",
+      "T3 (item level 43–129, weight 400): +(12–16)% fire resistance",
+      "T2 (item level 77–∞, weight 180): +(17–21)% fire resistance",
+      "T1 (item level 130–∞, weight 60): +(22–26)% fire resistance"
+     ],
+     "link": "items/mod/ring.fire-resist.md",
+     "name": "+#% fire resistance"
+    },
+    "old": null
+   },
+   "ring.frost-resist": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(4–7)% frost resistance",
+      "T4 (item level 19–76, weight 700): +(8–11)% frost resistance",
+      "T3 (item level 43–129, weight 400): +(12–16)% frost resistance",
+      "T2 (item level 77–∞, weight 180): +(17–21)% frost resistance",
+      "T1 (item level 130–∞, weight 60): +(22–26)% frost resistance"
+     ],
+     "link": "items/mod/ring.frost-resist.md",
+     "name": "+#% frost resistance"
+    },
+    "old": null
+   },
+   "ring.jump": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (5–8)% increased jump height, (5–8)% increased jump distance",
+      "T4 (item level 19–76, weight 700): (9–12)% increased jump height, (9–12)% increased jump distance",
+      "T3 (item level 43–129, weight 400): (13–16)% increased jump height, (13–16)% increased jump distance",
+      "T2 (item level 77–∞, weight 180): (17–21)% increased jump height, (17–21)% increased jump distance",
+      "T1 (item level 130–∞, weight 60): (22–28)% increased jump height, (22–28)% increased jump distance"
+     ],
+     "link": "items/mod/ring.jump.md",
+     "name": "#% increased jump height, #% increased jump distance"
+    },
+    "old": null
+   },
+   "ring.lightning-resist": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(4–7)% lightning resistance",
+      "T4 (item level 19–76, weight 700): +(8–11)% lightning resistance",
+      "T3 (item level 43–129, weight 400): +(12–16)% lightning resistance",
+      "T2 (item level 77–∞, weight 180): +(17–21)% lightning resistance",
+      "T1 (item level 130–∞, weight 60): +(22–26)% lightning resistance"
+     ],
+     "link": "items/mod/ring.lightning-resist.md",
+     "name": "+#% lightning resistance"
+    },
+    "old": null
+   },
+   "ring.max-eitr": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(5–9) to maximum eitr",
+      "T4 (item level 19–76, weight 700): +(10–14) to maximum eitr",
+      "T3 (item level 43–129, weight 400): +(15–22) to maximum eitr",
+      "T2 (item level 77–∞, weight 180): +(23–30) to maximum eitr",
+      "T1 (item level 130–∞, weight 60): +(31–40) to maximum eitr"
+     ],
+     "link": "items/mod/ring.max-eitr.md",
+     "name": "+# to maximum eitr"
+    },
+    "old": null
+   },
+   "ring.max-health": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(5–9) to maximum health",
+      "T4 (item level 19–76, weight 700): +(10–14) to maximum health",
+      "T3 (item level 43–129, weight 400): +(15–22) to maximum health",
+      "T2 (item level 77–∞, weight 180): +(23–30) to maximum health",
+      "T1 (item level 130–∞, weight 60): +(31–40) to maximum health"
+     ],
+     "link": "items/mod/ring.max-health.md",
+     "name": "+# to maximum health"
+    },
+    "old": null
+   },
+   "ring.max-stamina": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(5–9) to maximum stamina",
+      "T4 (item level 19–76, weight 700): +(10–14) to maximum stamina",
+      "T3 (item level 43–129, weight 400): +(15–22) to maximum stamina",
+      "T2 (item level 77–∞, weight 180): +(23–30) to maximum stamina",
+      "T1 (item level 130–∞, weight 60): +(31–40) to maximum stamina"
+     ],
+     "link": "items/mod/ring.max-stamina.md",
+     "name": "+# to maximum stamina"
+    },
+    "old": null
+   },
+   "ring.move-speed": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (2–3)% increased movement speed",
+      "T4 (item level 19–76, weight 700): (3–4)% increased movement speed",
+      "T3 (item level 43–129, weight 400): (4–5)% increased movement speed",
+      "T2 (item level 77–∞, weight 180): (5–6)% increased movement speed",
+      "T1 (item level 130–∞, weight 60): (6–8)% increased movement speed"
+     ],
+     "link": "items/mod/ring.move-speed.md",
+     "name": "#% increased movement speed"
+    },
+    "old": null
+   },
+   "ring.poison-resist": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(4–7)% poison resistance",
+      "T4 (item level 19–76, weight 700): +(8–11)% poison resistance",
+      "T3 (item level 43–129, weight 400): +(12–16)% poison resistance",
+      "T2 (item level 77–∞, weight 180): +(17–21)% poison resistance",
+      "T1 (item level 130–∞, weight 60): +(22–26)% poison resistance"
+     ],
+     "link": "items/mod/ring.poison-resist.md",
+     "name": "+#% poison resistance"
+    },
+    "old": null
+   },
+   "ring.rune-shield": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(7–9) rune shield",
+      "T4 (item level 19–76, weight 700): +(11–15) rune shield",
+      "T3 (item level 43–129, weight 400): +(15–20) rune shield",
+      "T2 (item level 77–∞, weight 180): +(19–26) rune shield",
+      "T1 (item level 130–∞, weight 60): +(24–32) rune shield"
+     ],
+     "link": "items/mod/ring.rune-shield.md",
+     "name": "+# rune shield"
+    },
+    "old": null
+   },
+   "ring.spirit-resist": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(4–7)% spirit resistance",
+      "T4 (item level 19–76, weight 700): +(8–11)% spirit resistance",
+      "T3 (item level 43–129, weight 400): +(12–16)% spirit resistance",
+      "T2 (item level 77–∞, weight 180): +(17–21)% spirit resistance",
+      "T1 (item level 130–∞, weight 60): +(22–26)% spirit resistance"
+     ],
+     "link": "items/mod/ring.spirit-resist.md",
+     "name": "+#% spirit resistance"
+    },
+    "old": null
+   }
+  },
+  "passives": {
+   "own10350": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased blunt damage",
+      "Ember of the Maul: Gain 27% of blunt damage as extra fire on your next hit after parrying; ×0.55 stagger build-up on your next hit after parrying",
+      "Split the Blow: 50% blunt damage converted to slashing"
+     ],
+     "link": "passives/node/own10350.md",
+     "name": "Poll's Song"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased blunt damage",
+      "Ember of the Maul: Gain 27% of blunt damage as extra fire; ×0.55 stagger build-up on your next hit after parrying",
+      "Split the Blow: 50% blunt damage converted to slashing"
+     ],
+     "link": "passives/node/own10350.md",
+     "name": "Poll's Song"
+    }
+   },
+   "own10524": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+7.5% elemental resistance",
+      "Residual Resistance: Excess resistance reduces matching ailment duration by 1% per percentage point above the cap; Ailment duration cannot fall below 25% of its ordinary duration; Resistance above its cap shortens matching ailments.",
+      "Runic Ward: +11.25% damage resistance at full rune shield; ×0.89 damage resistance while your rune shield is empty"
+     ],
+     "link": "passives/node/own10524.md",
+     "name": "Ward of the Passes"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "+7.5% elemental resistance",
+      "Residual Resistance: Excess resistance reduces matching ailment duration by 1% per percentage point above the cap; Ailment duration cannot fall below 25% of its ordinary duration; Resistance above its cap shortens matching ailments.",
+      "Runic Ward: +11.25% damage resistance of base at full rune shield; ×0.89 damage resistance while your rune shield is empty"
+     ],
+     "link": "passives/node/own10524.md",
+     "name": "Ward of the Passes"
+    }
+   },
+   "own10591": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "40% increased armour break build-up against bosses",
+      "Jagged Breach: Gain 22.5% of blunt damage as extra slashing on your next hit against broken armour",
+      "Armour Shards: Completely breaking armour creates an Armour Shard; Base Armour Shard limit: 3; lifetime: 8 s; Hitting the shard triggers an explosion: 100% of its burst strength; base radius: 3 m; The explosion breaks 30% of affected enemies’ armour; Breaking armour leaves a shard on the ground. Hit it with an attack or spell to set it off.",
+      "Bared to the Bone: Armour broken to the bone staggers the target",
+      "Cleaving Breach: Your final slashing damage can also build armour break alongside blunt damage. It keeps its bleeding build-up; damage is neither converted nor duplicated.",
+      "Wedge the Armour: 25% increased armour break build-up per impale on the target"
+     ],
+     "link": "passives/node/own10591.md",
+     "name": "Crack in the King's Carapace"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "40% increased armour break build-up against bosses",
+      "Jagged Breach: Gain 22.5% of blunt damage as extra slashing",
+      "Armour Shards: Completely breaking armour creates an Armour Shard; Base Armour Shard limit: 3; lifetime: 8 s; Hitting the shard triggers an explosion: 100% of its burst strength; base radius: 3 m; The explosion breaks 30% of affected enemies’ armour; Breaking armour leaves a shard on the ground. Hit it with an attack or spell to set it off.",
+      "Bared to the Bone: Armour broken to the bone staggers the target",
+      "Cleaving Breach: Your final slashing damage can also build armour break alongside blunt damage. It keeps its bleeding build-up; damage is neither converted nor duplicated.",
+      "Wedge the Armour: 25% increased armour break build-up per impale on the target"
+     ],
+     "link": "passives/node/own10591.md",
+     "name": "Crack in the King's Carapace"
+    }
+   },
+   "own10617": {
+    "new": {
+     "kind": "Keystone",
+     "lines": [
+      "Maximum health is 1. Immune to spirit and poison damage."
+     ],
+     "link": "passives/node/own10617.md",
+     "name": "Soul Vessel"
+    },
+    "old": {
+     "kind": "Keystone",
+     "lines": [
+      "Maximum health is 1. Immune to spirit damage."
+     ],
+     "link": "passives/node/own10617.md",
+     "name": "Soul Vessel"
+    }
+   },
+   "own10705": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "30% increased blunt damage on block recently",
+      "80% increased armour break build-up on block recently",
+      "Ember of the Maul: Gain 27% of blunt damage as extra fire on your next hit after parrying; ×0.55 stagger build-up on your next hit after parrying",
+      "Split the Blow: 50% blunt damage converted to slashing"
+     ],
+     "link": "passives/node/own10705.md",
+     "name": "Bone Beneath Iron"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "30% increased blunt damage on block recently",
+      "80% increased armour break build-up on block recently",
+      "Ember of the Maul: Gain 27% of blunt damage as extra fire; ×0.55 stagger build-up on your next hit after parrying",
+      "Split the Blow: 50% blunt damage converted to slashing"
+     ],
+     "link": "passives/node/own10705.md",
+     "name": "Bone Beneath Iron"
+    }
+   },
+   "own10780": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "40% increased armour break build-up",
+      "Jagged Breach: Gain 22.5% of blunt damage as extra slashing on your next hit against broken armour",
+      "Armour Shards: Completely breaking armour creates an Armour Shard; Base Armour Shard limit: 3; lifetime: 8 s; Hitting the shard triggers an explosion: 100% of its burst strength; base radius: 3 m; The explosion breaks 30% of affected enemies’ armour; Breaking armour leaves a shard on the ground. Hit it with an attack or spell to set it off.",
+      "Bared to the Bone: Armour broken to the bone staggers the target",
+      "Cleaving Breach: Your final slashing damage can also build armour break alongside blunt damage. It keeps its bleeding build-up; damage is neither converted nor duplicated.",
+      "Wedge the Armour: 25% increased armour break build-up per impale on the target"
+     ],
+     "link": "passives/node/own10780.md",
+     "name": "Shattered Mail"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "40% increased armour break build-up",
+      "Jagged Breach: Gain 22.5% of blunt damage as extra slashing",
+      "Armour Shards: Completely breaking armour creates an Armour Shard; Base Armour Shard limit: 3; lifetime: 8 s; Hitting the shard triggers an explosion: 100% of its burst strength; base radius: 3 m; The explosion breaks 30% of affected enemies’ armour; Breaking armour leaves a shard on the ground. Hit it with an attack or spell to set it off.",
+      "Bared to the Bone: Armour broken to the bone staggers the target",
+      "Cleaving Breach: Your final slashing damage can also build armour break alongside blunt damage. It keeps its bleeding build-up; damage is neither converted nor duplicated.",
+      "Wedge the Armour: 25% increased armour break build-up per impale on the target"
+     ],
+     "link": "passives/node/own10780.md",
+     "name": "Shattered Mail"
+    }
+   },
+   "own10792": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased armour break duration",
+      "Jagged Breach: Gain 22.5% of blunt damage as extra slashing on your next hit against broken armour",
+      "Armour Shards: Completely breaking armour creates an Armour Shard; Base Armour Shard limit: 3; lifetime: 8 s; Hitting the shard triggers an explosion: 100% of its burst strength; base radius: 3 m; The explosion breaks 30% of affected enemies’ armour; Breaking armour leaves a shard on the ground. Hit it with an attack or spell to set it off.",
+      "Bared to the Bone: Armour broken to the bone staggers the target",
+      "Cleaving Breach: Your final slashing damage can also build armour break alongside blunt damage. It keeps its bleeding build-up; damage is neither converted nor duplicated.",
+      "Wedge the Armour: 25% increased armour break build-up per impale on the target"
+     ],
+     "link": "passives/node/own10792.md",
+     "name": "Unmended Breach"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased armour break duration",
+      "Jagged Breach: Gain 22.5% of blunt damage as extra slashing",
+      "Armour Shards: Completely breaking armour creates an Armour Shard; Base Armour Shard limit: 3; lifetime: 8 s; Hitting the shard triggers an explosion: 100% of its burst strength; base radius: 3 m; The explosion breaks 30% of affected enemies’ armour; Breaking armour leaves a shard on the ground. Hit it with an attack or spell to set it off.",
+      "Bared to the Bone: Armour broken to the bone staggers the target",
+      "Cleaving Breach: Your final slashing damage can also build armour break alongside blunt damage. It keeps its bleeding build-up; damage is neither converted nor duplicated.",
+      "Wedge the Armour: 25% increased armour break build-up per impale on the target"
+     ],
+     "link": "passives/node/own10792.md",
+     "name": "Unmended Breach"
+    }
+   },
+   "own10804": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+25% ailment effect armour break",
+      "Jagged Breach: Gain 22.5% of blunt damage as extra slashing on your next hit against broken armour",
+      "Armour Shards: Completely breaking armour creates an Armour Shard; Base Armour Shard limit: 3; lifetime: 8 s; Hitting the shard triggers an explosion: 100% of its burst strength; base radius: 3 m; The explosion breaks 30% of affected enemies’ armour; Breaking armour leaves a shard on the ground. Hit it with an attack or spell to set it off.",
+      "Bared to the Bone: Armour broken to the bone staggers the target",
+      "Cleaving Breach: Your final slashing damage can also build armour break alongside blunt damage. It keeps its bleeding build-up; damage is neither converted nor duplicated.",
+      "Wedge the Armour: 25% increased armour break build-up per impale on the target"
+     ],
+     "link": "passives/node/own10804.md",
+     "name": "Split Carapace"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "+25% ailment effect armour break",
+      "Jagged Breach: Gain 22.5% of blunt damage as extra slashing",
+      "Armour Shards: Completely breaking armour creates an Armour Shard; Base Armour Shard limit: 3; lifetime: 8 s; Hitting the shard triggers an explosion: 100% of its burst strength; base radius: 3 m; The explosion breaks 30% of affected enemies’ armour; Breaking armour leaves a shard on the ground. Hit it with an attack or spell to set it off.",
+      "Bared to the Bone: Armour broken to the bone staggers the target",
+      "Cleaving Breach: Your final slashing damage can also build armour break alongside blunt damage. It keeps its bleeding build-up; damage is neither converted nor duplicated.",
+      "Wedge the Armour: 25% increased armour break build-up per impale on the target"
+     ],
+     "link": "passives/node/own10804.md",
+     "name": "Split Carapace"
+    }
+   },
+   "own10953": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased ring prefix values"
+     ],
+     "link": "passives/tree/#own10953",
+     "name": "Ring prefixes"
+    },
+    "old": null
+   },
+   "own10959": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased ring suffix values"
+     ],
+     "link": "passives/tree/#own10959",
+     "name": "Ring suffixes"
+    },
+    "old": null
+   },
+   "own10965": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased ring prefix values"
+     ],
+     "link": "passives/tree/#own10965",
+     "name": "Ring prefixes"
+    },
+    "old": null
+   },
+   "own10971": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "8% increased ring affix values"
+     ],
+     "link": "passives/node/own10971.md",
+     "name": "Polished Bands"
+    },
+    "old": null
+   },
+   "own10977": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased ring suffix values"
+     ],
+     "link": "passives/tree/#own10977",
+     "name": "Ring suffixes"
+    },
+    "old": null
+   },
+   "own10983": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased ring prefix values"
+     ],
+     "link": "passives/tree/#own10983",
+     "name": "Ring prefixes"
+    },
+    "old": null
+   },
+   "own10989": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+1 equipment slots for rings"
+     ],
+     "link": "passives/node/own10989.md",
+     "name": "One More Ring"
+    },
+    "old": null
+   },
+   "own10990": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+1 endurance threshold per 10 points of maximum health",
+      "Unshaken: While Endurance is active, its damage reduction also reduces the incoming stagger build-up left after your stagger resistance.",
+      "Rune Line: Endurance checks your current rune shield instead of your health, with the same threshold. Requires a rune shield; it adds no second reduction."
+     ],
+     "link": "passives/node/own10990.md",
+     "name": "Reserve of Resolve"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "+12.5 endurance threshold",
+      "Unshaken: While Endurance is active, its damage reduction also reduces the incoming stagger build-up left after your stagger resistance.",
+      "Rune Line: Endurance checks your current rune shield instead of your health, with the same threshold. Requires a rune shield; it adds no second reduction."
+     ],
+     "link": "passives/node/own10990.md",
+     "name": "Reserve of Resolve"
+    }
+   },
+   "own11979": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased damage against enemies with broken armour",
+      "Jagged Breach: Gain 22.5% of blunt damage as extra slashing on your next hit against broken armour",
+      "Armour Shards: Completely breaking armour creates an Armour Shard; Base Armour Shard limit: 3; lifetime: 8 s; Hitting the shard triggers an explosion: 100% of its burst strength; base radius: 3 m; The explosion breaks 30% of affected enemies’ armour; Breaking armour leaves a shard on the ground. Hit it with an attack or spell to set it off.",
+      "Bared to the Bone: Armour broken to the bone staggers the target",
+      "Cleaving Breach: Your final slashing damage can also build armour break alongside blunt damage. It keeps its bleeding build-up; damage is neither converted nor duplicated.",
+      "Wedge the Armour: 25% increased armour break build-up per impale on the target"
+     ],
+     "link": "passives/node/own11979.md",
+     "name": "Strike Into the Breach"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased damage against enemies with broken armour",
+      "Jagged Breach: Gain 22.5% of blunt damage as extra slashing",
+      "Armour Shards: Completely breaking armour creates an Armour Shard; Base Armour Shard limit: 3; lifetime: 8 s; Hitting the shard triggers an explosion: 100% of its burst strength; base radius: 3 m; The explosion breaks 30% of affected enemies’ armour; Breaking armour leaves a shard on the ground. Hit it with an attack or spell to set it off.",
+      "Bared to the Bone: Armour broken to the bone staggers the target",
+      "Cleaving Breach: Your final slashing damage can also build armour break alongside blunt damage. It keeps its bleeding build-up; damage is neither converted nor duplicated.",
+      "Wedge the Armour: 25% increased armour break build-up per impale on the target"
+     ],
+     "link": "passives/node/own11979.md",
+     "name": "Strike Into the Breach"
+    }
+   },
+   "own12059": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+0.02 of linked ally damage taken by you"
+     ],
+     "link": "passives/tree/#own12059",
+     "name": "Take an Ally's Damage"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+2% of linked ally damage taken by you of base"
+     ],
+     "link": "passives/tree/#own12059",
+     "name": "Take an Ally's Damage"
+    }
+   },
+   "own12065": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+0.02 of linked ally damage taken by you"
+     ],
+     "link": "passives/tree/#own12065",
+     "name": "Take an Ally's Damage"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+2% of linked ally damage taken by you of base"
+     ],
+     "link": "passives/tree/#own12065",
+     "name": "Take an Ally's Damage"
+    }
+   },
+   "own12071": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+0.05 of linked ally damage taken by you",
+      "+10% link range",
+      "Share the Pace: +25% of modifiers shared of base attack speed bonuses; ×0.5 attack speed for linked allies",
+      "Companion Link: Your link staff can link your designated companion instead of a player. Ordinary pets and minions cannot be linked.",
+      "Team Springboard: A willing linked ally hitting your raised shield is launched at 12 m/s in their chosen direction; Team Springboard cooldown: 6 s; When a linked ally hits your raised shield, they are launched where they aim instead of damaging you. Has a cooldown.",
+      "Allied Adrenaline: Linked allies' actions that grant adrenaline also grant it to the bearer. Allies keep their own gain; chain forwarding is not possible."
+     ],
+     "link": "passives/node/own12071.md",
+     "name": "Shared Wound"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "+5% of linked ally damage taken by you of base",
+      "+10% link range",
+      "Share the Pace: +25% of modifiers shared of base attack speed bonuses; ×0.5 attack speed for linked allies",
+      "Companion Link: Your link staff can link your designated companion instead of a player. Ordinary pets and minions cannot be linked.",
+      "Team Springboard: A willing linked ally hitting your raised shield is launched at 12 m/s in their chosen direction; Team Springboard cooldown: 6 s; When a linked ally hits your raised shield, they are launched where they aim instead of damaging you. Has a cooldown.",
+      "Allied Adrenaline: Linked allies' actions that grant adrenaline also grant it to the bearer. Allies keep their own gain; chain forwarding is not possible."
+     ],
+     "link": "passives/node/own12071.md",
+     "name": "Shared Wound"
+    }
+   },
+   "own12119": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased ring prefix values"
+     ],
+     "link": "passives/tree/#own12119",
+     "name": "Ring prefixes"
+    },
+    "old": null
+   },
+   "own12125": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased ring suffix values"
+     ],
+     "link": "passives/tree/#own12125",
+     "name": "Ring suffixes"
+    },
+    "old": null
+   },
+   "own12131": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased ring prefix values"
+     ],
+     "link": "passives/tree/#own12131",
+     "name": "Ring prefixes"
+    },
+    "old": null
+   },
+   "own12137": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased ring suffix values"
+     ],
+     "link": "passives/tree/#own12137",
+     "name": "Ring suffixes"
+    },
+    "old": null
+   },
+   "own12143": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "8% increased ring affix values"
+     ],
+     "link": "passives/node/own12143.md",
+     "name": "Polished Bands"
+    },
+    "old": null
+   },
+   "own12149": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+1 equipment slots for rings"
+     ],
+     "link": "passives/node/own12149.md",
+     "name": "One More Ring"
+    },
+    "old": null
+   },
+   "own12286": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased ring prefix values"
+     ],
+     "link": "passives/tree/#own12286",
+     "name": "Ring prefixes"
+    },
+    "old": null
+   },
+   "own12292": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased ring suffix values"
+     ],
+     "link": "passives/tree/#own12292",
+     "name": "Ring suffixes"
+    },
+    "old": null
+   },
+   "own12298": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased ring prefix values"
+     ],
+     "link": "passives/tree/#own12298",
+     "name": "Ring prefixes"
+    },
+    "old": null
+   },
+   "own12304": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "8% increased ring affix values"
+     ],
+     "link": "passives/node/own12304.md",
+     "name": "Polished Bands"
+    },
+    "old": null
+   },
+   "own12310": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+1 equipment slots for rings"
+     ],
+     "link": "passives/node/own12310.md",
+     "name": "One More Ring"
+    },
+    "old": null
+   },
+   "own13042": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+7.5% spirit resistance",
+      "Residual Resistance: Excess resistance reduces matching ailment duration by 1% per percentage point above the cap; Ailment duration cannot fall below 25% of its ordinary duration; Resistance above its cap shortens matching ailments.",
+      "Runic Ward: +11.25% damage resistance at full rune shield; ×0.89 damage resistance while your rune shield is empty"
+     ],
+     "link": "passives/node/own13042.md",
+     "name": "Ward Against the Dead"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "+7.5% spirit resistance",
+      "Residual Resistance: Excess resistance reduces matching ailment duration by 1% per percentage point above the cap; Ailment duration cannot fall below 25% of its ordinary duration; Resistance above its cap shortens matching ailments.",
+      "Runic Ward: +11.25% damage resistance of base at full rune shield; ×0.89 damage resistance while your rune shield is empty"
+     ],
+     "link": "passives/node/own13042.md",
+     "name": "Ward Against the Dead"
+    }
+   },
+   "own9389": {
+    "new": {
+     "kind": "Travel passive",
+     "lines": [
+      "Dexterity: +5 Dexterity",
+      "Strength: +5 Strength",
+      "Intelligence: +5 Intelligence"
+     ],
+     "link": "passives/tree/#own9389",
+     "name": "In development"
+    },
+    "old": {
+     "kind": "Keystone",
+     "lines": [
+      "Dexterity: +5 Dexterity",
+      "Strength: +5 Strength",
+      "Intelligence: +5 Intelligence"
+     ],
+     "link": "passives/node/own9389.md",
+     "name": "Attributes"
+    }
+   },
+   "own9469": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased spell damage",
+      "+15 Intelligence",
+      "12.5% increased maximum eitr"
+     ],
+     "link": "passives/node/own9469.md",
+     "name": "Seidr Chant"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased spell damage",
+      "+15 Intelligence"
+     ],
+     "link": "passives/node/own9469.md",
+     "name": "Seidr Chant"
+    }
+   },
+   "own9962": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased ring prefix values"
+     ],
+     "link": "passives/tree/#own9962",
+     "name": "Ring prefixes"
+    },
+    "old": null
+   },
+   "own9968": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "8% increased ring affix values"
+     ],
+     "link": "passives/node/own9968.md",
+     "name": "Polished Bands"
+    },
+    "old": null
+   },
+   "own9974": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased ring suffix values"
+     ],
+     "link": "passives/tree/#own9974",
+     "name": "Ring suffixes"
+    },
+    "old": null
+   },
+   "own9980": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+1 equipment slots for rings"
+     ],
+     "link": "passives/node/own9980.md",
+     "name": "One More Ring"
+    },
+    "old": null
+   },
+   "own9986": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased ring suffix values"
+     ],
+     "link": "passives/tree/#own9986",
+     "name": "Ring suffixes"
+    },
+    "old": null
+   }
+  },
+  "uniques": {
+   "PT_BeltKvasirsBlood": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "+(1–3) mead slots whose meads are drunk automatically",
+      "(-30–-50)% to all Resistances",
+      "25% increased duration of meads in belt slots",
+      "25% increased potency of meads in belt slots",
+      "Drops: drops anywhere from the Mountain (item level 80)"
+     ],
+     "link": "items/unique/PT_BeltKvasirsBlood.md",
+     "name": "Kvasir's Blood"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "+(1–3) mead slots whose meads act permanently",
+      "(-30–-50)% to all Resistances",
+      "Drops: drops anywhere from the Mountain (item level 80)"
+     ],
+     "link": "items/unique/PT_BeltKvasirsBlood.md",
+     "name": "Kvasir's Blood"
+    }
+   },
+   "PT_Jewel_ThreeFacesOfDelusion": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "3 × Adds a random notable (each a different one)",
+      "Drops: drops in the Mistlands"
+     ],
+     "link": "items/unique/PT_Jewel_ThreeFacesOfDelusion.md",
+     "name": "Three Faces of Delusion"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "3 × Adds a random notable (each a different one)",
+      "Drops: Unimplemented"
+     ],
+     "link": "items/unique/PT_Jewel_ThreeFacesOfDelusion.md",
+     "name": "Three Faces of Delusion"
+    }
+   }
+  }
+ },
+ "date": "2026-10-19",
+ "from": "5.0.10",
+ "to": "5.1.0"
+}

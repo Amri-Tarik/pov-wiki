@@ -46,8 +46,13 @@ code, so it matches what you see in game and updates with each patch.
 ## Mechanics
 
 - [Creature scaling](mechanics/creatures.md): level, health and damage, stars, difficulty, Monster Power
+- [Experience and levels](mechanics/experience.md): area and item levels, recommended player levels, experience fall-off
 - [Loot and experience](mechanics/loot.md): what a kill drops and the experience it gives
 - [Combat and building](mechanics/combat.md): critical strikes, evasion, resistances, enemy penetration, build cost
+
+## Patches
+
+- [Patches](patches/index.md): what each update changed in the game data, compared with the version before
 
 ## Keywords
 

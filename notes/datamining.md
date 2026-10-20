@@ -217,3 +217,19 @@ Every build fingerprints the anchors again. After a patch, a formula whose code 
 from the site (its section says it is being re-checked) and the build lists it. To bring it back:
 `povwiki formulas` shows which and why; read the changed code (`.cache/decompiled/<ver>/`),
 update the text, values or anchors, then `povwiki formulas --accept <id>`.
+
+## Patch pages (`patch_pages.py`)
+
+Each patch page compares a version's data with the version before it, as the site shows it: every
+entry (passive, craft node, mod, unique, currency, boss drop table, monster modifier, keyword, a few
+world numbers) is reduced to a name and lines of text, and the entries that differ are written to
+`patches/<version>/<lang>.json`. The pages are made from those files, so they survive the old
+version's data being deleted.
+
+- The build writes the comparison for the version it builds, when the version before it is
+  extracted and rendered. `povwiki patches --version V` writes it for an older version.
+- Both versions must be rendered by the same harness (`povwiki render --version V`), or harness
+  changes show up as game changes.
+- What changed is decided in the default language; other languages show the same entries in their
+  own text (a reworded translation is not a game change).
+- Only data is compared. A change to how the code uses it shows in the formula check instead.

@@ -46,6 +46,10 @@ def main() -> None:
     p.add_argument("--version", help="game data version (default: latest extracted)")
     p.add_argument("--accept", nargs="+", metavar="ID", help="record these formulas (or all) as re-checked against this version")
 
+    p = sub.add_parser("patches", help="write down what a version changed since the one before (patches/<version>/); "
+                                       "the build does it for the version it builds")
+    p.add_argument("--version", help="game data version (default: latest extracted)")
+
     sub.add_parser("deploy", help="build the site and publish it to GitHub Pages (gh-pages branch)")
 
     p = sub.add_parser("serve", help="generate pages and live-preview one language (fastest dev loop)")
@@ -83,6 +87,11 @@ def main() -> None:
         if args.accept:
             accept(version, args.accept)
         report(version)
+    elif args.cmd == "patches":
+        from .data import latest_version
+        from .patch_pages import write
+
+        write(args.version or latest_version())
     elif args.cmd == "deploy":
         from .data import latest_version
         from .deploy import deploy

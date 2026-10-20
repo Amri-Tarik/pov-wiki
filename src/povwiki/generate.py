@@ -27,7 +27,9 @@ from .paths import BASE_CONFIG, BUILD, CONTENT, ROOT, SITE
 
 
 def _nav(items, loc: Localizer) -> list:
-    return [{loc.ui(key): _nav(target, loc) if isinstance(target, list) else target} for key, target in items]
+    # A key is a ui key, or (ui key, its format arguments).
+    return [{(loc.ui(key[0], **key[1]) if isinstance(key, tuple) else loc.ui(key)): _nav(target, loc) if isinstance(target, list) else target}
+            for key, target in items]
 
 
 def _versioned(paths: list[str], docs) -> list[str]:
@@ -115,6 +117,10 @@ def build_language(lang: Language, default: Language, enabled: list[Language], d
         for ctx in ctxs:  # warm the caches, so generator timings are their own
             ctx.tree_nodes  # noqa: B018
             ctx.option_groups  # noqa: B018
+    with _timed("compare with the previous version"):
+        from .patch_pages import update
+
+        update(ctxs)
     jobs = [(f"{gen.__name__} [{ctx.spec.key}]", gen, ctx)
             for ctx in ctxs for gen in [LIST_PAGES[p] for p in ctx.spec.pages] + PER_TREE]
     jobs += [(gen.__name__, gen, ctxs[0]) for gen in GLOBAL]
@@ -124,10 +130,11 @@ def build_language(lang: Language, default: Language, enabled: list[Language], d
     from .building_pages import page_buildings
     from .formula_pages import page_formulas
     from .monster_pages import page_bosses, page_creatures, page_monster_mods
+    from .patch_pages import page_patches
 
     jobs += [(gen.__name__, gen, ctxs[0]) for gen in (page_mods, page_bases, page_currency, page_jewels, page_uniques,
                                                       page_monster_mods, page_bosses, page_creatures, page_buildings,
-                                                      page_formulas)]
+                                                      page_formulas, page_patches)]
     for label, gen, ctx in jobs:
         with _timed(label):
             for rel, text in gen(ctx).items():

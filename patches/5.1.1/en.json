@@ -1,0 +1,5226 @@
+{
+ "changes": {
+  "drops": {
+   "bonemass-jewel": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Choir of the Unburied: 7%"
+     ],
+     "link": "monsters/bosses.md#bonemass",
+     "name": "Bonemass"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Choir of the Unburied: 15%, ×3 until the first drop"
+     ],
+     "link": "monsters/bosses.md#bonemass",
+     "name": "Bonemass"
+    }
+   },
+   "eikthyr-jewel": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Trail of the First Antler: 7%"
+     ],
+     "link": "monsters/bosses.md#eikthyr",
+     "name": "Eikthyr"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Trail of the First Antler: 15%, ×3 until the first drop"
+     ],
+     "link": "monsters/bosses.md#eikthyr",
+     "name": "Eikthyr"
+    }
+   },
+   "elder-jewel": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Amber of the First Root: 7%"
+     ],
+     "link": "monsters/bosses.md#gd_king",
+     "name": "The Elder"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Amber of the First Root: 15%"
+     ],
+     "link": "monsters/bosses.md#gd_king",
+     "name": "The Elder"
+    }
+   },
+   "fader-jewel": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Circlet of Emerald Flame: 4%"
+     ],
+     "link": "monsters/bosses.md#fader",
+     "name": "Fader"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Circlet of Emerald Flame: 15%"
+     ],
+     "link": "monsters/bosses.md#fader",
+     "name": "Fader"
+    }
+   },
+   "mist-mother-jewel": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Tear of the Mist Mother: 10%"
+     ],
+     "link": "monsters/boss/PT_MistMother.md",
+     "name": "Mist Mother"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Tear of the Mist Mother: 15%"
+     ],
+     "link": "monsters/boss/PT_MistMother.md",
+     "name": "Mist Mother"
+    }
+   },
+   "moder-jewel": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Heart of the Mountain Mother: 4%"
+     ],
+     "link": "monsters/bosses.md#dragon",
+     "name": "Moder"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Heart of the Mountain Mother: 15%"
+     ],
+     "link": "monsters/bosses.md#dragon",
+     "name": "Moder"
+    }
+   },
+   "morgrim-heart": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Heart of the Fallen Runes: 7%"
+     ],
+     "link": "monsters/boss/PT_Morgrim.md",
+     "name": "Morgrim, the Shattered Lord"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Heart of the Fallen Runes: 15%, ×3 until the first drop"
+     ],
+     "link": "monsters/boss/PT_Morgrim.md",
+     "name": "Morgrim, the Shattered Lord"
+    }
+   },
+   "queen-jewel": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Whisper of Niflheim: 4%"
+     ],
+     "link": "monsters/bosses.md#seekerqueen",
+     "name": "The Queen"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Whisper of Niflheim: 15%"
+     ],
+     "link": "monsters/bosses.md#seekerqueen",
+     "name": "The Queen"
+    }
+   },
+   "rungard-heart": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Heart of the Elder Runes: 7%"
+     ],
+     "link": "monsters/boss/PT_Rungard.md",
+     "name": "Rungard, the Thousand-Faced Warden"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Heart of the Elder Runes: 15%, ×3 until the first drop"
+     ],
+     "link": "monsters/boss/PT_Rungard.md",
+     "name": "Rungard, the Thousand-Faced Warden"
+    }
+   },
+   "yagluth-jewel": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Dead Crown Shard: Flesh: 2.5%",
+      "Dead Crown Shard: Breath: 2.5%",
+      "Dead Crown Shard: Spirit: 2.5%",
+      "Dead Crown Shard: Veil: 2.5%"
+     ],
+     "link": "monsters/bosses.md#goblinking",
+     "name": "Yagluth"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Dead Crown Shard: Flesh: 3.75%, ×3 until the first drop",
+      "Dead Crown Shard: Breath: 3.75%, ×3 until the first drop",
+      "Dead Crown Shard: Spirit: 3.75%, ×3 until the first drop",
+      "Dead Crown Shard: Veil: 3.75%, ×3 until the first drop"
+     ],
+     "link": "monsters/bosses.md#goblinking",
+     "name": "Yagluth"
+    }
+   }
+  },
+  "keywords": {
+   "fortification": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Each point of fortification makes hits deal 2% less damage to you. Passives of the tree give it on block, on hit, on stagger and the like - at most once every 1 s. It lasts 4 s, and every new gain restarts the timer of all points. The base limit is 5 points; passives can raise the limit and make each point stronger."
+     ],
+     "link": "glossary/fortification.md",
+     "name": "Fortification"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "A temporary, stackable reduction to damage taken from hits. Gaining a stack refreshes all stacks, subject to the gain cooldown and stack limit."
+     ],
+     "link": "glossary/fortification.md",
+     "name": "Fortification"
+    }
+   },
+   "knife-throw": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Replaces a one-handed knife's alternative attack ([Mouse 3]) with a throw. It remains a knife attack but uses ranged and throwing bonuses instead of melee bonuses; without weapon return, the knife stays where it lands."
+     ],
+     "link": "glossary/knife-throw.md",
+     "name": "Dagger throw"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Replaces a knife's alternative attack ([Mouse 3]) with a throw. It remains a knife attack but uses ranged and throwing bonuses instead of melee bonuses; without weapon return, the knife stays where it lands."
+     ],
+     "link": "glossary/knife-throw.md",
+     "name": "Dagger throw"
+    }
+   },
+   "skill": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "A skill here is an ability: a passive from the tree or a power from a boss sigil that fires by itself when its trigger comes, then waits out its cooldown; skill cooldown shortens that wait. Valheim's own skills (swords, running and the rest) are another thing: their growth goes into tree experience, and governing attributes set weapon damage through the skill multiplier."
+     ],
+     "link": "glossary/skill.md",
+     "name": "Skill"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Vanilla skill bonuses are replaced by the addon's progression. Eligible actions award experience, and governing attributes determine weapon damage through the skill multiplier."
+     ],
+     "link": "glossary/skill.md",
+     "name": "Skill"
+    }
+   }
+  },
+  "passives": {
+   "g1_x1": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased attack damage",
+      "6% increased spell damage"
+     ],
+     "link": "passives/tree/#g1_x1",
+     "name": "Battlecraft"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased attack damage",
+      "6% increased spell damage"
+     ],
+     "link": "passives/tree/#g1_x1",
+     "name": "Battlecraft"
+    }
+   },
+   "own10004": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased damage for minions"
+     ],
+     "link": "passives/tree/#own10004",
+     "name": "Minions"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased damage for minions"
+     ],
+     "link": "passives/tree/#own10004",
+     "name": "Minions"
+    }
+   },
+   "own10023": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased block power",
+      "5% reduced block stamina cost",
+      "+5 health on block",
+      "Shield Charge: Sprint while blocking to perform Shield Charge; Shield Charge deals 0.8 blunt damage and 1 knockback per point of block power; ×2 Shield Charge stagger build-up; Shield Charge costs 12 stamina per second; Shield Charge speed: ×1.1 sprint speed; 15% additional acceleration over 1.6 s; Shield Charge can hit the same target every 0.75 s; attack speed shortens this interval; Shield Charge deals 0.8 chop damage per point of block power; tool tier 2; After crashing into an obstacle, Shield Charge cannot restart for 1 s; Shield Charge rolls over enemies up to 2× its carrying weight (2.5 base health per point of block power, stars multiply it); heavier ones cost stamina, and enemies over 3.5× stop it and knock the wielder down; Sprint with your shield raised to charge forward, dealing blunt damage to each enemy in the way once. Damage scales with block power, builds extra stagger and costs stamina. Weak enemies are rolled over; heavier ones cost extra stamina, and enemies far heavier than your block power stop the charge and knock the wielder down. Lowering the shield ends it.",
+      "Shield Instead of Blade: Your alternative attack becomes Shield Bash: 1 blunt damage per point of block power; With a one-handed weapon and a shield, your alternative attack becomes a shield bash. Damage scales with block power.",
+      "Two Shields: You can wield 2 shields at the same time; both contribute to blocking; A shield in each hand: both of them block, and their block power adds up",
+      "Spiked Shield: On a successful shield block, deal 150% of your thorns damage to the attacker; A successful shield block deals 150% of your thorns damage to the attacker",
+      "Challenger: Your hits provoke enemies for 15 s; Your hits provoke the enemy for 15 s: it attacks only you",
+      "Shield Throw: With no other available weapon in your hands, attacks throw your shield; Thrown shields deal 1 blunt damage per point of block power; Thrown shield stamina cost: ×1 the spear-throw cost; With no other weapon ready, your attack throws your shield. It deals blunt damage from block power and counts as a thrown projectile. After the flight it drops to be picked up; a return effect brings the same shield back to its slot."
+     ],
+     "link": "passives/node/own10023.md",
+     "name": "Shield After the Blow"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased block power",
+      "5% reduced block stamina cost",
+      "+5 health on block",
+      "Shield Charge: Sprint while blocking to perform Shield Charge; Shield Charge deals 0.8 blunt damage and 1 knockback per point of block power; ×2 Shield Charge stagger build-up; Shield Charge costs 12 stamina per second; Shield Charge speed: ×1.1 sprint speed; 15% additional acceleration over 1.6 s; Shield Charge can hit the same target every 0.75 s; attack speed shortens this interval; Shield Charge deals 0.8 chop damage per point of block power; tool tier 2; After crashing into an obstacle, Shield Charge cannot restart for 1 s; Sprint with your shield raised to charge forward, dealing blunt damage to each enemy in the way once. Damage scales with block power, builds extra stagger and costs stamina. Lowering the shield ends it.",
+      "Shield Instead of Blade: Your alternative attack becomes Shield Bash: 1 blunt damage per point of block power; With a one-handed weapon and a shield, your alternative attack becomes a shield bash. Damage scales with block power.",
+      "Two Shields: You can wield 2 shields at the same time; both contribute to blocking; A shield in each hand: both of them block, and their block power adds up",
+      "Spiked Shield: On a successful shield block, deal 150% of your thorns damage to the attacker; A successful shield block deals 150% of your thorns damage to the attacker",
+      "Challenger: Your hits provoke enemies for 15 s; Your hits provoke the enemy for 15 s: it attacks only you",
+      "Shield Throw: With no other available weapon in your hands, attacks throw your shield; Thrown shields deal 1 blunt damage per point of block power; Thrown shield stamina cost: ×1 the spear-throw cost; With no other weapon ready, your attack throws your shield. It deals blunt damage from block power and counts as a thrown projectile. After the flight it drops to be picked up; a return effect brings the same shield back to its slot."
+     ],
+     "link": "passives/node/own10023.md",
+     "name": "Shield After the Blow"
+    }
+   },
+   "own10111": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased projectile speed",
+      "+1 targets pierced by crossbow bolts",
+      "Chain Through Targets: Projectile chains can pick spores, ice crystals and other battle targets created by you and your allies. The hit triggers the target's usual reaction.",
+      "Return Path: Your last ricochet sends the projectile back to you. A returning projectile does not harm its owner and no longer ricochets.",
+      "Wall to Target: A ricochet off the ground or a wall has a 40% chance to head for the nearest valid target instead of reflecting normally.",
+      "◇ Free option 1: Theme reserve. No gameplay effect yet.",
+      "◇ Free option 2: Theme reserve. No gameplay effect yet."
+     ],
+     "link": "passives/node/own10111.md",
+     "name": "Through Enemy Ranks"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased projectile speed",
+      "+1 targets pierced by crossbow bolts",
+      "Chain Through Targets: Projectile chains can pick spores, ice crystals and other battle targets created by you and your allies. The hit triggers the target's usual reaction.",
+      "Return Path: Your last ricochet sends the projectile back to you. A returning projectile does not harm its owner and no longer ricochets.",
+      "Wall to Target: A ricochet off the ground or a wall spends one available bounce and heads for the nearest valid target instead of reflecting normally.",
+      "◇ Free option 1: Theme reserve. No gameplay effect yet.",
+      "◇ Free option 2: Theme reserve. No gameplay effect yet."
+     ],
+     "link": "passives/node/own10111.md",
+     "name": "Through Enemy Ranks"
+    }
+   },
+   "own10222": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "12.5% increased dodge speed",
+      "5% reduced dodge stamina cost",
+      "Slide: Crouching at 85% of sprint speed starts a slide; ×1.15 speed when a momentum slide starts; Slide input window after landing: 0.4 s; Slide loses 3.5 m/s of speed per second on level ground; Momentum slide cooldown: 1 s; Crouch while running fast or right after landing a jump to slide along the ground, keeping your speed; on a slope you ride down faster than you run."
+     ],
+     "link": "passives/node/own10222.md",
+     "name": "Tracker's Roll"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "12.5% increased dodge speed",
+      "10% reduced dodge stamina cost",
+      "Slide: Crouching at 85% of sprint speed starts a slide; ×1.15 speed when a momentum slide starts; Slide input window after landing: 0.4 s; Slide loses 3.5 m/s of speed per second on level ground; Momentum slide cooldown: 1 s; Crouch while running fast or right after landing a jump to slide along the ground, keeping your speed; on a slope you ride down faster than you run."
+     ],
+     "link": "passives/node/own10222.md",
+     "name": "Tracker's Roll"
+    }
+   },
+   "own10303": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+1 comfort level",
+      "14% increased damage while rested"
+     ],
+     "link": "passives/tree/#own10303",
+     "name": "Comfort"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+1 comfort level",
+      "10.5% increased damage while rested"
+     ],
+     "link": "passives/tree/#own10303",
+     "name": "Comfort"
+    }
+   },
+   "own10321": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "14% increased damage while rested"
+     ],
+     "link": "passives/tree/#own10321",
+     "name": "Comfort and Rest"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "10.5% increased damage while rested"
+     ],
+     "link": "passives/tree/#own10321",
+     "name": "Comfort and Rest"
+    }
+   },
+   "own10327": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "35% increased damage while rested"
+     ],
+     "link": "passives/node/own10327.md",
+     "name": "Coals Until Dawn"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "26.25% increased damage while rested"
+     ],
+     "link": "passives/node/own10327.md",
+     "name": "Coals Until Dawn"
+    }
+   },
+   "own10333": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+1 comfort level",
+      "14% increased damage while rested"
+     ],
+     "link": "passives/tree/#own10333",
+     "name": "Comfort"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+1 comfort level",
+      "10.5% increased damage while rested"
+     ],
+     "link": "passives/tree/#own10333",
+     "name": "Comfort"
+    }
+   },
+   "own10354": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased movement speed at full rune shield"
+     ],
+     "link": "passives/tree/#own10354",
+     "name": "Movement"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "1.5% increased movement speed at full rune shield"
+     ],
+     "link": "passives/tree/#own10354",
+     "name": "Movement"
+    }
+   },
+   "own10355": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "24% increased damage airborne",
+      "12% reduced cost airborne"
+     ],
+     "link": "passives/tree/#own10355",
+     "name": "Airborne"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "18% increased damage airborne",
+      "6% reduced cost airborne"
+     ],
+     "link": "passives/tree/#own10355",
+     "name": "Airborne"
+    }
+   },
+   "own10360": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased movement speed at full rune shield"
+     ],
+     "link": "passives/tree/#own10360",
+     "name": "Movement"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "1.5% increased movement speed at full rune shield"
+     ],
+     "link": "passives/tree/#own10360",
+     "name": "Movement"
+    }
+   },
+   "own10361": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "24% increased damage airborne",
+      "12% reduced cost airborne"
+     ],
+     "link": "passives/tree/#own10361",
+     "name": "Airborne"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "18% increased damage airborne",
+      "6% reduced cost airborne"
+     ],
+     "link": "passives/tree/#own10361",
+     "name": "Airborne"
+    }
+   },
+   "own10366": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased movement speed at full rune shield"
+     ],
+     "link": "passives/tree/#own10366",
+     "name": "Movement"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "1.5% increased movement speed at full rune shield"
+     ],
+     "link": "passives/tree/#own10366",
+     "name": "Movement"
+    }
+   },
+   "own10367": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "24% increased damage airborne",
+      "12% reduced cost airborne"
+     ],
+     "link": "passives/tree/#own10367",
+     "name": "Airborne"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "18% increased damage airborne",
+      "6% reduced cost airborne"
+     ],
+     "link": "passives/tree/#own10367",
+     "name": "Airborne"
+    }
+   },
+   "own10372": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased movement speed on evade recently",
+      "Build Momentum: Jumping exchanges 35% of horizontal sprint momentum for upward momentum; Gain 0.8 upward momentum per horizontal momentum exchanged; Jumping turns part of your sprint momentum into jump height, shortening horizontal travel.",
+      "Gather Speed: Raising your block preserves sprint momentum for 0.35 s; Raising your block does not stop a sprint at once: the remaining momentum carries you briefly forward while blocking.",
+      "Walk Under Load: 50% increased movement speed while encumbered",
+      "◇ Free option 1: Theme reserve. No gameplay effect yet."
+     ],
+     "link": "passives/node/own10372.md",
+     "name": "Step Beyond the Blow"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "5% increased movement speed on evade recently",
+      "Build Momentum: Jumping exchanges 35% of horizontal sprint momentum for upward momentum; Gain 0.8 upward momentum per horizontal momentum exchanged; Jumping turns part of your sprint momentum into jump height, shortening horizontal travel.",
+      "Gather Speed: Raising your block preserves sprint momentum for 0.35 s; Raising your block does not stop a sprint at once: the remaining momentum carries you briefly forward while blocking.",
+      "Walk Under Load: 50% increased movement speed while encumbered",
+      "◇ Free option 1: Theme reserve. No gameplay effect yet."
+     ],
+     "link": "passives/node/own10372.md",
+     "name": "Step Beyond the Blow"
+    }
+   },
+   "own10373": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "60% increased damage airborne",
+      "30% reduced cost airborne"
+     ],
+     "link": "passives/node/own10373.md",
+     "name": "Fray Above the Ground"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "45% increased damage airborne",
+      "15% reduced cost airborne"
+     ],
+     "link": "passives/node/own10373.md",
+     "name": "Fray Above the Ground"
+    }
+   },
+   "own10443": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "30% increased damage at nearly full adrenaline"
+     ],
+     "link": "passives/node/own10443.md",
+     "name": "Heat of Battle"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "22.5% increased damage at nearly full adrenaline"
+     ],
+     "link": "passives/node/own10443.md",
+     "name": "Heat of Battle"
+    }
+   },
+   "own10480": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "2.5% increased aftershock area of effect per 100 points of maximum health",
+      "Shifted Aftershock: Aftershocks erupt at the far end of your fault line instead of at its centre.",
+      "Gathered Rumble: ×0.9 aftershock area of effect; 25% increased stagger build-up with aftershocks",
+      "Slam Echo: +16% slam aftershock chance",
+      "Echo of the Breach: +100% attack aftershock chance against enemies with broken armour on hit; An attack causes an aftershock if the target's armour is fully broken after it hits. The hit that finishes breaking the armour also counts. One attack creates at most one source aftershock, regardless of the number of targets, projectiles and hits."
+     ],
+     "link": "passives/node/own10480.md",
+     "name": "Rumble of the Depths"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "2.5% increased aftershock area of effect per 100 points of maximum health",
+      "Shifted Aftershock: Aftershocks erupt at the far end of your fault line instead of at its centre.",
+      "Gathered Rumble: ×0.9 aftershock area of effect; 15% increased stagger build-up with aftershocks",
+      "Slam Echo: +16% slam aftershock chance",
+      "Echo of the Breach: +100% attack aftershock chance against enemies with broken armour on hit; An attack causes an aftershock if the target's armour is fully broken after it hits. The hit that finishes breaking the armour also counts. One attack creates at most one source aftershock, regardless of the number of targets, projectiles and hits."
+     ],
+     "link": "passives/node/own10480.md",
+     "name": "Rumble of the Depths"
+    }
+   },
+   "own10486": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "25% increased stagger build-up with aftershocks",
+      "Shifted Aftershock: Aftershocks erupt at the far end of your fault line instead of at its centre.",
+      "Gathered Rumble: ×0.9 aftershock area of effect; 25% increased stagger build-up with aftershocks",
+      "Slam Echo: +16% slam aftershock chance",
+      "Echo of the Breach: +100% attack aftershock chance against enemies with broken armour on hit; An attack causes an aftershock if the target's armour is fully broken after it hits. The hit that finishes breaking the armour also counts. One attack creates at most one source aftershock, regardless of the number of targets, projectiles and hits."
+     ],
+     "link": "passives/node/own10486.md",
+     "name": "Second Tremor"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "25% increased stagger build-up with aftershocks",
+      "Shifted Aftershock: Aftershocks erupt at the far end of your fault line instead of at its centre.",
+      "Gathered Rumble: ×0.9 aftershock area of effect; 15% increased stagger build-up with aftershocks",
+      "Slam Echo: +16% slam aftershock chance",
+      "Echo of the Breach: +100% attack aftershock chance against enemies with broken armour on hit; An attack causes an aftershock if the target's armour is fully broken after it hits. The hit that finishes breaking the armour also counts. One attack creates at most one source aftershock, regardless of the number of targets, projectiles and hits."
+     ],
+     "link": "passives/node/own10486.md",
+     "name": "Second Tremor"
+    }
+   },
+   "own10649": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased movement speed on evade recently"
+     ],
+     "link": "passives/tree/#own10649",
+     "name": "Movement and Stamina"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "2% increased movement speed on evade recently"
+     ],
+     "link": "passives/tree/#own10649",
+     "name": "Movement and Stamina"
+    }
+   },
+   "own10650": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased damage against enemies with an elemental ailment"
+     ],
+     "link": "passives/tree/#own10650",
+     "name": "Afflicted Prey"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased damage against enemies with an elemental ailment"
+     ],
+     "link": "passives/tree/#own10650",
+     "name": "Afflicted Prey"
+    }
+   },
+   "own10655": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased movement speed on evade recently"
+     ],
+     "link": "passives/tree/#own10655",
+     "name": "Movement and Stamina"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "2% increased movement speed on evade recently"
+     ],
+     "link": "passives/tree/#own10655",
+     "name": "Movement and Stamina"
+    }
+   },
+   "own10656": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased damage against enemies with an elemental ailment"
+     ],
+     "link": "passives/tree/#own10656",
+     "name": "Afflicted Prey"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased damage against enemies with an elemental ailment"
+     ],
+     "link": "passives/tree/#own10656",
+     "name": "Afflicted Prey"
+    }
+   },
+   "own10667": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "5% increased movement speed on crit recently"
+     ],
+     "link": "passives/tree/#own10667",
+     "name": "Seize the Moment"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "2.5% increased movement speed on crit recently"
+     ],
+     "link": "passives/tree/#own10667",
+     "name": "Seize the Moment"
+    }
+   },
+   "own10668": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased damage against enemies with an elemental ailment"
+     ],
+     "link": "passives/tree/#own10668",
+     "name": "Afflicted Prey"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased damage against enemies with an elemental ailment"
+     ],
+     "link": "passives/tree/#own10668",
+     "name": "Afflicted Prey"
+    }
+   },
+   "own10673": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "5% increased movement speed on crit recently"
+     ],
+     "link": "passives/tree/#own10673",
+     "name": "Seize the Moment"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "2.5% increased movement speed on crit recently"
+     ],
+     "link": "passives/tree/#own10673",
+     "name": "Seize the Moment"
+    }
+   },
+   "own10674": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased damage against enemies with an elemental ailment"
+     ],
+     "link": "passives/tree/#own10674",
+     "name": "Afflicted Prey"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased damage against enemies with an elemental ailment"
+     ],
+     "link": "passives/tree/#own10674",
+     "name": "Afflicted Prey"
+    }
+   },
+   "own10679": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased movement speed on evade recently"
+     ],
+     "link": "passives/tree/#own10679",
+     "name": "Movement and Stamina"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "2% increased movement speed on evade recently"
+     ],
+     "link": "passives/tree/#own10679",
+     "name": "Movement and Stamina"
+    }
+   },
+   "own10680": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased burning build-up chill shock"
+     ],
+     "link": "passives/tree/#own10680",
+     "name": "Elemental Build-up"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "10% increased burning build-up chill shock"
+     ],
+     "link": "passives/tree/#own10680",
+     "name": "Elemental Build-up"
+    }
+   },
+   "own10685": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased movement speed on evade recently"
+     ],
+     "link": "passives/tree/#own10685",
+     "name": "Movement and Stamina"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "2% increased movement speed on evade recently"
+     ],
+     "link": "passives/tree/#own10685",
+     "name": "Movement and Stamina"
+    }
+   },
+   "own10686": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased burning build-up chill shock"
+     ],
+     "link": "passives/tree/#own10686",
+     "name": "Elemental Build-up"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "10% increased burning build-up chill shock"
+     ],
+     "link": "passives/tree/#own10686",
+     "name": "Elemental Build-up"
+    }
+   },
+   "own10687": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased blunt damage",
+      "40% increased stagger build-up"
+     ],
+     "link": "passives/node/own10687.md",
+     "name": "Ring of Bones"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased blunt damage",
+      "25% increased stagger build-up"
+     ],
+     "link": "passives/node/own10687.md",
+     "name": "Ring of Bones"
+    }
+   },
+   "own10691": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "5% increased movement speed on landing recently",
+      "Build Momentum: Jumping exchanges 35% of horizontal sprint momentum for upward momentum; Gain 0.8 upward momentum per horizontal momentum exchanged; Jumping turns part of your sprint momentum into jump height, shortening horizontal travel.",
+      "Gather Speed: Raising your block preserves sprint momentum for 0.35 s; Raising your block does not stop a sprint at once: the remaining momentum carries you briefly forward while blocking.",
+      "Walk Under Load: 50% increased movement speed while encumbered",
+      "◇ Free option 1: Theme reserve. No gameplay effect yet."
+     ],
+     "link": "passives/node/own10691.md",
+     "name": "Step After the Fall"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "2.5% increased movement speed on landing recently",
+      "Build Momentum: Jumping exchanges 35% of horizontal sprint momentum for upward momentum; Gain 0.8 upward momentum per horizontal momentum exchanged; Jumping turns part of your sprint momentum into jump height, shortening horizontal travel.",
+      "Gather Speed: Raising your block preserves sprint momentum for 0.35 s; Raising your block does not stop a sprint at once: the remaining momentum carries you briefly forward while blocking.",
+      "Walk Under Load: 50% increased movement speed while encumbered",
+      "◇ Free option 1: Theme reserve. No gameplay effect yet."
+     ],
+     "link": "passives/node/own10691.md",
+     "name": "Step After the Fall"
+    }
+   },
+   "own10692": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "20% increased damage against enemies with an elemental ailment",
+      "40% increased burning build-up chill shock"
+     ],
+     "link": "passives/node/own10692.md",
+     "name": "Converging Afflictions"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased damage against enemies with an elemental ailment",
+      "25% increased burning build-up chill shock"
+     ],
+     "link": "passives/node/own10692.md",
+     "name": "Converging Afflictions"
+    }
+   },
+   "own10697": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased movement speed on evade recently"
+     ],
+     "link": "passives/tree/#own10697",
+     "name": "Movement and Stamina"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "2% increased movement speed on evade recently"
+     ],
+     "link": "passives/tree/#own10697",
+     "name": "Movement and Stamina"
+    }
+   },
+   "own10698": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased burning build-up chill shock"
+     ],
+     "link": "passives/tree/#own10698",
+     "name": "Elemental Build-up"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "10% increased burning build-up chill shock"
+     ],
+     "link": "passives/tree/#own10698",
+     "name": "Elemental Build-up"
+    }
+   },
+   "own10703": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "5% increased movement speed on crit recently"
+     ],
+     "link": "passives/tree/#own10703",
+     "name": "Seize the Moment"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "2.5% increased movement speed on crit recently"
+     ],
+     "link": "passives/tree/#own10703",
+     "name": "Seize the Moment"
+    }
+   },
+   "own10704": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased burning build-up chill shock"
+     ],
+     "link": "passives/tree/#own10704",
+     "name": "Elemental Build-up"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "10% increased burning build-up chill shock"
+     ],
+     "link": "passives/tree/#own10704",
+     "name": "Elemental Build-up"
+    }
+   },
+   "own10709": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "12.5% increased movement speed on crit recently"
+     ],
+     "link": "passives/node/own10709.md",
+     "name": "Moment for Pursuit"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "6.5% increased movement speed on crit recently"
+     ],
+     "link": "passives/node/own10709.md",
+     "name": "Moment for Pursuit"
+    }
+   },
+   "own10710": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "40% increased burning build-up chill shock",
+      "15% increased burning duration chill shock"
+     ],
+     "link": "passives/node/own10710.md",
+     "name": "Lingering Afflictions"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "25% increased burning build-up chill shock",
+      "15% increased burning duration chill shock"
+     ],
+     "link": "passives/node/own10710.md",
+     "name": "Lingering Afflictions"
+    }
+   },
+   "own10782": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "25% increased spell projectile speed with projectiles on crit recently",
+      "+1 spell projectile chain with projectiles",
+      "Chain Through Targets: Projectile chains can pick spores, ice crystals and other battle targets created by you and your allies. The hit triggers the target's usual reaction.",
+      "Return Path: Your last ricochet sends the projectile back to you. A returning projectile does not harm its owner and no longer ricochets.",
+      "Wall to Target: A ricochet off the ground or a wall has a 40% chance to head for the nearest valid target instead of reflecting normally.",
+      "◇ Free option 1: Theme reserve. No gameplay effect yet.",
+      "◇ Free option 2: Theme reserve. No gameplay effect yet."
+     ],
+     "link": "passives/node/own10782.md",
+     "name": "Rune's Zigzag"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "25% increased spell projectile speed with projectiles on crit recently",
+      "+1 spell projectile chain with projectiles",
+      "Chain Through Targets: Projectile chains can pick spores, ice crystals and other battle targets created by you and your allies. The hit triggers the target's usual reaction.",
+      "Return Path: Your last ricochet sends the projectile back to you. A returning projectile does not harm its owner and no longer ricochets.",
+      "Wall to Target: A ricochet off the ground or a wall spends one available bounce and heads for the nearest valid target instead of reflecting normally.",
+      "◇ Free option 1: Theme reserve. No gameplay effect yet.",
+      "◇ Free option 2: Theme reserve. No gameplay effect yet."
+     ],
+     "link": "passives/node/own10782.md",
+     "name": "Rune's Zigzag"
+    }
+   },
+   "own10914": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "20% increased frost damage against frozen targets",
+      "40% increased chill build-up against frozen targets"
+     ],
+     "link": "passives/node/own10914.md",
+     "name": "Glassy Frost"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased frost damage against frozen targets",
+      "40% increased chill build-up against frozen targets"
+     ],
+     "link": "passives/node/own10914.md",
+     "name": "Glassy Frost"
+    }
+   },
+   "own10922": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased movement speed airborne"
+     ],
+     "link": "passives/tree/#own10922",
+     "name": "Movement and Stamina"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased movement speed airborne"
+     ],
+     "link": "passives/tree/#own10922",
+     "name": "Movement and Stamina"
+    }
+   },
+   "own10940": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased movement speed airborne"
+     ],
+     "link": "passives/tree/#own10940",
+     "name": "Movement and Stamina"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased movement speed airborne"
+     ],
+     "link": "passives/tree/#own10940",
+     "name": "Movement and Stamina"
+    }
+   },
+   "own10980": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "32% increased ailment build-up at low eitr"
+     ],
+     "link": "passives/tree/#own10980",
+     "name": "Eitr"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "20% increased ailment build-up at low eitr"
+     ],
+     "link": "passives/tree/#own10980",
+     "name": "Eitr"
+    }
+   },
+   "own10986": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "32% increased ailment build-up at low eitr"
+     ],
+     "link": "passives/tree/#own10986",
+     "name": "Eitr"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "20% increased ailment build-up at low eitr"
+     ],
+     "link": "passives/tree/#own10986",
+     "name": "Eitr"
+    }
+   },
+   "own10992": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "80% increased ailment build-up at low eitr"
+     ],
+     "link": "passives/node/own10992.md",
+     "name": "Last Spark"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "50% increased ailment build-up at low eitr"
+     ],
+     "link": "passives/node/own10992.md",
+     "name": "Last Spark"
+    }
+   },
+   "own11006": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased aftershock area of effect on stagger recently",
+      "Shifted Aftershock: Aftershocks erupt at the far end of your fault line instead of at its centre.",
+      "Gathered Rumble: ×0.9 aftershock area of effect; 25% increased stagger build-up with aftershocks",
+      "Slam Echo: +16% slam aftershock chance",
+      "Echo of the Breach: +100% attack aftershock chance against enemies with broken armour on hit; An attack causes an aftershock if the target's armour is fully broken after it hits. The hit that finishes breaking the armour also counts. One attack creates at most one source aftershock, regardless of the number of targets, projectiles and hits."
+     ],
+     "link": "passives/node/own11006.md",
+     "name": "Rift's Peal"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased aftershock area of effect on stagger recently",
+      "Shifted Aftershock: Aftershocks erupt at the far end of your fault line instead of at its centre.",
+      "Gathered Rumble: ×0.9 aftershock area of effect; 15% increased stagger build-up with aftershocks",
+      "Slam Echo: +16% slam aftershock chance",
+      "Echo of the Breach: +100% attack aftershock chance against enemies with broken armour on hit; An attack causes an aftershock if the target's armour is fully broken after it hits. The hit that finishes breaking the armour also counts. One attack creates at most one source aftershock, regardless of the number of targets, projectiles and hits."
+     ],
+     "link": "passives/node/own11006.md",
+     "name": "Rift's Peal"
+    }
+   },
+   "own11159": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased stagger build-up"
+     ],
+     "link": "passives/tree/#own11159",
+     "name": "Offensive Stagger"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "10% increased stagger build-up"
+     ],
+     "link": "passives/tree/#own11159",
+     "name": "Offensive Stagger"
+    }
+   },
+   "own11162": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased stagger build-up"
+     ],
+     "link": "passives/tree/#own11162",
+     "name": "Offensive Stagger"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "10% increased stagger build-up"
+     ],
+     "link": "passives/tree/#own11162",
+     "name": "Offensive Stagger"
+    }
+   },
+   "own11168": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased stagger build-up"
+     ],
+     "link": "passives/tree/#own11168",
+     "name": "Offensive Stagger"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "10% increased stagger build-up"
+     ],
+     "link": "passives/tree/#own11168",
+     "name": "Offensive Stagger"
+    }
+   },
+   "own11171": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased stagger build-up"
+     ],
+     "link": "passives/tree/#own11171",
+     "name": "Offensive Stagger"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "10% increased stagger build-up"
+     ],
+     "link": "passives/tree/#own11171",
+     "name": "Offensive Stagger"
+    }
+   },
+   "own11174": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "40% increased stagger build-up",
+      "15% increased knockback on stagger recently",
+      "Crushing Blow: Your first primary hit against an enemy with at least 60% stagger build-up triggers Heavy Stagger; ×0.6 damage with the hit that triggers Crushing Blow; Your first primary hit on an enemy primed for a heavy stagger triggers the heavy stagger, but that hit deals less damage.",
+      "Precise Control: Heavy Stagger ends 1.6 times faster; After Heavy Stagger, the enemy retains at least 50% of its stagger threshold; Your heavy staggers are shorter, but afterwards the enemy's stagger build-up lingers briefly for you and your allies."
+     ],
+     "link": "passives/node/own11174.md",
+     "name": "Faltering Ranks"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "25% increased stagger build-up",
+      "15% increased knockback on stagger recently",
+      "Crushing Blow: Your first primary hit against an enemy with at least 60% stagger build-up triggers Heavy Stagger; ×0.6 damage with the hit that triggers Crushing Blow; Your first primary hit on an enemy primed for a heavy stagger triggers the heavy stagger, but that hit deals less damage.",
+      "Precise Control: Heavy Stagger ends 1.6 times faster; After Heavy Stagger, the enemy retains at least 50% of its stagger threshold; Your heavy staggers are shorter, but afterwards the enemy's stagger build-up lingers briefly for you and your allies."
+     ],
+     "link": "passives/node/own11174.md",
+     "name": "Faltering Ranks"
+    }
+   },
+   "own11180": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased stagger build-up"
+     ],
+     "link": "passives/tree/#own11180",
+     "name": "Offensive Stagger"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "10% increased stagger build-up"
+     ],
+     "link": "passives/tree/#own11180",
+     "name": "Offensive Stagger"
+    }
+   },
+   "own11333": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "12% increased damage at nearly full adrenaline"
+     ],
+     "link": "passives/tree/#own11333",
+     "name": "Adrenaline"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "9% increased damage at nearly full adrenaline"
+     ],
+     "link": "passives/tree/#own11333",
+     "name": "Adrenaline"
+    }
+   },
+   "own11334": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "12% increased damage at nearly full adrenaline"
+     ],
+     "link": "passives/tree/#own11334",
+     "name": "Adrenaline"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "9% increased damage at nearly full adrenaline"
+     ],
+     "link": "passives/tree/#own11334",
+     "name": "Adrenaline"
+    }
+   },
+   "own11335": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "12% increased damage at nearly full adrenaline"
+     ],
+     "link": "passives/tree/#own11335",
+     "name": "Adrenaline"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "9% increased damage at nearly full adrenaline"
+     ],
+     "link": "passives/tree/#own11335",
+     "name": "Adrenaline"
+    }
+   },
+   "own11336": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "12% increased damage at nearly full adrenaline"
+     ],
+     "link": "passives/tree/#own11336",
+     "name": "Adrenaline"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "9% increased damage at nearly full adrenaline"
+     ],
+     "link": "passives/tree/#own11336",
+     "name": "Adrenaline"
+    }
+   },
+   "own11394": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased damage for minions",
+      "3% increased maximum health for minions"
+     ],
+     "link": "passives/tree/#own11394",
+     "name": "Minion Vitality"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased damage for minions",
+      "3% increased maximum health for minions"
+     ],
+     "link": "passives/tree/#own11394",
+     "name": "Minion Vitality"
+    }
+   },
+   "own11397": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased health regeneration",
+      "8% increased damage"
+     ],
+     "link": "passives/tree/#own11397",
+     "name": "Vital Force"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased health regeneration",
+      "6% increased damage"
+     ],
+     "link": "passives/tree/#own11397",
+     "name": "Vital Force"
+    }
+   },
+   "own11430": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased damage for your companion"
+     ],
+     "link": "passives/tree/#own11430",
+     "name": "Companion"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased damage for your companion"
+     ],
+     "link": "passives/tree/#own11430",
+     "name": "Companion"
+    }
+   },
+   "own11436": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased damage for your companion"
+     ],
+     "link": "passives/tree/#own11436",
+     "name": "Companion"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased damage for your companion"
+     ],
+     "link": "passives/tree/#own11436",
+     "name": "Companion"
+    }
+   },
+   "own11448": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "20% increased damage for your companion"
+     ],
+     "link": "passives/node/own11448.md",
+     "name": "Faithful Companion"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased damage for your companion"
+     ],
+     "link": "passives/node/own11448.md",
+     "name": "Faithful Companion"
+    }
+   },
+   "own11454": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased damage for your companion"
+     ],
+     "link": "passives/tree/#own11454",
+     "name": "Companion"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased damage for your companion"
+     ],
+     "link": "passives/tree/#own11454",
+     "name": "Companion"
+    }
+   },
+   "own11519": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+50% throwing additional projectile chance",
+      "×0.75 damage",
+      "Weapon Return: Thrown weapons return after their flight; automatic turnaround after 1.4 s; Returning throws deal 30% of outgoing damage; Your thrown weapon comes back once its flight is over: after its chains, pierces and ricochets, when it strikes something or after 1.4 s of flight - faster throws fly farther. On the way back it pierces enemies. Its slot stays reserved until it returns; extra projectiles vanish. Arrows and bolts do not return.",
+      "◇ Free option 1: Theme reserve. No gameplay effect yet."
+     ],
+     "link": "passives/node/own11519.md",
+     "name": "Rain of Points"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "+50% throwing additional projectile chance",
+      "×1.05 damage",
+      "Weapon Return: Thrown weapons return after their flight; automatic turnaround after 1.4 s; Returning throws deal 30% of outgoing damage; Your thrown weapon comes back once its flight is over: after its chains, pierces and ricochets, when it strikes something or after 1.4 s of flight - faster throws fly farther. On the way back it pierces enemies. Its slot stays reserved until it returns; extra projectiles vanish. Arrows and bolts do not return.",
+      "◇ Free option 1: Theme reserve. No gameplay effect yet."
+     ],
+     "link": "passives/node/own11519.md",
+     "name": "Rain of Points"
+    }
+   },
+   "own11545": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "5% reduced jump stamina cost"
+     ],
+     "link": "passives/node/own11545.md",
+     "name": "Light Takeoff"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "10% reduced jump stamina cost"
+     ],
+     "link": "passives/node/own11545.md",
+     "name": "Light Takeoff"
+    }
+   },
+   "own11576": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+10% chance to immobilize on hit",
+      "40% increased stagger build-up against immobilized enemies"
+     ],
+     "link": "passives/node/own11576.md",
+     "name": "Hobble"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "+10% chance to immobilize on hit",
+      "25% increased stagger build-up against immobilized enemies"
+     ],
+     "link": "passives/node/own11576.md",
+     "name": "Hobble"
+    }
+   },
+   "own11581": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased blunt damage with attacks"
+     ],
+     "link": "passives/tree/#own11581",
+     "name": "Weight of Steel"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased blunt damage with attacks"
+     ],
+     "link": "passives/tree/#own11581",
+     "name": "Weight of Steel"
+    }
+   },
+   "own11587": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased blunt damage with attacks"
+     ],
+     "link": "passives/tree/#own11587",
+     "name": "Weight of Steel"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased blunt damage with attacks"
+     ],
+     "link": "passives/tree/#own11587",
+     "name": "Weight of Steel"
+    }
+   },
+   "own11588": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased stagger build-up against immobilized enemies"
+     ],
+     "link": "passives/tree/#own11588",
+     "name": "Hobbling Blows"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "10% increased stagger build-up against immobilized enemies"
+     ],
+     "link": "passives/tree/#own11588",
+     "name": "Hobbling Blows"
+    }
+   },
+   "own11593": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased blunt damage with attacks"
+     ],
+     "link": "passives/tree/#own11593",
+     "name": "Weight of Steel"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased blunt damage with attacks"
+     ],
+     "link": "passives/tree/#own11593",
+     "name": "Weight of Steel"
+    }
+   },
+   "own11594": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased stagger build-up against immobilized enemies"
+     ],
+     "link": "passives/tree/#own11594",
+     "name": "Hobbling Blows"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "10% increased stagger build-up against immobilized enemies"
+     ],
+     "link": "passives/tree/#own11594",
+     "name": "Hobbling Blows"
+    }
+   },
+   "own11600": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased stagger build-up against immobilized enemies"
+     ],
+     "link": "passives/tree/#own11600",
+     "name": "Hobbling Blows"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "10% increased stagger build-up against immobilized enemies"
+     ],
+     "link": "passives/tree/#own11600",
+     "name": "Hobbling Blows"
+    }
+   },
+   "own11606": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased damage against immobilized enemies"
+     ],
+     "link": "passives/tree/#own11606",
+     "name": "Pinned Prey"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased damage against immobilized enemies"
+     ],
+     "link": "passives/tree/#own11606",
+     "name": "Pinned Prey"
+    }
+   },
+   "own11612": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "40% increased stagger build-up against immobilized enemies",
+      "20% increased damage against immobilized enemies"
+     ],
+     "link": "passives/node/own11612.md",
+     "name": "Crushing Hold"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "25% increased stagger build-up against immobilized enemies",
+      "15% increased damage against immobilized enemies"
+     ],
+     "link": "passives/node/own11612.md",
+     "name": "Crushing Hold"
+    }
+   },
+   "own11617": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "20% increased blunt damage with attacks",
+      "Steel Ablaze: 50% blunt damage converted to fire with attacks"
+     ],
+     "link": "passives/node/own11617.md",
+     "name": "Thorny Forging"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased blunt damage with attacks",
+      "Steel Ablaze: 50% blunt damage converted to fire with attacks"
+     ],
+     "link": "passives/node/own11617.md",
+     "name": "Thorny Forging"
+    }
+   },
+   "own11623": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased blunt damage with attacks",
+      "4% increased blunt knockback"
+     ],
+     "link": "passives/tree/#own11623",
+     "name": "Weight of Steel"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased blunt damage with attacks",
+      "4% increased blunt knockback"
+     ],
+     "link": "passives/tree/#own11623",
+     "name": "Weight of Steel"
+    }
+   },
+   "own11624": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased damage against immobilized enemies"
+     ],
+     "link": "passives/tree/#own11624",
+     "name": "Pinned Prey"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased damage against immobilized enemies"
+     ],
+     "link": "passives/tree/#own11624",
+     "name": "Pinned Prey"
+    }
+   },
+   "own11629": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased blunt damage with attacks",
+      "4% increased blunt knockback"
+     ],
+     "link": "passives/tree/#own11629",
+     "name": "Weight of Steel"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased blunt damage with attacks",
+      "4% increased blunt knockback"
+     ],
+     "link": "passives/tree/#own11629",
+     "name": "Weight of Steel"
+    }
+   },
+   "own11630": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased damage against immobilized enemies"
+     ],
+     "link": "passives/tree/#own11630",
+     "name": "Pinned Prey"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased damage against immobilized enemies"
+     ],
+     "link": "passives/tree/#own11630",
+     "name": "Pinned Prey"
+    }
+   },
+   "own11672": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+20% knife critical strike damage",
+      "30% increased knife sneak attack damage",
+      "Dagger throw: Your equipped one-handed knife’s alternative attack becomes a weapon throw (dual knives such as Skoll and Hati are not thrown). The actual knife falls on the ground unless a weapon-return effect brings it back.",
+      "Behind the Guard: Attacking from block with a charged knife teleports you behind the aimed nearby enemy; Attacking from block with a charged knife teleports you behind the aimed nearby enemy with knives with charged attacks"
+     ],
+     "link": "passives/node/own11672.md",
+     "name": "Fang in the Dark"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "+20% knife critical strike damage",
+      "30% increased knife sneak attack damage",
+      "Dagger throw: Your equipped knife’s alternative attack becomes a weapon throw. The actual knife falls on the ground unless a weapon-return effect brings it back.",
+      "Behind the Guard: Attacking from block with a charged knife teleports you behind the aimed nearby enemy; Attacking from block with a charged knife teleports you behind the aimed nearby enemy with knives with charged attacks"
+     ],
+     "link": "passives/node/own11672.md",
+     "name": "Fang in the Dark"
+    }
+   },
+   "own11690": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "10% reduced noise",
+      "5% reduced sneaking stamina cost"
+     ],
+     "link": "passives/node/own11690.md",
+     "name": "Silent Trail"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "10% reduced noise",
+      "10% reduced sneaking stamina cost"
+     ],
+     "link": "passives/node/own11690.md",
+     "name": "Silent Trail"
+    }
+   },
+   "own11771": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+8% projectile critical strike damage"
+     ],
+     "link": "passives/tree/#own11771",
+     "name": "Projectile Crits"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+8% projectile critical strike damage"
+     ],
+     "link": "passives/tree/#own11771",
+     "name": "Projectile Accuracy"
+    }
+   },
+   "own11777": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "12% increased projectile critical strike chance"
+     ],
+     "link": "passives/tree/#own11777",
+     "name": "Projectile Crits"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "12% increased projectile critical strike chance"
+     ],
+     "link": "passives/tree/#own11777",
+     "name": "Projectile Accuracy"
+    }
+   },
+   "own11783": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+8% projectile critical strike damage"
+     ],
+     "link": "passives/tree/#own11783",
+     "name": "Projectile Crits"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+8% projectile critical strike damage"
+     ],
+     "link": "passives/tree/#own11783",
+     "name": "Projectile Accuracy"
+    }
+   },
+   "own11808": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "5% reduced cost while moving"
+     ],
+     "link": "passives/tree/#own11808",
+     "name": "Movement"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "2.5% reduced cost while moving"
+     ],
+     "link": "passives/tree/#own11808",
+     "name": "Movement"
+    }
+   },
+   "own11826": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "5% reduced cost while moving"
+     ],
+     "link": "passives/tree/#own11826",
+     "name": "Movement"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "2.5% reduced cost while moving"
+     ],
+     "link": "passives/tree/#own11826",
+     "name": "Movement"
+    }
+   },
+   "own11832": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "12.5% reduced cost while moving"
+     ],
+     "link": "passives/node/own11832.md",
+     "name": "Movement"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "2.5% reduced cost while moving"
+     ],
+     "link": "passives/node/own11832.md",
+     "name": "Movement"
+    }
+   },
+   "own11833": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased evasion rating",
+      "12.5% increased rune shield"
+     ],
+     "link": "passives/node/own11833.md",
+     "name": "Evasion and Rune Shield"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "4% increased evasion rating",
+      "12.5% increased rune shield"
+     ],
+     "link": "passives/node/own11833.md",
+     "name": "Evasion and Rune Shield"
+    }
+   },
+   "own11834": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased area of effect if started at full eitr"
+     ],
+     "link": "passives/node/own11834.md",
+     "name": "Eitr"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "6% increased area of effect if started at full eitr"
+     ],
+     "link": "passives/node/own11834.md",
+     "name": "Eitr"
+    }
+   },
+   "own11876": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased block power",
+      "Shield Charge: Sprint while blocking to perform Shield Charge; Shield Charge deals 0.8 blunt damage and 1 knockback per point of block power; ×2 Shield Charge stagger build-up; Shield Charge costs 12 stamina per second; Shield Charge speed: ×1.1 sprint speed; 15% additional acceleration over 1.6 s; Shield Charge can hit the same target every 0.75 s; attack speed shortens this interval; Shield Charge deals 0.8 chop damage per point of block power; tool tier 2; After crashing into an obstacle, Shield Charge cannot restart for 1 s; Shield Charge rolls over enemies up to 2× its carrying weight (2.5 base health per point of block power, stars multiply it); heavier ones cost stamina, and enemies over 3.5× stop it and knock the wielder down; Sprint with your shield raised to charge forward, dealing blunt damage to each enemy in the way once. Damage scales with block power, builds extra stagger and costs stamina. Weak enemies are rolled over; heavier ones cost extra stamina, and enemies far heavier than your block power stop the charge and knock the wielder down. Lowering the shield ends it.",
+      "Shield Instead of Blade: Your alternative attack becomes Shield Bash: 1 blunt damage per point of block power; With a one-handed weapon and a shield, your alternative attack becomes a shield bash. Damage scales with block power.",
+      "Two Shields: You can wield 2 shields at the same time; both contribute to blocking; A shield in each hand: both of them block, and their block power adds up",
+      "Spiked Shield: On a successful shield block, deal 150% of your thorns damage to the attacker; A successful shield block deals 150% of your thorns damage to the attacker",
+      "Challenger: Your hits provoke enemies for 15 s; Your hits provoke the enemy for 15 s: it attacks only you",
+      "Shield Throw: With no other available weapon in your hands, attacks throw your shield; Thrown shields deal 1 blunt damage per point of block power; Thrown shield stamina cost: ×1 the spear-throw cost; With no other weapon ready, your attack throws your shield. It deals blunt damage from block power and counts as a thrown projectile. After the flight it drops to be picked up; a return effect brings the same shield back to its slot."
+     ],
+     "link": "passives/node/own11876.md",
+     "name": "Shieldbearer's Grip"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased block power",
+      "Shield Charge: Sprint while blocking to perform Shield Charge; Shield Charge deals 0.8 blunt damage and 1 knockback per point of block power; ×2 Shield Charge stagger build-up; Shield Charge costs 12 stamina per second; Shield Charge speed: ×1.1 sprint speed; 15% additional acceleration over 1.6 s; Shield Charge can hit the same target every 0.75 s; attack speed shortens this interval; Shield Charge deals 0.8 chop damage per point of block power; tool tier 2; After crashing into an obstacle, Shield Charge cannot restart for 1 s; Sprint with your shield raised to charge forward, dealing blunt damage to each enemy in the way once. Damage scales with block power, builds extra stagger and costs stamina. Lowering the shield ends it.",
+      "Shield Instead of Blade: Your alternative attack becomes Shield Bash: 1 blunt damage per point of block power; With a one-handed weapon and a shield, your alternative attack becomes a shield bash. Damage scales with block power.",
+      "Two Shields: You can wield 2 shields at the same time; both contribute to blocking; A shield in each hand: both of them block, and their block power adds up",
+      "Spiked Shield: On a successful shield block, deal 150% of your thorns damage to the attacker; A successful shield block deals 150% of your thorns damage to the attacker",
+      "Challenger: Your hits provoke enemies for 15 s; Your hits provoke the enemy for 15 s: it attacks only you",
+      "Shield Throw: With no other available weapon in your hands, attacks throw your shield; Thrown shields deal 1 blunt damage per point of block power; Thrown shield stamina cost: ×1 the spear-throw cost; With no other weapon ready, your attack throws your shield. It deals blunt damage from block power and counts as a thrown projectile. After the flight it drops to be picked up; a return effect brings the same shield back to its slot."
+     ],
+     "link": "passives/node/own11876.md",
+     "name": "Shieldbearer's Grip"
+    }
+   },
+   "own11881": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+5% bomb chance to spend nothing when throwing"
+     ],
+     "link": "passives/tree/#own11881",
+     "name": "Bomb Conservation"
+    },
+    "old": null
+   },
+   "own11887": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+5% bomb chance to spend nothing when throwing"
+     ],
+     "link": "passives/tree/#own11887",
+     "name": "Bomb Conservation"
+    },
+    "old": null
+   },
+   "own11893": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+5% bomb chance to spend nothing when throwing"
+     ],
+     "link": "passives/tree/#own11893",
+     "name": "Bomb Conservation"
+    },
+    "old": null
+   },
+   "own11899": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+5% bomb chance to spend nothing when throwing"
+     ],
+     "link": "passives/tree/#own11899",
+     "name": "Bomb Conservation"
+    },
+    "old": null
+   },
+   "own11905": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+5% bomb chance to spend nothing when throwing"
+     ],
+     "link": "passives/tree/#own11905",
+     "name": "Bomb Conservation"
+    },
+    "old": null
+   },
+   "own11911": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+12.5% bomb chance to spend nothing when throwing"
+     ],
+     "link": "passives/node/own11911.md",
+     "name": "Spare Fuse"
+    },
+    "old": null
+   },
+   "own11941": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+1 projectiles per shot or throw",
+      "×0.75 damage"
+     ],
+     "link": "passives/node/own11941.md",
+     "name": "Scattered Steel"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "+1 projectiles per shot or throw",
+      "×1.05 damage"
+     ],
+     "link": "passives/node/own11941.md",
+     "name": "Scattered Steel"
+    }
+   },
+   "own11973": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "12% increased damage against enemies with broken armour"
+     ],
+     "link": "passives/tree/#own11973",
+     "name": "Armour break"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased damage against enemies with broken armour"
+     ],
+     "link": "passives/tree/#own11973",
+     "name": "Armour break"
+    }
+   },
+   "own11979": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "30% increased damage against enemies with broken armour",
+      "Jagged Breach: Gain 22.5% of blunt damage as extra slashing on your next hit against broken armour",
+      "Armour Shards: Completely breaking armour creates an Armour Shard; Base Armour Shard limit: 3; lifetime: 8 s; Hitting the shard triggers an explosion: 100% of its burst strength; base radius: 3 m; The explosion breaks 30% of affected enemies’ armour; Breaking armour leaves a shard on the ground. Hit it with an attack or spell to set it off.",
+      "Bared to the Bone: Armour broken to the bone staggers the target",
+      "Cleaving Breach: Your final slashing damage can also build armour break alongside blunt damage. It keeps its bleeding build-up; damage is neither converted nor duplicated.",
+      "Wedge the Armour: 25% increased armour break build-up per impale on the target"
+     ],
+     "link": "passives/node/own11979.md",
+     "name": "Strike Into the Breach"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased damage against enemies with broken armour",
+      "Jagged Breach: Gain 22.5% of blunt damage as extra slashing on your next hit against broken armour",
+      "Armour Shards: Completely breaking armour creates an Armour Shard; Base Armour Shard limit: 3; lifetime: 8 s; Hitting the shard triggers an explosion: 100% of its burst strength; base radius: 3 m; The explosion breaks 30% of affected enemies’ armour; Breaking armour leaves a shard on the ground. Hit it with an attack or spell to set it off.",
+      "Bared to the Bone: Armour broken to the bone staggers the target",
+      "Cleaving Breach: Your final slashing damage can also build armour break alongside blunt damage. It keeps its bleeding build-up; damage is neither converted nor duplicated.",
+      "Wedge the Armour: 25% increased armour break build-up per impale on the target"
+     ],
+     "link": "passives/node/own11979.md",
+     "name": "Strike Into the Breach"
+    }
+   },
+   "own11985": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "12% increased damage against enemies with broken armour"
+     ],
+     "link": "passives/tree/#own11985",
+     "name": "Armour break"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased damage against enemies with broken armour"
+     ],
+     "link": "passives/tree/#own11985",
+     "name": "Armour break"
+    }
+   },
+   "own12039": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased bleed build-up"
+     ],
+     "link": "passives/tree/#own12039",
+     "name": "Bleeding"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "10% increased bleed build-up"
+     ],
+     "link": "passives/tree/#own12039",
+     "name": "Bleeding"
+    }
+   },
+   "own12043": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased damage against immobilized enemies"
+     ],
+     "link": "passives/tree/#own12043",
+     "name": "Pinned Prey"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased damage against immobilized enemies"
+     ],
+     "link": "passives/tree/#own12043",
+     "name": "Pinned Prey"
+    }
+   },
+   "own12045": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased bleed build-up"
+     ],
+     "link": "passives/tree/#own12045",
+     "name": "Bleeding"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "10% increased bleed build-up"
+     ],
+     "link": "passives/tree/#own12045",
+     "name": "Bleeding"
+    }
+   },
+   "own12049": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased damage against immobilized enemies"
+     ],
+     "link": "passives/tree/#own12049",
+     "name": "Pinned Prey"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased damage against immobilized enemies"
+     ],
+     "link": "passives/tree/#own12049",
+     "name": "Pinned Prey"
+    }
+   },
+   "own12051": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased bleed build-up",
+      "8% increased bleed damage"
+     ],
+     "link": "passives/tree/#own12051",
+     "name": "Bleeding"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "10% increased bleed build-up",
+      "8% increased bleed damage"
+     ],
+     "link": "passives/tree/#own12051",
+     "name": "Bleeding"
+    }
+   },
+   "own12055": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased damage against immobilized enemies"
+     ],
+     "link": "passives/tree/#own12055",
+     "name": "Pinned Prey"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased damage against immobilized enemies"
+     ],
+     "link": "passives/tree/#own12055",
+     "name": "Pinned Prey"
+    }
+   },
+   "own12057": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased bleed build-up"
+     ],
+     "link": "passives/tree/#own12057",
+     "name": "Bleeding"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "10% increased bleed build-up"
+     ],
+     "link": "passives/tree/#own12057",
+     "name": "Bleeding"
+    }
+   },
+   "own12063": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased bleed build-up"
+     ],
+     "link": "passives/tree/#own12063",
+     "name": "Bleeding"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "10% increased bleed build-up"
+     ],
+     "link": "passives/tree/#own12063",
+     "name": "Bleeding"
+    }
+   },
+   "own12075": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "40% increased bleed build-up",
+      "60% increased bleed damage on parry recently"
+     ],
+     "link": "passives/node/own12075.md",
+     "name": "Scarlet Stream"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "25% increased bleed build-up",
+      "60% increased bleed damage on parry recently"
+     ],
+     "link": "passives/node/own12075.md",
+     "name": "Scarlet Stream"
+    }
+   },
+   "own12076": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+10% chance to immobilize on hit",
+      "20% increased damage against immobilized enemies"
+     ],
+     "link": "passives/node/own12076.md",
+     "name": "Held Fast"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "+10% chance to immobilize on hit",
+      "15% increased damage against immobilized enemies"
+     ],
+     "link": "passives/node/own12076.md",
+     "name": "Held Fast"
+    }
+   },
+   "own12078": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "7.5% reduced alternative attack stamina cost on primary attack hit recently",
+      "60% increased stagger build-up with alternative attacks on primary attack hit recently"
+     ],
+     "link": "passives/node/own12078.md",
+     "name": "Stubborn Press"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "15% reduced alternative attack stamina cost on primary attack hit recently",
+      "60% increased stagger build-up with alternative attacks on primary attack hit recently"
+     ],
+     "link": "passives/node/own12078.md",
+     "name": "Stubborn Press"
+    }
+   },
+   "own12079": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "20% increased damage against immobilized enemies",
+      "15% increased critical strike damage against immobilized enemies"
+     ],
+     "link": "passives/node/own12079.md",
+     "name": "Stake Through the Heart"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased damage against immobilized enemies",
+      "15% increased critical strike damage against immobilized enemies"
+     ],
+     "link": "passives/node/own12079.md",
+     "name": "Stake Through the Heart"
+    }
+   },
+   "own12093": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased bleed build-up"
+     ],
+     "link": "passives/tree/#own12093",
+     "name": "Bleeding"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "10% increased bleed build-up"
+     ],
+     "link": "passives/tree/#own12093",
+     "name": "Bleeding"
+    }
+   },
+   "own12099": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased bleed build-up"
+     ],
+     "link": "passives/tree/#own12099",
+     "name": "Bleeding"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "10% increased bleed build-up"
+     ],
+     "link": "passives/tree/#own12099",
+     "name": "Bleeding"
+    }
+   },
+   "own12103": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased damage against immobilized enemies"
+     ],
+     "link": "passives/tree/#own12103",
+     "name": "Pinned Prey"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased damage against immobilized enemies"
+     ],
+     "link": "passives/tree/#own12103",
+     "name": "Pinned Prey"
+    }
+   },
+   "own12105": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased bleed build-up"
+     ],
+     "link": "passives/tree/#own12105",
+     "name": "Bleeding"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "10% increased bleed build-up"
+     ],
+     "link": "passives/tree/#own12105",
+     "name": "Bleeding"
+    }
+   },
+   "own12111": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "40% increased bleed build-up",
+      "Wound Transfer: Primary attack killing blows spread 50% of remaining Bleeding to another enemy; Bleeding transfer target range: 6 m; A killing blow with a primary attack passes part of the target's remaining bleeding to a new enemy.",
+      "Wound to the Ground: Cleansing your Bleeding creates ground that carries 50% of the remaining Bleeding; Bleeding ground base radius: 1.5 m; duration: 4 s; Bleeding cleansed from you is partly left on the ground as a bleeding area.",
+      "Unclosing Wound: Bleeding on an enemy does not decay while it moves, on its own or from external forces, including knockback. When the target stops, decay resumes. The effect does not apply bleeding by itself.",
+      "Blood Burst: On death, a bleeding enemy explodes for 50% of its remaining Bleeding as physical damage within 4 m",
+      "Blood in Motion: ×1.5 bleed damage against moving targets"
+     ],
+     "link": "passives/node/own12111.md",
+     "name": "Crimson Thread's Trace"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "25% increased bleed build-up",
+      "Wound Transfer: Primary attack killing blows spread 50% of remaining Bleeding to another enemy; Bleeding transfer target range: 6 m; A killing blow with a primary attack passes part of the target's remaining bleeding to a new enemy.",
+      "Wound to the Ground: Cleansing your Bleeding creates ground that carries 50% of the remaining Bleeding; Bleeding ground base radius: 1.5 m; duration: 4 s; Bleeding cleansed from you is partly left on the ground as a bleeding area.",
+      "Unclosing Wound: Bleeding on an enemy does not decay while it moves, on its own or from external forces, including knockback. When the target stops, decay resumes. The effect does not apply bleeding by itself.",
+      "Blood Burst: On death, a bleeding enemy explodes for 50% of its remaining Bleeding as physical damage within 4 m",
+      "Blood in Motion: ×1.5 bleed damage against moving targets"
+     ],
+     "link": "passives/node/own12111.md",
+     "name": "Crimson Thread's Trace"
+    }
+   },
+   "own12156": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased bleed damage",
+      "16% increased bleed build-up"
+     ],
+     "link": "passives/tree/#own12156",
+     "name": "Bleeding"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased bleed damage",
+      "10% increased bleed build-up"
+     ],
+     "link": "passives/tree/#own12156",
+     "name": "Bleeding"
+    }
+   },
+   "own12162": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased bleed build-up"
+     ],
+     "link": "passives/tree/#own12162",
+     "name": "Bleeding"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "10% increased bleed build-up"
+     ],
+     "link": "passives/tree/#own12162",
+     "name": "Bleeding"
+    }
+   },
+   "own12168": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "120% increased bleed build-up on parry recently"
+     ],
+     "link": "passives/node/own12168.md",
+     "name": "Fresh Incision"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "75% increased bleed build-up on parry recently"
+     ],
+     "link": "passives/node/own12168.md",
+     "name": "Fresh Incision"
+    }
+   },
+   "own12174": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased bleed damage",
+      "16% increased bleed build-up"
+     ],
+     "link": "passives/tree/#own12174",
+     "name": "Bleeding"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased bleed damage",
+      "10% increased bleed build-up"
+     ],
+     "link": "passives/tree/#own12174",
+     "name": "Bleeding"
+    }
+   },
+   "own12253": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased movement speed at low life"
+     ],
+     "link": "passives/tree/#own12253",
+     "name": "Movement"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "2% increased movement speed at low life"
+     ],
+     "link": "passives/tree/#own12253",
+     "name": "Movement"
+    }
+   },
+   "own12259": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased movement speed at low life"
+     ],
+     "link": "passives/tree/#own12259",
+     "name": "Movement"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "2% increased movement speed at low life"
+     ],
+     "link": "passives/tree/#own12259",
+     "name": "Movement"
+    }
+   },
+   "own12264": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "5% reduced alternative attack stamina cost",
+      "10% increased alternative attack knockback",
+      "Shift of Focus: Primary attacks reserve 30% of their stagger build-up for your next alternative attack; Maximum stored bonus: +90% alternative attack stagger build-up; storage duration: 4 s; An alternative attack right after a primary hit carries part of that hit's stagger build-up, but the primary hit builds less.",
+      "Alternate Leads: An alternative attack before a primary attack moves your attack charge to the primary attack.",
+      "Second edge: An alternative attack hit charges your next attack (2 s cooldown); An alternate attack hitting an enemy charges the next attack. The charge is consumed when that attack is performed, even if it misses; spells do not consume it."
+     ],
+     "link": "passives/node/own12264.md",
+     "name": "Bludgeon's Push"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "10% reduced alternative attack stamina cost",
+      "10% increased alternative attack knockback",
+      "Shift of Focus: Primary attacks reserve 30% of their stagger build-up for your next alternative attack; Maximum stored bonus: +90% alternative attack stagger build-up; storage duration: 4 s; An alternative attack right after a primary hit carries part of that hit's stagger build-up, but the primary hit builds less.",
+      "Alternate Leads: An alternative attack before a primary attack moves your attack charge to the primary attack.",
+      "Second edge: An alternative attack hit charges your next attack (2 s cooldown); An alternate attack hitting an enemy charges the next attack. The charge is consumed when that attack is performed, even if it misses; spells do not consume it."
+     ],
+     "link": "passives/node/own12264.md",
+     "name": "Bludgeon's Push"
+    }
+   },
+   "own12265": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "7.5% increased movement speed at full rune shield"
+     ],
+     "link": "passives/node/own12265.md",
+     "name": "Step Beneath the Rune"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "4% increased movement speed at full rune shield"
+     ],
+     "link": "passives/node/own12265.md",
+     "name": "Step Beneath the Rune"
+    }
+   },
+   "own12267": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased movement speed at night"
+     ],
+     "link": "passives/tree/#own12267",
+     "name": "Stamina"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "2% increased movement speed at night"
+     ],
+     "link": "passives/tree/#own12267",
+     "name": "Stamina"
+    }
+   },
+   "own12271": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "12% increased projectile critical strike chance"
+     ],
+     "link": "passives/tree/#own12271",
+     "name": "Projectile Crits"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "12% increased projectile critical strike chance"
+     ],
+     "link": "passives/tree/#own12271",
+     "name": "Projectile Accuracy"
+    }
+   },
+   "own12273": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased movement speed at night"
+     ],
+     "link": "passives/tree/#own12273",
+     "name": "Stamina"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "2% increased movement speed at night"
+     ],
+     "link": "passives/tree/#own12273",
+     "name": "Stamina"
+    }
+   },
+   "own12277": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "12% increased projectile critical strike chance"
+     ],
+     "link": "passives/tree/#own12277",
+     "name": "Projectile Crits"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "12% increased projectile critical strike chance"
+     ],
+     "link": "passives/tree/#own12277",
+     "name": "Projectile Accuracy"
+    }
+   },
+   "own12280": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+50% throwing additional projectile chance",
+      "×0.75 damage",
+      "Weapon Return: Thrown weapons return after their flight; automatic turnaround after 1.4 s; Returning throws deal 30% of outgoing damage; Your thrown weapon comes back once its flight is over: after its chains, pierces and ricochets, when it strikes something or after 1.4 s of flight - faster throws fly farther. On the way back it pierces enemies. Its slot stays reserved until it returns; extra projectiles vanish. Arrows and bolts do not return.",
+      "◇ Free option 1: Theme reserve. No gameplay effect yet."
+     ],
+     "link": "passives/node/own12280.md",
+     "name": "Handful of Iron"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "+50% throwing additional projectile chance",
+      "×1.05 damage",
+      "Weapon Return: Thrown weapons return after their flight; automatic turnaround after 1.4 s; Returning throws deal 30% of outgoing damage; Your thrown weapon comes back once its flight is over: after its chains, pierces and ricochets, when it strikes something or after 1.4 s of flight - faster throws fly farther. On the way back it pierces enemies. Its slot stays reserved until it returns; extra projectiles vanish. Arrows and bolts do not return.",
+      "◇ Free option 1: Theme reserve. No gameplay effect yet."
+     ],
+     "link": "passives/node/own12280.md",
+     "name": "Handful of Iron"
+    }
+   },
+   "own12290": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased alternative attack damage",
+      "+10% alternative attack critical strike damage"
+     ],
+     "link": "passives/tree/#own12290",
+     "name": "Alternative attacks"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased alternative attack damage",
+      "+10% alternative attack critical strike damage"
+     ],
+     "link": "passives/tree/#own12290",
+     "name": "Alternative attacks"
+    }
+   },
+   "own12296": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased alternative attack damage"
+     ],
+     "link": "passives/tree/#own12296",
+     "name": "Alternative attacks"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased alternative attack damage"
+     ],
+     "link": "passives/tree/#own12296",
+     "name": "Alternative attacks"
+    }
+   },
+   "own12308": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased alternative attack damage"
+     ],
+     "link": "passives/node/own12308.md",
+     "name": "Signature Blow"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "7.5% increased alternative attack damage"
+     ],
+     "link": "passives/node/own12308.md",
+     "name": "Signature Blow"
+    }
+   },
+   "own12309": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "10% reduced charged attack stamina cost",
+      "Deal 30% of hit damage to nearby enemies with charged attacks"
+     ],
+     "link": "passives/node/own12309.md",
+     "name": "Fist's Release"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "20% reduced charged attack stamina cost",
+      "Deal 30% of hit damage to nearby enemies with charged attacks"
+     ],
+     "link": "passives/node/own12309.md",
+     "name": "Fist's Release"
+    }
+   },
+   "own12355": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased damage"
+     ],
+     "link": "passives/tree/#own12355",
+     "name": "Damage"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased damage"
+     ],
+     "link": "passives/tree/#own12355",
+     "name": "Damage"
+    }
+   },
+   "own12361": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased damage"
+     ],
+     "link": "passives/tree/#own12361",
+     "name": "Damage"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased damage"
+     ],
+     "link": "passives/tree/#own12361",
+     "name": "Damage"
+    }
+   },
+   "own12367": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased damage"
+     ],
+     "link": "passives/tree/#own12367",
+     "name": "Damage"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased damage"
+     ],
+     "link": "passives/tree/#own12367",
+     "name": "Damage"
+    }
+   },
+   "own12373": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "40% increased damage at night"
+     ],
+     "link": "passives/node/own12373.md",
+     "name": "Night Beast's Feast"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "30% increased damage at night"
+     ],
+     "link": "passives/node/own12373.md",
+     "name": "Night Beast's Feast"
+    }
+   },
+   "own12443": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased damage against rare or unique enemies"
+     ],
+     "link": "passives/tree/#own12443",
+     "name": "Combat Rhythm"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased damage against rare or unique enemies"
+     ],
+     "link": "passives/tree/#own12443",
+     "name": "Combat Rhythm"
+    }
+   },
+   "own12452": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased damage against rare or unique enemies"
+     ],
+     "link": "passives/tree/#own12452",
+     "name": "Combat Rhythm"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased damage against rare or unique enemies"
+     ],
+     "link": "passives/tree/#own12452",
+     "name": "Combat Rhythm"
+    }
+   },
+   "own12455": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased damage against rare or unique enemies"
+     ],
+     "link": "passives/tree/#own12455",
+     "name": "Combat Rhythm"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased damage against rare or unique enemies"
+     ],
+     "link": "passives/tree/#own12455",
+     "name": "Combat Rhythm"
+    }
+   },
+   "own12464": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased damage against rare or unique enemies"
+     ],
+     "link": "passives/tree/#own12464",
+     "name": "Combat Rhythm"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased damage against rare or unique enemies"
+     ],
+     "link": "passives/tree/#own12464",
+     "name": "Combat Rhythm"
+    }
+   },
+   "own12467": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased damage against rare or unique enemies"
+     ],
+     "link": "passives/tree/#own12467",
+     "name": "Combat Rhythm"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased damage against rare or unique enemies"
+     ],
+     "link": "passives/tree/#own12467",
+     "name": "Combat Rhythm"
+    }
+   },
+   "own12473": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "20% increased damage against rare or unique enemies"
+     ],
+     "link": "passives/node/own12473.md",
+     "name": "Hunt for the Chieftain"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased damage against rare or unique enemies"
+     ],
+     "link": "passives/node/own12473.md",
+     "name": "Hunt for the Chieftain"
+    }
+   },
+   "own12475": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "5% reduced swimming stamina cost",
+      "22.5% increased melee damage while in water",
+      "Combat in the Depths: You can hold and strike in melee in water and underwater"
+     ],
+     "link": "passives/node/own12475.md",
+     "name": "Fray Amid Waves"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "10% reduced swimming stamina cost",
+      "22.5% increased melee damage while in water",
+      "Combat in the Depths: You can hold and strike in melee in water and underwater"
+     ],
+     "link": "passives/node/own12475.md",
+     "name": "Fray Amid Waves"
+    }
+   },
+   "own12476": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "20% increased damage against low life enemies",
+      "20% increased damage against rare or unique enemies"
+     ],
+     "link": "passives/node/own12476.md",
+     "name": "Chieftain's End"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "20% increased damage against low life enemies",
+      "15% increased damage against rare or unique enemies"
+     ],
+     "link": "passives/node/own12476.md",
+     "name": "Chieftain's End"
+    }
+   },
+   "own12484": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "2% increased bomb attack speed"
+     ],
+     "link": "passives/tree/#own12484",
+     "name": "Bomb Throw Speed"
+    },
+    "old": null
+   },
+   "own12493": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "32% increased ailment build-up on sprint recently"
+     ],
+     "link": "passives/tree/#own12493",
+     "name": "Ailment Potency"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "20% increased ailment build-up on sprint recently"
+     ],
+     "link": "passives/tree/#own12493",
+     "name": "Ailment Potency"
+    }
+   },
+   "own12496": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "2% increased bomb attack speed"
+     ],
+     "link": "passives/tree/#own12496",
+     "name": "Bomb Throw Speed"
+    },
+    "old": null
+   },
+   "own12502": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "2% increased bomb attack speed"
+     ],
+     "link": "passives/tree/#own12502",
+     "name": "Bomb Throw Speed"
+    },
+    "old": null
+   },
+   "own12532": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "5% increased bomb attack speed",
+      "+12.5% bomb chance to spend nothing when throwing"
+     ],
+     "link": "passives/node/own12532.md",
+     "name": "Careful Throw"
+    },
+    "old": null
+   },
+   "own12571": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased melee damage with attacks"
+     ],
+     "link": "passives/tree/#own12571",
+     "name": "General Melee"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased melee damage with attacks"
+     ],
+     "link": "passives/tree/#own12571",
+     "name": "General Melee"
+    }
+   },
+   "own12577": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased melee damage with attacks"
+     ],
+     "link": "passives/tree/#own12577",
+     "name": "General Melee"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased melee damage with attacks"
+     ],
+     "link": "passives/tree/#own12577",
+     "name": "General Melee"
+    }
+   },
+   "own12583": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "20% increased melee damage with attacks",
+      "40% increased stagger build-up in melee"
+     ],
+     "link": "passives/node/own12583.md",
+     "name": "Shoulder-to-Shoulder Strike"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased melee damage with attacks",
+      "40% increased stagger build-up in melee"
+     ],
+     "link": "passives/node/own12583.md",
+     "name": "Shoulder-to-Shoulder Strike"
+    }
+   },
+   "own12589": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased melee damage with attacks"
+     ],
+     "link": "passives/tree/#own12589",
+     "name": "General Melee"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased melee damage with attacks"
+     ],
+     "link": "passives/tree/#own12589",
+     "name": "General Melee"
+    }
+   },
+   "own12595": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased melee damage with attacks"
+     ],
+     "link": "passives/tree/#own12595",
+     "name": "General Melee"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased melee damage with attacks"
+     ],
+     "link": "passives/tree/#own12595",
+     "name": "General Melee"
+    }
+   },
+   "own12660": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased blunt damage with attacks"
+     ],
+     "link": "passives/tree/#own12660",
+     "name": "Weight of Steel"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased blunt damage with attacks"
+     ],
+     "link": "passives/tree/#own12660",
+     "name": "Weight of Steel"
+    }
+   },
+   "own12666": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased blunt damage with attacks"
+     ],
+     "link": "passives/tree/#own12666",
+     "name": "Weight of Steel"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased blunt damage with attacks"
+     ],
+     "link": "passives/tree/#own12666",
+     "name": "Weight of Steel"
+    }
+   },
+   "own12672": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased blunt damage with attacks"
+     ],
+     "link": "passives/tree/#own12672",
+     "name": "Weight of Steel"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased blunt damage with attacks"
+     ],
+     "link": "passives/tree/#own12672",
+     "name": "Weight of Steel"
+    }
+   },
+   "own12678": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased blunt damage with attacks"
+     ],
+     "link": "passives/tree/#own12678",
+     "name": "Weight of Steel"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased blunt damage with attacks"
+     ],
+     "link": "passives/tree/#own12678",
+     "name": "Weight of Steel"
+    }
+   },
+   "own12684": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "40% increased blunt damage with attacks on block recently"
+     ],
+     "link": "passives/node/own12684.md",
+     "name": "Counterblow's Weight"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "30% increased blunt damage with attacks on block recently"
+     ],
+     "link": "passives/node/own12684.md",
+     "name": "Counterblow's Weight"
+    }
+   },
+   "own12690": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased blunt damage with attacks"
+     ],
+     "link": "passives/tree/#own12690",
+     "name": "Weight of Steel"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased blunt damage with attacks"
+     ],
+     "link": "passives/tree/#own12690",
+     "name": "Weight of Steel"
+    }
+   },
+   "own12696": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "20% increased blunt damage with attacks",
+      "Steel Ablaze: 50% blunt damage converted to fire with attacks"
+     ],
+     "link": "passives/node/own12696.md",
+     "name": "Steel to the Bone"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased blunt damage with attacks",
+      "Steel Ablaze: 50% blunt damage converted to fire with attacks"
+     ],
+     "link": "passives/node/own12696.md",
+     "name": "Steel to the Bone"
+    }
+   },
+   "own12706": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased bleed build-up"
+     ],
+     "link": "passives/tree/#own12706",
+     "name": "Slash Damage"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "10% increased bleed build-up"
+     ],
+     "link": "passives/tree/#own12706",
+     "name": "Slash Damage"
+    }
+   },
+   "own12707": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased bleed build-up"
+     ],
+     "link": "passives/tree/#own12707",
+     "name": "Slash Damage"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "10% increased bleed build-up"
+     ],
+     "link": "passives/tree/#own12707",
+     "name": "Slash Damage"
+    }
+   },
+   "own12708": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased bleed build-up"
+     ],
+     "link": "passives/tree/#own12708",
+     "name": "Slash Damage"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "10% increased bleed build-up"
+     ],
+     "link": "passives/tree/#own12708",
+     "name": "Slash Damage"
+    }
+   },
+   "own12709": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased bleed build-up"
+     ],
+     "link": "passives/tree/#own12709",
+     "name": "Slash Damage"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "10% increased bleed build-up"
+     ],
+     "link": "passives/tree/#own12709",
+     "name": "Slash Damage"
+    }
+   },
+   "own12711": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased bleed build-up"
+     ],
+     "link": "passives/tree/#own12711",
+     "name": "Slash Damage"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "10% increased bleed build-up"
+     ],
+     "link": "passives/tree/#own12711",
+     "name": "Slash Damage"
+    }
+   },
+   "own12936": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased damage for your companion"
+     ],
+     "link": "passives/tree/#own12936",
+     "name": "Companion"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased damage for your companion"
+     ],
+     "link": "passives/tree/#own12936",
+     "name": "Companion"
+    }
+   },
+   "own12941": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased damage for your companion"
+     ],
+     "link": "passives/tree/#own12941",
+     "name": "Companion"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased damage for your companion"
+     ],
+     "link": "passives/tree/#own12941",
+     "name": "Companion"
+    }
+   },
+   "own12946": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased damage for your companion"
+     ],
+     "link": "passives/tree/#own12946",
+     "name": "Companion"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased damage for your companion"
+     ],
+     "link": "passives/tree/#own12946",
+     "name": "Companion"
+    }
+   },
+   "own12951": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased damage for your companion"
+     ],
+     "link": "passives/tree/#own12951",
+     "name": "Companion"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased damage for your companion"
+     ],
+     "link": "passives/tree/#own12951",
+     "name": "Companion"
+    }
+   },
+   "own12956": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "80% increased damage for your companion on kill recently"
+     ],
+     "link": "passives/node/own12956.md",
+     "name": "Shoulder-to-Shoulder Victory"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "60% increased damage for your companion on kill recently"
+     ],
+     "link": "passives/node/own12956.md",
+     "name": "Shoulder-to-Shoulder Victory"
+    }
+   },
+   "own12961": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased damage for your companion"
+     ],
+     "link": "passives/tree/#own12961",
+     "name": "Companion"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased damage for your companion"
+     ],
+     "link": "passives/tree/#own12961",
+     "name": "Companion"
+    }
+   },
+   "own12966": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "20% increased damage for your companion",
+      "2.5% increased health regeneration for your companion per 10 points of comfort"
+     ],
+     "link": "passives/node/own12966.md",
+     "name": "One Road"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased damage for your companion",
+      "2.5% increased health regeneration for your companion per 10 points of comfort"
+     ],
+     "link": "passives/node/own12966.md",
+     "name": "One Road"
+    }
+   },
+   "own12993": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "5% increased knife attack speed",
+      "40% increased poison build-up with knives",
+      "Dagger throw: Your equipped one-handed knife’s alternative attack becomes a weapon throw (dual knives such as Skoll and Hati are not thrown). The actual knife falls on the ground unless a weapon-return effect brings it back.",
+      "Behind the Guard: Attacking from block with a charged knife teleports you behind the aimed nearby enemy; Attacking from block with a charged knife teleports you behind the aimed nearby enemy with knives with charged attacks"
+     ],
+     "link": "passives/node/own12993.md",
+     "name": "Serpent's Cut"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "5% increased knife attack speed",
+      "40% increased poison build-up with knives",
+      "Dagger throw: Your equipped knife’s alternative attack becomes a weapon throw. The actual knife falls on the ground unless a weapon-return effect brings it back.",
+      "Behind the Guard: Attacking from block with a charged knife teleports you behind the aimed nearby enemy; Attacking from block with a charged knife teleports you behind the aimed nearby enemy with knives with charged attacks"
+     ],
+     "link": "passives/node/own12993.md",
+     "name": "Serpent's Cut"
+    }
+   },
+   "own13002": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased damage for your companion"
+     ],
+     "link": "passives/tree/#own13002",
+     "name": "Companion"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased damage for your companion"
+     ],
+     "link": "passives/tree/#own13002",
+     "name": "Companion"
+    }
+   },
+   "own13007": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "20% increased damage for your companion",
+      "+25% of modifiers shared of base for your companion damage bonuses"
+     ],
+     "link": "passives/node/own13007.md",
+     "name": "Shared Fray"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased damage for your companion",
+      "+25% of modifiers shared of base for your companion damage bonuses"
+     ],
+     "link": "passives/node/own13007.md",
+     "name": "Shared Fray"
+    }
+   },
+   "own13012": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased damage for your companion"
+     ],
+     "link": "passives/tree/#own13012",
+     "name": "Companion"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased damage for your companion"
+     ],
+     "link": "passives/tree/#own13012",
+     "name": "Companion"
+    }
+   },
+   "own13017": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased damage for your companion"
+     ],
+     "link": "passives/tree/#own13017",
+     "name": "Companion"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased damage for your companion"
+     ],
+     "link": "passives/tree/#own13017",
+     "name": "Companion"
+    }
+   },
+   "own13044": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased damage for pets"
+     ],
+     "link": "passives/tree/#own13044",
+     "name": "Pets"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased damage for pets"
+     ],
+     "link": "passives/tree/#own13044",
+     "name": "Pets"
+    }
+   },
+   "own13049": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased damage for pets"
+     ],
+     "link": "passives/tree/#own13049",
+     "name": "Pets"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased damage for pets"
+     ],
+     "link": "passives/tree/#own13049",
+     "name": "Pets"
+    }
+   },
+   "own13054": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "20% increased damage for pets"
+     ],
+     "link": "passives/node/own13054.md",
+     "name": "Faithful Beast's Fang"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased damage for pets"
+     ],
+     "link": "passives/node/own13054.md",
+     "name": "Faithful Beast's Fang"
+    }
+   },
+   "own13056": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased projectile speed",
+      "15% increased projectile damage",
+      "+1 bounce",
+      "Chain Through Targets: Projectile chains can pick spores, ice crystals and other battle targets created by you and your allies. The hit triggers the target's usual reaction.",
+      "Return Path: Your last ricochet sends the projectile back to you. A returning projectile does not harm its owner and no longer ricochets.",
+      "Wall to Target: A ricochet off the ground or a wall has a 40% chance to head for the nearest valid target instead of reflecting normally.",
+      "◇ Free option 1: Theme reserve. No gameplay effect yet.",
+      "◇ Free option 2: Theme reserve. No gameplay effect yet."
+     ],
+     "link": "passives/node/own13056.md",
+     "name": "Path Through Stones"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased projectile speed",
+      "15% increased projectile damage",
+      "+1 bounce",
+      "Chain Through Targets: Projectile chains can pick spores, ice crystals and other battle targets created by you and your allies. The hit triggers the target's usual reaction.",
+      "Return Path: Your last ricochet sends the projectile back to you. A returning projectile does not harm its owner and no longer ricochets.",
+      "Wall to Target: A ricochet off the ground or a wall spends one available bounce and heads for the nearest valid target instead of reflecting normally.",
+      "◇ Free option 1: Theme reserve. No gameplay effect yet.",
+      "◇ Free option 2: Theme reserve. No gameplay effect yet."
+     ],
+     "link": "passives/node/own13056.md",
+     "name": "Path Through Stones"
+    }
+   },
+   "own13084": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased bow draw and reload speed",
+      "5% reduced bow draw stamina cost",
+      "Hold the Draw: Drawing a bow while airborne suspends you until 0.3 s after the shot; Hovering costs 8 stamina per second; While drawing a bow in the air you hover, spending stamina. Releasing the string or a dodge roll ends the hover.",
+      "Keep the Tension: A dodge roll keeps the draw you reached on your bow; holding it still drains stamina.",
+      "Charged Volley: +1 bow projectiles per shot or throw with charged attacks"
+     ],
+     "link": "passives/node/own13084.md",
+     "name": "Bending Ash"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased bow draw and reload speed",
+      "10% reduced bow draw stamina cost",
+      "Hold the Draw: Drawing a bow while airborne suspends you until 0.3 s after the shot; Hovering costs 8 stamina per second; While drawing a bow in the air you hover, spending stamina. Releasing the string or a dodge roll ends the hover.",
+      "Keep the Tension: A dodge roll keeps the draw you reached on your bow; holding it still drains stamina.",
+      "Charged Volley: +1 bow projectiles per shot or throw with charged attacks"
+     ],
+     "link": "passives/node/own13084.md",
+     "name": "Bending Ash"
+    }
+   },
+   "own13130": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "10% reduced slam stamina cost on block recently"
+     ],
+     "link": "passives/node/own13130.md",
+     "name": "Earthquake Stance"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "20% reduced slam stamina cost on block recently"
+     ],
+     "link": "passives/node/own13130.md",
+     "name": "Earthquake Stance"
+    }
+   },
+   "own13134": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "5% increased spell cast speed",
+      "5% reduced cast stamina and eitr cost",
+      "Spell Primes the Strike: Casting a spell charges your next weapon attack (2 s cooldown); Charge your next attack on spell cast",
+      "Anchored Cast: Starting a cast with your shield raised preserves blocking until the spell is released; ×1.25 eitr cost with anchored casts; Starting a cast with your shield raised keeps the block until the spell is released, at a higher eitr cost. It does not block from every side.",
+      "Charged Casts: Spells can spend an attack charge and become charged casts",
+      "Spell Echo: +100% staff repeat chance when casting with charged attacks; +0.2 staff s repeat delay when casting with charged attacks"
+     ],
+     "link": "passives/node/own13134.md",
+     "name": "Flowing Incantation"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "5% increased spell cast speed",
+      "10% reduced cast stamina and eitr cost",
+      "Spell Primes the Strike: Casting a spell charges your next weapon attack (2 s cooldown); Charge your next attack on spell cast",
+      "Anchored Cast: Starting a cast with your shield raised preserves blocking until the spell is released; ×1.25 eitr cost with anchored casts; Starting a cast with your shield raised keeps the block until the spell is released, at a higher eitr cost. It does not block from every side.",
+      "Charged Casts: Spells can spend an attack charge and become charged casts",
+      "Spell Echo: +100% staff repeat chance when casting with charged attacks; +0.2 staff s repeat delay when casting with charged attacks"
+     ],
+     "link": "passives/node/own13134.md",
+     "name": "Flowing Incantation"
+    }
+   },
+   "own13292": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "22.5% increased block power while standing still",
+      "15% increased block power from equipped shield",
+      "Shield Charge: Sprint while blocking to perform Shield Charge; Shield Charge deals 0.8 blunt damage and 1 knockback per point of block power; ×2 Shield Charge stagger build-up; Shield Charge costs 12 stamina per second; Shield Charge speed: ×1.1 sprint speed; 15% additional acceleration over 1.6 s; Shield Charge can hit the same target every 0.75 s; attack speed shortens this interval; Shield Charge deals 0.8 chop damage per point of block power; tool tier 2; After crashing into an obstacle, Shield Charge cannot restart for 1 s; Shield Charge rolls over enemies up to 2× its carrying weight (2.5 base health per point of block power, stars multiply it); heavier ones cost stamina, and enemies over 3.5× stop it and knock the wielder down; Sprint with your shield raised to charge forward, dealing blunt damage to each enemy in the way once. Damage scales with block power, builds extra stagger and costs stamina. Weak enemies are rolled over; heavier ones cost extra stamina, and enemies far heavier than your block power stop the charge and knock the wielder down. Lowering the shield ends it.",
+      "Shield Instead of Blade: Your alternative attack becomes Shield Bash: 1 blunt damage per point of block power; With a one-handed weapon and a shield, your alternative attack becomes a shield bash. Damage scales with block power.",
+      "Two Shields: You can wield 2 shields at the same time; both contribute to blocking; A shield in each hand: both of them block, and their block power adds up",
+      "Spiked Shield: On a successful shield block, deal 150% of your thorns damage to the attacker; A successful shield block deals 150% of your thorns damage to the attacker",
+      "Challenger: Your hits provoke enemies for 15 s; Your hits provoke the enemy for 15 s: it attacks only you",
+      "Shield Throw: With no other available weapon in your hands, attacks throw your shield; Thrown shields deal 1 blunt damage per point of block power; Thrown shield stamina cost: ×1 the spear-throw cost; With no other weapon ready, your attack throws your shield. It deals blunt damage from block power and counts as a thrown projectile. After the flight it drops to be picked up; a return effect brings the same shield back to its slot."
+     ],
+     "link": "passives/node/own13292.md",
+     "name": "Guard at the Gate"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "22.5% increased block power while standing still",
+      "15% increased block power from equipped shield",
+      "Shield Charge: Sprint while blocking to perform Shield Charge; Shield Charge deals 0.8 blunt damage and 1 knockback per point of block power; ×2 Shield Charge stagger build-up; Shield Charge costs 12 stamina per second; Shield Charge speed: ×1.1 sprint speed; 15% additional acceleration over 1.6 s; Shield Charge can hit the same target every 0.75 s; attack speed shortens this interval; Shield Charge deals 0.8 chop damage per point of block power; tool tier 2; After crashing into an obstacle, Shield Charge cannot restart for 1 s; Sprint with your shield raised to charge forward, dealing blunt damage to each enemy in the way once. Damage scales with block power, builds extra stagger and costs stamina. Lowering the shield ends it.",
+      "Shield Instead of Blade: Your alternative attack becomes Shield Bash: 1 blunt damage per point of block power; With a one-handed weapon and a shield, your alternative attack becomes a shield bash. Damage scales with block power.",
+      "Two Shields: You can wield 2 shields at the same time; both contribute to blocking; A shield in each hand: both of them block, and their block power adds up",
+      "Spiked Shield: On a successful shield block, deal 150% of your thorns damage to the attacker; A successful shield block deals 150% of your thorns damage to the attacker",
+      "Challenger: Your hits provoke enemies for 15 s; Your hits provoke the enemy for 15 s: it attacks only you",
+      "Shield Throw: With no other available weapon in your hands, attacks throw your shield; Thrown shields deal 1 blunt damage per point of block power; Thrown shield stamina cost: ×1 the spear-throw cost; With no other weapon ready, your attack throws your shield. It deals blunt damage from block power and counts as a thrown projectile. After the flight it drops to be picked up; a return effect brings the same shield back to its slot."
+     ],
+     "link": "passives/node/own13292.md",
+     "name": "Guard at the Gate"
+    }
+   },
+   "own13316": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "30% increased block power at low stamina",
+      "10% reduced block stamina cost at low stamina",
+      "Shield Charge: Sprint while blocking to perform Shield Charge; Shield Charge deals 0.8 blunt damage and 1 knockback per point of block power; ×2 Shield Charge stagger build-up; Shield Charge costs 12 stamina per second; Shield Charge speed: ×1.1 sprint speed; 15% additional acceleration over 1.6 s; Shield Charge can hit the same target every 0.75 s; attack speed shortens this interval; Shield Charge deals 0.8 chop damage per point of block power; tool tier 2; After crashing into an obstacle, Shield Charge cannot restart for 1 s; Shield Charge rolls over enemies up to 2× its carrying weight (2.5 base health per point of block power, stars multiply it); heavier ones cost stamina, and enemies over 3.5× stop it and knock the wielder down; Sprint with your shield raised to charge forward, dealing blunt damage to each enemy in the way once. Damage scales with block power, builds extra stagger and costs stamina. Weak enemies are rolled over; heavier ones cost extra stamina, and enemies far heavier than your block power stop the charge and knock the wielder down. Lowering the shield ends it.",
+      "Shield Instead of Blade: Your alternative attack becomes Shield Bash: 1 blunt damage per point of block power; With a one-handed weapon and a shield, your alternative attack becomes a shield bash. Damage scales with block power.",
+      "Two Shields: You can wield 2 shields at the same time; both contribute to blocking; A shield in each hand: both of them block, and their block power adds up",
+      "Spiked Shield: On a successful shield block, deal 150% of your thorns damage to the attacker; A successful shield block deals 150% of your thorns damage to the attacker",
+      "Challenger: Your hits provoke enemies for 15 s; Your hits provoke the enemy for 15 s: it attacks only you",
+      "Shield Throw: With no other available weapon in your hands, attacks throw your shield; Thrown shields deal 1 blunt damage per point of block power; Thrown shield stamina cost: ×1 the spear-throw cost; With no other weapon ready, your attack throws your shield. It deals blunt damage from block power and counts as a thrown projectile. After the flight it drops to be picked up; a return effect brings the same shield back to its slot."
+     ],
+     "link": "passives/node/own13316.md",
+     "name": "Weary Shieldbearer"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "30% increased block power at low stamina",
+      "10% reduced block stamina cost at low stamina",
+      "Shield Charge: Sprint while blocking to perform Shield Charge; Shield Charge deals 0.8 blunt damage and 1 knockback per point of block power; ×2 Shield Charge stagger build-up; Shield Charge costs 12 stamina per second; Shield Charge speed: ×1.1 sprint speed; 15% additional acceleration over 1.6 s; Shield Charge can hit the same target every 0.75 s; attack speed shortens this interval; Shield Charge deals 0.8 chop damage per point of block power; tool tier 2; After crashing into an obstacle, Shield Charge cannot restart for 1 s; Sprint with your shield raised to charge forward, dealing blunt damage to each enemy in the way once. Damage scales with block power, builds extra stagger and costs stamina. Lowering the shield ends it.",
+      "Shield Instead of Blade: Your alternative attack becomes Shield Bash: 1 blunt damage per point of block power; With a one-handed weapon and a shield, your alternative attack becomes a shield bash. Damage scales with block power.",
+      "Two Shields: You can wield 2 shields at the same time; both contribute to blocking; A shield in each hand: both of them block, and their block power adds up",
+      "Spiked Shield: On a successful shield block, deal 150% of your thorns damage to the attacker; A successful shield block deals 150% of your thorns damage to the attacker",
+      "Challenger: Your hits provoke enemies for 15 s; Your hits provoke the enemy for 15 s: it attacks only you",
+      "Shield Throw: With no other available weapon in your hands, attacks throw your shield; Thrown shields deal 1 blunt damage per point of block power; Thrown shield stamina cost: ×1 the spear-throw cost; With no other weapon ready, your attack throws your shield. It deals blunt damage from block power and counts as a thrown projectile. After the flight it drops to be picked up; a return effect brings the same shield back to its slot."
+     ],
+     "link": "passives/node/own13316.md",
+     "name": "Weary Shieldbearer"
+    }
+   },
+   "own13340": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "10% reduced block stamina cost when hit recently",
+      "Shield Charge: Sprint while blocking to perform Shield Charge; Shield Charge deals 0.8 blunt damage and 1 knockback per point of block power; ×2 Shield Charge stagger build-up; Shield Charge costs 12 stamina per second; Shield Charge speed: ×1.1 sprint speed; 15% additional acceleration over 1.6 s; Shield Charge can hit the same target every 0.75 s; attack speed shortens this interval; Shield Charge deals 0.8 chop damage per point of block power; tool tier 2; After crashing into an obstacle, Shield Charge cannot restart for 1 s; Shield Charge rolls over enemies up to 2× its carrying weight (2.5 base health per point of block power, stars multiply it); heavier ones cost stamina, and enemies over 3.5× stop it and knock the wielder down; Sprint with your shield raised to charge forward, dealing blunt damage to each enemy in the way once. Damage scales with block power, builds extra stagger and costs stamina. Weak enemies are rolled over; heavier ones cost extra stamina, and enemies far heavier than your block power stop the charge and knock the wielder down. Lowering the shield ends it.",
+      "Shield Instead of Blade: Your alternative attack becomes Shield Bash: 1 blunt damage per point of block power; With a one-handed weapon and a shield, your alternative attack becomes a shield bash. Damage scales with block power.",
+      "Two Shields: You can wield 2 shields at the same time; both contribute to blocking; A shield in each hand: both of them block, and their block power adds up",
+      "Spiked Shield: On a successful shield block, deal 150% of your thorns damage to the attacker; A successful shield block deals 150% of your thorns damage to the attacker",
+      "Challenger: Your hits provoke enemies for 15 s; Your hits provoke the enemy for 15 s: it attacks only you",
+      "Shield Throw: With no other available weapon in your hands, attacks throw your shield; Thrown shields deal 1 blunt damage per point of block power; Thrown shield stamina cost: ×1 the spear-throw cost; With no other weapon ready, your attack throws your shield. It deals blunt damage from block power and counts as a thrown projectile. After the flight it drops to be picked up; a return effect brings the same shield back to its slot."
+     ],
+     "link": "passives/node/own13340.md",
+     "name": "Scar on the Shield"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "10% reduced block stamina cost when hit recently",
+      "Shield Charge: Sprint while blocking to perform Shield Charge; Shield Charge deals 0.8 blunt damage and 1 knockback per point of block power; ×2 Shield Charge stagger build-up; Shield Charge costs 12 stamina per second; Shield Charge speed: ×1.1 sprint speed; 15% additional acceleration over 1.6 s; Shield Charge can hit the same target every 0.75 s; attack speed shortens this interval; Shield Charge deals 0.8 chop damage per point of block power; tool tier 2; After crashing into an obstacle, Shield Charge cannot restart for 1 s; Sprint with your shield raised to charge forward, dealing blunt damage to each enemy in the way once. Damage scales with block power, builds extra stagger and costs stamina. Lowering the shield ends it.",
+      "Shield Instead of Blade: Your alternative attack becomes Shield Bash: 1 blunt damage per point of block power; With a one-handed weapon and a shield, your alternative attack becomes a shield bash. Damage scales with block power.",
+      "Two Shields: You can wield 2 shields at the same time; both contribute to blocking; A shield in each hand: both of them block, and their block power adds up",
+      "Spiked Shield: On a successful shield block, deal 150% of your thorns damage to the attacker; A successful shield block deals 150% of your thorns damage to the attacker",
+      "Challenger: Your hits provoke enemies for 15 s; Your hits provoke the enemy for 15 s: it attacks only you",
+      "Shield Throw: With no other available weapon in your hands, attacks throw your shield; Thrown shields deal 1 blunt damage per point of block power; Thrown shield stamina cost: ×1 the spear-throw cost; With no other weapon ready, your attack throws your shield. It deals blunt damage from block power and counts as a thrown projectile. After the flight it drops to be picked up; a return effect brings the same shield back to its slot."
+     ],
+     "link": "passives/node/own13340.md",
+     "name": "Scar on the Shield"
+    }
+   },
+   "own13431": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "20% increased food nourishment health",
+      "15% increased food duration",
+      "18.75% increased health regeneration while fed"
+     ],
+     "link": "passives/node/own13431.md",
+     "name": "Food for a Long Life"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "20% increased food nourishment health",
+      "15% increased food duration",
+      "19% increased health regeneration while fed"
+     ],
+     "link": "passives/node/own13431.md",
+     "name": "Food for a Long Life"
+    }
+   },
+   "own13508": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased slam area of effect",
+      "5% reduced slam stamina cost",
+      "Ground Strike: Heavy melee weapons replace their alternative attack with a ground slam; Base slam radius for weapons without an area attack: 3 m; Heavy melee weapons replace their alternative attack with a ground slam, without the leap.",
+      "Fault Line: Slams cover a line with a base width of 1.4 m instead of a circle, preserving total area; Your slams hit a narrow line ahead of you instead of a circle, covering the same area.",
+      "Raise the Earth: Slamming your created object consumes it and raises an impassable ridge for 4 s; Base ridge length: 3.5 m; ×0.7 area with the slam that raises the ridge; Slamming one of your own created objects consumes it and leaves a brief impassable ridge. That slam's area is smaller. Buildings are not damaged."
+     ],
+     "link": "passives/node/own13508.md",
+     "name": "Valley Hammer"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased slam area of effect",
+      "10% reduced slam stamina cost",
+      "Ground Strike: Heavy melee weapons replace their alternative attack with a ground slam; Base slam radius for weapons without an area attack: 3 m; Heavy melee weapons replace their alternative attack with a ground slam, without the leap.",
+      "Fault Line: Slams cover a line with a base width of 1.4 m instead of a circle, preserving total area; Your slams hit a narrow line ahead of you instead of a circle, covering the same area.",
+      "Raise the Earth: Slamming your created object consumes it and raises an impassable ridge for 4 s; Base ridge length: 3.5 m; ×0.7 area with the slam that raises the ridge; Slamming one of your own created objects consumes it and leaves a brief impassable ridge. That slam's area is smaller. Buildings are not damaged."
+     ],
+     "link": "passives/node/own13508.md",
+     "name": "Valley Hammer"
+    }
+   },
+   "own13539": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased projectile speed",
+      "Chain Through Targets: Projectile chains can pick spores, ice crystals and other battle targets created by you and your allies. The hit triggers the target's usual reaction.",
+      "Return Path: Your last ricochet sends the projectile back to you. A returning projectile does not harm its owner and no longer ricochets.",
+      "Wall to Target: A ricochet off the ground or a wall has a 40% chance to head for the nearest valid target instead of reflecting normally.",
+      "◇ Free option 1: Theme reserve. No gameplay effect yet.",
+      "◇ Free option 2: Theme reserve. No gameplay effect yet."
+     ],
+     "link": "passives/node/own13539.md",
+     "name": "Swift Trail"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased projectile speed",
+      "Chain Through Targets: Projectile chains can pick spores, ice crystals and other battle targets created by you and your allies. The hit triggers the target's usual reaction.",
+      "Return Path: Your last ricochet sends the projectile back to you. A returning projectile does not harm its owner and no longer ricochets.",
+      "Wall to Target: A ricochet off the ground or a wall spends one available bounce and heads for the nearest valid target instead of reflecting normally.",
+      "◇ Free option 1: Theme reserve. No gameplay effect yet.",
+      "◇ Free option 2: Theme reserve. No gameplay effect yet."
+     ],
+     "link": "passives/node/own13539.md",
+     "name": "Swift Trail"
+    }
+   },
+   "own13542": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased stamina regeneration",
+      "5% reduced running stamina cost"
+     ],
+     "link": "passives/node/own13542.md",
+     "name": "Long breath"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased stamina regeneration",
+      "10% reduced running stamina cost"
+     ],
+     "link": "passives/node/own13542.md",
+     "name": "Long breath"
+    }
+   },
+   "own13546": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased lightning damage against wet targets"
+     ],
+     "link": "passives/tree/#own13546",
+     "name": "Lightning"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased lightning damage against wet targets"
+     ],
+     "link": "passives/tree/#own13546",
+     "name": "Lightning"
+    }
+   },
+   "own13552": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased lightning damage against wet targets"
+     ],
+     "link": "passives/tree/#own13552",
+     "name": "Lightning"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased lightning damage against wet targets"
+     ],
+     "link": "passives/tree/#own13552",
+     "name": "Lightning"
+    }
+   },
+   "own13558": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "20% increased lightning damage against wet targets"
+     ],
+     "link": "passives/node/own13558.md",
+     "name": "Bolt Above the Swamp"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased lightning damage against wet targets"
+     ],
+     "link": "passives/node/own13558.md",
+     "name": "Bolt Above the Swamp"
+    }
+   },
+   "own13564": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased lightning damage against wet targets"
+     ],
+     "link": "passives/tree/#own13564",
+     "name": "Lightning"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased lightning damage against wet targets"
+     ],
+     "link": "passives/tree/#own13564",
+     "name": "Lightning"
+    }
+   },
+   "own13570": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased lightning damage against wet targets"
+     ],
+     "link": "passives/tree/#own13570",
+     "name": "Lightning"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased lightning damage against wet targets"
+     ],
+     "link": "passives/tree/#own13570",
+     "name": "Lightning"
+    }
+   },
+   "own9465": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "40% increased stagger build-up",
+      "15% increased melee damage",
+      "+15 Strength"
+     ],
+     "link": "passives/node/own9465.md",
+     "name": "Hammerfall"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "25% increased stagger build-up",
+      "15% increased melee damage",
+      "+15 Strength"
+     ],
+     "link": "passives/node/own9465.md",
+     "name": "Hammerfall"
+    }
+   },
+   "own9467": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "20% increased damage",
+      "10% increased draw and reload speed",
+      "+15 Dexterity"
+     ],
+     "link": "passives/node/own9467.md",
+     "name": "Ullr's Draw"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased damage",
+      "10% increased draw and reload speed",
+      "+15 Dexterity"
+     ],
+     "link": "passives/node/own9467.md",
+     "name": "Ullr's Draw"
+    }
+   },
+   "own9468": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+15% critical strike damage",
+      "15% increased attack damage",
+      "5% increased attack speed",
+      "5% increased cast speed",
+      "+8 Intelligence",
+      "+8 Dexterity"
+     ],
+     "link": "passives/node/own9468.md",
+     "name": "Battleweaver"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "+15% critical strike damage",
+      "7.5% increased attack damage",
+      "5% increased attack speed",
+      "5% increased cast speed",
+      "+8 Intelligence",
+      "+8 Dexterity"
+     ],
+     "link": "passives/node/own9468.md",
+     "name": "Battleweaver"
+    }
+   },
+   "own9519": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased stagger build-up"
+     ],
+     "link": "passives/tree/#own9519",
+     "name": "Stagger power"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "10% increased stagger build-up"
+     ],
+     "link": "passives/tree/#own9519",
+     "name": "Stagger power"
+    }
+   },
+   "own9521": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased damage"
+     ],
+     "link": "passives/tree/#own9521",
+     "name": "Damage"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased damage"
+     ],
+     "link": "passives/tree/#own9521",
+     "name": "Damage"
+    }
+   },
+   "own9531": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased stagger build-up"
+     ],
+     "link": "passives/tree/#own9531",
+     "name": "Stagger power"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "10% increased stagger build-up"
+     ],
+     "link": "passives/tree/#own9531",
+     "name": "Stagger power"
+    }
+   },
+   "own9533": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased damage"
+     ],
+     "link": "passives/tree/#own9533",
+     "name": "Damage"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased damage"
+     ],
+     "link": "passives/tree/#own9533",
+     "name": "Damage"
+    }
+   },
+   "own9546": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased attack damage"
+     ],
+     "link": "passives/tree/#own9546",
+     "name": "Attack damage"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased attack damage"
+     ],
+     "link": "passives/tree/#own9546",
+     "name": "Attack damage"
+    }
+   },
+   "own9558": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased attack damage"
+     ],
+     "link": "passives/tree/#own9558",
+     "name": "Attack damage"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased attack damage"
+     ],
+     "link": "passives/tree/#own9558",
+     "name": "Attack damage"
+    }
+   },
+   "own9570": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased attack damage"
+     ],
+     "link": "passives/tree/#own9570",
+     "name": "Attack damage"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased attack damage"
+     ],
+     "link": "passives/tree/#own9570",
+     "name": "Attack damage"
+    }
+   },
+   "own9579": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased stagger build-up"
+     ],
+     "link": "passives/tree/#own9579",
+     "name": "Stagger power"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "10% increased stagger build-up"
+     ],
+     "link": "passives/tree/#own9579",
+     "name": "Stagger power"
+    }
+   },
+   "own9581": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased damage"
+     ],
+     "link": "passives/tree/#own9581",
+     "name": "Damage"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased damage"
+     ],
+     "link": "passives/tree/#own9581",
+     "name": "Damage"
+    }
+   },
+   "own9626": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased health regeneration",
+      "8% increased damage"
+     ],
+     "link": "passives/tree/#own9626",
+     "name": "Vital Force"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased health regeneration",
+      "6% increased damage"
+     ],
+     "link": "passives/tree/#own9626",
+     "name": "Vital Force"
+    }
+   },
+   "own9632": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased damage for minions",
+      "3% increased maximum health for minions"
+     ],
+     "link": "passives/tree/#own9632",
+     "name": "Minion Vitality"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased damage for minions",
+      "3% increased maximum health for minions"
+     ],
+     "link": "passives/tree/#own9632",
+     "name": "Minion Vitality"
+    }
+   },
+   "own9638": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased health regeneration",
+      "20% increased damage"
+     ],
+     "link": "passives/node/own9638.md",
+     "name": "Vigorous Heart"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased health regeneration",
+      "15% increased damage"
+     ],
+     "link": "passives/node/own9638.md",
+     "name": "Vigorous Heart"
+    }
+   },
+   "own9639": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+20% stagger resistance",
+      "18.75% increased health regeneration while moving"
+     ],
+     "link": "passives/node/own9639.md",
+     "name": "Wanderer's Footing"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "+20% stagger resistance",
+      "19% increased health regeneration while moving"
+     ],
+     "link": "passives/node/own9639.md",
+     "name": "Wanderer's Footing"
+    }
+   },
+   "own9641": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased evasion rating",
+      "12.5% increased dodge speed",
+      "5% reduced dodge stamina cost"
+     ],
+     "link": "passives/node/own9641.md",
+     "name": "Wind Dancer"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased evasion rating",
+      "12.5% increased dodge speed",
+      "10% reduced dodge stamina cost"
+     ],
+     "link": "passives/node/own9641.md",
+     "name": "Wind Dancer"
+    }
+   },
+   "own9644": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "20% increased damage for minions",
+      "7.5% increased maximum health for minions"
+     ],
+     "link": "passives/node/own9644.md",
+     "name": "Pact of the Host"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased damage for minions",
+      "7.5% increased maximum health for minions"
+     ],
+     "link": "passives/node/own9644.md",
+     "name": "Pact of the Host"
+    }
+   },
+   "own9650": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased health regeneration",
+      "8% increased damage"
+     ],
+     "link": "passives/tree/#own9650",
+     "name": "Vital Force"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased health regeneration",
+      "6% increased damage"
+     ],
+     "link": "passives/tree/#own9650",
+     "name": "Vital Force"
+    }
+   },
+   "own9656": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased damage for minions",
+      "3% increased maximum health for minions"
+     ],
+     "link": "passives/tree/#own9656",
+     "name": "Minion Vitality"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased damage for minions",
+      "3% increased maximum health for minions"
+     ],
+     "link": "passives/tree/#own9656",
+     "name": "Minion Vitality"
+    }
+   },
+   "own9743": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "5% reduced running stamina cost"
+     ],
+     "link": "passives/node/own9743.md",
+     "name": "Measured Pace"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "10% reduced running stamina cost"
+     ],
+     "link": "passives/node/own9743.md",
+     "name": "Measured Pace"
+    }
+   },
+   "own9785": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased spell projectile speed with projectiles",
+      "15% increased spell damage with projectiles",
+      "Chain Through Targets: Projectile chains can pick spores, ice crystals and other battle targets created by you and your allies. The hit triggers the target's usual reaction.",
+      "Return Path: Your last ricochet sends the projectile back to you. A returning projectile does not harm its owner and no longer ricochets.",
+      "Wall to Target: A ricochet off the ground or a wall has a 40% chance to head for the nearest valid target instead of reflecting normally.",
+      "◇ Free option 1: Theme reserve. No gameplay effect yet.",
+      "◇ Free option 2: Theme reserve. No gameplay effect yet."
+     ],
+     "link": "passives/node/own9785.md",
+     "name": "Runekeeper's Arrow"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased spell projectile speed with projectiles",
+      "15% increased spell damage with projectiles",
+      "Chain Through Targets: Projectile chains can pick spores, ice crystals and other battle targets created by you and your allies. The hit triggers the target's usual reaction.",
+      "Return Path: Your last ricochet sends the projectile back to you. A returning projectile does not harm its owner and no longer ricochets.",
+      "Wall to Target: A ricochet off the ground or a wall spends one available bounce and heads for the nearest valid target instead of reflecting normally.",
+      "◇ Free option 1: Theme reserve. No gameplay effect yet.",
+      "◇ Free option 2: Theme reserve. No gameplay effect yet."
+     ],
+     "link": "passives/node/own9785.md",
+     "name": "Runekeeper's Arrow"
+    }
+   },
+   "own9833": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased damage against rare or unique enemies"
+     ],
+     "link": "passives/tree/#own9833",
+     "name": "Combat Rhythm"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased damage against rare or unique enemies"
+     ],
+     "link": "passives/tree/#own9833",
+     "name": "Combat Rhythm"
+    }
+   },
+   "own9855": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased melee damage with attacks"
+     ],
+     "link": "passives/tree/#own9855",
+     "name": "General Melee"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased melee damage with attacks"
+     ],
+     "link": "passives/tree/#own9855",
+     "name": "General Melee"
+    }
+   },
+   "own9858": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased stagger build-up"
+     ],
+     "link": "passives/tree/#own9858",
+     "name": "Offensive Stagger"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "10% increased stagger build-up"
+     ],
+     "link": "passives/tree/#own9858",
+     "name": "Offensive Stagger"
+    }
+   },
+   "own9861": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased melee damage with attacks"
+     ],
+     "link": "passives/tree/#own9861",
+     "name": "General Melee"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased melee damage with attacks"
+     ],
+     "link": "passives/tree/#own9861",
+     "name": "General Melee"
+    }
+   },
+   "own9864": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased stagger build-up"
+     ],
+     "link": "passives/tree/#own9864",
+     "name": "Offensive Stagger"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "10% increased stagger build-up"
+     ],
+     "link": "passives/tree/#own9864",
+     "name": "Offensive Stagger"
+    }
+   },
+   "own9867": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased melee damage with attacks"
+     ],
+     "link": "passives/tree/#own9867",
+     "name": "General Melee"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased melee damage with attacks"
+     ],
+     "link": "passives/tree/#own9867",
+     "name": "General Melee"
+    }
+   },
+   "own9870": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased stagger build-up"
+     ],
+     "link": "passives/tree/#own9870",
+     "name": "Offensive Stagger"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "10% increased stagger build-up"
+     ],
+     "link": "passives/tree/#own9870",
+     "name": "Offensive Stagger"
+    }
+   },
+   "own9873": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased melee damage with attacks"
+     ],
+     "link": "passives/tree/#own9873",
+     "name": "General Melee"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased melee damage with attacks"
+     ],
+     "link": "passives/tree/#own9873",
+     "name": "General Melee"
+    }
+   },
+   "own9876": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased stagger build-up"
+     ],
+     "link": "passives/tree/#own9876",
+     "name": "Offensive Stagger"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "10% increased stagger build-up"
+     ],
+     "link": "passives/tree/#own9876",
+     "name": "Offensive Stagger"
+    }
+   },
+   "own9879": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased melee damage with attacks"
+     ],
+     "link": "passives/tree/#own9879",
+     "name": "General Melee"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased melee damage with attacks"
+     ],
+     "link": "passives/tree/#own9879",
+     "name": "General Melee"
+    }
+   },
+   "own9882": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased stagger build-up"
+     ],
+     "link": "passives/tree/#own9882",
+     "name": "Offensive Stagger"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "10% increased stagger build-up"
+     ],
+     "link": "passives/tree/#own9882",
+     "name": "Offensive Stagger"
+    }
+   },
+   "own9885": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased melee damage with attacks"
+     ],
+     "link": "passives/tree/#own9885",
+     "name": "General Melee"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased melee damage with attacks"
+     ],
+     "link": "passives/tree/#own9885",
+     "name": "General Melee"
+    }
+   },
+   "own9888": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased stagger build-up"
+     ],
+     "link": "passives/tree/#own9888",
+     "name": "Offensive Stagger"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "10% increased stagger build-up"
+     ],
+     "link": "passives/tree/#own9888",
+     "name": "Offensive Stagger"
+    }
+   },
+   "own9891": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased melee damage with attacks"
+     ],
+     "link": "passives/tree/#own9891",
+     "name": "General Melee"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased melee damage with attacks"
+     ],
+     "link": "passives/tree/#own9891",
+     "name": "General Melee"
+    }
+   },
+   "own9894": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased stagger build-up"
+     ],
+     "link": "passives/tree/#own9894",
+     "name": "Offensive Stagger"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "10% increased stagger build-up"
+     ],
+     "link": "passives/tree/#own9894",
+     "name": "Offensive Stagger"
+    }
+   },
+   "own9897": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased melee damage with attacks"
+     ],
+     "link": "passives/tree/#own9897",
+     "name": "General Melee"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased melee damage with attacks"
+     ],
+     "link": "passives/tree/#own9897",
+     "name": "General Melee"
+    }
+   },
+   "own9900": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased stagger build-up"
+     ],
+     "link": "passives/tree/#own9900",
+     "name": "Offensive Stagger"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "10% increased stagger build-up"
+     ],
+     "link": "passives/tree/#own9900",
+     "name": "Offensive Stagger"
+    }
+   },
+   "own9903": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "20% increased melee damage with attacks",
+      "10% increased melee area of effect with attacks"
+     ],
+     "link": "passives/node/own9903.md",
+     "name": "Drengr's Swing"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased melee damage with attacks",
+      "10% increased melee area of effect with attacks"
+     ],
+     "link": "passives/node/own9903.md",
+     "name": "Drengr's Swing"
+    }
+   },
+   "own9906": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "40% increased stagger build-up",
+      "Crushing Blow: Your first primary hit against an enemy with at least 60% stagger build-up triggers Heavy Stagger; ×0.6 damage with the hit that triggers Crushing Blow; Your first primary hit on an enemy primed for a heavy stagger triggers the heavy stagger, but that hit deals less damage.",
+      "Precise Control: Heavy Stagger ends 1.6 times faster; After Heavy Stagger, the enemy retains at least 50% of its stagger threshold; Your heavy staggers are shorter, but afterwards the enemy's stagger build-up lingers briefly for you and your allies."
+     ],
+     "link": "passives/node/own9906.md",
+     "name": "Ringing Skull"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "25% increased stagger build-up",
+      "Crushing Blow: Your first primary hit against an enemy with at least 60% stagger build-up triggers Heavy Stagger; ×0.6 damage with the hit that triggers Crushing Blow; Your first primary hit on an enemy primed for a heavy stagger triggers the heavy stagger, but that hit deals less damage.",
+      "Precise Control: Heavy Stagger ends 1.6 times faster; After Heavy Stagger, the enemy retains at least 50% of its stagger threshold; Your heavy staggers are shorter, but afterwards the enemy's stagger build-up lingers briefly for you and your allies."
+     ],
+     "link": "passives/node/own9906.md",
+     "name": "Ringing Skull"
+    }
+   },
+   "own9909": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "20% increased melee damage with attacks"
+     ],
+     "link": "passives/node/own9909.md",
+     "name": "Meeting of Blades"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased melee damage with attacks"
+     ],
+     "link": "passives/node/own9909.md",
+     "name": "Meeting of Blades"
+    }
+   },
+   "own9910": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "20% increased ranged damage against distant enemies"
+     ],
+     "link": "passives/node/own9910.md",
+     "name": "Beyond the Far Line"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased ranged damage against distant enemies"
+     ],
+     "link": "passives/node/own9910.md",
+     "name": "Beyond the Far Line"
+    }
+   },
+   "own9963": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "5% reduced slam stamina cost",
+      "15% increased slam knockback on stagger recently"
+     ],
+     "link": "passives/node/own9963.md",
+     "name": "Rumble Underfoot"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "10% reduced slam stamina cost",
+      "15% increased slam knockback on stagger recently"
+     ],
+     "link": "passives/node/own9963.md",
+     "name": "Rumble Underfoot"
+    }
+   },
+   "own9969": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased stagger build-up with slams"
+     ],
+     "link": "passives/tree/#own9969",
+     "name": "Slams"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "10% increased stagger build-up with slams"
+     ],
+     "link": "passives/tree/#own9969",
+     "name": "Slams"
+    }
+   },
+   "own9975": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "40% increased stagger build-up with slams"
+     ],
+     "link": "passives/node/own9975.md",
+     "name": "Earth Shall Tremble"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "25% increased stagger build-up with slams"
+     ],
+     "link": "passives/node/own9975.md",
+     "name": "Earth Shall Tremble"
+    }
+   },
+   "own9981": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased stagger build-up with slams"
+     ],
+     "link": "passives/tree/#own9981",
+     "name": "Slams"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "10% increased stagger build-up with slams"
+     ],
+     "link": "passives/tree/#own9981",
+     "name": "Slams"
+    }
+   },
+   "own9987": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "5% reduced slam stamina cost"
+     ],
+     "link": "passives/node/own9987.md",
+     "name": "Breath Before the Fracture"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "10% reduced slam stamina cost"
+     ],
+     "link": "passives/node/own9987.md",
+     "name": "Breath Before the Fracture"
+    }
+   },
+   "own9990": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased aftershock area of effect",
+      "Shifted Aftershock: Aftershocks erupt at the far end of your fault line instead of at its centre.",
+      "Gathered Rumble: ×0.9 aftershock area of effect; 25% increased stagger build-up with aftershocks",
+      "Slam Echo: +16% slam aftershock chance",
+      "Echo of the Breach: +100% attack aftershock chance against enemies with broken armour on hit; An attack causes an aftershock if the target's armour is fully broken after it hits. The hit that finishes breaking the armour also counts. One attack creates at most one source aftershock, regardless of the number of targets, projectiles and hits."
+     ],
+     "link": "passives/node/own9990.md",
+     "name": "Echo Beneath Stone"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased aftershock area of effect",
+      "Shifted Aftershock: Aftershocks erupt at the far end of your fault line instead of at its centre.",
+      "Gathered Rumble: ×0.9 aftershock area of effect; 15% increased stagger build-up with aftershocks",
+      "Slam Echo: +16% slam aftershock chance",
+      "Echo of the Breach: +100% attack aftershock chance against enemies with broken armour on hit; An attack causes an aftershock if the target's armour is fully broken after it hits. The hit that finishes breaking the armour also counts. One attack creates at most one source aftershock, regardless of the number of targets, projectiles and hits."
+     ],
+     "link": "passives/node/own9990.md",
+     "name": "Echo Beneath Stone"
+    }
+   },
+   "own9992": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "20% increased damage for minions",
+      "+25% of modifiers shared of base for minions damage bonuses"
+     ],
+     "link": "passives/node/own9992.md",
+     "name": "Summoner's Will"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased damage for minions",
+      "+25% of modifiers shared of base for minions damage bonuses"
+     ],
+     "link": "passives/node/own9992.md",
+     "name": "Summoner's Will"
+    }
+   },
+   "own9998": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased damage for minions"
+     ],
+     "link": "passives/tree/#own9998",
+     "name": "Minions"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased damage for minions"
+     ],
+     "link": "passives/tree/#own9998",
+     "name": "Minions"
+    }
+   }
+  },
+  "uniques": {
+   "PT_Jewel_EyeBetweenWorlds": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Gazes through the worlds to a random knowledge portal, and the way opens",
+      "Drops: drops in rune monolith events (not corrupted ones): from their defenders, and with a 5% chance when you win one"
+     ],
+     "link": "items/unique/PT_Jewel_EyeBetweenWorlds.md",
+     "name": "Eye Between Worlds"
+    },
+    "old": null
+   },
+   "PT_Jewel_TrailOfTheFirstAntler": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "One of these stats:",
+      "+(0.4–0.6) Strength per allocated passive on the path from this socket to your start (10%)",
+      "+(0.4–0.6) Dexterity per allocated passive on the path from this socket to your start (10%)",
+      "+(0.4–0.6) Intelligence per allocated passive on the path from this socket to your start (10%)",
+      "+(0.6–1) maximum health per allocated passive on the path from this socket to your start (10%)",
+      "+(0.5–0.8) maximum stamina per allocated passive on the path from this socket to your start (10%)",
+      "+(0.5–0.8) maximum eitr per allocated passive on the path from this socket to your start (10%)",
+      "+(0.4–0.7) rune shield per allocated passive on the path from this socket to your start (10%)",
+      "+(0.3–0.5) armour per allocated passive on the path from this socket to your start (10%)",
+      "+(0.6–1) evasion rating per allocated passive on the path from this socket to your start (10%)",
+      "+(0.3–0.5) endurance threshold per allocated passive on the path from this socket to your start (10%)",
+      "Drops: dropped by Eikthyr"
+     ],
+     "link": "items/unique/PT_Jewel_TrailOfTheFirstAntler.md",
+     "name": "Trail of the First Antler"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "One of these stats:",
+      "+(0.4–0.6) Strength per allocated passive on the path from this socket to your start (11.1%)",
+      "+(0.4–0.6) Dexterity per allocated passive on the path from this socket to your start (11.1%)",
+      "+(0.4–0.6) Intelligence per allocated passive on the path from this socket to your start (11.1%)",
+      "+(0.6–1) maximum health per allocated passive on the path from this socket to your start (11.1%)",
+      "+(0.5–0.8) maximum stamina per allocated passive on the path from this socket to your start (11.1%)",
+      "+(0.5–0.8) maximum eitr per allocated passive on the path from this socket to your start (11.1%)",
+      "+(0.4–0.7) rune shield per allocated passive on the path from this socket to your start (11.1%)",
+      "+(0.3–0.5) armour per allocated passive on the path from this socket to your start (11.1%)",
+      "+(0.6–1) evasion rating per allocated passive on the path from this socket to your start (11.1%)",
+      "Drops: dropped by Eikthyr"
+     ],
+     "link": "items/unique/PT_Jewel_TrailOfTheFirstAntler.md",
+     "name": "Trail of the First Antler"
+    }
+   }
+  },
+  "world": {
+   "azurite": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Azurite: chisel tier 1",
+      "Corrupted Azurite: chisel tier 2",
+      "Divine Azurite: chisel tier 1",
+      "Heavenly strike, Swamp: 5%",
+      "Heavenly strike, Mountain: 5%",
+      "Heavenly strike, Plains: 10%",
+      "Heavenly strike, Mistlands: 10%",
+      "Heavenly strike, Ashlands: 10%",
+      "Heavenly strike, Deep North: 10%",
+      "Certain after 9 misses in a row in: Plains, Mistlands, Ashlands, Deep North"
+     ],
+     "link": "crafting/buildings.md",
+     "name": "Azurite veins"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Azurite: chisel tier 1",
+      "Corrupted Azurite: chisel tier 2",
+      "Divine Azurite: chisel tier 3",
+      "Heavenly strike, Plains: 10%",
+      "Heavenly strike, Mistlands: 10%",
+      "Heavenly strike, Ashlands: 10%",
+      "Heavenly strike, Deep North: 10%",
+      "Certain after 9 misses in a row in: Plains, Mistlands, Ashlands, Deep North"
+     ],
+     "link": "crafting/buildings.md",
+     "name": "Azurite veins"
+    }
+   },
+   "fixed-health": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Kall Fimbulbringer"
+     ],
+     "link": "mechanics/creatures.md",
+     "name": "Creatures that keep their own health"
+    },
+    "old": {
+     "kind": "",
+     "lines": [],
+     "link": "mechanics/creatures.md",
+     "name": "Creatures that keep their own health"
+    }
+   },
+   "monolith-unique": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "5%"
+     ],
+     "link": "mechanics/loot.md",
+     "name": "Unique chance for winning a rune monolith event"
+    },
+    "old": null
+   }
+  }
+ },
+ "date": "2026-10-20",
+ "from": "5.1.0",
+ "to": "5.1.1"
+}

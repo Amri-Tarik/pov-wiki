@@ -867,6 +867,7 @@ def nav() -> list:
     """Navigation: (ui title key, page path | children). Titles are translated per language.
     Glossary term pages are reached from keyword links and search."""
     from .gear_pages import _GROUPS, group_path
+    from .patch_pages import INDEX, patch_path, versions
 
     return [
         ("nav.home", "index.md"),
@@ -880,5 +881,7 @@ def nav() -> list:
                             ("creatures.title", "monsters/creatures.md")]),
         ("formula.title", [("formula.creatures", "mechanics/creatures.md"), ("formula.experience_page", "mechanics/experience.md"),
                            ("formula.loot_page", "mechanics/loot.md"), ("formula.combat", "mechanics/combat.md")]),
+        *([("patch.index", [("patch.all", INDEX), *((("patch.title", {"version": v}), patch_path(v)) for v in versions())])]
+          if versions() else []),
         ("nav.about", "about.md"),
     ]

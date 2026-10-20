@@ -153,3 +153,17 @@
   margin: 0.8em 0;
   overflow-x: auto;
 }
+
+/* ---- Patch pages: what went out struck and faded, what came in tinted green ---- */
+.md-typeset del {
+  color: var(--md-default-fg-color--light);
+  text-decoration: line-through;
+  text-decoration-color: #c0504d;
+}
+.md-typeset ins {
+  text-decoration: none;
+  color: inherit;
+  background: rgba(76, 175, 80, 0.18);
+  border-radius: 2px;
+  padding: 0 1px;
+}

@@ -57,9 +57,13 @@ def with_description(md: str, fallback: str, page: str, base_url: str) -> str:
     """The page with front matter for search results and link previews: its description, and
     its own icon (the first node/item art on it) as the preview image. page: the Markdown file's
     path in the docs; base_url: the language's root URL. A page with its own front matter keeps
-    it."""
-    if md.startswith("---"):
-        return md
+    it; one without a description gets it added."""
+    own: list[str] = []
+    if md.startswith("---\n"):
+        end = md.index("\n---\n", 3)
+        own, md = md[4:end].splitlines(), md[end + 5:].lstrip("\n")
+        if any(line.startswith("description:") for line in own):
+            return "---\n" + "\n".join(own) + "\n---\n\n" + md
     text = describe(md)
     if len(text) < 60:  # too short to stand alone in a search result
         text = f"{text} {fallback}".strip()
@@ -67,7 +71,7 @@ def with_description(md: str, fallback: str, page: str, base_url: str) -> str:
     if art := _ART.search(md):  # relative to the Markdown file, like the site generator reads it
         image = posixpath.normpath(posixpath.join(posixpath.dirname(page), art.group(1)))
         meta.append(f"image: {json.dumps(base_url.rstrip('/') + '/' + image)}")
-    return "---\n" + "\n".join(meta) + "\n---\n\n" + md
+    return "---\n" + "\n".join(own + meta) + "\n---\n\n" + md
 
 
 def write_root(site: Path, langs: list[str], site_url: str) -> None:

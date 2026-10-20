@@ -6,6 +6,10 @@ the Path of Exile–inspired passive tree, crafting and loot overhaul for Valhei
 Every page here is generated from the mod's own files. The text is produced by the game's own
 code, so it matches what you see in game and updates with each patch.
 
+!!! tip "Planning a build?"
+    To plan your own build or explore builds shared by other players, head to
+    [povbuilds.com](https://povbuilds.com), the Path of Valheiman build planner.
+
 ## Passive tree
 
 - [Passive Tree Viewer](passives/tree.md): the full tree, searchable

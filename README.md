@@ -16,10 +16,14 @@ Every page is generated from the mod's own files, so the wiki matches each relea
 
 | | |
 |---|---|
-| ![Keystones with their in-game icons and effects](.github/screenshots/keystones.webp) | ![Craft tree viewer with a craft notable and its mastery options](.github/screenshots/crafting.webp) |
-| **Keystones, notables and masteries**, with the game's icons and wording | **Crafting**: the craft tree, professions, quests and masteries |
-| ![An item base and the mods that can roll on it, with weights](.github/screenshots/item-base.webp) | ![A unique jewel with its lines, radius and drop sources](.github/screenshots/unique-jewel.webp) |
-| **Items**: every base with stats, recipe and its full mod pool | **Uniques, jewels and currency**, with drop sources |
+| ![Keystones with their in-game icons and effects](.github/screenshots/keystones.webp) | ![Craft tree viewer with professions and notables](.github/screenshots/crafting.webp) |
+| **Keystones, notables and masteries**, with the game's icons and wording | **Crafting**: the craft tree, professions, quests, masteries and buildings |
+| ![An item base with its stats, recipe and mods](.github/screenshots/item-base.webp) | ![Unique items with their icons, lines and drop sources](.github/screenshots/uniques.webp) |
+| **Items**: every base with stats, recipe and its full mod pool | **Uniques, jewels and currency**, with their lines and where they drop |
+| ![Monster modifiers with their icons and values](.github/screenshots/monster-mods.webp) | ![A boss page: summoning, health and damage, mechanics and drops](.github/screenshots/boss.webp) |
+| **Monsters**: modifiers, rarity, and the mod's creatures | **Bosses**: how to summon them, how they fight and what they drop |
+| ![The Critical hit keyword with its formulas](.github/screenshots/mechanics.webp) | ![A unique jewel with its lines, radius and drop sources](.github/screenshots/unique-jewel.webp) |
+| **Mechanics**: the game's formulas, checked against the code with every patch | **Every item** has its own page: lines, radius, drop sources and links |
 
 ## How it works
 

@@ -22,6 +22,7 @@ _TREE_LINK = re.compile(r'<a href="[^"]*#[^"]*">[^<]*</a>')  # "Show on tree", i
 _IMAGE = re.compile(r"!\[[^\]]*\]\([^)]*\)")
 _LINK = re.compile(r"\[([^\]]+)\]\([^)]*\)(\{[^}]*\})?")
 _SKIP = re.compile(r"^(    |\s*(\||!!!|\?\?\?|<div|</div|```|---|\{))")  # tables, admonitions and their body, blocks
+_BLOCK = re.compile(r"^(    |\s*(\||!!!|\?\?\?))")  # tables and admonitions: the summary ends there
 
 
 def describe(md: str) -> str:
@@ -35,7 +36,7 @@ def describe(md: str) -> str:
         if not line.strip():
             continue
         if _SKIP.match(line):
-            if parts:  # the summary is the text before the first table or box
+            if parts and _BLOCK.match(line):  # the summary is the text before the first table or box
                 break
             continue
         text = _LINK.sub(r"\1", _IMAGE.sub("", _TREE_LINK.sub("", line)))

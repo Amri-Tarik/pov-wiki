@@ -32,7 +32,11 @@ def describe(md: str) -> str:
     for line in lines[start:]:
         if line.startswith("#"):  # the next heading ends the summary
             break
-        if not line.strip() or _SKIP.match(line):
+        if not line.strip():
+            continue
+        if _SKIP.match(line):
+            if parts:  # the summary is the text before the first table or box
+                break
             continue
         text = _LINK.sub(r"\1", _IMAGE.sub("", _TREE_LINK.sub("", line)))
         text = _TAG.sub(" ", text)

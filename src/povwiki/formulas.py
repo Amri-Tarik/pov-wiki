@@ -7,6 +7,7 @@ code it depends on (povwiki.decompile), and the registry keeps a fingerprint of 
 were when the formula was last checked:
 
     anchors = ["PassiveTree/XpSources.cs :: XpSources.Award",       # a method (or property)
+               "valheim/HitData.cs :: HitData.ApplyArmor#1",          # Valheim's own code
                'PassiveTree/Plugin.cs :: "Experience per star"']    # the statement with this C# string
 
 On every build the anchors are hashed again. A formula whose code changed (or can't be found)
@@ -31,7 +32,8 @@ HEADER = """# The game's formulas, as read from the mod's code (see src/povwiki/
 # numbers that can't be read from the game data (BepInEx setting defaults, numbers written inline
 # in the code); "anchors" lists the code it was read from. The build hides a formula whose anchors
 # changed since "checked"; re-read it, update it, then `povwiki formulas --accept <id>`.
-# Anchors: "File.cs :: Type.Member" (a method, property or field; "#2" for the second overload)
+# Anchors: "File.cs :: Type.Member" (a method, property or field; "#2" for the second overload;
+# "valheim/<Type>.cs" for Valheim's own code)
 # or 'File.cs :: "text"' (the one statement holding that C# string or code).
 
 """
@@ -95,7 +97,12 @@ def _statement(source: str, needle: str) -> str | None:
 def anchor_text(code: Path, anchor: str) -> str | None:
     """The code an anchor points at, or None when it can't be found (exactly once)."""
     path, _, what = (part.strip() for part in anchor.partition("::"))
-    file = code / path
+    if path.startswith("valheim/"):  # Valheim's own code: valheim/<Type>.cs
+        from .decompile import valheim_type
+
+        file = valheim_type(path.removeprefix("valheim/").removesuffix(".cs"))
+    else:
+        file = code / path
     if not file.exists():
         return None
     source = _IL.sub("", file.read_text(encoding="utf-8-sig"))

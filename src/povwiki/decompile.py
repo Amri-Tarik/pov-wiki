@@ -49,3 +49,20 @@ def decompile(version: str, force: bool = False) -> Path:
                    stdout=subprocess.DEVNULL)
     stamp.write_text(ILSPY)
     return out
+
+
+def valheim_type(type_name: str) -> Path:
+    """One type of Valheim's own code (assembly_valheim.dll of the installed game), decompiled to
+    .cache/decompiled/valheim-<build>/<Type>.cs: for formulas that run through Valheim's code
+    (armour). Keyed by the Valheim build, so an update decompiles it again."""
+    from .render import valheim_managed
+    from .valheim import build_key
+
+    managed = valheim_managed()
+    out = DECOMPILED / f"valheim-{build_key(managed.parent)}" / f"{type_name}.cs"
+    if not out.exists():
+        out.parent.mkdir(parents=True, exist_ok=True)
+        result = subprocess.run(["dotnet", str(_ilspy()), "-t", type_name, str(managed / "assembly_valheim.dll")],
+                                check=True, capture_output=True, text=True, encoding="utf-8")
+        out.write_text(result.stdout, encoding="utf-8")
+    return out

@@ -534,6 +534,7 @@ combat_intro = "Critical strikes, evasion, resistances, what creatures pierce, a
 defaults_note = "Numbers are the defaults of the Normal difficulty; servers can change them. Every formula here is checked against the mod's code with each patch."
 rechecking_title = "Being re-checked"
 rechecking = "The code behind this formula changed in Path of Valheiman {version}. It is hidden until it has been re-checked."
+see_all = "With the other mechanics: [{page}]({link})."
 level = "Level"
 health = "Health"
 damage = "Damage"
@@ -633,7 +634,7 @@ notes = "Base health is the Valheim health of its kind. It is shared between the
 
 [formula.crit-multiplier]
 title = "Critical strike damage"
-text = "A critical strike ({term}) multiplies the hit's damage by:"
+text = "{term}s multiply the hit's damage by:"
 formula = "{base} + critical damage bonuses, at least 0"
 notes = "The bonuses come in parts, each its flat bonuses × (1 + increases): general ones, those for your weapon kind, for the target, and for the alternative attack. The parts are computed separately and added up, so a general \"reduced critical damage\" doesn't lower your weapon's own bonus."
 
@@ -645,7 +646,7 @@ bases = "Base: knives {knives}, polearms {polearms}, other weapons {other}, spel
 
 [formula.evasion]
 title = "Evasion"
-text = "Evasion ({evade}) is a rating. The chance it gives depends on the attacker's accuracy ({accuracy}), which grows with its level and stars:"
+text = "{evade} gives a chance to avoid a hit, which depends on the attacker's accuracy ({accuracy}), growing with its level and stars:"
 accuracy = "accuracy = ({base} + {per} × level) × (1 + {star} × stars)"
 chance = "evade chance = 1 − {h} × accuracy ÷ (accuracy + evasion), at most {cap}"
 notes = "Evasion isn't a dice roll per hit: hits are evaded in a steady rhythm, so over many hits the share evaded is the chance. Damage over time in an area can't be evaded. Chance against creatures without stars, by biome:"
@@ -660,7 +661,7 @@ notes = "Fire, frost and lightning also count elemental resistance. Penetration 
 
 [formula.enemy-penetration]
 title = "Enemy penetration"
-text = "Creatures pierce your defences by their biome: they ignore flat armour ({armour}) and a share of your resistances ({resist}). Your armour counts for {effect} against creatures' hits."
+text = "Creatures pierce your defences by their biome: with flat {armour} and {resist} (a share of your resistances). Your armour counts for {effect} against creatures' hits."
 notes = "Bosses move toward the next biome's values. Creatures with the {piercing} modifier ignore more."
 
 [formula.build-cost]
@@ -668,3 +669,12 @@ title = "Build cost"
 text = "Build cost reductions lower each material of a piece, the mod's [buildings]({buildings}) included, by at most {cap}:"
 formula = "cost = ⌈amount × (1 − reduction)⌉,   reduction at most {cap}"
 notes = "Dismantling gives back only what was paid. When a {refund} saves the materials of a placed piece, dismantling it gives nothing."
+
+[formula.armour]
+title = "Armour"
+text = "{term} is Valheim's own: it reduces each hit by the same share for all its damage types, much against small hits, less against big ones. With hit damage the sum of the hit's damage types:"
+formula = "armour < damage ÷ 2:   damage taken = damage − armour;     otherwise:   damage taken = damage² ÷ (4 × armour)"
+effective = "armour against creatures = your armour × {effect} − the creature's armour penetration"
+notes = "Armour applies after rune shield and block. Creatures ignore part of it: see [enemy penetration]({pen}). Damage taken, by armour and hit:"
+armour_col = "Armour"
+hit_col = "Hit of {n}"

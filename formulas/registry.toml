@@ -4,7 +4,8 @@
 # numbers that can't be read from the game data (BepInEx setting defaults, numbers written inline
 # in the code); "anchors" lists the code it was read from. The build hides a formula whose anchors
 # changed since "checked"; re-read it, update it, then `povwiki formulas --accept <id>`.
-# Anchors: "File.cs :: Type.Member" (a method, property or field; "#2" for the second overload)
+# Anchors: "File.cs :: Type.Member" (a method, property or field; "#2" for the second overload;
+# "valheim/<Type>.cs" for Valheim's own code)
 # or 'File.cs :: "text"' (the one statement holding that C# string or code).
 
 [[formula]]
@@ -247,3 +248,15 @@ checked = "5.1.0"
 
 [formula.values]
 cap = 0.5
+
+[[formula]]
+id = "armour"
+anchors = [
+    "valheim/HitData.cs :: DamageTypes.ApplyArmor#1",
+    "valheim/HitData.cs :: DamageTypes.ApplyArmor#2",
+    "valheim/Character.cs :: \"hit.ApplyArmor(bodyArmor)\"",
+    "PassiveTree/ArmorEffect.cs :: Player_GetBodyArmor_Effect.Postfix",
+    "PassiveTree/ArmorPen.cs :: Humanoid_GetBodyArmor.Postfix",
+]
+fingerprint = "d8b9a9b1d323"
+checked = "5.1.0"

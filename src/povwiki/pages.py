@@ -798,13 +798,6 @@ def _related_pages(ctx: Ctx) -> dict[str, list[tuple[str, str, str]]]:
     if ctx.loc.bosses.get("mistMother"):
         found["boss"].append((ctx.loc.ui("bosses.title"), BOSSES_PAGE, ctx.loc.ui("monsters.title")))
         found["rune-monolith"].append((ctx.loc.ui("creatures.runic"), CREATURES_PAGE + "#runic", ctx.loc.ui("monsters.title")))
-    from .formula_pages import FORMULA_PAGES
-
-    for term, fid in (("crit", "crit-multiplier"), ("evade", "evasion"), ("enemy-accuracy", "evasion"),
-                      ("resist", "resistances"), ("resistance-penetration", "enemy-penetration"),
-                      ("armour-penetration", "enemy-penetration"), ("item-quantity", "loot"), ("item-rarity", "loot"),
-                      ("refund", "build-cost"), ("boss", "boss-stars")):
-        found[term].append((ctx.loc.ui(f"formula.{fid}.title"), f"{FORMULA_PAGES[fid]}#{fid}", ctx.loc.ui("formula.title")))
     if ctx.loc.monsters.get("mods"):
         for term in ("item-quantity", "item-rarity"):
             found[term].append((ctx.loc.ui("monsters.mods"), MODS_PAGE, ctx.loc.ui("monsters.title")))
@@ -813,6 +806,7 @@ def _related_pages(ctx: Ctx) -> dict[str, list[tuple[str, str, str]]]:
 
 def page_glossary(ctx: Ctx) -> dict[str, str]:
     """A page per term of the mod's in-game wiki, with what references it in every tree."""
+    from .formula_pages import term_formulas
     from .gear_pages import keyword_uniques_section, uniques_by_keyword
     from .item_pages import keyword_mods_section, mods_by_keyword
 
@@ -832,6 +826,7 @@ def page_glossary(ctx: Ctx) -> dict[str, str]:
         page, term = glossary_path(key), wiki[key]
         md = [f"# {plain(term['title'])}", ""]
         md += [to_md(line, loc, page) + "\n" for line in term["text"]] or [f"*{loc.ui('page.no_text')}*", ""]
+        md += term_formulas(ctx, key, page)  # the keyword's formulas, right under its definition
         sections = [(t, refs[t.spec.key][key]) for t in trees if key in refs[t.spec.key]]
         if sections or terms.get(key) or mods.get(key) or uniques.get(key):
             md += [f"## {loc.ui('page.referenced_by')}", ""]

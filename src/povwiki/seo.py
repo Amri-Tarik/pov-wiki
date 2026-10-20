@@ -21,7 +21,7 @@ _ART = re.compile(r'<img class="pov-art"[^>]*src="([^"]+)"')
 _TREE_LINK = re.compile(r'<a href="[^"]*#[^"]*">[^<]*</a>')  # "Show on tree", in any language
 _IMAGE = re.compile(r"!\[[^\]]*\]\([^)]*\)")
 _LINK = re.compile(r"\[([^\]]+)\]\([^)]*\)(\{[^}]*\})?")
-_SKIP = re.compile(r"^\s*(\||!!!|\?\?\?|<div|</div|```|---|\{)")
+_SKIP = re.compile(r"^(    |\s*(\||!!!|\?\?\?|<div|</div|```|---|\{))")  # tables, admonitions and their body, blocks
 
 
 def describe(md: str) -> str:

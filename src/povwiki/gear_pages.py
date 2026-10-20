@@ -603,6 +603,30 @@ def _line_md(ctx: Ctx, line: dict, page: str) -> list[str]:
     return [f"- {count}{to_md(line['text'], loc, page)}"]
 
 
+def _rift_section(ctx: Ctx, item: str, page: str) -> list[str]:
+    """What Eye Between Worlds does (JewelReveal.Refresh and BecomeRift): the portals it can point
+    at (Rifts.Targets: every portal but the jewel slots), and the rift it opens beside its socket.
+    Shown while the "eye-rift" formula's code is as checked."""
+    from .formula_pages import shown
+    from .pages import _name, _tree_link
+
+    classes = ctx.loc.gear["uniques"][item].get("classes")
+    if classes is None:
+        return []
+    ui = ctx.loc.ui
+    md = [f"## {ui('gear.rift.title')}", ""]
+    if not shown(ctx, "eye-rift"):
+        return md + [f'!!! warning "{ui("formula.rechecking_title")}"',
+                     f"    {ui('formula.rechecking', version=ctx.data.version)}", ""]
+    md += [ui("gear.rift.targets"), ""]
+    for n in sorted((n for n in ctx.tree_nodes if n["size"] == "Portal"), key=lambda n: n["id"]):
+        need = sorted({classes.get(m.get("subject"), m.get("subject")) for m in n.get("mods") or []
+                       if m["stat"] == "SubclassReveal"})
+        hidden = f" <small>({ui('gear.rift.hidden', classes=', '.join(need))})</small>" if need else ""
+        md.append(f"- {_name(ctx, n, page)} · {_tree_link(ctx, n, page)}{hidden}")
+    return md + ["", ui("gear.rift.text"), ""]
+
+
 def _unique_page(ctx: Ctx, item: str, catalog: dict) -> str:
     ui, page = ctx.loc.ui, unique_path(item)
     j = ctx.loc.gear.get("jewels", {}).get(item)
@@ -624,6 +648,7 @@ def _unique_page(ctx: Ctx, item: str, catalog: dict) -> str:
     flavor = j["flavor"] if j else (ctx.loc.items.get(item, {}).get("mod") or {}).get("shared", {}).get("m_description", "")
     if flavor:
         md += [f"*{flavor}*".replace("\n", " "), ""]
+    md += _rift_section(ctx, item, page)
     sources = _unique_sources(ctx, item, catalog, page)
     md += [f"## {ui('gear.drops')}", "", sources[:1].upper() + sources[1:] + ".", ""]
     if tables := _tables_with(ctx, item, page):

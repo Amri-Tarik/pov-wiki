@@ -138,7 +138,17 @@ def _code_only_uniques(uniques: dict) -> None:
     d = LootAffixes.Find("jewel.rift-to")
     if d is not None:
         uniques["PT_Jewel_EyeBetweenWorlds"] = {"lines": [
-            {"affix": "jewel.rift-to", "count": 1, "distinct": False, "template": L.Id("affix." + d.Id, d.Text), "pick": "portal"}]}
+            {"affix": "jewel.rift-to", "count": 1, "distinct": False, "template": L.Id("affix." + d.Id, d.Text), "pick": "portal"}],
+            # The ascendancy class each SubclassReveal subject stands for (Subclasses.ByChip), by its shown name:
+            # the portals the Eye can point at are hidden without their class.
+            "classes": _class_names()}
+
+
+def _class_names() -> dict[str, str]:
+    from PassiveTree import Subclasses
+
+    names = {d.Key: str(d.Shown) for d in Subclasses.All}
+    return {str(kv.Key): names.get(kv.Value, str(kv.Value)) for kv in Subclasses.ByChip}
 
 
 def render_gear(errors: list) -> dict:

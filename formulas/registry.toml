@@ -353,3 +353,15 @@ anchors = [
 ]
 fingerprint = "04dfb52bc5b4"
 checked = "5.1.1"
+
+[[formula]]
+id = "eye-rift"
+anchors = [
+    "PassiveTree/Rifts.cs :: Rifts.Targets",
+    "PassiveTree/JewelReveal.cs :: JewelReveal.BecomeRift",
+    "PassiveTree/JewelReveal.cs :: JewelReveal.PathHidden",
+    "PassiveTree/JewelReveal.cs :: JewelReveal.Refresh",
+    "PassiveTree/Tree.cs :: Tree.Around",
+]
+fingerprint = "f7bedc6dcc1a"
+checked = "5.1.1"

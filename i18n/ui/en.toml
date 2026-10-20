@@ -717,3 +717,9 @@ next_col = "To the next level"
 total_col = "Total to reach"
 points = "Each level gives {points} passive point; points also come from other sources."
 death = "On death you lose {death} of a level's experience ({term}), never going below the start of your level. Passives can lower the loss."
+
+[gear.rift]
+title = "How it works"
+targets = "When it drops, its line points at one of the tree's portals, picked at random:"
+hidden = "normally revealed only to the {classes} ascendancy class"
+text = "Socketed in an allocated socket (once identified), it turns the hidden node beside the socket into a portal, the Rift of the Eye. Like every portal, the rift connects to all the others, so the path can go on from there. The portal it points at is revealed too, even without its ascendancy class. Take the jewel out and the rift closes; that portal is unallocated again if it would be hidden."

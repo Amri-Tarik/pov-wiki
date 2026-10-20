@@ -837,10 +837,10 @@ def page_glossary(ctx: Ctx) -> dict[str, str]:
                 md += [f"### {t.ui('title')}", ""] + [line.replace("### ", "#### ", 1) if line.startswith("### ") else line for line in body]
         if mods.get(key) or uniques.get(key):
             md += [f"### {loc.ui('items.title')}", ""]
+            if uniques.get(key):  # uniques first: few, and each one shown whole
+                md += keyword_uniques_section(ctx, uniques[key], page, key)
             if mods.get(key):
                 md += keyword_mods_section(ctx, mods[key], page)
-            if uniques.get(key):
-                md += keyword_uniques_section(ctx, uniques[key], page)
         if terms.get(key) or related.get(key):
             md += [f"### {loc.ui('page.see_also')}", ""]
             md += [f"- [{title}]({rel(target, page)}) <small>{kind}</small>" for title, target, kind in related.get(key, [])]
@@ -872,10 +872,10 @@ def nav() -> list:
         ("nav.home", "index.md"),
         *((f"{t.key}.title", [(f"{t.key}.{p}", f"{t.key}/{p}.md") for p in t.pages]
            + ([("buildings.title", "crafting/buildings.md")] if t is CRAFTING else [])) for t in TREES),
-        ("items.title", [("gear.uniques", "items/uniques.md"), ("items.mods", "items/mods.md"), ("items.bases", "items/bases.md"),
+        ("items.title", [("items.mods", "items/mods.md"), ("items.bases", "items/bases.md"),
                          ("gear.currency", [("gear.currency_all", "items/currency.md"),
                                             *((f"gear.group.{g}", group_path(g)) for g in _GROUPS)]),
-                         ("gear.jewels", "items/jewels.md")]),
+                         ("gear.jewels", "items/jewels.md"), ("gear.uniques", "items/uniques.md")]),
         ("monsters.title", [("monsters.mods", "monsters/mods.md"), ("bosses.title", "monsters/bosses.md"),
                             ("creatures.title", "monsters/creatures.md")]),
         ("formula.title", [("formula.creatures", "mechanics/creatures.md"), ("formula.loot_page", "mechanics/loot.md"),

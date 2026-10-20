@@ -469,14 +469,8 @@ def page_uniques(ctx: Ctx) -> dict[str, str]:
         kinds[ui("class.jewels") if is_jewel else ui("class.belts") if belt else ui("class.utility")].append(item)
     pages = {}
     for kind, items in sorted(kinds.items(), key=lambda kv: -len(kv[1])):
-        md += [f"## {kind} ({len(items)})", ""]
-        rows = []
-        for item in items:
-            lines = "<br>".join(_line_short(ctx, line, page) for line in uniques[item]["lines"])
-            rows.append([_unique_icon(ctx, item, page, 64), f"[**{_unique_name(ctx, item)}**]({rel(unique_path(item), page)})",
-                         lines, _unique_sources(ctx, item, catalog, page)])
-            pages[unique_path(item)] = _unique_page(ctx, item, catalog)
-        md += _table(["", ui("col.name"), ui("col.effect"), ui("gear.obtained")], rows)
+        md += [f"## {kind} ({len(items)})", ""] + unique_table(ctx, items, page, catalog)
+        pages.update({unique_path(item): _unique_page(ctx, item, catalog) for item in items})
     pages[page] = "\n".join(md + _footer(ctx))
     return pages
 
@@ -526,17 +520,37 @@ def _unique_sources(ctx: Ctx, item: str, catalog: dict, page: str) -> str:
     return "; ".join(parts) or _badge(ui("badge.broken"), ui("gear.no_source"))
 
 
-def _line_short(ctx: Ctx, line: dict, page: str) -> str:
+def unique_table(ctx: Ctx, items: list[str], page: str, catalog: dict | None = None, keyword: str | None = None) -> list[str]:
+    """Uniques as a table: icon, name, their lines in short, where they drop. On a keyword's page,
+    a stat pool names the stats that mention the keyword."""
+    ui, uniques = ctx.loc.ui, ctx.loc.gear.get("uniques") or {}
+    if catalog is None:
+        catalog = {u["id"]: u for u in ctx.data.loot.get("uniques") or []}
+    rows = [[_unique_icon(ctx, item, page, 64), f"[**{_unique_name(ctx, item)}**]({rel(unique_path(item), page)})",
+             "<br>".join(_line_short(ctx, line, page, keyword) for line in uniques[item]["lines"]),
+             _unique_sources(ctx, item, catalog, page)]
+            for item in sorted(items, key=lambda i: _unique_name(ctx, i))]
+    return _table(["", ui("col.name"), ui("col.effect"), ui("gear.obtained")], rows)
+
+
+def _line_short(ctx: Ctx, line: dict, page: str, keyword: str | None = None) -> str:
     """One unique line on one row, for tables: a stat pool as "one of N stats", alternatives
     joined (the unique's own page lists them in full)."""
     ui, loc = ctx.loc.ui, ctx.loc
     count = f"{line['count']} × " if line.get("count", 1) > 1 else ""
     if "oneOf" in line:
-        return f"{ui('gear.one_of')} " + " / ".join(_line_short(ctx, o, page) for o in line["oneOf"])
+        return f"{ui('gear.one_of')} " + " / ".join(_line_short(ctx, o, page, keyword) for o in line["oneOf"])
     if "pool" in line:
         if len(line["pool"]) == 1:
             return f"{count}{to_md(line['pool'][0]['text'], loc, page)}"
-        return f"{count}<i>{ui('gear.pool_short', n=len(line['pool']))}</i>"
+        short = f"{count}<i>{ui('gear.pool_short', n=len(line['pool']))}</i>"
+        if keyword:  # name the stats this keyword's page is about
+            from .markup import slugs
+
+            hits = [to_md(p["text"], loc, page) for p in line["pool"] if keyword in slugs(p["text"])]
+            if hits:
+                short += f" {ui('gear.pool_including')} " + "; ".join(hits)
+        return short
     if "template" in line:
         pick = ui(f"gear.pick.{line.get('pick')}")
         return f"{count}{to_md(line['template'].replace('{0}', f'<i>{pick}</i>'), loc, page)}"
@@ -620,7 +634,6 @@ def uniques_by_keyword(ctx: Ctx) -> dict[str, list[str]]:
     return found
 
 
-def keyword_uniques_section(ctx: Ctx, items: list[str], page: str) -> list[str]:
-    links = sorted((_unique_name(ctx, i), unique_path(i)) for i in items)
-    return [f"#### {ctx.loc.ui('gear.uniques')} ({len(items)})", "",
-            ", ".join(f"[{name}]({rel(path, page)})" for name, path in links), ""]
+def keyword_uniques_section(ctx: Ctx, items: list[str], page: str, keyword: str | None = None) -> list[str]:
+    """The uniques that mention a keyword, as on the Uniques page."""
+    return [f"#### {ctx.loc.ui('gear.uniques')} ({len(items)})", ""] + unique_table(ctx, items, page, keyword=keyword)

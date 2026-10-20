@@ -872,11 +872,10 @@ def nav() -> list:
         ("nav.home", "index.md"),
         *((f"{t.key}.title", [(f"{t.key}.{p}", f"{t.key}/{p}.md") for p in t.pages]
            + ([("buildings.title", "crafting/buildings.md")] if t is CRAFTING else [])) for t in TREES),
-        ("items.title", [("items.mods", "items/mods.md"), ("items.bases", "items/bases.md"),
+        ("items.title", [("gear.uniques", "items/uniques.md"), ("items.mods", "items/mods.md"), ("items.bases", "items/bases.md"),
                          ("gear.currency", [("gear.currency_all", "items/currency.md"),
                                             *((f"gear.group.{g}", group_path(g)) for g in _GROUPS)]),
-                         ("gear.jewels", "items/jewels.md"),
-                         ("gear.uniques", "items/uniques.md")]),
+                         ("gear.jewels", "items/jewels.md")]),
         ("monsters.title", [("monsters.mods", "monsters/mods.md"), ("bosses.title", "monsters/bosses.md"),
                             ("creatures.title", "monsters/creatures.md")]),
         ("formula.title", [("formula.creatures", "mechanics/creatures.md"), ("formula.loot_page", "mechanics/loot.md"),

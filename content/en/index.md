@@ -31,10 +31,11 @@ code, so it matches what you see in game and updates with each patch.
 
 ## Items
 
+- [Uniques](items/uniques.md): unique jewels and belts, with their lines and where they drop
 - [Mods](items/mods.md): every property an item can roll, with tiers and weights
 - [Item bases](items/bases.md): weapons, armour, shields and trinkets, with stats and recipes
 - [Currency](items/currency.md): runes, essences, sigils and crafting materials
-- [Jewels](items/jewels.md) and [Uniques](items/uniques.md): with their lines and drop sources
+- [Jewels](items/jewels.md): base and unique jewels, and the properties base jewels roll
 
 ## Monsters
 

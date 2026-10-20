@@ -454,18 +454,29 @@ def _jewel_page(ctx: Ctx, item: str, j: dict) -> str:
 
 
 def page_uniques(ctx: Ctx) -> dict[str, str]:
+    """Unique items by kind (jewels, belts...), each with its icon, its lines in short and where it
+    drops; one page per unique with its lines in full."""
     gear, ui, page = ctx.loc.gear, ctx.loc.ui, UNIQUES_PAGE
     uniques = gear.get("uniques") or {}
     if not uniques:
         return {}
     catalog = {u["id"]: u for u in ctx.data.loot.get("uniques") or []}
     md = [f"# {ui('gear.uniques')}", "", ui("gear.uniques_intro"), ""]
-    rows, pages = [], {}
+    kinds: dict[str, list[str]] = defaultdict(list)
     for item in sorted(uniques, key=lambda i: _unique_name(ctx, i)):
-        rows.append([_unique_icon(ctx, item, page, 40), f"[**{_unique_name(ctx, item)}**]({rel(unique_path(item), page)})",
-                     _unique_kind(ctx, item), _unique_sources(ctx, item, catalog, page)])
-        pages[unique_path(item)] = _unique_page(ctx, item, catalog)
-    md += _table(["", ui("col.name"), ui("col.type"), ui("gear.obtained")], rows)
+        is_jewel = item in gear.get("jewels", {})
+        belt = "belt" in (ctx.loc.items.get(item, {}).get("tags") or [])
+        kinds[ui("class.jewels") if is_jewel else ui("class.belts") if belt else ui("class.utility")].append(item)
+    pages = {}
+    for kind, items in sorted(kinds.items(), key=lambda kv: -len(kv[1])):
+        md += [f"## {kind} ({len(items)})", ""]
+        rows = []
+        for item in items:
+            lines = "<br>".join(_line_short(ctx, line, page) for line in uniques[item]["lines"])
+            rows.append([_unique_icon(ctx, item, page, 64), f"[**{_unique_name(ctx, item)}**]({rel(unique_path(item), page)})",
+                         lines, _unique_sources(ctx, item, catalog, page)])
+            pages[unique_path(item)] = _unique_page(ctx, item, catalog)
+        md += _table(["", ui("col.name"), ui("col.effect"), ui("gear.obtained")], rows)
     pages[page] = "\n".join(md + _footer(ctx))
     return pages
 
@@ -513,6 +524,23 @@ def _unique_sources(ctx: Ctx, item: str, catalog: dict, page: str) -> str:
     if bosses:
         parts.append(ui("gear.drops_bosses", bosses=", ".join(creature_link(ctx, cr, page) for cr in bosses)))
     return "; ".join(parts) or _badge(ui("badge.broken"), ui("gear.no_source"))
+
+
+def _line_short(ctx: Ctx, line: dict, page: str) -> str:
+    """One unique line on one row, for tables: a stat pool as "one of N stats", alternatives
+    joined (the unique's own page lists them in full)."""
+    ui, loc = ctx.loc.ui, ctx.loc
+    count = f"{line['count']} × " if line.get("count", 1) > 1 else ""
+    if "oneOf" in line:
+        return f"{ui('gear.one_of')} " + " / ".join(_line_short(ctx, o, page) for o in line["oneOf"])
+    if "pool" in line:
+        if len(line["pool"]) == 1:
+            return f"{count}{to_md(line['pool'][0]['text'], loc, page)}"
+        return f"{count}<i>{ui('gear.pool_short', n=len(line['pool']))}</i>"
+    if "template" in line:
+        pick = ui(f"gear.pick.{line.get('pick')}")
+        return f"{count}{to_md(line['template'].replace('{0}', f'<i>{pick}</i>'), loc, page)}"
+    return f"{count}{to_md(line['text'], loc, page)}"
 
 
 def _line_md(ctx: Ctx, line: dict, page: str) -> list[str]:

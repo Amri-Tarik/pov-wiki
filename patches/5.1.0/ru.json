@@ -1,5 +1,78 @@
 {
  "changes": {
+  "bases": {
+   "PT_Ring_Fire": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Уровень созданного предмета 97",
+      "+(10-15)% fire resistance"
+     ],
+     "link": "items/base/PT_Ring_Fire.md",
+     "name": "Ring of the Smouldering Coal"
+    },
+    "old": null
+   },
+   "PT_Ring_Frost": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Уровень созданного предмета 77",
+      "+(10-15)% frost resistance"
+     ],
+     "link": "items/base/PT_Ring_Frost.md",
+     "name": "Ring of the Winter Pass"
+    },
+    "old": null
+   },
+   "PT_Ring_Lightning": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Уровень созданного предмета 19",
+      "+(10-15)% lightning resistance"
+     ],
+     "link": "items/base/PT_Ring_Lightning.md",
+     "name": "Ring of the Silent Storm"
+    },
+    "old": null
+   },
+   "PT_Ring_Physical": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Уровень созданного предмета 43",
+      "+(1-5) damage with attacks"
+     ],
+     "link": "items/base/PT_Ring_Physical.md",
+     "name": "Ring of the Stone Grip"
+    },
+    "old": null
+   },
+   "PT_Ring_Poison": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Уровень созданного предмета 43",
+      "+(10-15)% poison resistance"
+     ],
+     "link": "items/base/PT_Ring_Poison.md",
+     "name": "Ring of the Bog Ward"
+    },
+    "old": null
+   },
+   "PT_Ring_Spirit": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "+(10-15)% spirit resistance"
+     ],
+     "link": "items/base/PT_Ring_Spirit.md",
+     "name": "Ring of the Silent Ancestors"
+    },
+    "old": null
+   }
+  },
   "crafting": {
    "beast_armorer_p0": {
     "new": {

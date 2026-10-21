@@ -1,5 +1,3651 @@
 {
  "changes": {
+  "bases": {
+   "ArmorAshlandsMediumChest": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 181",
+      "Quality 1: Armour 28, Evasion 28",
+      "Quality 2: Armour 30, Evasion 30",
+      "Quality 3: Armour 32, Evasion 32",
+      "Quality 4: Armour 34, Evasion 34"
+     ],
+     "link": "items/base/ArmorAshlandsMediumChest.md",
+     "name": "Breastplate of Ask"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 28, Evasion 28",
+      "Quality 2: Armour 30, Evasion 30",
+      "Quality 3: Armour 32, Evasion 32",
+      "Quality 4: Armour 34, Evasion 34"
+     ],
+     "link": "items/base/ArmorAshlandsMediumChest.md",
+     "name": "Breastplate of Ask"
+    }
+   },
+   "ArmorAshlandsMediumlegs": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 181",
+      "Quality 1: Armour 28, Evasion 28",
+      "Quality 2: Armour 30, Evasion 30",
+      "Quality 3: Armour 32, Evasion 32",
+      "Quality 4: Armour 34, Evasion 34"
+     ],
+     "link": "items/base/ArmorAshlandsMediumlegs.md",
+     "name": "Trousers of Ask"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 28, Evasion 28",
+      "Quality 2: Armour 30, Evasion 30",
+      "Quality 3: Armour 32, Evasion 32",
+      "Quality 4: Armour 34, Evasion 34"
+     ],
+     "link": "items/base/ArmorAshlandsMediumlegs.md",
+     "name": "Trousers of Ask"
+    }
+   },
+   "ArmorBerserkerChest": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 19",
+      "Quality 1: Armour 7, Evasion 7",
+      "Quality 2: Armour 9, Evasion 9",
+      "Quality 3: Armour 11, Evasion 11",
+      "Quality 4: Armour 13, Evasion 13"
+     ],
+     "link": "items/base/ArmorBerserkerChest.md",
+     "name": "Patterns of the Bear"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 7, Evasion 7",
+      "Quality 2: Armour 9, Evasion 9",
+      "Quality 3: Armour 11, Evasion 11",
+      "Quality 4: Armour 13, Evasion 13"
+     ],
+     "link": "items/base/ArmorBerserkerChest.md",
+     "name": "Patterns of the Bear"
+    }
+   },
+   "ArmorBerserkerLegs": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 19",
+      "Quality 1: Armour 7, Evasion 7",
+      "Quality 2: Armour 9, Evasion 9",
+      "Quality 3: Armour 11, Evasion 11",
+      "Quality 4: Armour 13, Evasion 13"
+     ],
+     "link": "items/base/ArmorBerserkerLegs.md",
+     "name": "Loincloth of the Bear"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 7, Evasion 7",
+      "Quality 2: Armour 9, Evasion 9",
+      "Quality 3: Armour 11, Evasion 11",
+      "Quality 4: Armour 13, Evasion 13"
+     ],
+     "link": "items/base/ArmorBerserkerLegs.md",
+     "name": "Loincloth of the Bear"
+    }
+   },
+   "ArmorBerserkerUndeadChest": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 97",
+      "Quality 1: Armour 18, Evasion 18",
+      "Quality 2: Armour 20, Evasion 20",
+      "Quality 3: Armour 22, Evasion 22",
+      "Quality 4: Armour 24, Evasion 24"
+     ],
+     "link": "items/base/ArmorBerserkerUndeadChest.md",
+     "name": "Vilebone Cage"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 18, Evasion 18",
+      "Quality 2: Armour 20, Evasion 20",
+      "Quality 3: Armour 22, Evasion 22",
+      "Quality 4: Armour 24, Evasion 24"
+     ],
+     "link": "items/base/ArmorBerserkerUndeadChest.md",
+     "name": "Vilebone Cage"
+    }
+   },
+   "ArmorBerserkerUndeadLegs": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 97",
+      "Quality 1: Armour 18, Evasion 18",
+      "Quality 2: Armour 20, Evasion 20",
+      "Quality 3: Armour 22, Evasion 22",
+      "Quality 4: Armour 24, Evasion 24"
+     ],
+     "link": "items/base/ArmorBerserkerUndeadLegs.md",
+     "name": "Vilebone Drapes"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 18, Evasion 18",
+      "Quality 2: Armour 20, Evasion 20",
+      "Quality 3: Armour 22, Evasion 22",
+      "Quality 4: Armour 24, Evasion 24"
+     ],
+     "link": "items/base/ArmorBerserkerUndeadLegs.md",
+     "name": "Vilebone Drapes"
+    }
+   },
+   "ArmorBronzeChest": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 19",
+      "Quality 1: Armour 8",
+      "Quality 2: Armour 10",
+      "Quality 3: Armour 12",
+      "Quality 4: Armour 14"
+     ],
+     "link": "items/base/ArmorBronzeChest.md",
+     "name": "Bronze Plate Tunic"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 8",
+      "Quality 2: Armour 10",
+      "Quality 3: Armour 12",
+      "Quality 4: Armour 14"
+     ],
+     "link": "items/base/ArmorBronzeChest.md",
+     "name": "Bronze Plate Tunic"
+    }
+   },
+   "ArmorBronzeLegs": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 19",
+      "Quality 1: Armour 8",
+      "Quality 2: Armour 10",
+      "Quality 3: Armour 12",
+      "Quality 4: Armour 14"
+     ],
+     "link": "items/base/ArmorBronzeLegs.md",
+     "name": "Bronze Plate Leggings"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 8",
+      "Quality 2: Armour 10",
+      "Quality 3: Armour 12",
+      "Quality 4: Armour 14"
+     ],
+     "link": "items/base/ArmorBronzeLegs.md",
+     "name": "Bronze Plate Leggings"
+    }
+   },
+   "ArmorCarapaceChest": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 130",
+      "Quality 1: Armour 32",
+      "Quality 2: Armour 34",
+      "Quality 3: Armour 36",
+      "Quality 4: Armour 38"
+     ],
+     "link": "items/base/ArmorCarapaceChest.md",
+     "name": "Carapace Breastplate"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 32",
+      "Quality 2: Armour 34",
+      "Quality 3: Armour 36",
+      "Quality 4: Armour 38"
+     ],
+     "link": "items/base/ArmorCarapaceChest.md",
+     "name": "Carapace Breastplate"
+    }
+   },
+   "ArmorCarapaceLegs": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 130",
+      "Quality 1: Armour 32",
+      "Quality 2: Armour 34",
+      "Quality 3: Armour 36",
+      "Quality 4: Armour 38"
+     ],
+     "link": "items/base/ArmorCarapaceLegs.md",
+     "name": "Carapace Greaves"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 32",
+      "Quality 2: Armour 34",
+      "Quality 3: Armour 36",
+      "Quality 4: Armour 38"
+     ],
+     "link": "items/base/ArmorCarapaceLegs.md",
+     "name": "Carapace Greaves"
+    }
+   },
+   "ArmorFenringChest": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 77",
+      "Quality 1: Armour 10, Evasion 10",
+      "Quality 2: Armour 12, Evasion 12",
+      "Quality 3: Armour 14, Evasion 14",
+      "Quality 4: Armour 16, Evasion 16"
+     ],
+     "link": "items/base/ArmorFenringChest.md",
+     "name": "Fenris Coat"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 10, Evasion 10",
+      "Quality 2: Armour 12, Evasion 12",
+      "Quality 3: Armour 14, Evasion 14",
+      "Quality 4: Armour 16, Evasion 16"
+     ],
+     "link": "items/base/ArmorFenringChest.md",
+     "name": "Fenris Coat"
+    }
+   },
+   "ArmorFenringLegs": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 77",
+      "Quality 1: Armour 10, Evasion 10",
+      "Quality 2: Armour 12, Evasion 12",
+      "Quality 3: Armour 14, Evasion 14",
+      "Quality 4: Armour 16, Evasion 16"
+     ],
+     "link": "items/base/ArmorFenringLegs.md",
+     "name": "Fenris Leggings"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 10, Evasion 10",
+      "Quality 2: Armour 12, Evasion 12",
+      "Quality 3: Armour 14, Evasion 14",
+      "Quality 4: Armour 16, Evasion 16"
+     ],
+     "link": "items/base/ArmorFenringLegs.md",
+     "name": "Fenris Leggings"
+    }
+   },
+   "ArmorFlametalChest": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 181",
+      "Quality 1: Armour 38",
+      "Quality 2: Armour 40",
+      "Quality 3: Armour 42",
+      "Quality 4: Armour 44"
+     ],
+     "link": "items/base/ArmorFlametalChest.md",
+     "name": "Flametal Breastplate"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 38",
+      "Quality 2: Armour 40",
+      "Quality 3: Armour 42",
+      "Quality 4: Armour 44"
+     ],
+     "link": "items/base/ArmorFlametalChest.md",
+     "name": "Flametal Breastplate"
+    }
+   },
+   "ArmorFlametalLegs": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 181",
+      "Quality 1: Armour 38",
+      "Quality 2: Armour 40",
+      "Quality 3: Armour 42",
+      "Quality 4: Armour 44"
+     ],
+     "link": "items/base/ArmorFlametalLegs.md",
+     "name": "Flametal Greaves"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 38",
+      "Quality 2: Armour 40",
+      "Quality 3: Armour 42",
+      "Quality 4: Armour 44"
+     ],
+     "link": "items/base/ArmorFlametalLegs.md",
+     "name": "Flametal Greaves"
+    }
+   },
+   "ArmorIronChest": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 43",
+      "Quality 1: Armour 14",
+      "Quality 2: Armour 16",
+      "Quality 3: Armour 18",
+      "Quality 4: Armour 20"
+     ],
+     "link": "items/base/ArmorIronChest.md",
+     "name": "Iron Scale Mail"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 14",
+      "Quality 2: Armour 16",
+      "Quality 3: Armour 18",
+      "Quality 4: Armour 20"
+     ],
+     "link": "items/base/ArmorIronChest.md",
+     "name": "Iron Scale Mail"
+    }
+   },
+   "ArmorIronLegs": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 43",
+      "Quality 1: Armour 14",
+      "Quality 2: Armour 16",
+      "Quality 3: Armour 18",
+      "Quality 4: Armour 20"
+     ],
+     "link": "items/base/ArmorIronLegs.md",
+     "name": "Iron Greaves"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 14",
+      "Quality 2: Armour 16",
+      "Quality 3: Armour 18",
+      "Quality 4: Armour 20"
+     ],
+     "link": "items/base/ArmorIronLegs.md",
+     "name": "Iron Greaves"
+    }
+   },
+   "ArmorLeatherChest": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 1",
+      "Quality 1: Armour 2, Evasion 2",
+      "Quality 2: Armour 4, Evasion 4",
+      "Quality 3: Armour 6, Evasion 6",
+      "Quality 4: Armour 8, Evasion 8"
+     ],
+     "link": "items/base/ArmorLeatherChest.md",
+     "name": "Leather Tunic"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 2, Evasion 2",
+      "Quality 2: Armour 4, Evasion 4",
+      "Quality 3: Armour 6, Evasion 6",
+      "Quality 4: Armour 8, Evasion 8"
+     ],
+     "link": "items/base/ArmorLeatherChest.md",
+     "name": "Leather Tunic"
+    }
+   },
+   "ArmorLeatherLegs": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 1",
+      "Quality 1: Armour 2, Evasion 2",
+      "Quality 2: Armour 4, Evasion 4",
+      "Quality 3: Armour 6, Evasion 6",
+      "Quality 4: Armour 8, Evasion 8"
+     ],
+     "link": "items/base/ArmorLeatherLegs.md",
+     "name": "Leather Trousers"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 2, Evasion 2",
+      "Quality 2: Armour 4, Evasion 4",
+      "Quality 3: Armour 6, Evasion 6",
+      "Quality 4: Armour 8, Evasion 8"
+     ],
+     "link": "items/base/ArmorLeatherLegs.md",
+     "name": "Leather Trousers"
+    }
+   },
+   "ArmorLoxChest": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 97",
+      "Quality 1: Armour 16, Evasion 16",
+      "Quality 2: Armour 18, Evasion 18",
+      "Quality 3: Armour 20, Evasion 20",
+      "Quality 4: Armour 22, Evasion 22"
+     ],
+     "link": "items/base/ArmorLoxChest.md",
+     "name": "Lox Fur Jacket"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 16, Evasion 16",
+      "Quality 2: Armour 18, Evasion 18",
+      "Quality 3: Armour 20, Evasion 20",
+      "Quality 4: Armour 22, Evasion 22"
+     ],
+     "link": "items/base/ArmorLoxChest.md",
+     "name": "Lox Fur Jacket"
+    }
+   },
+   "ArmorLoxLegs": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 97",
+      "Quality 1: Armour 16, Evasion 16",
+      "Quality 2: Armour 18, Evasion 18",
+      "Quality 3: Armour 20, Evasion 20",
+      "Quality 4: Armour 22, Evasion 22"
+     ],
+     "link": "items/base/ArmorLoxLegs.md",
+     "name": "Lox Fur Trousers"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 16, Evasion 16",
+      "Quality 2: Armour 18, Evasion 18",
+      "Quality 3: Armour 20, Evasion 20",
+      "Quality 4: Armour 22, Evasion 22"
+     ],
+     "link": "items/base/ArmorLoxLegs.md",
+     "name": "Lox Fur Trousers"
+    }
+   },
+   "ArmorMageChest": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 130",
+      "Quality 1: Armour 16, Rune shield 4.8",
+      "Quality 2: Armour 18, Rune shield 5.4",
+      "Quality 3: Armour 20, Rune shield 6",
+      "Quality 4: Armour 22, Rune shield 6.6"
+     ],
+     "link": "items/base/ArmorMageChest.md",
+     "name": "Eitr-weave Robe"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 16, Rune shield 4.8",
+      "Quality 2: Armour 18, Rune shield 5.4",
+      "Quality 3: Armour 20, Rune shield 6",
+      "Quality 4: Armour 22, Rune shield 6.6"
+     ],
+     "link": "items/base/ArmorMageChest.md",
+     "name": "Eitr-weave Robe"
+    }
+   },
+   "ArmorMageChest_Ashlands": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 181",
+      "Quality 1: Armour 19, Rune shield 5.7",
+      "Quality 2: Armour 21, Rune shield 6.3",
+      "Quality 3: Armour 23, Rune shield 6.9",
+      "Quality 4: Armour 25, Rune shield 7.5"
+     ],
+     "link": "items/base/ArmorMageChest_Ashlands.md",
+     "name": "Robes of Embla"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 19, Rune shield 5.7",
+      "Quality 2: Armour 21, Rune shield 6.3",
+      "Quality 3: Armour 23, Rune shield 6.9",
+      "Quality 4: Armour 25, Rune shield 7.5"
+     ],
+     "link": "items/base/ArmorMageChest_Ashlands.md",
+     "name": "Robes of Embla"
+    }
+   },
+   "ArmorMageLegs": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 130",
+      "Quality 1: Armour 16, Rune shield 4.8",
+      "Quality 2: Armour 18, Rune shield 5.4",
+      "Quality 3: Armour 20, Rune shield 6",
+      "Quality 4: Armour 22, Rune shield 6.6"
+     ],
+     "link": "items/base/ArmorMageLegs.md",
+     "name": "Eitr-weave Trousers"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 16, Rune shield 4.8",
+      "Quality 2: Armour 18, Rune shield 5.4",
+      "Quality 3: Armour 20, Rune shield 6",
+      "Quality 4: Armour 22, Rune shield 6.6"
+     ],
+     "link": "items/base/ArmorMageLegs.md",
+     "name": "Eitr-weave Trousers"
+    }
+   },
+   "ArmorMageLegs_Ashlands": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 181",
+      "Quality 1: Armour 19, Rune shield 5.7",
+      "Quality 2: Armour 21, Rune shield 6.3",
+      "Quality 3: Armour 23, Rune shield 6.9",
+      "Quality 4: Armour 25, Rune shield 7.5"
+     ],
+     "link": "items/base/ArmorMageLegs_Ashlands.md",
+     "name": "Trousers of Embla"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 19, Rune shield 5.7",
+      "Quality 2: Armour 21, Rune shield 6.3",
+      "Quality 3: Armour 23, Rune shield 6.9",
+      "Quality 4: Armour 25, Rune shield 7.5"
+     ],
+     "link": "items/base/ArmorMageLegs_Ashlands.md",
+     "name": "Trousers of Embla"
+    }
+   },
+   "ArmorPaddedCuirass": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 97",
+      "Quality 1: Armour 26",
+      "Quality 2: Armour 28",
+      "Quality 3: Armour 30",
+      "Quality 4: Armour 32"
+     ],
+     "link": "items/base/ArmorPaddedCuirass.md",
+     "name": "Padded Cuirass"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 26",
+      "Quality 2: Armour 28",
+      "Quality 3: Armour 30",
+      "Quality 4: Armour 32"
+     ],
+     "link": "items/base/ArmorPaddedCuirass.md",
+     "name": "Padded Cuirass"
+    }
+   },
+   "ArmorPaddedGreaves": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 97",
+      "Quality 1: Armour 26",
+      "Quality 2: Armour 28",
+      "Quality 3: Armour 30",
+      "Quality 4: Armour 32"
+     ],
+     "link": "items/base/ArmorPaddedGreaves.md",
+     "name": "Padded Greaves"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 26",
+      "Quality 2: Armour 28",
+      "Quality 3: Armour 30",
+      "Quality 4: Armour 32"
+     ],
+     "link": "items/base/ArmorPaddedGreaves.md",
+     "name": "Padded Greaves"
+    }
+   },
+   "ArmorRagsChest": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 1",
+      "Quality 1: Armour 1, Evasion 1",
+      "Quality 2: Armour 2, Evasion 2"
+     ],
+     "link": "items/base/ArmorRagsChest.md",
+     "name": "Rag Tunic"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 1, Evasion 1",
+      "Quality 2: Armour 2, Evasion 2"
+     ],
+     "link": "items/base/ArmorRagsChest.md",
+     "name": "Rag Tunic"
+    }
+   },
+   "ArmorRagsLegs": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 1",
+      "Quality 1: Armour 1, Evasion 1",
+      "Quality 2: Armour 2, Evasion 2"
+     ],
+     "link": "items/base/ArmorRagsLegs.md",
+     "name": "Rag Trousers"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 1, Evasion 1",
+      "Quality 2: Armour 2, Evasion 2"
+     ],
+     "link": "items/base/ArmorRagsLegs.md",
+     "name": "Rag Trousers"
+    }
+   },
+   "ArmorRootChest": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 43",
+      "Quality 1: Armour 8, Evasion 4",
+      "Quality 2: Armour 10, Evasion 5",
+      "Quality 3: Armour 12, Evasion 6",
+      "Quality 4: Armour 14, Evasion 7"
+     ],
+     "link": "items/base/ArmorRootChest.md",
+     "name": "Root Harnesk"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 8, Evasion 4",
+      "Quality 2: Armour 10, Evasion 5",
+      "Quality 3: Armour 12, Evasion 6",
+      "Quality 4: Armour 14, Evasion 7"
+     ],
+     "link": "items/base/ArmorRootChest.md",
+     "name": "Root Harnesk"
+    }
+   },
+   "ArmorRootLegs": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 43",
+      "Quality 1: Armour 8, Evasion 4",
+      "Quality 2: Armour 10, Evasion 5",
+      "Quality 3: Armour 12, Evasion 6",
+      "Quality 4: Armour 14, Evasion 7"
+     ],
+     "link": "items/base/ArmorRootLegs.md",
+     "name": "Root Leggings"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 8, Evasion 4",
+      "Quality 2: Armour 10, Evasion 5",
+      "Quality 3: Armour 12, Evasion 6",
+      "Quality 4: Armour 14, Evasion 7"
+     ],
+     "link": "items/base/ArmorRootLegs.md",
+     "name": "Root Leggings"
+    }
+   },
+   "ArmorTrollLeatherChest": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 19",
+      "Quality 1: Armour 6, Evasion 6",
+      "Quality 2: Armour 8, Evasion 8",
+      "Quality 3: Armour 10, Evasion 10",
+      "Quality 4: Armour 12, Evasion 12"
+     ],
+     "link": "items/base/ArmorTrollLeatherChest.md",
+     "name": "Troll Leather Tunic"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 6, Evasion 6",
+      "Quality 2: Armour 8, Evasion 8",
+      "Quality 3: Armour 10, Evasion 10",
+      "Quality 4: Armour 12, Evasion 12"
+     ],
+     "link": "items/base/ArmorTrollLeatherChest.md",
+     "name": "Troll Leather Tunic"
+    }
+   },
+   "ArmorTrollLeatherLegs": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 19",
+      "Quality 1: Armour 6, Evasion 6",
+      "Quality 2: Armour 8, Evasion 8",
+      "Quality 3: Armour 10, Evasion 10",
+      "Quality 4: Armour 12, Evasion 12"
+     ],
+     "link": "items/base/ArmorTrollLeatherLegs.md",
+     "name": "Troll Leather Trousers"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 6, Evasion 6",
+      "Quality 2: Armour 8, Evasion 8",
+      "Quality 3: Armour 10, Evasion 10",
+      "Quality 4: Armour 12, Evasion 12"
+     ],
+     "link": "items/base/ArmorTrollLeatherLegs.md",
+     "name": "Troll Leather Trousers"
+    }
+   },
+   "ArmorWolfChest": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 77",
+      "Quality 1: Armour 20",
+      "Quality 2: Armour 22",
+      "Quality 3: Armour 24",
+      "Quality 4: Armour 26"
+     ],
+     "link": "items/base/ArmorWolfChest.md",
+     "name": "Wolf Hide Chestpiece"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 20",
+      "Quality 2: Armour 22",
+      "Quality 3: Armour 24",
+      "Quality 4: Armour 26"
+     ],
+     "link": "items/base/ArmorWolfChest.md",
+     "name": "Wolf Hide Chestpiece"
+    }
+   },
+   "ArmorWolfLegs": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 77",
+      "Quality 1: Armour 20",
+      "Quality 2: Armour 22",
+      "Quality 3: Armour 24",
+      "Quality 4: Armour 26"
+     ],
+     "link": "items/base/ArmorWolfLegs.md",
+     "name": "Wolf Hide Trousers"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 20",
+      "Quality 2: Armour 22",
+      "Quality 3: Armour 24",
+      "Quality 4: Armour 26"
+     ],
+     "link": "items/base/ArmorWolfLegs.md",
+     "name": "Wolf Hide Trousers"
+    }
+   },
+   "AtgeirBlackmetal": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 97"
+     ],
+     "link": "items/base/AtgeirBlackmetal.md",
+     "name": "Black Metal Atgeir"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/AtgeirBlackmetal.md",
+     "name": "Black Metal Atgeir"
+    }
+   },
+   "AtgeirBronze": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 19"
+     ],
+     "link": "items/base/AtgeirBronze.md",
+     "name": "Bronze Atgeir"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/AtgeirBronze.md",
+     "name": "Bronze Atgeir"
+    }
+   },
+   "AtgeirHimminAfl": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 130"
+     ],
+     "link": "items/base/AtgeirHimminAfl.md",
+     "name": "Himminafl"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/AtgeirHimminAfl.md",
+     "name": "Himminafl"
+    }
+   },
+   "AtgeirIron": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 43"
+     ],
+     "link": "items/base/AtgeirIron.md",
+     "name": "Iron Atgeir"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/AtgeirIron.md",
+     "name": "Iron Atgeir"
+    }
+   },
+   "AxeBerzerkr": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 181"
+     ],
+     "link": "items/base/AxeBerzerkr.md",
+     "name": "Berserkir Axes"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/AxeBerzerkr.md",
+     "name": "Berserkir Axes"
+    }
+   },
+   "AxeBerzerkrBlood": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 181"
+     ],
+     "link": "items/base/AxeBerzerkrBlood.md",
+     "name": "Bleeding Berserkir Axes"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/AxeBerzerkrBlood.md",
+     "name": "Bleeding Berserkir Axes"
+    }
+   },
+   "AxeBerzerkrLightning": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 181"
+     ],
+     "link": "items/base/AxeBerzerkrLightning.md",
+     "name": "Thundering Berserkir Axes"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/AxeBerzerkrLightning.md",
+     "name": "Thundering Berserkir Axes"
+    }
+   },
+   "AxeBerzerkrNature": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 181"
+     ],
+     "link": "items/base/AxeBerzerkrNature.md",
+     "name": "Primal Berserkir Axes"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/AxeBerzerkrNature.md",
+     "name": "Primal Berserkir Axes"
+    }
+   },
+   "AxeBlackMetal": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 97"
+     ],
+     "link": "items/base/AxeBlackMetal.md",
+     "name": "Black Metal Axe"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/AxeBlackMetal.md",
+     "name": "Black Metal Axe"
+    }
+   },
+   "AxeBronze": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 43"
+     ],
+     "link": "items/base/AxeBronze.md",
+     "name": "Bronze Axe"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/AxeBronze.md",
+     "name": "Bronze Axe"
+    }
+   },
+   "AxeEarly": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 43"
+     ],
+     "link": "items/base/AxeEarly.md",
+     "name": "Early Axes"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/AxeEarly.md",
+     "name": "Early Axes"
+    }
+   },
+   "AxeFlint": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 19"
+     ],
+     "link": "items/base/AxeFlint.md",
+     "name": "Flint Axe"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/AxeFlint.md",
+     "name": "Flint Axe"
+    }
+   },
+   "AxeIron": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 77"
+     ],
+     "link": "items/base/AxeIron.md",
+     "name": "Iron Axe"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/AxeIron.md",
+     "name": "Iron Axe"
+    }
+   },
+   "AxeJotunBane": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 130"
+     ],
+     "link": "items/base/AxeJotunBane.md",
+     "name": "Jotun Bane"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/AxeJotunBane.md",
+     "name": "Jotun Bane"
+    }
+   },
+   "AxeStone": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 1"
+     ],
+     "link": "items/base/AxeStone.md",
+     "name": "Stone Axe"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/AxeStone.md",
+     "name": "Stone Axe"
+    }
+   },
+   "Battleaxe": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 43"
+     ],
+     "link": "items/base/Battleaxe.md",
+     "name": "Battleaxe"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/Battleaxe.md",
+     "name": "Battleaxe"
+    }
+   },
+   "BattleaxeBlackmetal": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 97"
+     ],
+     "link": "items/base/BattleaxeBlackmetal.md",
+     "name": "Black Metal Battleaxe"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/BattleaxeBlackmetal.md",
+     "name": "Black Metal Battleaxe"
+    }
+   },
+   "BattleaxeCrystal": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 77"
+     ],
+     "link": "items/base/BattleaxeCrystal.md",
+     "name": "Crystal Battleaxe"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/BattleaxeCrystal.md",
+     "name": "Crystal Battleaxe"
+    }
+   },
+   "BattleaxeSkullSplittur": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 130"
+     ],
+     "link": "items/base/BattleaxeSkullSplittur.md",
+     "name": "Skull Splittur"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/BattleaxeSkullSplittur.md",
+     "name": "Skull Splittur"
+    }
+   },
+   "Bow": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 1"
+     ],
+     "link": "items/base/Bow.md",
+     "name": "Crude Bow"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/Bow.md",
+     "name": "Crude Bow"
+    }
+   },
+   "BowAshlands": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 181"
+     ],
+     "link": "items/base/BowAshlands.md",
+     "name": "Ash Fang"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/BowAshlands.md",
+     "name": "Ash Fang"
+    }
+   },
+   "BowAshlandsBlood": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 181"
+     ],
+     "link": "items/base/BowAshlandsBlood.md",
+     "name": "Blood Fang"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/BowAshlandsBlood.md",
+     "name": "Blood Fang"
+    }
+   },
+   "BowAshlandsRoot": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 181"
+     ],
+     "link": "items/base/BowAshlandsRoot.md",
+     "name": "Root Fang"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/BowAshlandsRoot.md",
+     "name": "Root Fang"
+    }
+   },
+   "BowAshlandsStorm": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 181"
+     ],
+     "link": "items/base/BowAshlandsStorm.md",
+     "name": "Storm Fang"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/BowAshlandsStorm.md",
+     "name": "Storm Fang"
+    }
+   },
+   "BowDraugrFang": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 77"
+     ],
+     "link": "items/base/BowDraugrFang.md",
+     "name": "Draugr Fang"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/BowDraugrFang.md",
+     "name": "Draugr Fang"
+    }
+   },
+   "BowFineWood": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 19"
+     ],
+     "link": "items/base/BowFineWood.md",
+     "name": "Finewood Bow"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/BowFineWood.md",
+     "name": "Finewood Bow"
+    }
+   },
+   "BowHuntsman": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 43"
+     ],
+     "link": "items/base/BowHuntsman.md",
+     "name": "Huntsman Bow"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/BowHuntsman.md",
+     "name": "Huntsman Bow"
+    }
+   },
+   "BowSpineSnap": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 130"
+     ],
+     "link": "items/base/BowSpineSnap.md",
+     "name": "Spinesnap"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/BowSpineSnap.md",
+     "name": "Spinesnap"
+    }
+   },
+   "CapeAsh": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 181",
+      "Quality 1: Armour 12",
+      "Quality 2: Armour 14",
+      "Quality 3: Armour 16",
+      "Quality 4: Armour 18"
+     ],
+     "link": "items/base/CapeAsh.md",
+     "name": "Ashen Cape"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 12",
+      "Quality 2: Armour 14",
+      "Quality 3: Armour 16",
+      "Quality 4: Armour 18"
+     ],
+     "link": "items/base/CapeAsh.md",
+     "name": "Ashen Cape"
+    }
+   },
+   "CapeAsksvin": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 181",
+      "Quality 1: Armour 1",
+      "Quality 2: Armour 2",
+      "Quality 3: Armour 3",
+      "Quality 4: Armour 4"
+     ],
+     "link": "items/base/CapeAsksvin.md",
+     "name": "Asksvin Cloak"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 1",
+      "Quality 2: Armour 2",
+      "Quality 3: Armour 3",
+      "Quality 4: Armour 4"
+     ],
+     "link": "items/base/CapeAsksvin.md",
+     "name": "Asksvin Cloak"
+    }
+   },
+   "CapeDeerHide": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 19",
+      "Quality 1: Armour 1",
+      "Quality 2: Armour 2",
+      "Quality 3: Armour 3",
+      "Quality 4: Armour 4"
+     ],
+     "link": "items/base/CapeDeerHide.md",
+     "name": "Deer Hide Cape"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 1",
+      "Quality 2: Armour 2",
+      "Quality 3: Armour 3",
+      "Quality 4: Armour 4"
+     ],
+     "link": "items/base/CapeDeerHide.md",
+     "name": "Deer Hide Cape"
+    }
+   },
+   "CapeFeather": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 130",
+      "Quality 1: Armour 1",
+      "Quality 2: Armour 2",
+      "Quality 3: Armour 3",
+      "Quality 4: Armour 4"
+     ],
+     "link": "items/base/CapeFeather.md",
+     "name": "Feather Cape"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 1",
+      "Quality 2: Armour 2",
+      "Quality 3: Armour 3",
+      "Quality 4: Armour 4"
+     ],
+     "link": "items/base/CapeFeather.md",
+     "name": "Feather Cape"
+    }
+   },
+   "CapeLinen": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 97",
+      "Quality 1: Armour 1",
+      "Quality 2: Armour 2",
+      "Quality 3: Armour 3",
+      "Quality 4: Armour 4"
+     ],
+     "link": "items/base/CapeLinen.md",
+     "name": "Linen Cape"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 1",
+      "Quality 2: Armour 2",
+      "Quality 3: Armour 3",
+      "Quality 4: Armour 4"
+     ],
+     "link": "items/base/CapeLinen.md",
+     "name": "Linen Cape"
+    }
+   },
+   "CapeLox": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 97",
+      "Quality 1: Armour 1",
+      "Quality 2: Armour 2",
+      "Quality 3: Armour 3",
+      "Quality 4: Armour 4"
+     ],
+     "link": "items/base/CapeLox.md",
+     "name": "Lox Cape"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 1",
+      "Quality 2: Armour 2",
+      "Quality 3: Armour 3",
+      "Quality 4: Armour 4"
+     ],
+     "link": "items/base/CapeLox.md",
+     "name": "Lox Cape"
+    }
+   },
+   "CapeOdin": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 19",
+      "Quality 1: Armour 1",
+      "Quality 2: Armour 2",
+      "Quality 3: Armour 3",
+      "Quality 4: Armour 4"
+     ],
+     "link": "items/base/CapeOdin.md",
+     "name": "Cape of Oden"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 1",
+      "Quality 2: Armour 2",
+      "Quality 3: Armour 3",
+      "Quality 4: Armour 4"
+     ],
+     "link": "items/base/CapeOdin.md",
+     "name": "Cape of Oden"
+    }
+   },
+   "CapeTrollHide": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 19",
+      "Quality 1: Armour 1",
+      "Quality 2: Armour 2",
+      "Quality 3: Armour 3",
+      "Quality 4: Armour 4"
+     ],
+     "link": "items/base/CapeTrollHide.md",
+     "name": "Troll Hide Cape"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 1",
+      "Quality 2: Armour 2",
+      "Quality 3: Armour 3",
+      "Quality 4: Armour 4"
+     ],
+     "link": "items/base/CapeTrollHide.md",
+     "name": "Troll Hide Cape"
+    }
+   },
+   "CapeWolf": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 77",
+      "Quality 1: Armour 1",
+      "Quality 2: Armour 2",
+      "Quality 3: Armour 3",
+      "Quality 4: Armour 4"
+     ],
+     "link": "items/base/CapeWolf.md",
+     "name": "Wolf Fur Cape"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 1",
+      "Quality 2: Armour 2",
+      "Quality 3: Armour 3",
+      "Quality 4: Armour 4"
+     ],
+     "link": "items/base/CapeWolf.md",
+     "name": "Wolf Fur Cape"
+    }
+   },
+   "Club": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 1"
+     ],
+     "link": "items/base/Club.md",
+     "name": "Club"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/Club.md",
+     "name": "Club"
+    }
+   },
+   "CrossbowArbalest": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 130"
+     ],
+     "link": "items/base/CrossbowArbalest.md",
+     "name": "Arbalest"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/CrossbowArbalest.md",
+     "name": "Arbalest"
+    }
+   },
+   "CrossbowRipper": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 181"
+     ],
+     "link": "items/base/CrossbowRipper.md",
+     "name": "Ripper"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/CrossbowRipper.md",
+     "name": "Ripper"
+    }
+   },
+   "CrossbowRipperBlood": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 181"
+     ],
+     "link": "items/base/CrossbowRipperBlood.md",
+     "name": "Wound Ripper"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/CrossbowRipperBlood.md",
+     "name": "Wound Ripper"
+    }
+   },
+   "CrossbowRipperLightning": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 181"
+     ],
+     "link": "items/base/CrossbowRipperLightning.md",
+     "name": "Storm Ripper"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/CrossbowRipperLightning.md",
+     "name": "Storm Ripper"
+    }
+   },
+   "CrossbowRipperNature": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 181"
+     ],
+     "link": "items/base/CrossbowRipperNature.md",
+     "name": "Root Ripper"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/CrossbowRipperNature.md",
+     "name": "Root Ripper"
+    }
+   },
+   "FistBjornClaw": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 19"
+     ],
+     "link": "items/base/FistBjornClaw.md",
+     "name": "Paws of the Bear"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/FistBjornClaw.md",
+     "name": "Paws of the Bear"
+    }
+   },
+   "FistBjornUndeadClaw": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 97"
+     ],
+     "link": "items/base/FistBjornUndeadClaw.md",
+     "name": "Vilebone Maulclaws"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/FistBjornUndeadClaw.md",
+     "name": "Vilebone Maulclaws"
+    }
+   },
+   "FistFenrirClaw": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 77"
+     ],
+     "link": "items/base/FistFenrirClaw.md",
+     "name": "Flesh Rippers"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/FistFenrirClaw.md",
+     "name": "Flesh Rippers"
+    }
+   },
+   "HelmetAshlandsMediumHood": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 181",
+      "Quality 1: Armour 28",
+      "Quality 2: Armour 30",
+      "Quality 3: Armour 32",
+      "Quality 4: Armour 34"
+     ],
+     "link": "items/base/HelmetAshlandsMediumHood.md",
+     "name": "Hood of Ask"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 28",
+      "Quality 2: Armour 30",
+      "Quality 3: Armour 32",
+      "Quality 4: Armour 34"
+     ],
+     "link": "items/base/HelmetAshlandsMediumHood.md",
+     "name": "Hood of Ask"
+    }
+   },
+   "HelmetBerserkerHood": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 130",
+      "Quality 1: Armour 7",
+      "Quality 2: Armour 9",
+      "Quality 3: Armour 11",
+      "Quality 4: Armour 13"
+     ],
+     "link": "items/base/HelmetBerserkerHood.md",
+     "name": "Headdress of the Bear"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 7",
+      "Quality 2: Armour 9",
+      "Quality 3: Armour 11",
+      "Quality 4: Armour 13"
+     ],
+     "link": "items/base/HelmetBerserkerHood.md",
+     "name": "Headdress of the Bear"
+    }
+   },
+   "HelmetBerserkerUndead": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 97",
+      "Quality 1: Armour 12",
+      "Quality 2: Armour 14",
+      "Quality 3: Armour 16",
+      "Quality 4: Armour 18"
+     ],
+     "link": "items/base/HelmetBerserkerUndead.md",
+     "name": "Vilebone Visage"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 12",
+      "Quality 2: Armour 14",
+      "Quality 3: Armour 16",
+      "Quality 4: Armour 18"
+     ],
+     "link": "items/base/HelmetBerserkerUndead.md",
+     "name": "Vilebone Visage"
+    }
+   },
+   "HelmetBronze": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 19",
+      "Quality 1: Armour 8",
+      "Quality 2: Armour 10",
+      "Quality 3: Armour 12",
+      "Quality 4: Armour 14"
+     ],
+     "link": "items/base/HelmetBronze.md",
+     "name": "Bronze Helmet"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 8",
+      "Quality 2: Armour 10",
+      "Quality 3: Armour 12",
+      "Quality 4: Armour 14"
+     ],
+     "link": "items/base/HelmetBronze.md",
+     "name": "Bronze Helmet"
+    }
+   },
+   "HelmetCarapace": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 130",
+      "Quality 1: Armour 32",
+      "Quality 2: Armour 34",
+      "Quality 3: Armour 36",
+      "Quality 4: Armour 38"
+     ],
+     "link": "items/base/HelmetCarapace.md",
+     "name": "Carapace Helmet"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 32",
+      "Quality 2: Armour 34",
+      "Quality 3: Armour 36",
+      "Quality 4: Armour 38"
+     ],
+     "link": "items/base/HelmetCarapace.md",
+     "name": "Carapace Helmet"
+    }
+   },
+   "HelmetCelebration": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 19",
+      "Quality 1: Armour 1",
+      "Quality 2: Armour 3",
+      "Quality 3: Armour 5",
+      "Quality 4: Armour 7"
+     ],
+     "link": "items/base/HelmetCelebration.md",
+     "name": "Celebratory Cap"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 1",
+      "Quality 2: Armour 3",
+      "Quality 3: Armour 5",
+      "Quality 4: Armour 7"
+     ],
+     "link": "items/base/HelmetCelebration.md",
+     "name": "Celebratory Cap"
+    }
+   },
+   "HelmetDrake": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 77",
+      "Quality 1: Armour 20",
+      "Quality 2: Armour 22",
+      "Quality 3: Armour 24",
+      "Quality 4: Armour 26"
+     ],
+     "link": "items/base/HelmetDrake.md",
+     "name": "Drake Helmet"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 20",
+      "Quality 2: Armour 22",
+      "Quality 3: Armour 24",
+      "Quality 4: Armour 26"
+     ],
+     "link": "items/base/HelmetDrake.md",
+     "name": "Drake Helmet"
+    }
+   },
+   "HelmetFenring": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 77",
+      "Quality 1: Armour 10, Evasion 10",
+      "Quality 2: Armour 12, Evasion 12",
+      "Quality 3: Armour 14, Evasion 14",
+      "Quality 4: Armour 16, Evasion 16"
+     ],
+     "link": "items/base/HelmetFenring.md",
+     "name": "Fenris Hood"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 10, Evasion 10",
+      "Quality 2: Armour 12, Evasion 12",
+      "Quality 3: Armour 14, Evasion 14",
+      "Quality 4: Armour 16, Evasion 16"
+     ],
+     "link": "items/base/HelmetFenring.md",
+     "name": "Fenris Hood"
+    }
+   },
+   "HelmetFishingHat": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 19",
+      "Quality 1: Armour 8",
+      "Quality 2: Armour 12",
+      "Quality 3: Armour 16",
+      "Quality 4: Armour 20"
+     ],
+     "link": "items/base/HelmetFishingHat.md",
+     "name": "Fishing Hat"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 8",
+      "Quality 2: Armour 12",
+      "Quality 3: Armour 16",
+      "Quality 4: Armour 20"
+     ],
+     "link": "items/base/HelmetFishingHat.md",
+     "name": "Fishing Hat"
+    }
+   },
+   "HelmetFlametal": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 181",
+      "Quality 1: Armour 38",
+      "Quality 2: Armour 40",
+      "Quality 3: Armour 42",
+      "Quality 4: Armour 44"
+     ],
+     "link": "items/base/HelmetFlametal.md",
+     "name": "Flametal Helmet"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 38",
+      "Quality 2: Armour 40",
+      "Quality 3: Armour 42",
+      "Quality 4: Armour 44"
+     ],
+     "link": "items/base/HelmetFlametal.md",
+     "name": "Flametal Helmet"
+    }
+   },
+   "HelmetIron": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 43",
+      "Quality 1: Armour 14",
+      "Quality 2: Armour 16",
+      "Quality 3: Armour 18",
+      "Quality 4: Armour 20"
+     ],
+     "link": "items/base/HelmetIron.md",
+     "name": "Iron Helmet"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 14",
+      "Quality 2: Armour 16",
+      "Quality 3: Armour 18",
+      "Quality 4: Armour 20"
+     ],
+     "link": "items/base/HelmetIron.md",
+     "name": "Iron Helmet"
+    }
+   },
+   "HelmetLeather": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 1",
+      "Quality 1: Armour 2, Evasion 2",
+      "Quality 2: Armour 4, Evasion 4",
+      "Quality 3: Armour 6, Evasion 6",
+      "Quality 4: Armour 8, Evasion 8"
+     ],
+     "link": "items/base/HelmetLeather.md",
+     "name": "Leather Helmet"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 2, Evasion 2",
+      "Quality 2: Armour 4, Evasion 4",
+      "Quality 3: Armour 6, Evasion 6",
+      "Quality 4: Armour 8, Evasion 8"
+     ],
+     "link": "items/base/HelmetLeather.md",
+     "name": "Leather Helmet"
+    }
+   },
+   "HelmetLox": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 97",
+      "Quality 1: Armour 16",
+      "Quality 2: Armour 18",
+      "Quality 3: Armour 20",
+      "Quality 4: Armour 22"
+     ],
+     "link": "items/base/HelmetLox.md",
+     "name": "Lox Fur Hood"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 16",
+      "Quality 2: Armour 18",
+      "Quality 3: Armour 20",
+      "Quality 4: Armour 22"
+     ],
+     "link": "items/base/HelmetLox.md",
+     "name": "Lox Fur Hood"
+    }
+   },
+   "HelmetMage": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 130",
+      "Quality 1: Armour 16, Rune shield 4.8",
+      "Quality 2: Armour 18, Rune shield 5.4",
+      "Quality 3: Armour 20, Rune shield 6",
+      "Quality 4: Armour 22, Rune shield 6.6"
+     ],
+     "link": "items/base/HelmetMage.md",
+     "name": "Eitr-weave Hood"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 16, Rune shield 4.8",
+      "Quality 2: Armour 18, Rune shield 5.4",
+      "Quality 3: Armour 20, Rune shield 6",
+      "Quality 4: Armour 22, Rune shield 6.6"
+     ],
+     "link": "items/base/HelmetMage.md",
+     "name": "Eitr-weave Hood"
+    }
+   },
+   "HelmetMage_Ashlands": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 181",
+      "Quality 1: Armour 19, Rune shield 5.7",
+      "Quality 2: Armour 21, Rune shield 6.3",
+      "Quality 3: Armour 23, Rune shield 6.9",
+      "Quality 4: Armour 25, Rune shield 7.5"
+     ],
+     "link": "items/base/HelmetMage_Ashlands.md",
+     "name": "Hood of Embla"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 19, Rune shield 5.7",
+      "Quality 2: Armour 21, Rune shield 6.3",
+      "Quality 3: Armour 23, Rune shield 6.9",
+      "Quality 4: Armour 25, Rune shield 7.5"
+     ],
+     "link": "items/base/HelmetMage_Ashlands.md",
+     "name": "Hood of Embla"
+    }
+   },
+   "HelmetOdin": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 19",
+      "Quality 1: Armour 1",
+      "Quality 2: Armour 2",
+      "Quality 3: Armour 3",
+      "Quality 4: Armour 4"
+     ],
+     "link": "items/base/HelmetOdin.md",
+     "name": "Hood of Oden"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 1",
+      "Quality 2: Armour 2",
+      "Quality 3: Armour 3",
+      "Quality 4: Armour 4"
+     ],
+     "link": "items/base/HelmetOdin.md",
+     "name": "Hood of Oden"
+    }
+   },
+   "HelmetPadded": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 97",
+      "Quality 1: Armour 26",
+      "Quality 2: Armour 28",
+      "Quality 3: Armour 30",
+      "Quality 4: Armour 32"
+     ],
+     "link": "items/base/HelmetPadded.md",
+     "name": "Padded Helmet"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 26",
+      "Quality 2: Armour 28",
+      "Quality 3: Armour 30",
+      "Quality 4: Armour 32"
+     ],
+     "link": "items/base/HelmetPadded.md",
+     "name": "Padded Helmet"
+    }
+   },
+   "HelmetRoot": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 43",
+      "Quality 1: Armour 8, Evasion 4",
+      "Quality 2: Armour 10, Evasion 5",
+      "Quality 3: Armour 12, Evasion 6",
+      "Quality 4: Armour 14, Evasion 7"
+     ],
+     "link": "items/base/HelmetRoot.md",
+     "name": "Root Mask"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 8, Evasion 4",
+      "Quality 2: Armour 10, Evasion 5",
+      "Quality 3: Armour 12, Evasion 6",
+      "Quality 4: Armour 14, Evasion 7"
+     ],
+     "link": "items/base/HelmetRoot.md",
+     "name": "Root Mask"
+    }
+   },
+   "HelmetTrollLeather": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 19",
+      "Quality 1: Armour 6, Evasion 6",
+      "Quality 2: Armour 8, Evasion 8",
+      "Quality 3: Armour 10, Evasion 10",
+      "Quality 4: Armour 12, Evasion 12"
+     ],
+     "link": "items/base/HelmetTrollLeather.md",
+     "name": "Troll Leather Hood"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 6, Evasion 6",
+      "Quality 2: Armour 8, Evasion 8",
+      "Quality 3: Armour 10, Evasion 10",
+      "Quality 4: Armour 12, Evasion 12"
+     ],
+     "link": "items/base/HelmetTrollLeather.md",
+     "name": "Troll Leather Hood"
+    }
+   },
+   "KnifeBlackMetal": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 97"
+     ],
+     "link": "items/base/KnifeBlackMetal.md",
+     "name": "Black Metal Knife"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/KnifeBlackMetal.md",
+     "name": "Black Metal Knife"
+    }
+   },
+   "KnifeChitin": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 77"
+     ],
+     "link": "items/base/KnifeChitin.md",
+     "name": "Abyssal Razor"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/KnifeChitin.md",
+     "name": "Abyssal Razor"
+    }
+   },
+   "KnifeCopper": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 19"
+     ],
+     "link": "items/base/KnifeCopper.md",
+     "name": "Copper Knife"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/KnifeCopper.md",
+     "name": "Copper Knife"
+    }
+   },
+   "KnifeFlint": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 1"
+     ],
+     "link": "items/base/KnifeFlint.md",
+     "name": "Flint Knife"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/KnifeFlint.md",
+     "name": "Flint Knife"
+    }
+   },
+   "KnifeSilver": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 77"
+     ],
+     "link": "items/base/KnifeSilver.md",
+     "name": "Silver Knife"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/KnifeSilver.md",
+     "name": "Silver Knife"
+    }
+   },
+   "KnifeSkollAndHati": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 97"
+     ],
+     "link": "items/base/KnifeSkollAndHati.md",
+     "name": "Skoll and Hati"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/KnifeSkollAndHati.md",
+     "name": "Skoll and Hati"
+    }
+   },
+   "MaceBronze": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 19"
+     ],
+     "link": "items/base/MaceBronze.md",
+     "name": "Bronze Mace"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/MaceBronze.md",
+     "name": "Bronze Mace"
+    }
+   },
+   "MaceEldner": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 181"
+     ],
+     "link": "items/base/MaceEldner.md",
+     "name": "Flametal Mace"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/MaceEldner.md",
+     "name": "Flametal Mace"
+    }
+   },
+   "MaceEldnerBlood": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 181"
+     ],
+     "link": "items/base/MaceEldnerBlood.md",
+     "name": "Bloodgeon"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/MaceEldnerBlood.md",
+     "name": "Bloodgeon"
+    }
+   },
+   "MaceEldnerLightning": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 181"
+     ],
+     "link": "items/base/MaceEldnerLightning.md",
+     "name": "Storm Star"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/MaceEldnerLightning.md",
+     "name": "Storm Star"
+    }
+   },
+   "MaceEldnerNature": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 181"
+     ],
+     "link": "items/base/MaceEldnerNature.md",
+     "name": "Klossen"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/MaceEldnerNature.md",
+     "name": "Klossen"
+    }
+   },
+   "MaceIron": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 43"
+     ],
+     "link": "items/base/MaceIron.md",
+     "name": "Iron Mace"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/MaceIron.md",
+     "name": "Iron Mace"
+    }
+   },
+   "MaceNeedle": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 97"
+     ],
+     "link": "items/base/MaceNeedle.md",
+     "name": "Porcupine"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/MaceNeedle.md",
+     "name": "Porcupine"
+    }
+   },
+   "MaceSilver": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 77"
+     ],
+     "link": "items/base/MaceSilver.md",
+     "name": "Frostner"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/MaceSilver.md",
+     "name": "Frostner"
+    }
+   },
+   "PickaxeBlackMetal": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 130"
+     ],
+     "link": "items/base/PickaxeBlackMetal.md",
+     "name": "Black Metal Pickaxe"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/PickaxeBlackMetal.md",
+     "name": "Black Metal Pickaxe"
+    }
+   },
+   "PickaxeBronze": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 19"
+     ],
+     "link": "items/base/PickaxeBronze.md",
+     "name": "Bronze Pickaxe"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/PickaxeBronze.md",
+     "name": "Bronze Pickaxe"
+    }
+   },
+   "PickaxeIron": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 43"
+     ],
+     "link": "items/base/PickaxeIron.md",
+     "name": "Iron Pickaxe"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/PickaxeIron.md",
+     "name": "Iron Pickaxe"
+    }
+   },
+   "Scythe": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 77"
+     ],
+     "link": "items/base/Scythe.md",
+     "name": "Scythe"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/Scythe.md",
+     "name": "Scythe"
+    }
+   },
+   "ShieldBanded": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 43",
+      "Quality 1: Armour 200",
+      "Quality 2: Armour 201",
+      "Quality 3: Armour 202"
+     ],
+     "link": "items/base/ShieldBanded.md",
+     "name": "Banded Shield"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 200",
+      "Quality 2: Armour 201",
+      "Quality 3: Armour 202"
+     ],
+     "link": "items/base/ShieldBanded.md",
+     "name": "Banded Shield"
+    }
+   },
+   "ShieldBlackmetal": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 97",
+      "Quality 1: Armour 200",
+      "Quality 2: Armour 201",
+      "Quality 3: Armour 202"
+     ],
+     "link": "items/base/ShieldBlackmetal.md",
+     "name": "Black Metal Shield"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 200",
+      "Quality 2: Armour 201",
+      "Quality 3: Armour 202"
+     ],
+     "link": "items/base/ShieldBlackmetal.md",
+     "name": "Black Metal Shield"
+    }
+   },
+   "ShieldBlackmetalTower": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 97",
+      "Quality 1: Armour 200",
+      "Quality 2: Armour 201",
+      "Quality 3: Armour 202"
+     ],
+     "link": "items/base/ShieldBlackmetalTower.md",
+     "name": "Black Metal Tower Shield"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 200",
+      "Quality 2: Armour 201",
+      "Quality 3: Armour 202"
+     ],
+     "link": "items/base/ShieldBlackmetalTower.md",
+     "name": "Black Metal Tower Shield"
+    }
+   },
+   "ShieldBoneTower": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 19",
+      "Quality 1: Armour 100",
+      "Quality 2: Armour 101",
+      "Quality 3: Armour 102"
+     ],
+     "link": "items/base/ShieldBoneTower.md",
+     "name": "Bone Tower Shield"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 100",
+      "Quality 2: Armour 101",
+      "Quality 3: Armour 102"
+     ],
+     "link": "items/base/ShieldBoneTower.md",
+     "name": "Bone Tower Shield"
+    }
+   },
+   "ShieldBronzeBuckler": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 19",
+      "Quality 1: Armour 100",
+      "Quality 2: Armour 101",
+      "Quality 3: Armour 102"
+     ],
+     "link": "items/base/ShieldBronzeBuckler.md",
+     "name": "Bronze Buckler"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 100",
+      "Quality 2: Armour 101",
+      "Quality 3: Armour 102"
+     ],
+     "link": "items/base/ShieldBronzeBuckler.md",
+     "name": "Bronze Buckler"
+    }
+   },
+   "ShieldCarapace": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 130",
+      "Quality 1: Armour 200",
+      "Quality 2: Armour 201",
+      "Quality 3: Armour 202"
+     ],
+     "link": "items/base/ShieldCarapace.md",
+     "name": "Carapace Shield"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 200",
+      "Quality 2: Armour 201",
+      "Quality 3: Armour 202"
+     ],
+     "link": "items/base/ShieldCarapace.md",
+     "name": "Carapace Shield"
+    }
+   },
+   "ShieldCarapaceBuckler": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 130",
+      "Quality 1: Armour 200",
+      "Quality 2: Armour 201",
+      "Quality 3: Armour 202"
+     ],
+     "link": "items/base/ShieldCarapaceBuckler.md",
+     "name": "Carapace Buckler"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 200",
+      "Quality 2: Armour 201",
+      "Quality 3: Armour 202"
+     ],
+     "link": "items/base/ShieldCarapaceBuckler.md",
+     "name": "Carapace Buckler"
+    }
+   },
+   "ShieldFlametal": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 181",
+      "Quality 1: Armour 200",
+      "Quality 2: Armour 201",
+      "Quality 3: Armour 202"
+     ],
+     "link": "items/base/ShieldFlametal.md",
+     "name": "Flametal Shield"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 200",
+      "Quality 2: Armour 201",
+      "Quality 3: Armour 202"
+     ],
+     "link": "items/base/ShieldFlametal.md",
+     "name": "Flametal Shield"
+    }
+   },
+   "ShieldFlametalTower": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 181",
+      "Quality 1: Armour 200",
+      "Quality 2: Armour 201",
+      "Quality 3: Armour 202"
+     ],
+     "link": "items/base/ShieldFlametalTower.md",
+     "name": "Flametal Tower Shield"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 200",
+      "Quality 2: Armour 201",
+      "Quality 3: Armour 202"
+     ],
+     "link": "items/base/ShieldFlametalTower.md",
+     "name": "Flametal Tower Shield"
+    }
+   },
+   "ShieldIronBuckler": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 43",
+      "Quality 1: Armour 150",
+      "Quality 2: Armour 151",
+      "Quality 3: Armour 152"
+     ],
+     "link": "items/base/ShieldIronBuckler.md",
+     "name": "Iron Buckler"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 150",
+      "Quality 2: Armour 151",
+      "Quality 3: Armour 152"
+     ],
+     "link": "items/base/ShieldIronBuckler.md",
+     "name": "Iron Buckler"
+    }
+   },
+   "ShieldIronTower": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 43",
+      "Quality 1: Armour 100",
+      "Quality 2: Armour 101",
+      "Quality 3: Armour 102"
+     ],
+     "link": "items/base/ShieldIronTower.md",
+     "name": "Iron Tower Shield"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 100",
+      "Quality 2: Armour 101",
+      "Quality 3: Armour 102"
+     ],
+     "link": "items/base/ShieldIronTower.md",
+     "name": "Iron Tower Shield"
+    }
+   },
+   "ShieldRoots": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 43",
+      "Quality 1: Armour 100",
+      "Quality 2: Armour 101",
+      "Quality 3: Armour 102"
+     ],
+     "link": "items/base/ShieldRoots.md",
+     "name": "Shield of Roots"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 100",
+      "Quality 2: Armour 101",
+      "Quality 3: Armour 102"
+     ],
+     "link": "items/base/ShieldRoots.md",
+     "name": "Shield of Roots"
+    }
+   },
+   "ShieldSerpentscale": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 77",
+      "Quality 1: Armour 300",
+      "Quality 2: Armour 301",
+      "Quality 3: Armour 302"
+     ],
+     "link": "items/base/ShieldSerpentscale.md",
+     "name": "Serpent Scale Shield"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 300",
+      "Quality 2: Armour 301",
+      "Quality 3: Armour 302"
+     ],
+     "link": "items/base/ShieldSerpentscale.md",
+     "name": "Serpent Scale Shield"
+    }
+   },
+   "ShieldSilver": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 77",
+      "Quality 1: Armour 200",
+      "Quality 2: Armour 201",
+      "Quality 3: Armour 202"
+     ],
+     "link": "items/base/ShieldSilver.md",
+     "name": "Silver Shield"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 200",
+      "Quality 2: Armour 201",
+      "Quality 3: Armour 202"
+     ],
+     "link": "items/base/ShieldSilver.md",
+     "name": "Silver Shield"
+    }
+   },
+   "ShieldWood": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 1",
+      "Quality 1: Armour 100",
+      "Quality 2: Armour 101",
+      "Quality 3: Armour 102"
+     ],
+     "link": "items/base/ShieldWood.md",
+     "name": "Wood Shield"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 100",
+      "Quality 2: Armour 101",
+      "Quality 3: Armour 102"
+     ],
+     "link": "items/base/ShieldWood.md",
+     "name": "Wood Shield"
+    }
+   },
+   "ShieldWoodTower": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 1",
+      "Quality 1: Armour 100",
+      "Quality 2: Armour 101",
+      "Quality 3: Armour 102"
+     ],
+     "link": "items/base/ShieldWoodTower.md",
+     "name": "Wood Tower Shield"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 100",
+      "Quality 2: Armour 101",
+      "Quality 3: Armour 102"
+     ],
+     "link": "items/base/ShieldWoodTower.md",
+     "name": "Wood Tower Shield"
+    }
+   },
+   "Shovel": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 181"
+     ],
+     "link": "items/base/Shovel.md",
+     "name": "Snow Shovel"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/Shovel.md",
+     "name": "Snow Shovel"
+    }
+   },
+   "SledgeDemolisher": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 130"
+     ],
+     "link": "items/base/SledgeDemolisher.md",
+     "name": "Demolisher"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/SledgeDemolisher.md",
+     "name": "Demolisher"
+    }
+   },
+   "SledgeIron": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 43"
+     ],
+     "link": "items/base/SledgeIron.md",
+     "name": "Iron Sledge"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/SledgeIron.md",
+     "name": "Iron Sledge"
+    }
+   },
+   "SledgeStagbreaker": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 19"
+     ],
+     "link": "items/base/SledgeStagbreaker.md",
+     "name": "Stagbreaker"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/SledgeStagbreaker.md",
+     "name": "Stagbreaker"
+    }
+   },
+   "SpearBronze": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 19"
+     ],
+     "link": "items/base/SpearBronze.md",
+     "name": "Bronze Spear"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/SpearBronze.md",
+     "name": "Bronze Spear"
+    }
+   },
+   "SpearCarapace": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 130"
+     ],
+     "link": "items/base/SpearCarapace.md",
+     "name": "Carapace Spear"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/SpearCarapace.md",
+     "name": "Carapace Spear"
+    }
+   },
+   "SpearElderbark": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 43"
+     ],
+     "link": "items/base/SpearElderbark.md",
+     "name": "Ancient Bark Spear"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/SpearElderbark.md",
+     "name": "Ancient Bark Spear"
+    }
+   },
+   "SpearFlint": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 1"
+     ],
+     "link": "items/base/SpearFlint.md",
+     "name": "Flint Spear"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/SpearFlint.md",
+     "name": "Flint Spear"
+    }
+   },
+   "SpearSplitner": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 181"
+     ],
+     "link": "items/base/SpearSplitner.md",
+     "name": "Splitnir"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/SpearSplitner.md",
+     "name": "Splitnir"
+    }
+   },
+   "SpearSplitner_Blood": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 181"
+     ],
+     "link": "items/base/SpearSplitner_Blood.md",
+     "name": "Splitnir the Bleeding"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/SpearSplitner_Blood.md",
+     "name": "Splitnir the Bleeding"
+    }
+   },
+   "SpearSplitner_Lightning": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 181"
+     ],
+     "link": "items/base/SpearSplitner_Lightning.md",
+     "name": "Splitnir the Storming"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/SpearSplitner_Lightning.md",
+     "name": "Splitnir the Storming"
+    }
+   },
+   "SpearSplitner_Nature": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 181"
+     ],
+     "link": "items/base/SpearSplitner_Nature.md",
+     "name": "Splitnir the Primal"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/SpearSplitner_Nature.md",
+     "name": "Splitnir the Primal"
+    }
+   },
+   "SpearWolfFang": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 77"
+     ],
+     "link": "items/base/SpearWolfFang.md",
+     "name": "Fang Spear"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/SpearWolfFang.md",
+     "name": "Fang Spear"
+    }
+   },
+   "StaffClusterbomb": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 181"
+     ],
+     "link": "items/base/StaffClusterbomb.md",
+     "name": "Staff of Fracturing"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/StaffClusterbomb.md",
+     "name": "Staff of Fracturing"
+    }
+   },
+   "StaffFireball": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 130"
+     ],
+     "link": "items/base/StaffFireball.md",
+     "name": "Staff of Embers"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/StaffFireball.md",
+     "name": "Staff of Embers"
+    }
+   },
+   "StaffGreenRoots": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 181"
+     ],
+     "link": "items/base/StaffGreenRoots.md",
+     "name": "Staff of the Wild"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/StaffGreenRoots.md",
+     "name": "Staff of the Wild"
+    }
+   },
+   "StaffIceShards": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 130"
+     ],
+     "link": "items/base/StaffIceShards.md",
+     "name": "Staff of Frost"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/StaffIceShards.md",
+     "name": "Staff of Frost"
+    }
+   },
+   "StaffLightning": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 181"
+     ],
+     "link": "items/base/StaffLightning.md",
+     "name": "Dundr"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/StaffLightning.md",
+     "name": "Dundr"
+    }
+   },
+   "StaffRedTroll": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 181"
+     ],
+     "link": "items/base/StaffRedTroll.md",
+     "name": "Trollstav"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/StaffRedTroll.md",
+     "name": "Trollstav"
+    }
+   },
+   "StaffShield": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 130"
+     ],
+     "link": "items/base/StaffShield.md",
+     "name": "Staff of Protection"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/StaffShield.md",
+     "name": "Staff of Protection"
+    }
+   },
+   "StaffSkeleton": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 130"
+     ],
+     "link": "items/base/StaffSkeleton.md",
+     "name": "Dead Raiser"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/StaffSkeleton.md",
+     "name": "Dead Raiser"
+    }
+   },
+   "SwordBlackmetal": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 97"
+     ],
+     "link": "items/base/SwordBlackmetal.md",
+     "name": "Black Metal Sword"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/SwordBlackmetal.md",
+     "name": "Black Metal Sword"
+    }
+   },
+   "SwordBronze": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 19"
+     ],
+     "link": "items/base/SwordBronze.md",
+     "name": "Bronze Sword"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/SwordBronze.md",
+     "name": "Bronze Sword"
+    }
+   },
+   "SwordDyrnwyn": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 181"
+     ],
+     "link": "items/base/SwordDyrnwyn.md",
+     "name": "Dyrnwyn"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/SwordDyrnwyn.md",
+     "name": "Dyrnwyn"
+    }
+   },
+   "SwordIron": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 43"
+     ],
+     "link": "items/base/SwordIron.md",
+     "name": "Iron Sword"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/SwordIron.md",
+     "name": "Iron Sword"
+    }
+   },
+   "SwordMistwalker": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 130"
+     ],
+     "link": "items/base/SwordMistwalker.md",
+     "name": "Mistwalker"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/SwordMistwalker.md",
+     "name": "Mistwalker"
+    }
+   },
+   "SwordNiedhogg": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 181"
+     ],
+     "link": "items/base/SwordNiedhogg.md",
+     "name": "Nidhögg"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/SwordNiedhogg.md",
+     "name": "Nidhögg"
+    }
+   },
+   "SwordNiedhoggBlood": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 181"
+     ],
+     "link": "items/base/SwordNiedhoggBlood.md",
+     "name": "Nidhögg the Bleeding"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/SwordNiedhoggBlood.md",
+     "name": "Nidhögg the Bleeding"
+    }
+   },
+   "SwordNiedhoggLightning": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 181"
+     ],
+     "link": "items/base/SwordNiedhoggLightning.md",
+     "name": "Nidhögg the Thundering"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/SwordNiedhoggLightning.md",
+     "name": "Nidhögg the Thundering"
+    }
+   },
+   "SwordNiedhoggNature": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 181"
+     ],
+     "link": "items/base/SwordNiedhoggNature.md",
+     "name": "Nidhögg the Primal"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/SwordNiedhoggNature.md",
+     "name": "Nidhögg the Primal"
+    }
+   },
+   "SwordSilver": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 77"
+     ],
+     "link": "items/base/SwordSilver.md",
+     "name": "Silver Sword"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/SwordSilver.md",
+     "name": "Silver Sword"
+    }
+   },
+   "SwordWood": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 19"
+     ],
+     "link": "items/base/SwordWood.md",
+     "name": "Wooden Sword"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/SwordWood.md",
+     "name": "Wooden Sword"
+    }
+   },
+   "THSwordKrom": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 130"
+     ],
+     "link": "items/base/THSwordKrom.md",
+     "name": "Krom"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/THSwordKrom.md",
+     "name": "Krom"
+    }
+   },
+   "THSwordSlayer": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 181"
+     ],
+     "link": "items/base/THSwordSlayer.md",
+     "name": "Slayer"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/THSwordSlayer.md",
+     "name": "Slayer"
+    }
+   },
+   "THSwordSlayerBlood": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 181"
+     ],
+     "link": "items/base/THSwordSlayerBlood.md",
+     "name": "Brutal Slayer"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/THSwordSlayerBlood.md",
+     "name": "Brutal Slayer"
+    }
+   },
+   "THSwordSlayerLightning": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 181"
+     ],
+     "link": "items/base/THSwordSlayerLightning.md",
+     "name": "Scourging Slayer"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/THSwordSlayerLightning.md",
+     "name": "Scourging Slayer"
+    }
+   },
+   "THSwordSlayerNature": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 181"
+     ],
+     "link": "items/base/THSwordSlayerNature.md",
+     "name": "Primal Slayer"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246"
+     ],
+     "link": "items/base/THSwordSlayerNature.md",
+     "name": "Primal Slayer"
+    }
+   }
+  },
   "crafting": {
    "own2344": {
     "new": {

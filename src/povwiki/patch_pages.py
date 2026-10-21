@@ -75,6 +75,24 @@ def _affixes(ctx: Ctx) -> dict[str, dict]:
     return out
 
 
+def _bases(ctx: Ctx) -> dict[str, dict]:
+    """Item bases: the level crafted copies get, defences by quality and implicit lines."""
+    from .base_pages import _DEFENCES, _level, base_path, bases
+
+    ui, out = ctx.loc.ui, {}
+    for prefab, b in bases(ctx).items():
+        info, lines = b["info"], []
+        if (level := _level(ctx, prefab)) is not None:
+            lines.append(ui("patch.crafted_level", level=level))
+        for q, d in enumerate(info.get("defences") or [], 1):
+            if values := ", ".join(f"{ui(key)} {d[k]:g}" for k, key in _DEFENCES if d.get(k)):
+                lines.append(f"{ui('items.quality_n', n=q)}: {values}")
+        for i in info.get("implicits") or []:
+            lines.append(i["text"] if "text" in i else " / ".join(t or "—" for t in i.get("byQuality") or []))
+        out[prefab] = _entry(b["name"], lines, base_path(prefab))
+    return out
+
+
 def _uniques(ctx: Ctx) -> dict[str, dict]:
     from .gear_pages import UNIQUES_PAGE, _line_md, _unique_name, _unique_sources, unique_path
 
@@ -170,6 +188,7 @@ SECTIONS = {  # id: (title key, entries); the passive and craft trees take their
     "passives": ("passives.title", None),
     "crafting": ("crafting.title", None),
     "mods": ("items.mods", _affixes),
+    "bases": ("items.bases", _bases),
     "uniques": ("gear.uniques", _uniques),
     "currency": ("gear.currency", _currency),
     "drops": ("patch.boss_drops", _drops),

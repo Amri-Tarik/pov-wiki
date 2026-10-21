@@ -746,6 +746,7 @@ text = "Socketed in an allocated socket (once identified), it turns the hidden n
 
 # Patch pages: what an update changed (patch_pages.py).
 [patch]
+crafted_level = "Crafted item level {level}"
 moved = "Moved"
 history = "Patch history"
 version = "Patch"

@@ -345,6 +345,9 @@ def _base_page(ctx: Ctx, prefab: str, b: dict, found: dict) -> str:
 
     md += [f"## {ui('items.tags')}", "", ui("items.tags_note"), ""]
     md += [", ".join(ui(f"tag.{t}") if ui(f"tag.{t}") != f"tag.{t}" else f"`{t}`" for t in info["tags"]), ""]
+    from .patch_pages import history
+
+    md += history(ctx, "bases", [prefab], page)
     return "\n".join(md + _footer(ctx))
 
 

@@ -481,3 +481,62 @@ hold = 3
 drain = 0.25
 bleed_share = 0.15
 bleed_ticks = 5
+
+[[formula]]
+id = "rune-shield"
+anchors = [
+    "PassiveTree/EnergyShield.cs :: EnergyShield.Max",
+    "PassiveTree/EnergyShield.cs :: EnergyShield.Delay",
+    "PassiveTree/EnergyShield.cs :: EnergyShield.FromLife",
+    "PassiveTree/EnergyShield.cs :: EnergyShield.DelayOf",
+    "PassiveTree/EnergyShield.cs :: EnergyShield.Absorb",
+    "PassiveTree/EnergyShield.cs :: EnergyShield.Tick",
+    "PassiveTree/EnergyShield.cs :: Character_ApplyDamage_Shield.Prefix",
+    "PassiveTree/RuneStaggerGuard.cs :: Character_AddStaggerDamage.Prefix",
+    "PassiveTree/RuneStaggerGuard.cs :: RuneStaggerGuard.Warded",
+    "PassiveTree/Plugin.cs :: \"Energy shield for everyone\"",
+    "PassiveTree/Plugin.cs :: \"Shield recharge delay\"",
+    "PassiveTree/Plugin.cs :: \"Shield recharge per second\"",
+    "PassiveTree/Tunables.cs :: \"shield.delay-cap\"",
+    "valheim/Character.cs :: Character.RPC_Damage",
+]
+fingerprint = "cf3eac6ecc1f"
+checked = "5.1.2"
+
+[formula.values]
+base = 0
+delay = 5
+rate = 0.2
+from_life_cap = 0.9
+min_delay = 0.25
+stagger_guard = 0.5
+
+[[formula]]
+id = "stagger"
+anchors = [
+    "PassiveTree/Effects.cs :: Effects.Stagger",
+    "PassiveTree/Effects.cs :: Effects.StaggerShare",
+    "PassiveTree/Effects.cs :: Effects.StaggerInc",
+    "PassiveTree/Effects.cs :: Effects.StaggerFlat",
+    "PassiveTree/Effects.cs :: Effects.StaggerSet",
+    "PassiveTree/Effects.cs :: Character_UpdateStagger_Slower.Prefix",
+    "PassiveTree/CriticalHits.cs :: \"hit.m_staggerMultiplier = Mathf.Max(hit.m_staggerMultiplier, 100f);\"",
+    "PassiveTree/StaggerRecovery.cs :: Recover.Postfix",
+    "PassiveTree/SE_PassiveTree.cs :: \"base.m_staggerModifier = 0f - StatText.Clamp(Stat.StaggerResistPct\"",
+    "PassiveTree/StatText.cs :: StatText.Clamp",
+    "PassiveTree/RuneStaggerGuard.cs :: Character_AddStaggerDamage.Prefix",
+    "PassiveTree/Plugin.cs :: \"Vanilla stagger share\"",
+    "valheim/Character.cs :: Character.AddStaggerDamage",
+    "valheim/Character.cs :: Character.UpdateStagger",
+    "valheim/Character.cs :: Character.GetStaggerTreshold",
+    "valheim/Character.cs :: \"AddStaggerDamage(totalStaggerDamage * hit.m_staggerMultiplier, hit.m_dir, hit);\"",
+    "valheim/HitData.cs :: DamageTypes.GetTotalStaggerDamage",
+    "valheim/SE_Stats.cs :: SE_Stats.ModifyStagger",
+]
+fingerprint = "fdb3e953324e"
+checked = "5.1.2"
+
+[formula.values]
+share = 0.2
+drain_seconds = 5
+stagger_guard = 0.5

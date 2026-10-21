@@ -517,6 +517,37 @@ def _ailment_view(ailment: str):
     return view
 
 
+def _rune_shield(ctx, page, v):
+    """Rune shield (EnergyShield): its size, what it takes, its recharge; it halves stagger taken
+    while it holds (RuneStaggerGuard)."""
+    ui = ctx.loc.ui
+    t = ctx.loc.difficulty.get("tunables", {})
+    md = [ui("formula.rune-shield.text", shield=_term(ctx, "shield", page, start=True), block=_term(ctx, "block", page),
+             stagger=_term(ctx, "stagger", page), guard=_pct(v["stagger_guard"])), ""]
+    md += _formula(ui("formula.rune-shield.formula"))
+    md += [ui("formula.rune-shield.notes", base=_n(v["base"]), cap=_pct(v["from_life_cap"])), ""]
+    full = 1 / v["rate"]
+    md += [ui("formula.rune-shield.recharge", delay=_n(v["delay"]), rate=_pct(v["rate"]), full=_n(full),
+              cap=_pct(t.get("shield.delay-cap", 0)), floor=_n(v["min_delay"])), ""]
+    return md
+
+
+def _stagger(ctx, page, v):
+    """Stagger (Valheim's gauge; Effects.Stagger, the slower enemy drain, stagger resistance)."""
+    ui = ctx.loc.ui
+    d = ctx.loc.difficulty
+    buildup = _title_of(ctx, "build-up").lower()
+    drain_enemy = v["drain_seconds"] / v["share"]
+    md = [ui("formula.stagger.text", stagger=_term(ctx, "stagger", page, start=True), drain=_n(v["drain_seconds"]),
+             enemy=_n(drain_enemy)), ""]
+    md += _formula(ui("formula.stagger.formula", share=_pct(v["share"]), buildup=buildup))
+    md += [ui("formula.stagger.yours", share=_pct(v["share"]), power=_term(ctx, "stagger-power", page)), "",
+           ui("formula.stagger.forced", forced=_term(ctx, "stun-chance", page, start=True)), "",
+           ui("formula.stagger.taken", res=_term(ctx, "stagger-res", page), cap=_pct(d.get("caps", {}).get("StaggerResistPct", 0)),
+              shield=_term(ctx, "shield", page), guard=_pct(v["stagger_guard"])), ""]
+    return md
+
+
 _PAGES = {
     CREATURES_PAGE: ("creatures", [("creature-strength", _strength), ("boss-step", _boss_step),
                                    ("stars", _stars), ("boss-stars", _boss_stars), ("monster-power", _power)]),
@@ -524,7 +555,7 @@ _PAGES = {
     EXPERIENCE_PAGE: ("experience", [("creature-level", _level), ("item-level", _item_level), ("experience", _experience),
                                      ("experience-falloff", _falloff), ("player-levels", _player_levels)]),
     COMBAT_PAGE: ("combat", [("attributes", _attributes), ("crit-multiplier", _crit_multiplier), ("crit-chance", _crit_chance), ("evasion", _evasion),
-                             ("resistances", _resistances), ("armour", _armour), ("enemy-penetration", _penetration),
+                             ("resistances", _resistances), ("armour", _armour), ("rune-shield", _rune_shield), ("enemy-penetration", _penetration), ("stagger", _stagger),
                              ("strikes", _strikes), ("phantom-strikes", _phantoms), ("ailments", _ailments), ("build-cost", _build_cost)]),
 }
 _TITLES = {"creatures": "formula.creatures", "loot": "formula.loot_page", "combat": "formula.combat",
@@ -554,6 +585,11 @@ TERM_FORMULAS = {
     "finesse": ["attributes"],
     "spirit": ["attributes"],
     "skill-factor": ["attributes"],
+    "shield": ["rune-shield"],
+    "stagger": ["stagger"],
+    "stagger-res": ["stagger"],
+    "stagger-power": ["stagger"],
+    "stun-chance": ["stagger"],
     "ailment": ["ailments"],
     "ailment-damage": ["ailments"],
     "ailment-gauge": ["ailments:gauge"],

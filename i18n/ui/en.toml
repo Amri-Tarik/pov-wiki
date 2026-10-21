@@ -715,6 +715,21 @@ formula = "phantom strike damage = {share} × the hit's damage"
 damage = "The hit's damage is taken once its critical strike and all your damage bonuses are applied, before the enemy's armour and resistances. A phantom strike gets none of your bonuses and never crits; the enemy's armour and resistances apply to it as usual."
 chain = "With {recursion}, a phantom strike that lands can cause more: the n-th generation's chance is the first's × the factor its line gives, to the power n − 1. At most {max} phantom strikes wait at once."
 
+[formula.rune-shield]
+title = "Rune shield"
+text = "{shield} is a layer over your health. Of a hit that gets through {block}, resistances and armour, it takes everything but spirit and poison damage until it runs out; the rest goes to your health. While it holds, {stagger} you take is cut by {guard}."
+formula = "maximum = (base + flat + armour's rune shield + food + from health) × (1 + increases)"
+notes = "The base is {base} by default (a server setting): only the tree, gear and food give a shield. Stats that turn health into shield give maximum health × p ÷ (1 − p) for a share p, at most {cap}."
+recharge = "Damage you take restarts the wait. After {delay} s without damage, it recharges {rate} of its maximum per second ({full} s from empty), faster with shield regeneration. Recharge delay reductions cut the wait by at most {cap}, never below {floor} s."
+
+[formula.stagger]
+title = "Stagger"
+text = "{stagger} fills from a hit's blunt, slash, pierce and lightning damage, as the target takes it. At its threshold, maximum health × the creature's own stagger factor, the target staggers. The gauge then drains: from full in {drain} s for players, {enemy} s for enemies (the mod slows it)."
+formula = "your hit's stagger = (damage × {share} + flat) × (1 + stagger {buildup}) × the weapon's stagger multiplier"
+yours = "Your hits carry {share} of the {power} Valheim gives them (a server setting); stagger build-up multiplies it and flat stagger build-up adds to it."
+forced = "{forced}: when it rolls, the hit's stagger is multiplied by 100."
+taken = "Stagger you take: × (1 − {res}), which is at most {cap}; cut by {guard} while your {shield} holds. Stagger recovery drains your gauge faster."
+
 [formula.ailments]
 title = "Ailments"
 text = "{gauge}: {bleed}, {burn}, {poison}, {frost} and {shock} each fill their own on the enemy, from the matching part of your hits' damage as the enemy takes it, after its resistances and armour: slash, fire, poison, frost and lightning."

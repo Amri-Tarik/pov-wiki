@@ -46,6 +46,12 @@ def _governing() -> dict[str, list[str]]:
     return out
 
 
+def _caps(*stats: str) -> dict[str, float]:
+    """The highest (or lowest) value these stats can reach (StatText.C, used by StatText.Clamp)."""
+    caps = _type("StatText").GetField("C", _ANY).GetValue(None)
+    return {str(kv.Key): float(kv.Value) for kv in caps if str(kv.Key) in stats}
+
+
 def render_difficulty(errors: list) -> dict:
     from PassiveTree import EnemyDifficulty, Tunables
 
@@ -82,8 +88,9 @@ def render_difficulty(errors: list) -> dict:
                 # Additional and phantom strikes (Strikes, Phantoms).
                 "strike.interval", "strike.focus-damage", "strike.reach", "strike.radius",
                 "phantom.damage", "phantom.radius", "phantom.interval", "phantom.delay", "attrs.might-covers",
-                "ailment.threshold")},  # the ailment gauge (AilmentDamage.Grip)
+                "ailment.threshold", "shield.delay-cap")},  # the ailment gauge (AilmentDamage.Grip)
             "governing": _governing(),
+            "caps": _caps("StaggerResistPct"),
         }
     except Exception as ex:
         errors.append({"difficulty": str(ex).split("\n")[0]})

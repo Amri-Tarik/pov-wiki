@@ -38,9 +38,11 @@ anchors = [
     "PassiveTree/EnemyDifficulty.cs :: EnemyDifficulty.Defaults",
     "PassiveTree/EnemyDifficulty.cs :: \"Tamed creature strength\"",
     "PassiveTree/DifficultyPreset.cs :: DifficultyPreset.Lay",
+    "PassiveTree/MinionLife.cs :: MinionLife.IsActive",
+    "PassiveTree/StarterStaves.cs :: StarterStaves.VanillaPower",
 ]
-fingerprint = "928cfbd12b4f"
-checked = "5.1.1"
+fingerprint = "7a669636f99e"
+checked = "5.2.0"
 
 [formula.values]
 tamed = 0.5
@@ -190,11 +192,11 @@ id = "crit-multiplier"
 anchors = [
     "PassiveTree/CriticalHits.cs :: CriticalHits.Scale",
     "PassiveTree/CriticalHits.cs :: CriticalHits.DamageFactor",
-    "PassiveTree/CriticalHits.cs :: \"DamageFactor(s.Has(Stat.CritNoBonus)\"",
+    "PassiveTree/CriticalHits.cs :: \"num7 = DamageFactor(s.Has(Stat.CritNoBonus)\"",
     "PassiveTree/WeaponAffixes.cs :: WeaponAffixes.ColumnStat",
 ]
-fingerprint = "14781e338c6e"
-checked = "5.1.1"
+fingerprint = "764ab7c7db76"
+checked = "5.2.0"
 
 [formula.values]
 base = 1.5
@@ -394,16 +396,21 @@ anchors = [
     "PassiveTree/Phantoms.cs :: Phantoms.Copy",
     "PassiveTree/Phantoms.cs :: Phantoms.Continue",
     "PassiveTree/Phantoms.cs :: Phantoms.Pick",
+    "PassiveTree/Phantoms.cs :: Phantoms.Strike",
+    "PassiveTree/CriticalHits.cs :: CriticalHits.PhantomCrit",
+    "PassiveTree/AilmentGauges.cs :: AilmentGauges.Phantom",
+    "PassiveTree/AilmentGauges.cs :: AilmentGauges.Direct",
     "PassiveTree/HitKinds.cs :: HitKinds.IsAttackHit",
     "PassiveTree/XpSources.cs :: Character_Damage.Prefix",
     "PassiveTree/CriticalHits.cs :: \"|| Phantoms.Is(hit))\"",
     "PassiveTree/Tunables.cs :: \"phantom.damage\"",
+    "PassiveTree/Tunables.cs :: \"phantom.stagger\"",
     "PassiveTree/Tunables.cs :: \"phantom.radius\"",
     "PassiveTree/Tunables.cs :: \"phantom.interval\"",
     "PassiveTree/Tunables.cs :: \"phantom.delay\"",
 ]
-fingerprint = "a58122e6072f"
-checked = "5.1.2"
+fingerprint = "fe638bdf75e9"
+checked = "5.2.0"
 
 [formula.values]
 max_pending = 96
@@ -473,8 +480,8 @@ anchors = [
     "valheim/SE_Burning.cs :: SE_Burning.AddFireDamage",
     "valheim/SE_Poison.cs :: SE_Poison.AddDamage",
 ]
-fingerprint = "bcdc0c4932d0"
-checked = "5.1.2"
+fingerprint = "57aef6847d58"
+checked = "5.2.0"
 
 [formula.values]
 hold = 3
@@ -494,14 +501,18 @@ anchors = [
     "PassiveTree/EnergyShield.cs :: Character_ApplyDamage_Shield.Prefix",
     "PassiveTree/RuneStaggerGuard.cs :: Character_AddStaggerDamage.Prefix",
     "PassiveTree/RuneStaggerGuard.cs :: RuneStaggerGuard.Warded",
+    "PassiveTree/AppliedWard.cs :: ShieldToWard.Prefix",
+    "PassiveTree/AppliedWard.cs :: AppliedWard.Measure",
+    "PassiveTree/AppliedWard.cs :: AppliedWard.Absorb",
+    "PassiveTree/AppliedWard.cs :: Soak.Prefix",
     "PassiveTree/Plugin.cs :: \"Energy shield for everyone\"",
     "PassiveTree/Plugin.cs :: \"Shield recharge delay\"",
     "PassiveTree/Plugin.cs :: \"Shield recharge per second\"",
     "PassiveTree/Tunables.cs :: \"shield.delay-cap\"",
     "valheim/Character.cs :: Character.RPC_Damage",
 ]
-fingerprint = "cf3eac6ecc1f"
-checked = "5.1.2"
+fingerprint = "a470d3172431"
+checked = "5.2.0"
 
 [formula.values]
 base = 0
@@ -525,6 +536,10 @@ anchors = [
     "PassiveTree/SE_PassiveTree.cs :: \"base.m_staggerModifier = 0f - StatText.Clamp(Stat.StaggerResistPct\"",
     "PassiveTree/StatText.cs :: StatText.Clamp",
     "PassiveTree/RuneStaggerGuard.cs :: Character_AddStaggerDamage.Prefix",
+    "PassiveTree/RuneStaggerGuard.cs :: Threshold.Postfix",
+    "PassiveTree/RuneStaggerGuard.cs :: Recover.Postfix",
+    "PassiveTree/RuneStaggerGuard.cs :: RuneStaggerGuard.ShieldPart",
+    "PassiveTree/Tunables.cs :: \"stagger.rune-shield\"",
     "PassiveTree/Plugin.cs :: \"Vanilla stagger share\"",
     "valheim/Character.cs :: Character.AddStaggerDamage",
     "valheim/Character.cs :: Character.UpdateStagger",
@@ -533,8 +548,8 @@ anchors = [
     "valheim/HitData.cs :: DamageTypes.GetTotalStaggerDamage",
     "valheim/SE_Stats.cs :: SE_Stats.ModifyStagger",
 ]
-fingerprint = "fdb3e953324e"
-checked = "5.1.2"
+fingerprint = "f0a4c09af0d0"
+checked = "5.2.0"
 
 [formula.values]
 share = 0.2
@@ -592,8 +607,8 @@ anchors = [
     "PassiveTree/Tunables.cs :: \"slam.ground-radius\"",
     "PassiveTree/Tunables.cs :: \"aftershock.delay\"",
 ]
-fingerprint = "07178277a63f"
-checked = "5.1.2"
+fingerprint = "bdc2a11b2dc6"
+checked = "5.2.0"
 
 [[formula]]
 id = "block"
@@ -762,8 +777,8 @@ anchors = [
     "valheim/Attack.cs :: Attack.ModifyDamage",
     "valheim/Character.cs :: Character.RPC_Damage",
 ]
-fingerprint = "51b07e381dd4"
-checked = "5.1.2"
+fingerprint = "59dcea64a870"
+checked = "5.2.0"
 
 [formula.values]
 staggered = 0.15
@@ -779,8 +794,8 @@ anchors = [
     "valheim/Attack.cs :: Attack.ModifyDamage",
     "valheim/Character.cs :: Character.RPC_Damage",
 ]
-fingerprint = "83f64316f77d"
-checked = "5.1.2"
+fingerprint = "c018141ccc2d"
+checked = "5.2.0"
 
 [[formula]]
 id = "player-penetration"

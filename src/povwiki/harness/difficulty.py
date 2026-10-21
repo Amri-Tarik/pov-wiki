@@ -93,7 +93,9 @@ def render_difficulty(errors: list) -> dict:
                 "charge.cooldown", "charge.source-cooldown", "charge.source-cooldown.crit", "splash.radius",
                 "slam.ground-radius", "aftershock.delay", "thorns.increased.base", "thorns.block.share",
                 "thorns.riposte.share", "impale.stack", "impale.limit", "impale.window", "endurance.base", "endurance.cap",
-                "rage.more-per-point")},
+                "rage.more-per-point", "stagger.rune-shield", "phantom.stagger",
+                *(f"summon.power-{k}.{staff}" for k in ("health", "damage")
+                  for staff in ("StaffSkeleton", "StaffGreenRoots", "StaffRedTroll", "StaffSpiritCaller")))},
             "governing": _governing(),
             "caps": _caps("StaggerResistPct", "GlancingChance"),
         }

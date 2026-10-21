@@ -1,0 +1,1081 @@
+{
+ "changes": {
+  "bases": {
+   "PT_Ring_GraveCall": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 19",
+      "(10-15)% increased minion damage"
+     ],
+     "link": "items/base/PT_Ring_GraveCall.md",
+     "name": "Grave Call Ring"
+    },
+    "old": null
+   }
+  },
+  "keywords": {
+   "phantom-strikes": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "A melee attack hit can cause a phantom strike against a random nearby enemy, including the original target. Only the weapon's own blow counts: projectiles, spells and area blows such as a sceptre's Smite lightning do not. It deals 24% of the original hit's calculated damage before the target's defences. Damage modifiers are not applied again, and it does not trigger on-hit effects. It rolls its own critical strike with the critical strike chance and damage of the original hit plus those for phantom strikes. It builds up no ailments, and it builds up half the stagger of the original hit, raised by stagger build-up for phantom strikes. Every full 100% chance guarantees one phantom strike; the remainder rolls for one more. Only Endless Apparition allows phantom strikes to trigger further phantom strikes."
+     ],
+     "link": "glossary/phantom-strikes.md",
+     "name": "Phantom Strikes"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "A melee attack hit can cause a phantom strike against a random nearby enemy, including the original target. Only the weapon's own blow counts: projectiles, spells and area blows such as a sceptre's Smite lightning do not. It deals 15% of the original hit's calculated damage before the target's defences. Damage modifiers are not applied again, and it does not roll a new critical strike or trigger on-hit effects. Every full 100% chance guarantees one phantom strike; the remainder rolls for one more. Only Endless Apparition allows phantom strikes to trigger further phantom strikes."
+     ],
+     "link": "glossary/phantom-strikes.md",
+     "name": "Phantom Strikes"
+    }
+   },
+   "spells": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Staff attacks and sceptre Smites use spell bonuses instead of melee or ranged bonuses; a sceptre swing itself is melee. Casting ends the Combo and does not receive running-blow bonuses."
+     ],
+     "link": "glossary/spells.md",
+     "name": "Spells"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Staff and scepter attacks use spell bonuses instead of melee or ranged bonuses. Casting ends the Combo and does not receive running-blow bonuses."
+     ],
+     "link": "glossary/spells.md",
+     "name": "Spells"
+    }
+   }
+  },
+  "mods": {
+   "summon.minion-aggression": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(15–25)% aggression for minions",
+      "T4 (item level 19–76, weight 700): +(26–40)% aggression for minions",
+      "T3 (item level 43–129, weight 400): +(41–60)% aggression for minions",
+      "T2 (item level 77–∞, weight 180): +(61–80)% aggression for minions",
+      "T1 (item level 130–∞, weight 60): +(81–100)% aggression for minions"
+     ],
+     "link": "items/mod/summon.minion-aggression.md",
+     "name": "+#% aggression for minions"
+    },
+    "old": null
+   },
+   "summon.minion-armour": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(3–5) armour for minions",
+      "T4 (item level 19–76, weight 700): +(6–9) armour for minions",
+      "T3 (item level 43–129, weight 400): +(10–14) armour for minions",
+      "T2 (item level 77–∞, weight 180): +(15–20) armour for minions",
+      "T1 (item level 130–∞, weight 60): +(21–28) armour for minions"
+     ],
+     "link": "items/mod/summon.minion-armour.md",
+     "name": "+# armour for minions"
+    },
+    "old": null
+   },
+   "summon.minion-attack-speed": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (4–6)% increased attack speed for minions",
+      "T4 (item level 19–76, weight 700): (7–9)% increased attack speed for minions",
+      "T3 (item level 43–129, weight 400): (10–13)% increased attack speed for minions",
+      "T2 (item level 77–∞, weight 180): (14–17)% increased attack speed for minions",
+      "T1 (item level 130–∞, weight 60): (18–22)% increased attack speed for minions"
+     ],
+     "link": "items/mod/summon.minion-attack-speed.md",
+     "name": "#% increased attack speed for minions"
+    },
+    "old": null
+   },
+   "summon.minion-crit-chance": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(2–3)% critical strike chance for minions",
+      "T4 (item level 19–76, weight 700): +(4–5)% critical strike chance for minions",
+      "T3 (item level 43–129, weight 400): +(6–7)% critical strike chance for minions",
+      "T2 (item level 77–∞, weight 180): +(8–9)% critical strike chance for minions",
+      "T1 (item level 130–∞, weight 60): +(10–12)% critical strike chance for minions"
+     ],
+     "link": "items/mod/summon.minion-crit-chance.md",
+     "name": "+#% critical strike chance for minions"
+    },
+    "old": null
+   },
+   "summon.minion-crit-damage": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(10–15)% critical strike damage for minions",
+      "T4 (item level 19–76, weight 700): +(16–22)% critical strike damage for minions",
+      "T3 (item level 43–129, weight 400): +(23–30)% critical strike damage for minions",
+      "T2 (item level 77–∞, weight 180): +(31–40)% critical strike damage for minions",
+      "T1 (item level 130–∞, weight 60): +(41–50)% critical strike damage for minions"
+     ],
+     "link": "items/mod/summon.minion-crit-damage.md",
+     "name": "+#% critical strike damage for minions"
+    },
+    "old": null
+   },
+   "summon.minion-damage": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (8–12)% increased damage for minions",
+      "T4 (item level 19–76, weight 700): (13–18)% increased damage for minions",
+      "T3 (item level 43–129, weight 400): (19–26)% increased damage for minions",
+      "T2 (item level 77–∞, weight 180): (27–35)% increased damage for minions",
+      "T1 (item level 130–∞, weight 60): (36–45)% increased damage for minions"
+     ],
+     "link": "items/mod/summon.minion-damage.md",
+     "name": "#% increased damage for minions"
+    },
+    "old": null
+   },
+   "summon.minion-health": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (10–15)% increased maximum health for minions",
+      "T4 (item level 19–76, weight 700): (16–24)% increased maximum health for minions",
+      "T3 (item level 43–129, weight 400): (25–34)% increased maximum health for minions",
+      "T2 (item level 77–∞, weight 180): (35–45)% increased maximum health for minions",
+      "T1 (item level 130–∞, weight 60): (46–60)% increased maximum health for minions"
+     ],
+     "link": "items/mod/summon.minion-health.md",
+     "name": "#% increased maximum health for minions"
+    },
+    "old": null
+   },
+   "summon.minion-life": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (10–15)% increased effect duration for minions",
+      "T4 (item level 19–76, weight 700): (16–22)% increased effect duration for minions",
+      "T3 (item level 43–129, weight 400): (23–30)% increased effect duration for minions",
+      "T2 (item level 77–∞, weight 180): (31–40)% increased effect duration for minions",
+      "T1 (item level 130–∞, weight 60): (41–55)% increased effect duration for minions"
+     ],
+     "link": "items/mod/summon.minion-life.md",
+     "name": "#% increased effect duration for minions"
+    },
+    "old": null
+   },
+   "summon.minion-move-speed": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (5–8)% increased movement speed for minions",
+      "T4 (item level 19–76, weight 700): (9–12)% increased movement speed for minions",
+      "T3 (item level 43–129, weight 400): (13–16)% increased movement speed for minions",
+      "T2 (item level 77–∞, weight 180): (17–21)% increased movement speed for minions",
+      "T1 (item level 130–∞, weight 60): (22–27)% increased movement speed for minions"
+     ],
+     "link": "items/mod/summon.minion-move-speed.md",
+     "name": "#% increased movement speed for minions"
+    },
+    "old": null
+   },
+   "summon.minion-resist": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(5–8)% damage resistance for minions",
+      "T4 (item level 19–76, weight 700): +(9–12)% damage resistance for minions",
+      "T3 (item level 43–129, weight 400): +(13–17)% damage resistance for minions",
+      "T2 (item level 77–∞, weight 180): +(18–23)% damage resistance for minions",
+      "T1 (item level 130–∞, weight 60): +(24–30)% damage resistance for minions"
+     ],
+     "link": "items/mod/summon.minion-resist.md",
+     "name": "+#% damage resistance for minions"
+    },
+    "old": null
+   },
+   "summon.minion-shield": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(5–8) rune shield for minions",
+      "T4 (item level 19–76, weight 700): +(9–14) rune shield for minions",
+      "T3 (item level 43–129, weight 400): +(15–22) rune shield for minions",
+      "T2 (item level 77–∞, weight 180): +(23–32) rune shield for minions",
+      "T1 (item level 130–∞, weight 60): +(33–45) rune shield for minions"
+     ],
+     "link": "items/mod/summon.minion-shield.md",
+     "name": "+# rune shield for minions"
+    },
+    "old": null
+   }
+  },
+  "passives": {
+   "own10001": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased maximum health for minions"
+     ],
+     "link": "passives/tree/#own10001",
+     "name": "Minion Defences"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased maximum health for minions"
+     ],
+     "link": "passives/tree/#own10001",
+     "name": "Minion Defence"
+    }
+   },
+   "own10023": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased block power",
+      "5% reduced block stamina cost",
+      "+5 health on block",
+      "Shield Charge: Sprint while blocking to perform Shield Charge; Shield Charge deals 0.8 blunt damage and 1 knockback per point of block power; ×2 Shield Charge stagger build-up; Shield Charge costs 12 stamina per second; Shield Charge speed: ×1.1 sprint speed; 15% additional acceleration over 1.6 s; Shield Charge can hit the same target every 0.75 s; attack speed shortens this interval; Shield Charge deals 0.8 chop damage per point of block power; tool tier 2; After crashing into an obstacle, Shield Charge cannot restart for 1 s; Shield Charge rolls over enemies up to 2× its carrying weight (2.5 base health per point of block power, stars multiply it); heavier ones cost stamina, and enemies over 3.5× stop it and knock the wielder down; Sprint with your shield raised to charge forward, dealing blunt damage to each enemy in the way once. Damage scales with block power, builds extra stagger and costs stamina. Weak enemies are rolled over; heavier ones cost extra stamina, and enemies far heavier than your block power stop the charge and knock the wielder down. Lowering the shield ends it.",
+      "Shield Instead of Blade: Your alternative attack becomes Shield Bash: 1 blunt damage per point of block power; With a one-handed weapon and a shield, your alternative attack becomes a shield bash. Damage scales with block power.",
+      "Two Shields: You can wield 2 shields at the same time; both contribute to blocking; A shield in each hand: both of them block, and their block power adds up",
+      "Spiked Shield: On a successful shield block, deal 150% of your thorns damage to the attacker; A successful shield block deals 150% of your thorns damage to the attacker",
+      "Challenger: Your hits provoke enemies for 15 s; Your hits provoke the enemy for 15 s: it attacks only you"
+     ],
+     "link": "passives/node/own10023.md",
+     "name": "Shield After the Blow"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased block power",
+      "5% reduced block stamina cost",
+      "+5 health on block",
+      "Shield Charge: Sprint while blocking to perform Shield Charge; Shield Charge deals 0.8 blunt damage and 1 knockback per point of block power; ×2 Shield Charge stagger build-up; Shield Charge costs 12 stamina per second; Shield Charge speed: ×1.1 sprint speed; 15% additional acceleration over 1.6 s; Shield Charge can hit the same target every 0.75 s; attack speed shortens this interval; Shield Charge deals 0.8 chop damage per point of block power; tool tier 2; After crashing into an obstacle, Shield Charge cannot restart for 1 s; Shield Charge rolls over enemies up to 2× its carrying weight (2.5 base health per point of block power, stars multiply it); heavier ones cost stamina, and enemies over 3.5× stop it and knock the wielder down; Sprint with your shield raised to charge forward, dealing blunt damage to each enemy in the way once. Damage scales with block power, builds extra stagger and costs stamina. Weak enemies are rolled over; heavier ones cost extra stamina, and enemies far heavier than your block power stop the charge and knock the wielder down. Lowering the shield ends it.",
+      "Shield Instead of Blade: Your alternative attack becomes Shield Bash: 1 blunt damage per point of block power; With a one-handed weapon and a shield, your alternative attack becomes a shield bash. Damage scales with block power.",
+      "Two Shields: You can wield 2 shields at the same time; both contribute to blocking; A shield in each hand: both of them block, and their block power adds up",
+      "Spiked Shield: On a successful shield block, deal 150% of your thorns damage to the attacker; A successful shield block deals 150% of your thorns damage to the attacker",
+      "Challenger: Your hits provoke enemies for 15 s; Your hits provoke the enemy for 15 s: it attacks only you",
+      "Shield Throw: With no other available weapon in your hands, attacks throw your shield; Thrown shields deal 1 blunt damage per point of block power; Thrown shield stamina cost: ×1 the spear-throw cost; With no other weapon ready, your attack throws your shield. It deals blunt damage from block power and counts as a thrown projectile. After the flight it drops to be picked up; a return effect brings the same shield back to its slot."
+     ],
+     "link": "passives/node/own10023.md",
+     "name": "Shield After the Blow"
+    }
+   },
+   "own10337": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased maximum health for minions"
+     ],
+     "link": "passives/tree/#own10337",
+     "name": "Minion Defences"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased maximum health for minions"
+     ],
+     "link": "passives/tree/#own10337",
+     "name": "Minion Defence"
+    }
+   },
+   "own10343": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased maximum health for minions"
+     ],
+     "link": "passives/tree/#own10343",
+     "name": "Minion Defences"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased maximum health for minions"
+     ],
+     "link": "passives/tree/#own10343",
+     "name": "Minion Defence"
+    }
+   },
+   "own10503": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+4% eitr reservation efficiency for minions"
+     ],
+     "link": "passives/tree/#own10503",
+     "name": "Minion Reservation Efficiency"
+    },
+    "old": null
+   },
+   "own10509": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+4% eitr reservation efficiency for minions"
+     ],
+     "link": "passives/tree/#own10509",
+     "name": "Minion Reservation Efficiency"
+    },
+    "old": null
+   },
+   "own10521": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "30% increased critical strike chance for minions"
+     ],
+     "link": "passives/node/own10521.md",
+     "name": "Keen Servant"
+    },
+    "old": null
+   },
+   "own10527": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "12% increased critical strike chance for minions"
+     ],
+     "link": "passives/tree/#own10527",
+     "name": "Minion Critical Strikes"
+    },
+    "old": null
+   },
+   "own10533": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+12% eitr reservation efficiency for minions"
+     ],
+     "link": "passives/node/own10533.md",
+     "name": "Lasting Pact"
+    },
+    "old": null
+   },
+   "own10539": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+6% critical strike damage for minions"
+     ],
+     "link": "passives/tree/#own10539",
+     "name": "Minion Critical Strikes"
+    },
+    "old": null
+   },
+   "own10545": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+15% critical strike damage for minions"
+     ],
+     "link": "passives/node/own10545.md",
+     "name": "Ruthless Servant"
+    },
+    "old": null
+   },
+   "own10591": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "40% increased armour break build-up against bosses",
+      "Jagged Breach: 22.5% blunt damage converted to slashing against enemies with broken armour",
+      "Armour Shards: Completely breaking armour creates an Armour Shard; Base Armour Shard limit: 3; lifetime: 8 s; Hitting the shard triggers an explosion: 100% of its burst strength; base radius: 3 m; The explosion breaks 30% of affected enemies’ armour; Breaking armour leaves a shard on the ground. Hit it with an attack or spell to set it off.",
+      "Bared to the Bone: Armour broken to the bone staggers the target",
+      "Cleaving Breach: Your final slashing damage can also build armour break alongside blunt damage. It keeps its bleeding build-up; damage is neither converted nor duplicated.",
+      "Wedge the Armour: 25% increased armour break build-up per impale on the target"
+     ],
+     "link": "passives/node/own10591.md",
+     "name": "Crack in the King's Carapace"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "40% increased armour break build-up against bosses",
+      "Jagged Breach: Gain 22.5% of blunt damage as extra slashing on your next hit against broken armour",
+      "Armour Shards: Completely breaking armour creates an Armour Shard; Base Armour Shard limit: 3; lifetime: 8 s; Hitting the shard triggers an explosion: 100% of its burst strength; base radius: 3 m; The explosion breaks 30% of affected enemies’ armour; Breaking armour leaves a shard on the ground. Hit it with an attack or spell to set it off.",
+      "Bared to the Bone: Armour broken to the bone staggers the target",
+      "Cleaving Breach: Your final slashing damage can also build armour break alongside blunt damage. It keeps its bleeding build-up; damage is neither converted nor duplicated.",
+      "Wedge the Armour: 25% increased armour break build-up per impale on the target"
+     ],
+     "link": "passives/node/own10591.md",
+     "name": "Crack in the King's Carapace"
+    }
+   },
+   "own10780": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "40% increased armour break build-up",
+      "Jagged Breach: 22.5% blunt damage converted to slashing against enemies with broken armour",
+      "Armour Shards: Completely breaking armour creates an Armour Shard; Base Armour Shard limit: 3; lifetime: 8 s; Hitting the shard triggers an explosion: 100% of its burst strength; base radius: 3 m; The explosion breaks 30% of affected enemies’ armour; Breaking armour leaves a shard on the ground. Hit it with an attack or spell to set it off.",
+      "Bared to the Bone: Armour broken to the bone staggers the target",
+      "Cleaving Breach: Your final slashing damage can also build armour break alongside blunt damage. It keeps its bleeding build-up; damage is neither converted nor duplicated.",
+      "Wedge the Armour: 25% increased armour break build-up per impale on the target"
+     ],
+     "link": "passives/node/own10780.md",
+     "name": "Shattered Mail"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "40% increased armour break build-up",
+      "Jagged Breach: Gain 22.5% of blunt damage as extra slashing on your next hit against broken armour",
+      "Armour Shards: Completely breaking armour creates an Armour Shard; Base Armour Shard limit: 3; lifetime: 8 s; Hitting the shard triggers an explosion: 100% of its burst strength; base radius: 3 m; The explosion breaks 30% of affected enemies’ armour; Breaking armour leaves a shard on the ground. Hit it with an attack or spell to set it off.",
+      "Bared to the Bone: Armour broken to the bone staggers the target",
+      "Cleaving Breach: Your final slashing damage can also build armour break alongside blunt damage. It keeps its bleeding build-up; damage is neither converted nor duplicated.",
+      "Wedge the Armour: 25% increased armour break build-up per impale on the target"
+     ],
+     "link": "passives/node/own10780.md",
+     "name": "Shattered Mail"
+    }
+   },
+   "own10792": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased armour break duration",
+      "Jagged Breach: 22.5% blunt damage converted to slashing against enemies with broken armour",
+      "Armour Shards: Completely breaking armour creates an Armour Shard; Base Armour Shard limit: 3; lifetime: 8 s; Hitting the shard triggers an explosion: 100% of its burst strength; base radius: 3 m; The explosion breaks 30% of affected enemies’ armour; Breaking armour leaves a shard on the ground. Hit it with an attack or spell to set it off.",
+      "Bared to the Bone: Armour broken to the bone staggers the target",
+      "Cleaving Breach: Your final slashing damage can also build armour break alongside blunt damage. It keeps its bleeding build-up; damage is neither converted nor duplicated.",
+      "Wedge the Armour: 25% increased armour break build-up per impale on the target"
+     ],
+     "link": "passives/node/own10792.md",
+     "name": "Unmended Breach"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased armour break duration",
+      "Jagged Breach: Gain 22.5% of blunt damage as extra slashing on your next hit against broken armour",
+      "Armour Shards: Completely breaking armour creates an Armour Shard; Base Armour Shard limit: 3; lifetime: 8 s; Hitting the shard triggers an explosion: 100% of its burst strength; base radius: 3 m; The explosion breaks 30% of affected enemies’ armour; Breaking armour leaves a shard on the ground. Hit it with an attack or spell to set it off.",
+      "Bared to the Bone: Armour broken to the bone staggers the target",
+      "Cleaving Breach: Your final slashing damage can also build armour break alongside blunt damage. It keeps its bleeding build-up; damage is neither converted nor duplicated.",
+      "Wedge the Armour: 25% increased armour break build-up per impale on the target"
+     ],
+     "link": "passives/node/own10792.md",
+     "name": "Unmended Breach"
+    }
+   },
+   "own10804": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+25% ailment effect armour break",
+      "Jagged Breach: 22.5% blunt damage converted to slashing against enemies with broken armour",
+      "Armour Shards: Completely breaking armour creates an Armour Shard; Base Armour Shard limit: 3; lifetime: 8 s; Hitting the shard triggers an explosion: 100% of its burst strength; base radius: 3 m; The explosion breaks 30% of affected enemies’ armour; Breaking armour leaves a shard on the ground. Hit it with an attack or spell to set it off.",
+      "Bared to the Bone: Armour broken to the bone staggers the target",
+      "Cleaving Breach: Your final slashing damage can also build armour break alongside blunt damage. It keeps its bleeding build-up; damage is neither converted nor duplicated.",
+      "Wedge the Armour: 25% increased armour break build-up per impale on the target"
+     ],
+     "link": "passives/node/own10804.md",
+     "name": "Split Carapace"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "+25% ailment effect armour break",
+      "Jagged Breach: Gain 22.5% of blunt damage as extra slashing on your next hit against broken armour",
+      "Armour Shards: Completely breaking armour creates an Armour Shard; Base Armour Shard limit: 3; lifetime: 8 s; Hitting the shard triggers an explosion: 100% of its burst strength; base radius: 3 m; The explosion breaks 30% of affected enemies’ armour; Breaking armour leaves a shard on the ground. Hit it with an attack or spell to set it off.",
+      "Bared to the Bone: Armour broken to the bone staggers the target",
+      "Cleaving Breach: Your final slashing damage can also build armour break alongside blunt damage. It keeps its bleeding build-up; damage is neither converted nor duplicated.",
+      "Wedge the Armour: 25% increased armour break build-up per impale on the target"
+     ],
+     "link": "passives/node/own10804.md",
+     "name": "Split Carapace"
+    }
+   },
+   "own11288": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased projectile area of effect"
+     ],
+     "link": "passives/node/own11288.md",
+     "name": "Arrowhead's Reach"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased projectile area of effect",
+      "Shotgun: A cast's projectiles may all strike the same target"
+     ],
+     "link": "passives/node/own11288.md",
+     "name": "Arrowhead's Reach"
+    }
+   },
+   "own11328": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "1.5% reduced damage taken for minions"
+     ],
+     "link": "passives/tree/#own11328",
+     "name": "Minion Defences"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "1.5% reduced damage taken for minions"
+     ],
+     "link": "passives/tree/#own11328",
+     "name": "Minion Defence"
+    }
+   },
+   "own11330": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "1.5% reduced damage taken for minions"
+     ],
+     "link": "passives/tree/#own11330",
+     "name": "Minion Defences"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "1.5% reduced damage taken for minions"
+     ],
+     "link": "passives/tree/#own11330",
+     "name": "Minion Defence"
+    }
+   },
+   "own11332": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "−4% duration of ailments on you of base for minions"
+     ],
+     "link": "passives/tree/#own11332",
+     "name": "Minion Defences"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "−4% duration of ailments on you of base for minions"
+     ],
+     "link": "passives/tree/#own11332",
+     "name": "Minion Defence"
+    }
+   },
+   "own11876": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased block power",
+      "Shield Charge: Sprint while blocking to perform Shield Charge; Shield Charge deals 0.8 blunt damage and 1 knockback per point of block power; ×2 Shield Charge stagger build-up; Shield Charge costs 12 stamina per second; Shield Charge speed: ×1.1 sprint speed; 15% additional acceleration over 1.6 s; Shield Charge can hit the same target every 0.75 s; attack speed shortens this interval; Shield Charge deals 0.8 chop damage per point of block power; tool tier 2; After crashing into an obstacle, Shield Charge cannot restart for 1 s; Shield Charge rolls over enemies up to 2× its carrying weight (2.5 base health per point of block power, stars multiply it); heavier ones cost stamina, and enemies over 3.5× stop it and knock the wielder down; Sprint with your shield raised to charge forward, dealing blunt damage to each enemy in the way once. Damage scales with block power, builds extra stagger and costs stamina. Weak enemies are rolled over; heavier ones cost extra stamina, and enemies far heavier than your block power stop the charge and knock the wielder down. Lowering the shield ends it.",
+      "Shield Instead of Blade: Your alternative attack becomes Shield Bash: 1 blunt damage per point of block power; With a one-handed weapon and a shield, your alternative attack becomes a shield bash. Damage scales with block power.",
+      "Two Shields: You can wield 2 shields at the same time; both contribute to blocking; A shield in each hand: both of them block, and their block power adds up",
+      "Spiked Shield: On a successful shield block, deal 150% of your thorns damage to the attacker; A successful shield block deals 150% of your thorns damage to the attacker",
+      "Challenger: Your hits provoke enemies for 15 s; Your hits provoke the enemy for 15 s: it attacks only you"
+     ],
+     "link": "passives/node/own11876.md",
+     "name": "Shieldbearer's Grip"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased block power",
+      "Shield Charge: Sprint while blocking to perform Shield Charge; Shield Charge deals 0.8 blunt damage and 1 knockback per point of block power; ×2 Shield Charge stagger build-up; Shield Charge costs 12 stamina per second; Shield Charge speed: ×1.1 sprint speed; 15% additional acceleration over 1.6 s; Shield Charge can hit the same target every 0.75 s; attack speed shortens this interval; Shield Charge deals 0.8 chop damage per point of block power; tool tier 2; After crashing into an obstacle, Shield Charge cannot restart for 1 s; Shield Charge rolls over enemies up to 2× its carrying weight (2.5 base health per point of block power, stars multiply it); heavier ones cost stamina, and enemies over 3.5× stop it and knock the wielder down; Sprint with your shield raised to charge forward, dealing blunt damage to each enemy in the way once. Damage scales with block power, builds extra stagger and costs stamina. Weak enemies are rolled over; heavier ones cost extra stamina, and enemies far heavier than your block power stop the charge and knock the wielder down. Lowering the shield ends it.",
+      "Shield Instead of Blade: Your alternative attack becomes Shield Bash: 1 blunt damage per point of block power; With a one-handed weapon and a shield, your alternative attack becomes a shield bash. Damage scales with block power.",
+      "Two Shields: You can wield 2 shields at the same time; both contribute to blocking; A shield in each hand: both of them block, and their block power adds up",
+      "Spiked Shield: On a successful shield block, deal 150% of your thorns damage to the attacker; A successful shield block deals 150% of your thorns damage to the attacker",
+      "Challenger: Your hits provoke enemies for 15 s; Your hits provoke the enemy for 15 s: it attacks only you",
+      "Shield Throw: With no other available weapon in your hands, attacks throw your shield; Thrown shields deal 1 blunt damage per point of block power; Thrown shield stamina cost: ×1 the spear-throw cost; With no other weapon ready, your attack throws your shield. It deals blunt damage from block power and counts as a thrown projectile. After the flight it drops to be picked up; a return effect brings the same shield back to its slot."
+     ],
+     "link": "passives/node/own11876.md",
+     "name": "Shieldbearer's Grip"
+    }
+   },
+   "own11979": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "30% increased damage against enemies with broken armour",
+      "Jagged Breach: 22.5% blunt damage converted to slashing against enemies with broken armour",
+      "Armour Shards: Completely breaking armour creates an Armour Shard; Base Armour Shard limit: 3; lifetime: 8 s; Hitting the shard triggers an explosion: 100% of its burst strength; base radius: 3 m; The explosion breaks 30% of affected enemies’ armour; Breaking armour leaves a shard on the ground. Hit it with an attack or spell to set it off.",
+      "Bared to the Bone: Armour broken to the bone staggers the target",
+      "Cleaving Breach: Your final slashing damage can also build armour break alongside blunt damage. It keeps its bleeding build-up; damage is neither converted nor duplicated.",
+      "Wedge the Armour: 25% increased armour break build-up per impale on the target"
+     ],
+     "link": "passives/node/own11979.md",
+     "name": "Strike Into the Breach"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "30% increased damage against enemies with broken armour",
+      "Jagged Breach: Gain 22.5% of blunt damage as extra slashing on your next hit against broken armour",
+      "Armour Shards: Completely breaking armour creates an Armour Shard; Base Armour Shard limit: 3; lifetime: 8 s; Hitting the shard triggers an explosion: 100% of its burst strength; base radius: 3 m; The explosion breaks 30% of affected enemies’ armour; Breaking armour leaves a shard on the ground. Hit it with an attack or spell to set it off.",
+      "Bared to the Bone: Armour broken to the bone staggers the target",
+      "Cleaving Breach: Your final slashing damage can also build armour break alongside blunt damage. It keeps its bleeding build-up; damage is neither converted nor duplicated.",
+      "Wedge the Armour: 25% increased armour break build-up per impale on the target"
+     ],
+     "link": "passives/node/own11979.md",
+     "name": "Strike Into the Breach"
+    }
+   },
+   "own13038": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+2 spore limit",
+      "Sow with a Strike: Attacks and spells hitting terrain or obstacles create a Spore; Base Spore limit: 3; lifetime: 12 s; Spore poison deals ×2 ailment damage; Spore presence emits 8% of its strength as poison every 2 s in a base radius of 2.5 m; Spore destruction spreads its ailments and bursts for 100% of its strength as poison; Base burst radius: ×1.4 presence radius; elemental hits anchor 50% of their component on the Spore; In combat, your attacks, shots and spells that hit the ground, walls, trees and other obstacles grow a spore there. Hitting a living target does not.",
+      "Chain Burst: Bursting Spores trigger your other Spores within ×1.5 their burst radius; When your spore bursts, it also bursts your other spores nearby. Each spore bursts once per chain and spreads its ailments; the chain creates no new spores."
+     ],
+     "link": "passives/node/own13038.md",
+     "name": "Swamp Garden"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "+2 spore limit",
+      "Sow with a Strike: Attacks and spells hitting terrain or obstacles create a Spore; Base Spore limit: 3; lifetime: 12 s; Spore poison deals ×2 ailment damage; Spore presence emits 8% of its strength as poison every 2 s in a base radius of 2.5 m; Spore destruction spreads its ailments and bursts for 100% of its strength as poison; Base burst radius: ×1.4 presence radius; elemental hits anchor 50% of their component on the Spore; Your attacks, shots and spells that hit the ground, walls, trees and other obstacles grow a spore there. Hitting a living target does not.",
+      "Chain Burst: Bursting Spores trigger your other Spores within ×1.5 their burst radius; When your spore bursts, it also bursts your other spores nearby. Each spore bursts once per chain and spreads its ailments; the chain creates no new spores."
+     ],
+     "link": "passives/node/own13038.md",
+     "name": "Swamp Garden"
+    }
+   },
+   "own13292": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "22.5% increased block power while standing still",
+      "15% increased block power from equipped shield",
+      "Shield Charge: Sprint while blocking to perform Shield Charge; Shield Charge deals 0.8 blunt damage and 1 knockback per point of block power; ×2 Shield Charge stagger build-up; Shield Charge costs 12 stamina per second; Shield Charge speed: ×1.1 sprint speed; 15% additional acceleration over 1.6 s; Shield Charge can hit the same target every 0.75 s; attack speed shortens this interval; Shield Charge deals 0.8 chop damage per point of block power; tool tier 2; After crashing into an obstacle, Shield Charge cannot restart for 1 s; Shield Charge rolls over enemies up to 2× its carrying weight (2.5 base health per point of block power, stars multiply it); heavier ones cost stamina, and enemies over 3.5× stop it and knock the wielder down; Sprint with your shield raised to charge forward, dealing blunt damage to each enemy in the way once. Damage scales with block power, builds extra stagger and costs stamina. Weak enemies are rolled over; heavier ones cost extra stamina, and enemies far heavier than your block power stop the charge and knock the wielder down. Lowering the shield ends it.",
+      "Shield Instead of Blade: Your alternative attack becomes Shield Bash: 1 blunt damage per point of block power; With a one-handed weapon and a shield, your alternative attack becomes a shield bash. Damage scales with block power.",
+      "Two Shields: You can wield 2 shields at the same time; both contribute to blocking; A shield in each hand: both of them block, and their block power adds up",
+      "Spiked Shield: On a successful shield block, deal 150% of your thorns damage to the attacker; A successful shield block deals 150% of your thorns damage to the attacker",
+      "Challenger: Your hits provoke enemies for 15 s; Your hits provoke the enemy for 15 s: it attacks only you"
+     ],
+     "link": "passives/node/own13292.md",
+     "name": "Guard at the Gate"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "22.5% increased block power while standing still",
+      "15% increased block power from equipped shield",
+      "Shield Charge: Sprint while blocking to perform Shield Charge; Shield Charge deals 0.8 blunt damage and 1 knockback per point of block power; ×2 Shield Charge stagger build-up; Shield Charge costs 12 stamina per second; Shield Charge speed: ×1.1 sprint speed; 15% additional acceleration over 1.6 s; Shield Charge can hit the same target every 0.75 s; attack speed shortens this interval; Shield Charge deals 0.8 chop damage per point of block power; tool tier 2; After crashing into an obstacle, Shield Charge cannot restart for 1 s; Shield Charge rolls over enemies up to 2× its carrying weight (2.5 base health per point of block power, stars multiply it); heavier ones cost stamina, and enemies over 3.5× stop it and knock the wielder down; Sprint with your shield raised to charge forward, dealing blunt damage to each enemy in the way once. Damage scales with block power, builds extra stagger and costs stamina. Weak enemies are rolled over; heavier ones cost extra stamina, and enemies far heavier than your block power stop the charge and knock the wielder down. Lowering the shield ends it.",
+      "Shield Instead of Blade: Your alternative attack becomes Shield Bash: 1 blunt damage per point of block power; With a one-handed weapon and a shield, your alternative attack becomes a shield bash. Damage scales with block power.",
+      "Two Shields: You can wield 2 shields at the same time; both contribute to blocking; A shield in each hand: both of them block, and their block power adds up",
+      "Spiked Shield: On a successful shield block, deal 150% of your thorns damage to the attacker; A successful shield block deals 150% of your thorns damage to the attacker",
+      "Challenger: Your hits provoke enemies for 15 s; Your hits provoke the enemy for 15 s: it attacks only you",
+      "Shield Throw: With no other available weapon in your hands, attacks throw your shield; Thrown shields deal 1 blunt damage per point of block power; Thrown shield stamina cost: ×1 the spear-throw cost; With no other weapon ready, your attack throws your shield. It deals blunt damage from block power and counts as a thrown projectile. After the flight it drops to be picked up; a return effect brings the same shield back to its slot."
+     ],
+     "link": "passives/node/own13292.md",
+     "name": "Guard at the Gate"
+    }
+   },
+   "own13316": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "30% increased block power at low stamina",
+      "10% reduced block stamina cost at low stamina",
+      "Shield Charge: Sprint while blocking to perform Shield Charge; Shield Charge deals 0.8 blunt damage and 1 knockback per point of block power; ×2 Shield Charge stagger build-up; Shield Charge costs 12 stamina per second; Shield Charge speed: ×1.1 sprint speed; 15% additional acceleration over 1.6 s; Shield Charge can hit the same target every 0.75 s; attack speed shortens this interval; Shield Charge deals 0.8 chop damage per point of block power; tool tier 2; After crashing into an obstacle, Shield Charge cannot restart for 1 s; Shield Charge rolls over enemies up to 2× its carrying weight (2.5 base health per point of block power, stars multiply it); heavier ones cost stamina, and enemies over 3.5× stop it and knock the wielder down; Sprint with your shield raised to charge forward, dealing blunt damage to each enemy in the way once. Damage scales with block power, builds extra stagger and costs stamina. Weak enemies are rolled over; heavier ones cost extra stamina, and enemies far heavier than your block power stop the charge and knock the wielder down. Lowering the shield ends it.",
+      "Shield Instead of Blade: Your alternative attack becomes Shield Bash: 1 blunt damage per point of block power; With a one-handed weapon and a shield, your alternative attack becomes a shield bash. Damage scales with block power.",
+      "Two Shields: You can wield 2 shields at the same time; both contribute to blocking; A shield in each hand: both of them block, and their block power adds up",
+      "Spiked Shield: On a successful shield block, deal 150% of your thorns damage to the attacker; A successful shield block deals 150% of your thorns damage to the attacker",
+      "Challenger: Your hits provoke enemies for 15 s; Your hits provoke the enemy for 15 s: it attacks only you"
+     ],
+     "link": "passives/node/own13316.md",
+     "name": "Weary Shieldbearer"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "30% increased block power at low stamina",
+      "10% reduced block stamina cost at low stamina",
+      "Shield Charge: Sprint while blocking to perform Shield Charge; Shield Charge deals 0.8 blunt damage and 1 knockback per point of block power; ×2 Shield Charge stagger build-up; Shield Charge costs 12 stamina per second; Shield Charge speed: ×1.1 sprint speed; 15% additional acceleration over 1.6 s; Shield Charge can hit the same target every 0.75 s; attack speed shortens this interval; Shield Charge deals 0.8 chop damage per point of block power; tool tier 2; After crashing into an obstacle, Shield Charge cannot restart for 1 s; Shield Charge rolls over enemies up to 2× its carrying weight (2.5 base health per point of block power, stars multiply it); heavier ones cost stamina, and enemies over 3.5× stop it and knock the wielder down; Sprint with your shield raised to charge forward, dealing blunt damage to each enemy in the way once. Damage scales with block power, builds extra stagger and costs stamina. Weak enemies are rolled over; heavier ones cost extra stamina, and enemies far heavier than your block power stop the charge and knock the wielder down. Lowering the shield ends it.",
+      "Shield Instead of Blade: Your alternative attack becomes Shield Bash: 1 blunt damage per point of block power; With a one-handed weapon and a shield, your alternative attack becomes a shield bash. Damage scales with block power.",
+      "Two Shields: You can wield 2 shields at the same time; both contribute to blocking; A shield in each hand: both of them block, and their block power adds up",
+      "Spiked Shield: On a successful shield block, deal 150% of your thorns damage to the attacker; A successful shield block deals 150% of your thorns damage to the attacker",
+      "Challenger: Your hits provoke enemies for 15 s; Your hits provoke the enemy for 15 s: it attacks only you",
+      "Shield Throw: With no other available weapon in your hands, attacks throw your shield; Thrown shields deal 1 blunt damage per point of block power; Thrown shield stamina cost: ×1 the spear-throw cost; With no other weapon ready, your attack throws your shield. It deals blunt damage from block power and counts as a thrown projectile. After the flight it drops to be picked up; a return effect brings the same shield back to its slot."
+     ],
+     "link": "passives/node/own13316.md",
+     "name": "Weary Shieldbearer"
+    }
+   },
+   "own13340": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "10% reduced block stamina cost when hit recently",
+      "Shield Charge: Sprint while blocking to perform Shield Charge; Shield Charge deals 0.8 blunt damage and 1 knockback per point of block power; ×2 Shield Charge stagger build-up; Shield Charge costs 12 stamina per second; Shield Charge speed: ×1.1 sprint speed; 15% additional acceleration over 1.6 s; Shield Charge can hit the same target every 0.75 s; attack speed shortens this interval; Shield Charge deals 0.8 chop damage per point of block power; tool tier 2; After crashing into an obstacle, Shield Charge cannot restart for 1 s; Shield Charge rolls over enemies up to 2× its carrying weight (2.5 base health per point of block power, stars multiply it); heavier ones cost stamina, and enemies over 3.5× stop it and knock the wielder down; Sprint with your shield raised to charge forward, dealing blunt damage to each enemy in the way once. Damage scales with block power, builds extra stagger and costs stamina. Weak enemies are rolled over; heavier ones cost extra stamina, and enemies far heavier than your block power stop the charge and knock the wielder down. Lowering the shield ends it.",
+      "Shield Instead of Blade: Your alternative attack becomes Shield Bash: 1 blunt damage per point of block power; With a one-handed weapon and a shield, your alternative attack becomes a shield bash. Damage scales with block power.",
+      "Two Shields: You can wield 2 shields at the same time; both contribute to blocking; A shield in each hand: both of them block, and their block power adds up",
+      "Spiked Shield: On a successful shield block, deal 150% of your thorns damage to the attacker; A successful shield block deals 150% of your thorns damage to the attacker",
+      "Challenger: Your hits provoke enemies for 15 s; Your hits provoke the enemy for 15 s: it attacks only you"
+     ],
+     "link": "passives/node/own13340.md",
+     "name": "Scar on the Shield"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "10% reduced block stamina cost when hit recently",
+      "Shield Charge: Sprint while blocking to perform Shield Charge; Shield Charge deals 0.8 blunt damage and 1 knockback per point of block power; ×2 Shield Charge stagger build-up; Shield Charge costs 12 stamina per second; Shield Charge speed: ×1.1 sprint speed; 15% additional acceleration over 1.6 s; Shield Charge can hit the same target every 0.75 s; attack speed shortens this interval; Shield Charge deals 0.8 chop damage per point of block power; tool tier 2; After crashing into an obstacle, Shield Charge cannot restart for 1 s; Shield Charge rolls over enemies up to 2× its carrying weight (2.5 base health per point of block power, stars multiply it); heavier ones cost stamina, and enemies over 3.5× stop it and knock the wielder down; Sprint with your shield raised to charge forward, dealing blunt damage to each enemy in the way once. Damage scales with block power, builds extra stagger and costs stamina. Weak enemies are rolled over; heavier ones cost extra stamina, and enemies far heavier than your block power stop the charge and knock the wielder down. Lowering the shield ends it.",
+      "Shield Instead of Blade: Your alternative attack becomes Shield Bash: 1 blunt damage per point of block power; With a one-handed weapon and a shield, your alternative attack becomes a shield bash. Damage scales with block power.",
+      "Two Shields: You can wield 2 shields at the same time; both contribute to blocking; A shield in each hand: both of them block, and their block power adds up",
+      "Spiked Shield: On a successful shield block, deal 150% of your thorns damage to the attacker; A successful shield block deals 150% of your thorns damage to the attacker",
+      "Challenger: Your hits provoke enemies for 15 s; Your hits provoke the enemy for 15 s: it attacks only you",
+      "Shield Throw: With no other available weapon in your hands, attacks throw your shield; Thrown shields deal 1 blunt damage per point of block power; Thrown shield stamina cost: ×1 the spear-throw cost; With no other weapon ready, your attack throws your shield. It deals blunt damage from block power and counts as a thrown projectile. After the flight it drops to be picked up; a return effect brings the same shield back to its slot."
+     ],
+     "link": "passives/node/own13340.md",
+     "name": "Scar on the Shield"
+    }
+   },
+   "own13468": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "20% increased ailment and buff duration for spores",
+      "Sow with a Strike: Attacks and spells hitting terrain or obstacles create a Spore; Base Spore limit: 3; lifetime: 12 s; Spore poison deals ×2 ailment damage; Spore presence emits 8% of its strength as poison every 2 s in a base radius of 2.5 m; Spore destruction spreads its ailments and bursts for 100% of its strength as poison; Base burst radius: ×1.4 presence radius; elemental hits anchor 50% of their component on the Spore; In combat, your attacks, shots and spells that hit the ground, walls, trees and other obstacles grow a spore there. Hitting a living target does not.",
+      "Chain Burst: Bursting Spores trigger your other Spores within ×1.5 their burst radius; When your spore bursts, it also bursts your other spores nearby. Each spore bursts once per chain and spreads its ailments; the chain creates no new spores."
+     ],
+     "link": "passives/node/own13468.md",
+     "name": "Lasting Bloom"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "20% increased ailment and buff duration for spores",
+      "Sow with a Strike: Attacks and spells hitting terrain or obstacles create a Spore; Base Spore limit: 3; lifetime: 12 s; Spore poison deals ×2 ailment damage; Spore presence emits 8% of its strength as poison every 2 s in a base radius of 2.5 m; Spore destruction spreads its ailments and bursts for 100% of its strength as poison; Base burst radius: ×1.4 presence radius; elemental hits anchor 50% of their component on the Spore; Your attacks, shots and spells that hit the ground, walls, trees and other obstacles grow a spore there. Hitting a living target does not.",
+      "Chain Burst: Bursting Spores trigger your other Spores within ×1.5 their burst radius; When your spore bursts, it also bursts your other spores nearby. Each spore bursts once per chain and spreads its ailments; the chain creates no new spores."
+     ],
+     "link": "passives/node/own13468.md",
+     "name": "Lasting Bloom"
+    }
+   },
+   "own13480": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased damage for minions"
+     ],
+     "link": "passives/tree/#own13480",
+     "name": "Minions"
+    },
+    "old": null
+   },
+   "own13486": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased damage for minions"
+     ],
+     "link": "passives/tree/#own13486",
+     "name": "Minions"
+    },
+    "old": null
+   },
+   "own13492": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased damage for minions"
+     ],
+     "link": "passives/tree/#own13492",
+     "name": "Minions"
+    },
+    "old": null
+   },
+   "own13498": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "2% increased attack speed for minions"
+     ],
+     "link": "passives/tree/#own13498",
+     "name": "Minions"
+    },
+    "old": null
+   },
+   "own13504": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "2% increased attack speed for minions"
+     ],
+     "link": "passives/tree/#own13504",
+     "name": "Minions"
+    },
+    "old": null
+   },
+   "own13510": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "20% increased damage for minions",
+      "5% increased attack speed for minions"
+     ],
+     "link": "passives/node/own13510.md",
+     "name": "Zeal of the Host"
+    },
+    "old": null
+   },
+   "own13516": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased damage for minions"
+     ],
+     "link": "passives/tree/#own13516",
+     "name": "Minions"
+    },
+    "old": null
+   },
+   "own13534": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased damage for minions"
+     ],
+     "link": "passives/tree/#own13534",
+     "name": "Minions"
+    },
+    "old": null
+   },
+   "own13561": {
+    "new": {
+     "kind": "Keystone",
+     "lines": [
+      "Hold jump to rise and hover for stamina. Running lowers your height and lets you fly faster. Jump height sets how high you can hover.",
+      "×0.7 movement speed airborne",
+      "×0.7 jump height"
+     ],
+     "link": "passives/node/own13561.md",
+     "name": "Levitation"
+    },
+    "old": {
+     "kind": "Keystone",
+     "lines": [
+      "Hold jump to rise and hover for stamina. Running lowers your height and lets you fly faster. Jump height sets how high you can hover.",
+      "×0.7 movement speed",
+      "×0.7 jump height"
+     ],
+     "link": "passives/node/own13561.md",
+     "name": "Levitation"
+    }
+   },
+   "own13709": {
+    "new": {
+     "kind": "Keystone",
+     "lines": [
+      "Your minions have no lifetime: they no longer wither and live until they are killed",
+      "−20% eitr reservation efficiency for minions"
+     ],
+     "link": "passives/node/own13709.md",
+     "name": "Deathless Host"
+    },
+    "old": null
+   },
+   "own13715": {
+    "new": {
+     "kind": "Keystone",
+     "lines": [
+      "With no other weapon ready, your attack throws your shield. It deals blunt damage from block power and counts as a thrown projectile. After the flight it drops to be picked up; a return effect brings the same shield back to its slot."
+     ],
+     "link": "passives/node/own13715.md",
+     "name": "Shield Throw"
+    },
+    "old": null
+   },
+   "own13719": {
+    "new": {
+     "kind": "Keystone",
+     "lines": [
+      "A cast's projectiles may all strike the same target",
+      "×0.5 projectile damage"
+     ],
+     "link": "passives/node/own13719.md",
+     "name": "Shotgun"
+    },
+    "old": null
+   },
+   "own9787": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "150% increased critical strike chance",
+      "Critical strikes get no critical damage bonus: the multiplier stays 150%"
+     ],
+     "link": "passives/node/own9787.md",
+     "name": "Hunter's Wager"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "150% increased critical strike chance",
+      "100% reduced critical strike damage"
+     ],
+     "link": "passives/node/own9787.md",
+     "name": "Hunter's Wager"
+    }
+   },
+   "own9926": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+3% damage resistance for minions"
+     ],
+     "link": "passives/tree/#own9926",
+     "name": "Minion Defences"
+    },
+    "old": null
+   },
+   "own9932": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+3% damage resistance for minions"
+     ],
+     "link": "passives/tree/#own9932",
+     "name": "Minion Defences"
+    },
+    "old": null
+   },
+   "own9938": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+7.5% damage resistance for minions"
+     ],
+     "link": "passives/node/own9938.md",
+     "name": "Servants’ Ward"
+    },
+    "old": null
+   },
+   "own9944": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+3% damage resistance for minions"
+     ],
+     "link": "passives/tree/#own9944",
+     "name": "Minion Defences"
+    },
+    "old": null
+   },
+   "own9950": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+3% damage resistance for minions"
+     ],
+     "link": "passives/tree/#own9950",
+     "name": "Minion Defences"
+    },
+    "old": null
+   },
+   "own9959": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "−4% duration of ailments on you of base for minions"
+     ],
+     "link": "passives/tree/#own9959",
+     "name": "Minion Defences"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "−4% duration of ailments on you of base for minions"
+     ],
+     "link": "passives/tree/#own9959",
+     "name": "Minion Defence"
+    }
+   },
+   "own9962": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+4% eitr reservation efficiency for minions"
+     ],
+     "link": "passives/tree/#own9962",
+     "name": "Minion Reservation Efficiency"
+    },
+    "old": null
+   },
+   "own9968": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+12% eitr reservation efficiency for minions"
+     ],
+     "link": "passives/node/own9968.md",
+     "name": "Light Burden"
+    },
+    "old": null
+   },
+   "own9974": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+4% eitr reservation efficiency for minions"
+     ],
+     "link": "passives/tree/#own9974",
+     "name": "Minion Reservation Efficiency"
+    },
+    "old": null
+   },
+   "own9980": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+12% eitr reservation efficiency for minions"
+     ],
+     "link": "passives/node/own9980.md",
+     "name": "Call of the Host"
+    },
+    "old": null
+   },
+   "own9986": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+4% eitr reservation efficiency for minions"
+     ],
+     "link": "passives/tree/#own9986",
+     "name": "Minion Reservation Efficiency"
+    },
+    "old": null
+   },
+   "own9995": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased maximum health for minions"
+     ],
+     "link": "passives/tree/#own9995",
+     "name": "Minion Defences"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased maximum health for minions"
+     ],
+     "link": "passives/tree/#own9995",
+     "name": "Minion Defence"
+    }
+   }
+  }
+ },
+ "date": "2026-10-21",
+ "from": "5.1.2",
+ "to": "5.2.0"
+}

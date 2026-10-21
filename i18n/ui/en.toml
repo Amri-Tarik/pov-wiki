@@ -588,6 +588,11 @@ terms = "Biome: the factor of the creature's biome (table below; bosses use the 
 species = "Some kinds have their own health factor, which replaces the biome's: {species}."
 soften = "factor = 1 + (biome factor − 1) × scale"
 fixed = "These keep their own health: {creatures}."
+summons = "{minions}: the summons the mod manages (from its summoning staves, and from Valheim's unless the Vanilla summoning staves setting is on) scale on their own: no stars, tamed share, Monster Power or Blight Mist."
+summons_formula = "summon health or damage = base × the health factor of its kind's biome × summon power"
+summon_power = "Summon power is × 1, except: {powers}."
+summon_health = "{staff}: × {x} health"
+summon_damage = "{staff}: × {x} damage"
 
 [formula.boss-step]
 title = "After a biome's boss"
@@ -712,8 +717,10 @@ combo = "{combo} counts one hit per attack: additional strikes and phantom strik
 title = "Phantom strikes"
 text = "{phantom} can follow a melee attack hit: the weapon's own blow or one of its additional strikes, not projectiles, area blows or other copies. Each hits a random enemy within {radius} m of the struck one, that one included: the first {delay} s after the hit, then one every {interval} s."
 count = "phantom strikes per hit = ⌊chance⌋, +1 with a probability of what is left"
-formula = "phantom strike damage = {share} × the hit's damage"
-damage = "The hit's damage is taken once its critical strike and all your damage bonuses are applied, before the enemy's armour and resistances. A phantom strike gets none of your bonuses and never crits; the enemy's armour and resistances apply to it as usual."
+formula = "phantom strike damage = {share} × the hit's damage without its critical strike"
+damage = "The hit's damage is taken with all your damage bonuses applied but its {crit} taken out, before the enemy's armour and resistances. A phantom strike doesn't get your bonuses again, but it rolls a critical strike of its own: your weapon's crit chance against the enemy it hits (with rows for phantom strikes), and your weapon's crit multiplier. The enemy's armour and resistances apply to it as usual."
+stagger = "{stagger}: a phantom strike carries {share} of the hit's stagger, with the stagger build-up that works with phantom strikes in place of the hit's own."
+ailments = "{gauge}: phantom strikes don't fill it. Their fire, poison and spirit damage hits at once instead of over time, and their frost and lightning bring no chill or shock."
 chain = "With {recursion}, a phantom strike that lands can cause more: the n-th generation's chance is the first's × the factor its line gives, to the power n − 1. At most {max} phantom strikes wait at once."
 
 [formula.rune-shield]
@@ -721,6 +728,7 @@ title = "Rune shield"
 text = "{shield} is a layer over your health. Of a hit that gets through {block}, resistances and armour, it takes everything but spirit and poison damage until it runs out; the rest goes to your health. While it holds, {stagger} you take is cut by {guard}."
 formula = "maximum = (base + flat + armour's rune shield + food + from health) × (1 + increases)"
 notes = "The base is {base} by default (a server setting): only the tree, gear and food give a shield. Stats that turn health into shield give maximum health × p ÷ (1 − p) for a share p, at most {cap}."
+ward = "Valheim's shield effects (such as the Staff of Protection's) become a ward on whoever gets them: it takes Valheim's amount of damage, everything but spirit and poison, for Valheim's duration (on you, longer with buff duration, at most × 3). While a ward holds, {stagger} taken is cut by {guard} too."
 recharge = "Damage you take restarts the wait. After {delay} s without damage, it recharges {rate} of its maximum per second ({full} s from empty), faster with shield regeneration. Recharge delay reductions cut the wait by at most {cap}, never below {floor} s."
 
 [formula.stagger]
@@ -729,6 +737,7 @@ text = "{stagger} fills from a hit's blunt, slash, pierce and lightning damage, 
 formula = "your hit's stagger = (damage × {share} + flat) × (1 + stagger {buildup}) × the weapon's stagger multiplier"
 yours = "Your hits carry {share} of the {power} Valheim gives them (a server setting); stagger build-up multiplies it and flat stagger build-up adds to it."
 forced = "{forced}: when it rolls, the hit's stagger is multiplied by 100."
+shield = "Your own threshold counts {share} of your maximum {shield} as health, and your gauge drains that much faster, so it still empties in the same time."
 taken = "Stagger you take: × (1 − {res}), which is at most {cap}; cut by {guard} while your {shield} holds. Stagger recovery drains your gauge faster."
 
 [formula.block]
@@ -784,6 +793,7 @@ notes = "Area attacks (a {slam} is one) get the wider radius; other swings reach
 title = "Slams and aftershocks"
 text = "{slam}: Valheim's area attacks (the sledge's swing and others like it) count, and so does an alternative attack {ground} turns into one: it uses the weapon's own area radius, or {radius} m if the weapon has no area attack. Your {area} widens a slam's radius."
 aftershock = "{aftershock}: rolled once per slam, at most 100%. {delay} s later it erupts at the slam's point, in the slam's radius × the area increases that only apply to aftershocks, and hits everything there with the slam's full damage. An aftershock never rolls another, though repeat chance can make it erupt once more."
+push = "An aftershock pushes enemies away from where it erupts."
 charged = "A {charged} that isn't a slam can make aftershocks too, from aftershock chance that works with charged attacks: each full 100% gives one, and the rest is a chance for one more, each {delay} s after the last, where the enemy was hit."
 
 [formula.armour-break]
@@ -818,13 +828,16 @@ flat_typed = "flat slash, pierce or blunt damage: only to a hit that already has
 flat_element = "flat fire, frost, lightning, poison or spirit damage: always, as that type"
 flat_elemental = "flat elemental damage: to the largest of the hit's fire, frost and lightning, only if it has one of them"
 oil = "Weapon {oil} add their damage type before flat damage, without the skill multiplier."
+harmless = "A hit with no damage at all gets neither oils nor flat damage."
 conversion_title = "Conversion"
 conversion = "{conversion} turns part of a hit's slash, pierce and blunt damage into another type, after flat damage and before increases; no other type converts. Each of the three converts by its own conversions plus those of all physical damage; if they come to more than 100%, they're scaled down to 100% together."
+conversion_target = "Conversion that depends on the enemy (against bosses, enemies with ailments and the like) counts too."
 conversion_formula = "converted = slash, pierce or blunt × its conversion to the new type, all its conversions together at most 100%"
 converted = "Converted damage is its new type for resistances and ailments, but it grows with the increases of both types: its old type's and its new type's, added together."
 gain = "{gain}: worked out from the slash, pierce and blunt damage before conversion, and added after it as its new type. It grows with its new type's increases only."
 increases_title = "Increases"
 increases = "All the increased and reduced damage that applies to a hit is added into one sum, and the hit is multiplied by 1 + that sum once: general damage, your weapon kind's, melee, ranged or spell damage, attacks', alternative attacks', that of hits that aren't projectiles, a running attack's bonus, and the increases that depend on the enemy (below)."
+scepters = "A scepter's hits count as the kind of attack they are: its spells take spell damage increases, its other attacks melee or ranged ones."
 increases_formula = "damage of a type = (weapon damage × skill multiplier + oils + flat damage × skill multiplier) × (1 + increases + that type's increases)"
 typed = "Each damage type adds its own increases to the sum, for that type only: fire, frost and lightning also add elemental damage increases, and slash, pierce and blunt add physical damage increases. So +50% damage and +50% fire damage make fire damage × 2, not × 2.25."
 more_title = "More multipliers"

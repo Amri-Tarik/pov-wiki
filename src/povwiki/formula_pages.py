@@ -196,6 +196,7 @@ def _strength(ctx, page, v):
             + [ui("formula.creature-strength.species", species=species), ""]
             + ([ui("formula.creature-strength.fixed", creatures=", ".join(ctx.loc.creature(c) for c in d["fixedHealth"])), ""]
                if d.get("fixedHealth") else [])
+            + _summons(ctx, page)
             + [f"### {ui('formula.presets')}", "", ui("formula.presets_note"), ""]
             + _formula(ui("formula.creature-strength.soften"))
             + _table([ui("formula.preset_col"), ui("formula.health_scale"), ui("formula.damage_scale"),
@@ -406,6 +407,25 @@ def _strikes(ctx, page, v):
                ui("formula.strikes.combo", combo=_term(ctx, "series", page, start=True)), ""])
 
 
+def _summons(ctx, page) -> list[str]:
+    """Summons while their lifetime runs (EnemyDifficulty.Desired, MinionLife.IsActive): their kind's
+    stage health factor for health and damage, × the per-staff power of Valheim's own staves."""
+    from .base_pages import _item_name, base_path, bases
+
+    ui, t = ctx.loc.ui, ctx.loc.difficulty.get("tunables", {})
+    have = bases(ctx)
+    powers = []
+    for key, value in t.items():
+        kind, _, staff = key.partition(".power-")[2].partition(".") if key.startswith("summon.power-") else ("", "", "")
+        if staff and value != 1:
+            name = _item_name(ctx, staff)
+            name = f"[{name}]({rel(base_path(staff), page)})" if staff in have else name
+            powers.append(ui(f"formula.creature-strength.summon_{kind}", staff=name, x=_n(value)))
+    md = [ui("formula.creature-strength.summons", minions=_term(ctx, "minions", page, start=True)), ""]
+    md += _formula(ui("formula.creature-strength.summons_formula"))
+    return md + ([ui("formula.creature-strength.summon_power", powers=", ".join(powers)), ""] if powers else [])
+
+
 def _phantoms(ctx, page, v):
     """Phantom strikes (Phantoms): copies of a melee attack hit at a share of its finished damage,
     landing on random nearby enemies; Endless Apparition lets them chain."""
@@ -414,7 +434,9 @@ def _phantoms(ctx, page, v):
                 radius=_n(t["phantom.radius"]), delay=_n(t["phantom.delay"]), interval=_n(t["phantom.interval"])), ""]
             + _formula(ui("formula.phantom-strikes.count"))
             + _formula(ui("formula.phantom-strikes.formula", share=_pct(t["phantom.damage"])))
-            + [ui("formula.phantom-strikes.damage", share=_pct(t["phantom.damage"])), "",
+            + [ui("formula.phantom-strikes.damage", crit=_term(ctx, "crit", page)), "",
+               ui("formula.phantom-strikes.stagger", stagger=_term(ctx, "stagger", page, start=True), share=_pct(t["phantom.stagger"])), "",
+               ui("formula.phantom-strikes.ailments", gauge=_term(ctx, "ailment-gauge", page, start=True)), "",
                ui("formula.phantom-strikes.chain", recursion=_term(ctx, "phantom-recursion", page, start=True), max=v["max_pending"]), ""])
 
 
@@ -525,6 +547,7 @@ def _rune_shield(ctx, page, v):
     md = [ui("formula.rune-shield.text", shield=_term(ctx, "shield", page, start=True), block=_term(ctx, "block", page),
              stagger=_term(ctx, "stagger", page), guard=_pct(v["stagger_guard"])), ""]
     md += _formula(ui("formula.rune-shield.formula"))
+    md += [ui("formula.rune-shield.ward", stagger=_term(ctx, "stagger", page), guard=_pct(v["stagger_guard"])), ""]
     md += [ui("formula.rune-shield.notes", base=_n(v["base"]), cap=_pct(v["from_life_cap"])), ""]
     full = 1 / v["rate"]
     md += [ui("formula.rune-shield.recharge", delay=_n(v["delay"]), rate=_pct(v["rate"]), full=_n(full),
@@ -540,6 +563,7 @@ def _stagger(ctx, page, v):
     drain_enemy = v["drain_seconds"] / v["share"]
     md = [ui("formula.stagger.text", stagger=_term(ctx, "stagger", page, start=True), drain=_n(v["drain_seconds"]),
              enemy=_n(drain_enemy)), ""]
+    md += [ui("formula.stagger.shield", shield=_term(ctx, "shield", page), share=_pct(d.get("tunables", {}).get("stagger.rune-shield", 0))), ""]
     md += _formula(ui("formula.stagger.formula", share=_pct(v["share"]), buildup=buildup))
     md += [ui("formula.stagger.yours", share=_pct(v["share"]), power=_term(ctx, "stagger-power", page)), "",
            ui("formula.stagger.forced", forced=_term(ctx, "stun-chance", page, start=True)), "",
@@ -579,6 +603,7 @@ def _slams(ctx, page, v):
     return [ui("formula.slams.text", slam=_term(ctx, "slam", page, start=True), ground=_mastery_link(ctx, "MasterySlam1", page),
                radius=_n(t["slam.ground-radius"]), area=_term(ctx, "area", page)), "",
             ui("formula.slams.aftershock", aftershock=_term(ctx, "aftershock", page, start=True), delay=_n(t["aftershock.delay"])), "",
+            ui("formula.slams.push"), "",
             ui("formula.slams.charged", charged=_term(ctx, "charged-attack", page), delay=_n(t["aftershock.delay"])), ""]
 
 
@@ -667,7 +692,7 @@ def _hit_flat(ctx, page, v):
     ui = ctx.loc.ui
     md = [ui("formula.hit-damage.flat", flat=_term(ctx, "flat-damage", page, start=True), factor=_term(ctx, "skill-factor", page)), ""]
     md += [f"- {ui(f'formula.hit-damage.flat_{k}')}" for k in ("main", "physical", "typed", "element", "elemental")] + [""]
-    return md + [ui("formula.hit-damage.oil", oil=_term(ctx, "oil", page)), ""]
+    return md + [ui("formula.hit-damage.oil", oil=_term(ctx, "oil", page)), "", ui("formula.hit-damage.harmless"), ""]
 
 
 def _hit_conversion(ctx, page, v):
@@ -675,6 +700,7 @@ def _hit_conversion(ctx, page, v):
     converted damage grows with both types' increases."""
     ui = ctx.loc.ui
     md = [ui("formula.hit-damage.conversion", conversion=_term(ctx, "conversion", page, start=True)), ""]
+    md += [ui("formula.hit-damage.conversion_target"), ""]
     md += _formula(ui("formula.hit-damage.conversion_formula"))
     return md + [ui("formula.hit-damage.converted"), "",
                  ui("formula.hit-damage.gain", gain=_term(ctx, "gain-as-extra", page, start=True)), ""]
@@ -685,6 +711,7 @@ def _hit_increases(ctx, page, v):
     each type adding its own."""
     ui = ctx.loc.ui
     md = [ui("formula.hit-damage.increases"), ""]
+    md += [ui("formula.hit-damage.scepters"), ""]
     md += _formula(ui("formula.hit-damage.increases_formula"))
     return md + [ui("formula.hit-damage.typed"), ""]
 

@@ -619,6 +619,18 @@ def _thorns(ctx, page, v):
     return md
 
 
+def _armour_break(ctx, page, v):
+    """Armour break (Corrosion: Strike, Bite, Carry): blunt fills a broken share that adds the enemy's
+    armour back to your physical damage."""
+    ui = ctx.loc.ui
+    md = [ui("formula.armour-break.text", brk=_term(ctx, "corrosion", page, start=True), gauge=_term(ctx, "ailment-gauge", page),
+             buildup=_term(ctx, "build-up", page), seconds=_n(v["seconds"])), ""]
+    md += _formula(ui("formula.armour-break.fill"))
+    md += _formula(ui("formula.armour-break.formula"))
+    md += [ui("formula.armour-break.notes", armour=_term(ctx, "armor", page)), ""]
+    return md
+
+
 def _lifesteal(ctx, page, v):
     """Life leech (DamageNet: Sip, Leech, Pull)."""
     ui = ctx.loc.ui
@@ -660,7 +672,7 @@ _PAGES = {
                              ("resistances", _resistances), ("armour", _armour), ("rune-shield", _rune_shield), ("enemy-penetration", _penetration), ("stagger", _stagger),
                              ("block", _block), ("glancing", _glancing), ("endurance", _endurance), ("thorns", _thorns),
                              ("charged-attacks", _charged), ("strikes", _strikes), ("phantom-strikes", _phantoms), ("area", _area), ("slams", _slams),
-                             ("ailments", _ailments), ("impale", _impale), ("lifesteal", _lifesteal), ("build-cost", _build_cost)]),
+                             ("ailments", _ailments), ("armour-break", _armour_break), ("impale", _impale), ("lifesteal", _lifesteal), ("build-cost", _build_cost)]),
 }
 _TITLES = {"creatures": "formula.creatures", "loot": "formula.loot_page", "combat": "formula.combat",
            "experience": "formula.experience_page"}
@@ -716,6 +728,7 @@ TERM_FORMULAS = {
     "thorns": ["thorns"],
     "lifesteal": ["lifesteal"],
     "impale": ["impale"],
+    "corrosion": ["armour-break"],
     "endurance": ["endurance"],
 }
 

@@ -710,3 +710,20 @@ anchors = [
 ]
 fingerprint = "fc791b4960e8"
 checked = "5.1.2"
+
+[[formula]]
+id = "armour-break"
+anchors = [
+    "PassiveTree/Corrosion.cs :: Corrosion.Strike",
+    "PassiveTree/Corrosion.cs :: Corrosion.Bite",
+    "PassiveTree/Corrosion.cs :: Corrosion.Carry",
+    "PassiveTree/Corrosion.cs :: Corrosion.On",
+    "PassiveTree/AilmentDamage.cs :: AilmentDamage.Grip",
+    "PassiveTree/AilmentDamage.cs :: AilmentDamage.Component",
+    "PassiveTree/XpSources.cs :: Character_Damage.Prefix",
+]
+fingerprint = "d1a53f208f93"
+checked = "5.1.2"
+
+[formula.values]
+seconds = 8

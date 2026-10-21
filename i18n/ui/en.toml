@@ -785,6 +785,13 @@ text = "{slam}: Valheim's area attacks (the sledge's swing and others like it) c
 aftershock = "{aftershock}: rolled once per slam, at most 100%. {delay} s later it erupts at the slam's point, in the slam's radius × the area increases that only apply to aftershocks, and hits everything there with the slam's full damage. An aftershock never rolls another, though repeat chance can make it erupt once more."
 charged = "A {charged} that isn't a slam can make aftershocks too, from aftershock chance that works with charged attacks: each full 100% gives one, and the rest is a chance for one more, each {delay} s after the last, where the enemy was hit."
 
+[formula.armour-break]
+title = "Armour break"
+text = "{brk}: a hit's blunt damage breaks the enemy's armour the way it would fill an {gauge}: blunt against its base health, raised by {buildup}. The broken share adds up to 100% and is shared by everyone hitting the enemy; {seconds} s after the last hit that added to it, it's gone."
+fill = "broken share added by a hit = blunt ÷ (ailment threshold × the enemy's base health) × (1 + build-up)"
+formula = "your physical damage + the enemy's armour × broken share × (1 + armour break effect increases), that share at most 100%"
+notes = "Every hit of yours on an enemy with broken armour gets that added, including the hit that just added to it, spread over its blunt, slash and pierce (as blunt if it has none). It comes before the enemy's {armour}, so it pays back about as much as the armour takes."
+
 [formula.impale]
 title = "Impale"
 text = "{impale}: a hit's pierce damage can impale the enemy. The chance works like the {gauge}: pierce against the enemy's base health, raised by {buildup}."

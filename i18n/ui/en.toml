@@ -730,6 +730,74 @@ yours = "Your hits carry {share} of the {power} Valheim gives them (a server set
 forced = "{forced}: when it rolls, the hit's stagger is multiplied by 100."
 taken = "Stagger you take: × (1 − {res}), which is at most {cap}; cut by {guard} while your {shield} holds. Stagger recovery drains your gauge faster."
 
+[formula.block]
+title = "Block"
+text = "{block}: when you block a hit from the front, Valheim treats your block power like armour against the whole hit, every damage type, after the blocking item's own resistances."
+power = "block power = max(0, Valheim's block power × (1 + the shield's own block power increases) + flat block power) × (1 + block power increases)"
+base = "Valheim's block power = the item's block power at its quality × (1 + Blocking skill × {skill})"
+parry = "parry: block power × the item's parry bonus × (1 + parry bonus increases)"
+parry_text = "A parry is a block within {window} s of raising your guard, with an item that has a parry bonus. A block costs Valheim's block stamina × the share of your block power the hit used; a parry costs a fixed amount."
+blocked = "What gets through works like {armour}: block power under half the hit takes that much off; more than that cuts the hit to hit² ÷ (4 × block power). The rest goes on to your armour and rune shield."
+guard = "If you're out of stamina, or the blocked hit's {stagger} breaks your guard, nothing is blocked. A hit that meets your block can't be a {glance}."
+
+[formula.glancing]
+title = "Glancing blows"
+text = "{glance}: any hit a creature lands on you that doesn't meet your block can glance. Everyone has {chance} chance (a server setting), plus glancing blow chance."
+cap = "At most {cap}."
+formula = "glancing blow: damage taken − {cut} × (1 + glancing blow reduction increases), that cut kept between {lo} and {hi}"
+taken = "The cut joins your other damage-taken modifiers, which together can take off at most {floor}. It comes before your resistances, block and armour."
+block = "Hits that meet your {block} don't glance; with {guard}, a blocked hit that breaks your guard still can."
+
+[formula.endurance]
+title = "Endurance"
+text = "{endurance}: while your health is under your endurance threshold, the part of each hit below the threshold is reduced."
+formula = "damage taken = hit − (the part of the hit below the threshold) × endurance reduction"
+notes = "Reduction is {base} at base, × (1 + increases), at most {cap}. The threshold is in health points; with {rune} it's compared to your {shield} instead."
+order = "It applies after your {res}, before {block} and {armour}."
+
+[formula.thorns]
+title = "Thorns"
+text = "{thorns}: when a creature hits you and you don't evade it, it takes your thorns damage back. The amount doesn't depend on the hit: it's your flat thorns, or {base} if increased thorns are all you have."
+formula = "thorns damage = flat thorns × (1 + damage increases + thorns increases + the damage type's increases) × block or parry multiplier × distance"
+type = "It's pierce damage, unless your stats convert part of it to other types or add more as extra damage."
+range = "Full damage to an attacker within {full} m of you (from its edge), falling to nothing at {zero} m."
+block = "On a shield block with {shield}: × {block}. Thorns that work with parries add to a parry's thorns."
+contact = "{carapace} also deals your thorns to enemies touching you."
+
+[formula.charged-attacks]
+title = "Charged attacks"
+text = "{charged}: something charges your next weapon attack, and the next melee or ranged attack you release spends it, hit or miss (spells only with {spells}). One charge waits at a time; it doesn't stack or expire."
+formula = "charged attack: + {inc} increased damage, added to your other damage increases, and rows that work with charged attacks apply"
+cooldown = "A source charges again only {source} s after it last charged the attack (critical hits: {crit} s). After any charge, every source also waits the shorter of its own cooldown and {shared} s (cut by cooldown recovery). A perfect dodge ignores both cooldowns, but can't charge an attack that's already charged."
+alt = "With {only_alt}, only alternative attacks spend the charge; with {no_alt}, alternative attacks don't spend it."
+double = "{double}: rolled once when the charge is spent. On success the attack gets {inc} increased damage instead, and every row that works with charged attacks counts twice."
+splash = "{splash}: a charged attack's first hit on an enemy also hits every other enemy within {radius} m × (1 + {area} increases), for your splash share of its damage."
+
+[formula.area]
+title = "Area of effect"
+text = "{area} widens attacks in a straight line: the factor multiplies the hit radius, not the ground it covers. +100% area doubles the radius and covers four times the ground."
+formula = "radius × max({floor}, (1 + area increases) × area multipliers)"
+notes = "Area attacks (a {slam} is one) get the wider radius; other swings reach further as well."
+
+[formula.slams]
+title = "Slams and aftershocks"
+text = "{slam}: Valheim's area attacks (the sledge's swing and others like it) count, and so does an alternative attack {ground} turns into one: it uses the weapon's own area radius, or {radius} m if the weapon has no area attack. Your {area} widens a slam's radius."
+aftershock = "{aftershock}: rolled once per slam, at most 100%. {delay} s later it erupts at the slam's point, in the slam's radius × the area increases that only apply to aftershocks, and hits everything there with the slam's full damage. An aftershock never rolls another, though repeat chance can make it erupt once more."
+charged = "A {charged} that isn't a slam can make aftershocks too, from aftershock chance that works with charged attacks: each full 100% gives one, and the rest is a chance for one more, each {delay} s after the last, where the enemy was hit."
+
+[formula.impale]
+title = "Impale"
+text = "{impale}: a hit's pierce damage can impale the enemy. The chance works like the {gauge}: pierce against the enemy's base health, raised by {buildup}."
+chance = "chance = (pierce ÷ (ailment threshold × the enemy's base health) + flat build-up) × (1 + build-up increases), at most 100%"
+formula = "physical damage your hits deal × (1 + impales × {stack} × (1 + ailment damage increases))"
+notes = "An enemy holds up to {limit} impales (more with impale limit). Each new impale refreshes them all for {window} s × (1 + ailment duration increases), at least {floor} s."
+
+[formula.lifesteal]
+title = "Life leech"
+text = "{leech}: a share of the health your weapon and projectile hits actually remove from an enemy; spells use spell leech. Bleeding, thorns and echoed hits don't leech."
+formula = "leeched = health removed × life leech"
+rate = "Each hit starts its own leech, which gives back {rate} of your maximum health per second until it's paid out. All of them together give at most {cap} per second, which {n} leeches running at once reach. Reaching full health ends every leech still running."
+
 [formula.ailments]
 title = "Ailments"
 text = "{gauge}: {bleed}, {burn}, {poison}, {frost} and {shock} each fill their own on the enemy, from the matching part of your hits' damage as the enemy takes it, after its resistances and armour: slash, fire, poison, frost and lightning."

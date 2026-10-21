@@ -548,6 +548,108 @@ def _stagger(ctx, page, v):
     return md
 
 
+def _charged(ctx, page, v):
+    """Charged attacks (ChargedAttacks, AttackChargeState): one pending charge, spent by the next
+    eligible weapon attack; its damage bonus, cooldowns, Unbound Charge and hit splash."""
+    ui, t = ctx.loc.ui, ctx.loc.difficulty.get("tunables", {})
+    return ([ui("formula.charged-attacks.text", charged=_term(ctx, "charged-attack", page, start=True),
+                spells=_mastery_link(ctx, "ChargeApplicability", page)), ""]
+            + _formula(ui("formula.charged-attacks.formula", inc=_pct(v["increase"])))
+            + [ui("formula.charged-attacks.cooldown", source=_n(t["charge.source-cooldown"]), crit=_n(t["charge.source-cooldown.crit"]),
+                  shared=_n(t["charge.cooldown"])), "",
+               ui("formula.charged-attacks.alt", only_alt=_mastery_link(ctx, "MasteryCharged1", page),
+                  no_alt=_mastery_link(ctx, "MasteryAlternative2", page)), "",
+               ui("formula.charged-attacks.double", double=_term(ctx, "charged-effects-double", page, start=True),
+                  inc=_pct(2 * v["increase"])), "",
+               ui("formula.charged-attacks.splash", splash=_term(ctx, "hit-splash", page, start=True),
+                  radius=_n(t["splash.radius"]), area=_term(ctx, "area", page)), ""])
+
+
+def _area(ctx, page, v):
+    """Area of effect (Blasts.AreaFactor): one factor on the radius, not on the area."""
+    ui = ctx.loc.ui
+    return ([ui("formula.area.text", area=_term(ctx, "area", page, start=True)), ""]
+            + _formula(ui("formula.area.formula", floor=_n(v["floor"])))
+            + [ui("formula.area.notes", slam=_term(ctx, "slam", page)), ""])
+
+
+def _slams(ctx, page, v):
+    """Slams (Slams.IsSlam, GroundStrike) and aftershocks (Aftershock.Roll/Initial/OnCharged)."""
+    ui, t = ctx.loc.ui, ctx.loc.difficulty.get("tunables", {})
+    return [ui("formula.slams.text", slam=_term(ctx, "slam", page, start=True), ground=_mastery_link(ctx, "MasterySlam1", page),
+               radius=_n(t["slam.ground-radius"]), area=_term(ctx, "area", page)), "",
+            ui("formula.slams.aftershock", aftershock=_term(ctx, "aftershock", page, start=True), delay=_n(t["aftershock.delay"])), "",
+            ui("formula.slams.charged", charged=_term(ctx, "charged-attack", page), delay=_n(t["aftershock.delay"])), ""]
+
+
+def _block(ctx, page, v):
+    """Block (Valheim's Humanoid.BlockAttack; the mod's Preview.ShieldBlock and parry bonus)."""
+    ui = ctx.loc.ui
+    md = [ui("formula.block.text", block=_term(ctx, "block", page, start=True)), ""]
+    md += _formula(ui("formula.block.power"))
+    md += _formula(ui("formula.block.base", skill=_n(v["skill_share"])))
+    md += _formula(ui("formula.block.parry"))
+    md += [ui("formula.block.parry_text", window=_n(v["parry_window"])), "",
+           ui("formula.block.blocked", armour=_term(ctx, "armor", page)), "",
+           ui("formula.block.guard", stagger=_term(ctx, "stagger", page), glance=_term(ctx, "glance", page, start=True)), ""]
+    return md
+
+
+def _glancing(ctx, page, v):
+    """Glancing blows (Glancing.Roll/Cut, Effects' damage-taken multiplier)."""
+    ui, d = ctx.loc.ui, ctx.loc.difficulty
+    cap = d.get("caps", {}).get("GlancingChance")  # none in 5.1.2: a chance of 100% or more always glances
+    md = [ui("formula.glancing.text", glance=_term(ctx, "glance", page, start=True), chance=_pct(v["chance"]))
+          + (" " + ui("formula.glancing.cap", cap=_pct(cap)) if cap else ""), ""]
+    md += _formula(ui("formula.glancing.formula", cut=_pct(v["cut"]), lo=_pct(v["cut_min"]), hi=_pct(v["cut_max"])))
+    md += [ui("formula.glancing.taken", floor=_pct(1 - v["taken_floor"])), "",
+           ui("formula.glancing.block", block=_term(ctx, "block", page), guard=_mastery_link(ctx, "MasteryGlancing1", page)), ""]
+    return md
+
+
+def _thorns(ctx, page, v):
+    """Thorns (Combat.Thorns: Amount, Fill, Falloff, ResponseMultiplier; ContactThorns)."""
+    ui, t = ctx.loc.ui, ctx.loc.difficulty.get("tunables", {})
+    md = [ui("formula.thorns.text", thorns=_term(ctx, "thorns", page, start=True), base=_n(t["thorns.increased.base"])), ""]
+    md += _formula(ui("formula.thorns.formula"))
+    md += [ui("formula.thorns.type"), "",
+           ui("formula.thorns.range", full=_n(v["full_range"]), zero=_n(v["zero_range"])), "",
+           ui("formula.thorns.block", block=_pct(t["thorns.block.share"]), shield=_mastery_link(ctx, "ShieldBlockThorns", page)), "",
+           ui("formula.thorns.contact", carapace=_mastery_link(ctx, "ThornsContact", page)), ""]
+    return md
+
+
+def _lifesteal(ctx, page, v):
+    """Life leech (DamageNet: Sip, Leech, Pull)."""
+    ui = ctx.loc.ui
+    md = [ui("formula.lifesteal.text", leech=_term(ctx, "lifesteal", page, start=True)), ""]
+    md += _formula(ui("formula.lifesteal.formula"))
+    md += [ui("formula.lifesteal.rate", rate=_pct(v["rate"]), cap=_pct(v["ceiling"]), n=_n(v["ceiling"] / v["rate"])), ""]
+    return md
+
+
+def _impale(ctx, page, v):
+    """Impale (Impale: Chance, Strike, Soften, LimitOf, PerStack, Window)."""
+    ui, t = ctx.loc.ui, ctx.loc.difficulty.get("tunables", {})
+    md = [ui("formula.impale.text", impale=_term(ctx, "impale", page, start=True), gauge=_term(ctx, "ailment-gauge", page),
+             buildup=_term(ctx, "build-up", page)), ""]
+    md += _formula(ui("formula.impale.chance"))
+    md += _formula(ui("formula.impale.formula", stack=_pct(t["impale.stack"])))
+    md += [ui("formula.impale.notes", limit=_n(t["impale.limit"]), window=_n(t["impale.window"]), floor=_n(v["min_window"])), ""]
+    return md
+
+
+def _endurance(ctx, page, v):
+    """Endurance (Endurance.Threshold/Reduction/Reduce), after resistances in the mod's damage step."""
+    ui, t = ctx.loc.ui, ctx.loc.difficulty.get("tunables", {})
+    md = [ui("formula.endurance.text", endurance=_term(ctx, "endurance", page, start=True)), ""]
+    md += _formula(ui("formula.endurance.formula"))
+    md += [ui("formula.endurance.notes", base=_pct(t["endurance.base"]), cap=_pct(t["endurance.cap"]),
+              rune=_mastery_link(ctx, "SteadfastRuneThreshold", page), shield=_term(ctx, "shield", page)), "",
+           ui("formula.endurance.order", res=_term(ctx, "resist", page), block=_term(ctx, "block", page), armour=_term(ctx, "armor", page)), ""]
+    return md
+
+
 _PAGES = {
     CREATURES_PAGE: ("creatures", [("creature-strength", _strength), ("boss-step", _boss_step),
                                    ("stars", _stars), ("boss-stars", _boss_stars), ("monster-power", _power)]),
@@ -556,7 +658,9 @@ _PAGES = {
                                      ("experience-falloff", _falloff), ("player-levels", _player_levels)]),
     COMBAT_PAGE: ("combat", [("attributes", _attributes), ("crit-multiplier", _crit_multiplier), ("crit-chance", _crit_chance), ("evasion", _evasion),
                              ("resistances", _resistances), ("armour", _armour), ("rune-shield", _rune_shield), ("enemy-penetration", _penetration), ("stagger", _stagger),
-                             ("strikes", _strikes), ("phantom-strikes", _phantoms), ("ailments", _ailments), ("build-cost", _build_cost)]),
+                             ("block", _block), ("glancing", _glancing), ("endurance", _endurance), ("thorns", _thorns),
+                             ("charged-attacks", _charged), ("strikes", _strikes), ("phantom-strikes", _phantoms), ("area", _area), ("slams", _slams),
+                             ("ailments", _ailments), ("impale", _impale), ("lifesteal", _lifesteal), ("build-cost", _build_cost)]),
 }
 _TITLES = {"creatures": "formula.creatures", "loot": "formula.loot_page", "combat": "formula.combat",
            "experience": "formula.experience_page"}
@@ -601,6 +705,18 @@ TERM_FORMULAS = {
     "shock": ["ailments:shock"],
     "phantom-strikes": ["phantom-strikes"],
     "phantom-recursion": ["phantom-strikes"],
+    "charged-attack": ["charged-attacks"],
+    "charged-effects-double": ["charged-attacks"],
+    "hit-splash": ["charged-attacks"],
+    "area": ["area"],
+    "slam": ["slams", "area"],
+    "aftershock": ["slams"],
+    "block": ["block"],
+    "glance": ["glancing"],
+    "thorns": ["thorns"],
+    "lifesteal": ["lifesteal"],
+    "impale": ["impale"],
+    "endurance": ["endurance"],
 }
 
 

@@ -88,9 +88,13 @@ def render_difficulty(errors: list) -> dict:
                 # Additional and phantom strikes (Strikes, Phantoms).
                 "strike.interval", "strike.focus-damage", "strike.reach", "strike.radius",
                 "phantom.damage", "phantom.radius", "phantom.interval", "phantom.delay", "attrs.might-covers",
-                "ailment.threshold", "shield.delay-cap")},  # the ailment gauge (AilmentDamage.Grip)
+                "ailment.threshold", "shield.delay-cap",  # the ailment gauge (AilmentDamage.Grip)
+                # Charged attacks, slams, thorns, impale, endurance.
+                "charge.cooldown", "charge.source-cooldown", "charge.source-cooldown.crit", "splash.radius",
+                "slam.ground-radius", "aftershock.delay", "thorns.increased.base", "thorns.block.share",
+                "thorns.riposte.share", "impale.stack", "impale.limit", "impale.window", "endurance.base", "endurance.cap")},
             "governing": _governing(),
-            "caps": _caps("StaggerResistPct"),
+            "caps": _caps("StaggerResistPct", "GlancingChance"),
         }
     except Exception as ex:
         errors.append({"difficulty": str(ex).split("\n")[0]})

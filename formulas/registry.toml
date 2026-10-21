@@ -540,3 +540,173 @@ checked = "5.1.2"
 share = 0.2
 drain_seconds = 5
 stagger_guard = 0.5
+
+[[formula]]
+id = "charged-attacks"
+anchors = [
+    "PassiveTree/ChargedAttacks.cs :: ChargedAttacks.Increase",
+    "PassiveTree/ChargedAttacks.cs :: ChargedAttacks.SharedFor",
+    "PassiveTree/ChargedAttacks.cs :: ChargedAttacks.SourceCooldownOf",
+    "PassiveTree/ChargedAttacks.cs :: ChargedAttacks.Grant",
+    "PassiveTree/ChargedAttacks.cs :: ChargedAttacks.PerfectDodge",
+    "PassiveTree/ChargedAttacks.cs :: ChargedAttacks.Release",
+    "PassiveTree/ChargedAttacks.cs :: ChargedAttacks.RollDouble",
+    "PassiveTree/ChargedAttacks.cs :: ChargedAttacks.Eligible",
+    "PassiveTree/ChargedAttacks.cs :: ChargedAttacks.OnHit",
+    "PassiveTree/AttackChargeState.cs :: AttackChargeState.TryGrant#2",
+    "PassiveTree/AttackChargeState.cs :: AttackChargeState.Release",
+    "PassiveTree/StatSet.cs :: StatSet.Twice",
+    "PassiveTree/Cooldowns.cs :: Cooldowns.Of",
+    "PassiveTree/XpSources.cs :: \"mult += ChargedAttacks.Increase(CriticalHits.ChargeOf(hit));\"",
+    "PassiveTree/Tunables.cs :: \"charge.cooldown\"",
+    "PassiveTree/Tunables.cs :: \"charge.source-cooldown\"",
+    "PassiveTree/Tunables.cs :: \"charge.source-cooldown.crit\"",
+    "PassiveTree/Tunables.cs :: \"splash.radius\"",
+]
+fingerprint = "b88841ba92f3"
+checked = "5.1.2"
+
+[formula.values]
+increase = 0.25
+
+[[formula]]
+id = "area"
+anchors = [
+    "PassiveTree/Blasts.cs :: Blasts.AreaFactor#2",
+]
+fingerprint = "b82d1801899c"
+checked = "5.1.2"
+
+[formula.values]
+floor = 0.1
+
+[[formula]]
+id = "slams"
+anchors = [
+    "PassiveTree/Slams.cs :: Slams.IsSlam",
+    "PassiveTree/GroundStrike.cs :: Make.Postfix",
+    "PassiveTree/Aftershock.cs :: Aftershock.Roll",
+    "PassiveTree/Aftershock.cs :: Aftershock.Initial",
+    "PassiveTree/Aftershock.cs :: Aftershock.OnCharged",
+    "PassiveTree/Aftershock.cs :: Aftershock.Erupt",
+    "PassiveTree/Tunables.cs :: \"slam.ground-radius\"",
+    "PassiveTree/Tunables.cs :: \"aftershock.delay\"",
+]
+fingerprint = "07178277a63f"
+checked = "5.1.2"
+
+[[formula]]
+id = "block"
+anchors = [
+    "PassiveTree/Preview.cs :: Preview.ShieldBlock",
+    "PassiveTree/Effects.cs :: ItemData_GetBlockPower.Postfix",
+    "PassiveTree/ShieldOps.cs :: ShieldOps.BlockPct",
+    "PassiveTree/ShieldOps.cs :: ShieldOps.LocalPct",
+    "PassiveTree/SE_PassiveTree.cs :: \"base.m_timedBlockBonus = s.Get(Stat.ParryBonusPct);\"",
+    "valheim/Humanoid.cs :: Humanoid.BlockAttack",
+    "valheim/ItemDrop.cs :: ItemData.GetBlockPower#2",
+    "valheim/HitData.cs :: DamageTypes.ApplyArmor",
+    "valheim/SE_Stats.cs :: SE_Stats.ModifyTimedBlockBonus",
+]
+fingerprint = "df10e4255122"
+checked = "5.1.2"
+
+[formula.values]
+skill_share = 0.5
+parry_window = 0.25
+
+[[formula]]
+id = "glancing"
+anchors = [
+    "PassiveTree/Glancing.cs :: Glancing.Cut",
+    "PassiveTree/Glancing.cs :: Glancing.Roll",
+    "PassiveTree/Glancing.cs :: Glancing.WillMeetBlock",
+    "PassiveTree/Glancing.cs :: AfterBlock.Postfix",
+    "PassiveTree/Effects.cs :: Character_RPC_Damage.Prefix",
+    "PassiveTree/Plugin.cs :: \"Glancing blow chance for everyone\"",
+    "PassiveTree/Plugin.cs :: \"Glancing blow reduction\"",
+]
+fingerprint = "0a1d107065ea"
+checked = "5.1.2"
+
+[formula.values]
+chance = 0.25
+cut = 0.35
+cut_min = 0.05
+cut_max = 0.9
+taken_floor = 0.4
+
+[[formula]]
+id = "thorns"
+anchors = [
+    "PassiveTree/Combat.cs :: Thorns.Amount#2",
+    "PassiveTree/Combat.cs :: Thorns.Fill",
+    "PassiveTree/Combat.cs :: Thorns.Falloff",
+    "PassiveTree/Combat.cs :: Thorns.ResponseMultiplier",
+    "PassiveTree/Combat.cs :: Thorns.WindowBase",
+    "PassiveTree/Combat.cs :: Thorns.Complete",
+    "PassiveTree/Conversion.cs :: Conversion.Thorns",
+    "PassiveTree/ContactThorns.cs :: ContactThorns.Run",
+    "PassiveTree/Effects.cs :: Character_RPC_Damage.Prefix",
+    "PassiveTree/Tunables.cs :: \"thorns.increased.base\"",
+    "PassiveTree/Tunables.cs :: \"thorns.block.share\"",
+    "PassiveTree/Tunables.cs :: \"thorns.riposte.share\"",
+]
+fingerprint = "d79e38ceb342"
+checked = "5.1.2"
+
+[formula.values]
+full_range = 3
+zero_range = 8
+
+[[formula]]
+id = "lifesteal"
+anchors = [
+    "PassiveTree/DamageNet.cs :: ApplyDamage_Leech.Prefix",
+    "PassiveTree/DamageNet.cs :: ApplyDamage_Leech.Postfix",
+    "PassiveTree/DamageNet.cs :: Player_Update_Leech.Postfix",
+    "PassiveTree/DamageNet.cs :: DamageNet.Leech",
+    "PassiveTree/DamageNet.cs :: DamageNet.Pull",
+    "PassiveTree/DamageNet.cs :: DamageNet.Take",
+    "PassiveTree/Plugin.cs :: \"Leech rate per instance\"",
+    "PassiveTree/Plugin.cs :: \"Leech recovery ceiling\"",
+]
+fingerprint = "3b5aa3160184"
+checked = "5.1.2"
+
+[formula.values]
+rate = 0.02
+ceiling = 0.2
+
+[[formula]]
+id = "impale"
+anchors = [
+    "PassiveTree/Impale.cs :: Impale.Chance",
+    "PassiveTree/Impale.cs :: Impale.Strike",
+    "PassiveTree/Impale.cs :: Impale.Soften",
+    "PassiveTree/Impale.cs :: Impale.LimitOf",
+    "PassiveTree/Impale.cs :: Impale.PerStack",
+    "PassiveTree/Impale.cs :: Impale.Window",
+    "PassiveTree/Tunables.cs :: \"impale.stack\"",
+    "PassiveTree/Tunables.cs :: \"impale.limit\"",
+    "PassiveTree/Tunables.cs :: \"impale.window\"",
+]
+fingerprint = "1535bd610d1b"
+checked = "5.1.2"
+
+[formula.values]
+min_window = 0.5
+
+[[formula]]
+id = "endurance"
+anchors = [
+    "PassiveTree/Endurance.cs :: Endurance.Threshold",
+    "PassiveTree/Endurance.cs :: Endurance.Reduction",
+    "PassiveTree/Endurance.cs :: Endurance.Checked",
+    "PassiveTree/Endurance.cs :: Endurance.Reduce",
+    "PassiveTree/Effects.cs :: Character_RPC_Damage.Prefix",
+    "PassiveTree/Tunables.cs :: \"endurance.base\"",
+    "PassiveTree/Tunables.cs :: \"endurance.cap\"",
+]
+fingerprint = "fc791b4960e8"
+checked = "5.1.2"

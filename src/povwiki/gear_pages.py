@@ -461,10 +461,6 @@ def page_jewels(ctx: Ctx) -> dict[str, str]:
          str(j["limit"]) if j["limit"] else "—"]
         for k, j in sorted(uniques.items(), key=lambda kv: kv[1]["name"])])
 
-    unused = {k: j for k, j in jewels.items() if j["placeholder"]}
-    if unused:
-        md += [f"## {ui('page.unimplemented')} ({len(unused)})", "", ui("gear.placeholder_jewels"), ""]
-        md += [", ".join(f"{_jewel_icon(ctx, j, page, 32)} {j['name']}" for j in unused.values()), ""]
     pages[page] = "\n".join(md + _footer(ctx))
     return pages
 

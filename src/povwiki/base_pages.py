@@ -300,6 +300,11 @@ def _base_page(ctx: Ctx, prefab: str, b: dict, found: dict) -> str:
     md += [f"<b>{_kind_line(ctx, b)}</b>", ""]
     if s.get("m_description"):
         md += [f"*{loc.vtext(s['m_description'])}*".replace("\n", " "), ""]
+    summons = loc.difficulty.get("summons") or {}
+    if any(c["id"] == prefab for c in summons.get("calls", []) + summons.get("vanilla", [])):
+        from .formula_pages import SUMMONS_PAGE
+
+        md += [ui("items.summons_see", link=rel(SUMMONS_PAGE, page)), ""]
 
     qs = _qualities(b)
     md += _implicits_section(ctx, b, qs)

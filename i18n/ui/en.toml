@@ -60,6 +60,7 @@ removed = "removed"
 tree_help = "The craft tree from the game files, as you can allocate it: placeholders are left out. The game shows the whole craft tree in one tint; here sectors get their own colour so they stand apart."
 
 [items]
+summons_see = "Its summons, the eitr they hold, how long they live and how strong they are: [Summons]({link})."
 title = "Items"
 mods = "Mods"
 mods_intro = "Every property that can appear on an item, grouped by the items it can roll on. Values are shown for a regular item; some slots scale them (see each mod's page)."
@@ -155,7 +156,6 @@ jewel_chance_note = "How many jewels drop on average, by source, before item qua
 source_label = "Source"
 base_jewels = "Base jewels"
 unique_jewels = "Unique jewels"
-placeholder_jewels = "In the game files, but with no type and no lines: they never drop."
 base_jewel_note = "A base jewel: it rolls properties from this type's pool, like gear."
 radius = "Radius"
 limit = "Limit"
@@ -561,6 +561,8 @@ ring_near = "From (near)"
 ring_far = "Full step (far)"
 odds = "Chance"
 experience_page = "Experience and levels"
+summons_page = "Summons"
+summons_intro = "Summoning staves and their thralls, the eitr they hold, how long they live, how strong they are, and what your stats for minions do."
 experience_intro = "Area levels, item levels, where experience comes from, how it falls off, and what each character level costs."
 
 [formula.preset]
@@ -588,12 +590,7 @@ terms = "Biome: the factor of the creature's biome (table below; bosses use the 
 species = "Some kinds have their own health factor, which replaces the biome's: {species}."
 soften = "factor = 1 + (biome factor − 1) × scale"
 fixed = "These keep their own health: {creatures}."
-summons = "{minions}: the summons the mod manages (from its summoning staves, and from Valheim's unless the Vanilla summoning staves setting is on) scale on their own: no stars, tamed share, Monster Power or Blight Mist."
-summons_formula = "summon health or damage = base × the health factor of its kind's biome × summon power"
-summon_power = "Summon power is × 1, except: {powers}."
-summon_health = "{staff}: × {x} health"
-summon_damage = "{staff}: × {x} damage"
-
+summons = "{minions}: your summons scale on their own, see [summon strength]({link})."
 [formula.boss-step]
 title = "After a biome's boss"
 text = "Once a biome's boss has been defeated, the creatures of that biome move part of the way toward the next biome's factors (health, damage and penetration): {near} near the world centre, up to {far} far from it. Bosses don't step up, and nor does the Deep North."
@@ -889,6 +886,66 @@ very_resistant = "Very resistant"
 immune = "Immune"
 notes = "Immunity counts as 100% resistance, so penetration lets its own share through an immunity. Against a weakness it adds on top. Physical and spirit damage have no penetration."
 
+[formula.summoning-staves]
+title = "Summoning staves"
+text = "{minions}: a summoning staff calls a thrall in front of you that follows you and fights for you. A cast costs stamina only; the thrall holds eitr while it lives (below)."
+staff = "Staff"
+thrall = "Thrall"
+life = "Lifetime"
+eitr = "Eitr held"
+stamina = "Stamina per cast"
+bench = "Workbench level"
+cast = "Each cast calls one thrall. There's no limit on how many stand at once: only your free eitr limits them."
+quality = "Each staff quality above 1 gives its thralls +{health} health and makes them hold +{eitr} more eitr."
+
+[formula.held-eitr]
+title = "Held eitr"
+text = "{eitr} a summon holds comes off your maximum eitr while it lives, and eitr above the new maximum is lost."
+formula = "eitr held = base × (1 + {q} × (staff quality − 1)) ÷ (1 + reservation efficiency for minions)"
+notes = "The divisor is at least {floor}: +100% reservation efficiency halves what a summon holds, −20% makes it hold 25% more. The hold ends when the summon dies or its lifetime ends, and comes back if you log in with your summons still alive."
+short = "A summoning staff can't call a thrall unless you have that much eitr free. Valheim's own staves can't be cast at all then."
+
+[formula.summon-lifetime]
+title = "Lifetime and withering"
+text = "Summons live for a while and wither as they go: their health can't stay above the share of their lifetime they have left."
+formula = "lifetime = base lifetime × your effect duration for minions"
+wither = "health at most = maximum health × (1 − time alive ÷ lifetime), at least 1"
+notes = "When the lifetime ends, the summon leaves. Its time runs on the world's clock, so it keeps passing while you're away."
+deathless = "{deathless}: your summons have no lifetime: they don't wither and live until they're killed. If you lose it, the ones still alive get a fresh lifetime from that moment."
+
+[formula.summon-strength]
+title = "Summon strength"
+text = "Summons don't take a creature's usual scaling: no [stars]({stars}), tamed share, [Monster Power]({power}) or Blight Mist."
+formula = "summon health or damage = base × the biome's health factor × summon power"
+terms = "The biome is the staff's (in the tables here), with its factor from the [biome table]({stages}), softened by the difficulty preset; health and damage both use the health column. The global enemy offense and defense settings apply too. Health is also × (1 + your minion health increases) and +{quality} per staff quality above 1. Summon power is only for Valheim's staves (below)."
+
+[formula.vanilla-summons]
+title = "Valheim's summoning staves"
+text = "The server setting Vanilla summoning staves (off by default) decides how Dead Raiser, Staff of the Wild, Trollstav and Spirit Caller work."
+off = "Off: a cast costs no eitr or health, there's no summon limit, and staff quality no longer changes the summons. Each summon holds eitr, lives and withers like a thrall, and is scaled as a summon of the staff's biome:"
+health = "Health ×"
+damage = "Damage ×"
+on = "On: they work as in Valheim, with eitr and health per cast, a summon limit by staff quality, and summons that stay."
+
+[formula.minion-bonuses]
+title = "Your stats for minions"
+text = "Your stats for minions reach your summons, and some of them your pets:"
+damage = "damage: × (1 + minion damage increases), at most +{cap} in all (pets add tamed damage increases)"
+health = "health: × (1 + minion health increases)"
+taken = "damage they take: × (1 + minion damage taken), between {lo} and {hi}"
+ailments = "ailments on them (burning, poison, frost, shock) last × (1 − minion ailment resistance), at most {ailment} shorter"
+managed = "Summons the mod manages also get:"
+resists = "their fire, frost, lightning, poison and spirit damage taken cut by minion resistance, at most {resist}"
+armour = "minion armour against hits"
+speed = "attack speed × (1 + minion attack speed), at least {attack}; movement speed × (1 + minion movement speed), at least {move}"
+own_shield = "a shield of minion shield size, which takes damage first and recharges {regen} of itself per second after {delay} s without a hit"
+crit = "critical strikes: minion crit chance as a chance, for × ({base} + minion crit damage)"
+seek = "they look for enemies within {seek} m × (1 + minion aggression)"
+guard = "{guard}: for {seconds} s after you block, your {shield} takes {share} of the damage to your minions."
+last = "{last}: damage that would take a minion below 1 health comes off your {shield} instead."
+both = "Both protect pets too, and only while your rune shield lasts."
+unstable = "{unstable}: the first time a summon drops below {low} health from a hit, it explodes for {share} of its maximum health as fire damage, × (1 + its damage increases), to enemies within {radius} m, and dies."
+
 [formula.ailments]
 title = "Ailments"
 text = "{gauge}: {bleed}, {burn}, {poison}, {frost} and {shock} each fill their own on the enemy, from the matching part of your hits' damage as the enemy takes it, after its resistances and armour: slash, fire, poison, frost and lightning."
@@ -941,6 +998,10 @@ over_col = "Levels past the range"
 share_col = "Experience kept"
 full_col = "Full experience"
 floor_col = "{floor} from level"
+
+[formula.ally-kills]
+title = "Kills by allies"
+text = "A kill by your {minions}, {pets} or companions gives {share} of a normal kill's experience, shared between the players nearby like any kill's ({boss}× the reach for bosses). If you hit the creature yourself in the last {recent} s, you get the normal kill instead."
 
 [formula.player-levels]
 title = "Character level"

@@ -326,12 +326,15 @@ def _weapons(items: dict) -> list[dict]:
     if getattr(PassiveTree, "StarterStaves", None) is None:  # older versions
         return []
     workbench = "piece_workbench"
+    starter = clr.GetClrType(PassiveTree.StarterStaves)
+    calls = starter.GetField("Calls", _ALL)  # the summoning staves (5.2.0), which also made staves sturdier
+    durability = (200.0, 50.0) if calls is not None else (80.0, 20.0)
     gone = ("m_consumeStatusEffect", "m_attackStatusEffect", "m_spawnOnHit", "m_spawnOnHitTerrain")
 
     def staff(source: str, prefab: str, name: str, skill: int, stamina: float, health: float, eitr: float) -> dict:
         """StarterStaves.Clone."""
         return {"m_name": L.Id(f"item.{prefab}.name", name), "m_skillType": skill, "m_weight": 1.5,
-                "m_maxQuality": 3, "m_maxDurability": 80.0, "m_durabilityPerLevel": 20.0, "m_useDurability": True,
+                "m_maxQuality": 3, "m_maxDurability": durability[0], "m_durabilityPerLevel": durability[1], "m_useDurability": True,
                 "m_attack": _attack(items.get(source, {}), m_attackStamina=stamina, m_attackHealth=health,
                                     m_attackEitr=eitr),
                 "m_secondaryAttack": {}, "m_ammoType": "", "m_attackForce": 5.0, "m_backstabBonus": 1.0}
@@ -355,7 +358,7 @@ def _weapons(items: dict) -> list[dict]:
                       ["Wood", "LeatherScraps", "Raspberry"], [10, 4, 4], [5, 2, 2], flat=True)}})
 
     # The rung staves: StarterStaves.rungs (Source, CutBeam, Blow).
-    rungs = clr.GetClrType(PassiveTree.StarterStaves).GetField("rungs", _ALL).GetValue(None)
+    rungs = starter.GetField("rungs", _ALL).GetValue(None)
     for r in rungs:
         source = next((f for f in r.From if _projectile_source(items.get(f), r)), "StaffFireball")
         attack = (items.get(source) or {}).get("m_attack") or {}
@@ -375,6 +378,19 @@ def _weapons(items: dict) -> list[dict]:
                       "icon": f"vh:{source}", "overrides": overrides,
                       "recipe": {"station": workbench, "stationLevel": int(r.Bench),
                                  "resources": _resources(r.Mats, r.Amounts, r.Upgrades, flat=True)}})
+
+    # The summoning staves: StarterStaves.Calls (SummonStaff), Dead Raiser copies that cost only stamina.
+    resources = set(starter.Assembly.GetManifestResourceNames())
+    for c in (calls.GetValue(None) if calls is not None else []):
+        prefab = str(c.Id)
+        overrides = staff("StaffSkeleton", prefab, c.Name, 10, float(c.Stamina), 0.0, 0.0)
+        overrides["m_attack"].update({"m_attackType": 3, "m_attackProjectile": None, "m_attackHealthPercentage": 0.0})
+        overrides.update({"m_description": L.Id(f"item.{prefab}.about", c.About), "m_damages": {}, "m_damagesPerLevel": {}})
+        icon = next(i for i in (f"PassiveTree.item.{prefab}.png", "PassiveTree.item.PT_StaffBoneCall.png") if i in resources)
+        specs.append({"id": prefab, "source": "StaffSkeleton", "drop": gone, "kind": "weapon", "weaponKind": "BloodMagic",
+                      "icon": icon, "overrides": overrides,
+                      "recipe": {"station": workbench, "stationLevel": int(c.Bench),
+                                 "resources": _resources(c.Mats, c.Amounts, c.Upgrades, flat=True)}})
 
     # Staves of bonds (LinkStaves.Make), BloodMagic, no damage.
     for prefab, source, name, desc, station, level, mats, amounts, ups in (

@@ -14,6 +14,7 @@ from .markup import glossary_path, plain, rel
 from .pages import Ctx, _footer, _table
 
 CREATURES_PAGE = "mechanics/creatures.md"
+SUMMONS_PAGE = "mechanics/summons.md"
 LOOT_PAGE = "mechanics/loot.md"
 COMBAT_PAGE = "mechanics/combat.md"
 EXPERIENCE_PAGE = "mechanics/experience.md"
@@ -196,7 +197,8 @@ def _strength(ctx, page, v):
             + [ui("formula.creature-strength.species", species=species), ""]
             + ([ui("formula.creature-strength.fixed", creatures=", ".join(ctx.loc.creature(c) for c in d["fixedHealth"])), ""]
                if d.get("fixedHealth") else [])
-            + _summons(ctx, page)
+            + [ui("formula.creature-strength.summons", minions=_term(ctx, "minions", page, start=True),
+                  link=_anchor("summon-strength", page)), ""]
             + [f"### {ui('formula.presets')}", "", ui("formula.presets_note"), ""]
             + _formula(ui("formula.creature-strength.soften"))
             + _table([ui("formula.preset_col"), ui("formula.health_scale"), ui("formula.damage_scale"),
@@ -407,23 +409,113 @@ def _strikes(ctx, page, v):
                ui("formula.strikes.combo", combo=_term(ctx, "series", page, start=True)), ""])
 
 
-def _summons(ctx, page) -> list[str]:
-    """Summons while their lifetime runs (EnemyDifficulty.Desired, MinionLife.IsActive): their kind's
-    stage health factor for health and damage, × the per-staff power of Valheim's own staves."""
+def _granted(ctx, stat: str, page: str) -> str:
+    """The mastery option or passive (keystone, notable) granting this stat, linked."""
+    from .pages import node_path
+
+    title, path = _mastery(ctx, stat)
+    if path:
+        return f"[{title}]({rel(path, page)})"
+    for n in ctx.tree_nodes:
+        if n["size"] in ("Keystone", "Notable") and any(m.get("stat") == stat for m in n.get("mods") or []):
+            return f"[{plain(n['r']['title'])}]({rel(node_path(ctx, n), page)})"
+    return stat
+
+
+def _staff(ctx, staff: str, page: str) -> str:
+    """A staff's name, linked to its item page when it has one."""
     from .base_pages import _item_name, base_path, bases
 
+    name = _item_name(ctx, staff)
+    return f"[{name}]({rel(base_path(staff), page)})" if staff in bases(ctx) else name
+
+
+def _summon_staves(ctx, page, v):
+    """The summoning staves (StarterStaves.Calls, SummonStaff, Summon_Cast): thralls, cast, quality."""
+    ui, d = ctx.loc.ui, ctx.loc.difficulty
+    s = d.get("summons") or {}
+    stages = _stages(ctx)
+    rows = []
+    for c in s.get("calls", []):
+        damage = " + ".join(f"{_n(c[k])} {ctx.loc.vkey(f'inventory_{k}', k)}" for k in ("blunt", "slash") if c[k])
+        rows.append([_staff(ctx, c["id"], page), c["name"], stages[c["stage"]], _n(c["health"]), damage,
+                     f"{_n(c['life'])} s", _n(s["reserve"][c["id"]]), _n(c["stamina"]), str(c["bench"])])
+    md = [ui("formula.summoning-staves.text", minions=_term(ctx, "minions", page, start=True)), ""]
+    md += _table([ui("formula.summoning-staves.staff"), ui("formula.summoning-staves.thrall"), ui("bosses.biome"),
+                  ui("formula.health"), ui("formula.damage"), ui("formula.summoning-staves.life"),
+                  ui("formula.summoning-staves.eitr"), ui("formula.summoning-staves.stamina"),
+                  ui("formula.summoning-staves.bench")], rows)
+    return md + [ui("formula.summoning-staves.cast"), "",
+                 ui("formula.summoning-staves.quality", health=_pct(v["quality_health"]), eitr=_pct(v["quality_reserve"])), ""]
+
+
+def _held_eitr(ctx, page, v):
+    """Held eitr (StarterStaves.ReserveOf, MinionReserve): it comes off your maximum eitr."""
+    ui = ctx.loc.ui
+    md = [ui("formula.held-eitr.text", eitr=_term(ctx, "eitr", page, start=True)), ""]
+    md += _formula(ui("formula.held-eitr.formula", q=_pct(v["quality_reserve"])))
+    return md + [ui("formula.held-eitr.notes", floor=_n(v["floor"])), "", ui("formula.held-eitr.short"), ""]
+
+
+def _summon_lifetime(ctx, page, v):
+    """Lifetimes and withering (StarterStaves.LifeOf, MinionLife.Update); Deathless Host."""
+    ui = ctx.loc.ui
+    md = [ui("formula.summon-lifetime.text"), ""]
+    md += _formula(ui("formula.summon-lifetime.formula"))
+    md += _formula(ui("formula.summon-lifetime.wither"))
+    return md + [ui("formula.summon-lifetime.notes"), "",
+                 ui("formula.summon-lifetime.deathless", deathless=_granted(ctx, "Deathless", page)), ""]
+
+
+def _vanilla_summons(ctx, page, v):
+    """Valheim's summoning staves under the mod (StarterStaves.ApplyVanillaMode, ClaimVanilla, VanillaPower)."""
+    ui, d = ctx.loc.ui, ctx.loc.difficulty
+    s, t = d.get("summons") or {}, d.get("tunables", {})
+    stages = _stages(ctx)
+    rows = [[_staff(ctx, c["id"], page), stages[c["stage"]], f"{_n(c['life'])} s", _n(s["reserve"][c["id"]]),
+             f"×{_n(t.get('summon.power-health.' + c['id'], 1))}", f"×{_n(t.get('summon.power-damage.' + c['id'], 1))}"]
+            for c in s.get("vanilla", [])]
+    md = [ui("formula.vanilla-summons.text"), "", ui("formula.vanilla-summons.off"), ""]
+    md += _table([ui("formula.summoning-staves.staff"), ui("bosses.biome"), ui("formula.summoning-staves.life"),
+                  ui("formula.summoning-staves.eitr"), ui("formula.vanilla-summons.health"),
+                  ui("formula.vanilla-summons.damage")], rows)
+    return md + [ui("formula.vanilla-summons.on"), ""]
+
+
+def _summon_strength(ctx, page, v):
+    """Summon health and damage (EnemyDifficulty.Desired for MinionLife.IsActive, MinionLife.Scale)."""
+    ui = ctx.loc.ui
+    md = [ui("formula.summon-strength.text", stars=_anchor("stars", page), power=_anchor("monster-power", page)), ""]
+    md += _formula(ui("formula.summon-strength.formula"))
+    return md + [ui("formula.summon-strength.terms", stages=_anchor("creature-strength", page),
+                    quality=_pct(v["quality_health"])), ""]
+
+
+def _minion_bonuses(ctx, page, v):
+    """Your stats for minions (CreatureBonuses, MinionLife, ShieldOps.MinionGuard, MinionInstability)."""
     ui, t = ctx.loc.ui, ctx.loc.difficulty.get("tunables", {})
-    have = bases(ctx)
-    powers = []
-    for key, value in t.items():
-        kind, _, staff = key.partition(".power-")[2].partition(".") if key.startswith("summon.power-") else ("", "", "")
-        if staff and value != 1:
-            name = _item_name(ctx, staff)
-            name = f"[{name}]({rel(base_path(staff), page)})" if staff in have else name
-            powers.append(ui(f"formula.creature-strength.summon_{kind}", staff=name, x=_n(value)))
-    md = [ui("formula.creature-strength.summons", minions=_term(ctx, "minions", page, start=True)), ""]
-    md += _formula(ui("formula.creature-strength.summons_formula"))
-    return md + ([ui("formula.creature-strength.summon_power", powers=", ".join(powers)), ""] if powers else [])
+    shield = _term(ctx, "shield", page)
+    nums = {"cap": _pct(v["damage_cap"]), "lo": _pct(v["taken_min"]), "hi": _pct(v["taken_max"]),
+            "ailment": _pct(v["ailment_cap"]), "resist": _pct(v["resist_cap"]), "attack": _pct(v["attack_speed_floor"]),
+            "move": _pct(v["move_floor"]), "regen": _pct(v["shield_regen"]), "delay": _n(v["shield_delay"]),
+            "base": _n(v["crit_base"]), "seek": _n(v["seek"])}
+    md = [ui("formula.minion-bonuses.text"), ""]
+    md += [f"- {ui(f'formula.minion-bonuses.{k}', **nums)}" for k in ("damage", "health", "taken", "ailments")] + [""]
+    md += [ui("formula.minion-bonuses.managed"), ""]
+    md += [f"- {ui(f'formula.minion-bonuses.{k}', **nums)}" for k in ("resists", "armour", "speed", "own_shield", "crit", "seek")]
+    return md + ["", ui("formula.minion-bonuses.guard", guard=_granted(ctx, "MinionSharedGuard", page),
+                        seconds=_n(t["minion.guard-seconds"]), share=_pct(t["minion.guard-share"]), shield=shield), "",
+                 ui("formula.minion-bonuses.last", last=_granted(ctx, "MinionLastStand", page), shield=shield), "",
+                 ui("formula.minion-bonuses.both"), "",
+                 ui("formula.minion-bonuses.unstable", unstable=_granted(ctx, "MinionInstability", page), low=_pct(v["low"]),
+                    share=_pct(t["minion.instability-share"]), radius=_n(t["minion.instability-radius"])), ""]
+
+
+def _ally_kills(ctx, page, v):
+    """Experience for kills by companions, minions and pets (XpSources.AllyKill, SharedXp.AllyKill)."""
+    ui, t = ctx.loc.ui, ctx.loc.difficulty.get("tunables", {})
+    return [ui("formula.ally-kills.text", share=_pct(t["xp.ally-kill"]), recent=_n(v["recent"]), boss=_n(v["boss_reach"]),
+               minions=_term(ctx, "minions", page), pets=_term(ctx, "pets", page)), ""]
 
 
 def _phantoms(ctx, page, v):
@@ -804,7 +896,10 @@ _PAGES = {
                                    ("stars", _stars), ("boss-stars", _boss_stars), ("monster-power", _power)]),
     LOOT_PAGE: ("loot", [("loot", _loot), ("vanilla-drops", _vanilla_drops)]),
     EXPERIENCE_PAGE: ("experience", [("creature-level", _level), ("item-level", _item_level), ("experience", _experience),
-                                     ("experience-falloff", _falloff), ("player-levels", _player_levels)]),
+                                     ("experience-falloff", _falloff), ("ally-kills", _ally_kills), ("player-levels", _player_levels)]),
+    SUMMONS_PAGE: ("summons", [("summoning-staves", _summon_staves), ("held-eitr", _held_eitr), ("summon-lifetime", _summon_lifetime),
+                               ("summon-strength", _summon_strength), ("vanilla-summons", _vanilla_summons),
+                               ("minion-bonuses", _minion_bonuses)]),
     COMBAT_PAGE: ("combat", [("attributes", _attributes), ("hit-order", _hit_order), ("hit-damage", _hit_damage),
                              ("player-penetration", _player_penetration), ("crit-multiplier", _crit_multiplier), ("crit-chance", _crit_chance), ("evasion", _evasion),
                              ("resistances", _resistances), ("armour", _armour), ("rune-shield", _rune_shield), ("enemy-penetration", _penetration), ("stagger", _stagger),
@@ -813,12 +908,15 @@ _PAGES = {
                              ("ailments", _ailments), ("armour-break", _armour_break), ("impale", _impale), ("lifesteal", _lifesteal), ("build-cost", _build_cost)]),
 }
 _TITLES = {"creatures": "formula.creatures", "loot": "formula.loot_page", "combat": "formula.combat",
-           "experience": "formula.experience_page"}
+           "experience": "formula.experience_page", "summons": "formula.summons_page"}
 _BODIES = {fid: body for _, formulas in _PAGES.values() for fid, body in formulas}
 FORMULA_PAGES = {fid: page for page, (_, formulas) in _PAGES.items() for fid, _ in formulas}
 
 # Keywords of the mod's wiki -> the formulas that explain them, shown at the top of their page.
 TERM_FORMULAS = {
+    "minions": ["summoning-staves", "summon-strength", "minion-bonuses"],
+    "pets": ["ally-kills"],
+    "companion": ["ally-kills"],
     "crit": ["crit-chance", "crit-multiplier"],
     "armor": ["armour", "enemy-penetration"],
     "armour-penetration": ["enemy-penetration"],

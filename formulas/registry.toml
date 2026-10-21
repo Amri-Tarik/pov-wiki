@@ -820,3 +820,142 @@ slightly_resistant = 0.25
 resistant = 0.5
 very_resistant = 0.75
 immune = 1.0
+
+[[formula]]
+id = "summoning-staves"
+anchors = [
+    "PassiveTree/StarterStaves.cs :: StarterStaves.Calls",
+    "PassiveTree/StarterStaves.cs :: StarterStaves.SummonStaff",
+    "PassiveTree/StarterStaves.cs :: StarterStaves.Clone",
+    "PassiveTree/StarterStaves.cs :: StarterStaves.Thrall",
+    "PassiveTree/StarterStaves.cs :: Summon_Cast.Postfix",
+    "PassiveTree/StarterStaves.cs :: StarterStaves.Summon",
+    "PassiveTree/StarterStaves.cs :: StarterStaves.PerCast",
+    "PassiveTree/MinionLife.cs :: MinionLife.Scale",
+]
+fingerprint = "34f8cb754804"
+checked = "5.2.0"
+
+[formula.values]
+quality_health = 0.25
+quality_reserve = 0.15
+
+[[formula]]
+id = "held-eitr"
+anchors = [
+    "PassiveTree/StarterStaves.cs :: StarterStaves.ReserveOf#2",
+    "PassiveTree/StarterStaves.cs :: StarterStaves.BaseReserve",
+    "PassiveTree/StarterStaves.cs :: Vanilla_Gate.Prefix",
+    "PassiveTree/MinionReserve.cs :: Reserve.Postfix",
+    "PassiveTree/MinionReserve.cs :: MinionReserve.Tick",
+    "PassiveTree/MinionReserve.cs :: MinionReserve.Refresh",
+    "PassiveTree/MinionLife.cs :: MinionLife.Keep",
+]
+fingerprint = "cf2970c28eb4"
+checked = "5.2.0"
+
+[formula.values]
+quality_reserve = 0.15
+floor = 0.1
+
+[[formula]]
+id = "summon-lifetime"
+anchors = [
+    "PassiveTree/StarterStaves.cs :: StarterStaves.LifeOf#2",
+    "PassiveTree/StarterStaves.cs :: StarterStaves.Deathless",
+    "PassiveTree/EffectDuration.cs :: EffectDuration.Factor",
+    "PassiveTree/MinionLife.cs :: MinionLife.Update",
+    "PassiveTree/MinionLife.cs :: MinionLife.Expire",
+    "PassiveTree/MinionLife.cs :: MinionLife.Keep",
+]
+fingerprint = "4a00bb49501c"
+checked = "5.2.0"
+
+[[formula]]
+id = "vanilla-summons"
+anchors = [
+    "PassiveTree/StarterStaves.cs :: StarterStaves.VanillaCalls",
+    "PassiveTree/StarterStaves.cs :: StarterStaves.BindSummons",
+    "PassiveTree/StarterStaves.cs :: StarterStaves.ApplyVanillaMode",
+    "PassiveTree/StarterStaves.cs :: StarterStaves.ClaimVanilla",
+    "PassiveTree/StarterStaves.cs :: StarterStaves.VanillaPower",
+    "PassiveTree/StarterStaves.cs :: Vanilla_Gate.Prefix",
+]
+fingerprint = "4550a383a367"
+checked = "5.2.0"
+
+[[formula]]
+id = "summon-strength"
+anchors = [
+    "PassiveTree/EnemyDifficulty.cs :: EnemyDifficulty.Desired",
+    "PassiveTree/EnemyDifficulty.cs :: EnemyDifficulty.Soften",
+    "PassiveTree/EnemyDifficulty.cs :: EnemyDifficulty.Defaults",
+    "PassiveTree/MinionLife.cs :: MinionLife.IsActive",
+    "PassiveTree/MinionLife.cs :: MinionLife.Scale",
+    "PassiveTree/StarterStaves.cs :: StarterStaves.VanillaPower",
+    "PassiveTree/CreatureBonuses.cs :: CreatureBonuses.HealthFactor",
+]
+fingerprint = "2627dbadfd31"
+checked = "5.2.0"
+
+[formula.values]
+quality_health = 0.25
+
+[[formula]]
+id = "minion-bonuses"
+anchors = [
+    "PassiveTree/CreatureBonuses.cs :: Publish.Postfix",
+    "PassiveTree/CreatureBonuses.cs :: CreatureBonuses.Of",
+    "PassiveTree/CreatureBonuses.cs :: CreatureBonuses.DamageIncrease",
+    "PassiveTree/CreatureBonuses.cs :: CreatureBonuses.HealthFactor",
+    "PassiveTree/CreatureBonuses.cs :: CreatureBonuses.TakenFactor",
+    "PassiveTree/CreatureBonuses.cs :: Taken.Prefix",
+    "PassiveTree/CreatureBonuses.cs :: MinionAilments.Postfix",
+    "PassiveTree/XpSources.cs :: Character_Damage_Tamed.Prefix",
+    "PassiveTree/MinionLife.cs :: Hits.Prefix",
+    "PassiveTree/MinionLife.cs :: MinionLife.Take",
+    "PassiveTree/MinionLife.cs :: MinionLife.Update",
+    "PassiveTree/MinionLife.cs :: MinionLife.Stats",
+    "PassiveTree/MinionLife.cs :: MinionLife.Radius",
+    "PassiveTree/ShieldOps.cs :: MinionGuard.Prefix",
+    "PassiveTree/MinionInstability.cs :: MinionInstability.Check",
+    "PassiveTree/MinionInstability.cs :: MinionInstability.Explode",
+    "PassiveTree/Levels.cs :: Levels.IsLow",
+    "PassiveTree/Tunables.cs :: \"minion.instability-share\"",
+    "PassiveTree/Tunables.cs :: \"minion.instability-radius\"",
+    "PassiveTree/Tunables.cs :: \"minion.guard-seconds\"",
+    "PassiveTree/Tunables.cs :: \"minion.guard-share\"",
+]
+fingerprint = "fbd4bc25755e"
+checked = "5.2.0"
+
+[formula.values]
+damage_cap = 1.0
+taken_min = 0.4
+taken_max = 5.0
+ailment_cap = 0.9
+resist_cap = 0.75
+attack_speed_floor = 0.3
+move_floor = 0.2
+shield_regen = 0.2
+shield_delay = 3
+crit_base = 1.5
+seek = 10
+low = 0.35
+
+[[formula]]
+id = "ally-kills"
+anchors = [
+    "PassiveTree/XpSources.cs :: Character_OnDeath.Postfix",
+    "PassiveTree/XpSources.cs :: XpSources.AllyKill",
+    "PassiveTree/SharedXp.cs :: SharedXp.AllyKill",
+    "PassiveTree/SharedXp.cs :: SharedXp.Reach",
+    "PassiveTree/Tunables.cs :: \"xp.ally-kill\"",
+    "PassiveTree/Plugin.cs :: \"Shared experience radius\"",
+]
+fingerprint = "609987814915"
+checked = "5.2.0"
+
+[formula.values]
+recent = 10
+boss_reach = 2.5

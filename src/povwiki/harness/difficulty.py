@@ -52,6 +52,24 @@ def _caps(*stats: str) -> dict[str, float]:
     return {str(kv.Key): float(kv.Value) for kv in caps if str(kv.Key) in stats}
 
 
+def _summons() -> dict:
+    """The summoning staves (StarterStaves.Calls) and Valheim's own (VanillaCalls): thralls, lives,
+    biome stages; the eitr each summon holds (Tunables summon.reserve.*)."""
+    from PassiveTree import L, Tunables
+
+    staves = _type("StarterStaves")
+    if staves.GetField("Calls", _ANY) is None:  # before 5.2.0
+        return {}
+    calls = [{"id": str(c.Id), "thrall": str(c.Thrall), "name": L.Id(f"creature.{c.Thrall}.name", c.ThrallName),
+              "health": float(c.Health), "blunt": float(c.Blunt), "slash": float(c.Slash), "life": float(c.Life),
+              "stamina": float(c.Stamina), "bench": int(c.Bench), "stage": int(c.Stage)}
+             for c in staves.GetField("Calls", _ANY).GetValue(None)]
+    vanilla = [{"id": str(c.Id), "life": float(c.Life), "stage": int(c.Stage)}
+               for c in staves.GetField("VanillaCalls", _ANY).GetValue(None)]
+    return {"calls": calls, "vanilla": vanilla,
+            "reserve": {c["id"]: float(Tunables.Of(f"summon.reserve.{c['id']}")) for c in calls + vanilla}}
+
+
 def render_difficulty(errors: list) -> dict:
     from PassiveTree import EnemyDifficulty, Tunables
 
@@ -93,10 +111,12 @@ def render_difficulty(errors: list) -> dict:
                 "charge.cooldown", "charge.source-cooldown", "charge.source-cooldown.crit", "splash.radius",
                 "slam.ground-radius", "aftershock.delay", "thorns.increased.base", "thorns.block.share",
                 "thorns.riposte.share", "impale.stack", "impale.limit", "impale.window", "endurance.base", "endurance.cap",
-                "rage.more-per-point", "stagger.rune-shield", "phantom.stagger",
+                "rage.more-per-point", "stagger.rune-shield", "phantom.stagger", "xp.ally-kill",
+                "minion.instability-share", "minion.instability-radius", "minion.guard-seconds", "minion.guard-share",
                 *(f"summon.power-{k}.{staff}" for k in ("health", "damage")
                   for staff in ("StaffSkeleton", "StaffGreenRoots", "StaffRedTroll", "StaffSpiritCaller")))},
             "governing": _governing(),
+            "summons": _summons(),
             "caps": _caps("StaggerResistPct", "GlancingChance"),
         }
     except Exception as ex:

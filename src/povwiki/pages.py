@@ -887,7 +887,8 @@ def nav() -> list:
         ("monsters.title", [("monsters.mods", "monsters/mods.md"), ("bosses.title", "monsters/bosses.md"),
                             ("creatures.title", "monsters/creatures.md")]),
         ("formula.title", [("formula.creatures", "mechanics/creatures.md"), ("formula.experience_page", "mechanics/experience.md"),
-                           ("formula.loot_page", "mechanics/loot.md"), ("formula.combat", "mechanics/combat.md")]),
+                           ("formula.loot_page", "mechanics/loot.md"), ("formula.combat", "mechanics/combat.md"),
+                           ("formula.summons_page", "mechanics/summons.md")]),
         *([("patch.index", [("patch.all", INDEX), *((("patch.title", {"version": v}), patch_path(v)) for v in versions())])]
           if versions() else []),
         ("nav.about", "about.md"),

@@ -741,12 +741,13 @@ def _views() -> dict[tuple[str, str], tuple[str, object]]:
     return out
 
 
-def formula_block(ctx: Ctx, fid: str, page: str, level: int = 2, anchor: bool = True, view: str | None = None) -> list[str]:
+def formula_block(ctx: Ctx, fid: str, page: str, level: int = 2, anchor: bool = True, view: str | None = None,
+                  heading: str | None = None) -> list[str]:
     """A formula's heading and block for a page, or a note that it is being re-checked. A view
-    shows one part of it (a keyword page's own entry)."""
+    shows one part of it (a keyword page's own entry); a heading replaces its title."""
     ui = ctx.loc.ui
     title_key, body_of = _views()[(fid, view)] if view else (f"formula.{fid}.title", _BODIES[fid])
-    head = "#" * level + f" {ui(title_key)}" + (f" {{ #{fid} }}" if anchor else "")
+    head = "#" * level + f" {heading or ui(title_key)}" + (f" {{ #{fid} }}" if anchor else "")
     if not shown(ctx, fid):
         return [head, "", f'!!! warning "{ui("formula.rechecking_title")}"',
                 f"    {ui('formula.rechecking', version=ctx.data.version)}", ""]
@@ -758,13 +759,17 @@ def formula_block(ctx: Ctx, fid: str, page: str, level: int = 2, anchor: bool = 
 
 def term_formulas(ctx: Ctx, key: str, page: str) -> list[str]:
     """The formulas of a keyword, for the top of its glossary page."""
-    md = []
-    for entry in TERM_FORMULAS.get(key, []):
+    entries = TERM_FORMULAS.get(key, []) if ctx.loc.difficulty else []
+    mechanics = ctx.loc.ui("formula.mechanics")
+    # One formula goes under "Mechanics" (its title would repeat the keyword's); several keep
+    # their titles below it.
+    md = [f"## {mechanics}", ""] if len(entries) > 1 else []
+    for entry in entries:
         fid, _, view = entry.partition(":")
-        if ctx.loc.difficulty:
-            md += formula_block(ctx, fid, page, level=2, anchor=False, view=view or None)
-            title = ctx.loc.ui(_TITLES[_PAGES[FORMULA_PAGES[fid]][0]])
-            md += [ctx.loc.ui("formula.see_all", page=title, link=_anchor(fid, page)), ""]
+        md += formula_block(ctx, fid, page, level=3 if len(entries) > 1 else 2, anchor=False, view=view or None,
+                            heading=None if len(entries) > 1 else mechanics)
+        title = ctx.loc.ui(_TITLES[_PAGES[FORMULA_PAGES[fid]][0]])
+        md += [ctx.loc.ui("formula.see_all", page=title, link=_anchor(fid, page)), ""]
     return md
 
 

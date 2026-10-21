@@ -531,6 +531,7 @@ Material = "The mod's materials: each one's page shows how to get it and what it
 Trophy = "Each one's page shows how to get it and what it is used for."
 
 [formula]
+mechanics = "How it works"
 title = "Mechanics"
 creatures = "Creature scaling"
 loot_page = "Loot and experience"

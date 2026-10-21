@@ -434,3 +434,47 @@ center = 0.4
 spread = 0.15
 coef = 1.5
 full_points = 300
+
+[[formula]]
+id = "ailments"
+anchors = [
+    "PassiveTree/AilmentGauges.cs :: AilmentGauges.Feed",
+    "PassiveTree/AilmentGauges.cs :: AilmentGauges.Melt",
+    "PassiveTree/AilmentGauges.cs :: AilmentGauges.Live",
+    "PassiveTree/AilmentGauges.cs :: AilmentGauges.Build",
+    "PassiveTree/AilmentGauges.cs :: AilmentGauges.Ignite",
+    "PassiveTree/AilmentGauges.cs :: Fire.Prefix",
+    "PassiveTree/AilmentGauges.cs :: Poison.Prefix",
+    "PassiveTree/AilmentGauges.cs :: Frost.Prefix",
+    "PassiveTree/AilmentGauges.cs :: Shock.Prefix",
+    "PassiveTree/AilmentGauges.cs :: Physical.Postfix",
+    "PassiveTree/AilmentGauges.cs :: \"public const float HoldSeconds\"",
+    "PassiveTree/AilmentGauges.cs :: \"public const float MeltPerSecond\"",
+    "PassiveTree/AilmentDamage.cs :: AilmentDamage.Component",
+    "PassiveTree/AilmentDamage.cs :: AilmentDamage.Grip",
+    "PassiveTree/Ailments.cs :: Ailments.Grip",
+    "PassiveTree/Ailments.cs :: Ailments.BurnTotal",
+    "PassiveTree/Ailments.cs :: Ailments.BurnDamage",
+    "PassiveTree/Ailments.cs :: Ailments.PoisonTotal",
+    "PassiveTree/Ailments.cs :: SE_Burning_AddFireDamage.Prefix",
+    "PassiveTree/Ailments.cs :: SE_Poison_AddDamage.Prefix",
+    "PassiveTree/Ailments.cs :: SE_Poison_AddDamage.Postfix",
+    "PassiveTree/Ailments.cs :: SE_Frost_AddDamage.Prefix",
+    "PassiveTree/ElementalBonuses.cs :: ElementalBonuses.StateScale",
+    "PassiveTree/ElementalBonuses.cs :: ElementalBonuses.Combined",
+    "PassiveTree/ElementalBonuses.cs :: ElementalBonuses.ShockStaggerDamage",
+    "PassiveTree/EnemyDifficulty.cs :: EnemyDifficulty.BaseMaxHealth",
+    "PassiveTree/Combat.cs :: Combat.OpenWound",
+    "PassiveTree/Tunables.cs :: \"ailment.threshold\"",
+    "valheim/Character.cs :: Character.RPC_Damage",
+    "valheim/SE_Burning.cs :: SE_Burning.AddFireDamage",
+    "valheim/SE_Poison.cs :: SE_Poison.AddDamage",
+]
+fingerprint = "51b14d5a9cec"
+checked = "5.1.2"
+
+[formula.values]
+hold = 3
+drain = 0.25
+bleed_share = 0.15
+bleed_ticks = 5

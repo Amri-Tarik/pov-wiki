@@ -462,6 +462,31 @@ def _attributes(ctx, page, v):
     return md
 
 
+def _ailments(ctx, page, v):
+    """Ailments (AilmentGauges, Ailments, Combat.OpenWound): the gauge a hit fills, how long an
+    ailment lasts, and what each one does with the damage that set it off."""
+    ui, t = ctx.loc.ui, ctx.loc.difficulty.get("tunables", {})
+    threshold = t["ailment.threshold"]
+    term = {k: _term(ctx, k, page) for k in ("bleed", "burn", "poison", "frost", "shock", "build-up", "ailment-gauge",
+                                               "ailment-damage", "stagger")}
+    md = [ui("formula.ailments.text", gauge=_term(ctx, "ailment-gauge", page, start=True), **term), ""]
+    buildup = plain(ctx.loc.wiki["build-up"]["title"]).lower() if "build-up" in ctx.loc.wiki else "build-up"
+    md += _formula(ui("formula.ailments.formula", threshold=_pct(threshold), buildup=buildup))  # plain: no links in the block
+    shares = (0.05, 0.1, 0.25, 0.5)
+    md += [ui("formula.ailments.example"), ""] + _table(
+        [ui("formula.ailments.share"), *(_pct(s) for s in shares)],
+        [[ui("formula.ailments.fill", amount=_pct(b), buildup=buildup), *(_pct(min(1.0, s / threshold * (1 + b))) for s in shares)] for b in (0, 1)])
+    md += [ui("formula.ailments.lasts", hold=_n(v["hold"]), drain=_pct(v["drain"]), total=_n(v["hold"] + 1 / v["drain"])), ""]
+    md += [ui("formula.ailments.each"), ""]
+    lead = {**term, **{k: _term(ctx, k, page, start=True) for k in ("bleed", "burn", "poison", "frost", "shock")}}  # list items
+    md += [f"- {ui('formula.ailments.bleed', total=_pct(v['bleed_share'] * v['bleed_ticks']), ticks=_n(v['bleed_ticks']), share=_pct(v['bleed_share']), **lead)}",
+           f"- {ui('formula.ailments.burn', **lead)}",
+           f"- {ui('formula.ailments.poison', **lead)}",
+           f"- {ui('formula.ailments.chill', **lead)}",
+           f"- {ui('formula.ailments.shock', **lead)}", ""]
+    return md
+
+
 _PAGES = {
     CREATURES_PAGE: ("creatures", [("creature-strength", _strength), ("boss-step", _boss_step),
                                    ("stars", _stars), ("boss-stars", _boss_stars), ("monster-power", _power)]),
@@ -470,7 +495,7 @@ _PAGES = {
                                      ("experience-falloff", _falloff), ("player-levels", _player_levels)]),
     COMBAT_PAGE: ("combat", [("attributes", _attributes), ("crit-multiplier", _crit_multiplier), ("crit-chance", _crit_chance), ("evasion", _evasion),
                              ("resistances", _resistances), ("armour", _armour), ("enemy-penetration", _penetration),
-                             ("strikes", _strikes), ("phantom-strikes", _phantoms), ("build-cost", _build_cost)]),
+                             ("strikes", _strikes), ("phantom-strikes", _phantoms), ("ailments", _ailments), ("build-cost", _build_cost)]),
 }
 _TITLES = {"creatures": "formula.creatures", "loot": "formula.loot_page", "combat": "formula.combat",
            "experience": "formula.experience_page"}
@@ -499,6 +524,15 @@ TERM_FORMULAS = {
     "finesse": ["attributes"],
     "spirit": ["attributes"],
     "skill-factor": ["attributes"],
+    "ailment": ["ailments"],
+    "ailment-gauge": ["ailments"],
+    "ailment-damage": ["ailments"],
+    "build-up": ["ailments"],
+    "bleed": ["ailments"],
+    "burn": ["ailments"],
+    "poison": ["ailments"],
+    "frost": ["ailments"],
+    "shock": ["ailments"],
     "phantom-strikes": ["phantom-strikes"],
     "phantom-recursion": ["phantom-strikes"],
 }

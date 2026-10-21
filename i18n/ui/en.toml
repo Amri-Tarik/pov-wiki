@@ -715,6 +715,21 @@ formula = "phantom strike damage = {share} × the hit's damage"
 damage = "The hit's damage is taken once its critical strike and all your damage bonuses are applied, before the enemy's armour and resistances. A phantom strike gets none of your bonuses and never crits; the enemy's armour and resistances apply to it as usual."
 chain = "With {recursion}, a phantom strike that lands can cause more: the n-th generation's chance is the first's × the factor its line gives, to the power n − 1. At most {max} phantom strikes wait at once."
 
+[formula.ailments]
+title = "Ailments"
+text = "{gauge}: {bleed}, {burn}, {poison}, {frost} and {shock} each fill their own on the enemy, from the matching part of your hits' damage as the enemy takes it, after its resistances and armour: slash, fire, poison, frost and lightning."
+formula = "gauge filled by a hit = damage ÷ ({threshold} × the enemy's base health) × (1 + {buildup})"
+example = "How much of the gauge one hit fills, by its damage as a share of the enemy's base health (its maximum health without the mod's difficulty scaling):"
+share = "Damage ÷ base health"
+fill = "Filled, +{amount} {buildup}"
+lasts = "At 100% the ailment starts, from the damage of the hit that filled the gauge. The gauge then stays full, so every further matching hit applies the ailment again from its own damage. {hold} s after the last matching hit the gauge drains, {drain} per second, and the ailment ends when it is empty: at most {total} s after that hit."
+each = "What each ailment does with that damage:"
+bleed = "{bleed}: {total} of the slash damage over {ticks} s ({share} per second), more with ailment damage increases; ailment and status duration add seconds. A new bleed replaces the current one only if it deals at least as much per second."
+burn = "{burn}: the fire damage again, over time. Your ailment damage increases add to your fire damage increases. It lasts as long as Valheim makes it, or as long as the gauge if that is longer; a stronger burn replaces a weaker one."
+poison = "{poison}: the poison damage again, over time, the same way with poison damage increases, plus any share of the enemy's base health your stats add. It lasts as long as Valheim makes it from the hit, or as long as the gauge if that is longer; a stronger poison replaces a weaker one."
+chill = "{frost}: Valheim's frost effect, its strength × (1 + your chill ailment damage increases)."
+shock = "{shock}: no damage of its own. It adds {stagger} equal to the lightning damage × your shock and general ailment damage increases, plus flat ailment damage."
+
 [formula.build-cost]
 title = "Build cost"
 text = "Build cost reductions lower each material of a piece, the mod's [buildings]({buildings}) included, by at most {cap}:"

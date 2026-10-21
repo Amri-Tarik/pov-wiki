@@ -81,7 +81,8 @@ def render_difficulty(errors: list) -> dict:
                 "evasion.accuracy.per-star", "evasion.hit-factor", "evasion.cap", "armor.effect",
                 # Additional and phantom strikes (Strikes, Phantoms).
                 "strike.interval", "strike.focus-damage", "strike.reach", "strike.radius",
-                "phantom.damage", "phantom.radius", "phantom.interval", "phantom.delay", "attrs.might-covers")},
+                "phantom.damage", "phantom.radius", "phantom.interval", "phantom.delay", "attrs.might-covers",
+                "ailment.threshold")},  # the ailment gauge (AilmentDamage.Grip)
             "governing": _governing(),
         }
     except Exception as ex:

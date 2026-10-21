@@ -97,7 +97,8 @@ def build_language(lang: Language, default: Language, enabled: list[Language], d
         deleting them first) is most of a build's time on Windows."""
         written.add(path)
         if path.suffix == ".md":  # every page gets its own search description
-            data = seo.with_description(data.decode("utf-8"), loc.ui("page.seo_fallback"),
+            # LF only: with CRLF the site generator doesn't see a page's front matter and prints it.
+            data = seo.with_description(data.decode("utf-8").replace("\r\n", "\n"), loc.ui("page.seo_fallback"),
                                         path.relative_to(docs).as_posix(), _site_url(lang)).encode("utf-8")
         if path.exists() and path.stat().st_size == len(data) and path.read_bytes() == data:
             return

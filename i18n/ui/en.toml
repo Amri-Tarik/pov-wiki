@@ -647,6 +647,25 @@ formula = "Experience = base health × {h} × (1 + {s} × stars + {m} × modifie
 notes = "Base health is the Valheim health of its kind. It is shared between the players alive within {radius} m ({boss}× that for bosses). At night, every experience gain is +{night}. Creatures of a runic event give {event}."
 sources = "Only combat raises your character level: kills, and the hits of your fighting skills. Everything peaceful (gathering, building, crafting, exploring, travelling) goes to {craft} instead, and the [experience fall-off]({falloff}) never cuts it."
 
+[formula.attributes]
+title = "Attributes"
+text = "Each point of an attribute gives:"
+attribute = "Attribute"
+per_point = "Per point"
+per_hundred = "Per 100 points"
+increased = "{x} increased {term}"
+increased_regen = "{x} increased {term} regeneration"
+plus = "+{x} {term}"
+skill = "Weapons governed by attributes multiply their damage by a random {factor}, picked anew for every hit between its midpoint − {spread} and + {spread}, never below 0. The midpoint grows with the weapon's governing attribute points (with two, their average); Valheim's own weapon skill level doesn't count."
+formula = "midpoint = {center} × (1 + {coef} × (points ÷ {full})^0.75)"
+points = "Points"
+midpoint = "Midpoint"
+governing = "Governing attributes by weapon skill:"
+weapon = "Weapon skill"
+governs = "Governing attributes"
+scepters = "Sceptres are governed by {str} and {int}, whatever their skill."
+shifted = "With {mastery}, {pct} of your {str} also counts as {dex} for two-handed weapons and bows (not fist weapons)."
+
 [formula.crit-multiplier]
 title = "Critical strike damage"
 text = "{term}s multiply the hit's damage by:"

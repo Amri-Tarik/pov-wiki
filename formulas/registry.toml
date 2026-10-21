@@ -407,3 +407,30 @@ checked = "5.1.2"
 
 [formula.values]
 max_pending = 96
+
+[[formula]]
+id = "attributes"
+anchors = [
+    "PassiveTree/Progress.cs :: Progress.DeriveAttributes",
+    "PassiveTree/StatText.cs :: StatText.SkillCenter",
+    "PassiveTree/StatText.cs :: StatText.AttrPoints",
+    "PassiveTree/StatText.cs :: StatText.AttrsFor#1",
+    "PassiveTree/StatText.cs :: StatText.AttrsFor#2",
+    "PassiveTree/StatText.cs :: \"public static readonly float AttrCoef\"",
+    "PassiveTree/Effects.cs :: SkillFactor.Prefix",
+    "PassiveTree/Tunables.cs :: \"attrs.might-covers\"",
+]
+fingerprint = "950bbfba3753"
+checked = "5.1.2"
+
+[formula.values]
+health_regen = 0.00125
+carry_weight = 0.2
+stamina_regen = 0.00185
+evasion = 0.002
+eitr_regen = 0.00185
+rune_shield = 0.16
+center = 0.4
+spread = 0.15
+coef = 1.5
+full_points = 300

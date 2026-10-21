@@ -27,6 +27,25 @@ def _floats(values) -> list[float]:
     return [round(float(v), 4) for v in values]
 
 
+def _governing() -> dict[str, list[str]]:
+    """Each weapon skill's governing attributes (StatText.AttrsFor), by Valheim skill name; the mod
+    asks its own code. Scepters (Strength and Intelligence) are set by weapon, not by skill."""
+    from System import Array, Enum, Object
+
+    # AttrsFor(SkillType, out Stat?, out Stat?): the overload without the item.
+    method = next(m for m in _type("StatText").GetMethods(_ANY)
+                  if m.Name == "AttrsFor" and len(m.GetParameters()) == 3 and m.GetParameters()[0].ParameterType.IsEnum)
+    skill = method.GetParameters()[0].ParameterType
+    out = {}
+    for name in Enum.GetNames(skill):
+        args = Array[Object]([Enum.Parse(skill, name), None, None])  # out values come back in a .NET array
+        method.Invoke(None, args)
+        attrs = [str(args[i]) for i in (1, 2) if args[i] is not None]
+        if attrs:
+            out[str(name)] = attrs
+    return out
+
+
 def render_difficulty(errors: list) -> dict:
     from PassiveTree import EnemyDifficulty, Tunables
 
@@ -62,7 +81,8 @@ def render_difficulty(errors: list) -> dict:
                 "evasion.accuracy.per-star", "evasion.hit-factor", "evasion.cap", "armor.effect",
                 # Additional and phantom strikes (Strikes, Phantoms).
                 "strike.interval", "strike.focus-damage", "strike.reach", "strike.radius",
-                "phantom.damage", "phantom.radius", "phantom.interval", "phantom.delay")},
+                "phantom.damage", "phantom.radius", "phantom.interval", "phantom.delay", "attrs.might-covers")},
+            "governing": _governing(),
         }
     except Exception as ex:
         errors.append({"difficulty": str(ex).split("\n")[0]})

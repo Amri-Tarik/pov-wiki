@@ -418,13 +418,57 @@ def _phantoms(ctx, page, v):
                ui("formula.phantom-strikes.chain", recursion=_term(ctx, "phantom-recursion", page, start=True), max=v["max_pending"]), ""])
 
 
+def _attributes(ctx, page, v):
+    """Attributes (Progress.DeriveAttributes, StatText.SkillCenter/AttrPoints/AttrsFor): what each
+    point gives, and how governing attributes set the weapon skill multiplier."""
+    ui, d = ctx.loc.ui, ctx.loc.difficulty
+    slugs = {"AttrMight": "might", "AttrFinesse": "finesse", "AttrSpirit": "spirit"}
+    names = {a: _term(ctx, slug, page, start=True) for a, slug in slugs.items()}
+    titles = {a: plain(ctx.loc.wiki[slug]["title"]) if slug in ctx.loc.wiki else a for a, slug in slugs.items()}
+
+    def gives(key: str, amount: float, pct: bool, term: str) -> list[str]:
+        one = f"{amount * 100:.4g}%" if pct else _n(amount, 3)  # per point: 0.125%, not rounded to 0.12%
+        hundred = _pct(amount * 100) if pct else _n(amount * 100, 1)
+        return [ui(key, x=one, term=_term(ctx, term, page)), ui(key, x=hundred, term=_term(ctx, term, page))]
+
+    rows = []
+    for attr, parts in (("AttrMight", [("formula.attributes.increased", v["health_regen"], True, "health-regen"),
+                                       ("formula.attributes.plus", v["carry_weight"], False, "weight")]),
+                        ("AttrFinesse", [("formula.attributes.increased_regen", v["stamina_regen"], True, "stamina"),
+                                         ("formula.attributes.increased", v["evasion"], True, "evade")]),
+                        ("AttrSpirit", [("formula.attributes.increased_regen", v["eitr_regen"], True, "eitr"),
+                                        ("formula.attributes.plus", v["rune_shield"], False, "shield")])):
+        cells = [gives(*p) for p in parts]
+        rows.append([names[attr], "<br>".join(c[0] for c in cells), "<br>".join(c[1] for c in cells)])
+    md = [ui("formula.attributes.text"), ""] + _table([ui("formula.attributes.attribute"), ui("formula.attributes.per_point"),
+                                                       ui("formula.attributes.per_hundred")], rows)
+
+    def center(points: float) -> float:  # StatText.SkillCenter
+        return v["center"] * (1 + v["coef"] * (points / v["full_points"]) ** 0.75)
+
+    md += [ui("formula.attributes.skill", factor=_term(ctx, "skill-factor", page), spread=_n(v["spread"])), ""]
+    md += _formula(ui("formula.attributes.formula", center=_n(v["center"]), coef=_n(v["coef"]), full=_n(v["full_points"])))
+    md += _table([ui("formula.attributes.points"), *(str(p) for p in (0, 50, 100, 200, 300, 500))],
+                 [[ui("formula.attributes.midpoint"), *(_n(center(p), 2) for p in (0, 50, 100, 200, 300, 500))]])
+    governing = d.get("governing") or {}
+    skill_rows = [[ctx.loc.vkey(f"skill_{s.lower()}", s), ", ".join(titles[a] for a in attrs)]
+                  for s, attrs in governing.items()]
+    md += [ui("formula.attributes.governing"), ""] + _table([ui("formula.attributes.weapon"), ui("formula.attributes.governs")], skill_rows)
+    md += [ui("formula.attributes.scepters", str=titles["AttrMight"], int=titles["AttrSpirit"]), ""]
+    if _mastery(ctx, "MasteryAttrs1")[1]:
+        md += [ui("formula.attributes.shifted", mastery=_mastery_link(ctx, "MasteryAttrs1", page), str=titles["AttrMight"],
+                  dex=titles["AttrFinesse"],
+                  pct=_pct(d.get("tunables", {}).get("attrs.might-covers", 0))), ""]
+    return md
+
+
 _PAGES = {
     CREATURES_PAGE: ("creatures", [("creature-strength", _strength), ("boss-step", _boss_step),
                                    ("stars", _stars), ("boss-stars", _boss_stars), ("monster-power", _power)]),
     LOOT_PAGE: ("loot", [("loot", _loot), ("vanilla-drops", _vanilla_drops)]),
     EXPERIENCE_PAGE: ("experience", [("creature-level", _level), ("item-level", _item_level), ("experience", _experience),
                                      ("experience-falloff", _falloff), ("player-levels", _player_levels)]),
-    COMBAT_PAGE: ("combat", [("crit-multiplier", _crit_multiplier), ("crit-chance", _crit_chance), ("evasion", _evasion),
+    COMBAT_PAGE: ("combat", [("attributes", _attributes), ("crit-multiplier", _crit_multiplier), ("crit-chance", _crit_chance), ("evasion", _evasion),
                              ("resistances", _resistances), ("armour", _armour), ("enemy-penetration", _penetration),
                              ("strikes", _strikes), ("phantom-strikes", _phantoms), ("build-cost", _build_cost)]),
 }
@@ -450,6 +494,11 @@ TERM_FORMULAS = {
     "biome-level": ["creature-level", "experience-falloff"],
     "death-xp": ["player-levels"],
     "strike": ["strikes"],
+    "attributes": ["attributes"],
+    "might": ["attributes"],
+    "finesse": ["attributes"],
+    "spirit": ["attributes"],
+    "skill-factor": ["attributes"],
     "phantom-strikes": ["phantom-strikes"],
     "phantom-recursion": ["phantom-strikes"],
 }

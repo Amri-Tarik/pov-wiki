@@ -462,29 +462,59 @@ def _attributes(ctx, page, v):
     return md
 
 
+# Each ailment: its keyword, and the keyword of the damage that fills its gauge (AilmentDamage.Component).
+_AILMENTS = {"bleed": "slash", "burn": "fire-damage", "poison": "poison-damage", "frost": "frost-damage", "shock": "lightning-damage"}
+
+
+def _title_of(ctx, key: str) -> str:
+    return plain(ctx.loc.wiki[key]["title"]) if key in ctx.loc.wiki else key
+
+
+def _ail_gauge(ctx, page, v, ailment: str | None = None) -> list[str]:
+    """The gauge: how much a hit fills, an example table, how long it lasts. With an ailment, the
+    formula names its damage type and the table (the same for every ailment) is left out."""
+    ui, t = ctx.loc.ui, ctx.loc.difficulty.get("tunables", {})
+    threshold = t["ailment.threshold"]
+    buildup = _title_of(ctx, "build-up").lower()
+    damage = _title_of(ctx, _AILMENTS[ailment]).lower() if ailment else ui("formula.ailments.damage")
+    md = _formula(ui("formula.ailments.formula", threshold=_pct(threshold), buildup=buildup, damage=damage))  # plain: no links in the block
+    shares = (0.05, 0.1, 0.25, 0.5)
+    md += [] if ailment else [ui("formula.ailments.example"), ""] + _table(
+        [ui("formula.ailments.share"), *(_pct(s) for s in shares)],
+        [[ui("formula.ailments.fill", amount=_pct(b), buildup=buildup), *(_pct(min(1.0, s / threshold * (1 + b))) for s in shares)] for b in (0, 1)])
+    return md + [ui("formula.ailments.lasts", hold=_n(v["hold"]), drain=_pct(v["drain"]), total=_n(v["hold"] + 1 / v["drain"])), ""]
+
+
+def _ail_effect(ctx, page, v, ailment: str) -> str:
+    """What one ailment does with the damage that set it off."""
+    ui = ctx.loc.ui
+    if ailment == "bleed":
+        return ui("formula.ailments.bleed", total=_pct(v["bleed_share"] * v["bleed_ticks"]), ticks=_n(v["bleed_ticks"]),
+                  share=_pct(v["bleed_share"]))
+    return ui(f"formula.ailments.{'chill' if ailment == 'frost' else ailment}", stagger=_term(ctx, "stagger", page))
+
+
 def _ailments(ctx, page, v):
     """Ailments (AilmentGauges, Ailments, Combat.OpenWound): the gauge a hit fills, how long an
     ailment lasts, and what each one does with the damage that set it off."""
-    ui, t = ctx.loc.ui, ctx.loc.difficulty.get("tunables", {})
-    threshold = t["ailment.threshold"]
-    term = {k: _term(ctx, k, page) for k in ("bleed", "burn", "poison", "frost", "shock", "build-up", "ailment-gauge",
-                                               "ailment-damage", "stagger")}
+    ui = ctx.loc.ui
+    term = {k: _term(ctx, k, page) for k in _AILMENTS}
     md = [ui("formula.ailments.text", gauge=_term(ctx, "ailment-gauge", page, start=True), **term), ""]
-    buildup = plain(ctx.loc.wiki["build-up"]["title"]).lower() if "build-up" in ctx.loc.wiki else "build-up"
-    md += _formula(ui("formula.ailments.formula", threshold=_pct(threshold), buildup=buildup))  # plain: no links in the block
-    shares = (0.05, 0.1, 0.25, 0.5)
-    md += [ui("formula.ailments.example"), ""] + _table(
-        [ui("formula.ailments.share"), *(_pct(s) for s in shares)],
-        [[ui("formula.ailments.fill", amount=_pct(b), buildup=buildup), *(_pct(min(1.0, s / threshold * (1 + b))) for s in shares)] for b in (0, 1)])
-    md += [ui("formula.ailments.lasts", hold=_n(v["hold"]), drain=_pct(v["drain"]), total=_n(v["hold"] + 1 / v["drain"])), ""]
+    md += _ail_gauge(ctx, page, v)
     md += [ui("formula.ailments.each"), ""]
-    lead = {**term, **{k: _term(ctx, k, page, start=True) for k in ("bleed", "burn", "poison", "frost", "shock")}}  # list items
-    md += [f"- {ui('formula.ailments.bleed', total=_pct(v['bleed_share'] * v['bleed_ticks']), ticks=_n(v['bleed_ticks']), share=_pct(v['bleed_share']), **lead)}",
-           f"- {ui('formula.ailments.burn', **lead)}",
-           f"- {ui('formula.ailments.poison', **lead)}",
-           f"- {ui('formula.ailments.chill', **lead)}",
-           f"- {ui('formula.ailments.shock', **lead)}", ""]
+    md += [f"- {_term(ctx, a, page, start=True)}: {_ail_effect(ctx, page, v, a)}" for a in _AILMENTS] + [""]
     return md
+
+
+def _ailment_view(ailment: str):
+    """One ailment's own entry, for its keyword page: what fills its gauge, what it does."""
+    def view(ctx, page, v):
+        ui = ctx.loc.ui
+        return ([ui("formula.ailments.one", ailment=_title_of(ctx, ailment), damage=_term(ctx, _AILMENTS[ailment], page),
+                    gauge=_term(ctx, "ailment-gauge", page)), ""]
+                + _ail_gauge(ctx, page, v, ailment)
+                + [ui("formula.ailments.does", text=_ail_effect(ctx, page, v, ailment)), ""])
+    return view
 
 
 _PAGES = {
@@ -525,27 +555,37 @@ TERM_FORMULAS = {
     "spirit": ["attributes"],
     "skill-factor": ["attributes"],
     "ailment": ["ailments"],
-    "ailment-gauge": ["ailments"],
     "ailment-damage": ["ailments"],
-    "build-up": ["ailments"],
-    "bleed": ["ailments"],
-    "burn": ["ailments"],
-    "poison": ["ailments"],
-    "frost": ["ailments"],
-    "shock": ["ailments"],
+    "ailment-gauge": ["ailments:gauge"],
+    "build-up": ["ailments:gauge"],
+    "bleed": ["ailments:bleed"],
+    "burn": ["ailments:burn"],
+    "poison": ["ailments:poison"],
+    "frost": ["ailments:frost"],
+    "shock": ["ailments:shock"],
     "phantom-strikes": ["phantom-strikes"],
     "phantom-recursion": ["phantom-strikes"],
 }
 
 
-def formula_block(ctx: Ctx, fid: str, page: str, level: int = 2, anchor: bool = True) -> list[str]:
-    """A formula's heading and block for a page, or a note that it is being re-checked."""
+def _views() -> dict[tuple[str, str], tuple[str, object]]:
+    """Parts of a formula a keyword page shows instead of the whole block: (formula, view) ->
+    (heading ui key, body)."""
+    out = {("ailments", "gauge"): ("formula.ailments.gauge_title", lambda ctx, page, v: _ail_gauge(ctx, page, v))}
+    out.update({("ailments", a): ("formula.ailments.how", _ailment_view(a)) for a in _AILMENTS})
+    return out
+
+
+def formula_block(ctx: Ctx, fid: str, page: str, level: int = 2, anchor: bool = True, view: str | None = None) -> list[str]:
+    """A formula's heading and block for a page, or a note that it is being re-checked. A view
+    shows one part of it (a keyword page's own entry)."""
     ui = ctx.loc.ui
-    head = "#" * level + f" {ui(f'formula.{fid}.title')}" + (f" {{ #{fid} }}" if anchor else "")
+    title_key, body_of = _views()[(fid, view)] if view else (f"formula.{fid}.title", _BODIES[fid])
+    head = "#" * level + f" {ui(title_key)}" + (f" {{ #{fid} }}" if anchor else "")
     if not shown(ctx, fid):
         return [head, "", f'!!! warning "{ui("formula.rechecking_title")}"',
                 f"    {ui('formula.rechecking', version=ctx.data.version)}", ""]
-    body = _BODIES[fid](ctx, page, _values().get(fid, {}))
+    body = body_of(ctx, page, _values().get(fid, {}))
     # Sub-headings one level below the formula's own.
     body = ["#" * (level + 1) + line[3:] if line.startswith("### ") else line for line in body]
     return [head, ""] + body + [""]
@@ -554,9 +594,10 @@ def formula_block(ctx: Ctx, fid: str, page: str, level: int = 2, anchor: bool = 
 def term_formulas(ctx: Ctx, key: str, page: str) -> list[str]:
     """The formulas of a keyword, for the top of its glossary page."""
     md = []
-    for fid in TERM_FORMULAS.get(key, []):
+    for entry in TERM_FORMULAS.get(key, []):
+        fid, _, view = entry.partition(":")
         if ctx.loc.difficulty:
-            md += formula_block(ctx, fid, page, level=2, anchor=False)
+            md += formula_block(ctx, fid, page, level=2, anchor=False, view=view or None)
             title = ctx.loc.ui(_TITLES[_PAGES[FORMULA_PAGES[fid]][0]])
             md += [ctx.loc.ui("formula.see_all", page=title, link=_anchor(fid, page)), ""]
     return md

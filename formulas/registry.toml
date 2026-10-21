@@ -465,12 +465,15 @@ anchors = [
     "PassiveTree/ElementalBonuses.cs :: ElementalBonuses.ShockStaggerDamage",
     "PassiveTree/EnemyDifficulty.cs :: EnemyDifficulty.BaseMaxHealth",
     "PassiveTree/Combat.cs :: Combat.OpenWound",
+    "PassiveTree/Effects.cs :: Character_RPC_Damage_Ailments.Postfix",
+    "PassiveTree/Effects.cs :: Effects.ScaleAilment",
+    "PassiveTree/EffectDuration.cs :: EffectDuration.Factor",
     "PassiveTree/Tunables.cs :: \"ailment.threshold\"",
     "valheim/Character.cs :: Character.RPC_Damage",
     "valheim/SE_Burning.cs :: SE_Burning.AddFireDamage",
     "valheim/SE_Poison.cs :: SE_Poison.AddDamage",
 ]
-fingerprint = "51b14d5a9cec"
+fingerprint = "bcdc0c4932d0"
 checked = "5.1.2"
 
 [formula.values]

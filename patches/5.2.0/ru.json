@@ -12,6 +12,61 @@
      "name": "Кольцо могильного зова"
     },
     "old": null
+   },
+   "PT_StaffBarrowCall": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Уровень созданного предмета 43"
+     ],
+     "link": "items/base/PT_StaffBarrowCall.md",
+     "name": "Посох курганного зова"
+    },
+    "old": null
+   },
+   "PT_StaffBoneCall": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Уровень созданного предмета 1"
+     ],
+     "link": "items/base/PT_StaffBoneCall.md",
+     "name": "Посох костяного зова"
+    },
+    "old": null
+   },
+   "PT_StaffFrostboneCall": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Уровень созданного предмета 77"
+     ],
+     "link": "items/base/PT_StaffFrostboneCall.md",
+     "name": "Посох морозного зова"
+    },
+    "old": null
+   },
+   "PT_StaffGraveCall": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Уровень созданного предмета 19"
+     ],
+     "link": "items/base/PT_StaffGraveCall.md",
+     "name": "Посох могильного зова"
+    },
+    "old": null
+   },
+   "PT_StaffWarboneCall": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Уровень созданного предмета 97"
+     ],
+     "link": "items/base/PT_StaffWarboneCall.md",
+     "name": "Посох боевого зова"
+    },
+    "old": null
    }
   },
   "keywords": {

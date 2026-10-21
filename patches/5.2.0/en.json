@@ -12,6 +12,61 @@
      "name": "Grave Call Ring"
     },
     "old": null
+   },
+   "PT_StaffBarrowCall": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 43"
+     ],
+     "link": "items/base/PT_StaffBarrowCall.md",
+     "name": "Barrow Call Staff"
+    },
+    "old": null
+   },
+   "PT_StaffBoneCall": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 1"
+     ],
+     "link": "items/base/PT_StaffBoneCall.md",
+     "name": "Bone Call Staff"
+    },
+    "old": null
+   },
+   "PT_StaffFrostboneCall": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 77"
+     ],
+     "link": "items/base/PT_StaffFrostboneCall.md",
+     "name": "Frostbone Call Staff"
+    },
+    "old": null
+   },
+   "PT_StaffGraveCall": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 19"
+     ],
+     "link": "items/base/PT_StaffGraveCall.md",
+     "name": "Grave Call Staff"
+    },
+    "old": null
+   },
+   "PT_StaffWarboneCall": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 97"
+     ],
+     "link": "items/base/PT_StaffWarboneCall.md",
+     "name": "Warbone Call Staff"
+    },
+    "old": null
    }
   },
   "keywords": {

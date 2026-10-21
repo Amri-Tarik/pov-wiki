@@ -92,7 +92,8 @@ def render_difficulty(errors: list) -> dict:
                 # Charged attacks, slams, thorns, impale, endurance.
                 "charge.cooldown", "charge.source-cooldown", "charge.source-cooldown.crit", "splash.radius",
                 "slam.ground-radius", "aftershock.delay", "thorns.increased.base", "thorns.block.share",
-                "thorns.riposte.share", "impale.stack", "impale.limit", "impale.window", "endurance.base", "endurance.cap")},
+                "thorns.riposte.share", "impale.stack", "impale.limit", "impale.window", "endurance.base", "endurance.cap",
+                "rage.more-per-point")},
             "governing": _governing(),
             "caps": _caps("StaggerResistPct", "GlancingChance"),
         }

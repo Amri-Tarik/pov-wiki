@@ -662,13 +662,124 @@ def _endurance(ctx, page, v):
     return md
 
 
+def _hit_flat(ctx, page, v):
+    """Flat damage (Effects.AddFlatDamage, Oils.AddTo): what goes where, × the skill roll."""
+    ui = ctx.loc.ui
+    md = [ui("formula.hit-damage.flat", flat=_term(ctx, "flat-damage", page, start=True), factor=_term(ctx, "skill-factor", page)), ""]
+    md += [f"- {ui(f'formula.hit-damage.flat_{k}')}" for k in ("main", "physical", "typed", "element", "elemental")] + [""]
+    return md + [ui("formula.hit-damage.oil", oil=_term(ctx, "oil", page)), ""]
+
+
+def _hit_conversion(ctx, page, v):
+    """Conversion (Conversion.Hit, Gains; DamageModel.Grown): physical only, before increases;
+    converted damage grows with both types' increases."""
+    ui = ctx.loc.ui
+    md = [ui("formula.hit-damage.conversion", conversion=_term(ctx, "conversion", page, start=True)), ""]
+    md += _formula(ui("formula.hit-damage.conversion_formula"))
+    return md + [ui("formula.hit-damage.converted"), "",
+                 ui("formula.hit-damage.gain", gain=_term(ctx, "gain-as-extra", page, start=True)), ""]
+
+
+def _hit_increases(ctx, page, v):
+    """Increases (Effects.ContextOutgoingMult, DamageModel.TypeIncrease/Increase/Layer): one sum,
+    each type adding its own."""
+    ui = ctx.loc.ui
+    md = [ui("formula.hit-damage.increases"), ""]
+    md += _formula(ui("formula.hit-damage.increases_formula"))
+    return md + [ui("formula.hit-damage.typed"), ""]
+
+
+def _hit_more(ctx, page, v):
+    """More multipliers (MoreDamage.Of, Rage.DamageMore), projectile and torch factors."""
+    ui, t = ctx.loc.ui, ctx.loc.difficulty.get("tunables", {})
+    return [ui("formula.hit-damage.more", rage=_term(ctx, "rage", page), per=_pct(t["rage.more-per-point"])), "",
+            ui("formula.hit-damage.projectile", proj=_term(ctx, "proj", page, start=True), torch=_term(ctx, "torch", page)), ""]
+
+
+def _hit_target(ctx, page, v):
+    """On the enemy (XpSources Character_Damage.Prepare, CrossDamage): increases that depend on it
+    join the same sum; its flat damage comes after the crit."""
+    ui = ctx.loc.ui
+    md = [ui("formula.hit-damage.target"), ""]
+    md += [f"- {ui('formula.hit-damage.target_kind')}",
+           f"- {ui('formula.hit-damage.target_backstab', backstab=_term(ctx, 'backstab', page))}",
+           f"- {ui('formula.hit-damage.target_stagger', stagger=_term(ctx, 'stagger', page), x=_pct(v['staggered']))}",
+           f"- {ui('formula.hit-damage.target_charged', charged=_term(ctx, 'charged-attack', page), x=_pct(_values()['charged-attacks']['increase']))}", ""]
+    return md + [ui("formula.hit-damage.target_flat", crit=_term(ctx, "crit", page)), "",
+                 ui("formula.hit-damage.target_both"), ""]
+
+
+_HIT_PARTS = {"flat": _hit_flat, "conversion": _hit_conversion, "increases": _hit_increases, "more": _hit_more, "target": _hit_target}
+
+
+def _hit_damage(ctx, page, v):
+    """How a hit's damage is built, part by part (each part is also a keyword page's view)."""
+    ui = ctx.loc.ui
+    md = [ui("formula.hit-damage.text", order=f"[{ui('formula.hit-order.title')}]({_anchor('hit-order', page)})"), ""]
+    for part, body in _HIT_PARTS.items():
+        md += [f"### {ui(f'formula.hit-damage.{part}_title')} {{ #hit-{part} }}", ""] + body(ctx, page, v)
+    return md
+
+
+def _hit_view(part: str):
+    def view(ctx, page, v):
+        return _HIT_PARTS[part](ctx, page, v) + [
+            ctx.loc.ui("formula.hit-damage.see_order", title=ctx.loc.ui("formula.hit-order.title"), link=_anchor("hit-order", page)), ""]
+    return view
+
+
+def _hit_order(ctx, page, v):
+    """The order of a hit's steps: the mod's ModifyAttackBuild when the hit is made, then
+    Character_Damage.Prepare and Valheim's RPC_Damage when it reaches the enemy."""
+    ui = ctx.loc.ui
+    def link(title: str, anchor: str, start: bool) -> str:  # a section of this page, lower-cased unless it starts the sentence
+        return f"[{title if start else title[:1].lower() + title[1:]}]({rel(COMBAT_PAGE, page)}#{anchor})"
+
+    part = lambda p, start=True: link(ui(f"formula.hit-damage.{p}_title"), f"hit-{p}", start)  # noqa: E731
+    sec = lambda fid, start=False: link(ui(f"formula.{fid}.title"), fid, start)  # noqa: E731
+    made = [ui("formula.hit-order.base", factor=_term(ctx, "skill-factor", page)),
+            ui("formula.hit-order.oil", oil=_term(ctx, "oil", page)),
+            ui("formula.hit-order.flat", flat=part("flat")),
+            ui("formula.hit-order.conversion", conversion=part("conversion"), gain=_term(ctx, "gain-as-extra", page)),
+            ui("formula.hit-order.increases", increases=part("increases")),
+            ui("formula.hit-order.more", more=part("more"), rage=_term(ctx, "rage", page)),
+            ui("formula.hit-order.projectile", proj=_term(ctx, "proj", page), torch=_term(ctx, "torch", page))]
+    lands = [ui("formula.hit-order.crit", crit=sec("crit-multiplier", start=True)),
+             ui("formula.hit-order.target", target=part("target", start=False)),
+             ui("formula.hit-order.both"),
+             ui("formula.hit-order.physical", brk=sec("armour-break", start=True), impale=sec("impale")),
+             ui("formula.hit-order.resist", pen=sec("player-penetration"))]
+    md = [ui("formula.hit-order.text"), "", f"**{ui('formula.hit-order.made')}**", ""]
+    md += [f"{i}. {s}" for i, s in enumerate(made, 1)] + ["", f"**{ui('formula.hit-order.lands')}**", ""]
+    md += [f"{i}. {s}" for i, s in enumerate(lands, len(made) + 1)] + [""]
+    return md + [ui("formula.hit-order.notes"), ""]
+
+
+_MODIFIERS = ("very_weak", "weak", "slightly_weak", "normal", "slightly_resistant", "resistant", "very_resistant", "immune")
+
+
+def _player_penetration(ctx, page, v):
+    """Your resistance penetration against creatures (Penetration, PenetrationMath): it adds to the
+    share of damage Valheim's resistance step lets through, even against immunity."""
+    ui = ctx.loc.ui
+    md = [ui("formula.player-penetration.text", pen=_term(ctx, "resistance-penetration", page)), ""]
+    md += _formula(ui("formula.player-penetration.formula"))
+    pens = (0.1, 0.25, 0.5)
+    md += _table([ui("formula.player-penetration.modifier"), ui("formula.player-penetration.resistance"), ui("formula.player-penetration.taken"),
+                  *(ui("formula.player-penetration.with", x=_pct(p)) for p in pens)],
+                 [[ui(f"formula.player-penetration.{m}"), _pct(v[m]), _pct(1 - v[m]), *(_pct(max(0.0, 1 - v[m] + p)) for p in pens)]
+                  for m in _MODIFIERS])
+    return md + [ui("formula.player-penetration.notes"), ""]
+
+
 _PAGES = {
     CREATURES_PAGE: ("creatures", [("creature-strength", _strength), ("boss-step", _boss_step),
                                    ("stars", _stars), ("boss-stars", _boss_stars), ("monster-power", _power)]),
     LOOT_PAGE: ("loot", [("loot", _loot), ("vanilla-drops", _vanilla_drops)]),
     EXPERIENCE_PAGE: ("experience", [("creature-level", _level), ("item-level", _item_level), ("experience", _experience),
                                      ("experience-falloff", _falloff), ("player-levels", _player_levels)]),
-    COMBAT_PAGE: ("combat", [("attributes", _attributes), ("crit-multiplier", _crit_multiplier), ("crit-chance", _crit_chance), ("evasion", _evasion),
+    COMBAT_PAGE: ("combat", [("attributes", _attributes), ("hit-order", _hit_order), ("hit-damage", _hit_damage),
+                             ("player-penetration", _player_penetration), ("crit-multiplier", _crit_multiplier), ("crit-chance", _crit_chance), ("evasion", _evasion),
                              ("resistances", _resistances), ("armour", _armour), ("rune-shield", _rune_shield), ("enemy-penetration", _penetration), ("stagger", _stagger),
                              ("block", _block), ("glancing", _glancing), ("endurance", _endurance), ("thorns", _thorns),
                              ("charged-attacks", _charged), ("strikes", _strikes), ("phantom-strikes", _phantoms), ("area", _area), ("slams", _slams),
@@ -687,7 +798,7 @@ TERM_FORMULAS = {
     "evade": ["evasion"],
     "enemy-accuracy": ["evasion"],
     "resist": ["resistances"],
-    "resistance-penetration": ["resistances", "enemy-penetration"],
+    "resistance-penetration": ["player-penetration", "resistances", "enemy-penetration"],
     "item-quantity": ["loot"],
     "item-rarity": ["loot"],
     "refund": ["build-cost"],
@@ -730,6 +841,18 @@ TERM_FORMULAS = {
     "impale": ["impale"],
     "corrosion": ["armour-break"],
     "endurance": ["endurance"],
+    "flat-damage": ["hit-damage:flat"],
+    "oil": ["hit-damage:flat"],
+    "conversion": ["hit-damage:conversion"],
+    "gain-as-extra": ["hit-damage:conversion"],
+    "elemental-split": ["hit-damage:increases"],
+    "physical": ["hit-damage:increases", "hit-damage:conversion"],
+    **{k: ["hit-damage:increases"] for k in ("slash", "pierce", "blunt", "fire-damage", "frost-damage", "lightning-damage",
+                                             "poison-damage", "spirit-damage")},
+    "rage": ["hit-damage:more"],
+    "proj": ["hit-damage:more"],
+    "torch": ["hit-damage:more"],
+    "backstab": ["hit-damage:target"],
 }
 
 
@@ -738,6 +861,7 @@ def _views() -> dict[tuple[str, str], tuple[str, object]]:
     (heading ui key, body)."""
     out = {("ailments", "gauge"): ("formula.ailments.gauge_title", lambda ctx, page, v: _ail_gauge(ctx, page, v))}
     out.update({("ailments", a): ("formula.ailments.how", _ailment_view(a)) for a in _AILMENTS})
+    out.update({("hit-damage", p): (f"formula.hit-damage.{p}_title", _hit_view(p)) for p in _HIT_PARTS})
     return out
 
 
@@ -769,7 +893,8 @@ def term_formulas(ctx: Ctx, key: str, page: str) -> list[str]:
         md += formula_block(ctx, fid, page, level=3 if len(entries) > 1 else 2, anchor=False, view=view or None,
                             heading=None if len(entries) > 1 else mechanics)
         title = ctx.loc.ui(_TITLES[_PAGES[FORMULA_PAGES[fid]][0]])
-        md += [ctx.loc.ui("formula.see_all", page=title, link=_anchor(fid, page)), ""]
+        link = f"{rel(COMBAT_PAGE, page)}#hit-{view}" if fid == "hit-damage" and view else _anchor(fid, page)  # its own part
+        md += [ctx.loc.ui("formula.see_all", page=title, link=link), ""]
     return md
 
 

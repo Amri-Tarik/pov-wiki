@@ -727,3 +727,81 @@ checked = "5.1.2"
 
 [formula.values]
 seconds = 8
+
+[[formula]]
+id = "hit-damage"
+anchors = [
+    "PassiveTree/SE_PassiveTree.cs :: SE_PassiveTree.ModifyAttackBuild",
+    "PassiveTree/Effects.cs :: Effects.AddFlatDamage",
+    "PassiveTree/Effects.cs :: Effects.AddToMain",
+    "PassiveTree/Effects.cs :: Effects.ContextFlat",
+    "PassiveTree/Effects.cs :: Effects.OutgoingMult",
+    "PassiveTree/Effects.cs :: Effects.ContextOutgoingMult",
+    "PassiveTree/Effects.cs :: Effects.LayerOn",
+    "PassiveTree/Effects.cs :: SkillFactor.Postfix",
+    "PassiveTree/CombatCategories.cs :: CombatCategories.DamageBonus",
+    "PassiveTree/DamageModel.cs :: DamageModel.TypeIncrease",
+    "PassiveTree/DamageModel.cs :: DamageModel.Increase#2",
+    "PassiveTree/DamageModel.cs :: DamageModel.Grown",
+    "PassiveTree/DamageModel.cs :: DamageModel.Layer",
+    "PassiveTree/DamageModel.cs :: DamageModel.AddToMain",
+    "PassiveTree/Conversion.cs :: Conversion.Hit#3",
+    "PassiveTree/Conversion.cs :: Conversion.Gains",
+    "PassiveTree/Oils.cs :: Oils.AddTo",
+    "PassiveTree/MoreDamage.cs :: MoreDamage.Of",
+    "PassiveTree/Rage.cs :: Rage.DamageMore",
+    "PassiveTree/ProjectileMods.cs :: ProjectileMods.DamageFactor",
+    "PassiveTree/XpSources.cs :: Character_Damage.Prepare",
+    "PassiveTree/XpSources.cs :: XpSources.CrossDamage",
+    "PassiveTree/NoSneakBonus.cs :: NoSneakBonus.Strip",
+    "PassiveTree/NoSneakBonus.cs :: Character_RPC_Damage.Prefix",
+    "PassiveTree/NoStaggerBonus.cs :: NoStaggerBonus.Rewrite",
+    "PassiveTree/ChargedAttacks.cs :: ChargedAttacks.Increase",
+    "PassiveTree/Series.cs :: Series.PerStack",
+    "PassiveTree/CriticalHits.cs :: CriticalHits.Apply",
+    "valheim/Attack.cs :: Attack.ModifyDamage",
+    "valheim/Character.cs :: Character.RPC_Damage",
+]
+fingerprint = "51b07e381dd4"
+checked = "5.1.2"
+
+[formula.values]
+staggered = 0.15
+
+[[formula]]
+id = "hit-order"
+anchors = [
+    "PassiveTree/SE_PassiveTree.cs :: SE_PassiveTree.ModifyAttackBuild",
+    "PassiveTree/XpSources.cs :: Character_Damage.Prepare",
+    "PassiveTree/XpSources.cs :: XpSources.CrossDamage",
+    "PassiveTree/CriticalHits.cs :: CriticalHits.Apply",
+    "PassiveTree/Penetration.cs :: Penetration.Apply",
+    "valheim/Attack.cs :: Attack.ModifyDamage",
+    "valheim/Character.cs :: Character.RPC_Damage",
+]
+fingerprint = "83f64316f77d"
+checked = "5.1.2"
+
+[[formula]]
+id = "player-penetration"
+anchors = [
+    "PassiveTree/PenetrationMath.cs :: PenetrationMath.Resistance",
+    "PassiveTree/PenetrationMath.cs :: PenetrationMath.Multiplier",
+    "PassiveTree/PenetrationMath.cs :: PenetrationMath.Apply",
+    "PassiveTree/PenetrationMath.cs :: PenetrationMath.Resolve",
+    "PassiveTree/Penetration.cs :: Penetration.Typed",
+    "PassiveTree/Penetration.cs :: Penetration.Resolve",
+    "PassiveTree/Penetration.cs :: Penetration.Apply",
+]
+fingerprint = "c76291caf9f0"
+checked = "5.1.2"
+
+[formula.values]
+very_weak = -1.0
+weak = -0.5
+slightly_weak = -0.25
+normal = 0.0
+slightly_resistant = 0.25
+resistant = 0.5
+very_resistant = 0.75
+immune = 1.0

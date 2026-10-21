@@ -377,6 +377,47 @@ def _build_cost(ctx, page, v):
 
 
 # Each page's formulas, in order.
+def _mastery(ctx, stat: str) -> tuple[str, str | None]:
+    """The passive mastery option granting this stat: its title (the tree's own name) and page."""
+    from .pages import option_path
+
+    for g in ctx.option_groups.values():
+        o = g["options"][0]
+        if any(m.get("stat") == stat for m in o["raw"].get("mods") or []):
+            return plain(o["title"]), option_path(ctx, g)
+    return stat, None
+
+
+def _mastery_link(ctx, stat: str, page: str) -> str:
+    title, path = _mastery(ctx, stat)
+    return f"[{title}]({rel(path, page)})" if path else title
+
+
+def _strikes(ctx, page, v):
+    """Additional strikes (Strikes): extra hits of a melee swing, at the nearest enemies not yet
+    struck, or all into the first target with Focused Strikes; Double on Crit doubles them once."""
+    ui, t = ctx.loc.ui, ctx.loc.difficulty.get("tunables", {})
+    return ([ui("formula.strikes.text", strike=_term(ctx, "strike", page, start=True), interval=_n(t["strike.interval"]),
+                radius=_n(t["strike.radius"]), reach=_n(t["strike.reach"])), ""]
+            + _formula(ui("formula.strikes.formula", double=_mastery(ctx, "StrikeCritDouble")[0]))
+            + [ui("formula.strikes.hits"), "",
+               ui("formula.strikes.double", double=_mastery_link(ctx, "StrikeCritDouble", page)), "",
+               ui("formula.strikes.focus", focus=_mastery_link(ctx, "StrikeFocusFire", page), pct=_pct(t["strike.focus-damage"])), "",
+               ui("formula.strikes.combo", combo=_term(ctx, "series", page, start=True)), ""])
+
+
+def _phantoms(ctx, page, v):
+    """Phantom strikes (Phantoms): copies of a melee attack hit at a share of its finished damage,
+    landing on random nearby enemies; Endless Apparition lets them chain."""
+    ui, t = ctx.loc.ui, ctx.loc.difficulty.get("tunables", {})
+    return ([ui("formula.phantom-strikes.text", phantom=_term(ctx, "phantom-strikes", page, start=True),
+                radius=_n(t["phantom.radius"]), delay=_n(t["phantom.delay"]), interval=_n(t["phantom.interval"])), ""]
+            + _formula(ui("formula.phantom-strikes.count"))
+            + _formula(ui("formula.phantom-strikes.formula", share=_pct(t["phantom.damage"])))
+            + [ui("formula.phantom-strikes.damage", share=_pct(t["phantom.damage"])), "",
+               ui("formula.phantom-strikes.chain", recursion=_term(ctx, "phantom-recursion", page, start=True), max=v["max_pending"]), ""])
+
+
 _PAGES = {
     CREATURES_PAGE: ("creatures", [("creature-strength", _strength), ("boss-step", _boss_step),
                                    ("stars", _stars), ("boss-stars", _boss_stars), ("monster-power", _power)]),
@@ -385,7 +426,7 @@ _PAGES = {
                                      ("experience-falloff", _falloff), ("player-levels", _player_levels)]),
     COMBAT_PAGE: ("combat", [("crit-multiplier", _crit_multiplier), ("crit-chance", _crit_chance), ("evasion", _evasion),
                              ("resistances", _resistances), ("armour", _armour), ("enemy-penetration", _penetration),
-                             ("build-cost", _build_cost)]),
+                             ("strikes", _strikes), ("phantom-strikes", _phantoms), ("build-cost", _build_cost)]),
 }
 _TITLES = {"creatures": "formula.creatures", "loot": "formula.loot_page", "combat": "formula.combat",
            "experience": "formula.experience_page"}
@@ -408,6 +449,9 @@ TERM_FORMULAS = {
     "xp": ["experience", "experience-falloff", "player-levels"],
     "biome-level": ["creature-level", "experience-falloff"],
     "death-xp": ["player-levels"],
+    "strike": ["strikes"],
+    "phantom-strikes": ["phantom-strikes"],
+    "phantom-recursion": ["phantom-strikes"],
 }
 
 

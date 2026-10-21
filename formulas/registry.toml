@@ -365,3 +365,45 @@ anchors = [
 ]
 fingerprint = "f7bedc6dcc1a"
 checked = "5.1.1"
+
+[[formula]]
+id = "strikes"
+anchors = [
+    "PassiveTree/Strikes.cs :: Strikes.Eligible",
+    "PassiveTree/Strikes.cs :: Swing.Postfix",
+    "PassiveTree/Strikes.cs :: Strikes.Critical",
+    "PassiveTree/Strikes.cs :: Strikes.Doubled",
+    "PassiveTree/Strikes.cs :: Strikes.Step",
+    "PassiveTree/Strikes.cs :: Strikes.Pick",
+    "PassiveTree/Strikes.cs :: Strikes.Far",
+    "PassiveTree/Series.cs :: Series.OnHit",
+    "PassiveTree/Tunables.cs :: \"strike.interval\"",
+    "PassiveTree/Tunables.cs :: \"strike.focus-damage\"",
+    "PassiveTree/Tunables.cs :: \"strike.reach\"",
+    "PassiveTree/Tunables.cs :: \"strike.radius\"",
+]
+fingerprint = "04f27c363e55"
+checked = "5.1.2"
+
+[[formula]]
+id = "phantom-strikes"
+anchors = [
+    "PassiveTree/Phantoms.cs :: Phantoms.OnHit",
+    "PassiveTree/Phantoms.cs :: Phantoms.Count",
+    "PassiveTree/Phantoms.cs :: Phantoms.Enqueue",
+    "PassiveTree/Phantoms.cs :: Phantoms.Copy",
+    "PassiveTree/Phantoms.cs :: Phantoms.Continue",
+    "PassiveTree/Phantoms.cs :: Phantoms.Pick",
+    "PassiveTree/HitKinds.cs :: HitKinds.IsAttackHit",
+    "PassiveTree/XpSources.cs :: Character_Damage.Prefix",
+    "PassiveTree/CriticalHits.cs :: \"|| Phantoms.Is(hit))\"",
+    "PassiveTree/Tunables.cs :: \"phantom.damage\"",
+    "PassiveTree/Tunables.cs :: \"phantom.radius\"",
+    "PassiveTree/Tunables.cs :: \"phantom.interval\"",
+    "PassiveTree/Tunables.cs :: \"phantom.delay\"",
+]
+fingerprint = "a58122e6072f"
+checked = "5.1.2"
+
+[formula.values]
+max_pending = 96

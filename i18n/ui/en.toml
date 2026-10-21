@@ -679,6 +679,23 @@ title = "Enemy penetration"
 text = "Creatures pierce your defences by their biome: with flat {armour} and {resist} (a share of your resistances). Your armour counts for {effect} against creatures' hits."
 notes = "Bosses move toward the next biome's values. Creatures with the {piercing} modifier ignore more."
 
+[formula.strikes]
+title = "Additional strikes"
+text = "{strike}: a melee weapon's horizontal or vertical swing, primary or alternative; slams and sceptres don't count. Once a swing hits an enemy, it hits again as many times as your additional strikes, one every {interval} s. Each goes to the nearest enemy not struck yet, within {radius} m of the first target and {reach} m of you; when there is none left, they stop."
+formula = "additional strikes = ⌊additional strikes⌋, ×2 once after a critical strike ({double})"
+hits = "Each additional strike is a new hit of the same attack: it rolls its own critical strike and gets all your damage bonuses. Strike bonuses apply to the swing and to every additional strike."
+double = "With {double}, the attack's first critical strike, from the swing or from one of its strikes, doubles its additional strikes, once per attack."
+focus = "With {focus}, every additional strike hits the first target instead, at {pct} damage each, and they stop if it dies or gets out of reach."
+combo = "{combo} counts one hit per attack: additional strikes and phantom strikes never add to it."
+
+[formula.phantom-strikes]
+title = "Phantom strikes"
+text = "{phantom} can follow a melee attack hit: the weapon's own blow or one of its additional strikes, not projectiles, area blows or other copies. Each hits a random enemy within {radius} m of the struck one, that one included: the first {delay} s after the hit, then one every {interval} s."
+count = "phantom strikes per hit = ⌊chance⌋, +1 with a probability of what is left"
+formula = "phantom strike damage = {share} × the hit's damage"
+damage = "The hit's damage is taken once its critical strike and all your damage bonuses are applied, before the enemy's armour and resistances. A phantom strike gets none of your bonuses and never crits; the enemy's armour and resistances apply to it as usual."
+chain = "With {recursion}, a phantom strike that lands can cause more: the n-th generation's chance is the first's × the factor its line gives, to the power n − 1. At most {max} phantom strikes wait at once."
+
 [formula.build-cost]
 title = "Build cost"
 text = "Build cost reductions lower each material of a piece, the mod's [buildings]({buildings}) included, by at most {cap}:"

@@ -59,7 +59,10 @@ def render_difficulty(errors: list) -> dict:
             # Evasion and armour knobs (Evasion.AccuracyAt/Chance, ArmorEffect).
             "tunables": {k: float(Tunables.Of(k)) for k in (
                 "evasion.accuracy.base", "evasion.accuracy.per-level", "evasion.accuracy.growth",
-                "evasion.accuracy.per-star", "evasion.hit-factor", "evasion.cap", "armor.effect")},
+                "evasion.accuracy.per-star", "evasion.hit-factor", "evasion.cap", "armor.effect",
+                # Additional and phantom strikes (Strikes, Phantoms).
+                "strike.interval", "strike.focus-damage", "strike.reach", "strike.radius",
+                "phantom.damage", "phantom.radius", "phantom.interval", "phantom.delay")},
         }
     except Exception as ex:
         errors.append({"difficulty": str(ex).split("\n")[0]})

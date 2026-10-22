@@ -1,0 +1,4307 @@
+{
+ "changes": {
+  "bases": {
+   "ArmorAshlandsMediumChest": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 181",
+      "Quality 1: Armour 28, Evasion 37.8",
+      "Quality 2: Armour 30, Evasion 40.5",
+      "Quality 3: Armour 32, Evasion 43.2",
+      "Quality 4: Armour 34, Evasion 45.9"
+     ],
+     "link": "items/base/ArmorAshlandsMediumChest.md",
+     "name": "Breastplate of Ask"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 181",
+      "Quality 1: Armour 28, Evasion 28",
+      "Quality 2: Armour 30, Evasion 30",
+      "Quality 3: Armour 32, Evasion 32",
+      "Quality 4: Armour 34, Evasion 34"
+     ],
+     "link": "items/base/ArmorAshlandsMediumChest.md",
+     "name": "Breastplate of Ask"
+    }
+   },
+   "ArmorAshlandsMediumlegs": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 181",
+      "Quality 1: Armour 28, Evasion 37.8",
+      "Quality 2: Armour 30, Evasion 40.5",
+      "Quality 3: Armour 32, Evasion 43.2",
+      "Quality 4: Armour 34, Evasion 45.9"
+     ],
+     "link": "items/base/ArmorAshlandsMediumlegs.md",
+     "name": "Trousers of Ask"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 181",
+      "Quality 1: Armour 28, Evasion 28",
+      "Quality 2: Armour 30, Evasion 30",
+      "Quality 3: Armour 32, Evasion 32",
+      "Quality 4: Armour 34, Evasion 34"
+     ],
+     "link": "items/base/ArmorAshlandsMediumlegs.md",
+     "name": "Trousers of Ask"
+    }
+   },
+   "ArmorBerserkerChest": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 19",
+      "Quality 1: Armour 7, Evasion 9.45",
+      "Quality 2: Armour 9, Evasion 12.15",
+      "Quality 3: Armour 11, Evasion 14.85",
+      "Quality 4: Armour 13, Evasion 17.55"
+     ],
+     "link": "items/base/ArmorBerserkerChest.md",
+     "name": "Patterns of the Bear"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 19",
+      "Quality 1: Armour 7, Evasion 7",
+      "Quality 2: Armour 9, Evasion 9",
+      "Quality 3: Armour 11, Evasion 11",
+      "Quality 4: Armour 13, Evasion 13"
+     ],
+     "link": "items/base/ArmorBerserkerChest.md",
+     "name": "Patterns of the Bear"
+    }
+   },
+   "ArmorBerserkerLegs": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 19",
+      "Quality 1: Armour 7, Evasion 9.45",
+      "Quality 2: Armour 9, Evasion 12.15",
+      "Quality 3: Armour 11, Evasion 14.85",
+      "Quality 4: Armour 13, Evasion 17.55"
+     ],
+     "link": "items/base/ArmorBerserkerLegs.md",
+     "name": "Loincloth of the Bear"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 19",
+      "Quality 1: Armour 7, Evasion 7",
+      "Quality 2: Armour 9, Evasion 9",
+      "Quality 3: Armour 11, Evasion 11",
+      "Quality 4: Armour 13, Evasion 13"
+     ],
+     "link": "items/base/ArmorBerserkerLegs.md",
+     "name": "Loincloth of the Bear"
+    }
+   },
+   "ArmorBerserkerUndeadChest": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 97",
+      "Quality 1: Armour 18, Evasion 24.3",
+      "Quality 2: Armour 20, Evasion 27",
+      "Quality 3: Armour 22, Evasion 29.7",
+      "Quality 4: Armour 24, Evasion 32.4"
+     ],
+     "link": "items/base/ArmorBerserkerUndeadChest.md",
+     "name": "Vilebone Cage"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 97",
+      "Quality 1: Armour 18, Evasion 18",
+      "Quality 2: Armour 20, Evasion 20",
+      "Quality 3: Armour 22, Evasion 22",
+      "Quality 4: Armour 24, Evasion 24"
+     ],
+     "link": "items/base/ArmorBerserkerUndeadChest.md",
+     "name": "Vilebone Cage"
+    }
+   },
+   "ArmorBerserkerUndeadLegs": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 97",
+      "Quality 1: Armour 18, Evasion 24.3",
+      "Quality 2: Armour 20, Evasion 27",
+      "Quality 3: Armour 22, Evasion 29.7",
+      "Quality 4: Armour 24, Evasion 32.4"
+     ],
+     "link": "items/base/ArmorBerserkerUndeadLegs.md",
+     "name": "Vilebone Drapes"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 97",
+      "Quality 1: Armour 18, Evasion 18",
+      "Quality 2: Armour 20, Evasion 20",
+      "Quality 3: Armour 22, Evasion 22",
+      "Quality 4: Armour 24, Evasion 24"
+     ],
+     "link": "items/base/ArmorBerserkerUndeadLegs.md",
+     "name": "Vilebone Drapes"
+    }
+   },
+   "ArmorDeepNorthHeavyChest": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 44, Evasion 59.4",
+      "Quality 2: Armour 46, Evasion 62.1",
+      "Quality 3: Armour 48, Evasion 64.8",
+      "Quality 4: Armour 50, Evasion 67.5"
+     ],
+     "link": "items/base/ArmorDeepNorthHeavyChest.md",
+     "name": "Breastplate of the Protector"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 44, Evasion 44",
+      "Quality 2: Armour 46, Evasion 46",
+      "Quality 3: Armour 48, Evasion 48",
+      "Quality 4: Armour 50, Evasion 50"
+     ],
+     "link": "items/base/ArmorDeepNorthHeavyChest.md",
+     "name": "Breastplate of the Protector"
+    }
+   },
+   "ArmorDeepNorthHeavylegs": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 44, Evasion 59.4",
+      "Quality 2: Armour 46, Evasion 62.1",
+      "Quality 3: Armour 48, Evasion 64.8",
+      "Quality 4: Armour 50, Evasion 67.5"
+     ],
+     "link": "items/base/ArmorDeepNorthHeavylegs.md",
+     "name": "Trousers of the Protector"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 44, Evasion 44",
+      "Quality 2: Armour 46, Evasion 46",
+      "Quality 3: Armour 48, Evasion 48",
+      "Quality 4: Armour 50, Evasion 50"
+     ],
+     "link": "items/base/ArmorDeepNorthHeavylegs.md",
+     "name": "Trousers of the Protector"
+    }
+   },
+   "ArmorDeepNorthMediumChest": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 34, Evasion 45.9",
+      "Quality 2: Armour 36, Evasion 48.6",
+      "Quality 3: Armour 38, Evasion 51.3",
+      "Quality 4: Armour 40, Evasion 54"
+     ],
+     "link": "items/base/ArmorDeepNorthMediumChest.md",
+     "name": "Chestpiece of the Vanguard"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 34, Evasion 34",
+      "Quality 2: Armour 36, Evasion 36",
+      "Quality 3: Armour 38, Evasion 38",
+      "Quality 4: Armour 40, Evasion 40"
+     ],
+     "link": "items/base/ArmorDeepNorthMediumChest.md",
+     "name": "Chestpiece of the Vanguard"
+    }
+   },
+   "ArmorDeepNorthMediumlegs": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 34, Evasion 45.9",
+      "Quality 2: Armour 36, Evasion 48.6",
+      "Quality 3: Armour 38, Evasion 51.3",
+      "Quality 4: Armour 40, Evasion 54"
+     ],
+     "link": "items/base/ArmorDeepNorthMediumlegs.md",
+     "name": "Trousers of the Vanguard"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 246",
+      "Quality 1: Armour 34, Evasion 34",
+      "Quality 2: Armour 36, Evasion 36",
+      "Quality 3: Armour 38, Evasion 38",
+      "Quality 4: Armour 40, Evasion 40"
+     ],
+     "link": "items/base/ArmorDeepNorthMediumlegs.md",
+     "name": "Trousers of the Vanguard"
+    }
+   },
+   "ArmorDress1": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Quality 1: Armour 1, Evasion 1.35",
+      "Quality 2: Armour 2, Evasion 2.7",
+      "Quality 3: Armour 3, Evasion 4.05",
+      "Quality 4: Armour 4, Evasion 5.4"
+     ],
+     "link": "items/base/ArmorDress1.md",
+     "name": "Plain Brown Dress"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Quality 1: Armour 1, Evasion 1",
+      "Quality 2: Armour 2, Evasion 2",
+      "Quality 3: Armour 3, Evasion 3",
+      "Quality 4: Armour 4, Evasion 4"
+     ],
+     "link": "items/base/ArmorDress1.md",
+     "name": "Plain Brown Dress"
+    }
+   },
+   "ArmorDress10": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Quality 1: Armour 1, Evasion 1.35",
+      "Quality 2: Armour 2, Evasion 2.7",
+      "Quality 3: Armour 3, Evasion 4.05",
+      "Quality 4: Armour 4, Evasion 5.4"
+     ],
+     "link": "items/base/ArmorDress10.md",
+     "name": "Simple Undyed Dress"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Quality 1: Armour 1, Evasion 1",
+      "Quality 2: Armour 2, Evasion 2",
+      "Quality 3: Armour 3, Evasion 3",
+      "Quality 4: Armour 4, Evasion 4"
+     ],
+     "link": "items/base/ArmorDress10.md",
+     "name": "Simple Undyed Dress"
+    }
+   },
+   "ArmorDress2": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Quality 1: Armour 1, Evasion 1.35",
+      "Quality 2: Armour 2, Evasion 2.7",
+      "Quality 3: Armour 3, Evasion 4.05",
+      "Quality 4: Armour 4, Evasion 5.4"
+     ],
+     "link": "items/base/ArmorDress2.md",
+     "name": "Brown Dress with Shawl"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Quality 1: Armour 1, Evasion 1",
+      "Quality 2: Armour 2, Evasion 2",
+      "Quality 3: Armour 3, Evasion 3",
+      "Quality 4: Armour 4, Evasion 4"
+     ],
+     "link": "items/base/ArmorDress2.md",
+     "name": "Brown Dress with Shawl"
+    }
+   },
+   "ArmorDress3": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Quality 1: Armour 1, Evasion 1.35",
+      "Quality 2: Armour 2, Evasion 2.7",
+      "Quality 3: Armour 3, Evasion 4.05",
+      "Quality 4: Armour 4, Evasion 5.4"
+     ],
+     "link": "items/base/ArmorDress3.md",
+     "name": "Brown Dress with Beads"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Quality 1: Armour 1, Evasion 1",
+      "Quality 2: Armour 2, Evasion 2",
+      "Quality 3: Armour 3, Evasion 3",
+      "Quality 4: Armour 4, Evasion 4"
+     ],
+     "link": "items/base/ArmorDress3.md",
+     "name": "Brown Dress with Beads"
+    }
+   },
+   "ArmorDress4": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Quality 1: Armour 1, Evasion 1.35",
+      "Quality 2: Armour 2, Evasion 2.7",
+      "Quality 3: Armour 3, Evasion 4.05",
+      "Quality 4: Armour 4, Evasion 5.4"
+     ],
+     "link": "items/base/ArmorDress4.md",
+     "name": "Plain Blue Dress"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Quality 1: Armour 1, Evasion 1",
+      "Quality 2: Armour 2, Evasion 2",
+      "Quality 3: Armour 3, Evasion 3",
+      "Quality 4: Armour 4, Evasion 4"
+     ],
+     "link": "items/base/ArmorDress4.md",
+     "name": "Plain Blue Dress"
+    }
+   },
+   "ArmorDress5": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Quality 1: Armour 1, Evasion 1.35",
+      "Quality 2: Armour 2, Evasion 2.7",
+      "Quality 3: Armour 3, Evasion 4.05",
+      "Quality 4: Armour 4, Evasion 5.4"
+     ],
+     "link": "items/base/ArmorDress5.md",
+     "name": "Blue Dress with Shawl"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Quality 1: Armour 1, Evasion 1",
+      "Quality 2: Armour 2, Evasion 2",
+      "Quality 3: Armour 3, Evasion 3",
+      "Quality 4: Armour 4, Evasion 4"
+     ],
+     "link": "items/base/ArmorDress5.md",
+     "name": "Blue Dress with Shawl"
+    }
+   },
+   "ArmorDress6": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Quality 1: Armour 1, Evasion 1.35",
+      "Quality 2: Armour 2, Evasion 2.7",
+      "Quality 3: Armour 3, Evasion 4.05",
+      "Quality 4: Armour 4, Evasion 5.4"
+     ],
+     "link": "items/base/ArmorDress6.md",
+     "name": "Blue Dress with Beads"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Quality 1: Armour 1, Evasion 1",
+      "Quality 2: Armour 2, Evasion 2",
+      "Quality 3: Armour 3, Evasion 3",
+      "Quality 4: Armour 4, Evasion 4"
+     ],
+     "link": "items/base/ArmorDress6.md",
+     "name": "Blue Dress with Beads"
+    }
+   },
+   "ArmorDress7": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Quality 1: Armour 1, Evasion 1.35",
+      "Quality 2: Armour 2, Evasion 2.7",
+      "Quality 3: Armour 3, Evasion 4.05",
+      "Quality 4: Armour 4, Evasion 5.4"
+     ],
+     "link": "items/base/ArmorDress7.md",
+     "name": "Plain Yellow Dress"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Quality 1: Armour 1, Evasion 1",
+      "Quality 2: Armour 2, Evasion 2",
+      "Quality 3: Armour 3, Evasion 3",
+      "Quality 4: Armour 4, Evasion 4"
+     ],
+     "link": "items/base/ArmorDress7.md",
+     "name": "Plain Yellow Dress"
+    }
+   },
+   "ArmorDress8": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Quality 1: Armour 1, Evasion 1.35",
+      "Quality 2: Armour 2, Evasion 2.7",
+      "Quality 3: Armour 3, Evasion 4.05",
+      "Quality 4: Armour 4, Evasion 5.4"
+     ],
+     "link": "items/base/ArmorDress8.md",
+     "name": "Yellow Dress with Shawl"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Quality 1: Armour 1, Evasion 1",
+      "Quality 2: Armour 2, Evasion 2",
+      "Quality 3: Armour 3, Evasion 3",
+      "Quality 4: Armour 4, Evasion 4"
+     ],
+     "link": "items/base/ArmorDress8.md",
+     "name": "Yellow Dress with Shawl"
+    }
+   },
+   "ArmorDress9": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Quality 1: Armour 1, Evasion 1.35",
+      "Quality 2: Armour 2, Evasion 2.7",
+      "Quality 3: Armour 3, Evasion 4.05",
+      "Quality 4: Armour 4, Evasion 5.4"
+     ],
+     "link": "items/base/ArmorDress9.md",
+     "name": "Yellow Dress with Beads"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Quality 1: Armour 1, Evasion 1",
+      "Quality 2: Armour 2, Evasion 2",
+      "Quality 3: Armour 3, Evasion 3",
+      "Quality 4: Armour 4, Evasion 4"
+     ],
+     "link": "items/base/ArmorDress9.md",
+     "name": "Yellow Dress with Beads"
+    }
+   },
+   "ArmorFenringChest": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 77",
+      "Quality 1: Armour 10, Evasion 13.5",
+      "Quality 2: Armour 12, Evasion 16.2",
+      "Quality 3: Armour 14, Evasion 18.9",
+      "Quality 4: Armour 16, Evasion 21.6"
+     ],
+     "link": "items/base/ArmorFenringChest.md",
+     "name": "Fenris Coat"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 77",
+      "Quality 1: Armour 10, Evasion 10",
+      "Quality 2: Armour 12, Evasion 12",
+      "Quality 3: Armour 14, Evasion 14",
+      "Quality 4: Armour 16, Evasion 16"
+     ],
+     "link": "items/base/ArmorFenringChest.md",
+     "name": "Fenris Coat"
+    }
+   },
+   "ArmorFenringLegs": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 77",
+      "Quality 1: Armour 10, Evasion 13.5",
+      "Quality 2: Armour 12, Evasion 16.2",
+      "Quality 3: Armour 14, Evasion 18.9",
+      "Quality 4: Armour 16, Evasion 21.6"
+     ],
+     "link": "items/base/ArmorFenringLegs.md",
+     "name": "Fenris Leggings"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 77",
+      "Quality 1: Armour 10, Evasion 10",
+      "Quality 2: Armour 12, Evasion 12",
+      "Quality 3: Armour 14, Evasion 14",
+      "Quality 4: Armour 16, Evasion 16"
+     ],
+     "link": "items/base/ArmorFenringLegs.md",
+     "name": "Fenris Leggings"
+    }
+   },
+   "ArmorHarvester1": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Quality 1: Armour 1, Evasion 1.35",
+      "Quality 2: Armour 2, Evasion 2.7",
+      "Quality 3: Armour 3, Evasion 4.05",
+      "Quality 4: Armour 4, Evasion 5.4"
+     ],
+     "link": "items/base/ArmorHarvester1.md",
+     "name": "Harvest Tunic"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Quality 1: Armour 1, Evasion 1",
+      "Quality 2: Armour 2, Evasion 2",
+      "Quality 3: Armour 3, Evasion 3",
+      "Quality 4: Armour 4, Evasion 4"
+     ],
+     "link": "items/base/ArmorHarvester1.md",
+     "name": "Harvest Tunic"
+    }
+   },
+   "ArmorHarvester2": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Quality 1: Armour 1, Evasion 1.35",
+      "Quality 2: Armour 2, Evasion 2.7",
+      "Quality 3: Armour 3, Evasion 4.05",
+      "Quality 4: Armour 4, Evasion 5.4"
+     ],
+     "link": "items/base/ArmorHarvester2.md",
+     "name": "Harvest Dress"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Quality 1: Armour 1, Evasion 1",
+      "Quality 2: Armour 2, Evasion 2",
+      "Quality 3: Armour 3, Evasion 3",
+      "Quality 4: Armour 4, Evasion 4"
+     ],
+     "link": "items/base/ArmorHarvester2.md",
+     "name": "Harvest Dress"
+    }
+   },
+   "ArmorLeatherChest": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 1",
+      "Quality 1: Armour 2, Evasion 2.7",
+      "Quality 2: Armour 4, Evasion 5.4",
+      "Quality 3: Armour 6, Evasion 8.1",
+      "Quality 4: Armour 8, Evasion 10.8"
+     ],
+     "link": "items/base/ArmorLeatherChest.md",
+     "name": "Leather Tunic"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 1",
+      "Quality 1: Armour 2, Evasion 2",
+      "Quality 2: Armour 4, Evasion 4",
+      "Quality 3: Armour 6, Evasion 6",
+      "Quality 4: Armour 8, Evasion 8"
+     ],
+     "link": "items/base/ArmorLeatherChest.md",
+     "name": "Leather Tunic"
+    }
+   },
+   "ArmorLeatherLegs": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 1",
+      "Quality 1: Armour 2, Evasion 2.7",
+      "Quality 2: Armour 4, Evasion 5.4",
+      "Quality 3: Armour 6, Evasion 8.1",
+      "Quality 4: Armour 8, Evasion 10.8"
+     ],
+     "link": "items/base/ArmorLeatherLegs.md",
+     "name": "Leather Trousers"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 1",
+      "Quality 1: Armour 2, Evasion 2",
+      "Quality 2: Armour 4, Evasion 4",
+      "Quality 3: Armour 6, Evasion 6",
+      "Quality 4: Armour 8, Evasion 8"
+     ],
+     "link": "items/base/ArmorLeatherLegs.md",
+     "name": "Leather Trousers"
+    }
+   },
+   "ArmorLoxChest": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 97",
+      "Quality 1: Armour 16, Evasion 21.6",
+      "Quality 2: Armour 18, Evasion 24.3",
+      "Quality 3: Armour 20, Evasion 27",
+      "Quality 4: Armour 22, Evasion 29.7"
+     ],
+     "link": "items/base/ArmorLoxChest.md",
+     "name": "Lox Fur Jacket"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 97",
+      "Quality 1: Armour 16, Evasion 16",
+      "Quality 2: Armour 18, Evasion 18",
+      "Quality 3: Armour 20, Evasion 20",
+      "Quality 4: Armour 22, Evasion 22"
+     ],
+     "link": "items/base/ArmorLoxChest.md",
+     "name": "Lox Fur Jacket"
+    }
+   },
+   "ArmorLoxLegs": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 97",
+      "Quality 1: Armour 16, Evasion 21.6",
+      "Quality 2: Armour 18, Evasion 24.3",
+      "Quality 3: Armour 20, Evasion 27",
+      "Quality 4: Armour 22, Evasion 29.7"
+     ],
+     "link": "items/base/ArmorLoxLegs.md",
+     "name": "Lox Fur Trousers"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 97",
+      "Quality 1: Armour 16, Evasion 16",
+      "Quality 2: Armour 18, Evasion 18",
+      "Quality 3: Armour 20, Evasion 20",
+      "Quality 4: Armour 22, Evasion 22"
+     ],
+     "link": "items/base/ArmorLoxLegs.md",
+     "name": "Lox Fur Trousers"
+    }
+   },
+   "ArmorRagsChest": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 1",
+      "Quality 1: Armour 1, Evasion 1.35",
+      "Quality 2: Armour 2, Evasion 2.7"
+     ],
+     "link": "items/base/ArmorRagsChest.md",
+     "name": "Rag Tunic"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 1",
+      "Quality 1: Armour 1, Evasion 1",
+      "Quality 2: Armour 2, Evasion 2"
+     ],
+     "link": "items/base/ArmorRagsChest.md",
+     "name": "Rag Tunic"
+    }
+   },
+   "ArmorRagsLegs": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 1",
+      "Quality 1: Armour 1, Evasion 1.35",
+      "Quality 2: Armour 2, Evasion 2.7"
+     ],
+     "link": "items/base/ArmorRagsLegs.md",
+     "name": "Rag Trousers"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 1",
+      "Quality 1: Armour 1, Evasion 1",
+      "Quality 2: Armour 2, Evasion 2"
+     ],
+     "link": "items/base/ArmorRagsLegs.md",
+     "name": "Rag Trousers"
+    }
+   },
+   "ArmorRootChest": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 43",
+      "Quality 1: Armour 8, Evasion 5.4",
+      "Quality 2: Armour 10, Evasion 6.75",
+      "Quality 3: Armour 12, Evasion 8.1",
+      "Quality 4: Armour 14, Evasion 9.45"
+     ],
+     "link": "items/base/ArmorRootChest.md",
+     "name": "Root Harnesk"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 43",
+      "Quality 1: Armour 8, Evasion 4",
+      "Quality 2: Armour 10, Evasion 5",
+      "Quality 3: Armour 12, Evasion 6",
+      "Quality 4: Armour 14, Evasion 7"
+     ],
+     "link": "items/base/ArmorRootChest.md",
+     "name": "Root Harnesk"
+    }
+   },
+   "ArmorRootLegs": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 43",
+      "Quality 1: Armour 8, Evasion 5.4",
+      "Quality 2: Armour 10, Evasion 6.75",
+      "Quality 3: Armour 12, Evasion 8.1",
+      "Quality 4: Armour 14, Evasion 9.45"
+     ],
+     "link": "items/base/ArmorRootLegs.md",
+     "name": "Root Leggings"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 43",
+      "Quality 1: Armour 8, Evasion 4",
+      "Quality 2: Armour 10, Evasion 5",
+      "Quality 3: Armour 12, Evasion 6",
+      "Quality 4: Armour 14, Evasion 7"
+     ],
+     "link": "items/base/ArmorRootLegs.md",
+     "name": "Root Leggings"
+    }
+   },
+   "ArmorTrollLeatherChest": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 19",
+      "Quality 1: Armour 6, Evasion 8.1",
+      "Quality 2: Armour 8, Evasion 10.8",
+      "Quality 3: Armour 10, Evasion 13.5",
+      "Quality 4: Armour 12, Evasion 16.2"
+     ],
+     "link": "items/base/ArmorTrollLeatherChest.md",
+     "name": "Troll Leather Tunic"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 19",
+      "Quality 1: Armour 6, Evasion 6",
+      "Quality 2: Armour 8, Evasion 8",
+      "Quality 3: Armour 10, Evasion 10",
+      "Quality 4: Armour 12, Evasion 12"
+     ],
+     "link": "items/base/ArmorTrollLeatherChest.md",
+     "name": "Troll Leather Tunic"
+    }
+   },
+   "ArmorTrollLeatherLegs": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 19",
+      "Quality 1: Armour 6, Evasion 8.1",
+      "Quality 2: Armour 8, Evasion 10.8",
+      "Quality 3: Armour 10, Evasion 13.5",
+      "Quality 4: Armour 12, Evasion 16.2"
+     ],
+     "link": "items/base/ArmorTrollLeatherLegs.md",
+     "name": "Troll Leather Trousers"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 19",
+      "Quality 1: Armour 6, Evasion 6",
+      "Quality 2: Armour 8, Evasion 8",
+      "Quality 3: Armour 10, Evasion 10",
+      "Quality 4: Armour 12, Evasion 12"
+     ],
+     "link": "items/base/ArmorTrollLeatherLegs.md",
+     "name": "Troll Leather Trousers"
+    }
+   },
+   "ArmorTunic1": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Quality 1: Armour 1, Evasion 1.35",
+      "Quality 2: Armour 2, Evasion 2.7",
+      "Quality 3: Armour 3, Evasion 4.05",
+      "Quality 4: Armour 4, Evasion 5.4"
+     ],
+     "link": "items/base/ArmorTunic1.md",
+     "name": "Plain Blue Tunic"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Quality 1: Armour 1, Evasion 1",
+      "Quality 2: Armour 2, Evasion 2",
+      "Quality 3: Armour 3, Evasion 3",
+      "Quality 4: Armour 4, Evasion 4"
+     ],
+     "link": "items/base/ArmorTunic1.md",
+     "name": "Plain Blue Tunic"
+    }
+   },
+   "ArmorTunic10": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Quality 1: Armour 1, Evasion 1.35",
+      "Quality 2: Armour 2, Evasion 2.7",
+      "Quality 3: Armour 3, Evasion 4.05",
+      "Quality 4: Armour 4, Evasion 5.4"
+     ],
+     "link": "items/base/ArmorTunic10.md",
+     "name": "Simple Undyed Tunic"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Quality 1: Armour 1, Evasion 1",
+      "Quality 2: Armour 2, Evasion 2",
+      "Quality 3: Armour 3, Evasion 3",
+      "Quality 4: Armour 4, Evasion 4"
+     ],
+     "link": "items/base/ArmorTunic10.md",
+     "name": "Simple Undyed Tunic"
+    }
+   },
+   "ArmorTunic2": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Quality 1: Armour 1, Evasion 1.35",
+      "Quality 2: Armour 2, Evasion 2.7",
+      "Quality 3: Armour 3, Evasion 4.05",
+      "Quality 4: Armour 4, Evasion 5.4"
+     ],
+     "link": "items/base/ArmorTunic2.md",
+     "name": "Blue Tunic with Cape"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Quality 1: Armour 1, Evasion 1",
+      "Quality 2: Armour 2, Evasion 2",
+      "Quality 3: Armour 3, Evasion 3",
+      "Quality 4: Armour 4, Evasion 4"
+     ],
+     "link": "items/base/ArmorTunic2.md",
+     "name": "Blue Tunic with Cape"
+    }
+   },
+   "ArmorTunic3": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Quality 1: Armour 1, Evasion 1.35",
+      "Quality 2: Armour 2, Evasion 2.7",
+      "Quality 3: Armour 3, Evasion 4.05",
+      "Quality 4: Armour 4, Evasion 5.4"
+     ],
+     "link": "items/base/ArmorTunic3.md",
+     "name": "Blue Tunic with Beads"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Quality 1: Armour 1, Evasion 1",
+      "Quality 2: Armour 2, Evasion 2",
+      "Quality 3: Armour 3, Evasion 3",
+      "Quality 4: Armour 4, Evasion 4"
+     ],
+     "link": "items/base/ArmorTunic3.md",
+     "name": "Blue Tunic with Beads"
+    }
+   },
+   "ArmorTunic4": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Quality 1: Armour 1, Evasion 1.35",
+      "Quality 2: Armour 2, Evasion 2.7",
+      "Quality 3: Armour 3, Evasion 4.05",
+      "Quality 4: Armour 4, Evasion 5.4"
+     ],
+     "link": "items/base/ArmorTunic4.md",
+     "name": "Plain Red Tunic"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Quality 1: Armour 1, Evasion 1",
+      "Quality 2: Armour 2, Evasion 2",
+      "Quality 3: Armour 3, Evasion 3",
+      "Quality 4: Armour 4, Evasion 4"
+     ],
+     "link": "items/base/ArmorTunic4.md",
+     "name": "Plain Red Tunic"
+    }
+   },
+   "ArmorTunic5": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Quality 1: Armour 1, Evasion 1.35",
+      "Quality 2: Armour 2, Evasion 2.7",
+      "Quality 3: Armour 3, Evasion 4.05",
+      "Quality 4: Armour 4, Evasion 5.4"
+     ],
+     "link": "items/base/ArmorTunic5.md",
+     "name": "Red Tunic with Cape"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Quality 1: Armour 1, Evasion 1",
+      "Quality 2: Armour 2, Evasion 2",
+      "Quality 3: Armour 3, Evasion 3",
+      "Quality 4: Armour 4, Evasion 4"
+     ],
+     "link": "items/base/ArmorTunic5.md",
+     "name": "Red Tunic with Cape"
+    }
+   },
+   "ArmorTunic6": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Quality 1: Armour 1, Evasion 1.35",
+      "Quality 2: Armour 2, Evasion 2.7",
+      "Quality 3: Armour 3, Evasion 4.05",
+      "Quality 4: Armour 4, Evasion 5.4"
+     ],
+     "link": "items/base/ArmorTunic6.md",
+     "name": "Red Tunic with Beads"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Quality 1: Armour 1, Evasion 1",
+      "Quality 2: Armour 2, Evasion 2",
+      "Quality 3: Armour 3, Evasion 3",
+      "Quality 4: Armour 4, Evasion 4"
+     ],
+     "link": "items/base/ArmorTunic6.md",
+     "name": "Red Tunic with Beads"
+    }
+   },
+   "ArmorTunic7": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Quality 1: Armour 1, Evasion 1.35",
+      "Quality 2: Armour 2, Evasion 2.7",
+      "Quality 3: Armour 3, Evasion 4.05",
+      "Quality 4: Armour 4, Evasion 5.4"
+     ],
+     "link": "items/base/ArmorTunic7.md",
+     "name": "Plain Yellow Tunic"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Quality 1: Armour 1, Evasion 1",
+      "Quality 2: Armour 2, Evasion 2",
+      "Quality 3: Armour 3, Evasion 3",
+      "Quality 4: Armour 4, Evasion 4"
+     ],
+     "link": "items/base/ArmorTunic7.md",
+     "name": "Plain Yellow Tunic"
+    }
+   },
+   "ArmorTunic8": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Quality 1: Armour 1, Evasion 1.35",
+      "Quality 2: Armour 2, Evasion 2.7",
+      "Quality 3: Armour 3, Evasion 4.05",
+      "Quality 4: Armour 4, Evasion 5.4"
+     ],
+     "link": "items/base/ArmorTunic8.md",
+     "name": "Yellow Tunic with Cape"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Quality 1: Armour 1, Evasion 1",
+      "Quality 2: Armour 2, Evasion 2",
+      "Quality 3: Armour 3, Evasion 3",
+      "Quality 4: Armour 4, Evasion 4"
+     ],
+     "link": "items/base/ArmorTunic8.md",
+     "name": "Yellow Tunic with Cape"
+    }
+   },
+   "ArmorTunic9": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Quality 1: Armour 1, Evasion 1.35",
+      "Quality 2: Armour 2, Evasion 2.7",
+      "Quality 3: Armour 3, Evasion 4.05",
+      "Quality 4: Armour 4, Evasion 5.4"
+     ],
+     "link": "items/base/ArmorTunic9.md",
+     "name": "Yellow Tunic with Beads"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Quality 1: Armour 1, Evasion 1",
+      "Quality 2: Armour 2, Evasion 2",
+      "Quality 3: Armour 3, Evasion 3",
+      "Quality 4: Armour 4, Evasion 4"
+     ],
+     "link": "items/base/ArmorTunic9.md",
+     "name": "Yellow Tunic with Beads"
+    }
+   },
+   "HelmetFenring": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 77",
+      "Quality 1: Armour 10, Evasion 13.5",
+      "Quality 2: Armour 12, Evasion 16.2",
+      "Quality 3: Armour 14, Evasion 18.9",
+      "Quality 4: Armour 16, Evasion 21.6"
+     ],
+     "link": "items/base/HelmetFenring.md",
+     "name": "Fenris Hood"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 77",
+      "Quality 1: Armour 10, Evasion 10",
+      "Quality 2: Armour 12, Evasion 12",
+      "Quality 3: Armour 14, Evasion 14",
+      "Quality 4: Armour 16, Evasion 16"
+     ],
+     "link": "items/base/HelmetFenring.md",
+     "name": "Fenris Hood"
+    }
+   },
+   "HelmetLeather": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 1",
+      "Quality 1: Armour 2, Evasion 2.7",
+      "Quality 2: Armour 4, Evasion 5.4",
+      "Quality 3: Armour 6, Evasion 8.1",
+      "Quality 4: Armour 8, Evasion 10.8"
+     ],
+     "link": "items/base/HelmetLeather.md",
+     "name": "Leather Helmet"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 1",
+      "Quality 1: Armour 2, Evasion 2",
+      "Quality 2: Armour 4, Evasion 4",
+      "Quality 3: Armour 6, Evasion 6",
+      "Quality 4: Armour 8, Evasion 8"
+     ],
+     "link": "items/base/HelmetLeather.md",
+     "name": "Leather Helmet"
+    }
+   },
+   "HelmetRoot": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 43",
+      "Quality 1: Armour 8, Evasion 5.4",
+      "Quality 2: Armour 10, Evasion 6.75",
+      "Quality 3: Armour 12, Evasion 8.1",
+      "Quality 4: Armour 14, Evasion 9.45"
+     ],
+     "link": "items/base/HelmetRoot.md",
+     "name": "Root Mask"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 43",
+      "Quality 1: Armour 8, Evasion 4",
+      "Quality 2: Armour 10, Evasion 5",
+      "Quality 3: Armour 12, Evasion 6",
+      "Quality 4: Armour 14, Evasion 7"
+     ],
+     "link": "items/base/HelmetRoot.md",
+     "name": "Root Mask"
+    }
+   },
+   "HelmetTrollLeather": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 19",
+      "Quality 1: Armour 6, Evasion 8.1",
+      "Quality 2: Armour 8, Evasion 10.8",
+      "Quality 3: Armour 10, Evasion 13.5",
+      "Quality 4: Armour 12, Evasion 16.2"
+     ],
+     "link": "items/base/HelmetTrollLeather.md",
+     "name": "Troll Leather Hood"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 19",
+      "Quality 1: Armour 6, Evasion 6",
+      "Quality 2: Armour 8, Evasion 8",
+      "Quality 3: Armour 10, Evasion 10",
+      "Quality 4: Armour 12, Evasion 12"
+     ],
+     "link": "items/base/HelmetTrollLeather.md",
+     "name": "Troll Leather Hood"
+    }
+   },
+   "PT_StaffStorm": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 97",
+      "Projectiles of one cast may all strike the same target"
+     ],
+     "link": "items/base/PT_StaffStorm.md",
+     "name": "Stormstaff"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 97"
+     ],
+     "link": "items/base/PT_StaffStorm.md",
+     "name": "Stormstaff"
+    }
+   },
+   "StaffClusterbomb": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 181",
+      "Projectiles of one cast may all strike the same target"
+     ],
+     "link": "items/base/StaffClusterbomb.md",
+     "name": "Staff of Fracturing"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 181"
+     ],
+     "link": "items/base/StaffClusterbomb.md",
+     "name": "Staff of Fracturing"
+    }
+   },
+   "StaffLightning": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 181",
+      "Projectiles of one cast may all strike the same target"
+     ],
+     "link": "items/base/StaffLightning.md",
+     "name": "Dundr"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 181"
+     ],
+     "link": "items/base/StaffLightning.md",
+     "name": "Dundr"
+    }
+   }
+  },
+  "currency": {
+   "PT_EssenceOfEikthyr": {
+    "new": {
+     "kind": "",
+     "lines": [],
+     "link": "items/currency/PT_EssenceOfEikthyr.md",
+     "name": "Essence of Eikthyr"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Adds a random lightning property to an item, up to its best tier, or one of Eikthyr's own"
+     ],
+     "link": "items/currency/PT_EssenceOfEikthyr.md",
+     "name": "Essence of Eikthyr"
+    }
+   },
+   "PT_GreatRuneOfFate": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Randomises the numeric values of modifiers on an item. An item from an older version becomes current: its outdated modifiers are replaced with today's."
+     ],
+     "link": "items/currency/PT_GreatRuneOfFate.md",
+     "name": "Great Rune of Fate"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Randomises the numeric values of modifiers on an item"
+     ],
+     "link": "items/currency/PT_GreatRuneOfFate.md",
+     "name": "Great Rune of Fate"
+    }
+   },
+   "PT_RuneOfBloodChallenge": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Offer at an altar of summoning or a boss altar: the next boss rises with one more star (up to five)"
+     ],
+     "link": "items/currency/PT_RuneOfBloodChallenge.md",
+     "name": "Rune of the Blood Challenge"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Offer at an altar of summoning: the next guardian rises with one more star (up to five)"
+     ],
+     "link": "items/currency/PT_RuneOfBloodChallenge.md",
+     "name": "Rune of the Blood Challenge"
+    }
+   }
+  },
+  "keywords": {
+   "ailment-damage": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Increases damage over time from bleeding, burning and poison, separately from the damage of the hit that caused them. It does not affect chill. Old shock-damage bonuses now act as shock effect."
+     ],
+     "link": "glossary/ailment-damage.md",
+     "name": "Ailment damage"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Increases damage over time from bleeding, burning and poison. It does not affect chill or shock, which deal no health damage."
+     ],
+     "link": "glossary/ailment-damage.md",
+     "name": "Ailment damage"
+    }
+   },
+   "bleed": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Slash damage fills the bleeding gauge. When it fills, bleeding deals 20% of the slash damage of the strongest hit in the build-up per second for 4 s, over time and through armour. Bleeding damage, the damage over time multiplier and duration change it separately. Each player keeps their own strongest bleed on a target; a weaker one does not refresh it."
+     ],
+     "link": "glossary/bleed.md",
+     "name": "Bleeding"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Slash damage fills the bleeding gauge. When applied, bleeding deals damage over time that bypasses armour; bleeding damage and duration modify the effect separately."
+     ],
+     "link": "glossary/bleed.md",
+     "name": "Bleeding"
+    }
+   },
+   "burn": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Fire damage fills the burning gauge. When it fills, burning deals 25% of the fire damage of the strongest hit in the build-up per second for 4 s, as fire damage over time. Burning damage and the damage over time multiplier make it stronger, duration makes it last longer. Each player keeps their own strongest burn on a target; a weaker one does not refresh it. Wet shortens it, and chill removes it."
+     ],
+     "link": "glossary/burn.md",
+     "name": "Burning"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Fire damage fills the burning gauge. Burning deals fire damage over time; a stronger burn replaces a weaker one, Wet shortens it, and chill removes it."
+     ],
+     "link": "glossary/burn.md",
+     "name": "Burning"
+    }
+   },
+   "burning-ground": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Deals fire damage over time and builds burning through its explicit ailment channel. Spells create it when they hit terrain if you have the corresponding source. Identical overlapping ground does not stack."
+     ],
+     "link": "glossary/burning-ground.md",
+     "name": "Burning Ground"
+    },
+    "old": null
+   },
+   "chilled-ground": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Deals cold damage over time and builds chill. All grounded characters slide on it, including its creator and allies. Sliding changes traction and braking, not movement speed. Identical overlapping ground does not stack."
+     ],
+     "link": "glossary/chilled-ground.md",
+     "name": "Chilled Ground"
+    },
+    "old": null
+   },
+   "damage-over-time-multiplier": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Applicable general and typed damage over time multiplier bonuses add together and form one multiplier. +20% general and +15% fire give fire damage over time ×1.35. This is separate from increased damage and does not repeat the original hit's damage modifiers."
+     ],
+     "link": "glossary/damage-over-time-multiplier.md",
+     "name": "Damage over Time Multiplier"
+    },
+    "old": null
+   },
+   "effective-range": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Bow and crossbow shots deal full damage only up to their effective range, a little beyond melee distance. Further away the damage falls off with the distance to the target, down to a fifth at five times that distance. Increased effective range moves both distances further out."
+     ],
+     "link": "glossary/effective-range.md",
+     "name": "Effective Range"
+    },
+    "old": null
+   },
+   "endurance": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "While your health is below the endurance threshold, the part of any incoming damage (hits and damage over time alike) that falls below it is reduced: 20% at base, at most 75%. The threshold is counted in health points. With Rune Bulwark the rune shield is checked instead of health."
+     ],
+     "link": "glossary/endurance.md",
+     "name": "Endurance"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "While your health is below the endurance threshold, the part of each hit that falls below it is reduced: 20% at base, at most 75%. The threshold is counted in health points. With Rune Bulwark the rune shield is checked instead of health."
+     ],
+     "link": "glossary/endurance.md",
+     "name": "Endurance"
+    }
+   },
+   "evade": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Evasion rating grants a chance to avoid a hit completely, including its damage, stagger, knockback and ailment. The chance weighs evasion rating against the attacker's accuracy and reaches 100% at 3 times the accuracy. Each evasion against the same attacker leaves 80% of the chance against it, until it lands no attack for 8 (30 for a boss). Each evasion costs 18% of maximum stamina; without that stamina the hit lands. Damage over time, persistent damaging ground and environmental damage cannot be evaded; a successful passive evasion triggers on evade, independently of a manual dodge roll."
+     ],
+     "link": "glossary/evade.md",
+     "name": "Evasion rating"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Evasion rating grants a chance to avoid a hit completely, including its damage, stagger, knockback and ailment. The chance weighs evasion rating against the attacker's accuracy and is at most 75%; an accumulator smooths the sequence of hits and evasions. Damage over time, persistent damaging ground and environmental damage cannot be evaded; a successful passive evasion triggers on evade, independently of a manual dodge roll."
+     ],
+     "link": "glossary/evade.md",
+     "name": "Evasion rating"
+    }
+   },
+   "ground-effects": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Ground effects occupy separate patches. Your base limit is 1 patch across all types; global skill limit and ground limit increase it. Each projectile can create a patch: three projectiles can leave three patches at limit 3. At the limit, a new patch replaces the oldest. Identical effects do not stack where they overlap. Ground damage is damage over time, not a hit or an aura."
+     ],
+     "link": "glossary/ground-effects.md",
+     "name": "Ground Effects"
+    },
+    "old": null
+   },
+   "infusion": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Absorbing your ground with a staff shrinks the patch and accumulates matching infusion. The next eligible manually cast damaging spell consumes the stored infusion once. Its added damage is shared between the cast's projectiles and repeats; ordinary spell damage is not divided. Natural ground expiry grants no infusion. Absorption cannot repeatedly harvest overlapping area or recapture its own spent infusion for a net gain."
+     ],
+     "link": "glossary/infusion.md",
+     "name": "Infusion"
+    },
+    "old": null
+   },
+   "lightning-damage": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "An elemental damage type that fills the shock gauge. A shocked target takes more damage and builds up stagger faster for a few seconds."
+     ],
+     "link": "glossary/lightning-damage.md",
+     "name": "Lightning damage"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "An elemental damage type that fills the shock gauge. Shock increases stagger build-up rather than dealing additional health damage."
+     ],
+     "link": "glossary/lightning-damage.md",
+     "name": "Lightning damage"
+    }
+   },
+   "poison": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Poison damage fills the poison gauge. When it fills, poison deals 15% of the poison damage of the strongest hit in the build-up per second for 4 s. Each player can keep up to 3 poisons on a target at once, and a poison limit raises that; a new poison on a full set replaces the weakest, if it is stronger. Poison damage and the damage over time multiplier make it stronger. Poison is separate from elemental damage."
+     ],
+     "link": "glossary/poison.md",
+     "name": "Poison"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Poison damage fills the poison gauge. Poison deals damage over time; a stronger effect replaces a weaker one. Poison is separate from elemental damage."
+     ],
+     "link": "glossary/poison.md",
+     "name": "Poison"
+    }
+   },
+   "poisoned-ground": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Deals poison damage over time and builds poisoning through its explicit ailment channel. Poison is its own damage type. Identical overlapping ground does not stack."
+     ],
+     "link": "glossary/poisoned-ground.md",
+     "name": "Poisoned Ground"
+    },
+    "old": null
+   },
+   "shock": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Lightning damage fills the shock gauge. When it fills, the target is shocked for 3 s: it takes more damage from every source and builds up stagger faster, both by the shock's strength. Strength depends on the lightning damage of the strongest hit in the build-up, before the target's defences, compared with the target's ailment threshold: a hit of 1% of it shocks for about 8%. Below 5% there is no shock, and it never goes above 50%. Shock effect makes it stronger, ailment duration makes it last longer. Only the strongest shock on a target acts, and a weaker one does not refresh it. Shock is not a stun and deals no damage itself."
+     ],
+     "link": "glossary/shock.md",
+     "name": "Shock"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Lightning damage fills the shock gauge. Shock increases stagger build-up without dealing additional health damage; immediate stagger chance is a separate bonus."
+     ],
+     "link": "glossary/shock.md",
+     "name": "Shock"
+    }
+   },
+   "shocked-ground": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Deals lightning damage over time and builds shock. Shock strength uses the source potency, independent of tick frequency. Identical overlapping ground does not stack."
+     ],
+     "link": "glossary/shocked-ground.md",
+     "name": "Shocked Ground"
+    },
+    "old": null
+   },
+   "strike": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "A vertical melee weapon swing, primary or alternative. Horizontal swings and slams are not strikes, and a sceptre's strike is its Smite. Strike bonuses, strike copies and Critical Echo apply to these hits."
+     ],
+     "link": "glossary/strike.md",
+     "name": "Strike"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "A melee weapon swing: a horizontal or vertical attack of a melee weapon, primary or alternative. Slams are not strikes, and a sceptre's strike is its Smite. Strike bonuses, strike copies and Critical Echo apply to these hits."
+     ],
+     "link": "glossary/strike.md",
+     "name": "Strike"
+    }
+   }
+  },
+  "mods": {
+   "caster.dot-multiplier": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(2–4)% damage over time multiplier",
+      "T4 (item level 19–76, weight 700): +(5–7)% damage over time multiplier",
+      "T3 (item level 43–129, weight 400): +(8–11)% damage over time multiplier",
+      "T2 (item level 77–∞, weight 180): +(12–15)% damage over time multiplier",
+      "T1 (item level 130–∞, weight 60): +(16–20)% damage over time multiplier"
+     ],
+     "link": "items/mod/caster.dot-multiplier.md",
+     "name": "+#% damage over time multiplier"
+    },
+    "old": null
+   },
+   "caster.ground-area": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (4–6)% increased ground area of effect",
+      "T4 (item level 19–76, weight 700): (7–10)% increased ground area of effect",
+      "T3 (item level 43–129, weight 400): (11–14)% increased ground area of effect",
+      "T2 (item level 77–∞, weight 180): (15–19)% increased ground area of effect",
+      "T1 (item level 130–∞, weight 60): (20–25)% increased ground area of effect"
+     ],
+     "link": "items/mod/caster.ground-area.md",
+     "name": "#% increased ground area of effect"
+    },
+    "old": null
+   },
+   "caster.ground-build": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (8–12)% increased ground build-up",
+      "T4 (item level 19–76, weight 700): (13–19)% increased ground build-up",
+      "T3 (item level 43–129, weight 400): (20–28)% increased ground build-up",
+      "T2 (item level 77–∞, weight 180): (29–38)% increased ground build-up",
+      "T1 (item level 130–∞, weight 60): (39–50)% increased ground build-up"
+     ],
+     "link": "items/mod/caster.ground-build.md",
+     "name": "#% increased ground build-up"
+    },
+    "old": null
+   },
+   "caster.ground-damage": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (8–12)% increased ground damage",
+      "T4 (item level 19–76, weight 700): (13–19)% increased ground damage",
+      "T3 (item level 43–129, weight 400): (20–28)% increased ground damage",
+      "T2 (item level 77–∞, weight 180): (29–38)% increased ground damage",
+      "T1 (item level 130–∞, weight 60): (39–50)% increased ground damage"
+     ],
+     "link": "items/mod/caster.ground-damage.md",
+     "name": "#% increased ground damage"
+    },
+    "old": null
+   },
+   "caster.ground-duration": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (6–10)% increased ground effect duration",
+      "T4 (item level 19–76, weight 700): (11–15)% increased ground effect duration",
+      "T3 (item level 43–129, weight 400): (16–21)% increased ground effect duration",
+      "T2 (item level 77–∞, weight 180): (22–28)% increased ground effect duration",
+      "T1 (item level 130–∞, weight 60): (29–36)% increased ground effect duration"
+     ],
+     "link": "items/mod/caster.ground-duration.md",
+     "name": "#% increased ground effect duration"
+    },
+    "old": null
+   },
+   "caster.infusion-absorption": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(4–6)% absorption rate for infusion",
+      "T4 (item level 19–76, weight 700): +(7–10)% absorption rate for infusion",
+      "T3 (item level 43–129, weight 400): +(11–15)% absorption rate for infusion",
+      "T2 (item level 77–∞, weight 180): +(16–21)% absorption rate for infusion",
+      "T1 (item level 130–∞, weight 60): +(22–28)% absorption rate for infusion"
+     ],
+     "link": "items/mod/caster.infusion-absorption.md",
+     "name": "+#% absorption rate for infusion"
+    },
+    "old": null
+   },
+   "caster.infusion-potency": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (6–9)% increased potency for infusion",
+      "T4 (item level 19–76, weight 700): (10–14)% increased potency for infusion",
+      "T3 (item level 43–129, weight 400): (15–20)% increased potency for infusion",
+      "T2 (item level 77–∞, weight 180): (21–27)% increased potency for infusion",
+      "T1 (item level 130–∞, weight 60): (28–35)% increased potency for infusion"
+     ],
+     "link": "items/mod/caster.infusion-potency.md",
+     "name": "#% increased potency for infusion"
+    },
+    "old": null
+   },
+   "jewel.base.dex.81f2bd8ccb": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T3 (item level 1–96, weight 1000): (6.5–8)% chance to save arrow or bolt on shot",
+      "T2 (item level 43–∞, weight 600): (8–10.5)% chance to save arrow or bolt on shot",
+      "T1 (item level 97–∞, weight 250): (10.5–13)% chance to save arrow or bolt on shot",
+      "T0 (item level 1–∞, weight 0): (14.5–16)% chance to save arrow or bolt on shot"
+     ],
+     "link": "items/mod/jewel.base.dex.81f2bd8ccb.md",
+     "name": "#% chance to save arrow or bolt on shot"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "T3 (item level 1–96, weight 1000): +(6.5–8)% shooting chance to spend nothing",
+      "T2 (item level 43–∞, weight 600): +(8–10.5)% shooting chance to spend nothing",
+      "T1 (item level 97–∞, weight 250): +(10.5–13)% shooting chance to spend nothing",
+      "T0 (item level 1–∞, weight 0): +(14.5–16)% shooting chance to spend nothing"
+     ],
+     "link": "items/mod/jewel.base.dex.81f2bd8ccb.md",
+     "name": "+#% shooting chance to spend nothing"
+    }
+   },
+   "jewel.dot-multiplier": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(1–2)% damage over time multiplier",
+      "T4 (item level 19–76, weight 700): +(2–3)% damage over time multiplier",
+      "T3 (item level 43–129, weight 400): +(3–4)% damage over time multiplier",
+      "T2 (item level 77–∞, weight 180): +(4–5)% damage over time multiplier",
+      "T1 (item level 130–∞, weight 60): +(5–7)% damage over time multiplier"
+     ],
+     "link": "items/mod/jewel.dot-multiplier.md",
+     "name": "+#% damage over time multiplier"
+    },
+    "old": null
+   },
+   "jewel.fire-dot-multiplier": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(2–3)% fire damage over time multiplier",
+      "T4 (item level 19–76, weight 700): +(3–4)% fire damage over time multiplier",
+      "T3 (item level 43–129, weight 400): +(4–5)% fire damage over time multiplier",
+      "T2 (item level 77–∞, weight 180): +(6–7)% fire damage over time multiplier",
+      "T1 (item level 130–∞, weight 60): +(8–10)% fire damage over time multiplier"
+     ],
+     "link": "items/mod/jewel.fire-dot-multiplier.md",
+     "name": "+#% fire damage over time multiplier"
+    },
+    "old": null
+   },
+   "jewel.frost-dot-multiplier": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(2–3)% frost damage over time multiplier",
+      "T4 (item level 19–76, weight 700): +(3–4)% frost damage over time multiplier",
+      "T3 (item level 43–129, weight 400): +(4–5)% frost damage over time multiplier",
+      "T2 (item level 77–∞, weight 180): +(6–7)% frost damage over time multiplier",
+      "T1 (item level 130–∞, weight 60): +(8–10)% frost damage over time multiplier"
+     ],
+     "link": "items/mod/jewel.frost-dot-multiplier.md",
+     "name": "+#% frost damage over time multiplier"
+    },
+    "old": null
+   },
+   "jewel.ground-area": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (2–3)% increased ground area of effect",
+      "T4 (item level 19–76, weight 700): (4–5)% increased ground area of effect",
+      "T3 (item level 43–129, weight 400): (6–7)% increased ground area of effect",
+      "T2 (item level 77–∞, weight 180): (8–9)% increased ground area of effect",
+      "T1 (item level 130–∞, weight 60): (10–12)% increased ground area of effect"
+     ],
+     "link": "items/mod/jewel.ground-area.md",
+     "name": "#% increased ground area of effect"
+    },
+    "old": null
+   },
+   "jewel.infusion-potency": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (2–4)% increased potency for infusion",
+      "T4 (item level 19–76, weight 700): (5–7)% increased potency for infusion",
+      "T3 (item level 43–129, weight 400): (8–10)% increased potency for infusion",
+      "T2 (item level 77–∞, weight 180): (11–13)% increased potency for infusion",
+      "T1 (item level 130–∞, weight 60): (14–17)% increased potency for infusion"
+     ],
+     "link": "items/mod/jewel.infusion-potency.md",
+     "name": "#% increased potency for infusion"
+    },
+    "old": null
+   },
+   "jewel.lightning-dot-multiplier": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(2–3)% lightning damage over time multiplier",
+      "T4 (item level 19–76, weight 700): +(3–4)% lightning damage over time multiplier",
+      "T3 (item level 43–129, weight 400): +(4–5)% lightning damage over time multiplier",
+      "T2 (item level 77–∞, weight 180): +(6–7)% lightning damage over time multiplier",
+      "T1 (item level 130–∞, weight 60): +(8–10)% lightning damage over time multiplier"
+     ],
+     "link": "items/mod/jewel.lightning-dot-multiplier.md",
+     "name": "+#% lightning damage over time multiplier"
+    },
+    "old": null
+   },
+   "jewel.physical-dot-multiplier": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(2–3)% physical damage over time multiplier",
+      "T4 (item level 19–76, weight 700): +(3–4)% physical damage over time multiplier",
+      "T3 (item level 43–129, weight 400): +(4–5)% physical damage over time multiplier",
+      "T2 (item level 77–∞, weight 180): +(6–7)% physical damage over time multiplier",
+      "T1 (item level 130–∞, weight 60): +(8–10)% physical damage over time multiplier"
+     ],
+     "link": "items/mod/jewel.physical-dot-multiplier.md",
+     "name": "+#% physical damage over time multiplier"
+    },
+    "old": null
+   },
+   "jewel.poison-dot-multiplier": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(2–3)% poison damage over time multiplier",
+      "T4 (item level 19–76, weight 700): +(3–4)% poison damage over time multiplier",
+      "T3 (item level 43–129, weight 400): +(4–5)% poison damage over time multiplier",
+      "T2 (item level 77–∞, weight 180): +(6–7)% poison damage over time multiplier",
+      "T1 (item level 130–∞, weight 60): +(8–10)% poison damage over time multiplier"
+     ],
+     "link": "items/mod/jewel.poison-dot-multiplier.md",
+     "name": "+#% poison damage over time multiplier"
+    },
+    "old": null
+   },
+   "jewel.shock-effect": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(3–5)% ailment effect shock",
+      "T4 (item level 19–76, weight 700): +(6–8)% ailment effect shock",
+      "T3 (item level 43–129, weight 400): +(9–11)% ailment effect shock",
+      "T2 (item level 77–∞, weight 180): +(12–14)% ailment effect shock",
+      "T1 (item level 130–∞, weight 60): +(15–18)% ailment effect shock"
+     ],
+     "link": "items/mod/jewel.shock-effect.md",
+     "name": "+#% ailment effect shock"
+    },
+    "old": null
+   },
+   "ring.dot-multiplier": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(1–2)% damage over time multiplier",
+      "T4 (item level 19–76, weight 700): +(3–4)% damage over time multiplier",
+      "T3 (item level 43–129, weight 400): +(5–6)% damage over time multiplier",
+      "T2 (item level 77–∞, weight 180): +(7–9)% damage over time multiplier",
+      "T1 (item level 130–∞, weight 60): +(10–12)% damage over time multiplier"
+     ],
+     "link": "items/mod/ring.dot-multiplier.md",
+     "name": "+#% damage over time multiplier"
+    },
+    "old": null
+   },
+   "ring.fire-dot-multiplier": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(2–3)% fire damage over time multiplier",
+      "T4 (item level 19–76, weight 700): +(4–6)% fire damage over time multiplier",
+      "T3 (item level 43–129, weight 400): +(7–9)% fire damage over time multiplier",
+      "T2 (item level 77–∞, weight 180): +(10–13)% fire damage over time multiplier",
+      "T1 (item level 130–∞, weight 60): +(14–18)% fire damage over time multiplier"
+     ],
+     "link": "items/mod/ring.fire-dot-multiplier.md",
+     "name": "+#% fire damage over time multiplier"
+    },
+    "old": null
+   },
+   "ring.frost-dot-multiplier": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(2–3)% frost damage over time multiplier",
+      "T4 (item level 19–76, weight 700): +(4–6)% frost damage over time multiplier",
+      "T3 (item level 43–129, weight 400): +(7–9)% frost damage over time multiplier",
+      "T2 (item level 77–∞, weight 180): +(10–13)% frost damage over time multiplier",
+      "T1 (item level 130–∞, weight 60): +(14–18)% frost damage over time multiplier"
+     ],
+     "link": "items/mod/ring.frost-dot-multiplier.md",
+     "name": "+#% frost damage over time multiplier"
+    },
+    "old": null
+   },
+   "ring.infusion-potency": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (3–5)% increased potency for infusion",
+      "T4 (item level 19–76, weight 700): (6–8)% increased potency for infusion",
+      "T3 (item level 43–129, weight 400): (9–12)% increased potency for infusion",
+      "T2 (item level 77–∞, weight 180): (13–16)% increased potency for infusion",
+      "T1 (item level 130–∞, weight 60): (17–21)% increased potency for infusion"
+     ],
+     "link": "items/mod/ring.infusion-potency.md",
+     "name": "#% increased potency for infusion"
+    },
+    "old": null
+   },
+   "ring.lightning-dot-multiplier": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(2–3)% lightning damage over time multiplier",
+      "T4 (item level 19–76, weight 700): +(4–6)% lightning damage over time multiplier",
+      "T3 (item level 43–129, weight 400): +(7–9)% lightning damage over time multiplier",
+      "T2 (item level 77–∞, weight 180): +(10–13)% lightning damage over time multiplier",
+      "T1 (item level 130–∞, weight 60): +(14–18)% lightning damage over time multiplier"
+     ],
+     "link": "items/mod/ring.lightning-dot-multiplier.md",
+     "name": "+#% lightning damage over time multiplier"
+    },
+    "old": null
+   },
+   "ring.on-fire-ground": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (3–5)% increased eitr regeneration while on Burning Ground",
+      "T4 (item level 19–76, weight 700): (6–8)% increased eitr regeneration while on Burning Ground",
+      "T3 (item level 43–129, weight 400): (9–12)% increased eitr regeneration while on Burning Ground",
+      "T2 (item level 77–∞, weight 180): (13–16)% increased eitr regeneration while on Burning Ground",
+      "T1 (item level 130–∞, weight 60): (17–22)% increased eitr regeneration while on Burning Ground"
+     ],
+     "link": "items/mod/ring.on-fire-ground.md",
+     "name": "#% increased eitr regeneration while on Burning Ground"
+    },
+    "old": null
+   },
+   "ring.on-frost-ground": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (1–2)% reduced cost while on Chilled Ground",
+      "T4 (item level 19–76, weight 700): (2–3)% reduced cost while on Chilled Ground",
+      "T3 (item level 43–129, weight 400): (3–4)% reduced cost while on Chilled Ground",
+      "T2 (item level 77–∞, weight 180): (4–5)% reduced cost while on Chilled Ground",
+      "T1 (item level 130–∞, weight 60): (6–7)% reduced cost while on Chilled Ground"
+     ],
+     "link": "items/mod/ring.on-frost-ground.md",
+     "name": "#% reduced cost while on Chilled Ground"
+    },
+    "old": null
+   },
+   "ring.on-lightning-ground": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (3–5)% increased cast speed while on Shocked Ground",
+      "T4 (item level 19–76, weight 700): (6–8)% increased cast speed while on Shocked Ground",
+      "T3 (item level 43–129, weight 400): (9–12)% increased cast speed while on Shocked Ground",
+      "T2 (item level 77–∞, weight 180): (13–16)% increased cast speed while on Shocked Ground",
+      "T1 (item level 130–∞, weight 60): (17–22)% increased cast speed while on Shocked Ground"
+     ],
+     "link": "items/mod/ring.on-lightning-ground.md",
+     "name": "#% increased cast speed while on Shocked Ground"
+    },
+    "old": null
+   },
+   "ring.on-poison-ground": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (3–5)% increased poison damage over time while on Poisoned Ground",
+      "T4 (item level 19–76, weight 700): (6–8)% increased poison damage over time while on Poisoned Ground",
+      "T3 (item level 43–129, weight 400): (9–12)% increased poison damage over time while on Poisoned Ground",
+      "T2 (item level 77–∞, weight 180): (13–16)% increased poison damage over time while on Poisoned Ground",
+      "T1 (item level 130–∞, weight 60): (17–22)% increased poison damage over time while on Poisoned Ground"
+     ],
+     "link": "items/mod/ring.on-poison-ground.md",
+     "name": "#% increased poison damage over time while on Poisoned Ground"
+    },
+    "old": null
+   },
+   "ring.physical-dot-multiplier": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(2–3)% physical damage over time multiplier",
+      "T4 (item level 19–76, weight 700): +(4–6)% physical damage over time multiplier",
+      "T3 (item level 43–129, weight 400): +(7–9)% physical damage over time multiplier",
+      "T2 (item level 77–∞, weight 180): +(10–13)% physical damage over time multiplier",
+      "T1 (item level 130–∞, weight 60): +(14–18)% physical damage over time multiplier"
+     ],
+     "link": "items/mod/ring.physical-dot-multiplier.md",
+     "name": "+#% physical damage over time multiplier"
+    },
+    "old": null
+   },
+   "ring.poison-dot-multiplier": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(2–3)% poison damage over time multiplier",
+      "T4 (item level 19–76, weight 700): +(4–6)% poison damage over time multiplier",
+      "T3 (item level 43–129, weight 400): +(7–9)% poison damage over time multiplier",
+      "T2 (item level 77–∞, weight 180): +(10–13)% poison damage over time multiplier",
+      "T1 (item level 130–∞, weight 60): +(14–18)% poison damage over time multiplier"
+     ],
+     "link": "items/mod/ring.poison-dot-multiplier.md",
+     "name": "+#% poison damage over time multiplier"
+    },
+    "old": null
+   },
+   "tree.refundchance-shooting.w": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (7–9)% chance to save arrow or bolt on shot",
+      "T4 (item level 19–76, weight 700): (11–15)% chance to save arrow or bolt on shot",
+      "T3 (item level 43–129, weight 400): (15–20)% chance to save arrow or bolt on shot",
+      "T2 (item level 77–∞, weight 180): (19–26)% chance to save arrow or bolt on shot",
+      "T1 (item level 130–∞, weight 60): (24–32)% chance to save arrow or bolt on shot",
+      "T0 (item level 1–∞, weight 0): (31–41)% chance to save arrow or bolt on shot"
+     ],
+     "link": "items/mod/tree.refundchance-shooting.w.md",
+     "name": "#% chance to save arrow or bolt on shot"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(7–9)% shooting chance to spend nothing",
+      "T4 (item level 19–76, weight 700): +(11–15)% shooting chance to spend nothing",
+      "T3 (item level 43–129, weight 400): +(15–20)% shooting chance to spend nothing",
+      "T2 (item level 77–∞, weight 180): +(19–26)% shooting chance to spend nothing",
+      "T1 (item level 130–∞, weight 60): +(24–32)% shooting chance to spend nothing",
+      "T0 (item level 1–∞, weight 0): +(31–41)% shooting chance to spend nothing"
+     ],
+     "link": "items/mod/tree.refundchance-shooting.w.md",
+     "name": "+#% shooting chance to spend nothing"
+    }
+   },
+   "weapon.fire-dot-multiplier": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(3–5)% fire damage over time multiplier",
+      "T4 (item level 19–76, weight 700): +(6–9)% fire damage over time multiplier",
+      "T3 (item level 43–129, weight 400): +(10–14)% fire damage over time multiplier",
+      "T2 (item level 77–∞, weight 180): +(15–19)% fire damage over time multiplier",
+      "T1 (item level 130–∞, weight 60): +(20–25)% fire damage over time multiplier"
+     ],
+     "link": "items/mod/weapon.fire-dot-multiplier.md",
+     "name": "+#% fire damage over time multiplier"
+    },
+    "old": null
+   },
+   "weapon.frost-dot-multiplier": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(3–5)% frost damage over time multiplier",
+      "T4 (item level 19–76, weight 700): +(6–9)% frost damage over time multiplier",
+      "T3 (item level 43–129, weight 400): +(10–14)% frost damage over time multiplier",
+      "T2 (item level 77–∞, weight 180): +(15–19)% frost damage over time multiplier",
+      "T1 (item level 130–∞, weight 60): +(20–25)% frost damage over time multiplier"
+     ],
+     "link": "items/mod/weapon.frost-dot-multiplier.md",
+     "name": "+#% frost damage over time multiplier"
+    },
+    "old": null
+   },
+   "weapon.lightning-dot-multiplier": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(3–5)% lightning damage over time multiplier",
+      "T4 (item level 19–76, weight 700): +(6–9)% lightning damage over time multiplier",
+      "T3 (item level 43–129, weight 400): +(10–14)% lightning damage over time multiplier",
+      "T2 (item level 77–∞, weight 180): +(15–19)% lightning damage over time multiplier",
+      "T1 (item level 130–∞, weight 60): +(20–25)% lightning damage over time multiplier"
+     ],
+     "link": "items/mod/weapon.lightning-dot-multiplier.md",
+     "name": "+#% lightning damage over time multiplier"
+    },
+    "old": null
+   },
+   "weapon.physical-dot-multiplier": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(3–5)% physical damage over time multiplier",
+      "T4 (item level 19–76, weight 700): +(6–9)% physical damage over time multiplier",
+      "T3 (item level 43–129, weight 400): +(10–14)% physical damage over time multiplier",
+      "T2 (item level 77–∞, weight 180): +(15–19)% physical damage over time multiplier",
+      "T1 (item level 130–∞, weight 60): +(20–25)% physical damage over time multiplier"
+     ],
+     "link": "items/mod/weapon.physical-dot-multiplier.md",
+     "name": "+#% physical damage over time multiplier"
+    },
+    "old": null
+   },
+   "weapon.poison-dot-multiplier": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(3–5)% poison damage over time multiplier",
+      "T4 (item level 19–76, weight 700): +(6–9)% poison damage over time multiplier",
+      "T3 (item level 43–129, weight 400): +(10–14)% poison damage over time multiplier",
+      "T2 (item level 77–∞, weight 180): +(15–19)% poison damage over time multiplier",
+      "T1 (item level 130–∞, weight 60): +(20–25)% poison damage over time multiplier"
+     ],
+     "link": "items/mod/weapon.poison-dot-multiplier.md",
+     "name": "+#% poison damage over time multiplier"
+    },
+    "old": null
+   },
+   "weapon.shock-effect": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(5–8)% ailment effect shock",
+      "T4 (item level 19–76, weight 700): +(9–13)% ailment effect shock",
+      "T3 (item level 43–129, weight 400): +(14–19)% ailment effect shock",
+      "T2 (item level 77–∞, weight 180): +(20–26)% ailment effect shock",
+      "T1 (item level 130–∞, weight 60): +(27–35)% ailment effect shock"
+     ],
+     "link": "items/mod/weapon.shock-effect.md",
+     "name": "+#% ailment effect shock"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (10–15)% increased shock effect",
+      "T4 (item level 19–76, weight 700): (16–25)% increased shock effect",
+      "T3 (item level 43–129, weight 400): (26–37)% increased shock effect",
+      "T2 (item level 77–∞, weight 180): (38–50)% increased shock effect",
+      "T1 (item level 130–∞, weight 60): (51–65)% increased shock effect"
+     ],
+     "link": "items/mod/weapon.shock-effect.md",
+     "name": "#% increased shock effect"
+    }
+   },
+   "weapon.shooting-effective-range": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T4 (item level 1–76, weight 400): (10–15)% increased shooting effective range",
+      "T3 (item level 43–129, weight 300): (16–24)% increased shooting effective range",
+      "T2 (item level 77–∞, weight 180): (25–34)% increased shooting effective range",
+      "T1 (item level 130–∞, weight 60): (35–45)% increased shooting effective range"
+     ],
+     "link": "items/mod/weapon.shooting-effective-range.md",
+     "name": "#% increased shooting effective range"
+    },
+    "old": null
+   }
+  },
+  "passives": {
+   "own10114": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+2% frost damage over time multiplier"
+     ],
+     "link": "passives/tree/#own10114",
+     "name": "Damage over Time — Frost"
+    },
+    "old": null
+   },
+   "own10120": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+2% frost damage over time multiplier"
+     ],
+     "link": "passives/tree/#own10120",
+     "name": "Damage over Time — Frost"
+    },
+    "old": null
+   },
+   "own10126": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+5% frost damage over time multiplier"
+     ],
+     "link": "passives/node/own10126.md",
+     "name": "Winter Without End"
+    },
+    "old": null
+   },
+   "own10135": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+8% overflowing chance to chain an additional time"
+     ],
+     "link": "passives/tree/#own10135",
+     "name": "Projectile Chain Chance"
+    },
+    "old": null
+   },
+   "own10141": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+8% overflowing chance to chain an additional time"
+     ],
+     "link": "passives/tree/#own10141",
+     "name": "Projectile Chain Chance"
+    },
+    "old": null
+   },
+   "own10147": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+8% overflowing chance to fire an additional projectile"
+     ],
+     "link": "passives/tree/#own10147",
+     "name": "Additional Projectile Chance"
+    },
+    "old": null
+   },
+   "own10153": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+20% overflowing chance to chain an additional time",
+      "+20% overflowing chance to fire an additional projectile"
+     ],
+     "link": "passives/node/own10153.md",
+     "name": "Splintering Flight"
+    },
+    "old": null
+   },
+   "own10255": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "5% increased shooting effective range"
+     ],
+     "link": "passives/tree/#own10255",
+     "name": "Shooting Effective Range"
+    },
+    "old": null
+   },
+   "own10261": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "5% increased shooting effective range"
+     ],
+     "link": "passives/tree/#own10261",
+     "name": "Shooting Effective Range"
+    },
+    "old": null
+   },
+   "own10267": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "12% increased shooting effective range"
+     ],
+     "link": "passives/node/own10267.md",
+     "name": "Steady Shot"
+    },
+    "old": null
+   },
+   "own10273": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "5% increased shooting effective range"
+     ],
+     "link": "passives/tree/#own10273",
+     "name": "Shooting Effective Range"
+    },
+    "old": null
+   },
+   "own10279": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "5% increased shooting effective range"
+     ],
+     "link": "passives/tree/#own10279",
+     "name": "Shooting Effective Range"
+    },
+    "old": null
+   },
+   "own10285": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "5% increased shooting effective range"
+     ],
+     "link": "passives/tree/#own10285",
+     "name": "Shooting Effective Range"
+    },
+    "old": null
+   },
+   "own10291": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "12% increased shooting effective range"
+     ],
+     "link": "passives/node/own10291.md",
+     "name": "Patient Hunter"
+    },
+    "old": null
+   },
+   "own10623": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+2% damage over time multiplier"
+     ],
+     "link": "passives/tree/#own10623",
+     "name": "Damage over Time"
+    },
+    "old": null
+   },
+   "own10629": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+2% damage over time multiplier"
+     ],
+     "link": "passives/tree/#own10629",
+     "name": "Damage over Time"
+    },
+    "old": null
+   },
+   "own10635": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+5% damage over time multiplier"
+     ],
+     "link": "passives/node/own10635.md",
+     "name": "Slow Ruin"
+    },
+    "old": null
+   },
+   "own10641": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+2% damage over time multiplier"
+     ],
+     "link": "passives/tree/#own10641",
+     "name": "Damage over Time"
+    },
+    "old": null
+   },
+   "own10766": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+8% overflowing chance to fire an additional projectile"
+     ],
+     "link": "passives/tree/#own10766",
+     "name": "Additional Projectile Chance"
+    },
+    "old": null
+   },
+   "own10772": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+8% overflowing chance to fire an additional projectile"
+     ],
+     "link": "passives/tree/#own10772",
+     "name": "Additional Projectile Chance"
+    },
+    "old": null
+   },
+   "own10778": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+20% overflowing chance to chain an additional time",
+      "+20% overflowing chance to fire an additional projectile"
+     ],
+     "link": "passives/node/own10778.md",
+     "name": "Forking Paths"
+    },
+    "old": null
+   },
+   "own10784": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+8% overflowing chance to fire an additional projectile"
+     ],
+     "link": "passives/tree/#own10784",
+     "name": "Additional Projectile Chance"
+    },
+    "old": null
+   },
+   "own10790": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+20% overflowing chance to fire an additional projectile"
+     ],
+     "link": "passives/node/own10790.md",
+     "name": "Endless Volley"
+    },
+    "old": null
+   },
+   "own10794": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "7.5% increased spell cast speed at full rune shield",
+      "Spell Primes the Strike: Casting a spell charges your next weapon attack (2 s cooldown); Charge your next attack on spell cast",
+      "Anchored Cast: Starting a cast with your shield raised preserves blocking until the spell is released; ×1.25 eitr cost with anchored casts; Starting a cast with your shield raised keeps the block until the spell is released, at a higher eitr cost. It does not block from every side.",
+      "Gather the Elements: Absorb your ground effects while wielding a staff",
+      "Spell Echo: +100% staff repeat chance when casting with infused casts; +0.2 staff s repeat delay when casting with infused casts"
+     ],
+     "link": "passives/node/own10794.md",
+     "name": "Swift Word"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "7.5% increased spell cast speed at full rune shield",
+      "Spell Primes the Strike: Casting a spell charges your next weapon attack (2 s cooldown); Charge your next attack on spell cast",
+      "Anchored Cast: Starting a cast with your shield raised preserves blocking until the spell is released; ×1.25 eitr cost with anchored casts; Starting a cast with your shield raised keeps the block until the spell is released, at a higher eitr cost. It does not block from every side.",
+      "Charged Casts: Spells can spend an attack charge and become charged casts",
+      "Spell Echo: +100% staff repeat chance when casting with charged attacks; +0.2 staff s repeat delay when casting with charged attacks"
+     ],
+     "link": "passives/node/own10794.md",
+     "name": "Swift Word"
+    }
+   },
+   "own10796": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+8% overflowing chance to chain an additional time"
+     ],
+     "link": "passives/tree/#own10796",
+     "name": "Projectile Chain Chance"
+    },
+    "old": null
+   },
+   "own10802": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+20% overflowing chance to chain an additional time"
+     ],
+     "link": "passives/node/own10802.md",
+     "name": "Unbroken Chain"
+    },
+    "old": null
+   },
+   "own10808": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+8% overflowing chance to fire an additional projectile"
+     ],
+     "link": "passives/tree/#own10808",
+     "name": "Additional Projectile Chance"
+    },
+    "old": null
+   },
+   "own10814": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+8% overflowing chance to fire an additional projectile"
+     ],
+     "link": "passives/tree/#own10814",
+     "name": "Additional Projectile Chance"
+    },
+    "old": null
+   },
+   "own10820": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+8% overflowing chance to chain an additional time"
+     ],
+     "link": "passives/tree/#own10820",
+     "name": "Projectile Chain Chance"
+    },
+    "old": null
+   },
+   "own10826": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+8% overflowing chance to fire an additional projectile"
+     ],
+     "link": "passives/tree/#own10826",
+     "name": "Additional Projectile Chance"
+    },
+    "old": null
+   },
+   "own10872": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "40% increased shock build-up",
+      "+25% ailment effect shock"
+     ],
+     "link": "passives/node/own10872.md",
+     "name": "Sky's Sting"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "40% increased shock build-up",
+      "20% increased shock effect"
+     ],
+     "link": "passives/node/own10872.md",
+     "name": "Sky's Sting"
+    }
+   },
+   "own10886": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "5% increased shooting effective range"
+     ],
+     "link": "passives/tree/#own10886",
+     "name": "Shooting Effective Range"
+    },
+    "old": null
+   },
+   "own10887": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased ground area of effect"
+     ],
+     "link": "passives/tree/#own10887",
+     "name": "Ground Effects"
+    },
+    "old": null
+   },
+   "own10892": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "5% increased shooting effective range"
+     ],
+     "link": "passives/tree/#own10892",
+     "name": "Shooting Effective Range"
+    },
+    "old": null
+   },
+   "own10893": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased ground area of effect"
+     ],
+     "link": "passives/tree/#own10893",
+     "name": "Ground Effects"
+    },
+    "old": null
+   },
+   "own10898": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "5% increased shooting effective range"
+     ],
+     "link": "passives/tree/#own10898",
+     "name": "Shooting Effective Range"
+    },
+    "old": null
+   },
+   "own10899": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased ground effect duration"
+     ],
+     "link": "passives/tree/#own10899",
+     "name": "Ground Effects"
+    },
+    "old": null
+   },
+   "own10904": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "5% increased shooting effective range"
+     ],
+     "link": "passives/tree/#own10904",
+     "name": "Shooting Effective Range"
+    },
+    "old": null
+   },
+   "own10905": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased ground effect duration"
+     ],
+     "link": "passives/tree/#own10905",
+     "name": "Ground Effects"
+    },
+    "old": null
+   },
+   "own10910": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "12% increased shooting effective range"
+     ],
+     "link": "passives/node/own10910.md",
+     "name": "Point Blank"
+    },
+    "old": null
+   },
+   "own10911": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased ground area of effect",
+      "20% increased ground effect duration",
+      "+2 ground limit"
+     ],
+     "link": "passives/node/own10911.md",
+     "name": "Rune Circle"
+    },
+    "old": null
+   },
+   "own10952": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% chance to save arrow or bolt on shot"
+     ],
+     "link": "passives/tree/#own10952",
+     "name": "Ranged Combat"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+8% shooting chance to spend nothing"
+     ],
+     "link": "passives/tree/#own10952",
+     "name": "Ranged Combat"
+    }
+   },
+   "own10953": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+10% ailment effect shock"
+     ],
+     "link": "passives/tree/#own10953",
+     "name": "Shock"
+    },
+    "old": null
+   },
+   "own10958": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% chance to save arrow or bolt on shot"
+     ],
+     "link": "passives/tree/#own10958",
+     "name": "Ranged Combat"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+8% shooting chance to spend nothing"
+     ],
+     "link": "passives/tree/#own10958",
+     "name": "Ranged Combat"
+    }
+   },
+   "own10959": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+10% ailment effect shock"
+     ],
+     "link": "passives/tree/#own10959",
+     "name": "Shock"
+    },
+    "old": null
+   },
+   "own10964": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% chance to save arrow or bolt on shot"
+     ],
+     "link": "passives/tree/#own10964",
+     "name": "Ranged Combat"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+8% shooting chance to spend nothing"
+     ],
+     "link": "passives/tree/#own10964",
+     "name": "Ranged Combat"
+    }
+   },
+   "own10965": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+10% ailment effect shock"
+     ],
+     "link": "passives/tree/#own10965",
+     "name": "Shock"
+    },
+    "old": null
+   },
+   "own10970": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "20% chance to save arrow or bolt on shot"
+     ],
+     "link": "passives/node/own10970.md",
+     "name": "Frugal Archer"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "+20% shooting chance to spend nothing"
+     ],
+     "link": "passives/node/own10970.md",
+     "name": "Frugal Archer"
+    }
+   },
+   "own10971": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+25% ailment effect shock"
+     ],
+     "link": "passives/node/own10971.md",
+     "name": "Charged Vulnerability"
+    },
+    "old": null
+   },
+   "own10977": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased shock duration"
+     ],
+     "link": "passives/tree/#own10977",
+     "name": "Shock"
+    },
+    "old": null
+   },
+   "own10983": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased shock duration"
+     ],
+     "link": "passives/tree/#own10983",
+     "name": "Shock"
+    },
+    "old": null
+   },
+   "own10989": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased shock duration"
+     ],
+     "link": "passives/node/own10989.md",
+     "name": "Sustained Discharge"
+    },
+    "old": null
+   },
+   "own11150": {
+    "new": {
+     "kind": "Keystone",
+     "lines": [
+      "+4 burning damage per 100 points of current health",
+      "You are always under the effect of your own ignite: it burns 4% of your current health per second, your own fire and burning modifiers apply to it, fire resistance reduces it and water cannot put it out."
+     ],
+     "link": "passives/node/own11150.md",
+     "name": "Eternal Pyre"
+    },
+    "old": {
+     "kind": "Keystone",
+     "lines": [
+      "×2 burning damage",
+      "Permanent self-burning has a base of 4% current health per second. Own fire and burning modifiers also scale this burn. Defenses reduce damage taken. Water cannot extinguish it.",
+      "Burning damage is multiplied by 2. Permanent self-burning has a base of 4% current health per second. Own fire and burning modifiers also scale this burn. Defenses reduce damage taken. Water cannot extinguish it."
+     ],
+     "link": "passives/node/own11150.md",
+     "name": "Eternal Pyre"
+    }
+   },
+   "own11263": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased lightning area of effect with ground effects"
+     ],
+     "link": "passives/tree/#own11263",
+     "name": "Shocked Ground"
+    },
+    "old": null
+   },
+   "own11271": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "20% increased arrow and bolt range",
+      "+1 arrows per bow shot",
+      "10% increased shooting effective range"
+     ],
+     "link": "passives/node/own11271.md",
+     "name": "Distant Flight"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "20% increased arrow and bolt range",
+      "+1 arrows per bow shot"
+     ],
+     "link": "passives/node/own11271.md",
+     "name": "Distant Flight"
+    }
+   },
+   "own11276": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased arrow and bolt range",
+      "4% increased shooting effective range"
+     ],
+     "link": "passives/tree/#own11276",
+     "name": "Bows"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased arrow and bolt range"
+     ],
+     "link": "passives/tree/#own11276",
+     "name": "Bows"
+    }
+   },
+   "own11347": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased potency for infusion"
+     ],
+     "link": "passives/tree/#own11347",
+     "name": "Infusion"
+    },
+    "old": null
+   },
+   "own11348": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased potency for infusion"
+     ],
+     "link": "passives/tree/#own11348",
+     "name": "Infusion"
+    },
+    "old": null
+   },
+   "own11349": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased potency for infusion"
+     ],
+     "link": "passives/tree/#own11349",
+     "name": "Infusion"
+    },
+    "old": null
+   },
+   "own11350": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased potency for infusion"
+     ],
+     "link": "passives/node/own11350.md",
+     "name": "Gathered Essence"
+    },
+    "old": null
+   },
+   "own11371": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased lightning damage with ground effects"
+     ],
+     "link": "passives/tree/#own11371",
+     "name": "Shocked Ground"
+    },
+    "old": null
+   },
+   "own11372": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased lightning damage with ground effects"
+     ],
+     "link": "passives/tree/#own11372",
+     "name": "Shocked Ground"
+    },
+    "old": null
+   },
+   "own11373": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased lightning damage with ground effects"
+     ],
+     "link": "passives/tree/#own11373",
+     "name": "Shocked Ground"
+    },
+    "old": null
+   },
+   "own11374": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased lightning damage with ground effects"
+     ],
+     "link": "passives/tree/#own11374",
+     "name": "Shocked Ground"
+    },
+    "old": null
+   },
+   "own11375": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased lightning area of effect with ground effects",
+      "7.5% increased cast speed while on Shocked Ground",
+      "Spells create ground when they hit terrain with lightning damage"
+     ],
+     "link": "passives/node/own11375.md",
+     "name": "Stormbed"
+    },
+    "old": null
+   },
+   "own11400": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+4% absorption rate for infusion"
+     ],
+     "link": "passives/tree/#own11400",
+     "name": "Infusion"
+    },
+    "old": null
+   },
+   "own11406": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+4% absorption rate for infusion",
+      "6% increased potency for infusion"
+     ],
+     "link": "passives/tree/#own11406",
+     "name": "Infusion"
+    },
+    "old": null
+   },
+   "own11412": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+4% absorption rate for infusion",
+      "6% increased potency for infusion"
+     ],
+     "link": "passives/tree/#own11412",
+     "name": "Infusion"
+    },
+    "old": null
+   },
+   "own11418": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+10% absorption rate for infusion",
+      "15% increased potency for infusion"
+     ],
+     "link": "passives/node/own11418.md",
+     "name": "Drawing the Earth"
+    },
+    "old": null
+   },
+   "own11420": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "12.5% increased blast radius",
+      "20% increased bomb damage",
+      "Impact Detonation: Bomb ricochets lose no power: every touch explodes at full power; A bouncing bomb loses no power on its bounces: every touch explodes at full power.",
+      "Sticky Charge: The first enemy hit attaches the bomb to the target; it explodes after 1.2 s; A bomb's first hit on an enemy attaches it until it explodes. An attached bomb no longer bounces.",
+      "Planted Charge: Thrown bombs become mines that last 45 s; A thrown bomb settles as a mine and waits for an enemy to come close",
+      "Returning fuse: After its first explosion, the bomb returns and explodes again for 100% of its damage; Bombs fly back after exploding and explode again; your own blasts and effects also hit you",
+      "Carpet Bombing: While airborne, drop a carried bomb every 1.6 s; While you are in the air, a random bomb falls from your pack every 1.6 s",
+      "Parting Gift: On Dodge, throw a random carried bomb at a nearby enemy within 12 m; Inventory bomb throw cooldown: 1.8 s; Throw one random carried bomb at a random enemy within 12 m. Cooldown: 1.8 seconds. Requires a real bomb in the inventory. on dodge"
+     ],
+     "link": "passives/node/own11420.md",
+     "name": "Raider's Thunder"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "12.5% increased blast radius",
+      "20% increased bomb damage",
+      "Impact Detonation: Each bomb ricochet detonates and spends 35% of the bomb’s remaining explosion power; A bouncing bomb explodes where it touches and keeps flying. Later explosions share the power of the original bomb.",
+      "Sticky Charge: The first enemy hit attaches the bomb to the target; it explodes after 1.2 s; A bomb's first hit on an enemy attaches it until it explodes. An attached bomb no longer bounces.",
+      "Planted Charge: Thrown bombs become mines that last 45 s; A thrown bomb settles as a mine and waits for an enemy to come close",
+      "Returning fuse: After its first explosion, the bomb returns and explodes again for 100% of its damage; Bombs fly back after exploding and explode again; your own blasts and effects also hit you",
+      "Carpet Bombing: While airborne, drop a carried bomb every 1.6 s; While you are in the air, a random bomb falls from your pack every 1.6 s",
+      "Parting Gift: On Dodge, throw a random carried bomb at a nearby enemy within 12 m; Inventory bomb throw cooldown: 1.8 s; Throw one random carried bomb at a random enemy within 12 m. Cooldown: 1.8 seconds. Requires a real bomb in the inventory. on dodge"
+     ],
+     "link": "passives/node/own11420.md",
+     "name": "Raider's Thunder"
+    }
+   },
+   "own11515": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+2% physical damage over time multiplier"
+     ],
+     "link": "passives/tree/#own11515",
+     "name": "Damage over Time — Physical"
+    },
+    "old": null
+   },
+   "own11521": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+5% physical damage over time multiplier"
+     ],
+     "link": "passives/node/own11521.md",
+     "name": "Mortal Wound"
+    },
+    "old": null
+   },
+   "own11527": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+2% physical damage over time multiplier"
+     ],
+     "link": "passives/tree/#own11527",
+     "name": "Damage over Time — Physical"
+    },
+    "old": null
+   },
+   "own11633": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+2% poison damage over time multiplier"
+     ],
+     "link": "passives/tree/#own11633",
+     "name": "Damage over Time — Poison"
+    },
+    "old": null
+   },
+   "own11681": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+2% poison damage over time multiplier"
+     ],
+     "link": "passives/tree/#own11681",
+     "name": "Damage over Time — Poison"
+    },
+    "old": null
+   },
+   "own11687": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+5% poison damage over time multiplier"
+     ],
+     "link": "passives/node/own11687.md",
+     "name": "Deep Venom"
+    },
+    "old": null
+   },
+   "own11711": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased non-projectile damage",
+      "Impact Detonation: Bomb ricochets lose no power: every touch explodes at full power; A bouncing bomb loses no power on its bounces: every touch explodes at full power.",
+      "Sticky Charge: The first enemy hit attaches the bomb to the target; it explodes after 1.2 s; A bomb's first hit on an enemy attaches it until it explodes. An attached bomb no longer bounces.",
+      "Planted Charge: Thrown bombs become mines that last 45 s; A thrown bomb settles as a mine and waits for an enemy to come close",
+      "Returning fuse: After its first explosion, the bomb returns and explodes again for 100% of its damage; Bombs fly back after exploding and explode again; your own blasts and effects also hit you",
+      "Carpet Bombing: While airborne, drop a carried bomb every 1.6 s; While you are in the air, a random bomb falls from your pack every 1.6 s",
+      "Parting Gift: On Dodge, throw a random carried bomb at a nearby enemy within 12 m; Inventory bomb throw cooldown: 1.8 s; Throw one random carried bomb at a random enemy within 12 m. Cooldown: 1.8 seconds. Requires a real bomb in the inventory. on dodge"
+     ],
+     "link": "passives/node/own11711.md",
+     "name": "Powder Underfoot"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased non-projectile damage",
+      "Impact Detonation: Each bomb ricochet detonates and spends 35% of the bomb’s remaining explosion power; A bouncing bomb explodes where it touches and keeps flying. Later explosions share the power of the original bomb.",
+      "Sticky Charge: The first enemy hit attaches the bomb to the target; it explodes after 1.2 s; A bomb's first hit on an enemy attaches it until it explodes. An attached bomb no longer bounces.",
+      "Planted Charge: Thrown bombs become mines that last 45 s; A thrown bomb settles as a mine and waits for an enemy to come close",
+      "Returning fuse: After its first explosion, the bomb returns and explodes again for 100% of its damage; Bombs fly back after exploding and explode again; your own blasts and effects also hit you",
+      "Carpet Bombing: While airborne, drop a carried bomb every 1.6 s; While you are in the air, a random bomb falls from your pack every 1.6 s",
+      "Parting Gift: On Dodge, throw a random carried bomb at a nearby enemy within 12 m; Inventory bomb throw cooldown: 1.8 s; Throw one random carried bomb at a random enemy within 12 m. Cooldown: 1.8 seconds. Requires a real bomb in the inventory. on dodge"
+     ],
+     "link": "passives/node/own11711.md",
+     "name": "Powder Underfoot"
+    }
+   },
+   "own11881": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "5% chance to save bomb on bomb throw"
+     ],
+     "link": "passives/tree/#own11881",
+     "name": "Bomb Conservation"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+5% bomb chance to spend nothing when throwing"
+     ],
+     "link": "passives/tree/#own11881",
+     "name": "Bomb Conservation"
+    }
+   },
+   "own11887": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "5% chance to save bomb on bomb throw"
+     ],
+     "link": "passives/tree/#own11887",
+     "name": "Bomb Conservation"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+5% bomb chance to spend nothing when throwing"
+     ],
+     "link": "passives/tree/#own11887",
+     "name": "Bomb Conservation"
+    }
+   },
+   "own11893": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "5% chance to save bomb on bomb throw"
+     ],
+     "link": "passives/tree/#own11893",
+     "name": "Bomb Conservation"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+5% bomb chance to spend nothing when throwing"
+     ],
+     "link": "passives/tree/#own11893",
+     "name": "Bomb Conservation"
+    }
+   },
+   "own11899": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "5% chance to save bomb on bomb throw"
+     ],
+     "link": "passives/tree/#own11899",
+     "name": "Bomb Conservation"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+5% bomb chance to spend nothing when throwing"
+     ],
+     "link": "passives/tree/#own11899",
+     "name": "Bomb Conservation"
+    }
+   },
+   "own11905": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "5% chance to save bomb on bomb throw"
+     ],
+     "link": "passives/tree/#own11905",
+     "name": "Bomb Conservation"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+5% bomb chance to spend nothing when throwing"
+     ],
+     "link": "passives/tree/#own11905",
+     "name": "Bomb Conservation"
+    }
+   },
+   "own11911": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "12.5% chance to save bomb on bomb throw"
+     ],
+     "link": "passives/node/own11911.md",
+     "name": "Spare Fuse"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "+12.5% bomb chance to spend nothing when throwing"
+     ],
+     "link": "passives/node/own11911.md",
+     "name": "Spare Fuse"
+    }
+   },
+   "own12250": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+2% poison damage over time multiplier"
+     ],
+     "link": "passives/tree/#own12250",
+     "name": "Poison Damage over Time"
+    },
+    "old": null
+   },
+   "own12256": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+2% poison damage over time multiplier"
+     ],
+     "link": "passives/tree/#own12256",
+     "name": "Poison Damage over Time"
+    },
+    "old": null
+   },
+   "own12262": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+5% poison damage over time multiplier"
+     ],
+     "link": "passives/node/own12262.md",
+     "name": "Patient Toxin"
+    },
+    "old": null
+   },
+   "own12532": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "5% increased bomb attack speed",
+      "12.5% chance to save bomb on bomb throw"
+     ],
+     "link": "passives/node/own12532.md",
+     "name": "Careful Throw"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "5% increased bomb attack speed",
+      "+12.5% bomb chance to spend nothing when throwing"
+     ],
+     "link": "passives/node/own12532.md",
+     "name": "Careful Throw"
+    }
+   },
+   "own12622": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "30% increased bomb critical strike chance",
+      "10% increased bomb projectile speed",
+      "Impact Detonation: Bomb ricochets lose no power: every touch explodes at full power; A bouncing bomb loses no power on its bounces: every touch explodes at full power.",
+      "Sticky Charge: The first enemy hit attaches the bomb to the target; it explodes after 1.2 s; A bomb's first hit on an enemy attaches it until it explodes. An attached bomb no longer bounces.",
+      "Planted Charge: Thrown bombs become mines that last 45 s; A thrown bomb settles as a mine and waits for an enemy to come close",
+      "Returning fuse: After its first explosion, the bomb returns and explodes again for 100% of its damage; Bombs fly back after exploding and explode again; your own blasts and effects also hit you",
+      "Carpet Bombing: While airborne, drop a carried bomb every 1.6 s; While you are in the air, a random bomb falls from your pack every 1.6 s",
+      "Parting Gift: On Dodge, throw a random carried bomb at a nearby enemy within 12 m; Inventory bomb throw cooldown: 1.8 s; Throw one random carried bomb at a random enemy within 12 m. Cooldown: 1.8 seconds. Requires a real bomb in the inventory. on dodge"
+     ],
+     "link": "passives/node/own12622.md",
+     "name": "Fuse Spark"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "30% increased bomb critical strike chance",
+      "10% increased bomb projectile speed",
+      "Impact Detonation: Each bomb ricochet detonates and spends 35% of the bomb’s remaining explosion power; A bouncing bomb explodes where it touches and keeps flying. Later explosions share the power of the original bomb.",
+      "Sticky Charge: The first enemy hit attaches the bomb to the target; it explodes after 1.2 s; A bomb's first hit on an enemy attaches it until it explodes. An attached bomb no longer bounces.",
+      "Planted Charge: Thrown bombs become mines that last 45 s; A thrown bomb settles as a mine and waits for an enemy to come close",
+      "Returning fuse: After its first explosion, the bomb returns and explodes again for 100% of its damage; Bombs fly back after exploding and explode again; your own blasts and effects also hit you",
+      "Carpet Bombing: While airborne, drop a carried bomb every 1.6 s; While you are in the air, a random bomb falls from your pack every 1.6 s",
+      "Parting Gift: On Dodge, throw a random carried bomb at a nearby enemy within 12 m; Inventory bomb throw cooldown: 1.8 s; Throw one random carried bomb at a random enemy within 12 m. Cooldown: 1.8 seconds. Requires a real bomb in the inventory. on dodge"
+     ],
+     "link": "passives/node/own12622.md",
+     "name": "Fuse Spark"
+    }
+   },
+   "own12625": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+10% double blast",
+      "Impact Detonation: Bomb ricochets lose no power: every touch explodes at full power; A bouncing bomb loses no power on its bounces: every touch explodes at full power.",
+      "Sticky Charge: The first enemy hit attaches the bomb to the target; it explodes after 1.2 s; A bomb's first hit on an enemy attaches it until it explodes. An attached bomb no longer bounces.",
+      "Planted Charge: Thrown bombs become mines that last 45 s; A thrown bomb settles as a mine and waits for an enemy to come close",
+      "Returning fuse: After its first explosion, the bomb returns and explodes again for 100% of its damage; Bombs fly back after exploding and explode again; your own blasts and effects also hit you",
+      "Carpet Bombing: While airborne, drop a carried bomb every 1.6 s; While you are in the air, a random bomb falls from your pack every 1.6 s",
+      "Parting Gift: On Dodge, throw a random carried bomb at a nearby enemy within 12 m; Inventory bomb throw cooldown: 1.8 s; Throw one random carried bomb at a random enemy within 12 m. Cooldown: 1.8 seconds. Requires a real bomb in the inventory. on dodge"
+     ],
+     "link": "passives/node/own12625.md",
+     "name": "Double Peal"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "+10% double blast",
+      "Impact Detonation: Each bomb ricochet detonates and spends 35% of the bomb’s remaining explosion power; A bouncing bomb explodes where it touches and keeps flying. Later explosions share the power of the original bomb.",
+      "Sticky Charge: The first enemy hit attaches the bomb to the target; it explodes after 1.2 s; A bomb's first hit on an enemy attaches it until it explodes. An attached bomb no longer bounces.",
+      "Planted Charge: Thrown bombs become mines that last 45 s; A thrown bomb settles as a mine and waits for an enemy to come close",
+      "Returning fuse: After its first explosion, the bomb returns and explodes again for 100% of its damage; Bombs fly back after exploding and explode again; your own blasts and effects also hit you",
+      "Carpet Bombing: While airborne, drop a carried bomb every 1.6 s; While you are in the air, a random bomb falls from your pack every 1.6 s",
+      "Parting Gift: On Dodge, throw a random carried bomb at a nearby enemy within 12 m; Inventory bomb throw cooldown: 1.8 s; Throw one random carried bomb at a random enemy within 12 m. Cooldown: 1.8 seconds. Requires a real bomb in the inventory. on dodge"
+     ],
+     "link": "passives/node/own12625.md",
+     "name": "Double Peal"
+    }
+   },
+   "own12634": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "5% increased bomb attack speed",
+      "10% reduced bomb stamina cost",
+      "Impact Detonation: Bomb ricochets lose no power: every touch explodes at full power; A bouncing bomb loses no power on its bounces: every touch explodes at full power.",
+      "Sticky Charge: The first enemy hit attaches the bomb to the target; it explodes after 1.2 s; A bomb's first hit on an enemy attaches it until it explodes. An attached bomb no longer bounces.",
+      "Planted Charge: Thrown bombs become mines that last 45 s; A thrown bomb settles as a mine and waits for an enemy to come close",
+      "Returning fuse: After its first explosion, the bomb returns and explodes again for 100% of its damage; Bombs fly back after exploding and explode again; your own blasts and effects also hit you",
+      "Carpet Bombing: While airborne, drop a carried bomb every 1.6 s; While you are in the air, a random bomb falls from your pack every 1.6 s",
+      "Parting Gift: On Dodge, throw a random carried bomb at a nearby enemy within 12 m; Inventory bomb throw cooldown: 1.8 s; Throw one random carried bomb at a random enemy within 12 m. Cooldown: 1.8 seconds. Requires a real bomb in the inventory. on dodge"
+     ],
+     "link": "passives/node/own12634.md",
+     "name": "Demolisher's Hand"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "5% increased bomb attack speed",
+      "10% reduced bomb stamina cost",
+      "Impact Detonation: Each bomb ricochet detonates and spends 35% of the bomb’s remaining explosion power; A bouncing bomb explodes where it touches and keeps flying. Later explosions share the power of the original bomb.",
+      "Sticky Charge: The first enemy hit attaches the bomb to the target; it explodes after 1.2 s; A bomb's first hit on an enemy attaches it until it explodes. An attached bomb no longer bounces.",
+      "Planted Charge: Thrown bombs become mines that last 45 s; A thrown bomb settles as a mine and waits for an enemy to come close",
+      "Returning fuse: After its first explosion, the bomb returns and explodes again for 100% of its damage; Bombs fly back after exploding and explode again; your own blasts and effects also hit you",
+      "Carpet Bombing: While airborne, drop a carried bomb every 1.6 s; While you are in the air, a random bomb falls from your pack every 1.6 s",
+      "Parting Gift: On Dodge, throw a random carried bomb at a nearby enemy within 12 m; Inventory bomb throw cooldown: 1.8 s; Throw one random carried bomb at a random enemy within 12 m. Cooldown: 1.8 seconds. Requires a real bomb in the inventory. on dodge"
+     ],
+     "link": "passives/node/own12634.md",
+     "name": "Demolisher's Hand"
+    }
+   },
+   "own12637": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "40% increased ailment build-up with bombs",
+      "5% increased bomb attack speed",
+      "Impact Detonation: Bomb ricochets lose no power: every touch explodes at full power; A bouncing bomb loses no power on its bounces: every touch explodes at full power.",
+      "Sticky Charge: The first enemy hit attaches the bomb to the target; it explodes after 1.2 s; A bomb's first hit on an enemy attaches it until it explodes. An attached bomb no longer bounces.",
+      "Planted Charge: Thrown bombs become mines that last 45 s; A thrown bomb settles as a mine and waits for an enemy to come close",
+      "Returning fuse: After its first explosion, the bomb returns and explodes again for 100% of its damage; Bombs fly back after exploding and explode again; your own blasts and effects also hit you",
+      "Carpet Bombing: While airborne, drop a carried bomb every 1.6 s; While you are in the air, a random bomb falls from your pack every 1.6 s",
+      "Parting Gift: On Dodge, throw a random carried bomb at a nearby enemy within 12 m; Inventory bomb throw cooldown: 1.8 s; Throw one random carried bomb at a random enemy within 12 m. Cooldown: 1.8 seconds. Requires a real bomb in the inventory. on dodge"
+     ],
+     "link": "passives/node/own12637.md",
+     "name": "Shrapnel Wound"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "40% increased ailment build-up with bombs",
+      "5% increased bomb attack speed",
+      "Impact Detonation: Each bomb ricochet detonates and spends 35% of the bomb’s remaining explosion power; A bouncing bomb explodes where it touches and keeps flying. Later explosions share the power of the original bomb.",
+      "Sticky Charge: The first enemy hit attaches the bomb to the target; it explodes after 1.2 s; A bomb's first hit on an enemy attaches it until it explodes. An attached bomb no longer bounces.",
+      "Planted Charge: Thrown bombs become mines that last 45 s; A thrown bomb settles as a mine and waits for an enemy to come close",
+      "Returning fuse: After its first explosion, the bomb returns and explodes again for 100% of its damage; Bombs fly back after exploding and explode again; your own blasts and effects also hit you",
+      "Carpet Bombing: While airborne, drop a carried bomb every 1.6 s; While you are in the air, a random bomb falls from your pack every 1.6 s",
+      "Parting Gift: On Dodge, throw a random carried bomb at a nearby enemy within 12 m; Inventory bomb throw cooldown: 1.8 s; Throw one random carried bomb at a random enemy within 12 m. Cooldown: 1.8 seconds. Requires a real bomb in the inventory. on dodge"
+     ],
+     "link": "passives/node/own12637.md",
+     "name": "Shrapnel Wound"
+    }
+   },
+   "own12913": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+2% poison damage over time multiplier"
+     ],
+     "link": "passives/tree/#own12913",
+     "name": "Poison Damage over Time"
+    },
+    "old": null
+   },
+   "own12918": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+2% poison damage over time multiplier"
+     ],
+     "link": "passives/tree/#own12918",
+     "name": "Poison Damage over Time"
+    },
+    "old": null
+   },
+   "own12923": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+5% poison damage over time multiplier"
+     ],
+     "link": "passives/node/own12923.md",
+     "name": "Deepening Venom"
+    },
+    "old": null
+   },
+   "own12928": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+2% poison damage over time multiplier"
+     ],
+     "link": "passives/tree/#own12928",
+     "name": "Poison Damage over Time"
+    },
+    "old": null
+   },
+   "own12933": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+2% poison damage over time multiplier"
+     ],
+     "link": "passives/tree/#own12933",
+     "name": "Poison Damage over Time"
+    },
+    "old": null
+   },
+   "own13110": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "5% increased cast speed",
+      "Spell Primes the Strike: Casting a spell charges your next weapon attack (2 s cooldown); Charge your next attack on spell cast",
+      "Anchored Cast: Starting a cast with your shield raised preserves blocking until the spell is released; ×1.25 eitr cost with anchored casts; Starting a cast with your shield raised keeps the block until the spell is released, at a higher eitr cost. It does not block from every side.",
+      "Gather the Elements: Absorb your ground effects while wielding a staff",
+      "Spell Echo: +100% staff repeat chance when casting with infused casts; +0.2 staff s repeat delay when casting with infused casts"
+     ],
+     "link": "passives/node/own13110.md",
+     "name": "Whisper Above the Runes"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "5% increased cast speed",
+      "Spell Primes the Strike: Casting a spell charges your next weapon attack (2 s cooldown); Charge your next attack on spell cast",
+      "Anchored Cast: Starting a cast with your shield raised preserves blocking until the spell is released; ×1.25 eitr cost with anchored casts; Starting a cast with your shield raised keeps the block until the spell is released, at a higher eitr cost. It does not block from every side.",
+      "Charged Casts: Spells can spend an attack charge and become charged casts",
+      "Spell Echo: +100% staff repeat chance when casting with charged attacks; +0.2 staff s repeat delay when casting with charged attacks"
+     ],
+     "link": "passives/node/own13110.md",
+     "name": "Whisper Above the Runes"
+    }
+   },
+   "own13134": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "5% increased spell cast speed",
+      "5% reduced cast stamina and eitr cost",
+      "Spell Primes the Strike: Casting a spell charges your next weapon attack (2 s cooldown); Charge your next attack on spell cast",
+      "Anchored Cast: Starting a cast with your shield raised preserves blocking until the spell is released; ×1.25 eitr cost with anchored casts; Starting a cast with your shield raised keeps the block until the spell is released, at a higher eitr cost. It does not block from every side.",
+      "Gather the Elements: Absorb your ground effects while wielding a staff",
+      "Spell Echo: +100% staff repeat chance when casting with infused casts; +0.2 staff s repeat delay when casting with infused casts"
+     ],
+     "link": "passives/node/own13134.md",
+     "name": "Flowing Incantation"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "5% increased spell cast speed",
+      "5% reduced cast stamina and eitr cost",
+      "Spell Primes the Strike: Casting a spell charges your next weapon attack (2 s cooldown); Charge your next attack on spell cast",
+      "Anchored Cast: Starting a cast with your shield raised preserves blocking until the spell is released; ×1.25 eitr cost with anchored casts; Starting a cast with your shield raised keeps the block until the spell is released, at a higher eitr cost. It does not block from every side.",
+      "Charged Casts: Spells can spend an attack charge and become charged casts",
+      "Spell Echo: +100% staff repeat chance when casting with charged attacks; +0.2 staff s repeat delay when casting with charged attacks"
+     ],
+     "link": "passives/node/own13134.md",
+     "name": "Flowing Incantation"
+    }
+   },
+   "own13172": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+2% fire damage over time multiplier"
+     ],
+     "link": "passives/tree/#own13172",
+     "name": "Damage over Time — Fire"
+    },
+    "old": null
+   },
+   "own13174": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+2% frost damage over time multiplier"
+     ],
+     "link": "passives/tree/#own13174",
+     "name": "Frost Damage over Time"
+    },
+    "old": null
+   },
+   "own13176": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+2% lightning damage over time multiplier"
+     ],
+     "link": "passives/tree/#own13176",
+     "name": "Damage over Time — Lightning"
+    },
+    "old": null
+   },
+   "own13182": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased ground build-up"
+     ],
+     "link": "passives/tree/#own13182",
+     "name": "Ground Effects"
+    },
+    "old": null
+   },
+   "own13188": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased fire damage with ground effects"
+     ],
+     "link": "passives/tree/#own13188",
+     "name": "Burning Ground"
+    },
+    "old": null
+   },
+   "own13194": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased ground build-up"
+     ],
+     "link": "passives/tree/#own13194",
+     "name": "Ground Effects"
+    },
+    "old": null
+   },
+   "own13200": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased fire damage with ground effects"
+     ],
+     "link": "passives/tree/#own13200",
+     "name": "Burning Ground"
+    },
+    "old": null
+   },
+   "own13206": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "40% increased ground build-up",
+      "25% increased ground ailment effect"
+     ],
+     "link": "passives/node/own13206.md",
+     "name": "Unsettled Ground"
+    },
+    "old": null
+   },
+   "own13212": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "20% increased fire damage with ground effects",
+      "10% increased fire area of effect with ground effects",
+      "30% increased eitr regeneration while on Burning Ground",
+      "Spells create ground when they hit terrain with fire damage"
+     ],
+     "link": "passives/node/own13212.md",
+     "name": "Ashen Wake"
+    },
+    "old": null
+   },
+   "own13218": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "10% increased ground ailment effect"
+     ],
+     "link": "passives/tree/#own13218",
+     "name": "Ground Effects"
+    },
+    "old": null
+   },
+   "own13224": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased fire area of effect with ground effects"
+     ],
+     "link": "passives/tree/#own13224",
+     "name": "Burning Ground"
+    },
+    "old": null
+   },
+   "own13230": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "10% increased ground ailment effect"
+     ],
+     "link": "passives/tree/#own13230",
+     "name": "Ground Effects"
+    },
+    "old": null
+   },
+   "own13236": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased fire area of effect with ground effects"
+     ],
+     "link": "passives/tree/#own13236",
+     "name": "Burning Ground"
+    },
+    "old": null
+   },
+   "own13244": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+2% fire damage over time multiplier"
+     ],
+     "link": "passives/tree/#own13244",
+     "name": "Damage over Time — Fire"
+    },
+    "old": null
+   },
+   "own13246": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+2% frost damage over time multiplier"
+     ],
+     "link": "passives/tree/#own13246",
+     "name": "Frost Damage over Time"
+    },
+    "old": null
+   },
+   "own13248": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+2% lightning damage over time multiplier"
+     ],
+     "link": "passives/tree/#own13248",
+     "name": "Damage over Time — Lightning"
+    },
+    "old": null
+   },
+   "own13256": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+5% fire damage over time multiplier"
+     ],
+     "link": "passives/node/own13256.md",
+     "name": "Embers That Endure"
+    },
+    "old": null
+   },
+   "own13258": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+5% frost damage over time multiplier"
+     ],
+     "link": "passives/node/own13258.md",
+     "name": "Lasting Rime"
+    },
+    "old": null
+   },
+   "own13260": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+5% lightning damage over time multiplier"
+     ],
+     "link": "passives/node/own13260.md",
+     "name": "Lingering Voltage"
+    },
+    "old": null
+   },
+   "own13266": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased frost area of effect with ground effects"
+     ],
+     "link": "passives/tree/#own13266",
+     "name": "Chilled Ground"
+    },
+    "old": null
+   },
+   "own13278": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased frost area of effect with ground effects"
+     ],
+     "link": "passives/tree/#own13278",
+     "name": "Chilled Ground"
+    },
+    "old": null
+   },
+   "own13290": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased frost area of effect with ground effects",
+      "15% reduced cost while on Chilled Ground",
+      "Spells create ground when they hit terrain with frost damage"
+     ],
+     "link": "passives/node/own13290.md",
+     "name": "Glassbound"
+    },
+    "old": null
+   },
+   "own13302": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased chill build-up with ground effects"
+     ],
+     "link": "passives/tree/#own13302",
+     "name": "Chilled Ground"
+    },
+    "old": null
+   },
+   "own13314": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "40% increased chill build-up with ground effects"
+     ],
+     "link": "passives/node/own13314.md",
+     "name": "Winter's Reach"
+    },
+    "old": null
+   },
+   "own13326": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased frost damage with ground effects"
+     ],
+     "link": "passives/tree/#own13326",
+     "name": "Chilled Ground"
+    },
+    "old": null
+   },
+   "own13338": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "20% increased frost damage with ground effects"
+     ],
+     "link": "passives/node/own13338.md",
+     "name": "Frozen Memory"
+    },
+    "old": null
+   },
+   "own13441": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased poison area of effect with ground effects"
+     ],
+     "link": "passives/tree/#own13441",
+     "name": "Poisoned Ground"
+    },
+    "old": null
+   },
+   "own13447": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased poison damage with ground effects"
+     ],
+     "link": "passives/tree/#own13447",
+     "name": "Poisoned Ground"
+    },
+    "old": null
+   },
+   "own13453": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased poison area of effect with ground effects"
+     ],
+     "link": "passives/tree/#own13453",
+     "name": "Poisoned Ground"
+    },
+    "old": null
+   },
+   "own13459": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased poison damage with ground effects"
+     ],
+     "link": "passives/tree/#own13459",
+     "name": "Poisoned Ground"
+    },
+    "old": null
+   },
+   "own13465": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "20% increased poison damage with ground effects",
+      "30% increased poison damage over time while on Poisoned Ground",
+      "Spells create ground when they hit terrain with poison damage"
+     ],
+     "link": "passives/node/own13465.md",
+     "name": "Blighted Soil"
+    },
+    "old": null
+   },
+   "own13471": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased poison area of effect with ground effects"
+     ],
+     "link": "passives/node/own13471.md",
+     "name": "Venomous Reach"
+    },
+    "old": null
+   },
+   "own13477": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased poison damage with ground effects",
+      "4% increased poison area of effect with ground effects"
+     ],
+     "link": "passives/tree/#own13477",
+     "name": "Poisoned Ground"
+    },
+    "old": null
+   },
+   "own13540": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "5% increased staff cast speed",
+      "Spell Primes the Strike: Casting a spell charges your next weapon attack (2 s cooldown); Charge your next attack on spell cast",
+      "Anchored Cast: Starting a cast with your shield raised preserves blocking until the spell is released; ×1.25 eitr cost with anchored casts; Starting a cast with your shield raised keeps the block until the spell is released, at a higher eitr cost. It does not block from every side.",
+      "Gather the Elements: Absorb your ground effects while wielding a staff",
+      "Spell Echo: +100% staff repeat chance when casting with infused casts; +0.2 staff s repeat delay when casting with infused casts"
+     ],
+     "link": "passives/node/own13540.md",
+     "name": "Caster's Gesture"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "5% increased staff cast speed",
+      "Spell Primes the Strike: Casting a spell charges your next weapon attack (2 s cooldown); Charge your next attack on spell cast",
+      "Anchored Cast: Starting a cast with your shield raised preserves blocking until the spell is released; ×1.25 eitr cost with anchored casts; Starting a cast with your shield raised keeps the block until the spell is released, at a higher eitr cost. It does not block from every side.",
+      "Charged Casts: Spells can spend an attack charge and become charged casts",
+      "Spell Echo: +100% staff repeat chance when casting with charged attacks; +0.2 staff s repeat delay when casting with charged attacks"
+     ],
+     "link": "passives/node/own13540.md",
+     "name": "Caster's Gesture"
+    }
+   },
+   "own13598": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+2% physical damage over time multiplier"
+     ],
+     "link": "passives/tree/#own13598",
+     "name": "Physical Damage over Time"
+    },
+    "old": null
+   },
+   "own13604": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+2% physical damage over time multiplier"
+     ],
+     "link": "passives/tree/#own13604",
+     "name": "Physical Damage over Time"
+    },
+    "old": null
+   },
+   "own13610": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased bleed damage"
+     ],
+     "link": "passives/tree/#own13610",
+     "name": "Bleeding Damage"
+    },
+    "old": null
+   },
+   "own13616": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased bleed damage"
+     ],
+     "link": "passives/tree/#own13616",
+     "name": "Bleeding Damage"
+    },
+    "old": null
+   },
+   "own13622": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+2% physical damage over time multiplier"
+     ],
+     "link": "passives/tree/#own13622",
+     "name": "Physical Damage over Time"
+    },
+    "old": null
+   },
+   "own13628": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+2% physical damage over time multiplier"
+     ],
+     "link": "passives/tree/#own13628",
+     "name": "Physical Damage over Time"
+    },
+    "old": null
+   },
+   "own13634": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased bleed damage"
+     ],
+     "link": "passives/tree/#own13634",
+     "name": "Bleeding Damage"
+    },
+    "old": null
+   },
+   "own13640": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+5% physical damage over time multiplier",
+      "20% increased bleed damage"
+     ],
+     "link": "passives/node/own13640.md",
+     "name": "Unceasing Wound"
+    },
+    "old": null
+   },
+   "own13720": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+2% damage over time multiplier"
+     ],
+     "link": "passives/tree/#own13720",
+     "name": "Damage over Time"
+    },
+    "old": null
+   },
+   "own13726": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+2% damage over time multiplier"
+     ],
+     "link": "passives/tree/#own13726",
+     "name": "Damage over Time"
+    },
+    "old": null
+   },
+   "own13732": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+5% damage over time multiplier"
+     ],
+     "link": "passives/node/own13732.md",
+     "name": "Unrelenting Decay"
+    },
+    "old": null
+   },
+   "own13741": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+2% lightning damage over time multiplier"
+     ],
+     "link": "passives/tree/#own13741",
+     "name": "Lightning Damage over Time"
+    },
+    "old": null
+   },
+   "own13747": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+2% lightning damage over time multiplier"
+     ],
+     "link": "passives/tree/#own13747",
+     "name": "Lightning Damage over Time"
+    },
+    "old": null
+   },
+   "own13753": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+5% lightning damage over time multiplier"
+     ],
+     "link": "passives/node/own13753.md",
+     "name": "Lingering Current"
+    },
+    "old": null
+   },
+   "own13757": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+8% overflowing chance to fire an additional projectile"
+     ],
+     "link": "passives/tree/#own13757",
+     "name": "Additional Projectile Chance"
+    },
+    "old": null
+   },
+   "own13759": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+2% fire damage over time multiplier"
+     ],
+     "link": "passives/tree/#own13759",
+     "name": "Fire Damage over Time"
+    },
+    "old": null
+   },
+   "own13760": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+2% fire damage over time multiplier"
+     ],
+     "link": "passives/tree/#own13760",
+     "name": "Fire Damage over Time"
+    },
+    "old": null
+   },
+   "own13763": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+8% overflowing chance to fire an additional projectile"
+     ],
+     "link": "passives/tree/#own13763",
+     "name": "Additional Projectile Chance"
+    },
+    "old": null
+   },
+   "own13765": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+2% fire damage over time multiplier"
+     ],
+     "link": "passives/tree/#own13765",
+     "name": "Fire Damage over Time"
+    },
+    "old": null
+   },
+   "own13766": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+2% fire damage over time multiplier"
+     ],
+     "link": "passives/tree/#own13766",
+     "name": "Fire Damage over Time"
+    },
+    "old": null
+   },
+   "own13769": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+8% overflowing chance to fire an additional projectile"
+     ],
+     "link": "passives/tree/#own13769",
+     "name": "Additional Projectile Chance"
+    },
+    "old": null
+   },
+   "own13771": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+2% fire damage over time multiplier"
+     ],
+     "link": "passives/tree/#own13771",
+     "name": "Fire Damage over Time"
+    },
+    "old": null
+   },
+   "own13772": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+2% fire damage over time multiplier"
+     ],
+     "link": "passives/tree/#own13772",
+     "name": "Fire Damage over Time"
+    },
+    "old": null
+   },
+   "own13775": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+20% overflowing chance to fire an additional projectile"
+     ],
+     "link": "passives/node/own13775.md",
+     "name": "One More Projectile"
+    },
+    "old": null
+   },
+   "own13777": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+5% fire damage over time multiplier"
+     ],
+     "link": "passives/node/own13777.md",
+     "name": "Enduring Flame"
+    },
+    "old": null
+   },
+   "own13778": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+5% fire damage over time multiplier"
+     ],
+     "link": "passives/node/own13778.md",
+     "name": "Tenacious Embers"
+    },
+    "old": null
+   },
+   "own9770": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased potency for infusion"
+     ],
+     "link": "passives/tree/#own9770",
+     "name": "Infusion"
+    },
+    "old": null
+   },
+   "own9776": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased potency for infusion"
+     ],
+     "link": "passives/tree/#own9776",
+     "name": "Infusion"
+    },
+    "old": null
+   },
+   "own9782": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased effect duration for infusion"
+     ],
+     "link": "passives/tree/#own9782",
+     "name": "Infusion"
+    },
+    "old": null
+   },
+   "own9788": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "20% increased effect duration for infusion",
+      "15% increased potency for infusion"
+     ],
+     "link": "passives/node/own9788.md",
+     "name": "Held in the Hands"
+    },
+    "old": null
+   },
+   "own9958": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased arrow and bolt range",
+      "4% increased shooting effective range"
+     ],
+     "link": "passives/tree/#own9958",
+     "name": "Bows"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased arrow and bolt range"
+     ],
+     "link": "passives/tree/#own9958",
+     "name": "Bows"
+    }
+   }
+  },
+  "uniques": {
+   "PT_Jewel_TrailOfTheFirstAntler": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "One of these stats:",
+      "+(0.4–0.6) Strength per allocated passive on the path from this socket to your start (10%)",
+      "+(0.4–0.6) Dexterity per allocated passive on the path from this socket to your start (10%)",
+      "+(0.4–0.6) Intelligence per allocated passive on the path from this socket to your start (10%)",
+      "+(2–4) maximum health per allocated passive on the path from this socket to your start (10%)",
+      "+(0.5–0.8) maximum stamina per allocated passive on the path from this socket to your start (10%)",
+      "+(2–4) maximum eitr per allocated passive on the path from this socket to your start (10%)",
+      "+(2–4) rune shield per allocated passive on the path from this socket to your start (10%)",
+      "+(0.3–0.5) armour per allocated passive on the path from this socket to your start (10%)",
+      "+(0.6–1) evasion rating per allocated passive on the path from this socket to your start (10%)",
+      "+(2–4) endurance threshold that falls below it is reduced: 20% at base, at most 75%. The threshold is counted in health points. With Rune Bulwark the rune shield is checked instead of health.\") per allocated passive on the path from this socket to your start (10%)",
+      "Drops: dropped by Eikthyr"
+     ],
+     "link": "items/unique/PT_Jewel_TrailOfTheFirstAntler.md",
+     "name": "Trail of the First Antler"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "One of these stats:",
+      "+(0.4–0.6) Strength per allocated passive on the path from this socket to your start (10%)",
+      "+(0.4–0.6) Dexterity per allocated passive on the path from this socket to your start (10%)",
+      "+(0.4–0.6) Intelligence per allocated passive on the path from this socket to your start (10%)",
+      "+(0.6–1) maximum health per allocated passive on the path from this socket to your start (10%)",
+      "+(0.5–0.8) maximum stamina per allocated passive on the path from this socket to your start (10%)",
+      "+(0.5–0.8) maximum eitr per allocated passive on the path from this socket to your start (10%)",
+      "+(0.4–0.7) rune shield per allocated passive on the path from this socket to your start (10%)",
+      "+(0.3–0.5) armour per allocated passive on the path from this socket to your start (10%)",
+      "+(0.6–1) evasion rating per allocated passive on the path from this socket to your start (10%)",
+      "+(0.3–0.5) endurance threshold per allocated passive on the path from this socket to your start (10%)",
+      "Drops: dropped by Eikthyr"
+     ],
+     "link": "items/unique/PT_Jewel_TrailOfTheFirstAntler.md",
+     "name": "Trail of the First Antler"
+    }
+   }
+  }
+ },
+ "date": "2026-10-22",
+ "from": "5.2.1",
+ "to": "5.3.0"
+}

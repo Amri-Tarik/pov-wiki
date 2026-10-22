@@ -51,14 +51,14 @@ def _formula(text: str) -> list[str]:
     return [f'<div class="pov-formula">{text}</div>', ""]
 
 
-def _term(ctx: Ctx, key: str, page: str, start: bool = False) -> str:
+def _term(ctx: Ctx, key: str, page: str, start: bool = False, lower: bool = False) -> str:
     """A glossary term of the mod's wiki by its title there, linked (not on its own page);
-    lower-cased unless it starts the sentence."""
+    lower-cased unless it starts the sentence (all of it with lower, for Title Case titles)."""
     term = ctx.loc.wiki.get(key)
     if not term:
         return ""
     title = plain(term["title"])
-    title = title if start else title[:1].lower() + title[1:]
+    title = title.lower() if lower else title if start else title[:1].lower() + title[1:]
     return title if glossary_path(key) == page else f"[{title}]({rel(glossary_path(key), page)})"
 
 
@@ -114,7 +114,8 @@ def _item_level(ctx, page, v):
     return ([ui("formula.item-level.text", areas=_anchor("creature-level", page)), "",
              ui("formula.item-level.crafted", bases=rel(BASES_PAGE, page)), ""]
             + _idols(ctx)
-            + [ui("formula.item-level.gates", mods=rel("items/mods.md", page), uniques=rel(UNIQUES_PAGE, page)), ""])
+            + [ui("formula.item-level.gates", mods=rel("items/mods.md", page), uniques=rel(UNIQUES_PAGE, page)), "",
+               ui("formula.item-level.ascended", asc=_anchor("ascension", page)), ""])
 
 
 def _idols(ctx) -> list[str]:
@@ -231,7 +232,8 @@ def _boss_stars(ctx, page, v):
     from .monster_pages import BOSSES_PAGE
 
     ui = ctx.loc.ui
-    return ([ui("formula.boss-stars.text", chance=_pct(v["chance"]), two=_pct(v["two"]), bosses=rel(BOSSES_PAGE, page)), ""]
+    return ([ui("formula.boss-stars.text", chance=_pct(v["chance"]), two=_pct(v["two"]), bosses=rel(BOSSES_PAGE, page),
+                    max=_n(v["blood_max"])), ""]
             + _formula(ui("formula.boss-stars.health", h=_n(v["health"]))) + _formula(ui("formula.boss-stars.damage", d=_n(v["damage"])))
             + [ui("formula.boss-stars.notes", mods=v["mods_per_star"]), ""])
 
@@ -322,16 +324,17 @@ def _evasion(ctx, page, v):
         base = t["evasion.accuracy.base"] + t["evasion.accuracy.per-level"] * level ** max(0.1, t["evasion.accuracy.growth"])
         return max(1, base) * (1 + max(0, t["evasion.accuracy.per-star"]) * stars)
 
-    def chance(rating: float, a: float) -> float:  # DefenceMath.Chance
-        return max(0.0, min(min(0.999999, t["evasion.cap"]), 1 - max(1, t["evasion.hit-factor"]) * a / (a + rating)))
+    def chance(rating: float, a: float) -> float:  # Evasion.Chance
+        return max(0.0, min(min(1.0, t["evasion.cap"]), rating / (max(0.01, t["evasion.full-ratio"]) * max(1, a))))
 
     ratings = (50, 100, 200, 400)
     rows = [[name, _n(accuracy(lvl), 0), *(_pct(chance(r, accuracy(lvl))) for r in ratings)] for name, lvl in _biomes(ctx)]
     return ([ui("formula.evasion.text", evade=_term(ctx, "evade", page, start=True), accuracy=_term(ctx, "enemy-accuracy", page)), ""]
             + _formula(ui("formula.evasion.accuracy", base=_n(t["evasion.accuracy.base"]), per=_n(t["evasion.accuracy.per-level"]),
                           star=_pct(t["evasion.accuracy.per-star"])))
-            + _formula(ui("formula.evasion.chance", h=_n(t["evasion.hit-factor"]), cap=_pct(t["evasion.cap"])))
-            + [ui("formula.evasion.notes"), ""]
+            + _formula(ui("formula.evasion.chance", ratio=_n(t["evasion.full-ratio"]), cap=_pct(t["evasion.cap"])))
+            + [ui("formula.evasion.notes", decay=_pct(t["evasion.decay"]), reset=_n(t["evasion.decay-reset"]),
+                  boss=_n(t["evasion.decay-reset-boss"]), stamina=_pct(t["evasion.stamina-cost"])), ""]
             + _table([ui("bosses.biome"), ui("formula.evasion.acc_col"), *(ui("formula.evasion.rating_col", n=r) for r in ratings)], rows))
 
 
@@ -488,14 +491,15 @@ def _summon_strength(ctx, page, v):
     md = [ui("formula.summon-strength.text", stars=_anchor("stars", page), power=_anchor("monster-power", page)), ""]
     md += _formula(ui("formula.summon-strength.formula"))
     return md + [ui("formula.summon-strength.terms", stages=_anchor("creature-strength", page),
-                    quality=_pct(v["quality_health"])), ""]
+                    quality=_pct(v["quality_health"])), "",
+                 ui("formula.summon-strength.ascended", asc=_anchor("ascension", page)), ""]
 
 
 def _minion_bonuses(ctx, page, v):
     """Your stats for minions (CreatureBonuses, MinionLife, ShieldOps.MinionGuard, MinionInstability)."""
     ui, t = ctx.loc.ui, ctx.loc.difficulty.get("tunables", {})
     shield = _term(ctx, "shield", page)
-    nums = {"cap": _pct(v["damage_cap"]), "lo": _pct(v["taken_min"]), "hi": _pct(v["taken_max"]),
+    nums = {"lo": _pct(v["taken_min"]), "hi": _pct(v["taken_max"]),
             "ailment": _pct(v["ailment_cap"]), "resist": _pct(v["resist_cap"]), "attack": _pct(v["attack_speed_floor"]),
             "move": _pct(v["move_floor"]), "regen": _pct(v["shield_regen"]), "delay": _n(v["shield_delay"]),
             "base": _n(v["crit_base"]), "seek": _n(v["seek"])}
@@ -599,13 +603,28 @@ def _ail_gauge(ctx, page, v, ailment: str | None = None) -> list[str]:
     return md + [ui("formula.ailments.lasts", hold=_n(v["hold"]), drain=_pct(v["drain"]), total=_n(v["hold"] + 1 / v["drain"])), ""]
 
 
-def _ail_effect(ctx, page, v, ailment: str) -> str:
-    """What one ailment does with the damage that set it off."""
-    ui = ctx.loc.ui
-    if ailment == "bleed":
-        return ui("formula.ailments.bleed", total=_pct(v["bleed_share"] * v["bleed_ticks"]), ticks=_n(v["bleed_ticks"]),
-                  share=_pct(v["bleed_share"]))
-    return ui(f"formula.ailments.{'chill' if ailment == 'frost' else ailment}", stagger=_term(ctx, "stagger", page))
+_DAMAGING = {"burn": "burning", "poison": "poison", "bleed": "bleeding"}  # DamagingAilments' Tunables names
+
+
+def _ail_effect(ctx, page, v, ailment: str) -> list[str]:
+    """What one ailment does with the damage that set it off (DamagingAilments, ShockAilment)."""
+    ui, t = ctx.loc.ui, ctx.loc.difficulty.get("tunables", {})
+    if ailment in _DAMAGING:
+        k = _DAMAGING[ailment]
+        share, seconds = t[f"ailment.{k}.dps-share"], t[f"ailment.{k}.duration"]
+        return [ui(f"formula.ailments.{ailment}", share=_pct(share), seconds=_n(seconds), total=_pct(share * seconds),
+                   dot=_term(ctx, "damage-over-time-multiplier", page, lower=True), wet=_n(v["wet_drain"]),
+                   limit=_n(t["ailment.poison.base-limit"]), limitterm=_term(ctx, "limit", page))]
+    if ailment == "shock":
+        return ([ui("formula.ailments.shock", seconds=_n(t["shock.duration"]), stagger=_term(ctx, "stagger", page)), ""]
+                + _formula(ui("formula.ailments.shock_formula", coef=_n(t["shock.coefficient"]), exp=_n(t["shock.exponent"]),
+                              threshold=_pct(t["ailment.threshold"]), max=_pct(t["shock.maximum"]), min=_pct(t["shock.minimum"])))
+                + [ui("formula.ailments.shock_notes")])
+    return [ui("formula.ailments.chill")]
+
+
+def _ail_damaging(ctx) -> list[str]:
+    return [ctx.loc.ui("formula.ailments.damaging", seconds=_n(ctx.loc.difficulty.get("tunables", {})["ailment.burning.duration"])), ""]
 
 
 def _ailments(ctx, page, v):
@@ -616,8 +635,10 @@ def _ailments(ctx, page, v):
     md = [ui("formula.ailments.text", gauge=_term(ctx, "ailment-gauge", page, start=True), **term), ""]
     md += _ail_gauge(ctx, page, v)
     md += [ui("formula.ailments.each"), ""]
-    md += [f"- {_term(ctx, a, page, start=True)}: {_ail_effect(ctx, page, v, a)}" for a in _AILMENTS] + [""]
-    return md
+    for a in _AILMENTS:
+        first, *rest = _ail_effect(ctx, page, v, a)
+        md += [f"- {_term(ctx, a, page, start=True)}: {first}"] + [f"    {line}" if line else "" for line in rest]
+    return md + [""] + _ail_damaging(ctx)
 
 
 def _ailment_view(ailment: str):
@@ -627,7 +648,8 @@ def _ailment_view(ailment: str):
         return ([ui("formula.ailments.one", ailment=_title_of(ctx, ailment), damage=_term(ctx, _AILMENTS[ailment], page),
                     gauge=_term(ctx, "ailment-gauge", page)), ""]
                 + _ail_gauge(ctx, page, v, ailment)
-                + [ui("formula.ailments.does", text=_ail_effect(ctx, page, v, ailment)), ""])
+                + [ui("formula.ailments.does", text=_ail_effect(ctx, page, v, ailment)[0]), ""] + [*_ail_effect(ctx, page, v, ailment)[1:], ""]
+                + (_ail_damaging(ctx) if ailment in _DAMAGING else []))
     return view
 
 
@@ -811,7 +833,9 @@ def _limit(ctx, page, v):
             [ui("formula.limit.crystals", crystal=_term(ctx, "ice-crystal", page, start=True)), _n(t["crystal.limit"])],
             [ui("formula.limit.shards"), _n(t["shard.limit"])],
             [ui("formula.limit.impales", impale=_term(ctx, "impale", page, start=True)), _n(t["impale.limit"])],
-            [ui("formula.limit.links", link=_term(ctx, "ally-link", page, start=True)), _n(v["links"])]]
+            [ui("formula.limit.links", link=_term(ctx, "ally-link", page, start=True)), _n(v["links"])],
+            [ui("formula.limit.ground", ground=_term(ctx, "ground-effects", page, start=True)), _n(t["groundfield.base-limit"])],
+            [ui("formula.limit.infusion", infusion=_term(ctx, "infusion", page, start=True)), _n(t["infusion.base-limit"])]]
     md = [ui("formula.limit.text", limit=_term(ctx, "limit", page, start=True)), ""]
     md += _table([ui("formula.limit.effect"), ui("formula.limit.base")], rows)
     return md + [ui("formula.limit.chain", n=_n(t["chain.targets"])), ""]
@@ -824,7 +848,8 @@ def _endurance(ctx, page, v):
     md += _formula(ui("formula.endurance.formula"))
     md += [ui("formula.endurance.notes", base=_pct(t["endurance.base"]), cap=_pct(t["endurance.cap"]),
               rune=_mastery_link(ctx, "SteadfastRuneThreshold", page), shield=_term(ctx, "shield", page)), "",
-           ui("formula.endurance.order", res=_term(ctx, "resist", page), block=_term(ctx, "block", page), armour=_term(ctx, "armor", page)), ""]
+           ui("formula.endurance.order", res=_term(ctx, "resist", page), block=_term(ctx, "block", page), armour=_term(ctx, "armor", page),
+              shield=_term(ctx, "shield", page)), ""]
     return md
 
 
@@ -913,6 +938,7 @@ def _hit_order(ctx, page, v):
             ui("formula.hit-order.more", more=part("more"), rage=_term(ctx, "rage", page)),
             ui("formula.hit-order.projectile", proj=_term(ctx, "proj", page), torch=_term(ctx, "torch", page))]
     lands = [ui("formula.hit-order.crit", crit=sec("crit-multiplier", start=True)),
+             ui("formula.hit-order.falloff", falloff=sec("ranged-falloff")),
              ui("formula.hit-order.target", target=part("target", start=False)),
              ui("formula.hit-order.both"),
              ui("formula.hit-order.physical", brk=sec("armour-break", start=True), impale=sec("impale")),
@@ -921,6 +947,112 @@ def _hit_order(ctx, page, v):
     md += [f"{i}. {s}" for i, s in enumerate(made, 1)] + ["", f"**{ui('formula.hit-order.lands')}**", ""]
     md += [f"{i}. {s}" for i, s in enumerate(lands, len(made) + 1)] + [""]
     return md + [ui("formula.hit-order.notes"), ""]
+
+
+def _ranged_falloff(ctx, page, v):
+    """Bow and crossbow damage by distance (RangedFalloff.Factor/Stretch/Applies)."""
+    ui, t = ctx.loc.ui, ctx.loc.difficulty.get("tunables", {})
+    start, end, floor = t["ranged.falloff.start"], t["ranged.falloff.end"], t["ranged.falloff.floor"]
+
+    def factor(d: float, stretch: float) -> float:
+        a, b = start * stretch, max(start * stretch + 0.01, end * stretch)
+        return 1.0 if d <= a else floor if d >= b else 1 - (d - a) / (b - a) * (1 - floor)
+
+    nums = {"start": _n(start), "end": _n(end), "floor": _n(floor), "drop": _n(1 - floor)}
+    stretches = (0, 0.25, 0.5, 1)
+    rows = [[f"{_n(d)} m", *(_pct(factor(d, 1 + s)) for s in stretches)] for d in (5, 10, 15, 20, 25, 30, 40, 60)]
+    return ([ui("formula.ranged-falloff.text", range=_term(ctx, "effective-range", page, start=True), **nums), ""]
+            + _formula(ui("formula.ranged-falloff.formula", **nums))
+            + [ui("formula.ranged-falloff.notes"), ""]
+            + _table([ui("formula.ranged-falloff.distance"), *(ui("formula.ranged-falloff.with", x=_pct(s)) for s in stretches)], rows))
+
+
+def _granting_all(ctx, stat: str, page: str) -> str:
+    """Every keystone or notable granting this stat, linked."""
+    from .pages import node_path
+
+    found = [f"[{plain(n['r']['title'])}]({rel(node_path(ctx, n), page)})" for n in ctx.tree_nodes
+             if n["size"] in ("Keystone", "Notable") and any(m.get("stat") == stat for m in n.get("mods") or [])]
+    return ", ".join(sorted(set(found))) or stat
+
+
+def _ground_effects(ctx, page, v):
+    """Spell ground patches (GroundEffects.FromSpell/Create/Limit/Pay/Touches, SpellGround, GroundSliding)."""
+    ui, t = ctx.loc.ui, ctx.loc.difficulty.get("tunables", {})
+    md = [ui("formula.ground-effects.text", ground=_term(ctx, "ground-effects", page, start=True),
+             nodes=_granting_all(ctx, "CreateGround", page)), ""]
+    md += [ui("formula.ground-effects.layer"), ""]
+    md += _formula(ui("formula.ground-effects.dps", share=_pct(t["groundfield.damage-share"]),
+                      dot=_title_of(ctx, "damage-over-time-multiplier").lower()))
+    md += _formula(ui("formula.ground-effects.build", share=_pct(t["groundfield.buildup-share"])))
+    md += [ui("formula.ground-effects.size", radius=_n(t["groundfield.radius"]), maxr=_n(v["max_radius"]),
+              life=_n(t["groundfield.duration"]), maxl=_n(v["max_life"])), "",
+           ui("formula.ground-effects.pay", tick=_n(t["groundfield.tick"])), "",
+           ui("formula.ground-effects.limit", n=_n(t["groundfield.base-limit"]), limit=f"[{ui('formula.limit.title').lower()}]({_anchor('limit', page)})"), "",
+           ui("formula.ground-effects.chilled", chilled=_term(ctx, "chilled-ground", page, start=True),
+              friction=_pct(t["groundfield.sliding-friction"]), steering=_pct(t["groundfield.sliding-steering"])), "",
+           ui("formula.ground-effects.standing"), ""]
+    return md
+
+
+def _infusion(ctx, page, v):
+    """Absorbing your ground into a store and releasing it (Infusion, SpellEcho.Infused)."""
+    ui, t = ctx.loc.ui, ctx.loc.difficulty.get("tunables", {})
+    md = [ui("formula.infusion.text", infusion=_term(ctx, "infusion", page, start=True),
+             gather=_mastery_link(ctx, "AbsorbGround", page), min=_n(v["min_radius"])), ""]
+    md += _formula(ui("formula.infusion.absorb", area=_n(t["infusion.absorption-area"]), unit=_n(t["infusion.area-per-unit"])))
+    return md + [ui("formula.infusion.absorb_notes"), "",
+                 ui("formula.infusion.store", limit=_n(t["infusion.base-limit"]), duration=_n(t["infusion.duration"]),
+                    limits=f"[{ui('formula.limit.title').lower()}]({_anchor('limit', page)})"), "",
+                 ui("formula.infusion.release", per=_pct(t["infusion.damage-per-unit"]), pious=_staff(ctx, "PT_SceptrePious", page)), "",
+                 ui("formula.infusion.echo", echo=_term(ctx, "spell-echo", page, start=True)), ""]
+
+
+def _ascension(ctx, page, v):
+    """Boss essences raising an item to a later biome (ItemAscension)."""
+    from .gear_pages import currency_path
+
+    ui, loot = ctx.loc.ui, ctx.loc.loot
+    targets = loot.get("ascension") or {}
+    rows = [[f"[{loot['items'].get(e, {}).get('name', e)}]({rel(currency_path(e), page)})",
+             ctx.loc.vkey(f"biome_{b['biome'].lower()}", b["biome"]), str(b["level"])]
+            for e, b in sorted(targets.items(), key=lambda kv: (kv[1]["level"], kv[0]))]
+    strength = f"[{ui('formula.summon-strength.title').lower()}]({_anchor('summon-strength', page)})"
+    block, force = ctx.loc.vkey("item_blockarmor", "Block armour").lower(), ctx.loc.vkey("item_blockforce", "Block force").lower()
+    md = [ui("formula.ascension.text"), ""]
+    md += _table([ui("formula.ascension.essence"), ui("bosses.biome"), ui("formula.level")], rows)
+    md += [ui("formula.ascension.how"), "",
+           f"- {ui('formula.ascension.weapons')}",
+           f"- {ui('formula.ascension.shields', block=block, force=force)}",
+           f"- {ui('formula.ascension.staves', strength=strength)}",
+           f"- {ui('formula.ascension.durability', durability=ctx.loc.vkey('item_durability', 'Durability').lower())}", ""]
+    return md + [ui("formula.ascension.after", min=_n(v["min_damage"])), "", ui("formula.ascension.vanilla"), ""]
+
+
+def _jewel_dismantling(ctx, page, v):
+    """Dust from dismantling a unique jewel (Disenchant.Returns), and the rune carver's speed (CraftSalvage)."""
+    ui, t = ctx.loc.ui, ctx.loc.difficulty.get("tunables", {})
+    divine, azurite, step = t["disenchant.unique-jewel-divine"], t["disenchant.unique-jewel-azurite"], t["disenchant.unique-jewel-level-step"]
+
+    def dust(base: float, level: int) -> int:  # Mathf.RoundToInt: halves to even
+        return round(base * (1 + (max(1, level) - 1) / max(1, step)))
+
+    rows = [[_biome(ctx, b), str(b["level"]), str(max(1, dust(divine, b["level"]))), str(dust(azurite, b["level"]))]
+            for b in _area_biomes(ctx)]
+    md = [ui("formula.jewel-dismantling.text"), ""]
+    md += _formula(ui("formula.jewel-dismantling.formula", divine=_n(divine), azurite=_n(azurite), step=_n(step)))
+    md += _table([ui("bosses.biome"), ui("formula.level"), ui("formula.jewel-dismantling.divine"), ui("formula.jewel-dismantling.azurite")], rows)
+    return md + [ui("formula.jewel-dismantling.speed", s=_n(v["seconds"])), ""]
+
+
+def _permadeath(ctx, page, v):
+    """The Permadeath server settings (Permadeath.Bind/Decide, Progress.PermadeathWipe)."""
+    ui, t = ctx.loc.ui, ctx.loc.difficulty.get("tunables", {})
+    md = [ui("formula.permadeath.text"), ""]
+    md += [f"- {ui(f'formula.permadeath.{k}')}" for k in ("items", "combat", "craft", "blink")]
+    md += [f"- {ui('formula.permadeath.guard', share=_pct(t['permadeath.oneshot-share']), minutes=_n(t['permadeath.oneshot-cooldown'] / 60))}",
+           f"- {ui('formula.permadeath.mercy', hours=_n(t['permadeath.mercy-hours']))}", ""]
+    return md
 
 
 _MODIFIERS = ("very_weak", "weak", "slightly_weak", "normal", "slightly_resistant", "resistant", "very_resistant", "immune")
@@ -943,18 +1075,20 @@ def _player_penetration(ctx, page, v):
 _PAGES = {
     CREATURES_PAGE: ("creatures", [("creature-strength", _strength), ("boss-step", _boss_step),
                                    ("stars", _stars), ("boss-stars", _boss_stars), ("monster-power", _power)]),
-    LOOT_PAGE: ("loot", [("loot", _loot), ("vanilla-drops", _vanilla_drops)]),
+    LOOT_PAGE: ("loot", [("loot", _loot), ("vanilla-drops", _vanilla_drops), ("ascension", _ascension),
+                         ("jewel-dismantling", _jewel_dismantling)]),
     EXPERIENCE_PAGE: ("experience", [("creature-level", _level), ("item-level", _item_level), ("experience", _experience),
-                                     ("experience-falloff", _falloff), ("ally-kills", _ally_kills), ("player-levels", _player_levels)]),
+                                     ("experience-falloff", _falloff), ("ally-kills", _ally_kills), ("player-levels", _player_levels),
+                                     ("permadeath", _permadeath)]),
     SUMMONS_PAGE: ("summons", [("summoning-staves", _summon_staves), ("held-eitr", _held_eitr), ("summon-lifetime", _summon_lifetime),
                                ("summon-strength", _summon_strength), ("vanilla-summons", _vanilla_summons),
                                ("minion-bonuses", _minion_bonuses)]),
-    COMBAT_PAGE: ("combat", [("attributes", _attributes), ("hit-order", _hit_order), ("hit-damage", _hit_damage),
+    COMBAT_PAGE: ("combat", [("attributes", _attributes), ("hit-order", _hit_order), ("hit-damage", _hit_damage), ("ranged-falloff", _ranged_falloff),
                              ("player-penetration", _player_penetration), ("crit-multiplier", _crit_multiplier), ("crit-chance", _crit_chance), ("evasion", _evasion),
                              ("resistances", _resistances), ("armour", _armour), ("rune-shield", _rune_shield), ("enemy-penetration", _penetration), ("stagger", _stagger),
                              ("block", _block), ("glancing", _glancing), ("endurance", _endurance), ("thorns", _thorns),
                              ("charged-attacks", _charged), ("strikes", _strikes), ("phantom-strikes", _phantoms), ("area", _area), ("slams", _slams),
-                             ("ailments", _ailments), ("armour-break", _armour_break), ("impale", _impale), ("limit", _limit), ("lifesteal", _lifesteal), ("build-cost", _build_cost)]),
+                             ("ailments", _ailments), ("armour-break", _armour_break), ("impale", _impale), ("limit", _limit), ("ground-effects", _ground_effects), ("infusion", _infusion), ("lifesteal", _lifesteal), ("build-cost", _build_cost)]),
 }
 _TITLES = {"creatures": "formula.creatures", "loot": "formula.loot_page", "combat": "formula.combat",
            "experience": "formula.experience_page", "summons": "formula.summons_page"}
@@ -964,6 +1098,10 @@ FORMULA_PAGES = {fid: page for page, (_, formulas) in _PAGES.items() for fid, _ 
 # Keywords of the mod's wiki -> the formulas that explain them, shown at the top of their page.
 TERM_FORMULAS = {
     "limit": ["limit"],
+    "effective-range": ["ranged-falloff"],
+    **{k: ["ground-effects"] for k in ("ground-effects", "burning-ground", "chilled-ground", "shocked-ground", "poisoned-ground")},
+    "infusion": ["infusion"],
+    "spell-echo": ["infusion"],
     "minions": ["summoning-staves", "summon-strength", "minion-bonuses"],
     "pets": ["ally-kills"],
     "companion": ["ally-kills"],
@@ -994,6 +1132,7 @@ TERM_FORMULAS = {
     "stun-chance": ["stagger"],
     "ailment": ["ailments"],
     "ailment-damage": ["ailments"],
+    "damage-over-time-multiplier": ["ailments", "ground-effects"],
     "ailment-gauge": ["ailments:gauge"],
     "build-up": ["ailments:gauge"],
     "bleed": ["ailments:bleed"],

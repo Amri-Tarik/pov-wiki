@@ -102,7 +102,20 @@ def render_difficulty(errors: list) -> dict:
             # Evasion and armour knobs (Evasion.AccuracyAt/Chance, ArmorEffect).
             "tunables": {k: float(Tunables.Of(k)) for k in (
                 "evasion.accuracy.base", "evasion.accuracy.per-level", "evasion.accuracy.growth",
-                "evasion.accuracy.per-star", "evasion.hit-factor", "evasion.cap", "armor.effect",
+                "evasion.accuracy.per-star", "evasion.full-ratio", "evasion.cap", "evasion.decay",
+                "evasion.decay-reset", "evasion.decay-reset-boss", "evasion.stamina-cost", "armor.effect",
+                # Ranged falloff, ground effects, infusion, unique jewel dust, permadeath (5.3.0).
+                "ranged.falloff.start", "ranged.falloff.end", "ranged.falloff.floor",
+                "groundfield.base-limit", "groundfield.radius", "groundfield.duration", "groundfield.damage-share",
+                "groundfield.buildup-share", "groundfield.tick", "groundfield.sliding-friction", "groundfield.sliding-steering",
+                "infusion.base-limit", "infusion.duration", "infusion.absorption-area", "infusion.area-per-unit",
+                "infusion.damage-per-unit", "disenchant.unique-jewel-divine", "disenchant.unique-jewel-azurite",
+                "disenchant.unique-jewel-level-step", "permadeath.oneshot-share", "permadeath.oneshot-cooldown",
+                "permadeath.mercy-hours",
+                # Damaging ailments and shock (DamagingAilments, ShockAilment; 5.3.0).
+                "ailment.burning.dps-share", "ailment.burning.duration", "ailment.poison.dps-share", "ailment.poison.duration",
+                "ailment.poison.base-limit", "ailment.bleeding.dps-share", "ailment.bleeding.duration", "shock.duration",
+                "shock.coefficient", "shock.exponent", "shock.minimum", "shock.maximum",
                 # Additional and phantom strikes (Strikes, Phantoms).
                 "strike.interval", "strike.focus-damage", "strike.reach", "strike.radius",
                 "phantom.damage", "phantom.radius", "phantom.interval", "phantom.delay", "attrs.might-covers",

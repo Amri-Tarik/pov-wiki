@@ -624,7 +624,7 @@ chance = "Each star step has a {chance} chance (Valheim: 10%), rolled until it f
 
 [formula.boss-stars]
 title = "Boss stars"
-text = "A boss summoned at its altar can rise with stars: a {chance} chance of at least one star, and {two} of two (part of the {chance}). By default, only once that boss has been defeated in the world. The mod's [bosses]({bosses}) can also be given stars with Runes of the Blood Challenge."
+text = "A boss summoned at its altar can rise with stars: a {chance} chance of at least one star, and {two} of two (part of the {chance}). By default, only once that boss has been defeated in the world. Runes of the Blood Challenge (up to {max}) offered at a boss altar, Valheim's or that of one of the mod's [bosses]({bosses}), give the next boss summoned there one star each instead of the roll, even before its first defeat, with at least one modifier per star."
 health = "Health × (1 + {h} × stars)"
 damage = "Damage × (1 + {d} × stars)"
 notes = "Modifiers per boss star: {mods} on Normal, 1 on Hard and Merciless."
@@ -703,8 +703,8 @@ bases = "Base: knives {knives}, polearms {polearms}, other weapons {other}, spel
 title = "Evasion"
 text = "{evade} gives a chance to avoid a hit, which depends on the attacker's accuracy ({accuracy}), growing with its level and stars:"
 accuracy = "accuracy = ({base} + {per} × level) × (1 + {star} × stars)"
-chance = "evade chance = 1 − {h} × accuracy ÷ (accuracy + evasion), at most {cap}"
-notes = "Evasion isn't a dice roll per hit: hits are evaded in a steady rhythm, so over many hits the share evaded is the chance. Damage over time in an area can't be evaded. Chance against creatures without stars, by biome:"
+chance = "evade chance = evasion ÷ ({ratio} × accuracy), at most {cap}"
+notes = "Each hit is rolled on its own. Every hit you evade lowers your chance against that attacker: × {decay} per evasion, until it goes {reset} s without hitting you ({boss} s for a boss). Each evasion costs {stamina} of your maximum stamina; with less stamina than that, you can't evade. Damage over time in an area can't be evaded. Chance against creatures without stars, before any evasion, by biome:"
 acc_col = "Accuracy"
 rating_col = "{n} evasion"
 
@@ -721,7 +721,7 @@ notes = "Bosses move toward the next biome's values. Creatures with the {piercin
 
 [formula.strikes]
 title = "Additional strikes"
-text = "{strike}: a melee weapon's horizontal or vertical swing, primary or alternative; slams and sceptres don't count. Once a swing hits an enemy, it hits again as many times as your additional strikes, one every {interval} s. Each goes to the nearest enemy not struck yet, within {radius} m of the first target and {reach} m of you; when there is none left, they stop."
+text = "{strike}: a melee weapon's vertical swing, primary or alternative (horizontal swings and thrusts don't count, whatever their animation); slams and sceptres don't count. Once a swing hits an enemy, it hits again as many times as your additional strikes, one every {interval} s. Each goes to the nearest enemy not struck yet, within {radius} m of the first target and {reach} m of you; when there is none left, they stop."
 formula = "additional strikes = ⌊additional strikes⌋, ×2 once after a critical strike ({double})"
 hits = "Each additional strike is a new hit of the same attack: it rolls its own critical strike and gets all your damage bonuses. Strike bonuses apply to the swing and to every additional strike."
 double = "With {double}, the attack's first critical strike, from the swing or from one of its strikes, doubles its additional strikes, once per attack."
@@ -775,10 +775,10 @@ block = "Hits that meet your {block} don't glance; with {guard}, a blocked hit t
 
 [formula.endurance]
 title = "Endurance"
-text = "{endurance}: while your health is under your endurance threshold, the part of each hit below the threshold is reduced."
-formula = "damage taken = hit − (the part of the hit below the threshold) × endurance reduction"
+text = "{endurance}: while your health is under your endurance threshold, the part of any damage you take below the threshold is reduced, hits and damage over time alike."
+formula = "damage taken = damage − (the part of it below the threshold) × endurance reduction"
 notes = "Reduction is {base} at base, × (1 + increases), at most {cap}. The threshold is in health points; with {rune} it's compared to your {shield} instead."
-order = "It applies after your {res}, before {block} and {armour}."
+order = "It applies last, after your {res}, {block} and {armour}, just before your {shield} takes the damage."
 
 [formula.thorns]
 title = "Thorns"
@@ -838,7 +838,7 @@ notes = "An enemy holds up to {limit} impales (more with impale limit). Each new
 
 [formula.limit]
 title = "Limits"
-text = "{limit}: a bonus that names an effect raises only that effect. One that names none raises every limit below at once. Bonuses add up first, and the total is rounded down."
+text = "{limit}: a bonus that names an effect raises only that effect. One that names none raises every limit below at once. Bonuses add up first, and the total is rounded down (but not for the infusion store)."
 effect = "Limit"
 base = "Base"
 per_cast = "Thralls per cast of a summoning staff"
@@ -847,6 +847,8 @@ crystals = "{crystal}s at once"
 shards = "Armour shards at once"
 impales = "{impale}s one enemy can hold"
 links = "{link}s you can hold at once"
+ground = "{ground}: patches at once"
+infusion = "{infusion}: units stored"
 chain = "Chain Lightning's targets ({n}) are the exception: they only count limit bonuses that name Chain Lightning."
 
 [formula.lifesteal]
@@ -907,6 +909,7 @@ crit = "{crit}: × its multiplier, on the whole hit."
 target = "Increases {target} join the sum; then flat damage against the enemy, which the crit doesn't multiply."
 both = "Increases and more multipliers that need the hit and the enemy together."
 physical = "{brk} adds to the hit's physical damage, and {impale} multiplies it."
+falloff = "Bows and crossbows: {falloff}, × its factor."
 resist = "Valheim applies the creature's resistances, with {pen} for fire, frost, lightning and poison."
 notes = "So flat damage grows with every increase and multiplier after it, increases only add to each other, and a critical strike multiplies everything except flat damage against the enemy."
 
@@ -961,6 +964,7 @@ title = "Summon strength"
 text = "Summons don't take a creature's usual scaling: no [stars]({stars}), tamed share, [Monster Power]({power}) or Blight Mist."
 formula = "summon health or damage = base × the biome's health factor × summon power"
 terms = "The biome is the staff's (in the tables here), with its factor from the [biome table]({stages}), softened by the difficulty preset; health and damage both use the health column. The global enemy offense and defense settings apply too. Health is also × (1 + your minion health increases) and +{quality} per staff quality above 1. Summon power is only for Valheim's staves (below)."
+ascended = "A staff [ascended]({asc}) with a boss essence calls its thralls as of the essence's biome when that's later than its own; Valheim's staves too."
 
 [formula.vanilla-summons]
 title = "Valheim's summoning staves"
@@ -973,7 +977,7 @@ on = "On: they work as in Valheim, with eitr and health per cast, a summon limit
 [formula.minion-bonuses]
 title = "Your stats for minions"
 text = "Your stats for minions reach your summons, and some of them your pets:"
-damage = "damage: × (1 + minion damage increases), at most +{cap} in all (pets add tamed damage increases)"
+damage = "damage: × (1 + minion damage increases) (pets add tamed damage increases)"
 health = "health: × (1 + minion health increases)"
 taken = "damage they take: × (1 + minion damage taken), between {lo} and {hi}"
 ailments = "ailments on them (burning, poison, frost, shock) last × (1 − minion ailment resistance), at most {ailment} shorter"
@@ -996,18 +1000,21 @@ formula = "gauge filled by a hit = {damage} ÷ ({threshold} × the enemy's base 
 example = "How much of the gauge one hit fills, by its damage as a share of the enemy's base health (its maximum health without the mod's difficulty scaling):"
 share = "Damage ÷ base health"
 fill = "Filled, +{amount} {buildup}"
-lasts = "At 100% the ailment starts, from the damage of the hit that filled the gauge. The gauge then stays full, so every further matching hit applies the ailment again from its own damage. {hold} s after the last matching hit the gauge drains, {drain} per second, and the ailment ends when it is empty: at most {total} s after that hit."
+lasts = "At 100% the ailment starts, from the strongest matching hit since the gauge began to fill. The gauge then stays full, so every further matching hit applies the ailment again from its own damage. {hold} s after the last matching hit the gauge drains, {drain} per second. Chill ends when it is empty (at most {total} s after that hit); the other ailments run their own time."
 each = "What each ailment does with that damage:"
-bleed = "{total} of the slash damage over {ticks} s ({share} per second), more with ailment damage increases; ailment and status duration add seconds. A new bleed replaces the current one only if it deals at least as much per second."
-burn = "the fire damage again, over time. Your ailment damage increases add to your fire damage increases. It lasts as long as Valheim makes it, longer with ailment and status duration, or as long as the gauge if that is longer; a stronger burn replaces a weaker one."
-poison = "the poison damage again, over time, the same way with poison damage increases, plus any share of the enemy's base health your stats add. It lasts as long as Valheim makes it from the hit, longer with ailment and status duration, or as long as the gauge if that is longer; a stronger poison replaces a weaker one. Skeletons and the Charred resist poison (half damage) instead of being immune, and their poison gauge fills at half speed."
-chill = "Valheim's frost effect, its strength × (1 + your chill ailment damage increases); ailment and status duration make it last longer."
-shock = "no damage of its own. It adds {stagger} equal to the lightning damage × your shock and general ailment damage increases, plus flat ailment damage. Valheim's own shock effect lasts longer with ailment and status duration."
+bleed = "{share} of the slash damage per second for {seconds} s ({total} in all), × your ailment damage multipliers and {dot} (physical). Longer duration adds seconds, so more damage. One bleed per player on an enemy: a new one replaces yours only if it deals at least as much per second."
+burn = "{share} of the fire damage per second for {seconds} s ({total} in all), × your ailment damage multipliers and {dot} (fire); fire damage increases don't apply again. Longer duration adds seconds, so more damage. One burn per player on an enemy: a new one replaces yours only if it deals at least as much per second. A wet enemy burns out {wet} times as fast."
+poison = "{share} of the poison damage per second for {seconds} s ({total} in all), × your ailment damage multipliers and {dot} (poison), plus any share of the enemy's base health your stats add, spread over the same {seconds} s (ailment damage doesn't raise that part). Longer duration adds seconds. Each player can keep {limit} poisons on an enemy (more with {limitterm} bonuses); past that, a new one replaces your weakest if it would deal more. Skeletons and the Charred take poison damage normally, but their poison gauge fills at half speed; summoned skeletons stay immune."
+chill = "Valheim's frost effect, its strength × (1 + your general and chill ailment damage increases); ailment and status duration make it last longer."
+shock = "for {seconds} s the enemy takes more damage from every source and builds up {stagger} faster, by the shock's strength. Only the strongest shock on an enemy acts, whoever applied it. Flat ailment damage does nothing for shock."
 damage = "matching damage"
 gauge_title = "Filling the gauge"
 how = "How it works"
 one = "{ailment} builds up on the enemy's {gauge} from {damage} as the enemy takes it, after its resistances and armour."
 does = "What it does: {text}"
+shock_formula = "shock strength = {coef} × (lightning damage ÷ ({threshold} × the enemy's base health))^{exp} × (1 + shock effect increases) × more, at most {max}; under {min}, no shock"
+shock_notes = "The lightning damage here is the hit's, before the enemy's resistances and armour."
+damaging = "Ailment damage multipliers for burning, poison and bleeding: × (1 + ailment damage increases, general and that ailment's) × their more multipliers; flat ailment damage adds its amount spread over {seconds} s. Each player's ailments tick on their own, once a second."
 
 [formula.build-cost]
 title = "Build cost"
@@ -1031,6 +1038,7 @@ crafted = "A crafted item's level is the highest level among its materials, by t
 gates = "Item level decides which [properties]({mods}) and tiers can roll (each tier has a level range), how rare drops are, and which [uniques]({uniques}) can drop."
 idols = "The level each upgrade idol counts as:"
 idol_col = "Idol"
+ascended = "An item [ascended]({asc}) with a boss essence has at least the level of its new biome."
 
 [formula.experience-falloff]
 title = "Experience fall-off"
@@ -1118,3 +1126,64 @@ sceptres = "Sceptres"
 spears = "Spears"
 staves = "Staves"
 swords = "Swords"
+
+[formula.ranged-falloff]
+title = "Effective range"
+text = "{range}: a bow or crossbow shot deals full damage up to {start} m from where it was shot, then less the further it flies, down to × {floor} at {end} m and beyond. Thrown weapons and spells don't fall off."
+formula = "damage factor = 1 − (distance − start) ÷ (end − start) × {drop}, between × {floor} and × 1; start = {start} m × range, end = {end} m × range"
+notes = "Range is 1 + your shooting effective range increases (bow or crossbow ones count for that weapon), so +50% puts both distances 1.5 times as far. The factor multiplies the hit when it reaches the enemy, after the critical strike; flat damage against the enemy is added after it and isn't reduced."
+distance = "Distance"
+with = "+{x} range"
+
+[formula.ground-effects]
+title = "Ground effects"
+text = "{ground}: a passive that creates ground for a damage type ({nodes}) makes your spells leave a patch where they land: a projectile that hits the ground or an object (not one that hits an enemy), or an area spell where it strikes. One impact makes one patch, with a layer for each of the spell's fire, frost, lightning and poison damage that has such a passive."
+layer = "Each layer comes from the spell's damage of its type, after your damage increases (ground damage increases join them) and before its critical strike:"
+dps = "damage per second = {share} × that damage × your {dot} for the type"
+build = "build-up per second = {share} × that damage, into burning, chill, shock or poison"
+size = "A patch has a radius of {radius} m × (1 + area increases), at most {maxr} m, and lasts {life} s × (1 + effect duration increases), at most {maxl} s."
+pay = "Enemies standing on it (on the ground, not swimming) take its damage every {tick} s, paid about once a second, through their resistances. Ground damage is never a critical strike, can't be blocked or evaded, and doesn't stagger. Each enemy takes only the strongest patch of each type, whoever made it; different types add up. Your allies and you take no damage from your patches."
+limit = "You can keep {n} patch at once ({limit}); a new one past the limit removes your oldest. Only spell patches count."
+chilled = "{chilled} makes everyone on it slide, you and your allies too. It doesn't lower speed: speeding up and braking work at {friction} of the usual rate, turning at {steering}."
+standing = "Passives that work while you stand on a kind of ground count any patch of that type, yours or not."
+
+[formula.infusion]
+title = "Infusion"
+text = "{infusion}: with {gather} and a staff in hand (elemental or blood magic), standing on your own spell patches absorbs them into a store, by damage type. A patch shrinks as it's absorbed and is gone below {min} m."
+absorb = "units gained = {area} m² per second × (1 + absorption rate) ÷ {unit} m²"
+absorb_notes = "Less is gained where your other patches of the same type already cover the patch's edge."
+store = "The store holds at most {limit} units in all ({limits}). It empties {duration} s after the last gain, and when you die."
+release = "Your next damaging spell cast by hand (or attack with {pious}) uses the whole store: each unit adds {per} of the damage of the spell that made the patch (that type, after its increases) × (1 + infusion potency), as flat damage of its type. A projectile spell splits it among its projectiles; an area spell adds all of it to every hit. Damage that came from infusion can't be absorbed again."
+echo = "{echo} repeats infused projectile spells; infused area spells aren't repeated."
+
+[formula.ascension]
+essence_link = "Ascends a weapon, shield or summoning staff to {biome} (item level {level}): see [{title}]({link})."
+title = "Ascension"
+text = "A boss essence ascends a weapon, a shield or a summoning staff to a later biome, once per item and only upward: the item's own biome (that of the highest-level material in its recipe; a staff's thrall's) must come before the essence's."
+essence = "Essence"
+how = "The item's base stats are compared with Valheim's own items of its kind from that biome (weapon kind and one- or two-handed, or kind of shield) and raised to their median; they never go down:"
+weapons = "weapons: combat damage (everything but chopping and mining) rises to the median of that kind's weapons in the biome, keeping its damage types; so does damage per quality level. Kinds with no Valheim weapon in the biome, elemental staves and sceptres rise by how much weapon damage grows from biome to biome."
+shields = "shields: {block} and {force}, and their gain per quality level, become at least those of the biome's median shield of that kind."
+staves = "summoning staves: the staff itself doesn't change, but its thralls are called as of the new biome ({strength})."
+durability = "{durability} and its gain per quality level become at least the biome's."
+after = "The item goes back to quality 1, and upgrading it costs what the biome's reference item costs, at that item's station. Its item level rises to the biome's level. Properties, sockets and sigils stay. Corrupted and unidentified items can't ascend, nor pickaxes, bombs, traps, torches or weapons with less than {min} combat damage."
+vanilla = "Valheim's own summoning staves can ascend only while the server setting Vanilla summoning staves is off."
+
+[formula.jewel-dismantling]
+jewel_link = "Dismantling it gives divine and azurite dust by its item level: see [{title}]({link})."
+title = "Dismantling unique jewels"
+text = "Dismantling a unique jewel gives divine dust and azurite dust by its item level:"
+formula = "divine dust = {divine} × (1 + (item level − 1) ÷ {step}); azurite dust = {azurite} × (1 + (item level − 1) ÷ {step}); both rounded"
+divine = "Divine dust"
+azurite = "Azurite dust"
+speed = "At the rune carver's table, each dismantle takes at most {s} s."
+
+[formula.permadeath]
+title = "Permadeath"
+text = "The server setting Permadeath mode (off by default) makes death permanent in the ways chosen with its other settings, each off by default:"
+items = "Permadeath: destroy all items: everything you carry and wear is destroyed, with no tombstone."
+combat = "Permadeath: reset the combat tree: back to level 1 with no experience, only the start allocated."
+craft = "Permadeath: reset the craft tree: all crafting progress is lost."
+blink = "Permadeath: no Blink and Mirror creatures: creatures never get those two modifiers."
+guard = "Permadeath: one-shot guard: a hit that would kill you and deals more than {share} of your maximum health leaves you at 1 health instead, at most once every {minutes} minutes of world time."
+mercy = "Permadeath: right to a mistake: one death is forgiven and works like an ordinary death; the right comes back after {hours} hours of play."

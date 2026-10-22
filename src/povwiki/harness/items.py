@@ -171,7 +171,7 @@ def _implicits(item, prefab: str) -> list[dict]:
     Implicits = getattr(PassiveTree, "Implicits", None)
     if Implicits is None:  # older versions
         return []
-    for owner in ("Belts", "Rings"):  # they register their implicits on first use (Implicits.Rows)
+    for owner in ("Belts", "Rings", "StaffImplicits"):  # they register their implicits on first use (Implicits.Rows)
         if (cls := getattr(PassiveTree, owner, None)) is not None:
             cls.Touch()
     bases = clr.GetClrType(Implicits).GetField("bases", _ALL).GetValue(None)

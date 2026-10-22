@@ -101,7 +101,7 @@ def render_loot(errors: list) -> dict:
     from PassiveTree.Loot import LootCatalog, RuneActions
 
     LootCatalog.Ensure()
-    essences = {kv.Key: {"family": kv.Value.Family, "boss": kv.Value.Boss or None, "cap": kv.Value.Cap} for kv in RuneActions.Essences}
+    essences = {kv.Key: {"family": kv.Value.Family, "boss": getattr(kv.Value, "Boss", None) or None, "cap": kv.Value.Cap} for kv in RuneActions.Essences}
     boss_families = {e["boss"] for e in essences.values() if e["boss"]}
 
     affixes = []
@@ -121,7 +121,18 @@ def render_loot(errors: list) -> dict:
         }
         for k in Runes.All
     }
-    return {"affixes": affixes, "essences": essences, "items": items, "slotMults": SLOT_MULTS, "biomes": _biomes()}
+    return {"affixes": affixes, "essences": essences, "items": items, "slotMults": SLOT_MULTS, "biomes": _biomes(),
+            "ascension": _ascension()}
+
+
+def _ascension() -> dict:
+    """Boss essences that ascend an item (5.3.0, ItemAscension.Targets): their biome and its item level."""
+    try:
+        from PassiveTree import BiomeLevels
+        from PassiveTree.Loot import ItemAscension
+    except ImportError:  # older versions
+        return {}
+    return {str(kv.Key): {"biome": str(kv.Value), "level": int(BiomeLevels.Of(kv.Value))} for kv in ItemAscension.Targets}
 
 
 def _biomes() -> list[dict]:

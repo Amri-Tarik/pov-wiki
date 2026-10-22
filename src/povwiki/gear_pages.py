@@ -249,6 +249,7 @@ def _currency_page(ctx: Ctx, item: str, catalog: dict, uses: dict, found: dict) 
     md += _made_section(ctx, item, page, found)
     md += _currency_drops(ctx, item, catalog)
     md += _essence_section(ctx, item, page)
+    md += _ascension_line(ctx, item, page)
     used = sorted(set(uses.get(item, [])), key=lambda i: _item_name(ctx, i))
     ground = _ground_into(ctx, item, page, found)
     if used or ground:
@@ -405,6 +406,18 @@ def _currency_drops(ctx: Ctx, item: str, catalog: dict) -> list[str]:
     if tables:
         md += [ui("gear.boss_tables"), ""] + _drop_table(ctx, tables)
     return md
+
+
+def _ascension_line(ctx: Ctx, item: str, page: str) -> list[str]:
+    """A boss essence's ascension (5.3.0, ItemAscension), linked to how it works."""
+    from .formula_pages import _anchor, shown
+
+    b = (ctx.loc.loot.get("ascension") or {}).get(item)
+    if not b or not shown(ctx, "ascension"):
+        return []
+    ui = ctx.loc.ui
+    return [ui("formula.ascension.essence_link", biome=ctx.loc.vkey(f"biome_{b['biome'].lower()}", b["biome"]), level=b["level"],
+               title=ui("formula.ascension.title"), link=_anchor("ascension", page)), ""]
 
 
 def _essence_section(ctx: Ctx, item: str, page: str) -> list[str]:
@@ -685,6 +698,11 @@ def _unique_page(ctx: Ctx, item: str, catalog: dict) -> str:
         md += [ui("gear.boss_tables"), ""] + _drop_table(ctx, tables)
     if item in ctx.loc.items and (ctx.loc.items[item].get("mod") or {}).get("kind"):
         md += [ui("gear.see_base", link=f"[{_unique_name(ctx, item)}]({rel(base_path(item), page)})"), ""]
+    from .formula_pages import _anchor, shown
+
+    if j and j.get("unique") and shown(ctx, "jewel-dismantling"):  # Disenchant.Returns: dust by item level (5.3.0)
+        md += [ui("formula.jewel-dismantling.jewel_link", title=ui("formula.jewel-dismantling.title"),
+                  link=_anchor("jewel-dismantling", page)), ""]
     from .patch_pages import history
 
     md += history(ctx, "uniques", [item], page)

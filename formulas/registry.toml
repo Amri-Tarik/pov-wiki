@@ -42,8 +42,8 @@ anchors = [
     "PassiveTree/MinionLife.cs :: MinionLife.IsActive",
     "PassiveTree/StarterStaves.cs :: StarterStaves.VanillaPower",
 ]
-fingerprint = "38090a46de95"
-checked = "5.2.1"
+fingerprint = "bc82ddb09f69"
+checked = "5.3.0"
 
 [formula.values]
 tamed = 0.5
@@ -95,11 +95,15 @@ anchors = [
     "PassiveTree/BossStars.cs :: BossStars.DamageFactor",
     "PassiveTree/BossStars.cs :: BossStars.Lay",
     "PassiveTree/BossStars.cs :: BossStars.Bind",
+    "PassiveTree/BossStars.cs :: BossStars.Give",
+    "PassiveTree/BossAltarBlood.cs :: BossAltarBlood.Max",
+    "PassiveTree/BossAltarBlood.cs :: BossAltarBlood.Spend",
 ]
-fingerprint = "dbe7aa0e03ad"
-checked = "5.1.1"
+fingerprint = "1488ff04aeae"
+checked = "5.3.0"
 
 [formula.values]
+blood_max = 5
 chance = 0.25
 two = 0.05
 health = 0.5
@@ -231,11 +235,13 @@ anchors = [
     "PassiveTree/Evasion.cs :: Evasion.AccuracyAt",
     "PassiveTree/Evasion.cs :: Evasion.Chance",
     "PassiveTree/Evasion.cs :: Evasion.Rating",
-    "PassiveTree/DefenceMath.cs :: DefenceMath.Chance",
-    "PassiveTree/EvasionSequence.cs :: EvasionSequence.Roll",
+    "PassiveTree/Evasion.cs :: Evasion.TryEvade",
+    "PassiveTree/Evasion.cs :: Evasion.StreakOf",
+    "PassiveTree/Evasion.cs :: Evasion.ChanceAgainst",
+    "PassiveTree/Evasion.cs :: Evasion.IsHit",
 ]
-fingerprint = "e81cc5c0087c"
-checked = "5.1.1"
+fingerprint = "c7b47a141fc0"
+checked = "5.3.0"
 
 [[formula]]
 id = "resistances"
@@ -298,8 +304,8 @@ anchors = [
     "PassiveTree.Loot/LootRoller.cs :: LootRoller.RaiseCraftLevel",
     "PassiveTree.Loot/LootCatalog.cs :: TierDef.Allows",
 ]
-fingerprint = "180a192855c8"
-checked = "5.1.2"
+fingerprint = "57f04d1a6a1b"
+checked = "5.3.0"
 
 [[formula]]
 id = "experience-falloff"
@@ -377,6 +383,7 @@ checked = "5.1.1"
 id = "strikes"
 anchors = [
     "PassiveTree/Strikes.cs :: Strikes.Eligible",
+    "PassiveTree/Strikes.cs :: Strikes.IsStrikeSwing",
     "PassiveTree/Strikes.cs :: Swing.Postfix",
     "PassiveTree/Strikes.cs :: Strikes.Critical",
     "PassiveTree/Strikes.cs :: Strikes.Doubled",
@@ -389,8 +396,8 @@ anchors = [
     "PassiveTree/Tunables.cs :: \"strike.reach\"",
     "PassiveTree/Tunables.cs :: \"strike.radius\"",
 ]
-fingerprint = "04f27c363e55"
-checked = "5.1.2"
+fingerprint = "2de37cc9e5a0"
+checked = "5.3.0"
 
 [[formula]]
 id = "phantom-strikes"
@@ -453,8 +460,10 @@ anchors = [
     "PassiveTree/AilmentGauges.cs :: AilmentGauges.Feed",
     "PassiveTree/AilmentGauges.cs :: AilmentGauges.Melt",
     "PassiveTree/AilmentGauges.cs :: AilmentGauges.Live",
+    "PassiveTree/AilmentGauges.cs :: AilmentGauges.Ended",
     "PassiveTree/AilmentGauges.cs :: AilmentGauges.Build",
     "PassiveTree/AilmentGauges.cs :: AilmentGauges.Ignite",
+    "PassiveTree/AilmentGauges.cs :: AilmentGauges.Channel",
     "PassiveTree/AilmentGauges.cs :: Fire.Prefix",
     "PassiveTree/AilmentGauges.cs :: Poison.Prefix",
     "PassiveTree/AilmentGauges.cs :: Frost.Prefix",
@@ -465,37 +474,47 @@ anchors = [
     "PassiveTree/AilmentDamage.cs :: AilmentDamage.Component",
     "PassiveTree/AilmentDamage.cs :: AilmentDamage.Grip",
     "PassiveTree/Ailments.cs :: Ailments.Grip",
-    "PassiveTree/Ailments.cs :: Ailments.BurnTotal",
-    "PassiveTree/Ailments.cs :: Ailments.BurnDamage",
-    "PassiveTree/Ailments.cs :: Ailments.PoisonTotal",
-    "PassiveTree/Ailments.cs :: SE_Burning_AddFireDamage.Prefix",
-    "PassiveTree/Ailments.cs :: SE_Poison_AddDamage.Prefix",
-    "PassiveTree/Ailments.cs :: SE_Poison_AddDamage.Postfix",
+    "PassiveTree/Ailments.cs :: Ailments.Before",
     "PassiveTree/Ailments.cs :: SE_Frost_AddDamage.Prefix",
-    "PassiveTree/ElementalBonuses.cs :: ElementalBonuses.StateScale",
     "PassiveTree/ElementalBonuses.cs :: ElementalBonuses.Combined",
-    "PassiveTree/ElementalBonuses.cs :: ElementalBonuses.ShockStaggerDamage",
-    "PassiveTree/EnemyDifficulty.cs :: EnemyDifficulty.BaseMaxHealth",
-    "PassiveTree/Combat.cs :: Combat.OpenWound",
-    "PassiveTree/Effects.cs :: Character_RPC_Damage_Ailments.Postfix",
+    "PassiveTree/CreatureAilmentTraits.cs :: CreatureAilmentTraits.BuildUp",
     "PassiveTree/CreatureAilmentTraits.cs :: CreatureAilmentTraits.UndeadBones",
-    "PassiveTree/CreatureAilmentTraits.cs :: CreatureAilmentTraits.table",
-    "PassiveTree/CreatureAilmentTraits.cs :: Apply.Postfix",
-    "PassiveTree/Effects.cs :: Effects.ScaleAilment",
-    "PassiveTree/EffectDuration.cs :: EffectDuration.Factor",
-    "PassiveTree/Tunables.cs :: \"ailment.threshold\"",
-    "valheim/Character.cs :: Character.RPC_Damage",
-    "valheim/SE_Burning.cs :: SE_Burning.AddFireDamage",
-    "valheim/SE_Poison.cs :: SE_Poison.AddDamage",
+    "PassiveTree/DamagingAilments.cs :: DamagingAilments.Share",
+    "PassiveTree/DamagingAilments.cs :: DamagingAilments.BaseSeconds",
+    "PassiveTree/DamagingAilments.cs :: DamagingAilments.Magnitude",
+    "PassiveTree/DamagingAilments.cs :: DamagingAilments.Dps",
+    "PassiveTree/DamagingAilments.cs :: DamagingAilments.Inc",
+    "PassiveTree/DamagingAilments.cs :: DamagingAilments.More",
+    "PassiveTree/DamagingAilments.cs :: DamagingAilments.Flat",
+    "PassiveTree/DamagingAilments.cs :: DamagingAilments.Seconds",
+    "PassiveTree/DamagingAilments.cs :: DamagingAilments.PoisonLimit",
+    "PassiveTree/DamagingAilments.cs :: DamagingAilments.Dot",
+    "PassiveTree/DamagingAilments.cs :: DamagingAilments.Prepare",
+    "PassiveTree/DamagingAilments.cs :: DamagingAilments.Place",
+    "PassiveTree/DamagingAilments.cs :: DamagingAilments.Accrue",
+    "PassiveTree/DamagingAilments.cs :: DamagingAilments.Step",
+    "PassiveTree/ShockAilment.cs :: ShockAilment.Raw",
+    "PassiveTree/ShockAilment.cs :: ShockAilment.Potency",
+    "PassiveTree/ShockAilment.cs :: ShockAilment.Threshold",
+    "PassiveTree/ShockAilment.cs :: ShockAilment.EffectInc",
+    "PassiveTree/ShockAilment.cs :: ShockAilment.EffectMore",
+    "PassiveTree/ShockAilment.cs :: ShockAilment.Seconds",
+    "PassiveTree/ShockAilment.cs :: ShockAilment.Add",
+    "PassiveTree/ShockAilment.cs :: ShockAilment.Acting",
+    "PassiveTree/ShockAilment.cs :: DamageTaken.Prefix",
+    "PassiveTree/ShockAilment.cs :: StaggerTaken.Prefix",
+    "PassiveTree/DotMultiplier.cs :: DotMultiplier.Factor",
+    "PassiveTree/DotMultiplier.cs :: DotMultiplier.TypeOf",
+    "PassiveTree/Combat.cs :: Combat.OpenWound",
+    "PassiveTree/Combat.cs :: Combat.Wounded",
 ]
-fingerprint = "18429c5bc8d1"
-checked = "5.2.1"
+fingerprint = "c6fae1ce4a76"
+checked = "5.3.0"
 
 [formula.values]
 hold = 3
 drain = 0.25
-bleed_share = 0.15
-bleed_ticks = 5
+wet_drain = 6
 
 [[formula]]
 id = "rune-shield"
@@ -519,8 +538,8 @@ anchors = [
     "PassiveTree/Tunables.cs :: \"shield.delay-cap\"",
     "valheim/Character.cs :: Character.RPC_Damage",
 ]
-fingerprint = "a470d3172431"
-checked = "5.2.0"
+fingerprint = "00550da6d1f1"
+checked = "5.3.0"
 
 [formula.values]
 base = 0
@@ -658,8 +677,8 @@ anchors = [
     "PassiveTree/Plugin.cs :: \"Glancing blow chance for everyone\"",
     "PassiveTree/Plugin.cs :: \"Glancing blow reduction\"",
 ]
-fingerprint = "0a1d107065ea"
-checked = "5.1.2"
+fingerprint = "46934a4494af"
+checked = "5.3.0"
 
 [formula.values]
 chance = 0.25
@@ -684,8 +703,8 @@ anchors = [
     "PassiveTree/Tunables.cs :: \"thorns.block.share\"",
     "PassiveTree/Tunables.cs :: \"thorns.riposte.share\"",
 ]
-fingerprint = "d79e38ceb342"
-checked = "5.1.2"
+fingerprint = "1d1b022eb472"
+checked = "5.3.0"
 
 [formula.values]
 full_range = 3
@@ -736,12 +755,12 @@ anchors = [
     "PassiveTree/Endurance.cs :: Endurance.Reduction",
     "PassiveTree/Endurance.cs :: Endurance.Checked",
     "PassiveTree/Endurance.cs :: Endurance.Reduce",
-    "PassiveTree/Effects.cs :: Character_RPC_Damage.Prefix",
+    "PassiveTree/EnergyShield.cs :: Character_ApplyDamage_Shield.Prefix",
     "PassiveTree/Tunables.cs :: \"endurance.base\"",
     "PassiveTree/Tunables.cs :: \"endurance.cap\"",
 ]
-fingerprint = "fc791b4960e8"
-checked = "5.1.2"
+fingerprint = "0139615a1fb4"
+checked = "5.3.0"
 
 [[formula]]
 id = "armour-break"
@@ -794,8 +813,8 @@ anchors = [
     "valheim/Attack.cs :: Attack.ModifyDamage",
     "valheim/Character.cs :: Character.RPC_Damage",
 ]
-fingerprint = "bc03dfac4073"
-checked = "5.2.1"
+fingerprint = "e95a707a9e37"
+checked = "5.3.0"
 
 [formula.values]
 staggered = 0.15
@@ -811,8 +830,8 @@ anchors = [
     "valheim/Attack.cs :: Attack.ModifyDamage",
     "valheim/Character.cs :: Character.RPC_Damage",
 ]
-fingerprint = "c018141ccc2d"
-checked = "5.2.0"
+fingerprint = "2c3747268896"
+checked = "5.3.0"
 
 [[formula]]
 id = "player-penetration"
@@ -854,8 +873,8 @@ anchors = [
     "PassiveTree/MinionSacrifice.cs :: \"private const float Reach\"",
     "PassiveTree/MinionLife.cs :: MinionLife.Scale",
 ]
-fingerprint = "a12775afaa3a"
-checked = "5.2.1"
+fingerprint = "95ff43d874ae"
+checked = "5.3.0"
 
 [formula.values]
 quality_health = 0.25
@@ -903,8 +922,8 @@ anchors = [
     "PassiveTree/StarterStaves.cs :: StarterStaves.VanillaPower",
     "PassiveTree/StarterStaves.cs :: Vanilla_Gate.Prefix",
 ]
-fingerprint = "96e0c4fbd0e6"
-checked = "5.2.1"
+fingerprint = "d275ead0b0c1"
+checked = "5.3.0"
 
 [[formula]]
 id = "summon-strength"
@@ -917,8 +936,8 @@ anchors = [
     "PassiveTree/StarterStaves.cs :: StarterStaves.VanillaPower",
     "PassiveTree/CreatureBonuses.cs :: CreatureBonuses.HealthFactor",
 ]
-fingerprint = "9ec57a7f5db9"
-checked = "5.2.1"
+fingerprint = "28e173e00ade"
+checked = "5.3.0"
 
 [formula.values]
 quality_health = 0.25
@@ -948,11 +967,10 @@ anchors = [
     "PassiveTree/Tunables.cs :: \"minion.guard-seconds\"",
     "PassiveTree/Tunables.cs :: \"minion.guard-share\"",
 ]
-fingerprint = "02212c184cb7"
-checked = "5.2.1"
+fingerprint = "b964105cd1f3"
+checked = "5.3.0"
 
 [formula.values]
-damage_cap = 1.0
 taken_min = 0.4
 taken_max = 5.0
 ailment_cap = 0.9
@@ -1002,3 +1020,108 @@ checked = "5.2.1"
 [formula.values]
 per_cast = 1
 links = 1
+
+[[formula]]
+id = "ranged-falloff"
+anchors = [
+    "PassiveTree/RangedFalloff.cs :: RangedFalloff.Factor",
+    "PassiveTree/RangedFalloff.cs :: RangedFalloff.Stretch",
+    "PassiveTree/RangedFalloff.cs :: RangedFalloff.Applies",
+    "PassiveTree/RangedFalloff.cs :: RangedFalloff.Apply",
+]
+fingerprint = "0aaab424c33c"
+checked = "5.3.0"
+
+[[formula]]
+id = "ground-effects"
+anchors = [
+    "PassiveTree/GroundEffects.cs :: GroundEffects.FromSpell",
+    "PassiveTree/GroundEffects.cs :: GroundEffects.Create",
+    "PassiveTree/GroundEffects.cs :: GroundEffects.Limit",
+    "PassiveTree/GroundEffects.cs :: GroundEffects.Evict",
+    "PassiveTree/GroundEffects.cs :: GroundEffects.Compute",
+    "PassiveTree/GroundEffects.cs :: GroundEffects.Apply",
+    "PassiveTree/GroundEffects.cs :: GroundEffects.Pay",
+    "PassiveTree/GroundEffects.cs :: GroundEffects.Touches",
+    "PassiveTree/GroundEffects.cs :: GroundEffects.Legacy",
+    "PassiveTree/GroundEffects.cs :: SpellImpact.Postfix",
+    "PassiveTree/SpellGround.cs :: SpellGround.Impact",
+    "PassiveTree/SpellGround.cs :: Area.Postfix",
+    "PassiveTree/GroundSliding.cs :: GroundSliding.Blend",
+    "PassiveTree/GroundSliding.cs :: Traction.Postfix",
+    "PassiveTree/Effects.cs :: Effects.LayerOn",
+]
+fingerprint = "948d36e02cde"
+checked = "5.3.0"
+
+[formula.values]
+max_radius = 12
+max_life = 60
+
+[[formula]]
+id = "infusion"
+anchors = [
+    "PassiveTree/Infusion.cs :: Infusion.Step",
+    "PassiveTree/Infusion.cs :: Infusion.Limit",
+    "PassiveTree/Infusion.cs :: Infusion.Active",
+    "PassiveTree/Infusion.cs :: Infusion.Shrink",
+    "PassiveTree/Infusion.cs :: Infusion.Covered",
+    "PassiveTree/Infusion.cs :: Infusion.Eligible",
+    "PassiveTree/Infusion.cs :: Infusion.Freeze",
+    "PassiveTree/Infusion.cs :: Infusion.Split",
+    "PassiveTree/Infusion.cs :: Infusion.Expire",
+    "PassiveTree/Infusion.cs :: Shot.Postfix",
+    "PassiveTree/Infusion.cs :: AreaHit.Prefix",
+    "PassiveTree/SpellEcho.cs :: SpellEcho.Infused",
+]
+fingerprint = "84502d392cc5"
+checked = "5.3.0"
+
+[formula.values]
+min_radius = 0.3
+
+[[formula]]
+id = "ascension"
+anchors = [
+    "PassiveTree.Loot/ItemAscension.cs :: ItemAscension.Targets",
+    "PassiveTree.Loot/ItemAscension.cs :: ItemAscension.CanApply",
+    "PassiveTree.Loot/ItemAscension.cs :: ItemAscension.Apply",
+    "PassiveTree.Loot/ItemAscension.cs :: ItemAscension.Compute",
+    "PassiveTree.Loot/ItemAscension.cs :: ItemAscension.Build",
+    "PassiveTree.Loot/ItemAscension.cs :: ItemAscension.Value",
+    "PassiveTree.Loot/ItemAscension.cs :: ItemAscension.Effective",
+    "PassiveTree.Loot/ItemAscension.cs :: ItemAscension.ClassOf",
+    "PassiveTree.Loot/ItemAscension.cs :: ItemAscension.Eligible",
+    "PassiveTree.Loot/ItemAscension.cs :: ItemAscension.BaseBiome",
+    "PassiveTree.Loot/ItemAscension.cs :: ItemAscension.MinionStage",
+    "PassiveTree.Loot/ItemAscension.cs :: ItemAscension.UpgradeRecipe",
+]
+fingerprint = "71ab93a187f4"
+checked = "5.3.0"
+
+[formula.values]
+min_damage = 5
+
+[[formula]]
+id = "jewel-dismantling"
+anchors = [
+    "PassiveTree.Loot/Disenchant.cs :: Disenchant.Returns",
+    "PassiveTree/CraftSalvage.cs :: CraftSalvage.DisenchantSeconds",
+    "PassiveTree/CraftSalvage.cs :: CraftSalvage.DisenchantStep",
+]
+fingerprint = "1811bcbb504c"
+checked = "5.3.0"
+
+[formula.values]
+seconds = 0.5
+
+[[formula]]
+id = "permadeath"
+anchors = [
+    "PassiveTree/Permadeath.cs :: Permadeath.Bind",
+    "PassiveTree/Permadeath.cs :: Permadeath.Decide",
+    "PassiveTree/Permadeath.cs :: Permadeath.DestroyItems",
+    "PassiveTree/Progress.cs :: Progress.PermadeathWipe",
+]
+fingerprint = "0faa3429152f"
+checked = "5.3.0"

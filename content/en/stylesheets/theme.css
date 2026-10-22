@@ -204,3 +204,96 @@ body { background: var(--pov-light), var(--md-default-bg-color); }
 @media screen and (min-width: 76.25em) {
   .md-nav--primary .md-nav .md-nav .md-nav__list { padding-left: 0.9rem; }
 }
+
+/* ---- Mobile navigation (javascripts/mobile-nav.js): where the menus are ---- */
+@media screen and (max-width: 76.234375em) {
+  /* The menu button says what it is. */
+  .md-header__button.pov-menu-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    width: auto;
+    margin-left: 0.2rem;
+    padding: 0.3rem 0.6rem 0.3rem 0.4rem;
+    border: 1px solid var(--pov-edge);
+    border-radius: 1rem;
+    background: var(--pov-tint);
+  }
+  .pov-menu-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.03em; line-height: 1; }
+
+  /* A quiet arrow on the left edge: tap or pull it to open the menu. Hidden while the menu is open. */
+  .pov-edge-tab {
+    position: fixed;
+    left: 0;
+    top: 50%;
+    z-index: 4;
+    width: 0.8rem;
+    height: 3rem;
+    margin-top: -1.5rem;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .pov-edge-tab::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--pov-gold);
+    filter: drop-shadow(0 0 0.15rem var(--md-default-bg-color));
+    -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.6 16.6 13.2 12 8.6 7.4 10 6l6 6-6 6z"/></svg>') center / contain no-repeat;
+    mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.6 16.6 13.2 12 8.6 7.4 10 6l6 6-6 6z"/></svg>') center / contain no-repeat;
+  }
+  #__drawer:checked ~ .pov-edge-tab { opacity: 0; transform: translateX(-100%); pointer-events: none; }
+
+  /* First visit: the menu peeks out twice, the tab glows, and a hint says how to open it. */
+  .pov-hinting .md-sidebar--primary { animation: pov-peek 1.4s ease-in-out 0.2s 2; box-shadow: var(--pov-shadow); }
+  .pov-hinting .pov-edge-tab { animation: pov-glow 1.4s ease-in-out 3; }
+  .pov-nav-hint {
+    position: fixed;
+    left: 1.5rem;
+    top: calc(50% - 1.5rem);
+    z-index: 6;
+    max-width: 13rem;
+    padding: 0.55rem 0.7rem;
+    font-size: 0.7rem;
+    line-height: 1.4;
+    color: var(--md-default-fg-color);
+    background: var(--pov-panel);
+    border: 1px solid var(--pov-edge);
+    border-radius: 0.4rem;
+    box-shadow: var(--pov-shadow);
+    animation: pov-fade-in 0.3s ease-out;
+  }
+}
+/* Very narrow phones: the button keeps only its icon. */
+@media screen and (max-width: 22em) { .pov-menu-label { display: none; } }
+/* "On this page" names itself next to its icon (the button only shows on phones). It is lit
+   while its list is open, however it was opened (tap or swipe), and only then: on touch screens
+   the theme's hover and focus colours stay stuck after a tap. */
+.pov-toc-label { font-weight: 600; }
+@media screen and (max-width: 59.984375em) {
+  .md-sidebar--secondary .md-sidebar-button:focus,
+  .md-sidebar--secondary .md-sidebar-button:hover {
+    color: var(--md-default-fg-color--light);
+    background-color: var(--md-default-bg-color--light);
+  }
+  .md-sidebar--secondary #__toc:checked ~ .md-sidebar-button__wrapper .md-sidebar-button {
+    color: var(--md-accent-bg-color);
+    background-color: var(--md-accent-fg-color);
+  }
+  .md-sidebar--secondary .md-sidebar-button:focus-visible { outline: 2px solid var(--md-accent-fg-color); }
+
+  /* "Back to top" moves to the bottom left, clear of "On this page" in the bottom right. */
+  [dir=ltr] .md-top { left: 0.8rem; margin-left: 0; transform: none; }
+  [dir=ltr] .md-top[hidden] { transform: translateY(0.2rem); }
+}
+@media screen and (max-width: 59.984375em) and (hover: hover) {
+  .md-sidebar--secondary .md-sidebar-button:hover { color: var(--md-accent-fg-color); }
+}
+
+@keyframes pov-peek { 0%, 100% { transform: translateX(0); } 45%, 60% { transform: translateX(2rem); } }
+@keyframes pov-glow { 0%, 100% { opacity: 0.6; transform: none; } 50% { opacity: 1; transform: translateX(0.25rem); } }
+@keyframes pov-fade-in { from { opacity: 0; transform: translateX(-0.4rem); } to { opacity: 1; transform: none; } }

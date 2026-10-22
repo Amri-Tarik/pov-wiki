@@ -18,8 +18,29 @@ def plain(s: str) -> str:
     return _ANY_TAG.sub("", s)
 
 
+# Keywords whose glossary page is merged into another page about the same thing (a mastery
+# option, a keystone, a weapon type): slug -> that page. The same in every language, set once
+# before the languages are built (pages.merged_terms).
+_merged: dict[str, str] = {}
+
+
+def set_merged(merged: dict[str, str]) -> None:
+    _merged.clear()
+    _merged.update(merged)
+
+
+def merged_into(page: str) -> list[str]:
+    """The keywords merged into this page."""
+    return [slug for slug, target in _merged.items() if target == page]
+
+
+def is_merged(slug: str) -> bool:
+    return slug in _merged
+
+
 def glossary_path(slug: str) -> str:
-    return f"glossary/{slug}.md"
+    """Where a keyword is explained: its glossary page, or the page it is merged into."""
+    return _merged.get(slug) or f"glossary/{slug}.md"
 
 
 def rel(target: str, page: str) -> str:

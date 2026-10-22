@@ -108,7 +108,7 @@ def render_difficulty(errors: list) -> dict:
                 "phantom.damage", "phantom.radius", "phantom.interval", "phantom.delay", "attrs.might-covers",
                 "ailment.threshold", "shield.delay-cap",  # the ailment gauge (AilmentDamage.Grip)
                 # Charged attacks, slams, thorns, impale, endurance.
-                "charge.cooldown", "charge.source-cooldown", "charge.source-cooldown.crit", "splash.radius",
+                "charge.cooldown", "charge.source-cooldown", "charge.source-cooldown.crit", "splash.radius", "movement.charge-distance",
                 "slam.ground-radius", "aftershock.delay", "thorns.increased.base", "thorns.block.share",
                 "thorns.riposte.share", "impale.stack", "impale.limit", "impale.window", "endurance.base", "endurance.cap",
                 "rage.more-per-point", "stagger.rune-shield", "phantom.stagger", "xp.ally-kill",

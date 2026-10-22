@@ -577,9 +577,18 @@ anchors = [
     "PassiveTree/Tunables.cs :: \"charge.source-cooldown\"",
     "PassiveTree/Tunables.cs :: \"charge.source-cooldown.crit\"",
     "PassiveTree/Tunables.cs :: \"splash.radius\"",
+    "PassiveTree/CriticalHits.cs :: \"ChargedAttacks.Grant(Trigger.Crit\"",
+    "PassiveTree/Combat.cs :: \"ChargedAttacks.Grant(Trigger.Parry\"",
+    "PassiveTree/CastEvents.cs :: \"ChargedAttacks.Grant(Trigger.Cast\"",
+    "PassiveTree/ChargedAttacks.cs :: \"Grant(Trigger.Hit, action);\"",
+    "PassiveTree/EventNet.cs :: \"ChargedAttacks.Grant(t, Subjects.None);\"",
+    "PassiveTree/TrinketEffects.cs :: \"ChargedAttacks.Grant(Trigger.TrinketActivation\"",
+    "PassiveTree/MovementOps.cs :: \"ChargedAttacks.GrantFrom(Trigger.Sprint)\"",
+    "PassiveTree/MovementOps.cs :: \"runDistance += Vector3.Distance\"",
+    "PassiveTree/Tunables.cs :: \"movement.charge-distance\"",
 ]
-fingerprint = "b88841ba92f3"
-checked = "5.1.2"
+fingerprint = "9e41c6dc4762"
+checked = "5.2.0"
 
 [formula.values]
 increase = 0.25

@@ -66,6 +66,8 @@ def _write_config(lang: Language, enabled: list[Language], loc: Localizer, out) 
     extra["pov_root"] = _site_root()
     extra["pov_locale"] = {"ru": "ru_RU"}.get(lang.code, "en_US")
     extra["pov_social_image"] = f"{_site_url(lang)}assets/images/social.png"
+    # Labels and the one-time hint of the mobile navigation (javascripts/mobile-nav.js).
+    extra["pov_ui"] = {k: loc.ui(f"nav.{k}") for k in ("menu", "on_this_page", "open_menu", "swipe_hint")}
     p["nav"] = _nav(nav(), loc)
     if len(enabled) > 1:
         p.setdefault("extra", {})["alternate"] = [
@@ -114,6 +116,8 @@ def build_language(lang: Language, default: Language, enabled: list[Language], d
     art = icons.Icons(data, loc.valheim["dir"] if loc.valheim else None) if icons.enabled() else None
     ctxs = [Ctx(data=data, loc=loc, spec=spec, icons=art) for spec in TREES]
     ctxs[0].others = ctxs[1:]
+    for ctx in ctxs:
+        ctx.trees = ctxs
     with _timed("load rendered game text"):
         for ctx in ctxs:  # warm the caches, so generator timings are their own
             ctx.tree_nodes  # noqa: B018
@@ -132,8 +136,9 @@ def build_language(lang: Language, default: Language, enabled: list[Language], d
     from .formula_pages import page_formulas
     from .monster_pages import page_bosses, page_creatures, page_monster_mods
     from .patch_pages import page_patches
+    from .weapon_pages import page_weapons
 
-    jobs += [(gen.__name__, gen, ctxs[0]) for gen in (page_mods, page_bases, page_currency, page_jewels, page_uniques,
+    jobs += [(gen.__name__, gen, ctxs[0]) for gen in (page_mods, page_bases, page_weapons, page_currency, page_jewels, page_uniques,
                                                       page_monster_mods, page_bosses, page_creatures, page_buildings,
                                                       page_formulas, page_patches)]
     for label, gen, ctx in jobs:
@@ -176,6 +181,10 @@ def build(version: str, only: list[str] | None = None, render: bool = True) -> N
 
     if hidden := [st for st in check(version).values() if not st.ok]:  # re-read them, then `povwiki formulas --accept`
         print(f"formulas hidden until re-checked: {', '.join(f'{st.id} ({st.reason})' for st in hidden)}")
+    from . import markup
+    from .pages import merged_terms
+
+    markup.set_merged(merged_terms(data, default))  # the same pages merged in every language
     with ThreadPoolExecutor(max_workers=len(targets)) as pool:
         for job in [pool.submit(build_language, lang, default, enabled, data, render) for lang in targets]:
             job.result()

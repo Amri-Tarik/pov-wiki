@@ -249,7 +249,7 @@ def update(ctxs: list[Ctx]) -> None:
     text = json.dumps({"from": prev, "to": data.version, "date": data.meta["extracted"][:10], "changes": changes},
                       ensure_ascii=False, indent=1, sort_keys=True) + "\n"
     if not out.exists() or out.read_text(encoding="utf-8") != text:
-        out.write_text(text, encoding="utf-8")
+        out.write_text(text, encoding="utf-8", newline="\n")
 
 
 def write(version: str) -> None:
@@ -307,6 +307,8 @@ def _link(entry: dict, page: str, count: int = 1) -> str:
     if not entry.get("link"):
         return f"**{name}**{times}"
     target, _, anchor = entry["link"].partition("#")
+    if target.startswith("glossary/") and target.endswith(".md"):  # merged into a page since
+        target = glossary_path(target[len("glossary/"):-3])
     if target.endswith("/"):  # the tree viewer: its #node anchor only exists in its script (pages._tree_link)
         return f'<a href="{rel(target.rstrip("/"), page)}/#{anchor}"><b>{name}</b></a>{times}'
     return f"[**{name}**]({rel(target, page)}{'#' + anchor if anchor else ''}){times}"

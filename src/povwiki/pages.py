@@ -13,6 +13,7 @@ Jewel-revealed slots are left out entirely: they are empty until a jewel fills t
 import hashlib
 import html
 import json
+import posixpath
 from collections import Counter, defaultdict
 from collections.abc import Callable
 from dataclasses import dataclass, field
@@ -22,7 +23,7 @@ from .data import GameData
 from .i18n import Localizer
 from .icons import DOCS_DIR as ICONS_DIR
 from .icons import FRAME_KINDS, Icons, frame_kind
-from .markup import glossary_path, plain, rel, slugs, summary, to_html, to_md
+from .markup import glossary_path, is_merged, merged_into, plain, rel, slugs, summary, to_html, to_md
 
 # Node types that get a page of their own.
 PAGE_SIZES = ("Keystone", "Notable")
@@ -71,6 +72,7 @@ class Ctx:
     spec: TreeSpec = PASSIVES
     icons: Icons | None = None  # None when icons are turned off
     others: list = field(default_factory=list)  # the other trees' contexts (for the glossary)
+    trees: list = field(default_factory=list)  # every tree's context, this one included
 
     @cached_property
     def raw_tree(self) -> dict:
@@ -560,6 +562,8 @@ def page_options(ctx: Ctx) -> dict[str, str]:
         if unlocked := [built[f] for f in dict.fromkeys(x.get("flag") for x in g["options"]) if f in built]:
             md += [f"## {loc.ui('buildings.unlocks')}", "", ", ".join(building_link(ctx, b, page) for b in unlocked), ""]
 
+        md += merged_section(ctx, page)
+        md += _keywords_section(ctx, page, [x for opt in g["options"] for x in opt["stats"] + opt["extra"]], [o["raw"].get("mods")])
         md += [f"## {loc.ui('page.offered_by')} ({len(g['nodes'])})", ""]
         md += _node_table(
             ctx, page, [loc.ui("col.name"), loc.ui("col.type"), ctx.ui("branch"), ""], g["nodes"],
@@ -573,6 +577,24 @@ def page_options(ctx: Ctx) -> dict[str, str]:
             md += [f"<small>{loc.ui('page.option_ids')}: {ids}</small>", ""]
         pages[page] = "\n".join(md + _footer(ctx))
     return pages
+
+
+# Stats about a keyword that their game text doesn't link ("charges your next attack").
+_STAT_KEYWORDS = {"ChargeNextAttack": "charged-attack", "MovementCharge": "charged-attack"}
+
+
+def _keywords_section(ctx: Ctx, page: str, lines: list[str], mods: list) -> list[str]:
+    """The keywords a node or option is about: the ones its text links, and the ones its stats
+    are about (_STAT_KEYWORDS). Keywords merged into this very page are left out."""
+    loc = ctx.loc
+    found = [s for line in lines for s in slugs(line)]
+    found += [_STAT_KEYWORDS[m["stat"]] for ms in mods for m in ms or [] if m.get("stat") in _STAT_KEYWORDS]
+    keys = [k for k in dict.fromkeys(found) if k in loc.wiki and glossary_path(k) != page]
+    if not keys:
+        return []
+    return ([f"## {loc.ui('page.keywords')}", ""]
+            + [f"- [{plain(loc.wiki[k]['title'])}]({rel(glossary_path(k), page)}): {_cell(summary(loc.wiki[k], 160))}" for k in keys]
+            + [""])
 
 
 def page_nodes(ctx: Ctx) -> dict[str, str]:
@@ -597,6 +619,7 @@ def page_nodes(ctx: Ctx) -> dict[str, str]:
         effect = _effect(ctx, page, r)
         if effect:
             md += ['<div class="pov-tooltip" markdown>', "", effect, "", "</div>", ""]
+        md += merged_section(ctx, page)
 
         # Mastery options, apart from the node's own effect.
         if r["options"]:
@@ -627,14 +650,8 @@ def page_nodes(ctx: Ctx) -> dict[str, str]:
             )
 
         # Keywords.
-        keys = dict.fromkeys(
-            s for line in r["stats"] + r["extra"] + [x for o in r["options"] for x in o["stats"] + o["extra"]]
-            for s in slugs(line) if s in loc.wiki
-        )
-        if keys:
-            md += [f"## {loc.ui('page.keywords')}", ""]
-            md += [f"- [{plain(loc.wiki[k]['title'])}]({rel(glossary_path(k), page)}): {_cell(summary(loc.wiki[k], 160))}" for k in keys]
-            md.append("")
+        lines = r["stats"] + r["extra"] + [x for o in r["options"] for x in o["stats"] + o["extra"]]
+        md += _keywords_section(ctx, page, lines, [n.get("mods"), *((o.get("raw") or {}).get("mods") for o in r["options"])])
 
         from .patch_pages import history
 
@@ -804,59 +821,145 @@ def _related_pages(ctx: Ctx) -> dict[str, list[tuple[str, str, str]]]:
     if ctx.loc.monsters.get("mods"):
         for term in ("item-quantity", "item-rarity"):
             found[term].append((ctx.loc.ui("monsters.mods"), MODS_PAGE, ctx.loc.ui("monsters.title")))
+    rune = ctx.loc.items.get("PT_RuneOfResurrection")
+    if rune and rune.get("mod"):  # brings a dead companion back
+        found["companion"].append((rune["mod"]["shared"]["m_name"], "items/base/PT_RuneOfResurrection.md", ctx.loc.ui("items.bases")))
     return found
 
 
-def page_glossary(ctx: Ctx) -> dict[str, str]:
-    """A page per term of the mod's in-game wiki, with what references it in every tree."""
+def _glossary_index(ctx: Ctx) -> dict:
+    """What every keyword is referenced by, in every tree and in item text: built once per
+    language, for glossary pages and the pages keywords are merged into."""
+    cache = ctx.loc.__dict__.setdefault("_glossary_index", {})
+    if not cache:
+        from .gear_pages import uniques_by_keyword
+        from .item_pages import mods_by_keyword
+
+        trees = ctx.trees or [ctx, *ctx.others]
+        first = trees[0]
+        terms = defaultdict(set)
+        for key, term in ctx.loc.wiki.items():
+            for slug in {s for line in term["text"] for s in slugs(line)}:
+                if slug != key:
+                    terms[slug].add(key)
+        cache.update(trees=trees, first=first, refs={t.spec.key: _references(t) for t in trees},
+                     mods=mods_by_keyword(first), uniques=uniques_by_keyword(first),  # item text links keywords too
+                     related=_related_pages(first), terms=terms)
+    return cache
+
+
+def _without(ref: dict, page: str, ctx: Ctx) -> dict:
+    """A keyword's references without the node or option whose page this is."""
+    out = {**ref, "Keystone": [n for n in ref["Keystone"] if node_path(ctx, n) != page],
+           "Notable": [n for n in ref["Notable"] if node_path(ctx, n) != page]}
+    out["options"] = [o for o in ref["options"] if (g := ctx.group_of.get(id(o))) is None or option_path(ctx, g) != page]
+    return out
+
+
+def glossary_body(ctx: Ctx, key: str, page: str, definition: bool = True) -> list[str]:
+    """What a keyword's glossary page shows under its title: the definition, its formulas, what
+    references it and its patch history. Also shown on the page a keyword is merged into
+    (definition=False when that page shows the definition itself)."""
     from .formula_pages import term_formulas
-    from .gear_pages import keyword_uniques_section, uniques_by_keyword
-    from .item_pages import keyword_mods_section, mods_by_keyword
+    from .gear_pages import keyword_uniques_section
+    from .item_pages import keyword_mods_section
+    from .patch_pages import history
 
-    loc, wiki = ctx.loc, ctx.loc.wiki
-    trees = [ctx, *ctx.others]
-    refs = {t.spec.key: _references(t) for t in trees}
-    mods, uniques = mods_by_keyword(ctx), uniques_by_keyword(ctx)  # item text links keywords too
-    related = _related_pages(ctx)
-    terms = defaultdict(set)
-    for key, term in wiki.items():
-        for slug in {s for line in term["text"] for s in slugs(line)}:
-            if slug != key:
-                terms[slug].add(key)
+    idx = _glossary_index(ctx)
+    loc, wiki, first = ctx.loc, ctx.loc.wiki, idx["first"]
+    mods, uniques, related, terms = idx["mods"], idx["uniques"], idx["related"], idx["terms"]
+    md = []
+    if definition:
+        md += [to_md(line, loc, page) + "\n" for line in wiki[key]["text"]] or [f"*{loc.ui('page.no_text')}*", ""]
+    md += term_formulas(first, key, page)  # the keyword's formulas, right under its definition
+    sections = [(t, _without(idx["refs"][t.spec.key][key], page, t)) for t in idx["trees"] if key in idx["refs"][t.spec.key]]
+    sections = [(t, body) for t, ref in sections if (body := _references_section(t, ref, page))]
+    if sections or terms.get(key) or mods.get(key) or uniques.get(key):
+        md += [f"## {loc.ui('page.referenced_by')}", ""]
+    for t, body in sections:
+        # One heading per tree, so passive and craft references are told apart.
+        md += [f"### {t.ui('title')}", ""] + [line.replace("### ", "#### ", 1) if line.startswith("### ") else line for line in body]
+    if mods.get(key) or uniques.get(key):
+        md += [f"### {loc.ui('items.title')}", ""]
+        if uniques.get(key):  # uniques first: few, and each one shown whole
+            md += keyword_uniques_section(first, uniques[key], page, key)
+        if mods.get(key):
+            md += keyword_mods_section(first, mods[key], page)
+    see = [k for k in sorted(terms.get(key, ()), key=lambda k: plain(wiki[k]["title"]).lower()) if glossary_path(k) != page]
+    if see or related.get(key):
+        md += [f"### {loc.ui('page.see_also')}", ""]
+        md += [f"- [{title}]({rel(target, page)}) <small>{kind}</small>" for title, target, kind in related.get(key, [])]
+        md += [f"- [{plain(wiki[k]['title'])}]({rel(glossary_path(k), page)})" for k in see]
+        md.append("")
+    md += history(first, "keywords", [key], page)
+    return md
 
-    pages = {}
+
+def _deeper(line: str) -> str:
+    """A heading one level down, for a section nested under a heading of its own."""
+    return "#" + line if line.startswith("#") and line.lstrip("#").startswith(" ") else line
+
+
+def merged_section(ctx: Ctx, page: str) -> list[str]:
+    """On a page keywords are merged into (a mastery option, a keystone): each keyword's
+    definition and references, under a heading of its own."""
+    md = []
+    for key in merged_into(page):
+        if key in ctx.loc.wiki:
+            md += [f"## {ctx.loc.ui('page.keyword', title=plain(ctx.loc.wiki[key]['title']))}", ""]
+            md += [_deeper(line) for line in glossary_body(ctx, key, page)]
+    return md
+
+
+def _redirect(target: str, here: str, title: str) -> str:
+    """A page that sends visitors (and search engines) to where a merged keyword now lives."""
+    url = posixpath.relpath(target[: -len("index.md")] if target.endswith("index.md") else target[:-3], here) + "/"
+    return (f'<!doctype html><html><head><meta charset="utf-8"><meta name="robots" content="noindex">'
+            f'<link rel="canonical" href="{url}"><meta http-equiv="refresh" content="0; url={url}">'
+            f'<title>{html.escape(title)}</title></head><body><a href="{url}">{html.escape(title)}</a></body></html>')
+
+
+def page_glossary(ctx: Ctx) -> dict[str, str]:
+    """A page per term of the mod's in-game wiki, with what references it in every tree. A term
+    merged into another page gets a redirect there instead."""
+    wiki, pages = ctx.loc.wiki, {}
     for key in sorted(wiki, key=lambda k: plain(wiki[k]["title"]).lower()):
-        page, term = glossary_path(key), wiki[key]
-        md = [f"# {plain(term['title'])}", ""]
-        md += [to_md(line, loc, page) + "\n" for line in term["text"]] or [f"*{loc.ui('page.no_text')}*", ""]
-        md += term_formulas(ctx, key, page)  # the keyword's formulas, right under its definition
-        sections = [(t, refs[t.spec.key][key]) for t in trees if key in refs[t.spec.key]]
-        if sections or terms.get(key) or mods.get(key) or uniques.get(key):
-            md += [f"## {loc.ui('page.referenced_by')}", ""]
-        for t, ref in sections:
-            body = _references_section(t, ref, page)
-            if body:
-                # One heading per tree, so passive and craft references are told apart.
-                md += [f"### {t.ui('title')}", ""] + [line.replace("### ", "#### ", 1) if line.startswith("### ") else line for line in body]
-        if mods.get(key) or uniques.get(key):
-            md += [f"### {loc.ui('items.title')}", ""]
-            if uniques.get(key):  # uniques first: few, and each one shown whole
-                md += keyword_uniques_section(ctx, uniques[key], page, key)
-            if mods.get(key):
-                md += keyword_mods_section(ctx, mods[key], page)
-        if terms.get(key) or related.get(key):
-            md += [f"### {loc.ui('page.see_also')}", ""]
-            md += [f"- [{title}]({rel(target, page)}) <small>{kind}</small>" for title, target, kind in related.get(key, [])]
-            md += [
-                f"- [{plain(wiki[k]['title'])}]({rel(glossary_path(k), page)})"
-                for k in sorted(terms.get(key, ()), key=lambda k: plain(wiki[k]["title"]).lower())
-            ]
-            md.append("")
-        from .patch_pages import history
-
-        md += history(ctx, "keywords", [key], page)
+        if is_merged(key):
+            pages[f"glossary/{key}/index.html"] = _redirect(glossary_path(key), f"glossary/{key}", plain(wiki[key]["title"]))
+            continue
+        page = glossary_path(key)
+        md = [f"# {plain(wiki[key]['title'])}", ""] + glossary_body(ctx, key, page)
         pages[page] = "\n".join(md + _footer(ctx))
     return pages
+
+
+def merged_terms(data: GameData, lang) -> dict[str, str]:
+    """Keywords of the mod's wiki that have a page of their own about the same thing, so their
+    glossary page is merged into it: weapon types (Knives), and mastery options and keystones of
+    the same name (Dagger throw). Matched on the default language's names, so every language
+    merges the same pages. Options that grant the keyword as a number (+5 Strength) are left
+    alone: the keyword means more than the option."""
+    from .weapon_pages import weapon_terms
+
+    loc = Localizer(lang, lang, data)
+    out = {k: v for k, v in weapon_terms().items() if k in loc.wiki}
+    by_title: dict[str, dict[str, list[str]]] = defaultdict(dict)
+    for spec in TREES:
+        c = Ctx(data=data, loc=loc, spec=spec)
+        for g in c.option_groups.values():
+            by_title[plain(g["options"][0]["title"]).strip().lower()][option_path(c, g)] = g["options"][0]["stats"]
+        for n in c.tree_nodes:
+            if n["size"] == "Keystone" and _title(c, n):
+                by_title[_title(c, n).lower()][node_path(c, n)] = []
+    for key, term in loc.wiki.items():
+        found = by_title.get(plain(term["title"]).strip().lower(), {})
+        if key in out or len(found) != 1:
+            continue
+        ((path, stats),) = found.items()
+        if any(key in slugs(line) and plain(line).lstrip()[:1] in "+-−1234567890" for line in stats):
+            continue
+        out[key] = path
+    return out
 
 
 # Generators per tree, by the page names a TreeSpec lists; the rest run for every tree.
@@ -875,12 +978,14 @@ def nav() -> list:
     Glossary term pages are reached from keyword links and search."""
     from .gear_pages import _GROUPS, group_path
     from .patch_pages import INDEX, patch_path, versions
+    from .weapon_pages import WEAPON_TYPES, weapon_path
 
     return [
         ("nav.home", "index.md"),
         *((f"{t.key}.title", [(f"{t.key}.{p}", f"{t.key}/{p}.md") for p in t.pages]
            + ([("buildings.title", "crafting/buildings.md")] if t is CRAFTING else [])) for t in TREES),
         ("items.title", [("items.mods", "items/mods.md"), ("items.bases", "items/bases.md"),
+                         ("weapons.title", [(f"weapons.{slug}", weapon_path(slug)) for slug, *_ in WEAPON_TYPES]),
                          ("gear.currency", [("gear.currency_all", "items/currency.md"),
                                             *((f"gear.group.{g}", group_path(g)) for g in _GROUPS)]),
                          ("gear.jewels", "items/jewels.md"), ("gear.uniques", "items/uniques.md")]),

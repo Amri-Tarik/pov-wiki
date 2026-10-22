@@ -70,6 +70,8 @@ def _one_per_name(ctx: Ctx, found: dict[str, dict]) -> dict[str, dict]:
 def _class(b: dict) -> tuple[str, str]:
     """(class, subclass tag): weapons by kind, armour by slot, shields by type."""
     tags = b["info"]["tags"]
+    if (b["info"].get("mod") or {}).get("kind") == "utility":  # the Rune of Resurrection: a tankard copy
+        return "utility", "utility"
     if "shield" in tags:
         return "shields", next((t for t in _SHIELDS if t in tags), "shield")
     if "weapon" in tags:
@@ -102,10 +104,14 @@ def _qualities(b: dict) -> range:
     return range(1, max(1, int(b["shared"].get("m_maxQuality") or 1)) + 1)
 
 
-def _kind_line(ctx: Ctx, b: dict) -> str:
+def _kind_line(ctx: Ctx, b: dict, page: str) -> str:
     """"axe · one-handed · evasion" from the item's tags."""
+    from .weapon_pages import weapon_path, weapon_title, weapon_type_of
+
     ui, tags = ctx.loc.ui, b["info"]["tags"]
     parts = [ui(f"tag.{_class(b)[1]}")]
+    if _class(b)[0] == "weapons" and (slug := weapon_type_of(tags)):
+        parts[0] = f"[{parts[0]}]({rel(weapon_path(slug), page)} \"{weapon_title(ctx, slug)}\")"
     parts += [ui(f"tag.{t}") for t in ("one_handed", "two_handed", "paired") if t in tags]
     if b["info"].get("defence"):
         parts.append(ui(f"defence.{b['info']['defence']}"))
@@ -134,6 +140,9 @@ def _stats(ctx: Ctx, b: dict) -> list[list[str]]:
         if any(values):
             rows.append([label, *(fmt(v) for v in values)])
 
+    if (info.get("mod") or {}).get("resurrection"):  # a tankard copy: its charges are listed instead
+        row(vk("item_weight"), [s.get("m_weight") or 0] * len(qs))
+        return rows
     for key, label in _DAMAGES:
         row(vk(label), [_damages(s, q).get(key, 0) for q in qs])
     defences = info.get("defences") or []
@@ -269,7 +278,15 @@ def page_bases(ctx: Ctx) -> dict[str, str]:
         if cls not in groups:
             continue
         md += [f"## {ui('class.' + cls)}", ""]
-        for sub in sorted(groups[cls], key=lambda t: ui(f"tag.{t}")):
+        subs = groups[cls]
+        if cls == "weapons":  # weapons have a page per type; the ones of no type are listed here
+            from .weapon_pages import weapons_index
+
+            md += weapons_index(ctx, found, page)
+            subs = {t: v for t, v in subs.items() if t == "weapon"}
+            if subs:
+                md += [ui("weapons.others"), ""]
+        for sub in sorted(subs, key=lambda t: ui(f"tag.{t}")):
             # Crafted items in progression order, then the ones only found as loot.
             def order(p: str) -> tuple:
                 recipe = _recipe(ctx, p)
@@ -297,7 +314,7 @@ def _base_page(ctx: Ctx, prefab: str, b: dict, found: dict) -> str:
     md = [f"# {b['name']}", ""]
     if art:
         md += [art, ""]
-    md += [f"<b>{_kind_line(ctx, b)}</b>", ""]
+    md += [f"<b>{_kind_line(ctx, b, page)}</b>", ""]
     if s.get("m_description"):
         md += [f"*{loc.vtext(s['m_description'])}*".replace("\n", " "), ""]
     summons = loc.difficulty.get("summons") or {}
@@ -313,6 +330,8 @@ def _base_page(ctx: Ctx, prefab: str, b: dict, found: dict) -> str:
         md += [f"## {ui('items.stats')}", ""]
         md += _table([ui("items.stat"), *(ui("items.quality_n", n=q) for q in qs)], stats)
 
+    md += _bomb_section(ctx, info.get("mod"), page) + _resurrection_section(ctx, info.get("mod"), page)
+
     recipe = _recipe(ctx, prefab)
     if recipe:
         station = _station(ctx, recipe)
@@ -322,6 +341,8 @@ def _base_page(ctx: Ctx, prefab: str, b: dict, found: dict) -> str:
             station = f"[{station}]({rel(building_path(recipe['station']['id']), page)})"
         station = f"{station} · {ui('items.station_level', n=recipe['stationLevel'])}"
         md += [f"## {ui('items.recipe')}", "", station, ""]
+        if (makes := recipe.get("makes") or recipe.get("amount") or 1) > 1:
+            md += [ui("items.makes", n=makes), ""]
         rows = []
         for res in recipe["resources"]:
             mat = res["item"]
@@ -346,7 +367,8 @@ def _base_page(ctx: Ctx, prefab: str, b: dict, found: dict) -> str:
     from .gear_pages import chisel_section
 
     md += chisel_section(ctx, prefab, page)
-    md += _mods_section(ctx, b, page)
+    if _class(b)[0] != "utility" or not info.get("mod"):  # the rune rolls nothing
+        md += _mods_section(ctx, b, page)
 
     md += [f"## {ui('items.tags')}", "", ui("items.tags_note"), ""]
     md += [", ".join(ui(f"tag.{t}") if ui(f"tag.{t}") != f"tag.{t}" else f"`{t}`" for t in info["tags"]), ""]
@@ -354,6 +376,48 @@ def _base_page(ctx: Ctx, prefab: str, b: dict, found: dict) -> str:
 
     md += history(ctx, "bases", [prefab], page)
     return "\n".join(md + _footer(ctx))
+
+
+def _bomb_section(ctx: Ctx, mod: dict | None, page: str) -> list[str]:
+    """The burst of the mod's bombs (BombLadder.Rung, StarterBomb): its radius and what it does
+    besides damage."""
+    bomb = (mod or {}).get("bomb")
+    if not bomb:
+        return []
+    from .markup import glossary_path
+
+    ui, term = ctx.loc.ui, lambda key: rel(glossary_path(key), page)
+    md = [f"## {ui('items.bomb')}", "", f"- {ui('items.bomb_radius', radius=_num(bomb['radius']))}"]
+    if "thornsShare" in bomb:
+        md.append(f"- {ui('items.bomb_thorns', base=_num(bomb['thornsBase']), share=_num(bomb['thornsShare'] * 100), thorns=term('thorns'))}")
+    if "pullRange" in bomb:
+        md.append(f"- {ui('items.bomb_pull', range=_num(bomb['pullRange']), seconds=_num(bomb['pullSeconds']))}")
+    if "breakShare" in bomb:
+        md.append(f"- {ui('items.bomb_break', share=_num(bomb['breakShare'] * 100), seconds=_num(bomb['breakSeconds']), corrosion=term('corrosion'))}")
+    if "tarSeconds" in bomb:
+        md.append(f"- {ui('items.bomb_tar', seconds=_num(bomb['tarSeconds']))}")
+    return md + [""]
+
+
+def _resurrection_section(ctx: Ctx, mod: dict | None, page: str) -> list[str]:
+    """The Rune of Resurrection (Resurrection): charges and channel time by quality, how it is
+    used and recharged."""
+    res = (mod or {}).get("resurrection")
+    if not res:
+        return []
+    from .markup import glossary_path
+
+    ui = ctx.loc.ui
+    md = [f"## {ui('items.resurrection')}", "", ui("items.resurrection_use", companion=rel(glossary_path("companion"), page),
+                                                    range=_num(res["range"])), ""]
+    md += _table([ui("items.stat"), *(ui("items.quality_n", n=q) for q in range(1, len(res["charges"]) + 1))], [
+        [ui("items.resurrection_charges"), *(str(c) for c in res["charges"])],
+        [ui("items.resurrection_seconds"), *(f"{_num(s)} s" for s in res["seconds"])],
+    ])
+    from .building_pages import building_path
+
+    return md + [ui("items.resurrection_recharge", station=rel(building_path("PT_RuneCarverTable"), page),
+                    azurite=rel("items/currency/PT_DivineAzurite.md", page)), ""]
 
 
 # ---- Mods that roll on a base -------------------------------------------------------------------

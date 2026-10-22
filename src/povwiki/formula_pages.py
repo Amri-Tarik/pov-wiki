@@ -673,12 +673,46 @@ def _charged(ctx, page, v):
             + _formula(ui("formula.charged-attacks.formula", inc=_pct(v["increase"])))
             + [ui("formula.charged-attacks.cooldown", source=_n(t["charge.source-cooldown"]), crit=_n(t["charge.source-cooldown.crit"]),
                   shared=_n(t["charge.cooldown"])), "",
+               *_charge_sources(ctx, page),
                ui("formula.charged-attacks.alt", only_alt=_mastery_link(ctx, "MasteryCharged1", page),
                   no_alt=_mastery_link(ctx, "MasteryAlternative2", page)), "",
                ui("formula.charged-attacks.double", double=_term(ctx, "charged-effects-double", page, start=True),
                   inc=_pct(2 * v["increase"])), "",
                ui("formula.charged-attacks.splash", splash=_term(ctx, "hit-splash", page, start=True),
                   radius=_n(t["splash.radius"]), area=_term(ctx, "area", page)), ""])
+
+
+def _charge_sources(ctx, page) -> list[str]:
+    """What charges the attack: the passive tree's ChargeNextAttack rows by their trigger (each
+    trigger calls ChargedAttacks.Grant: crits, parries, casts, alternative-attack hits, dodges,
+    jumps, trinkets), and Running Charge (MovementCharge, MovementOps: every so many metres)."""
+    from .pages import PASSIVES, _title, node_path, option_path
+
+    tree = next((c for c in ctx.trees if c.spec is PASSIVES), ctx)
+    ui, t = ctx.loc.ui, ctx.loc.difficulty.get("tunables", {})
+    found: dict[str, dict[str, str]] = {}
+
+    def trigger(m: dict) -> str | None:
+        if m.get("stat") == "MovementCharge":
+            return "Distance"
+        return m.get("after") if m.get("stat") == "ChargeNextAttack" else None
+
+    for n in tree.tree_nodes:
+        if n["size"] in ("Keystone", "Notable"):
+            for m in n.get("mods") or []:
+                if trig := trigger(m):
+                    found.setdefault(trig, {})[node_path(tree, n)] = _title(tree, n)
+    for g in tree.option_groups.values():
+        for m in g["options"][0]["raw"].get("mods") or []:
+            if trig := trigger(m):
+                found.setdefault(trig, {})[option_path(tree, g)] = plain(g["options"][0]["title"])
+    if not found:
+        return []
+    rows = [[ui(f"formula.charged-attacks.on_{trig}", distance=_n(t.get("movement.charge-distance", 0))),
+             ", ".join(f"[{title}]({rel(path, page)})" for path, title in sorted(by.items(), key=lambda kv: kv[1]))]
+            for trig, by in sorted(found.items(), key=lambda kv: ui(f"formula.charged-attacks.on_{kv[0]}"))]
+    return [ui("formula.charged-attacks.sources"), ""] + _table(
+        [ui("formula.charged-attacks.source_col"), ui("formula.charged-attacks.granted_col")], rows)
 
 
 def _area(ctx, page, v):

@@ -211,7 +211,7 @@ def _mod_items(items: dict, build: "_Builder", tag_set, craft_level: "_CraftLeve
 
     LootCatalog.Ensure()
     out = {}
-    for spec in _rings_and_belts(items) + _weapons(items):
+    for spec in _rings_and_belts(items) + _weapons(items) + _bombs(items) + _rune(items):
         prefab = spec["id"]
         try:
             source = items.get(spec["source"]) or {}
@@ -236,6 +236,7 @@ def _mod_items(items: dict, build: "_Builder", tag_set, craft_level: "_CraftLeve
                     "icon": spec["icon"],
                     "recipe": recipe,
                     **spec.get("drops", {}),
+                    **(spec["extra"](item) if spec.get("extra") else {}),
                 },
             }
         except Exception as ex:  # one bad item must not lose the rest
@@ -439,6 +440,97 @@ def _weapons(items: dict) -> list[dict]:
                       "recipe": {"station": "forge", "stationLevel": int(k.Station), "resources": _resources(
                           ["Wood", k.Hide, k.Metal], [2, 2, k.MetalAmount], [1, 1, k.MetalAmount // 2])}})
     return specs
+
+
+def _blast(d) -> dict:
+    """A DamageTypes struct as extracted item data: its non-zero damages."""
+    return {k: float(getattr(d, k)) for k in _DAMAGE_FIELDS if float(getattr(d, k))}
+
+
+_DAMAGE_FIELDS = ("m_blunt", "m_slash", "m_pierce", "m_fire", "m_frost", "m_lightning", "m_poison", "m_spirit")
+
+
+def _bombs(items: dict) -> list[dict]:
+    """The mod's bombs, copies of Valheim's with their own blast and recipe at the workbench:
+    the Ember Bomb (StarterBomb) and the bomb ladder (BombLadder.rungs)."""
+    import PassiveTree
+
+    ladder, starter = getattr(PassiveTree, "BombLadder", None), getattr(PassiveTree, "StarterBomb", None)
+    if ladder is None and starter is None:  # older versions
+        return []
+    from PassiveTree import L
+
+    resources = set(clr.GetClrType(ladder or starter).Assembly.GetManifestResourceNames())
+
+    def spec(prefab: str, source: str, name: str, about: str, blast: dict, weight: float, bench: int,
+             cost: list, makes: int, bomb: dict) -> dict:
+        icon = f"PassiveTree.item.{prefab}.png"
+        stack = max(10, int((items.get(source) or {}).get("m_maxStackSize") or 1))
+        return {"id": prefab, "source": source, "kind": "weapon", "weaponKind": "Bombs",
+                "icon": icon if icon in resources else f"vh:{source}",
+                "overrides": {"m_name": name, "m_description": about, "m_damages": blast, "m_damagesPerLevel": {},
+                              "m_maxQuality": 1, "m_weight": weight, "m_maxStackSize": stack},
+                "recipe": {"station": "piece_workbench", "stationLevel": bench, "makes": makes,
+                           "resources": _resources([c[0] for c in cost], [c[1] for c in cost], [0] * len(cost))},
+                "extra": lambda item, bomb=bomb: {"bomb": bomb}}
+
+    specs = []
+    if starter is not None:
+        t = clr.GetClrType(starter)
+        source = str(t.GetField("Source", _ALL).GetValue(None))
+        specs.append(spec(
+            "PT_BombEmber", source, L.Id("ui.starter-bomb.ember-bomb", "Ember Bomb"),
+            L.Id("ui.starter-bomb.a-clay-pot-of-resin", "A clay pot of resin and embers. Bursts into fire where it lands; the blast is small enough to throw from behind a shield. Scales with bomb, fire and area bonuses."),
+            _blast(starter.Damage()), 0.5, 1, [("Wood", 5), ("Resin", 3), ("Flint", 2)], 3,
+            {"radius": float(t.GetField("Radius", _ALL).GetValue(None))}))
+    for r in clr.GetClrType(ladder).GetField("rungs", _ALL).GetValue(None) if ladder is not None else []:
+        prefab = str(r.Id)
+        bomb = {"radius": round(float(r.Radius), 4)}
+        if r.ThornsShare > 0:
+            bomb.update({"thornsBase": round(float(r.ThornsBase), 4), "thornsShare": round(float(r.ThornsShare), 4)})
+        if r.PullRange > 0:
+            bomb.update({"pullRange": round(float(r.PullRange), 4), "pullSeconds": round(float(r.PullSeconds), 4)})
+        if r.BreakShare > 0:
+            bomb.update({"breakShare": round(float(r.BreakShare), 4), "breakSeconds": round(float(r.BreakSeconds), 4)})
+        if r.TarSeconds > 0:
+            bomb["tarSeconds"] = round(float(r.TarSeconds), 4)
+        specs.append(spec(prefab, str(r.Source), L.Id(f"ui.bomb.{prefab}.name", r.Name), L.Id(f"ui.bomb.{prefab}.about", r.About),
+                          _blast(r.Blast), 0.8, int(r.Bench), [(str(c.Item1), int(c.Item2)) for c in r.Cost], int(r.Amount), bomb))
+    return specs
+
+
+def _rune(items: dict) -> list[dict]:
+    """The Rune of Resurrection (Resurrection.MakeRune): a Tankard copy whose durability is its
+    charges, made at the rune carver table, that brings a dead companion back from its grave."""
+    import PassiveTree
+
+    res = getattr(PassiveTree, "Resurrection", None)
+    if res is None:
+        return []
+    from PassiveTree import L
+
+    t = clr.GetClrType(res)
+
+    def per_quality(item) -> dict:
+        charges, seconds = [], []
+        for q in range(1, 5):
+            item.m_quality = q
+            charges.append(int(res.MaxCharges(item)))
+            seconds.append(float(res.Seconds(item)))
+        item.m_quality = 1
+        return {"resurrection": {"charges": charges, "seconds": seconds, "range": float(t.GetField("Range", _ALL).GetValue(None))}}
+
+    station = {"id": "PT_RuneCarverTable", "name": L.Id("piece.PT_RuneCarverTable.name", "Rune Carver Table")}
+    return [{"id": "PT_RuneOfResurrection", "source": "Tankard", "kind": "utility", "icon": "PassiveTree.item.PT_RuneOfResurrection.png",
+             "drop": ("m_consumeStatusEffect", "m_equipStatusEffect", "m_attackStatusEffect"),
+             "overrides": {"m_name": L.Id("item.PT_RuneOfResurrection.name", "Rune of Resurrection"),
+                           "m_description": L.Id("item.PT_RuneOfResurrection.flavor", "The green tree of life wakes in the stone when it is held over the fallen."),
+                           "m_itemType": 3, "m_skillType": 0, "m_damages": {}, "m_damagesPerLevel": {}, "m_maxQuality": 4,
+                           "m_weight": 0.5, "m_maxStackSize": 1, "m_value": 0, "m_teleportable": True, "m_useDurability": True,
+                           "m_maxDurability": 3.0, "m_durabilityPerLevel": 1.0, "m_canBeReparied": True},
+             "recipe": {"station": station, "stationLevel": 1, "resources": _resources(
+                 ["PT_BlankRunestone", "PT_DivineAzurite", "PT_DivineAzuriteDust"], [1, 3, 60], [0, 2, 40])},
+             "extra": per_quality}]
 
 
 def _projectile_source(source: dict | None, rung) -> bool:

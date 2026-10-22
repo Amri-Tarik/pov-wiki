@@ -112,7 +112,8 @@ def render_difficulty(errors: list) -> dict:
                 "slam.ground-radius", "aftershock.delay", "thorns.increased.base", "thorns.block.share",
                 "thorns.riposte.share", "impale.stack", "impale.limit", "impale.window", "endurance.base", "endurance.cap",
                 "rage.more-per-point", "stagger.rune-shield", "phantom.stagger", "xp.ally-kill",
-                "minion.instability-share", "minion.instability-radius", "minion.guard-seconds", "minion.guard-share",
+                "minion.instability-share", "minion.instability-radius", "loot.white-jewel-weight",
+                "spore.limit", "crystal.limit", "shard.limit", "chain.targets", "minion.guard-seconds", "minion.guard-share",
                 *(f"summon.power-{k}.{staff}" for k in ("health", "damage")
                   for staff in ("StaffSkeleton", "StaffGreenRoots", "StaffRedTroll", "StaffSpiritCaller")))},
             "governing": _governing(),

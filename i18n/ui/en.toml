@@ -173,6 +173,7 @@ source_label = "Source"
 base_jewels = "Base jewels"
 unique_jewels = "Unique jewels"
 base_jewel_note = "A base jewel: it rolls properties from this type's pool, like gear."
+jewel_implicits_note = "Every jewel of this type has these lines, each rolled within its range when it drops."
 radius = "Radius"
 limit = "Limit"
 uniques = "Uniques"
@@ -595,7 +596,7 @@ resist = "Resistance ignored"
 
 [formula.creature-level]
 title = "Area levels"
-text = "Every biome has a fixed level. A creature's level is the level of the biome it stands in (stars don't change it): it sets the creature's accuracy and the item level of its loot, and a chest takes the level of its biome. It doesn't scale health or damage, except for the monolith bosses. With the Raid level scaling setting (off by default, on in Merciless), raiders take the level of the biome the raid comes from, and scale with it. Each biome also has a recommended player level: up to the next biome's, it gives full experience; past it, experience [falls off]({falloff})."
+text = "Every biome has a fixed level. A creature's level is the level of the biome it stands in (stars don't change it): it sets the creature's accuracy and the item level of its loot, a chest takes the level of its biome, and gear bought from a trader the level of the biome the trader is in. It doesn't scale health or damage, except for the monolith bosses. With the Raid level scaling setting (off by default, on in Merciless), raiders take the level of the biome the raid comes from, and scale with it. Each biome also has a recommended player level: up to the next biome's, it gives full experience; past it, experience [falls off]({falloff})."
 full_col = "Full experience up to level"
 
 [formula.creature-strength]
@@ -639,13 +640,13 @@ title = "Loot"
 text = "When a creature dies, its Path of Valheiman loot is rolled with two numbers, {quantity} and {rarity}:"
 quantity = "Quantity = 1 + item quantity + {star} × stars + {mod} × modifiers + (Monster Power − 1)"
 rarity = "Rarity = item rarity + {star} × stars"
-notes = "Item quantity and item rarity are the killer's own, from passives and gear. Modifiers and Monster Power add quantity, not rarity. The loot's item level is the creature's level."
+notes = "Item quantity and item rarity are the killer's own, from passives and gear. Modifiers and Monster Power add quantity, not rarity. A kill by one of your summons, companions or pets counts as yours. The loot's item level is the creature's level; uniques and jewels keep it too (shown with Alt)."
 sources = "Drops per kill"
 sources_note = "Each kind rolls its own number of drops: on average this many × quantity."
 lambda = "Drops on average"
 jewel = "Jewels"
 by_level = "Rarity by item level"
-by_level_note = "Gear never drops common: it is magic or rare, by these weights, which rarity shifts toward rare:"
+by_level_note = "Gear never drops common: it is magic or rare, by these weights, which rarity shifts toward rare. Base jewels can also drop common, with a weight of {white} of the magic one (after rarity):"
 curve = "c = rarity ÷ (1 + rarity);   magic × (1 + c),   rare × (1 + 2c)"
 common = "Common"
 magic = "Magic"
@@ -835,6 +836,19 @@ chance = "chance = (pierce ÷ (ailment threshold × the enemy's base health) + f
 formula = "physical damage your hits deal × (1 + impales × {stack} × (1 + ailment damage increases))"
 notes = "An enemy holds up to {limit} impales (more with impale limit). Each new impale refreshes them all for {window} s × (1 + ailment duration increases), at least {floor} s."
 
+[formula.limit]
+title = "Limits"
+text = "{limit}: a bonus that names an effect raises only that effect. One that names none raises every limit below at once. Bonuses add up first, and the total is rounded down."
+effect = "Limit"
+base = "Base"
+per_cast = "Thralls per cast of a summoning staff"
+spores = "{spore}s at once"
+crystals = "{crystal}s at once"
+shards = "Armour shards at once"
+impales = "{impale}s one enemy can hold"
+links = "{link}s you can hold at once"
+chain = "Chain Lightning's targets ({n}) are the exception: they only count limit bonuses that name Chain Lightning."
+
 [formula.lifesteal]
 title = "Life leech"
 text = "{leech}: a share of the health your weapon and projectile hits actually remove from an enemy; spells use spell leech. Bleeding, thorns and echoed hits don't leech."
@@ -924,6 +938,7 @@ eitr = "Eitr held"
 stamina = "Stamina per cast"
 bench = "Workbench level"
 cast = "Each cast calls one thrall. There's no limit on how many stand at once: only your free eitr limits them."
+sacrifice = "Alternative cast, Sacrifice: kills one of your summons, the one under your crosshair (up to {reach} m away) or else the one with the least health. It costs nothing; with no summon around, nothing happens."
 quality = "Each staff quality above 1 gives its thralls +{health} health and makes them hold +{eitr} more eitr."
 
 [formula.held-eitr]
@@ -972,7 +987,7 @@ seek = "they look for enemies within {seek} m × (1 + minion aggression)"
 guard = "{guard}: for {seconds} s after you block, your {shield} takes {share} of the damage to your minions."
 last = "{last}: damage that would take a minion below 1 health comes off your {shield} instead."
 both = "Both protect pets too, and only while your rune shield lasts."
-unstable = "{unstable}: the first time a summon drops below {low} health from a hit, it explodes for {share} of its maximum health as fire damage, × (1 + its damage increases), to enemies within {radius} m, and dies."
+unstable = "{unstable}: the first time a summon drops below {low} health from a hit, it explodes for {share} of its maximum health as fire damage to enemies within {radius} m, and dies."
 
 [formula.ailments]
 title = "Ailments"
@@ -985,7 +1000,7 @@ lasts = "At 100% the ailment starts, from the damage of the hit that filled the 
 each = "What each ailment does with that damage:"
 bleed = "{total} of the slash damage over {ticks} s ({share} per second), more with ailment damage increases; ailment and status duration add seconds. A new bleed replaces the current one only if it deals at least as much per second."
 burn = "the fire damage again, over time. Your ailment damage increases add to your fire damage increases. It lasts as long as Valheim makes it, longer with ailment and status duration, or as long as the gauge if that is longer; a stronger burn replaces a weaker one."
-poison = "the poison damage again, over time, the same way with poison damage increases, plus any share of the enemy's base health your stats add. It lasts as long as Valheim makes it from the hit, longer with ailment and status duration, or as long as the gauge if that is longer; a stronger poison replaces a weaker one."
+poison = "the poison damage again, over time, the same way with poison damage increases, plus any share of the enemy's base health your stats add. It lasts as long as Valheim makes it from the hit, longer with ailment and status duration, or as long as the gauge if that is longer; a stronger poison replaces a weaker one. Skeletons and the Charred resist poison (half damage) instead of being immune, and their poison gauge fills at half speed."
 chill = "Valheim's frost effect, its strength × (1 + your chill ailment damage increases); ailment and status duration make it last longer."
 shock = "no damage of its own. It adds {stagger} equal to the lightning damage × your shock and general ailment damage increases, plus flat ailment damage. Valheim's own shock effect lasts longer with ailment and status duration."
 damage = "matching damage"
@@ -1077,6 +1092,8 @@ strike_chance = "Heavenly strike, {biome}: {chance}"
 pity = "Certain after {misses} misses in a row in: {biomes}"
 fixed_health = "Creatures that keep their own health"
 monolith_unique = "Unique chance for winning a rune monolith event"
+loot_sources = "Drops per kill or chest, on average"
+loot_source = "{source}: equipment {gear}, currency {currency}, jewels {jewels}"
 
 # Weapon type pages (weapon_pages.py).
 [weapons]

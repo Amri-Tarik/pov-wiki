@@ -108,7 +108,23 @@ def _jewel(k, blank) -> dict:
         "globalWeight": float(k.GlobalWeight),
         "globalMinLevel": int(k.GlobalMinLevel),
         "placeholder": bool(blank.Invoke(None, [k])),
+        "implicits": _jewel_implicits(str(k.Id)),
     }
+
+
+def _jewel_implicits(jewel: str) -> list[dict]:
+    """A base jewel's attribute implicits (JewelImplicits registers them by base on first use)."""
+    import PassiveTree
+
+    Implicits, owner = getattr(PassiveTree, "Implicits", None), getattr(PassiveTree, "JewelImplicits", None)
+    if Implicits is None or owner is None:  # older versions
+        return []
+    owner.Touch()
+    bases = clr.GetClrType(Implicits).GetField("bases", _ALL).GetValue(None)
+    if not bases.ContainsKey(jewel):
+        return []
+    return [{"id": r.Item1.Id, "text": Implicits.Line(r.Item1, Implicits.Range(r.Item2, r.Item3) or str(r.Item2)),
+             "min": r.Item2, "max": r.Item3} for r in bases[jewel]]
 
 
 def _complete_kvasir(unique: dict | None) -> None:

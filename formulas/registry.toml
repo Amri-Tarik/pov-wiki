@@ -20,10 +20,11 @@ anchors = [
     "PassiveTree/RaidLevels.cs :: Raider.Postfix",
     "PassiveTree/BiomeLevels.cs :: BiomeLevels.BandIn",
     "PassiveTree.Loot/LootDrops.cs :: \"int num2 = CreatureLevels.Of(val);\"",
-    "PassiveTree.Loot/LootDrops.cs :: \"obj.Level = BiomeLevels.Of(WorldChests.BiomeOf(c));\"",
+    "PassiveTree.Loot/LootDrops.cs :: LootDrops.ChestContext",
+    "PassiveTree.Loot/TraderLevel.cs :: Buy.Prefix",
 ]
-fingerprint = "a42cb8c58860"
-checked = "5.1.1"
+fingerprint = "7d08d7f49485"
+checked = "5.2.1"
 
 [[formula]]
 id = "creature-strength"
@@ -41,8 +42,8 @@ anchors = [
     "PassiveTree/MinionLife.cs :: MinionLife.IsActive",
     "PassiveTree/StarterStaves.cs :: StarterStaves.VanillaPower",
 ]
-fingerprint = "7a669636f99e"
-checked = "5.2.0"
+fingerprint = "38090a46de95"
+checked = "5.2.1"
 
 [formula.values]
 tamed = 0.5
@@ -132,9 +133,13 @@ anchors = [
     "PassiveTree.Loot/LootCatalog.cs :: LootCatalog.RarityAt",
     "PassiveTree/RarityRoll.cs :: RarityRoll.ModRewardShare",
     "PassiveTree/RarityRoll.cs :: \"Reward per modifier\"",
+    "PassiveTree.Loot/LootRoller.cs :: LootRoller.RollRarity",
+    "PassiveTree.Loot/LootDrops.cs :: LootDrops.JewelReward",
+    "PassiveTree/KillCredit.cs :: KillCredit.Of#1",
+    "PassiveTree/Tunables.cs :: \"loot.white-jewel-weight\"",
 ]
-fingerprint = "bb17a0e1805d"
-checked = "5.1.1"
+fingerprint = "94dbb6e24411"
+checked = "5.2.1"
 
 [formula.values]
 per_modifier = 0.5
@@ -427,8 +432,8 @@ anchors = [
     "PassiveTree/Effects.cs :: SkillFactor.Prefix",
     "PassiveTree/Tunables.cs :: \"attrs.might-covers\"",
 ]
-fingerprint = "950bbfba3753"
-checked = "5.1.2"
+fingerprint = "ae7345cae99c"
+checked = "5.2.1"
 
 [formula.values]
 health_regen = 0.00125
@@ -473,6 +478,9 @@ anchors = [
     "PassiveTree/EnemyDifficulty.cs :: EnemyDifficulty.BaseMaxHealth",
     "PassiveTree/Combat.cs :: Combat.OpenWound",
     "PassiveTree/Effects.cs :: Character_RPC_Damage_Ailments.Postfix",
+    "PassiveTree/CreatureAilmentTraits.cs :: CreatureAilmentTraits.UndeadBones",
+    "PassiveTree/CreatureAilmentTraits.cs :: CreatureAilmentTraits.table",
+    "PassiveTree/CreatureAilmentTraits.cs :: Apply.Postfix",
     "PassiveTree/Effects.cs :: Effects.ScaleAilment",
     "PassiveTree/EffectDuration.cs :: EffectDuration.Factor",
     "PassiveTree/Tunables.cs :: \"ailment.threshold\"",
@@ -480,8 +488,8 @@ anchors = [
     "valheim/SE_Burning.cs :: SE_Burning.AddFireDamage",
     "valheim/SE_Poison.cs :: SE_Poison.AddDamage",
 ]
-fingerprint = "57aef6847d58"
-checked = "5.2.0"
+fingerprint = "18429c5bc8d1"
+checked = "5.2.1"
 
 [formula.values]
 hold = 3
@@ -786,8 +794,8 @@ anchors = [
     "valheim/Attack.cs :: Attack.ModifyDamage",
     "valheim/Character.cs :: Character.RPC_Damage",
 ]
-fingerprint = "59dcea64a870"
-checked = "5.2.0"
+fingerprint = "bc03dfac4073"
+checked = "5.2.1"
 
 [formula.values]
 staggered = 0.15
@@ -840,14 +848,19 @@ anchors = [
     "PassiveTree/StarterStaves.cs :: Summon_Cast.Postfix",
     "PassiveTree/StarterStaves.cs :: StarterStaves.Summon",
     "PassiveTree/StarterStaves.cs :: StarterStaves.PerCast",
+    "PassiveTree/MinionSacrifice.cs :: MinionSacrifice.Sacrifice",
+    "PassiveTree/MinionSacrifice.cs :: MinionSacrifice.Pick",
+    "PassiveTree/MinionSacrifice.cs :: MinionSacrifice.Aimed",
+    "PassiveTree/MinionSacrifice.cs :: \"private const float Reach\"",
     "PassiveTree/MinionLife.cs :: MinionLife.Scale",
 ]
-fingerprint = "34f8cb754804"
-checked = "5.2.0"
+fingerprint = "a12775afaa3a"
+checked = "5.2.1"
 
 [formula.values]
 quality_health = 0.25
 quality_reserve = 0.15
+sacrifice_reach = 60
 
 [[formula]]
 id = "held-eitr"
@@ -860,8 +873,8 @@ anchors = [
     "PassiveTree/MinionReserve.cs :: MinionReserve.Refresh",
     "PassiveTree/MinionLife.cs :: MinionLife.Keep",
 ]
-fingerprint = "cf2970c28eb4"
-checked = "5.2.0"
+fingerprint = "331d6f319b3d"
+checked = "5.2.1"
 
 [formula.values]
 quality_reserve = 0.15
@@ -890,8 +903,8 @@ anchors = [
     "PassiveTree/StarterStaves.cs :: StarterStaves.VanillaPower",
     "PassiveTree/StarterStaves.cs :: Vanilla_Gate.Prefix",
 ]
-fingerprint = "4550a383a367"
-checked = "5.2.0"
+fingerprint = "96e0c4fbd0e6"
+checked = "5.2.1"
 
 [[formula]]
 id = "summon-strength"
@@ -904,8 +917,8 @@ anchors = [
     "PassiveTree/StarterStaves.cs :: StarterStaves.VanillaPower",
     "PassiveTree/CreatureBonuses.cs :: CreatureBonuses.HealthFactor",
 ]
-fingerprint = "2627dbadfd31"
-checked = "5.2.0"
+fingerprint = "9ec57a7f5db9"
+checked = "5.2.1"
 
 [formula.values]
 quality_health = 0.25
@@ -935,8 +948,8 @@ anchors = [
     "PassiveTree/Tunables.cs :: \"minion.guard-seconds\"",
     "PassiveTree/Tunables.cs :: \"minion.guard-share\"",
 ]
-fingerprint = "fbd4bc25755e"
-checked = "5.2.0"
+fingerprint = "02212c184cb7"
+checked = "5.2.1"
 
 [formula.values]
 damage_cap = 1.0
@@ -968,3 +981,24 @@ checked = "5.2.0"
 [formula.values]
 recent = 10
 boss_reach = 2.5
+
+[[formula]]
+id = "limit"
+anchors = [
+    "PassiveTree/StarterStaves.cs :: StarterStaves.PerCast",
+    "PassiveTree/CreatedTargets.cs :: CreatedTargets.Limit",
+    "PassiveTree/Impale.cs :: Impale.LimitOf",
+    "PassiveTree/AllyLinks.cs :: \"public static int Limit =>\"",
+    "PassiveTree/ChainLightning.cs :: ChainLightning.Targets",
+    "PassiveTree/Tunables.cs :: \"spore.limit\"",
+    "PassiveTree/Tunables.cs :: \"crystal.limit\"",
+    "PassiveTree/Tunables.cs :: \"shard.limit\"",
+    "PassiveTree/Tunables.cs :: \"impale.limit\"",
+    "PassiveTree/Tunables.cs :: \"chain.targets\"",
+]
+fingerprint = "110ef7a7f5e9"
+checked = "5.2.1"
+
+[formula.values]
+per_cast = 1
+links = 1

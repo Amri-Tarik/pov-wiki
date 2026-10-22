@@ -1,0 +1,912 @@
+{
+ "changes": {
+  "bases": {
+   "PT_Jewel_BloodSeal": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "+(3-5) Strength"
+     ],
+     "link": "items/jewel/PT_Jewel_BloodSeal.md",
+     "name": "Blood Seal"
+    },
+    "old": {
+     "kind": "",
+     "lines": [],
+     "link": "items/jewel/PT_Jewel_BloodSeal.md",
+     "name": "Blood Seal"
+    }
+   },
+   "PT_Jewel_DuskEye": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "+(2-3) Strength",
+      "+(2-3) Intelligence"
+     ],
+     "link": "items/jewel/PT_Jewel_DuskEye.md",
+     "name": "Dusk Eye"
+    },
+    "old": {
+     "kind": "",
+     "lines": [],
+     "link": "items/jewel/PT_Jewel_DuskEye.md",
+     "name": "Dusk Eye"
+    }
+   },
+   "PT_Jewel_RootSeed": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "+(3-5) Dexterity"
+     ],
+     "link": "items/jewel/PT_Jewel_RootSeed.md",
+     "name": "Root Seed"
+    },
+    "old": {
+     "kind": "",
+     "lines": [],
+     "link": "items/jewel/PT_Jewel_RootSeed.md",
+     "name": "Root Seed"
+    }
+   },
+   "PT_Jewel_StormKnot": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "+(3-5) Intelligence"
+     ],
+     "link": "items/jewel/PT_Jewel_StormKnot.md",
+     "name": "Storm Knot"
+    },
+    "old": {
+     "kind": "",
+     "lines": [],
+     "link": "items/jewel/PT_Jewel_StormKnot.md",
+     "name": "Storm Knot"
+    }
+   },
+   "PT_Jewel_SunSplinter": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "+(2-3) Strength",
+      "+(2-3) Dexterity"
+     ],
+     "link": "items/jewel/PT_Jewel_SunSplinter.md",
+     "name": "Sun Splinter"
+    },
+    "old": {
+     "kind": "",
+     "lines": [],
+     "link": "items/jewel/PT_Jewel_SunSplinter.md",
+     "name": "Sun Splinter"
+    }
+   },
+   "PT_Jewel_TideShell": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "+(2-3) Dexterity",
+      "+(2-3) Intelligence"
+     ],
+     "link": "items/jewel/PT_Jewel_TideShell.md",
+     "name": "Tide Shell"
+    },
+    "old": {
+     "kind": "",
+     "lines": [],
+     "link": "items/jewel/PT_Jewel_TideShell.md",
+     "name": "Tide Shell"
+    }
+   }
+  },
+  "crafting": {
+   "own843": {
+    "new": {
+     "kind": "Craft notable",
+     "lines": [
+      "10% increased rune-crafted affix rarity",
+      "Inscription Gate: You can build the Inscription Gate, a Runecarver portal with pink-violet runes. Shift + use on it opens the map of every portal in the world: pick one and inscribe the link, and everyone who enters the gate steps out there.",
+      "Azurite Sight: Azurite veins within your view radius are marked on the map and minimap: plain, corrupted and divine each with its own icon. A vein mined out by more than three quarters is no longer marked.",
+      "Divine Touch: +2% chance for divine azurite; Each chisel hit on a plain azurite vein outside the mist has a chance to turn it divine, with the same lightning as a heavenly strike. Any chisel works, in any biome.",
+      "Ascendant Rune: +10% chance that a property added by a rune rises one tier; When a rune adds or raises a property, it has a chance to rise one tier more as a separate step, beyond the item's level limit. You see a second flash, hear a chime and read \"+1 affix tier\".",
+      "Perfect Inscription: +10% chance that a property rolled by a rune takes the highest value of its tier; A property rolled by a rune (Fate included) has a chance to take the highest value of its tier.",
+      "Portal Crate: Away from a workbench, dismantling a portal packs it into a crate that keeps its tag, author, durability and Inscription Gate link. Place it back from the crate anywhere. A crate cannot pass through a portal.",
+      "Relic Passage: Dragon eggs for summoning, Hildir's chests and dvergr parts (charred cogwheels, dvergr needles, mechanical springs) go through portals, with no portal toll. Ore and metal are not included.",
+      "Vacuum Chest: Unlocks the Vacuum Chest at the Rune Carver Table. It takes finished goods from smelters, kilns, spinning wheels and windmills around it and feeds them from its contents. Shift + mouse wheel sets the radius, Shift + E the kind of goods it collects.",
+      "Chisel Quarrying: Rune chisels also mine stone and ore deposits, like a pickaxe of the same metal: bronze, iron or black metal (flametal hits as hard as black metal). A deposit too hard for that pickaxe is too hard for the chisel. Chisel hits do not train the Pickaxes skill. Azurite veins are mined as before."
+     ],
+     "link": "crafting/node/own843.md",
+     "name": "Rare affixes"
+    },
+    "old": {
+     "kind": "Craft notable",
+     "lines": [
+      "10% increased rune-crafted affix item rarity",
+      "Inscription Gate: You can build the Inscription Gate, a Runecarver portal with pink-violet runes. Shift + use on it opens the map of every portal in the world: pick one and inscribe the link, and everyone who enters the gate steps out there.",
+      "Azurite Sight: Azurite veins within your view radius are marked on the map and minimap: plain, corrupted and divine each with its own icon. A vein mined out by more than three quarters is no longer marked.",
+      "Divine Touch: +2% chance for divine azurite; Each chisel hit on a plain azurite vein outside the mist has a chance to turn it divine, with the same lightning as a heavenly strike. Any chisel works, in any biome.",
+      "Ascendant Rune: +10% chance that a property added by a rune rises one tier; When a rune adds or raises a property, it has a chance to rise one tier more as a separate step, beyond the item's level limit. You see a second flash, hear a chime and read \"+1 affix tier\".",
+      "Perfect Inscription: +10% chance that a property rolled by a rune takes the highest value of its tier; A property rolled by a rune (Fate included) has a chance to take the highest value of its tier.",
+      "Portal Crate: Away from a workbench, dismantling a portal packs it into a crate that keeps its tag, author, durability and Inscription Gate link. Place it back from the crate anywhere. A crate cannot pass through a portal.",
+      "Relic Passage: Dragon eggs for summoning, Hildir's chests and dvergr parts (charred cogwheels, dvergr needles, mechanical springs) go through portals, with no portal toll. Ore and metal are not included.",
+      "Vacuum Chest: Unlocks the Vacuum Chest at the Rune Carver Table. It takes finished goods from smelters, kilns, spinning wheels and windmills around it and feeds them from its contents. Shift + mouse wheel sets the radius, Shift + E the kind of goods it collects.",
+      "Chisel Quarrying: Rune chisels also mine stone and ore deposits, like a pickaxe of the same metal: bronze, iron or black metal (flametal hits as hard as black metal). A deposit too hard for that pickaxe is too hard for the chisel. Chisel hits do not train the Pickaxes skill. Azurite veins are mined as before."
+     ],
+     "link": "crafting/node/own843.md",
+     "name": "Rare affixes"
+    }
+   },
+   "own844": {
+    "new": {
+     "kind": "Craft node",
+     "lines": [
+      "4% increased rune-crafted affix rarity"
+     ],
+     "link": "crafting/tree/#own844",
+     "name": "Rare affixes"
+    },
+    "old": {
+     "kind": "Craft node",
+     "lines": [
+      "4% increased rune-crafted affix item rarity"
+     ],
+     "link": "crafting/tree/#own844",
+     "name": "Rare affixes"
+    }
+   },
+   "own845": {
+    "new": {
+     "kind": "Craft node",
+     "lines": [
+      "4% increased rune-crafted affix rarity"
+     ],
+     "link": "crafting/tree/#own845",
+     "name": "Rare affixes"
+    },
+    "old": {
+     "kind": "Craft node",
+     "lines": [
+      "4% increased rune-crafted affix item rarity"
+     ],
+     "link": "crafting/tree/#own845",
+     "name": "Rare affixes"
+    }
+   },
+   "own846": {
+    "new": {
+     "kind": "Craft node",
+     "lines": [
+      "4% increased rune-crafted affix rarity"
+     ],
+     "link": "crafting/tree/#own846",
+     "name": "Rare affixes"
+    },
+    "old": {
+     "kind": "Craft node",
+     "lines": [
+      "4% increased rune-crafted affix item rarity"
+     ],
+     "link": "crafting/tree/#own846",
+     "name": "Rare affixes"
+    }
+   }
+  },
+  "keywords": {
+   "finesse": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Per point: 0.185% increased stamina regeneration, 0.2% increased evasion rating. Dexterity also contributes to the skill multiplier of the weapons it governs."
+     ],
+     "link": "glossary/finesse.md",
+     "name": "Dexterity"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Dexterity raises maximum stamina and stamina regeneration. It also contributes to the skill multiplier of weapons governed by Dexterity."
+     ],
+     "link": "glossary/finesse.md",
+     "name": "Dexterity"
+    }
+   },
+   "might": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Per point: 0.125% increased health regeneration, +0.2 carry weight. Strength also contributes to the skill multiplier of the weapons it governs."
+     ],
+     "link": "glossary/might.md",
+     "name": "Strength"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Strength raises maximum health and carry weight. It also contributes to the skill multiplier of weapons governed by Strength."
+     ],
+     "link": "glossary/might.md",
+     "name": "Strength"
+    }
+   },
+   "spirit": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Per point: 0.185% increased eitr regeneration, +0.16 rune shield. Intelligence also contributes to the skill multiplier of the weapons it governs."
+     ],
+     "link": "glossary/spirit.md",
+     "name": "Intelligence"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Intelligence raises maximum eitr and rune shield. It also contributes to the skill multiplier of weapons governed by Intelligence."
+     ],
+     "link": "glossary/spirit.md",
+     "name": "Intelligence"
+    }
+   }
+  },
+  "mods": {
+   "tree.steadfastreductionpct-shieldup.a0": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(2.5–3.4)% endurance with the shield up",
+      "T4 (item level 19–76, weight 700): +(4.1–5.5)% endurance with the shield up",
+      "T3 (item level 43–129, weight 400): +(5.6–7.6)% endurance with the shield up",
+      "T2 (item level 77–∞, weight 180): +(7.1–9.7)% endurance with the shield up",
+      "T1 (item level 130–∞, weight 60): +(8.9–12.1)% endurance with the shield up",
+      "T0 (item level 1–∞, weight 0): +(11.5–15.5)% endurance with the shield up"
+     ],
+     "link": "items/mod/tree.steadfastreductionpct-shieldup.a0.md",
+     "name": "+#% endurance with the shield up"
+    },
+    "old": null
+   },
+   "tree.steadfastreductionpct-shieldup.h0": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(2.5–3.4)% endurance with the shield up",
+      "T4 (item level 19–76, weight 700): +(4.1–5.5)% endurance with the shield up",
+      "T3 (item level 43–129, weight 400): +(5.6–7.6)% endurance with the shield up",
+      "T2 (item level 77–∞, weight 180): +(7.1–9.7)% endurance with the shield up",
+      "T1 (item level 130–∞, weight 60): +(8.9–12.1)% endurance with the shield up",
+      "T0 (item level 1–∞, weight 0): +(11.5–15.5)% endurance with the shield up"
+     ],
+     "link": "items/mod/tree.steadfastreductionpct-shieldup.h0.md",
+     "name": "+#% endurance with the shield up"
+    },
+    "old": null
+   },
+   "tree.steadfastreductionpct.a0": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(1.7–2.3)% endurance",
+      "T4 (item level 19–76, weight 700): +(2.7–3.7)% endurance",
+      "T3 (item level 43–129, weight 400): +(3.7–5.1)% endurance",
+      "T2 (item level 77–∞, weight 180): +(4.8–6.4)% endurance",
+      "T1 (item level 130–∞, weight 60): +(6–8)% endurance",
+      "T0 (item level 1–∞, weight 0): +(7.6–10.3)% endurance"
+     ],
+     "link": "items/mod/tree.steadfastreductionpct.a0.md",
+     "name": "+#% endurance"
+    },
+    "old": null
+   },
+   "tree.steadfastreductionpct.h0": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(1.7–2.3)% endurance",
+      "T4 (item level 19–76, weight 700): +(2.7–3.7)% endurance",
+      "T3 (item level 43–129, weight 400): +(3.7–5.1)% endurance",
+      "T2 (item level 77–∞, weight 180): +(4.8–6.4)% endurance",
+      "T1 (item level 130–∞, weight 60): +(6–8)% endurance",
+      "T0 (item level 1–∞, weight 0): +(7.6–10.3)% endurance"
+     ],
+     "link": "items/mod/tree.steadfastreductionpct.h0.md",
+     "name": "+#% endurance"
+    },
+    "old": null
+   },
+   "tree.steadfastthresholdflat-flat.a0": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(4–6) endurance threshold",
+      "T4 (item level 19–76, weight 700): +(7–9) endurance threshold",
+      "T3 (item level 43–129, weight 400): +(9–13) endurance threshold",
+      "T2 (item level 77–∞, weight 180): +(12–16) endurance threshold",
+      "T1 (item level 130–∞, weight 60): +(15–20) endurance threshold",
+      "T0 (item level 1–∞, weight 0): +(19–26) endurance threshold"
+     ],
+     "link": "items/mod/tree.steadfastthresholdflat-flat.a0.md",
+     "name": "+# endurance threshold"
+    },
+    "old": null
+   },
+   "tree.steadfastthresholdflat-flat.h0": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(4–6) endurance threshold",
+      "T4 (item level 19–76, weight 700): +(7–9) endurance threshold",
+      "T3 (item level 43–129, weight 400): +(9–13) endurance threshold",
+      "T2 (item level 77–∞, weight 180): +(12–16) endurance threshold",
+      "T1 (item level 130–∞, weight 60): +(15–20) endurance threshold",
+      "T0 (item level 1–∞, weight 0): +(19–26) endurance threshold"
+     ],
+     "link": "items/mod/tree.steadfastthresholdflat-flat.h0.md",
+     "name": "+# endurance threshold"
+    },
+    "old": null
+   },
+   "tree.steadfastthresholdflat-maxhealth.a0": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(0.35–0.45) endurance threshold per 10 points of maximum health",
+      "T4 (item level 19–76, weight 700): +(0.55–0.75) endurance threshold per 10 points of maximum health",
+      "T3 (item level 43–129, weight 400): +(0.75–1) endurance threshold per 10 points of maximum health",
+      "T2 (item level 77–∞, weight 180): +(0.95–1.3) endurance threshold per 10 points of maximum health",
+      "T1 (item level 130–∞, weight 60): +(1.2–1.6) endurance threshold per 10 points of maximum health",
+      "T0 (item level 1–∞, weight 0): +(1.55–2.05) endurance threshold per 10 points of maximum health"
+     ],
+     "link": "items/mod/tree.steadfastthresholdflat-maxhealth.a0.md",
+     "name": "+# endurance threshold per # points of maximum health"
+    },
+    "old": null
+   },
+   "tree.steadfastthresholdflat-maxhealth.h0": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(0.35–0.45) endurance threshold per 10 points of maximum health",
+      "T4 (item level 19–76, weight 700): +(0.55–0.75) endurance threshold per 10 points of maximum health",
+      "T3 (item level 43–129, weight 400): +(0.75–1) endurance threshold per 10 points of maximum health",
+      "T2 (item level 77–∞, weight 180): +(0.95–1.3) endurance threshold per 10 points of maximum health",
+      "T1 (item level 130–∞, weight 60): +(1.2–1.6) endurance threshold per 10 points of maximum health",
+      "T0 (item level 1–∞, weight 0): +(1.55–2.05) endurance threshold per 10 points of maximum health"
+     ],
+     "link": "items/mod/tree.steadfastthresholdflat-maxhealth.h0.md",
+     "name": "+# endurance threshold per # points of maximum health"
+    },
+    "old": null
+   },
+   "tree.steadfastthresholdflat.a0": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(4–6) endurance threshold",
+      "T4 (item level 19–76, weight 700): +(7–9) endurance threshold",
+      "T3 (item level 43–129, weight 400): +(9–13) endurance threshold",
+      "T2 (item level 77–∞, weight 180): +(12–16) endurance threshold",
+      "T1 (item level 130–∞, weight 60): +(15–20) endurance threshold",
+      "T0 (item level 1–∞, weight 0): +(19–26) endurance threshold"
+     ],
+     "link": "items/mod/tree.steadfastthresholdflat.a0.md",
+     "name": "+# endurance threshold"
+    },
+    "old": null
+   },
+   "tree.steadfastthresholdflat.h0": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(4–6) endurance threshold",
+      "T4 (item level 19–76, weight 700): +(7–9) endurance threshold",
+      "T3 (item level 43–129, weight 400): +(9–13) endurance threshold",
+      "T2 (item level 77–∞, weight 180): +(12–16) endurance threshold",
+      "T1 (item level 130–∞, weight 60): +(15–20) endurance threshold",
+      "T0 (item level 1–∞, weight 0): +(19–26) endurance threshold"
+     ],
+     "link": "items/mod/tree.steadfastthresholdflat.h0.md",
+     "name": "+# endurance threshold"
+    },
+    "old": null
+   }
+  },
+  "passives": {
+   "own10001": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased maximum health for minions"
+     ],
+     "link": "passives/tree/#own10001",
+     "name": "Minion Defence"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased maximum health for minions"
+     ],
+     "link": "passives/tree/#own10001",
+     "name": "Minion Defences"
+    }
+   },
+   "own10125": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+15 Strength",
+      "Shifted Requirements: 50% of your Strength also counts towards Dexterity requirements of compatible two-handed weapons; Strength covers part of the dexterity requirement of compatible two-handed weapons.",
+      "Blood Strength: Each point of Strength raises your endurance threshold by 0.0575; Each point of strength raises your endurance threshold by 0.06."
+     ],
+     "link": "passives/node/own10125.md",
+     "name": "Drengr's Shoulders"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "+15 Strength",
+      "Shifted Requirements: 50% of your Strength also counts towards Dexterity requirements of compatible two-handed weapons; Strength covers part of the dexterity requirement of compatible two-handed weapons.",
+      "Blood Strength: Each point of Strength raises your endurance threshold by 0.0575; Part of the maximum health you gain from strength raises your endurance threshold instead."
+     ],
+     "link": "passives/node/own10125.md",
+     "name": "Drengr's Shoulders"
+    }
+   },
+   "own10337": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased maximum health for minions"
+     ],
+     "link": "passives/tree/#own10337",
+     "name": "Minion Defence"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased maximum health for minions"
+     ],
+     "link": "passives/tree/#own10337",
+     "name": "Minion Defences"
+    }
+   },
+   "own10343": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased maximum health for minions"
+     ],
+     "link": "passives/tree/#own10343",
+     "name": "Minion Defence"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased maximum health for minions"
+     ],
+     "link": "passives/tree/#own10343",
+     "name": "Minion Defences"
+    }
+   },
+   "own10503": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+4% eitr reservation efficiency for minions"
+     ],
+     "link": "passives/tree/#own10503",
+     "name": "Minion Eitr Reservation"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+4% eitr reservation efficiency for minions"
+     ],
+     "link": "passives/tree/#own10503",
+     "name": "Minion Reservation Efficiency"
+    }
+   },
+   "own10509": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+4% eitr reservation efficiency for minions"
+     ],
+     "link": "passives/tree/#own10509",
+     "name": "Minion Eitr Reservation"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+4% eitr reservation efficiency for minions"
+     ],
+     "link": "passives/tree/#own10509",
+     "name": "Minion Reservation Efficiency"
+    }
+   },
+   "own10521": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "30% increased critical strike chance for minions"
+     ],
+     "link": "passives/node/own10521.md",
+     "name": "Keen-Eyed Servant"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "30% increased critical strike chance for minions"
+     ],
+     "link": "passives/node/own10521.md",
+     "name": "Keen Servant"
+    }
+   },
+   "own10527": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "12% increased critical strike chance for minions"
+     ],
+     "link": "passives/tree/#own10527",
+     "name": "Minion Crits"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "12% increased critical strike chance for minions"
+     ],
+     "link": "passives/tree/#own10527",
+     "name": "Minion Critical Strikes"
+    }
+   },
+   "own10533": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+12% eitr reservation efficiency for minions"
+     ],
+     "link": "passives/node/own10533.md",
+     "name": "Steadfast Oath"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "+12% eitr reservation efficiency for minions"
+     ],
+     "link": "passives/node/own10533.md",
+     "name": "Lasting Pact"
+    }
+   },
+   "own10539": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+6% critical strike damage for minions"
+     ],
+     "link": "passives/tree/#own10539",
+     "name": "Minion Crits"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+6% critical strike damage for minions"
+     ],
+     "link": "passives/tree/#own10539",
+     "name": "Minion Critical Strikes"
+    }
+   },
+   "own10948": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+15 Strength",
+      "10% increased Strength",
+      "Shifted Requirements: 50% of your Strength also counts towards Dexterity requirements of compatible two-handed weapons; Strength covers part of the dexterity requirement of compatible two-handed weapons.",
+      "Blood Strength: Each point of Strength raises your endurance threshold by 0.0575; Each point of strength raises your endurance threshold by 0.06."
+     ],
+     "link": "passives/node/own10948.md",
+     "name": "Blood of Giants"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "+15 Strength",
+      "10% increased Strength",
+      "Shifted Requirements: 50% of your Strength also counts towards Dexterity requirements of compatible two-handed weapons; Strength covers part of the dexterity requirement of compatible two-handed weapons.",
+      "Blood Strength: Each point of Strength raises your endurance threshold by 0.0575; Part of the maximum health you gain from strength raises your endurance threshold instead."
+     ],
+     "link": "passives/node/own10948.md",
+     "name": "Blood of Giants"
+    }
+   },
+   "own11150": {
+    "new": {
+     "kind": "Keystone",
+     "lines": [
+      "×2 burning damage",
+      "Permanent self-burning has a base of 4% current health per second. Own fire and burning modifiers also scale this burn. Defenses reduce damage taken. Water cannot extinguish it.",
+      "Burning damage is multiplied by 2. Permanent self-burning has a base of 4% current health per second. Own fire and burning modifiers also scale this burn. Defenses reduce damage taken. Water cannot extinguish it."
+     ],
+     "link": "passives/node/own11150.md",
+     "name": "Eternal Pyre"
+    },
+    "old": {
+     "kind": "Keystone",
+     "lines": [
+      "×2 burning damage",
+      "Permanent self-burning has a base of 4% maximum health per second. Own fire and burning modifiers also scale this burn. Defenses reduce damage taken. Water cannot extinguish it.",
+      "Burning damage is multiplied by 2. Permanent self-burning has a base of 4% maximum health per second. Own fire and burning modifiers also scale this burn. Defenses reduce damage taken. Water cannot extinguish it."
+     ],
+     "link": "passives/node/own11150.md",
+     "name": "Eternal Pyre"
+    }
+   },
+   "own11328": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "1.5% reduced damage taken for minions"
+     ],
+     "link": "passives/tree/#own11328",
+     "name": "Minion Defence"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "1.5% reduced damage taken for minions"
+     ],
+     "link": "passives/tree/#own11328",
+     "name": "Minion Defences"
+    }
+   },
+   "own11330": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "1.5% reduced damage taken for minions"
+     ],
+     "link": "passives/tree/#own11330",
+     "name": "Minion Defence"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "1.5% reduced damage taken for minions"
+     ],
+     "link": "passives/tree/#own11330",
+     "name": "Minion Defences"
+    }
+   },
+   "own11332": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "−4% duration of ailments on you of base for minions"
+     ],
+     "link": "passives/tree/#own11332",
+     "name": "Minion Defence"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "−4% duration of ailments on you of base for minions"
+     ],
+     "link": "passives/tree/#own11332",
+     "name": "Minion Defences"
+    }
+   },
+   "own9926": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+3% damage resistance for minions"
+     ],
+     "link": "passives/tree/#own9926",
+     "name": "Minion Protection"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+3% damage resistance for minions"
+     ],
+     "link": "passives/tree/#own9926",
+     "name": "Minion Defences"
+    }
+   },
+   "own9932": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+3% damage resistance for minions"
+     ],
+     "link": "passives/tree/#own9932",
+     "name": "Minion Protection"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+3% damage resistance for minions"
+     ],
+     "link": "passives/tree/#own9932",
+     "name": "Minion Defences"
+    }
+   },
+   "own9938": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+7.5% damage resistance for minions"
+     ],
+     "link": "passives/node/own9938.md",
+     "name": "Servants' Ward"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "+7.5% damage resistance for minions"
+     ],
+     "link": "passives/node/own9938.md",
+     "name": "Servants’ Ward"
+    }
+   },
+   "own9944": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+3% damage resistance for minions"
+     ],
+     "link": "passives/tree/#own9944",
+     "name": "Minion Protection"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+3% damage resistance for minions"
+     ],
+     "link": "passives/tree/#own9944",
+     "name": "Minion Defences"
+    }
+   },
+   "own9950": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+3% damage resistance for minions"
+     ],
+     "link": "passives/tree/#own9950",
+     "name": "Minion Protection"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+3% damage resistance for minions"
+     ],
+     "link": "passives/tree/#own9950",
+     "name": "Minion Defences"
+    }
+   },
+   "own9959": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "−4% duration of ailments on you of base for minions"
+     ],
+     "link": "passives/tree/#own9959",
+     "name": "Minion Defence"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "−4% duration of ailments on you of base for minions"
+     ],
+     "link": "passives/tree/#own9959",
+     "name": "Minion Defences"
+    }
+   },
+   "own9962": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+4% eitr reservation efficiency for minions"
+     ],
+     "link": "passives/tree/#own9962",
+     "name": "Ring prefixes"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+4% eitr reservation efficiency for minions"
+     ],
+     "link": "passives/tree/#own9962",
+     "name": "Minion Reservation Efficiency"
+    }
+   },
+   "own9974": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+4% eitr reservation efficiency for minions"
+     ],
+     "link": "passives/tree/#own9974",
+     "name": "Ring suffixes"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+4% eitr reservation efficiency for minions"
+     ],
+     "link": "passives/tree/#own9974",
+     "name": "Minion Reservation Efficiency"
+    }
+   },
+   "own9986": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+4% eitr reservation efficiency for minions"
+     ],
+     "link": "passives/tree/#own9986",
+     "name": "Ring suffixes"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+4% eitr reservation efficiency for minions"
+     ],
+     "link": "passives/tree/#own9986",
+     "name": "Minion Reservation Efficiency"
+    }
+   },
+   "own9995": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased maximum health for minions"
+     ],
+     "link": "passives/tree/#own9995",
+     "name": "Minion Defence"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased maximum health for minions"
+     ],
+     "link": "passives/tree/#own9995",
+     "name": "Minion Defences"
+    }
+   }
+  },
+  "world": {
+   "loot-sources": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Creature: equipment 1 in 77, currency 1 in 67, jewels 1 in 846",
+      "Elite creature: equipment 1 in 14, currency 1 in 22, jewels 1 in 107",
+      "Boss: equipment 1 in 3, currency 1 in 7, jewels 1 in 16",
+      "Chest: equipment 1 in 4, currency 1 in 17, jewels 1 in 31",
+      "Dungeon chest: equipment 1 in 3, currency 1 in 14, jewels 1 in 36"
+     ],
+     "link": "mechanics/loot.md",
+     "name": "Drops per kill or chest, on average"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Creature: equipment 1 in 77, currency 1 in 67, jewels 1 in 451",
+      "Elite creature: equipment 1 in 14, currency 1 in 22, jewels 1 in 57",
+      "Boss: equipment 1 in 3, currency 1 in 7, jewels 1 in 8",
+      "Chest: equipment 1 in 4, currency 1 in 17, jewels 1 in 17",
+      "Dungeon chest: equipment 1 in 3, currency 1 in 14, jewels 1 in 20"
+     ],
+     "link": "mechanics/loot.md",
+     "name": "Drops per kill or chest, on average"
+    }
+   }
+  }
+ },
+ "date": "2026-10-22",
+ "from": "5.2.0",
+ "to": "5.2.1"
+}

@@ -90,6 +90,11 @@ def _bases(ctx: Ctx) -> dict[str, dict]:
         for i in info.get("implicits") or []:
             lines.append(i["text"] if "text" in i else " / ".join(t or "—" for t in i.get("byQuality") or []))
         out[prefab] = _entry(b["name"], lines, base_path(prefab))
+    from .gear_pages import jewel_path
+
+    for item, j in (ctx.loc.gear.get("jewels") or {}).items():  # base jewels: their implicit lines
+        if j.get("base"):
+            out[item] = _entry(j["name"], [i["text"] for i in j.get("implicits") or []], jewel_path(item))
     return out
 
 
@@ -174,6 +179,14 @@ def _world(ctx: Ctx) -> dict[str, dict]:
         out["azurite"] = _entry(ui("patch.azurite"), lines, "crafting/buildings.md")
     fixed = (loc.data.rendered(loc.lang.mod).get("difficulty") or {}).get("fixedHealth") or []
     out["fixed-health"] = _entry(ui("patch.fixed_health"), [loc.creature(c) for c in fixed], CREATURES_PAGE)
+    from .formula_pages import loot_per_kill
+    from .gear_pages import _one_in
+
+    if sources := ctx.data.loot.get("sources"):
+        out["loot-sources"] = _entry(ui("patch.loot_sources"), [
+            ui("patch.loot_source", source=ui(f"gear.source.{s['id']}"), gear=_one_in(p["gear"]),
+               currency=_one_in(p["currency"]), jewels=_one_in(p["gems"]))
+            for s in sources for p in [loot_per_kill(ctx, s)]], LOOT_PAGE)
     if (chance := loc.gear.get("monolithUniqueChance")) is not None:
         out["monolith-unique"] = _entry(ui("patch.monolith_unique"), [_pct(chance)], LOOT_PAGE)
     return out

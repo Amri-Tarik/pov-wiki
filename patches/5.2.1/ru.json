@@ -1,0 +1,570 @@
+{
+ "changes": {
+  "bases": {
+   "PT_Jewel_BloodSeal": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "+(3-5) к Силе"
+     ],
+     "link": "items/jewel/PT_Jewel_BloodSeal.md",
+     "name": "Blood Seal"
+    },
+    "old": {
+     "kind": "",
+     "lines": [],
+     "link": "items/jewel/PT_Jewel_BloodSeal.md",
+     "name": "Blood Seal"
+    }
+   },
+   "PT_Jewel_DuskEye": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "+(2-3) к Силе",
+      "+(2-3) к Интеллекту"
+     ],
+     "link": "items/jewel/PT_Jewel_DuskEye.md",
+     "name": "Dusk Eye"
+    },
+    "old": {
+     "kind": "",
+     "lines": [],
+     "link": "items/jewel/PT_Jewel_DuskEye.md",
+     "name": "Dusk Eye"
+    }
+   },
+   "PT_Jewel_RootSeed": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "+(3-5) к Ловкости"
+     ],
+     "link": "items/jewel/PT_Jewel_RootSeed.md",
+     "name": "Root Seed"
+    },
+    "old": {
+     "kind": "",
+     "lines": [],
+     "link": "items/jewel/PT_Jewel_RootSeed.md",
+     "name": "Root Seed"
+    }
+   },
+   "PT_Jewel_StormKnot": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "+(3-5) к Интеллекту"
+     ],
+     "link": "items/jewel/PT_Jewel_StormKnot.md",
+     "name": "Storm Knot"
+    },
+    "old": {
+     "kind": "",
+     "lines": [],
+     "link": "items/jewel/PT_Jewel_StormKnot.md",
+     "name": "Storm Knot"
+    }
+   },
+   "PT_Jewel_SunSplinter": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "+(2-3) к Силе",
+      "+(2-3) к Ловкости"
+     ],
+     "link": "items/jewel/PT_Jewel_SunSplinter.md",
+     "name": "Sun Splinter"
+    },
+    "old": {
+     "kind": "",
+     "lines": [],
+     "link": "items/jewel/PT_Jewel_SunSplinter.md",
+     "name": "Sun Splinter"
+    }
+   },
+   "PT_Jewel_TideShell": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "+(2-3) к Ловкости",
+      "+(2-3) к Интеллекту"
+     ],
+     "link": "items/jewel/PT_Jewel_TideShell.md",
+     "name": "Tide Shell"
+    },
+    "old": {
+     "kind": "",
+     "lines": [],
+     "link": "items/jewel/PT_Jewel_TideShell.md",
+     "name": "Tide Shell"
+    }
+   }
+  },
+  "crafting": {
+   "own843": {
+    "new": {
+     "kind": "Средний узел ремесла",
+     "lines": [
+      "10% увеличение редкость свойств при рунном ремесле",
+      "Inscription Gate: You can build the Inscription Gate, a Runecarver portal with pink-violet runes. Shift + use on it opens the map of every portal in the world: pick one and inscribe the link, and everyone who enters the gate steps out there.",
+      "Azurite Sight: Azurite veins within your view radius are marked on the map and minimap: plain, corrupted and divine each with its own icon. A vein mined out by more than three quarters is no longer marked.",
+      "Divine Touch: +2% шанса божественного азурита; Each chisel hit on a plain azurite vein outside the mist has a chance to turn it divine, with the same lightning as a heavenly strike. Any chisel works, in any biome.",
+      "Ascendant Rune: +10% шанс, что свойство, добавленное руной, поднимется на ступень; When a rune adds or raises a property, it has a chance to rise one tier more as a separate step, beyond the item's level limit. You see a second flash, hear a chime and read \"+1 affix tier\".",
+      "Perfect Inscription: +10% шанс, что свойство, выпавшее от руны, получит наибольшее значение своей ступени; A property rolled by a rune (Fate included) has a chance to take the highest value of its tier.",
+      "Portal Crate: Away from a workbench, dismantling a portal packs it into a crate that keeps its tag, author, durability and Inscription Gate link. Place it back from the crate anywhere. A crate cannot pass through a portal.",
+      "Relic Passage: Dragon eggs for summoning, Hildir's chests and dvergr parts (charred cogwheels, dvergr needles, mechanical springs) go through portals, with no portal toll. Ore and metal are not included.",
+      "Vacuum Chest: Unlocks the Vacuum Chest at the Rune Carver Table. It takes finished goods from smelters, kilns, spinning wheels and windmills around it and feeds them from its contents. Shift + mouse wheel sets the radius, Shift + E the kind of goods it collects.",
+      "Chisel Quarrying: Rune chisels also mine stone and ore deposits, like a pickaxe of the same metal: bronze, iron or black metal (flametal hits as hard as black metal). A deposit too hard for that pickaxe is too hard for the chisel. Chisel hits do not train the Pickaxes skill. Azurite veins are mined as before."
+     ],
+     "link": "crafting/node/own843.md",
+     "name": "Rare affixes"
+    },
+    "old": {
+     "kind": "Средний узел ремесла",
+     "lines": [
+      "10% увеличение rune-crafted affix item rarity",
+      "Inscription Gate: You can build the Inscription Gate, a Runecarver portal with pink-violet runes. Shift + use on it opens the map of every portal in the world: pick one and inscribe the link, and everyone who enters the gate steps out there.",
+      "Azurite Sight: Azurite veins within your view radius are marked on the map and minimap: plain, corrupted and divine each with its own icon. A vein mined out by more than three quarters is no longer marked.",
+      "Divine Touch: +2% шанса божественного азурита; Each chisel hit on a plain azurite vein outside the mist has a chance to turn it divine, with the same lightning as a heavenly strike. Any chisel works, in any biome.",
+      "Ascendant Rune: +10% шанс, что свойство, добавленное руной, поднимется на ступень; When a rune adds or raises a property, it has a chance to rise one tier more as a separate step, beyond the item's level limit. You see a second flash, hear a chime and read \"+1 affix tier\".",
+      "Perfect Inscription: +10% шанс, что свойство, выпавшее от руны, получит наибольшее значение своей ступени; A property rolled by a rune (Fate included) has a chance to take the highest value of its tier.",
+      "Portal Crate: Away from a workbench, dismantling a portal packs it into a crate that keeps its tag, author, durability and Inscription Gate link. Place it back from the crate anywhere. A crate cannot pass through a portal.",
+      "Relic Passage: Dragon eggs for summoning, Hildir's chests and dvergr parts (charred cogwheels, dvergr needles, mechanical springs) go through portals, with no portal toll. Ore and metal are not included.",
+      "Vacuum Chest: Unlocks the Vacuum Chest at the Rune Carver Table. It takes finished goods from smelters, kilns, spinning wheels and windmills around it and feeds them from its contents. Shift + mouse wheel sets the radius, Shift + E the kind of goods it collects.",
+      "Chisel Quarrying: Rune chisels also mine stone and ore deposits, like a pickaxe of the same metal: bronze, iron or black metal (flametal hits as hard as black metal). A deposit too hard for that pickaxe is too hard for the chisel. Chisel hits do not train the Pickaxes skill. Azurite veins are mined as before."
+     ],
+     "link": "crafting/node/own843.md",
+     "name": "Rare affixes"
+    }
+   },
+   "own844": {
+    "new": {
+     "kind": "Узел ремесла",
+     "lines": [
+      "4% увеличение редкость свойств при рунном ремесле"
+     ],
+     "link": "crafting/tree/#own844",
+     "name": "Rare affixes"
+    },
+    "old": {
+     "kind": "Узел ремесла",
+     "lines": [
+      "4% увеличение rune-crafted affix item rarity"
+     ],
+     "link": "crafting/tree/#own844",
+     "name": "Rare affixes"
+    }
+   },
+   "own845": {
+    "new": {
+     "kind": "Узел ремесла",
+     "lines": [
+      "4% увеличение редкость свойств при рунном ремесле"
+     ],
+     "link": "crafting/tree/#own845",
+     "name": "Rare affixes"
+    },
+    "old": {
+     "kind": "Узел ремесла",
+     "lines": [
+      "4% увеличение rune-crafted affix item rarity"
+     ],
+     "link": "crafting/tree/#own845",
+     "name": "Rare affixes"
+    }
+   },
+   "own846": {
+    "new": {
+     "kind": "Узел ремесла",
+     "lines": [
+      "4% увеличение редкость свойств при рунном ремесле"
+     ],
+     "link": "crafting/tree/#own846",
+     "name": "Rare affixes"
+    },
+    "old": {
+     "kind": "Узел ремесла",
+     "lines": [
+      "4% увеличение rune-crafted affix item rarity"
+     ],
+     "link": "crafting/tree/#own846",
+     "name": "Rare affixes"
+    }
+   }
+  },
+  "keywords": {
+   "finesse": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "За очко: 0.185% увеличение регенерации выносливости, 0.2% увеличение рейтинга уклонения. Ещё Ловкость участвует в множителе навыка оружия, которое от неё зависит."
+     ],
+     "link": "glossary/finesse.md",
+     "name": "Ловкость"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Ловкость повышает максимальную выносливость и её регенерацию. Также участвует в множителе навыка оружия, зависящего от Ловкости."
+     ],
+     "link": "glossary/finesse.md",
+     "name": "Ловкость"
+    }
+   },
+   "might": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "За очко: 0.125% увеличение регенерации здоровья, +0.2 грузоподъёмности. Ещё Сила участвует в множителе навыка оружия, которое от неё зависит."
+     ],
+     "link": "glossary/might.md",
+     "name": "Мощь"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Сила повышает максимальное здоровье и переносимый вес. Также участвует в множителе навыка оружия, зависящего от Силы."
+     ],
+     "link": "glossary/might.md",
+     "name": "Мощь"
+    }
+   },
+   "spirit": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "За очко: 0.185% увеличение регенерации эйтра, +0.16 рунного щита. Ещё Интеллект участвует в множителе навыка оружия, которое от него зависит."
+     ],
+     "link": "glossary/spirit.md",
+     "name": "Дух"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Интеллект повышает максимальный эйтр и рунный щит. Также участвует в множителе навыка оружия, зависящего от Интеллекта."
+     ],
+     "link": "glossary/spirit.md",
+     "name": "Дух"
+    }
+   }
+  },
+  "mods": {
+   "tree.steadfastreductionpct-shieldup.a0": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (уровень предмета 1–42, вес 1000): +(2.5–3.4)% к стойкости с поднятым щитом",
+      "T4 (уровень предмета 19–76, вес 700): +(4.1–5.5)% к стойкости с поднятым щитом",
+      "T3 (уровень предмета 43–129, вес 400): +(5.6–7.6)% к стойкости с поднятым щитом",
+      "T2 (уровень предмета 77–∞, вес 180): +(7.1–9.7)% к стойкости с поднятым щитом",
+      "T1 (уровень предмета 130–∞, вес 60): +(8.9–12.1)% к стойкости с поднятым щитом",
+      "T0 (уровень предмета 1–∞, вес 0): +(11.5–15.5)% к стойкости с поднятым щитом"
+     ],
+     "link": "items/mod/tree.steadfastreductionpct-shieldup.a0.md",
+     "name": "+#% к стойкости с поднятым щитом"
+    },
+    "old": null
+   },
+   "tree.steadfastreductionpct-shieldup.h0": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (уровень предмета 1–42, вес 1000): +(2.5–3.4)% к стойкости с поднятым щитом",
+      "T4 (уровень предмета 19–76, вес 700): +(4.1–5.5)% к стойкости с поднятым щитом",
+      "T3 (уровень предмета 43–129, вес 400): +(5.6–7.6)% к стойкости с поднятым щитом",
+      "T2 (уровень предмета 77–∞, вес 180): +(7.1–9.7)% к стойкости с поднятым щитом",
+      "T1 (уровень предмета 130–∞, вес 60): +(8.9–12.1)% к стойкости с поднятым щитом",
+      "T0 (уровень предмета 1–∞, вес 0): +(11.5–15.5)% к стойкости с поднятым щитом"
+     ],
+     "link": "items/mod/tree.steadfastreductionpct-shieldup.h0.md",
+     "name": "+#% к стойкости с поднятым щитом"
+    },
+    "old": null
+   },
+   "tree.steadfastreductionpct.a0": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (уровень предмета 1–42, вес 1000): +(1.7–2.3)% к стойкости",
+      "T4 (уровень предмета 19–76, вес 700): +(2.7–3.7)% к стойкости",
+      "T3 (уровень предмета 43–129, вес 400): +(3.7–5.1)% к стойкости",
+      "T2 (уровень предмета 77–∞, вес 180): +(4.8–6.4)% к стойкости",
+      "T1 (уровень предмета 130–∞, вес 60): +(6–8)% к стойкости",
+      "T0 (уровень предмета 1–∞, вес 0): +(7.6–10.3)% к стойкости"
+     ],
+     "link": "items/mod/tree.steadfastreductionpct.a0.md",
+     "name": "+#% к стойкости"
+    },
+    "old": null
+   },
+   "tree.steadfastreductionpct.h0": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (уровень предмета 1–42, вес 1000): +(1.7–2.3)% к стойкости",
+      "T4 (уровень предмета 19–76, вес 700): +(2.7–3.7)% к стойкости",
+      "T3 (уровень предмета 43–129, вес 400): +(3.7–5.1)% к стойкости",
+      "T2 (уровень предмета 77–∞, вес 180): +(4.8–6.4)% к стойкости",
+      "T1 (уровень предмета 130–∞, вес 60): +(6–8)% к стойкости",
+      "T0 (уровень предмета 1–∞, вес 0): +(7.6–10.3)% к стойкости"
+     ],
+     "link": "items/mod/tree.steadfastreductionpct.h0.md",
+     "name": "+#% к стойкости"
+    },
+    "old": null
+   },
+   "tree.steadfastthresholdflat-flat.a0": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (уровень предмета 1–42, вес 1000): +(4–6) к порогу стойкости",
+      "T4 (уровень предмета 19–76, вес 700): +(7–9) к порогу стойкости",
+      "T3 (уровень предмета 43–129, вес 400): +(9–13) к порогу стойкости",
+      "T2 (уровень предмета 77–∞, вес 180): +(12–16) к порогу стойкости",
+      "T1 (уровень предмета 130–∞, вес 60): +(15–20) к порогу стойкости",
+      "T0 (уровень предмета 1–∞, вес 0): +(19–26) к порогу стойкости"
+     ],
+     "link": "items/mod/tree.steadfastthresholdflat-flat.a0.md",
+     "name": "+# к порогу стойкости"
+    },
+    "old": null
+   },
+   "tree.steadfastthresholdflat-flat.h0": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (уровень предмета 1–42, вес 1000): +(4–6) к порогу стойкости",
+      "T4 (уровень предмета 19–76, вес 700): +(7–9) к порогу стойкости",
+      "T3 (уровень предмета 43–129, вес 400): +(9–13) к порогу стойкости",
+      "T2 (уровень предмета 77–∞, вес 180): +(12–16) к порогу стойкости",
+      "T1 (уровень предмета 130–∞, вес 60): +(15–20) к порогу стойкости",
+      "T0 (уровень предмета 1–∞, вес 0): +(19–26) к порогу стойкости"
+     ],
+     "link": "items/mod/tree.steadfastthresholdflat-flat.h0.md",
+     "name": "+# к порогу стойкости"
+    },
+    "old": null
+   },
+   "tree.steadfastthresholdflat-maxhealth.a0": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (уровень предмета 1–42, вес 1000): +(0.35–0.45) к порогу стойкости за каждые 10 единиц максимума здоровья",
+      "T4 (уровень предмета 19–76, вес 700): +(0.55–0.75) к порогу стойкости за каждые 10 единиц максимума здоровья",
+      "T3 (уровень предмета 43–129, вес 400): +(0.75–1) к порогу стойкости за каждые 10 единиц максимума здоровья",
+      "T2 (уровень предмета 77–∞, вес 180): +(0.95–1.3) к порогу стойкости за каждые 10 единиц максимума здоровья",
+      "T1 (уровень предмета 130–∞, вес 60): +(1.2–1.6) к порогу стойкости за каждые 10 единиц максимума здоровья",
+      "T0 (уровень предмета 1–∞, вес 0): +(1.55–2.05) к порогу стойкости за каждые 10 единиц максимума здоровья"
+     ],
+     "link": "items/mod/tree.steadfastthresholdflat-maxhealth.a0.md",
+     "name": "+# к порогу стойкости за каждые # единиц максимума здоровья"
+    },
+    "old": null
+   },
+   "tree.steadfastthresholdflat-maxhealth.h0": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (уровень предмета 1–42, вес 1000): +(0.35–0.45) к порогу стойкости за каждые 10 единиц максимума здоровья",
+      "T4 (уровень предмета 19–76, вес 700): +(0.55–0.75) к порогу стойкости за каждые 10 единиц максимума здоровья",
+      "T3 (уровень предмета 43–129, вес 400): +(0.75–1) к порогу стойкости за каждые 10 единиц максимума здоровья",
+      "T2 (уровень предмета 77–∞, вес 180): +(0.95–1.3) к порогу стойкости за каждые 10 единиц максимума здоровья",
+      "T1 (уровень предмета 130–∞, вес 60): +(1.2–1.6) к порогу стойкости за каждые 10 единиц максимума здоровья",
+      "T0 (уровень предмета 1–∞, вес 0): +(1.55–2.05) к порогу стойкости за каждые 10 единиц максимума здоровья"
+     ],
+     "link": "items/mod/tree.steadfastthresholdflat-maxhealth.h0.md",
+     "name": "+# к порогу стойкости за каждые # единиц максимума здоровья"
+    },
+    "old": null
+   },
+   "tree.steadfastthresholdflat.a0": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (уровень предмета 1–42, вес 1000): +(4–6) к порогу стойкости",
+      "T4 (уровень предмета 19–76, вес 700): +(7–9) к порогу стойкости",
+      "T3 (уровень предмета 43–129, вес 400): +(9–13) к порогу стойкости",
+      "T2 (уровень предмета 77–∞, вес 180): +(12–16) к порогу стойкости",
+      "T1 (уровень предмета 130–∞, вес 60): +(15–20) к порогу стойкости",
+      "T0 (уровень предмета 1–∞, вес 0): +(19–26) к порогу стойкости"
+     ],
+     "link": "items/mod/tree.steadfastthresholdflat.a0.md",
+     "name": "+# к порогу стойкости"
+    },
+    "old": null
+   },
+   "tree.steadfastthresholdflat.h0": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (уровень предмета 1–42, вес 1000): +(4–6) к порогу стойкости",
+      "T4 (уровень предмета 19–76, вес 700): +(7–9) к порогу стойкости",
+      "T3 (уровень предмета 43–129, вес 400): +(9–13) к порогу стойкости",
+      "T2 (уровень предмета 77–∞, вес 180): +(12–16) к порогу стойкости",
+      "T1 (уровень предмета 130–∞, вес 60): +(15–20) к порогу стойкости",
+      "T0 (уровень предмета 1–∞, вес 0): +(19–26) к порогу стойкости"
+     ],
+     "link": "items/mod/tree.steadfastthresholdflat.h0.md",
+     "name": "+# к порогу стойкости"
+    },
+    "old": null
+   }
+  },
+  "passives": {
+   "own10125": {
+    "new": {
+     "kind": "Средний узел",
+     "lines": [
+      "+15 Силы",
+      "Смещённые требования: 50% силы также учитывается в требованиях ловкости совместимого двуручного оружия; Сила покрывает часть требования ловкости у подходящего двуручного оружия.",
+      "Сила крови: Каждое очко силы поднимает порог стойкости на 0.0575; Каждое очко силы повышает порог стойкости на 0.06."
+     ],
+     "link": "passives/node/own10125.md",
+     "name": "Плечи дренга"
+    },
+    "old": {
+     "kind": "Средний узел",
+     "lines": [
+      "+15 Силы",
+      "Смещённые требования: 50% силы также учитывается в требованиях ловкости совместимого двуручного оружия; Сила покрывает часть требования ловкости у подходящего двуручного оружия.",
+      "Сила крови: Каждое очко силы поднимает порог стойкости на 0.0575; Часть максимального здоровья от силы вместо этого повышает порог стойкости."
+     ],
+     "link": "passives/node/own10125.md",
+     "name": "Плечи дренга"
+    }
+   },
+   "own10948": {
+    "new": {
+     "kind": "Средний узел",
+     "lines": [
+      "+15 Силы",
+      "10% увеличение Силы",
+      "Смещённые требования: 50% силы также учитывается в требованиях ловкости совместимого двуручного оружия; Сила покрывает часть требования ловкости у подходящего двуручного оружия.",
+      "Сила крови: Каждое очко силы поднимает порог стойкости на 0.0575; Каждое очко силы повышает порог стойкости на 0.06."
+     ],
+     "link": "passives/node/own10948.md",
+     "name": "Кровь исполинов"
+    },
+    "old": {
+     "kind": "Средний узел",
+     "lines": [
+      "+15 Силы",
+      "10% увеличение Силы",
+      "Смещённые требования: 50% силы также учитывается в требованиях ловкости совместимого двуручного оружия; Сила покрывает часть требования ловкости у подходящего двуручного оружия.",
+      "Сила крови: Каждое очко силы поднимает порог стойкости на 0.0575; Часть максимального здоровья от силы вместо этого повышает порог стойкости."
+     ],
+     "link": "passives/node/own10948.md",
+     "name": "Кровь исполинов"
+    }
+   },
+   "own11150": {
+    "new": {
+     "kind": "Ключевой узел",
+     "lines": [
+      "×2 урона горения",
+      "Постоянный собственный поджог имеет базу 4% текущего здоровья в секунду. К нему также применяются собственные модификаторы огня и поджога. Защита снижает получаемый урон. Вода не прекращает горение.",
+      "Урон поджога умножается на 2. Постоянный собственный поджог имеет базу 4% текущего здоровья в секунду. К нему также применяются собственные модификаторы огня и поджога. Защита снижает получаемый урон. Вода не прекращает горение."
+     ],
+     "link": "passives/node/own11150.md",
+     "name": "Вечный костёр"
+    },
+    "old": {
+     "kind": "Ключевой узел",
+     "lines": [
+      "×2 урона горения",
+      "Постоянный собственный поджог имеет базу 4% максимального здоровья в секунду. К нему также применяются собственные модификаторы огня и поджога. Защита снижает получаемый урон. Вода не прекращает горение.",
+      "Урон поджога умножается на 2. Постоянный собственный поджог имеет базу 4% максимального здоровья в секунду. К нему также применяются собственные модификаторы огня и поджога. Защита снижает получаемый урон. Вода не прекращает горение."
+     ],
+     "link": "passives/node/own11150.md",
+     "name": "Вечный костёр"
+    }
+   },
+   "own9962": {
+    "new": {
+     "kind": "Малый узел",
+     "lines": [
+      "+4% к эффективности удержания эйтра for minions"
+     ],
+     "link": "passives/tree/#own9962",
+     "name": "Префиксы колец"
+    },
+    "old": {
+     "kind": "Малый узел",
+     "lines": [
+      "+4% к эффективности удержания эйтра for minions"
+     ],
+     "link": "passives/tree/#own9962",
+     "name": "Удержание эйтра приспешниками"
+    }
+   },
+   "own9974": {
+    "new": {
+     "kind": "Малый узел",
+     "lines": [
+      "+4% к эффективности удержания эйтра for minions"
+     ],
+     "link": "passives/tree/#own9974",
+     "name": "Суффиксы колец"
+    },
+    "old": {
+     "kind": "Малый узел",
+     "lines": [
+      "+4% к эффективности удержания эйтра for minions"
+     ],
+     "link": "passives/tree/#own9974",
+     "name": "Удержание эйтра приспешниками"
+    }
+   },
+   "own9986": {
+    "new": {
+     "kind": "Малый узел",
+     "lines": [
+      "+4% к эффективности удержания эйтра for minions"
+     ],
+     "link": "passives/tree/#own9986",
+     "name": "Суффиксы колец"
+    },
+    "old": {
+     "kind": "Малый узел",
+     "lines": [
+      "+4% к эффективности удержания эйтра for minions"
+     ],
+     "link": "passives/tree/#own9986",
+     "name": "Удержание эйтра приспешниками"
+    }
+   }
+  },
+  "world": {
+   "loot-sources": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Существо: снаряжение 1 in 77, валюта 1 in 67, самоцветы 1 in 846",
+      "Элитное существо: снаряжение 1 in 14, валюта 1 in 22, самоцветы 1 in 107",
+      "Босс: снаряжение 1 in 3, валюта 1 in 7, самоцветы 1 in 16",
+      "Сундук: снаряжение 1 in 4, валюта 1 in 17, самоцветы 1 in 31",
+      "Сундук подземелья: снаряжение 1 in 3, валюта 1 in 14, самоцветы 1 in 36"
+     ],
+     "link": "mechanics/loot.md",
+     "name": "Добыча за убийство или сундук, в среднем"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Существо: снаряжение 1 in 77, валюта 1 in 67, самоцветы 1 in 451",
+      "Элитное существо: снаряжение 1 in 14, валюта 1 in 22, самоцветы 1 in 57",
+      "Босс: снаряжение 1 in 3, валюта 1 in 7, самоцветы 1 in 8",
+      "Сундук: снаряжение 1 in 4, валюта 1 in 17, самоцветы 1 in 17",
+      "Сундук подземелья: снаряжение 1 in 3, валюта 1 in 14, самоцветы 1 in 20"
+     ],
+     "link": "mechanics/loot.md",
+     "name": "Добыча за убийство или сундук, в среднем"
+    }
+   }
+  }
+ },
+ "date": "2026-10-22",
+ "from": "5.2.0",
+ "to": "5.2.1"
+}

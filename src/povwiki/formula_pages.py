@@ -280,7 +280,7 @@ def _loot(ctx, page, v):
             + [f"### {ui('formula.loot.sources')}", "", ui("formula.loot.sources_note"), ""]
             + _table([ui("gear.source_label"), ui("formula.loot.gear"), ui("formula.loot.currency"), ui("formula.loot.jewel")], sources)
             + [ui("formula.loot.gates"), ""]
-            + [f"### {ui('formula.loot.by_level')}", "", ui("formula.loot.by_level_note"), ""]
+            + [f"### {ui('formula.loot.by_level')}", "", ui("formula.loot.by_level_note", white=_pct(ctx.loc.difficulty.get("tunables", {}).get("loot.white-jewel-weight", 0))), ""]
             + _formula(ui("formula.loot.curve"))
             + _table([ui("formula.level"), ui("formula.loot.common"), ui("formula.loot.magic"), ui("formula.loot.rare")], levels)
             + [ui("formula.loot.unique", chance=_pct(loot.get("uniqueChance", 0)), level=loot.get("rareGuaranteeMinLevel", 0)), ""])
@@ -445,7 +445,7 @@ def _summon_staves(ctx, page, v):
                   ui("formula.health"), ui("formula.damage"), ui("formula.summoning-staves.life"),
                   ui("formula.summoning-staves.eitr"), ui("formula.summoning-staves.stamina"),
                   ui("formula.summoning-staves.bench")], rows)
-    return md + [ui("formula.summoning-staves.cast"), "",
+    return md + [ui("formula.summoning-staves.cast"), "", ui("formula.summoning-staves.sacrifice", reach=_n(v["sacrifice_reach"])), "",
                  ui("formula.summoning-staves.quality", health=_pct(v["quality_health"]), eitr=_pct(v["quality_reserve"])), ""]
 
 
@@ -802,6 +802,21 @@ def _impale(ctx, page, v):
     return md
 
 
+def _limit(ctx, page, v):
+    """Limits (Stat.Limit): an unscoped bonus raises every limit that reads it; Chain Lightning
+    requires its own subject (ChainLightning.Targets)."""
+    ui, t = ctx.loc.ui, ctx.loc.difficulty.get("tunables", {})
+    rows = [[ui("formula.limit.per_cast"), _n(v["per_cast"])],
+            [ui("formula.limit.spores", spore=_term(ctx, "spore", page, start=True)), _n(t["spore.limit"])],
+            [ui("formula.limit.crystals", crystal=_term(ctx, "ice-crystal", page, start=True)), _n(t["crystal.limit"])],
+            [ui("formula.limit.shards"), _n(t["shard.limit"])],
+            [ui("formula.limit.impales", impale=_term(ctx, "impale", page, start=True)), _n(t["impale.limit"])],
+            [ui("formula.limit.links", link=_term(ctx, "ally-link", page, start=True)), _n(v["links"])]]
+    md = [ui("formula.limit.text", limit=_term(ctx, "limit", page, start=True)), ""]
+    md += _table([ui("formula.limit.effect"), ui("formula.limit.base")], rows)
+    return md + [ui("formula.limit.chain", n=_n(t["chain.targets"])), ""]
+
+
 def _endurance(ctx, page, v):
     """Endurance (Endurance.Threshold/Reduction/Reduce), after resistances in the mod's damage step."""
     ui, t = ctx.loc.ui, ctx.loc.difficulty.get("tunables", {})
@@ -939,7 +954,7 @@ _PAGES = {
                              ("resistances", _resistances), ("armour", _armour), ("rune-shield", _rune_shield), ("enemy-penetration", _penetration), ("stagger", _stagger),
                              ("block", _block), ("glancing", _glancing), ("endurance", _endurance), ("thorns", _thorns),
                              ("charged-attacks", _charged), ("strikes", _strikes), ("phantom-strikes", _phantoms), ("area", _area), ("slams", _slams),
-                             ("ailments", _ailments), ("armour-break", _armour_break), ("impale", _impale), ("lifesteal", _lifesteal), ("build-cost", _build_cost)]),
+                             ("ailments", _ailments), ("armour-break", _armour_break), ("impale", _impale), ("limit", _limit), ("lifesteal", _lifesteal), ("build-cost", _build_cost)]),
 }
 _TITLES = {"creatures": "formula.creatures", "loot": "formula.loot_page", "combat": "formula.combat",
            "experience": "formula.experience_page", "summons": "formula.summons_page"}
@@ -948,6 +963,7 @@ FORMULA_PAGES = {fid: page for page, (_, formulas) in _PAGES.items() for fid, _ 
 
 # Keywords of the mod's wiki -> the formulas that explain them, shown at the top of their page.
 TERM_FORMULAS = {
+    "limit": ["limit"],
     "minions": ["summoning-staves", "summon-strength", "minion-bonuses"],
     "pets": ["ally-kills"],
     "companion": ["ally-kills"],

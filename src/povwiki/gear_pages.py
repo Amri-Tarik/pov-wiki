@@ -446,13 +446,17 @@ def page_jewels(ctx: Ctx) -> dict[str, str]:
     base = {k: j for k, j in jewels.items() if j["base"]}
     md += [f"## {ui('gear.base_jewels')} ({len(base)})", ""]
     rows, pages = [], {}
+    implicit = any(j.get("implicits") for j in base.values())
     for k, j in sorted(base.items(), key=lambda kv: (len(kv[1]["base"]), kv[1]["base"])):
         tags = {"jewel", f"jewel.{j['base']}"}
         count = sum(1 for a in ctx.loc.loot["affixes"] if a["generation"] and _fits_tags(a, tags))
-        rows.append([_jewel_icon(ctx, j, page, 40), f"[**{j['name']}**]({rel(jewel_path(k), page)})",
-                     ui(f"tag.jewel.{j['base']}"), str(count)])
+        row = [_jewel_icon(ctx, j, page, 40), f"[**{j['name']}**]({rel(jewel_path(k), page)})",
+               ui(f"tag.jewel.{j['base']}")]
+        if implicit:
+            row.append("<br>".join(i["text"] for i in j.get("implicits") or []) or "—")
+        rows.append(row + [str(count)])
         pages[jewel_path(k)] = _jewel_page(ctx, k, j)
-    md += _table(["", ui("col.name"), ui("col.type"), ui("items.mods")], rows)
+    md += _table(["", ui("col.name"), ui("col.type")] + ([ui("items.implicits")] if implicit else []) + [ui("items.mods")], rows)
 
     uniques = {k: j for k, j in jewels.items() if k in ctx.loc.gear.get("uniques", {})}
     md += [f"## {ui('gear.unique_jewels')} ({len(uniques)})", ""]
@@ -478,6 +482,9 @@ def _jewel_page(ctx: Ctx, item: str, j: dict) -> str:
         md += [art, ""]
     kind = ui(f"tag.jewel.{j['base']}")
     md += [f"<b>{kind}</b>", "", ui("gear.base_jewel_note"), ""]
+    if implicits := j.get("implicits"):
+        md += [f"## {ui('items.implicits')}", "", ui("gear.jewel_implicits_note"), ""]
+        md += [f"- {i['text']}" for i in implicits] + [""]
     md += _mods_section(ctx, {"info": {"tags": ["jewel", f"jewel.{j['base']}"]}}, page)
     return "\n".join(md + _footer(ctx))
 

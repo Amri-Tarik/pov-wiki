@@ -583,11 +583,11 @@ def page_options(ctx: Ctx) -> dict[str, str]:
 _STAT_KEYWORDS = {"ChargeNextAttack": "charged-attack", "MovementCharge": "charged-attack"}
 
 
-def _keywords_section(ctx: Ctx, page: str, lines: list[str], mods: list) -> list[str]:
-    """The keywords a node or option is about: the ones its text links, and the ones its stats
-    are about (_STAT_KEYWORDS). Keywords merged into this very page are left out."""
+def _keywords_section(ctx: Ctx, page: str, lines: list[str], mods: list, extra: tuple[str, ...] = ()) -> list[str]:
+    """The keywords a node, option or item is about: the ones its text links, the ones its stats
+    are about (_STAT_KEYWORDS) and any extra ones. Keywords merged into this very page are left out."""
     loc = ctx.loc
-    found = [s for line in lines for s in slugs(line)]
+    found = [s for line in lines for s in slugs(line)] + list(extra)
     found += [_STAT_KEYWORDS[m["stat"]] for ms in mods for m in ms or [] if m.get("stat") in _STAT_KEYWORDS]
     keys = [k for k in dict.fromkeys(found) if k in loc.wiki and glossary_path(k) != page]
     if not keys:
@@ -821,6 +821,12 @@ def _related_pages(ctx: Ctx) -> dict[str, list[tuple[str, str, str]]]:
     if ctx.loc.monsters.get("mods"):
         for term in ("item-quantity", "item-rarity"):
             found[term].append((ctx.loc.ui("monsters.mods"), MODS_PAGE, ctx.loc.ui("monsters.title")))
+    from .gear_pages import SIGIL_KEYWORDS, currency_path
+
+    for item, keys in SIGIL_KEYWORDS.items():
+        if item in (ctx.loc.loot.get("items") or {}):
+            found.update({k: found[k] + [(ctx.loc.loot["items"][item]["name"], currency_path(item), ctx.loc.ui("gear.group.Sigil"))]
+                          for k in keys})
     rune = ctx.loc.items.get("PT_RuneOfResurrection")
     if rune and rune.get("mod"):  # brings a dead companion back
         found["companion"].append((rune["mod"]["shared"]["m_name"], "items/base/PT_RuneOfResurrection.md", ctx.loc.ui("items.bases")))

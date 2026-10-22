@@ -184,6 +184,10 @@ def _divine_socket(ctx: Ctx, page: str) -> str:
     return f"[{punch['name']}]({rel(currency_path('PT_DivinePunch'), page)}): {to_md(punch['action'], ctx.loc, page)}"
 
 
+# Sigils whose effect is about a keyword its text doesn't link (both pages link each other).
+SIGIL_KEYWORDS = {"PT_SigilAshenCrown": ("aura",)}
+
+
 def _sigil_lines(ctx: Ctx, item: str, page: str) -> list[str]:
     """A sigil's effect in each kind of item it works in, as its tooltip lists them; a line that
     allocates a passive links it. A sigil with no line yet says so, in the game's words."""
@@ -237,6 +241,10 @@ def _currency_page(ctx: Ctx, item: str, catalog: dict, uses: dict, found: dict) 
         md += [f"## {ui('page.effect')}", "", "<br>".join(lines), ""]
         if ctx.loc.gear["currency"][item]["sigil"] and (note := _divine_socket(ctx, page)):
             md += [note, ""]
+    if item in SIGIL_KEYWORDS:
+        from .pages import _keywords_section
+
+        md += _keywords_section(ctx, page, [], [], SIGIL_KEYWORDS[item])
     md += _mining_section(ctx, item, page, found)
     md += _made_section(ctx, item, page, found)
     md += _currency_drops(ctx, item, catalog)

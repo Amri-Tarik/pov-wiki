@@ -110,7 +110,8 @@ def render_difficulty(errors: list) -> dict:
                 "groundfield.buildup-share", "groundfield.tick", "groundfield.sliding-friction", "groundfield.sliding-steering",
                 "infusion.base-limit", "infusion.duration", "infusion.absorption-area", "infusion.area-per-unit",
                 "infusion.damage-per-unit", "disenchant.unique-jewel-divine", "disenchant.unique-jewel-azurite",
-                "disenchant.unique-jewel-level-step", "permadeath.oneshot-share", "permadeath.oneshot-cooldown",
+                "disenchant.unique-jewel-level-step", "disenchant.unique-mult", "disenchant.unique-level-step",
+                "permadeath.oneshot-share", "permadeath.oneshot-cooldown",
                 "permadeath.mercy-hours",
                 # Damaging ailments and shock (DamagingAilments, ShockAilment; 5.3.0).
                 "ailment.burning.dps-share", "ailment.burning.duration", "ailment.poison.dps-share", "ailment.poison.duration",
@@ -129,6 +130,9 @@ def render_difficulty(errors: list) -> dict:
                 "spore.limit", "crystal.limit", "shard.limit", "chain.targets", "minion.guard-seconds", "minion.guard-share",
                 *(f"summon.power-{k}.{staff}" for k in ("health", "damage")
                   for staff in ("StaffSkeleton", "StaffGreenRoots", "StaffRedTroll", "StaffSpiritCaller")))},
+            # Every tunable with its title and default, for the patch pages' changed values.
+            "knobs": {str(k.Id): {"title": str(k.Title or k.Id), "value": float(k.Base), "pct": bool(k.Pct),
+                                  "unit": str(k.Unit or "")} for k in Tunables.All},
             "governing": _governing(),
             "summons": _summons(),
             "caps": _caps("StaggerResistPct", "GlancingChance"),

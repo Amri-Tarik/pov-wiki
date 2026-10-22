@@ -184,11 +184,24 @@ def _world(ctx: Ctx) -> dict[str, dict]:
 
     if sources := ctx.data.loot.get("sources"):
         out["loot-sources"] = _entry(ui("patch.loot_sources"), [
-            ui("patch.loot_source", source=ui(f"gear.source.{s['id']}"), gear=_one_in(p["gear"]),
-               currency=_one_in(p["currency"]), jewels=_one_in(p["gems"]))
+            ui("patch.loot_source", source=ui(f"gear.source.{s['id']}"), gear=_one_in(ctx, p["gear"]),
+               currency=_one_in(ctx, p["currency"]), jewels=_one_in(ctx, p["gems"]))
             for s in sources for p in [loot_per_kill(ctx, s)]], LOOT_PAGE)
     if (chance := loc.gear.get("monolithUniqueChance")) is not None:
         out["monolith-unique"] = _entry(ui("patch.monolith_unique"), [_pct(chance)], LOOT_PAGE)
+    return out
+
+
+def _values(ctx: Ctx) -> dict[str, dict]:
+    """The mod's tunables (Tunables.All): the constants its formulas use, by default. Named by the
+    game's own title, or this language's name for it (ui "knob.<id>") when there is one."""
+    from .formula_pages import _n, _pct
+
+    out = {}
+    for k, v in ((ctx.loc.difficulty or {}).get("knobs") or {}).items():
+        name = ctx.loc.ui(f"knob.{k}")
+        value = _pct(v["value"]) if v["pct"] else " ".join(filter(None, (_n(v["value"], 3), v["unit"])))
+        out[k] = _entry(v["title"] if name == f"knob.{k}" else name, [value])
     return out
 
 
@@ -207,6 +220,7 @@ SECTIONS = {  # id: (title key, entries); the passive and craft trees take their
     "drops": ("patch.boss_drops", _drops),
     "monster-mods": ("monsters.mods", _monster_mods),
     "world": ("patch.world", _world),
+    "values": ("patch.values", _values),
     "keywords": ("patch.keywords", _keywords),
 }
 

@@ -43,9 +43,11 @@ def unique_path(item: str) -> str:
     return f"items/unique/{item}.md"
 
 
-def _one_in(v: float) -> str:
+def _one_in(ctx: Ctx, v: float) -> str:
     """An expected count per kill, as "1 in N" when it is below one."""
-    return f"1 in {round(1 / v):,}" if 0 < v < 1 else (f"{v:.2g}" if v else "—")
+    if 0 < v < 1:
+        return ctx.loc.ui("gear.one_in", n=f"{round(1 / v):,}".replace(",", ctx.loc.ui("gear.thousands")))
+    return f"{v:.2g}" if v else "—"
 
 
 def _pct(v: float) -> str:
@@ -250,6 +252,7 @@ def _currency_page(ctx: Ctx, item: str, catalog: dict, uses: dict, found: dict) 
     md += _currency_drops(ctx, item, catalog)
     md += _essence_section(ctx, item, page)
     md += _ascension_line(ctx, item, page)
+    md += _dismantling_line(ctx, item, page)
     used = sorted(set(uses.get(item, [])), key=lambda i: _item_name(ctx, i))
     ground = _ground_into(ctx, item, page, found)
     if used or ground:
@@ -408,6 +411,16 @@ def _currency_drops(ctx: Ctx, item: str, catalog: dict) -> list[str]:
     return md
 
 
+def _dismantling_line(ctx: Ctx, item: str, page: str) -> list[str]:
+    """Azurite and divine dust: dismantling items gives them (Disenchant.Returns)."""
+    from .formula_pages import _anchor, shown
+
+    if item not in ("PT_AzuriteDust", "PT_DivineAzuriteDust") or not shown(ctx, "dismantling"):
+        return []
+    ui = ctx.loc.ui
+    return [ui("formula.dismantling.dust_link", title=ui("formula.dismantling.title"), link=_anchor("dismantling", page)), ""]
+
+
 def _ascension_line(ctx: Ctx, item: str, page: str) -> list[str]:
     """A boss essence's ascension (5.3.0, ItemAscension), linked to how it works."""
     from .formula_pages import _anchor, shown
@@ -462,7 +475,7 @@ def page_jewels(ctx: Ctx) -> dict[str, str]:
         md += [f"### {ui('gear.jewel_chance')}", "", ui("gear.jewel_chance_note"), ""]
         md += _table([ui("gear.source_label"), ui("gear.jewels_per_kill")], [
             [ui(f"gear.source.{s['id']}") if ui(f"gear.source.{s['id']}") != f"gear.source.{s['id']}" else s["id"],
-             _one_in(loot_per_kill(ctx, s)["gems"])] for s in sources])
+             _one_in(ctx, loot_per_kill(ctx, s)["gems"])] for s in sources])
 
     base = {k: j for k, j in jewels.items() if j["base"]}
     md += [f"## {ui('gear.base_jewels')} ({len(base)})", ""]

@@ -45,6 +45,8 @@ def main() -> None:
     p = sub.add_parser("formulas", help="check the written-down formulas against the mod's code (formulas/registry.toml)")
     p.add_argument("--version", help="game data version (default: latest extracted)")
     p.add_argument("--accept", nargs="+", metavar="ID", help="record these formulas (or all) as re-checked against this version")
+    p.add_argument("--diff", nargs="*", metavar="ID",
+                   help="show what changed in the code of these formulas (default: the hidden ones) since they were checked")
 
     p = sub.add_parser("patches", help="write down what a version changed since the one before (patches/<version>/); "
                                        "the build does it for the version it builds")
@@ -81,11 +83,13 @@ def main() -> None:
         build(args.version or latest_version(), args.lang, render=not args.no_render)
     elif args.cmd == "formulas":
         from .data import latest_version
-        from .formulas import accept, report
+        from .formulas import accept, diff, report
 
         version = args.version or latest_version()
         if args.accept:
             accept(version, args.accept)
+        elif args.diff is not None:
+            diff(version, args.diff)
         report(version)
     elif args.cmd == "patches":
         from .data import latest_version

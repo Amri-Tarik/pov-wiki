@@ -156,7 +156,35 @@ def accept(version: str, ids: list[str]) -> None:
                 raise SystemExit(f"{f['id']}: anchor not found: {missing}")
             f["fingerprint"], f["checked"] = digest, version
             print(f"{f['id']}: checked against {version} ({digest})")
-    REGISTRY.write_text(HEADER + tomli_w.dumps(reg), encoding="utf-8")
+    REGISTRY.write_text(HEADER + tomli_w.dumps(reg), encoding="utf-8", newline="\n")
+
+
+def diff(version: str, ids: list[str]) -> None:
+    """What changed in the code of these formulas (every hidden one when none are named) since
+    the version they were checked against: a unified diff per anchor, to re-read them faster."""
+    import difflib
+
+    from .decompile import decompile
+
+    code, status = decompile(version), check(version)
+    for f in load()["formula"]:
+        if (ids and f["id"] not in ids) or (not ids and status[f["id"]].ok):
+            continue
+        before = f.get("checked")
+        print(f"== {f['id']} (checked against {before or 'nothing'})")
+        old_code = decompile(before) if before else None
+        for anchor in f["anchors"]:
+            new = anchor_text(code, anchor)
+            old = anchor_text(old_code, anchor) if old_code else None
+            if new is None:
+                print(f"   not found now: {anchor}")
+            elif old is None:
+                print(f"   not found in {before}: {anchor}")
+            elif re.sub(r"\s+", " ", old).strip() != re.sub(r"\s+", " ", new).strip():
+                print(f"   changed: {anchor}")
+                a, b = ([s for s in text.splitlines() if s.strip()] for text in (old, new))  # blank lines: removed IL notes
+                for line in difflib.unified_diff(a, b, before, version, n=2, lineterm=""):
+                    print(f"     {line}")
 
 
 def report(version: str) -> None:

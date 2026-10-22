@@ -1752,6 +1752,173 @@
      "name": "Три лика Морока"
     }
    }
+  },
+  "values": {
+   "blight.spawn-band": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "1000 m"
+     ],
+     "link": null,
+     "name": "«Blight Mist»: насколько дальше ближайшего может появиться новый туман"
+    },
+    "old": null
+   },
+   "blight.spawn-gap": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "800 m"
+     ],
+     "link": null,
+     "name": "«Blight Mist»: новый туман не появляется ближе этого к нескольким последним"
+    },
+    "old": null
+   },
+   "blight.spawn-min": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "500 m"
+     ],
+     "link": null,
+     "name": "«Blight Mist»: ближайшее расстояние нового тумана от игрока, для которого он появляется (и от любой кровати), первая неделя"
+    },
+    "old": null
+   },
+   "blight.spawn-step": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "150 m"
+     ],
+     "link": null,
+     "name": "«Blight Mist»: каждую неделю туман появляется на столько дальше"
+    },
+    "old": null
+   },
+   "corrupt.imp-affixes": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "25%"
+     ],
+     "link": null,
+     "name": "Осквернённое собственное свойство: увеличение значений всех свойств"
+    },
+    "old": null
+   },
+   "corrupt.imp-quality": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "1"
+     ],
+     "link": null,
+     "name": "Осквернённое собственное свойство: уровни качества предмета"
+    },
+    "old": null
+   },
+   "corrupt.imp-sigils": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "25%"
+     ],
+     "link": null,
+     "name": "Осквернённое собственное свойство: больше силы вставленных сигилов"
+    },
+    "old": null
+   },
+   "corrupt.overwrite": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "50%"
+     ],
+     "link": null,
+     "name": "Осквернение: шанс, что осквернённое собственное свойство заменит собственные свойства базы"
+    },
+    "old": null
+   },
+   "corrupt.reshape-lose": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "15%"
+     ],
+     "link": null,
+     "name": "Осквернение, изменение свойств: шанс, что одно свойство исчезнет"
+    },
+    "old": null
+   },
+   "corrupt.reshape-swing": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "20%"
+     ],
+     "link": null,
+     "name": "Осквернение, изменение свойств: на сколько одно свойство усиливается или ослабевает"
+    },
+    "old": null
+   },
+   "corrupt.w.destroy": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "5"
+     ],
+     "link": null,
+     "name": "Осквернение: вес исхода «предмет разрушается»"
+    },
+    "old": null
+   },
+   "corrupt.w.implicit": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "20"
+     ],
+     "link": null,
+     "name": "Осквернение: вес исхода «осквернённое собственное свойство»"
+    },
+    "old": null
+   },
+   "corrupt.w.nothing": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "40"
+     ],
+     "link": null,
+     "name": "Осквернение: вес исхода «больше ничего не происходит»"
+    },
+    "old": null
+   },
+   "corrupt.w.reshape": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "25"
+     ],
+     "link": null,
+     "name": "Осквернение: вес исхода «свойства меняются»"
+    },
+    "old": null
+   },
+   "corrupt.w.tiers": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "10"
+     ],
+     "link": null,
+     "name": "Осквернение: вес исхода «каждое свойство на ступень выше или ниже»"
+    },
+    "old": null
+   }
   }
  },
  "date": "2026-10-19",

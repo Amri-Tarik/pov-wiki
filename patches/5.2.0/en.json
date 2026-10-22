@@ -1128,6 +1128,286 @@
      "name": "Minion Defence"
     }
    }
+  },
+  "values": {
+   "offering.regrow-days": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "16 days"
+     ],
+     "link": null,
+     "name": "Boss offering nests (dragon egg): in-game days to grow back"
+    },
+    "old": null
+   },
+   "phantom.damage": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "24%"
+     ],
+     "link": null,
+     "name": "Phantom strike share of the original outgoing hit"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "15%"
+     ],
+     "link": null,
+     "name": "Phantom strike share of the original outgoing hit"
+    }
+   },
+   "phantom.stagger": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "50%"
+     ],
+     "link": null,
+     "name": "Phantom strike stagger as a share of the original hit's stagger"
+    },
+    "old": null
+   },
+   "stagger.rune-shield": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "100%"
+     ],
+     "link": null,
+     "name": "Player's stagger threshold: share of maximum rune shield added to maximum health"
+    },
+    "old": null
+   },
+   "summon.power-damage.StaffGreenRoots": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "1 x"
+     ],
+     "link": null,
+     "name": "Staff of the Wild root: damage multiplier"
+    },
+    "old": null
+   },
+   "summon.power-damage.StaffRedTroll": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "3 x"
+     ],
+     "link": null,
+     "name": "Trollstav troll: damage multiplier"
+    },
+    "old": null
+   },
+   "summon.power-damage.StaffSkeleton": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "1 x"
+     ],
+     "link": null,
+     "name": "Dead Raiser skeleton: damage multiplier"
+    },
+    "old": null
+   },
+   "summon.power-damage.StaffSpiritCaller": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "2 x"
+     ],
+     "link": null,
+     "name": "Spirit Caller spirit: damage multiplier"
+    },
+    "old": null
+   },
+   "summon.power-health.StaffGreenRoots": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "1 x"
+     ],
+     "link": null,
+     "name": "Staff of the Wild root: health multiplier"
+    },
+    "old": null
+   },
+   "summon.power-health.StaffRedTroll": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "1 x"
+     ],
+     "link": null,
+     "name": "Trollstav troll: health multiplier"
+    },
+    "old": null
+   },
+   "summon.power-health.StaffSkeleton": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "1 x"
+     ],
+     "link": null,
+     "name": "Dead Raiser skeleton: health multiplier"
+    },
+    "old": null
+   },
+   "summon.power-health.StaffSpiritCaller": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "1 x"
+     ],
+     "link": null,
+     "name": "Spirit Caller spirit: health multiplier"
+    },
+    "old": null
+   },
+   "summon.reserve.PT_StaffBarrowCall": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "15 eitr"
+     ],
+     "link": null,
+     "name": "Barrow Call (Swamp, swarm): eitr held per thrall"
+    },
+    "old": null
+   },
+   "summon.reserve.PT_StaffBoneCall": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "5 eitr"
+     ],
+     "link": null,
+     "name": "Bone Call (Meadows, swarm): eitr held per thrall"
+    },
+    "old": null
+   },
+   "summon.reserve.PT_StaffFrostboneCall": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "100 eitr"
+     ],
+     "link": null,
+     "name": "Frostbone Call (Mountains, elite): eitr held per thrall"
+    },
+    "old": null
+   },
+   "summon.reserve.PT_StaffGraveCall": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "30 eitr"
+     ],
+     "link": null,
+     "name": "Grave Call (Black Forest, elite): eitr held per thrall"
+    },
+    "old": null
+   },
+   "summon.reserve.PT_StaffWarboneCall": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "35 eitr"
+     ],
+     "link": null,
+     "name": "Warbone Call (Plains, swarm): eitr held per thrall"
+    },
+    "old": null
+   },
+   "summon.reserve.StaffGreenRoots": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "45 eitr"
+     ],
+     "link": null,
+     "name": "Staff of the Wild (Ashlands, swarm): eitr held per root"
+    },
+    "old": null
+   },
+   "summon.reserve.StaffRedTroll": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "300 eitr"
+     ],
+     "link": null,
+     "name": "Trollstav (Ashlands, elite): eitr held per troll"
+    },
+    "old": null
+   },
+   "summon.reserve.StaffSkeleton": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "50 eitr"
+     ],
+     "link": null,
+     "name": "Dead Raiser (Mistlands, swarm): eitr held per skeleton"
+    },
+    "old": null
+   },
+   "summon.reserve.StaffSpiritCaller": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "450 eitr"
+     ],
+     "link": null,
+     "name": "Spirit Caller (Deep North, elite): eitr held per spirit"
+    },
+    "old": null
+   },
+   "throw.axe-spin": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "900 °/s"
+     ],
+     "link": null,
+     "name": "Thrown axe, club and other weapons that fly as a wheel: how fast they turn end over end"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "900 °/s"
+     ],
+     "link": null,
+     "name": "Thrown axe: how fast it turns in flight"
+    }
+   },
+   "throw.cost-vs-primary": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "2 x"
+     ],
+     "link": null,
+     "name": "Weapon throw: stamina at least this many ordinary attacks of the weapon (a throw is its alternate attack)"
+    },
+    "old": null
+   },
+   "xp.ally-kill": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "100%"
+     ],
+     "link": null,
+     "name": "Experience for a kill by a companion, minion or pet (share of a normal kill, split among players nearby)"
+    },
+    "old": null
+   }
   }
  },
  "date": "2026-10-21",

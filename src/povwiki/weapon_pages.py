@@ -71,18 +71,21 @@ def _passives(ctx: Ctx, cats: list[str], subjects: list[str]):
 
 
 def _bases_table(ctx: Ctx, prefabs: list[str], found: dict, page: str) -> list[str]:
-    from .base_pages import _icon, _level, _material_level, _recipe, _station, _summary, base_path
+    from .base_pages import _icon, _level, _material_level, _recipe, _station, _summary, attack_kinds, attacks_cell, base_path
 
     def order(p: str) -> tuple:  # crafted items in progression order, then the ones only found as loot
         recipe = _recipe(ctx, p)
         return (_material_level(ctx, recipe) if recipe else 10**6), found[p]["name"]
 
     ui = ctx.loc.ui
-    header = ["", ui("col.name"), ui("items.stats"), ui("items.station"), ui("items.item_level")]
+    attacks = any(attack_kinds(found[p]) for p in prefabs)  # a column only where some are strikes or slams
+    header = ["", ui("col.name"), ui("items.stats"), *([ui("items.attacks")] if attacks else []),
+              ui("items.station"), ui("items.item_level")]
     return _table(header, [[
         _icon(ctx, p, page, 40),
         f"[**{found[p]['name']}**]({rel(base_path(p), page)})",
         _summary(ctx, found[p]),
+        *([attacks_cell(ctx, found[p], page)] if attacks else []),
         _station(ctx, _recipe(ctx, p)),
         biome(ctx, _level(ctx, p)) if _level(ctx, p) else "—",
     ] for p in sorted(prefabs, key=order)])

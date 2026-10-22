@@ -168,6 +168,59 @@ def _stats(ctx: Ctx, b: dict) -> list[list[str]]:
     return rows
 
 
+# Valheim's Attack.AttackType and Skills.SkillType values.
+_VERTICAL, _AREA = 1, 4
+_MELEE_SKILLS = {1, 2, 3, 4, 5, 7, 11, 12}  # swords, knives, clubs, polearms, spears, axes, unarmed, pickaxes
+_HEAVY_SKILLS = {1, 3, 4, 7}  # GroundStrike.Heavy: two-handed swords, clubs, polearms and axes
+
+
+def attack_kinds(b: dict) -> dict[str, str]:
+    """Which of a weapon's attacks are slams or strikes: {"primary"|"secondary": "slam"|"strike"}.
+    The mod's ItemTooltip.AttackTags: area attacks are slams (Slams.IsSlam); a melee weapon's
+    vertical swings are strikes (Strikes.IsStrikeSwing). Sceptres are left out (every smite
+    counts as a strike, but never gets additional strikes: see Strikes.Eligible)."""
+    s, tags = b["shared"], b["info"]["tags"]
+    if "weapon" not in tags or "kind.Scepters" in tags:
+        return {}
+    out = {}
+    for slot, key in (("primary", "m_attack"), ("secondary", "m_secondaryAttack")):
+        a = s.get(key) or {}
+        if not a.get("m_attackAnimation"):  # ItemData.HaveSecondaryAttack
+            continue
+        if a.get("m_attackType") == _AREA:
+            out[slot] = "slam"
+        elif a.get("m_attackType") == _VERTICAL and s.get("m_skillType") in _MELEE_SKILLS:
+            out[slot] = "strike"
+    return out
+
+
+def ground_strike(b: dict) -> bool:
+    """A two-handed weapon whose alternative attack the slam mastery turns into a slam (GroundStrike)."""
+    s = b["shared"]
+    return "weapon" in b["info"]["tags"] and s.get("m_itemType") == 14 and s.get("m_skillType") in _HEAVY_SKILLS
+
+
+def attacks_line(ctx: Ctx, b: dict, page: str) -> list[str]:
+    """Which attacks of a weapon are strikes or slams, linked to how they work."""
+    from .formula_pages import _mastery_link, _term
+
+    ui = ctx.loc.ui
+    kinds = attack_kinds(b)
+    parts = [ui(f"items.attack_{slot}", kind=_term(ctx, kinds[slot], page)) for slot in ("primary", "secondary") if slot in kinds]
+    if ground_strike(b) and kinds.get("secondary") != "slam":
+        parts.append(ui("items.attack_ground", mastery=_mastery_link(ctx, "MasterySlam1", page), slam=_term(ctx, "slam", page)))
+    return [" ".join(parts), ""] if parts else []
+
+
+def attacks_cell(ctx: Ctx, b: dict, page: str) -> str:
+    """Short form for tables: "strike (alternative)"."""
+    from .formula_pages import _term
+
+    kinds = attack_kinds(b)
+    return ", ".join(ctx.loc.ui(f"items.attack_{slot}_short", kind=_term(ctx, kinds[slot], page))
+                     for slot in ("primary", "secondary") if slot in kinds) or "—"
+
+
 def _recipe(ctx: Ctx, prefab: str) -> dict | None:
     mod = ctx.loc.items.get(prefab, {}).get("mod")
     if mod:  # the mod's own gear: its recipe at the rune carver table, if it has one
@@ -329,8 +382,10 @@ def _base_page(ctx: Ctx, prefab: str, b: dict, found: dict) -> str:
     if stats:
         md += [f"## {ui('items.stats')}", ""]
         md += _table([ui("items.stat"), *(ui("items.quality_n", n=q) for q in qs)], stats)
+    md += attacks_line(ctx, b, page)
 
     md += _bomb_section(ctx, info.get("mod"), page) + _resurrection_section(ctx, info.get("mod"), page)
+    md += _ascension_section(ctx, prefab, b, page)
 
     recipe = _recipe(ctx, prefab)
     if recipe:
@@ -376,6 +431,38 @@ def _base_page(ctx: Ctx, prefab: str, b: dict, found: dict) -> str:
 
     md += history(ctx, "bases", [prefab], page)
     return "\n".join(md + _footer(ctx))
+
+
+def _ascension_section(ctx: Ctx, prefab: str, b: dict, page: str) -> list[str]:
+    """What each boss essence that can ascend this item makes of it (povwiki.ascension)."""
+    from .ascension import ascended
+    from .formula_pages import _anchor, shown
+    from .gear_pages import currency_path
+
+    rows = ascended(ctx, prefab, b["shared"]) if shown(ctx, "ascension") else []
+    if not rows:
+        return []
+    loc, ui, vk = ctx.loc, ctx.loc.ui, ctx.loc.vkey
+    s = b["shared"]
+
+    def pair(base: float, per: float) -> str:  # quality 1, and what each quality adds
+        return f"{_num(base)} (+{_num(per)})" if per else _num(base)
+
+    cols = []  # (label, cell) for the stats this item has
+    if any(_damages({"m_damages": r["damages"]}, 1) for r in rows) and "shield" not in b["info"]["tags"]:
+        cols.append((ui("formula.ascension.damage"), lambda r: ", ".join(
+            f"{vk(label)} {pair(r['damages'].get(key, 0), r['damagesPerLevel'].get(key, 0))}"
+            for key, label in _DAMAGES if r["damages"].get(key) or r["damagesPerLevel"].get(key))))
+    if "shield" in b["info"]["tags"]:
+        cols.append((vk("item_blockpower"), lambda r: pair(r["block"], r["blockL"])))
+        cols.append((vk("item_deflection"), lambda r: pair(r["defl"], r["deflL"])))
+    if s.get("m_useDurability"):
+        cols.append((vk("item_durability"), lambda r: pair(r["dur"], r["durL"])))
+    header = [ui("formula.ascension.essence"), ui("bosses.biome"), *(label for label, _ in cols)]
+    table = [[f"[{loc.loot['items'].get(r['essence'], {}).get('name', r['essence'])}]({rel(currency_path(r['essence']), page)})",
+              f"{vk(f'biome_{r['biome'].lower()}', r['biome'])} ({r['level']})", *(cell(r) for _, cell in cols)] for r in rows]
+    return ([f"## {ui('formula.ascension.title')}", "",
+             ui("formula.ascension.item_intro", link=_anchor("ascension", page), title=ui("formula.ascension.title")), ""] + _table(header, table))
 
 
 def _bomb_section(ctx: Ctx, mod: dict | None, page: str) -> list[str]:

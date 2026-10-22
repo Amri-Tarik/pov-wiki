@@ -4299,6 +4299,535 @@
      "name": "Trail of the First Antler"
     }
    }
+  },
+  "values": {
+   "ailment.bleeding.dps-share": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "20%"
+     ],
+     "link": null,
+     "name": "Base bleeding damage per second from source"
+    },
+    "old": null
+   },
+   "ailment.bleeding.duration": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "4 s"
+     ],
+     "link": null,
+     "name": "Base bleeding duration"
+    },
+    "old": null
+   },
+   "ailment.burning.dps-share": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "25%"
+     ],
+     "link": null,
+     "name": "Base burning damage per second from source"
+    },
+    "old": null
+   },
+   "ailment.burning.duration": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "4 s"
+     ],
+     "link": null,
+     "name": "Base burning duration"
+    },
+    "old": null
+   },
+   "ailment.poison.base-limit": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "3"
+     ],
+     "link": null,
+     "name": "Base active poisons per attacker-target"
+    },
+    "old": null
+   },
+   "ailment.poison.dps-share": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "15%"
+     ],
+     "link": null,
+     "name": "Base poison damage per second from source"
+    },
+    "old": null
+   },
+   "ailment.poison.duration": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "4 s"
+     ],
+     "link": null,
+     "name": "Base poison duration"
+    },
+    "old": null
+   },
+   "bomb.burst-share": {
+    "new": null,
+    "old": {
+     "kind": "",
+     "lines": [
+      "35%"
+     ],
+     "link": null,
+     "name": "Impact Detonation: share of the bomb's remaining power each touch explosion spends"
+    }
+   },
+   "disenchant.unique-jewel-azurite": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "10"
+     ],
+     "link": null,
+     "name": "Dismantling a unique jewel: azurite dust at item level 1"
+    },
+    "old": null
+   },
+   "disenchant.unique-jewel-divine": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "40"
+     ],
+     "link": null,
+     "name": "Dismantling a unique jewel: divine dust at item level 1"
+    },
+    "old": null
+   },
+   "disenchant.unique-jewel-level-step": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "249 lvl"
+     ],
+     "link": null,
+     "name": "Dismantling a unique jewel: item levels per +100% dust (level 250 gives twice the level-1 return)"
+    },
+    "old": null
+   },
+   "equipment.evasion.coefficient": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "1.35"
+     ],
+     "link": null,
+     "name": "Armour base converted to evasion rating"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "1"
+     ],
+     "link": null,
+     "name": "Armour base converted to evasion rating"
+    }
+   },
+   "evasion.cap": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "100%"
+     ],
+     "link": null,
+     "name": "Most chance to evade a hit"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "75%"
+     ],
+     "link": null,
+     "name": "Most chance to evade a hit"
+    }
+   },
+   "evasion.decay": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "80%"
+     ],
+     "link": null,
+     "name": "Each evasion against an attacker keeps this share of the chance against it"
+    },
+    "old": null
+   },
+   "evasion.decay-reset": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "8 s"
+     ],
+     "link": null,
+     "name": "An attacker's evasion count resets after it lands no attack for this long"
+    },
+    "old": null
+   },
+   "evasion.decay-reset-boss": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "30 s"
+     ],
+     "link": null,
+     "name": "A boss's evasion count resets after it lands no attack for this long"
+    },
+    "old": null
+   },
+   "evasion.full-ratio": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "3 x"
+     ],
+     "link": null,
+     "name": "Evasion rating per point of enemy accuracy that gives 100% chance to evade (chance = rating / (this × accuracy))"
+    },
+    "old": null
+   },
+   "evasion.hit-factor": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "1.25"
+     ],
+     "link": null,
+     "name": "Unused since 22.10.2026 (the old curve 1 - H*A/(A+E)); kept for old configs"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "1.25"
+     ],
+     "link": null,
+     "name": "Hit factor H in evade = 1 - H*A/(A+E); evasion below A*(H-1) evades nothing"
+    }
+   },
+   "evasion.stamina-cost": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "18%"
+     ],
+     "link": null,
+     "name": "Each evasion costs this share of maximum stamina; without it there is no evasion"
+    },
+    "old": null
+   },
+   "groundfield.base-limit": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "1"
+     ],
+     "link": null,
+     "name": "Base simultaneous ground patches"
+    },
+    "old": null
+   },
+   "groundfield.buildup-share": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "20%"
+     ],
+     "link": null,
+     "name": "Source damage used for buildup per second"
+    },
+    "old": null
+   },
+   "groundfield.damage-share": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "20%"
+     ],
+     "link": null,
+     "name": "Source damage dealt per second"
+    },
+    "old": null
+   },
+   "groundfield.duration": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "4 s"
+     ],
+     "link": null,
+     "name": "Base ground duration"
+    },
+    "old": null
+   },
+   "groundfield.radius": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "2 m"
+     ],
+     "link": null,
+     "name": "Base ground radius"
+    },
+    "old": null
+   },
+   "groundfield.sliding-friction": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "0.15"
+     ],
+     "link": null,
+     "name": "Chilled ground friction multiplier"
+    },
+    "old": null
+   },
+   "groundfield.sliding-steering": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "0.35"
+     ],
+     "link": null,
+     "name": "Chilled ground steering multiplier"
+    },
+    "old": null
+   },
+   "groundfield.tick": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "0.2 s"
+     ],
+     "link": null,
+     "name": "Logical ground tick"
+    },
+    "old": null
+   },
+   "infusion.absorption-area": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "6 m²/s"
+     ],
+     "link": null,
+     "name": "Base area absorbed per second"
+    },
+    "old": null
+   },
+   "infusion.area-per-unit": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "2 m²"
+     ],
+     "link": null,
+     "name": "Area per infusion unit"
+    },
+    "old": null
+   },
+   "infusion.base-limit": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "10"
+     ],
+     "link": null,
+     "name": "Base stored infusion units"
+    },
+    "old": null
+   },
+   "infusion.damage-per-unit": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "6%"
+     ],
+     "link": null,
+     "name": "Source damage stored per infusion unit"
+    },
+    "old": null
+   },
+   "infusion.duration": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "10 s"
+     ],
+     "link": null,
+     "name": "Base infusion duration"
+    },
+    "old": null
+   },
+   "infusion.fx-cue-volume": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "50%"
+     ],
+     "link": null,
+     "name": "Absorption: full and release cue volume"
+    },
+    "old": null
+   },
+   "infusion.fx-loop-volume": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "22%"
+     ],
+     "link": null,
+     "name": "Absorption: loop sound volume"
+    },
+    "old": null
+   },
+   "permadeath.mercy-hours": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "2 h"
+     ],
+     "link": null,
+     "name": "Permadeath right to a mistake: hours of play before the right comes back"
+    },
+    "old": null
+   },
+   "permadeath.oneshot-cooldown": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "1800 s"
+     ],
+     "link": null,
+     "name": "Permadeath one-shot guard: cooldown"
+    },
+    "old": null
+   },
+   "permadeath.oneshot-share": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "95%"
+     ],
+     "link": null,
+     "name": "Permadeath one-shot guard: a single hit above this share of maximum health counts as a one-shot"
+    },
+    "old": null
+   },
+   "ranged.falloff.end": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "30 m"
+     ],
+     "link": null,
+     "name": "Bows and crossbows: damage reaches the floor at this distance"
+    },
+    "old": null
+   },
+   "ranged.falloff.floor": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "20%"
+     ],
+     "link": null,
+     "name": "Bows and crossbows: damage multiplier at and beyond the far distance"
+    },
+    "old": null
+   },
+   "ranged.falloff.start": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "6 m"
+     ],
+     "link": null,
+     "name": "Bows and crossbows: full damage up to this distance"
+    },
+    "old": null
+   },
+   "shock.coefficient": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "0.5"
+     ],
+     "link": null,
+     "name": "Shock curve coefficient"
+    },
+    "old": null
+   },
+   "shock.duration": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "3 s"
+     ],
+     "link": null,
+     "name": "Base shock duration"
+    },
+    "old": null
+   },
+   "shock.exponent": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "0.4"
+     ],
+     "link": null,
+     "name": "Shock curve exponent"
+    },
+    "old": null
+   },
+   "shock.maximum": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "50%"
+     ],
+     "link": null,
+     "name": "Base maximum shock"
+    },
+    "old": null
+   },
+   "shock.minimum": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "5%"
+     ],
+     "link": null,
+     "name": "Minimum applied shock"
+    },
+    "old": null
+   },
+   "shock.stagger-scale": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "1"
+     ],
+     "link": null,
+     "name": "Shock stagger taken per unit of shock"
+    },
+    "old": null
+   }
   }
  },
  "date": "2026-10-22",

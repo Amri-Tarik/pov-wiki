@@ -1103,6 +1103,44 @@ checked = "5.3.0"
 min_damage = 5
 
 [[formula]]
+id = "dismantling"
+anchors = [
+    "PassiveTree.Loot/Disenchant.cs :: Disenchant.Returns",
+    "PassiveTree.Loot/Disenchant.cs :: Disenchant.Can",
+    "PassiveTree.Loot/Disenchant.cs :: Disenchant.Dust",
+    "PassiveTree.Loot/Disenchant.cs :: Disenchant.TierMult",
+    "PassiveTree.Loot/Disenchant.cs :: Disenchant.Chain",
+    "PassiveTree.Loot/Disenchant.cs :: Disenchant.Share",
+    "PassiveTree.Loot/Disenchant.cs :: Disenchant.UniqueDivine",
+    "PassiveTree.Loot/Disenchant.cs :: Disenchant.LegendaryDivine",
+    "PassiveTree.Loot/Disenchant.cs :: Disenchant.DivinePrice",
+]
+fingerprint = "a7e68bd86c05"
+checked = "5.3.0"
+
+[formula.values]
+chain = [
+    "PT_RuneOfSpark",
+    "PT_RuneOfWeaving",
+    "PT_RuneOfJarl",
+    "PT_RuneOfAscent",
+]
+share = 0.3
+unique_divine = 0.1
+legendary_divine = 0.2
+divine_price = 2
+example_level = 100
+example_props = 6
+
+[formula.values.tiers]
+T0 = 2.0
+T1 = 1.45
+T2 = 1.2
+T3 = 1.0
+T4 = 0.85
+T5 = 0.7
+
+[[formula]]
 id = "jewel-dismantling"
 anchors = [
     "PassiveTree.Loot/Disenchant.cs :: Disenchant.Returns",

@@ -4299,6 +4299,517 @@
      "name": "Trail of the First Antler"
     }
    }
+  },
+  "values": {
+   "ailment.bleeding.dps-share": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "20%"
+     ],
+     "link": null,
+     "name": "Базовый урон кровотечения в секунду от исходного"
+    },
+    "old": null
+   },
+   "ailment.bleeding.duration": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "4 s"
+     ],
+     "link": null,
+     "name": "Базовая длительность кровотечения"
+    },
+    "old": null
+   },
+   "ailment.burning.dps-share": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "25%"
+     ],
+     "link": null,
+     "name": "Базовый урон горения в секунду от исходного"
+    },
+    "old": null
+   },
+   "ailment.burning.duration": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "4 s"
+     ],
+     "link": null,
+     "name": "Базовая длительность горения"
+    },
+    "old": null
+   },
+   "ailment.poison.base-limit": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "3"
+     ],
+     "link": null,
+     "name": "Базовое число активных ядов на пару атакующий — цель"
+    },
+    "old": null
+   },
+   "ailment.poison.dps-share": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "15%"
+     ],
+     "link": null,
+     "name": "Базовый урон яда в секунду от исходного"
+    },
+    "old": null
+   },
+   "ailment.poison.duration": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "4 s"
+     ],
+     "link": null,
+     "name": "Базовая длительность яда"
+    },
+    "old": null
+   },
+   "bomb.burst-share": {
+    "new": null,
+    "old": {
+     "kind": "",
+     "lines": [
+      "35%"
+     ],
+     "link": null,
+     "name": "Ударная детонация: доля оставшейся силы бомбы, расходуемая каждым взрывом от касания"
+    }
+   },
+   "disenchant.unique-jewel-azurite": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "10"
+     ],
+     "link": null,
+     "name": "Разбор уникального самоцвета: азуритовая пыль на уровне предмета 1"
+    },
+    "old": null
+   },
+   "disenchant.unique-jewel-divine": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "40"
+     ],
+     "link": null,
+     "name": "Разбор уникального самоцвета: божественная пыль на уровне предмета 1"
+    },
+    "old": null
+   },
+   "disenchant.unique-jewel-level-step": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "249 lvl"
+     ],
+     "link": null,
+     "name": "Разбор уникального самоцвета: уровней предмета на +100% пыли (уровень 250 даёт вдвое больше уровня 1)"
+    },
+    "old": null
+   },
+   "equipment.evasion.coefficient": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "1.35"
+     ],
+     "link": null,
+     "name": "Доля базовой брони, переходящая в рейтинг уклонения"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "1"
+     ],
+     "link": null,
+     "name": "Доля базовой брони, переходящая в рейтинг уклонения"
+    }
+   },
+   "evasion.cap": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "100%"
+     ],
+     "link": null,
+     "name": "Наибольший шанс уклониться от удара"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "75%"
+     ],
+     "link": null,
+     "name": "Наибольший шанс уклониться от удара"
+    }
+   },
+   "evasion.decay": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "80%"
+     ],
+     "link": null,
+     "name": "Каждое уклонение от атакующего оставляет эту долю шанса против него"
+    },
+    "old": null
+   },
+   "evasion.decay-reset": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "8 s"
+     ],
+     "link": null,
+     "name": "Счёт уклонений от атакующего сбрасывается, если он столько времени не проводит атак"
+    },
+    "old": null
+   },
+   "evasion.decay-reset-boss": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "30 s"
+     ],
+     "link": null,
+     "name": "Счёт уклонений от босса сбрасывается, если он столько времени не проводит атак"
+    },
+    "old": null
+   },
+   "evasion.full-ratio": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "3 x"
+     ],
+     "link": null,
+     "name": "Рейтинг уклонения на очко точности врага, дающий 100% шанс уклонения (шанс = рейтинг / (это × точность))"
+    },
+    "old": null
+   },
+   "evasion.stamina-cost": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "18%"
+     ],
+     "link": null,
+     "name": "Каждое уклонение стоит эту долю максимальной выносливости; без неё уклонения нет"
+    },
+    "old": null
+   },
+   "groundfield.base-limit": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "1"
+     ],
+     "link": null,
+     "name": "Базовое число одновременных участков земли"
+    },
+    "old": null
+   },
+   "groundfield.buildup-share": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "20%"
+     ],
+     "link": null,
+     "name": "Доля исходного урона на накопление в секунду"
+    },
+    "old": null
+   },
+   "groundfield.damage-share": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "20%"
+     ],
+     "link": null,
+     "name": "Доля исходного урона, наносимая в секунду"
+    },
+    "old": null
+   },
+   "groundfield.duration": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "4 s"
+     ],
+     "link": null,
+     "name": "Базовая длительность земли"
+    },
+    "old": null
+   },
+   "groundfield.radius": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "2 m"
+     ],
+     "link": null,
+     "name": "Базовый радиус земли"
+    },
+    "old": null
+   },
+   "groundfield.sliding-friction": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "0.15"
+     ],
+     "link": null,
+     "name": "Стылая земля: множитель трения"
+    },
+    "old": null
+   },
+   "groundfield.sliding-steering": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "0.35"
+     ],
+     "link": null,
+     "name": "Стылая земля: множитель управляемости"
+    },
+    "old": null
+   },
+   "groundfield.tick": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "0.2 s"
+     ],
+     "link": null,
+     "name": "Логический такт земли"
+    },
+    "old": null
+   },
+   "infusion.absorption-area": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "6 m²/s"
+     ],
+     "link": null,
+     "name": "Базовая площадь поглощения в секунду"
+    },
+    "old": null
+   },
+   "infusion.area-per-unit": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "2 m²"
+     ],
+     "link": null,
+     "name": "Площадь на единицу насыщения"
+    },
+    "old": null
+   },
+   "infusion.base-limit": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "10"
+     ],
+     "link": null,
+     "name": "Базовый запас единиц насыщения"
+    },
+    "old": null
+   },
+   "infusion.damage-per-unit": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "6%"
+     ],
+     "link": null,
+     "name": "Доля исходного урона на единицу насыщения"
+    },
+    "old": null
+   },
+   "infusion.duration": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "10 s"
+     ],
+     "link": null,
+     "name": "Базовая длительность насыщения"
+    },
+    "old": null
+   },
+   "infusion.fx-cue-volume": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "50%"
+     ],
+     "link": null,
+     "name": "Поглощение: громкость сигналов заполнения и высвобождения"
+    },
+    "old": null
+   },
+   "infusion.fx-loop-volume": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "22%"
+     ],
+     "link": null,
+     "name": "Поглощение: громкость звука в цикле"
+    },
+    "old": null
+   },
+   "permadeath.mercy-hours": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "2 h"
+     ],
+     "link": null,
+     "name": "Окончательная смерть, право на ошибку: часов игры до его возвращения"
+    },
+    "old": null
+   },
+   "permadeath.oneshot-cooldown": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "1800 s"
+     ],
+     "link": null,
+     "name": "Окончательная смерть, защита от убийства с одного удара: перезарядка"
+    },
+    "old": null
+   },
+   "permadeath.oneshot-share": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "95%"
+     ],
+     "link": null,
+     "name": "Окончательная смерть, защита от убийства с одного удара: один удар больше этой доли максимального здоровья считается убийством с одного удара"
+    },
+    "old": null
+   },
+   "ranged.falloff.end": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "30 m"
+     ],
+     "link": null,
+     "name": "Луки и арбалеты: урон доходит до минимума на этом расстоянии"
+    },
+    "old": null
+   },
+   "ranged.falloff.floor": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "20%"
+     ],
+     "link": null,
+     "name": "Луки и арбалеты: множитель урона на дальнем расстоянии и дальше"
+    },
+    "old": null
+   },
+   "ranged.falloff.start": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "6 m"
+     ],
+     "link": null,
+     "name": "Луки и арбалеты: полный урон до этого расстояния"
+    },
+    "old": null
+   },
+   "shock.coefficient": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "0.5"
+     ],
+     "link": null,
+     "name": "Коэффициент кривой шока"
+    },
+    "old": null
+   },
+   "shock.duration": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "3 s"
+     ],
+     "link": null,
+     "name": "Базовая длительность шока"
+    },
+    "old": null
+   },
+   "shock.exponent": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "0.4"
+     ],
+     "link": null,
+     "name": "Показатель кривой шока"
+    },
+    "old": null
+   },
+   "shock.maximum": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "50%"
+     ],
+     "link": null,
+     "name": "Базовый максимум шока"
+    },
+    "old": null
+   },
+   "shock.minimum": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "5%"
+     ],
+     "link": null,
+     "name": "Наименьший применяемый шок"
+    },
+    "old": null
+   },
+   "shock.stagger-scale": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "1"
+     ],
+     "link": null,
+     "name": "Ошеломление от шока на единицу шока"
+    },
+    "old": null
+   }
   }
  },
  "date": "2026-10-22",

@@ -246,10 +246,6 @@ def _power(ctx, page, v):
             + [ui("formula.monster-power.notes", n=round((cap - 1) / step) if step else 0, loot=_anchor("loot", page)), ""])
 
 
-def _one(v: float) -> str:
-    return f"1 in {round(1 / v):,}" if 0 < v < 1 else (f"{v:.2g}" if v else "—")
-
-
 def loot_per_kill(ctx: Ctx, s: dict) -> dict[str, float]:
     """Average drops per kill (or chest) of a source at quantity 1 and no rarity (LootDrops.Roll):
     its expected draws (lambda) split by the group weights; equipment draws give magic-or-better
@@ -263,6 +259,8 @@ def loot_per_kill(ctx: Ctx, s: dict) -> dict[str, float]:
 
 
 def _loot(ctx, page, v):
+    from .gear_pages import _one_in
+
     ui, loot = ctx.loc.ui, ctx.data.loot
     stars = loot.get("stars", {})
 
@@ -273,7 +271,7 @@ def _loot(ctx, page, v):
     sources = []
     for s in loot.get("sources", []):
         per = loot_per_kill(ctx, s)
-        sources.append([source(s), _one(per["gear"]), _one(per["currency"]), _one(per["gems"])])
+        sources.append([source(s), _one_in(ctx, per["gear"]), _one_in(ctx, per["currency"]), _one_in(ctx, per["gems"])])
     levels = [[str(r["level"]), _n(r["common"]), _n(r["magic"]), _n(r["rare"])] for r in loot.get("rarityByLevel", [])]
     return ([ui("formula.loot.text", quantity=_term(ctx, "item-quantity", page), rarity=_term(ctx, "item-rarity", page)), ""]
             + _formula(ui("formula.loot.quantity", star=_n(stars.get("quantityPerStar", 0)), mod=_n(v["per_modifier"])))
@@ -409,7 +407,26 @@ def _strikes(ctx, page, v):
             + [ui("formula.strikes.hits"), "",
                ui("formula.strikes.double", double=_mastery_link(ctx, "StrikeCritDouble", page)), "",
                ui("formula.strikes.focus", focus=_mastery_link(ctx, "StrikeFocusFire", page), pct=_pct(t["strike.focus-damage"])), "",
-               ui("formula.strikes.combo", combo=_term(ctx, "series", page, start=True)), ""])
+               ui("formula.strikes.combo", combo=_term(ctx, "series", page, start=True)), ""]
+            + _attack_bases(ctx, page, "strike", "formula.strikes.bases"))
+
+
+def _attack_bases(ctx, page, kind: str, key: str) -> list[str]:
+    """The item bases with an attack of this kind (strike, slam), linked, by attack."""
+    from .base_pages import attack_kinds, base_path, bases, ground_strike
+
+    found = bases(ctx)
+    by_slot = {slot: sorted((b["name"], p) for p, b in found.items() if attack_kinds(b).get(slot) == kind)
+               for slot in ("primary", "secondary")}
+    if kind == "slam":  # alternative attacks the slam mastery turns into slams
+        by_slot["ground"] = sorted((b["name"], p) for p, b in found.items()
+                                   if ground_strike(b) and attack_kinds(b).get("secondary") != "slam")
+    ui, out = ctx.loc.ui, []
+    for slot, names in by_slot.items():
+        if names:
+            links = ", ".join(f"[{n}]({rel(base_path(p), page)})" for n, p in names)
+            out += [ui(f"{key}_{slot}", items=links, mastery=_mastery_link(ctx, "MasterySlam1", page)), ""]
+    return out
 
 
 def _granted(ctx, stat: str, page: str) -> str:
@@ -752,7 +769,8 @@ def _slams(ctx, page, v):
                radius=_n(t["slam.ground-radius"]), area=_term(ctx, "area", page)), "",
             ui("formula.slams.aftershock", aftershock=_term(ctx, "aftershock", page, start=True), delay=_n(t["aftershock.delay"])), "",
             ui("formula.slams.push"), "",
-            ui("formula.slams.charged", charged=_term(ctx, "charged-attack", page), delay=_n(t["aftershock.delay"])), ""]
+            ui("formula.slams.charged", charged=_term(ctx, "charged-attack", page), delay=_n(t["aftershock.delay"])), ""] \
+        + _attack_bases(ctx, page, "slam", "formula.slams.bases")
 
 
 def _block(ctx, page, v):
@@ -1029,6 +1047,55 @@ def _ascension(ctx, page, v):
     return md + [ui("formula.ascension.after", min=_n(v["min_damage"])), "", ui("formula.ascension.vanilla"), ""]
 
 
+def _f32(x: float) -> float:
+    """x as a C# float: the game's dust sums are single precision, and rounding a half depends on it."""
+    import struct
+
+    return struct.unpack("f", struct.pack("f", x))[0]
+
+
+def _dismantling(ctx, page, v):
+    """Dust from dismantling magic, rare, unique and legendary items (Disenchant.Returns): each
+    property is worth a rune of the chain's azurite dust price (Disenchant.Dust: a rune bought with
+    other dust is worth none), times its tier's multiplier (Disenchant.TierMult)."""
+    from .gear_pages import _recipe_parts
+
+    ui, t, loot = ctx.loc.ui, ctx.loc.difficulty.get("tunables", {}), ctx.loc.loot["items"]
+    chain = [(loot[r]["name"], dict(_recipe_parts(loot[r].get("recipe"))).get("PT_AzuriteDust", 0)) for r in v["chain"]]
+    mult, step = t["disenchant.unique-mult"], t["disenchant.unique-level-step"]
+    md = [ui("formula.dismantling.text", salvage=_term(ctx, "item-salvage", page)), ""]
+    md += [f"- {ui('formula.dismantling.' + ('rune' if i < len(chain) - 1 else 'rune_last'), n=i + 1, rune=name, dust=dust)}"
+           for i, (name, dust) in enumerate(chain)] + [""]
+    md += _formula(ui("formula.dismantling.formula", share=_n(v["share"]), mult=_n(mult), step=_n(step),
+                      unique=_n(v["unique_divine"]), legendary=_n(v["legendary_divine"]), price=_n(v["divine_price"])))
+    md += [ui("formula.dismantling.tiers"), ""]
+    md += _table([ui("formula.dismantling.tier"), ui("formula.dismantling.mult")],
+                 [[tier, f"×{_n(m)}"] for tier, m in v["tiers"].items()])
+
+    def returns(props: int, level: int | None, divine_share: float) -> tuple[int, int]:  # tier ×1 properties
+        dust = _f32(0.0)
+        for i in range(props):
+            dust = _f32(dust + chain[min(i, len(chain) - 1)][1])
+        if level is not None:
+            dust = _f32(dust * _f32(mult * _f32(1 + _f32(level / step))))
+        azurite = max(1, round(_f32(dust * _f32(v["share"]))))
+        if not divine_share:
+            return azurite, 0
+        divine = max(1, int(_f32(azurite * _f32(divine_share)) / v["divine_price"]))
+        return azurite - round(divine * v["divine_price"]), divine
+
+    level = v["example_level"]
+    rows = []
+    for props in range(1, v["example_props"] + 1):
+        magic, unique, legendary = returns(props, None, 0), returns(props, level, v["unique_divine"]), returns(props, level, v["legendary_divine"])
+        rows.append([str(props), str(magic[0]), f"{unique[0]} + {unique[1]}", f"{legendary[0]} + {legendary[1]}"])
+    md += [ui("formula.dismantling.example", level=level), ""]
+    md += _table([ui("formula.dismantling.props"), ui("formula.dismantling.magic"), ui("formula.dismantling.unique"),
+                  ui("formula.dismantling.legendary")], rows)
+    return md + [ui("formula.dismantling.jewels", link=_anchor("jewel-dismantling", page),
+                    title=ui("formula.jewel-dismantling.title")), ""]
+
+
 def _jewel_dismantling(ctx, page, v):
     """Dust from dismantling a unique jewel (Disenchant.Returns), and the rune carver's speed (CraftSalvage)."""
     ui, t = ctx.loc.ui, ctx.loc.difficulty.get("tunables", {})
@@ -1076,7 +1143,7 @@ _PAGES = {
     CREATURES_PAGE: ("creatures", [("creature-strength", _strength), ("boss-step", _boss_step),
                                    ("stars", _stars), ("boss-stars", _boss_stars), ("monster-power", _power)]),
     LOOT_PAGE: ("loot", [("loot", _loot), ("vanilla-drops", _vanilla_drops), ("ascension", _ascension),
-                         ("jewel-dismantling", _jewel_dismantling)]),
+                         ("dismantling", _dismantling), ("jewel-dismantling", _jewel_dismantling)]),
     EXPERIENCE_PAGE: ("experience", [("creature-level", _level), ("item-level", _item_level), ("experience", _experience),
                                      ("experience-falloff", _falloff), ("ally-kills", _ally_kills), ("player-levels", _player_levels),
                                      ("permadeath", _permadeath)]),

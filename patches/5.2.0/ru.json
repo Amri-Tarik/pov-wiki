@@ -984,6 +984,268 @@
     },
     "old": null
    }
+  },
+  "values": {
+   "offering.regrow-days": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "16 days"
+     ],
+     "link": null,
+     "name": "Гнёзда подношений боссам (драконье яйцо): игровых дней до появления снова"
+    },
+    "old": null
+   },
+   "phantom.damage": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "24%"
+     ],
+     "link": null,
+     "name": "Фантомный удар: доля исходного удара"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "15%"
+     ],
+     "link": null,
+     "name": "Фантомный удар: доля исходного удара"
+    }
+   },
+   "phantom.stagger": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "50%"
+     ],
+     "link": null,
+     "name": "Фантомный удар: ошеломление как доля ошеломления исходного удара"
+    },
+    "old": null
+   },
+   "stagger.rune-shield": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "100%"
+     ],
+     "link": null,
+     "name": "Порог ошеломления игрока: доля максимального рунического щита, добавляемая к максимальному здоровью"
+    },
+    "old": null
+   },
+   "summon.power-damage.StaffGreenRoots": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "1 x"
+     ],
+     "link": null,
+     "name": "Корень «Посоха дикой природы»: множитель урона"
+    },
+    "old": null
+   },
+   "summon.power-damage.StaffRedTroll": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "3 x"
+     ],
+     "link": null,
+     "name": "Тролль «Тролль-посоха»: множитель урона"
+    },
+    "old": null
+   },
+   "summon.power-damage.StaffSkeleton": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "1 x"
+     ],
+     "link": null,
+     "name": "Скелет «Воскрешателя»: множитель урона"
+    },
+    "old": null
+   },
+   "summon.power-damage.StaffSpiritCaller": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "2 x"
+     ],
+     "link": null,
+     "name": "Дух «Призывателя духов»: множитель урона"
+    },
+    "old": null
+   },
+   "summon.power-health.StaffGreenRoots": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "1 x"
+     ],
+     "link": null,
+     "name": "Корень «Посоха дикой природы»: множитель здоровья"
+    },
+    "old": null
+   },
+   "summon.power-health.StaffRedTroll": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "1 x"
+     ],
+     "link": null,
+     "name": "Тролль «Тролль-посоха»: множитель здоровья"
+    },
+    "old": null
+   },
+   "summon.power-health.StaffSkeleton": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "1 x"
+     ],
+     "link": null,
+     "name": "Скелет «Воскрешателя»: множитель здоровья"
+    },
+    "old": null
+   },
+   "summon.power-health.StaffSpiritCaller": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "1 x"
+     ],
+     "link": null,
+     "name": "Дух «Призывателя духов»: множитель здоровья"
+    },
+    "old": null
+   },
+   "summon.reserve.PT_StaffBarrowCall": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "15 eitr"
+     ],
+     "link": null,
+     "name": "Посох курганного зова (Болото, рой): эйтр, удерживаемый каждым рабом"
+    },
+    "old": null
+   },
+   "summon.reserve.PT_StaffBoneCall": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "5 eitr"
+     ],
+     "link": null,
+     "name": "Посох костяного зова (Луга, рой): эйтр, удерживаемый каждым рабом"
+    },
+    "old": null
+   },
+   "summon.reserve.PT_StaffFrostboneCall": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "100 eitr"
+     ],
+     "link": null,
+     "name": "Посох морозного зова (Гора, элита): эйтр, удерживаемый каждым рабом"
+    },
+    "old": null
+   },
+   "summon.reserve.PT_StaffGraveCall": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "30 eitr"
+     ],
+     "link": null,
+     "name": "Посох могильного зова (Черный лес, элита): эйтр, удерживаемый каждым рабом"
+    },
+    "old": null
+   },
+   "summon.reserve.PT_StaffWarboneCall": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "35 eitr"
+     ],
+     "link": null,
+     "name": "Посох боевого зова (Равнины, рой): эйтр, удерживаемый каждым рабом"
+    },
+    "old": null
+   },
+   "summon.reserve.StaffGreenRoots": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "45 eitr"
+     ],
+     "link": null,
+     "name": "Посох дикой природы (Пепельные земли, рой): эйтр, удерживаемый каждым корнем"
+    },
+    "old": null
+   },
+   "summon.reserve.StaffRedTroll": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "300 eitr"
+     ],
+     "link": null,
+     "name": "Тролль-посох (Пепельные земли, элита): эйтр, удерживаемый каждым троллем"
+    },
+    "old": null
+   },
+   "summon.reserve.StaffSkeleton": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "50 eitr"
+     ],
+     "link": null,
+     "name": "Воскрешатель (Туманные земли, рой): эйтр, удерживаемый каждым скелетом"
+    },
+    "old": null
+   },
+   "summon.reserve.StaffSpiritCaller": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "450 eitr"
+     ],
+     "link": null,
+     "name": "Призыватель духов (Дальний север, элита): эйтр, удерживаемый каждым духом"
+    },
+    "old": null
+   },
+   "throw.cost-vs-primary": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "2 x"
+     ],
+     "link": null,
+     "name": "Бросок оружия: выносливость не меньше стольких обычных атак оружием (бросок — его альтернативная атака)"
+    },
+    "old": null
+   },
+   "xp.ally-kill": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "100%"
+     ],
+     "link": null,
+     "name": "Опыт за убийство спутником, приспешником или питомцем (доля обычного убийства, делится между игроками рядом)"
+    },
+    "old": null
+   }
   }
  },
  "date": "2026-10-21",

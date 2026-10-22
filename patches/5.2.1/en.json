@@ -877,6 +877,59 @@
     }
    }
   },
+  "values": {
+   "burning.self-health-share": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "4%"
+     ],
+     "link": null,
+     "name": "Eternal Burning: base share of current health burned per second"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "4%"
+     ],
+     "link": null,
+     "name": "Eternal Burning: base maximum health burned per second"
+    }
+   },
+   "disenchant.unique-level-step": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "100 lvl"
+     ],
+     "link": null,
+     "name": "Dismantling a unique: item levels per +100% dust (level 100 gives twice the level-1 return)"
+    },
+    "old": null
+   },
+   "disenchant.unique-mult": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "40 x"
+     ],
+     "link": null,
+     "name": "Dismantling a unique or legendary item: dust multiplier over the return of an ordinary item with the same properties"
+    },
+    "old": null
+   },
+   "loot.white-jewel-weight": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "25%"
+     ],
+     "link": null,
+     "name": "Base jewels: weight of a white jewel against a magic one in the rarity roll (gear: 0, never white)"
+    },
+    "old": null
+   }
+  },
   "world": {
    "loot-sources": {
     "new": {

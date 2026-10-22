@@ -5156,6 +5156,296 @@
     }
    }
   },
+  "values": {
+   "air.recoil-lifts": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "1"
+     ],
+     "link": null,
+     "name": "Air Recoil: upward pushes per jump (later casts in the same airtime push sideways and down only)"
+    },
+    "old": null
+   },
+   "corrupt.w.fill": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "17"
+     ],
+     "link": null,
+     "name": "Corruption: weight of «every empty property filled, the item becomes Rare»"
+    },
+    "old": null
+   },
+   "corrupt.w.implicit": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "15"
+     ],
+     "link": null,
+     "name": "Corruption: weight of «a corrupted implicit»"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "20"
+     ],
+     "link": null,
+     "name": "Corruption: weight of «a corrupted implicit»"
+    }
+   },
+   "corrupt.w.nothing": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "30"
+     ],
+     "link": null,
+     "name": "Corruption: weight of «nothing else happens»"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "40"
+     ],
+     "link": null,
+     "name": "Corruption: weight of «nothing else happens»"
+    }
+   },
+   "corrupt.w.reshape": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "20"
+     ],
+     "link": null,
+     "name": "Corruption: weight of «properties change»"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "25"
+     ],
+     "link": null,
+     "name": "Corruption: weight of «properties change»"
+    }
+   },
+   "corrupt.w.tiers": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "8"
+     ],
+     "link": null,
+     "name": "Corruption: weight of «every affix one tier up or down»"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "10"
+     ],
+     "link": null,
+     "name": "Corruption: weight of «every affix one tier up or down»"
+    }
+   },
+   "corrupt.w.transform": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "5"
+     ],
+     "link": null,
+     "name": "Corruption: weight of «another item on the same base»"
+    },
+    "old": null
+   },
+   "hugin.bob": {
+    "new": null,
+    "old": {
+     "kind": "",
+     "lines": [
+      "0.03 m"
+     ],
+     "link": null,
+     "name": "How much the view through Hugin's eyes sways"
+    }
+   },
+   "hugin.mallet": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "0.43"
+     ],
+     "link": null,
+     "name": "Size of the mallet in Hugin's wing (inside Hugin, who is scaled by hugin.size)"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "0.6"
+     ],
+     "link": null,
+     "name": "Size of the mallet in Hugin's wing"
+    }
+   },
+   "hugin.size": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "0.7"
+     ],
+     "link": null,
+     "name": "Size of Hugin in flight (1 - the game's Hugin)"
+    },
+    "old": null
+   },
+   "immobilize.boss-immunity": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "5 s"
+     ],
+     "link": null,
+     "name": "Bosses: immune to immobilize this long after one ends"
+    },
+    "old": null
+   },
+   "immobilize.boss-resist": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "50%"
+     ],
+     "link": null,
+     "name": "Bosses: share of the immobilize chance they shrug off"
+    },
+    "old": null
+   },
+   "loot.first-unique-boost": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "3 x"
+     ],
+     "link": null,
+     "name": "Unique tables: chance multiplier until the table's first drop on the server"
+    },
+    "old": null
+   },
+   "monolith.unique-chance": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "5%"
+     ],
+     "link": null,
+     "name": "Chance that a won rune monolith event also gives one of its uniques (Eye Between Worlds) with the stone's rewards"
+    },
+    "old": null
+   },
+   "projectile.wall-chain-chance": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "40%"
+     ],
+     "link": null,
+     "name": "From Wall to Target: chance that a ricochet heads for the nearest target"
+    },
+    "old": null
+   },
+   "ram.boss-weight": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "3 x"
+     ],
+     "link": null,
+     "name": "Shield Charge: weight multiplier of a boss"
+    },
+    "old": null
+   },
+   "ram.heavy": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "3.5 x"
+     ],
+     "link": null,
+     "name": "Shield Charge: enemies from this share of the ram's power stop the ram and knock the player down"
+    },
+    "old": null
+   },
+   "ram.heavy-push": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "25%"
+     ],
+     "link": null,
+     "name": "Shield Charge: knockback share left on an enemy too heavy to ram through"
+    },
+    "old": null
+   },
+   "ram.light": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "2 x"
+     ],
+     "link": null,
+     "name": "Shield Charge: enemies up to this share of the ram's power are rolled over"
+    },
+    "old": null
+   },
+   "ram.stamina-light": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "2"
+     ],
+     "link": null,
+     "name": "Shield Charge: stamina per light enemy rolled over"
+    },
+    "old": null
+   },
+   "ram.stamina-weight": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "8"
+     ],
+     "link": null,
+     "name": "Shield Charge: stamina per comparable enemy, per unit of its share of the ram's power"
+    },
+    "old": null
+   },
+   "ram.weight-per-power": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "2.5 hp"
+     ],
+     "link": null,
+     "name": "Shield Charge: enemy max health one point of ram power carries"
+    },
+    "old": null
+   },
+   "smite.volume": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "80%"
+     ],
+     "link": null,
+     "name": "Smite: strike sound volume (1 = vanilla)"
+    },
+    "old": null
+   }
+  },
   "world": {
    "azurite": {
     "new": {

@@ -1752,6 +1752,173 @@
      "name": "Three Faces of Delusion"
     }
    }
+  },
+  "values": {
+   "blight.spawn-band": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "1000 m"
+     ],
+     "link": null,
+     "name": "Blight Mist: how much further than the nearest a new mist may appear"
+    },
+    "old": null
+   },
+   "blight.spawn-gap": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "800 m"
+     ],
+     "link": null,
+     "name": "Blight Mist: a new mist never appears within this distance of the last few mists"
+    },
+    "old": null
+   },
+   "blight.spawn-min": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "500 m"
+     ],
+     "link": null,
+     "name": "Blight Mist: nearest a new mist appears from the player it is placed for (and from any bed), first week"
+    },
+    "old": null
+   },
+   "blight.spawn-step": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "150 m"
+     ],
+     "link": null,
+     "name": "Blight Mist: each week the mist appears this much further out"
+    },
+    "old": null
+   },
+   "corrupt.imp-affixes": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "25%"
+     ],
+     "link": null,
+     "name": "Corrupted implicit: increased values of all affixes"
+    },
+    "old": null
+   },
+   "corrupt.imp-quality": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "1"
+     ],
+     "link": null,
+     "name": "Corrupted implicit: item quality levels"
+    },
+    "old": null
+   },
+   "corrupt.imp-sigils": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "25%"
+     ],
+     "link": null,
+     "name": "Corrupted implicit: more power of socketed sigils"
+    },
+    "old": null
+   },
+   "corrupt.overwrite": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "50%"
+     ],
+     "link": null,
+     "name": "Corruption: chance a corrupted implicit replaces the base's own implicits"
+    },
+    "old": null
+   },
+   "corrupt.reshape-lose": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "15%"
+     ],
+     "link": null,
+     "name": "Corruption, properties change: chance that one affix vanishes"
+    },
+    "old": null
+   },
+   "corrupt.reshape-swing": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "20%"
+     ],
+     "link": null,
+     "name": "Corruption, properties change: one affix strengthened or weakened by"
+    },
+    "old": null
+   },
+   "corrupt.w.destroy": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "5"
+     ],
+     "link": null,
+     "name": "Corruption: weight of «the item shatters»"
+    },
+    "old": null
+   },
+   "corrupt.w.implicit": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "20"
+     ],
+     "link": null,
+     "name": "Corruption: weight of «a corrupted implicit»"
+    },
+    "old": null
+   },
+   "corrupt.w.nothing": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "40"
+     ],
+     "link": null,
+     "name": "Corruption: weight of «nothing else happens»"
+    },
+    "old": null
+   },
+   "corrupt.w.reshape": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "25"
+     ],
+     "link": null,
+     "name": "Corruption: weight of «properties change»"
+    },
+    "old": null
+   },
+   "corrupt.w.tiers": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "10"
+     ],
+     "link": null,
+     "name": "Corruption: weight of «every affix one tier up or down»"
+    },
+    "old": null
+   }
   }
  },
  "date": "2026-10-19",

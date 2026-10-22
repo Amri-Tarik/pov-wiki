@@ -64,6 +64,12 @@ removed = "removed"
 tree_help = "The craft tree from the game files, as you can allocate it: placeholders are left out. The game shows the whole craft tree in one tint; here sectors get their own colour so they stand apart."
 
 [items]
+attacks = "Attacks"
+attack_primary = "Primary attack: {kind}."
+attack_secondary = "Alternative attack: {kind}."
+attack_ground = "With {mastery}, the alternative attack is a {slam}."
+attack_primary_short = "{kind} (primary)"
+attack_secondary_short = "{kind} (alternative)"
 makes = "Makes {n} at a time."
 bomb = "Burst"
 bomb_radius = "Burst radius: {radius} m. The blast never hurts you."
@@ -140,6 +146,8 @@ tags_note = "What the mod sees this item as. Properties choose the items they ro
 
 # Currency, jewels and unique items (gear_pages.py).
 [gear]
+one_in = "1 in {n}"
+thousands = ","
 currency = "Currency"
 currency_all = "All currency"
 divine_socket = "Divine sockets"
@@ -727,6 +735,8 @@ hits = "Each additional strike is a new hit of the same attack: it rolls its own
 double = "With {double}, the attack's first critical strike, from the swing or from one of its strikes, doubles its additional strikes, once per attack."
 focus = "With {focus}, every additional strike hits the first target instead, at {pct} damage each, and they stop if it dies or gets out of reach."
 combo = "{combo} counts one hit per attack: additional strikes and phantom strikes never add to it."
+bases_primary = "Primary attacks that are strikes: {items}."
+bases_secondary = "Alternative attacks that are strikes: {items}."
 
 [formula.phantom-strikes]
 title = "Phantom strikes"
@@ -820,6 +830,9 @@ title = "Slams and aftershocks"
 text = "{slam}: Valheim's area attacks (the sledge's swing and others like it) count, and so does an alternative attack {ground} turns into one: it uses the weapon's own area radius, or {radius} m if the weapon has no area attack. Your {area} widens a slam's radius."
 aftershock = "{aftershock}: rolled once per slam, at most 100%. {delay} s later it erupts at the slam's point, in the slam's radius × the area increases that only apply to aftershocks, and hits everything there with the slam's full damage. An aftershock never rolls another, though repeat chance can make it erupt once more."
 push = "An aftershock pushes enemies away from where it erupts."
+bases_primary = "Primary attacks that are slams: {items}."
+bases_secondary = "Alternative attacks that are slams: {items}."
+bases_ground = "Alternative attacks that {mastery} turns into slams: {items}."
 charged = "A {charged} that isn't a slam can make aftershocks too, from aftershock chance that works with charged attacks: each full 100% gives one, and the rest is a chance for one more, each {delay} s after the last, where the enemy was hit."
 
 [formula.armour-break]
@@ -1091,6 +1104,7 @@ tier = "{tier} (item level {lo}–{hi}, weight {weight}):"
 drops = "Drops: {sources}"
 boss_drops = "Boss drops"
 world = "World"
+values = "Values"
 keywords = "Keywords"
 biome_levels = "Biome levels"
 biome_level = "{biome}: level {level}, full experience at player levels {lo}–{hi}"
@@ -1157,6 +1171,8 @@ release = "Your next damaging spell cast by hand (or attack with {pious}) uses t
 echo = "{echo} repeats infused projectile spells; infused area spells aren't repeated."
 
 [formula.ascension]
+damage = "Damage"
+item_intro = "What each boss essence that can ascend this item makes of it, at quality 1 (in brackets: what each quality adds; ascending sets the quality back to 1). How it works: [{title}]({link})."
 essence_link = "Ascends a weapon, shield or summoning staff to {biome} (item level {level}): see [{title}]({link})."
 title = "Ascension"
 text = "A boss essence ascends a weapon, a shield or a summoning staff to a later biome, once per item and only upward: the item's own biome (that of the highest-level material in its recipe; a staff's thrall's) must come before the essence's."
@@ -1168,6 +1184,23 @@ staves = "summoning staves: the staff itself doesn't change, but its thralls are
 durability = "{durability} and its gain per quality level become at least the biome's."
 after = "The item goes back to quality 1, and upgrading it costs what the biome's reference item costs, at that item's station. Its item level rises to the biome's level. Properties, sockets and sigils stay. Corrupted and unidentified items can't ascend, nor pickaxes, bombs, traps, torches or weapons with less than {min} combat damage."
 vanilla = "Valheim's own summoning staves can ascend only while the server setting Vanilla summoning staves is off."
+
+[formula.dismantling]
+title = "Dismantling into dust"
+dust_link = "Dismantling magic and better items gives it: see [{title}]({link})."
+text = "Magic, rare, unique and legendary items can be dismantled into dust at the rune carver's table (this is not {salvage}, which returns recipe materials). Each property of the item is worth the azurite dust price of a rune, by its place among the item's properties; an item with no properties counts as one:"
+rune = "property {n}: {rune}, {dust} azurite dust"
+rune_last = "property {n} and every one after: {rune}, {dust} azurite dust"
+formula = "dust = Σ rune price × tier multiplier; uniques and legendaries: dust × {mult} × (1 + item level ÷ {step})<br>azurite dust = dust × {share}, rounded, at least 1<br>uniques: divine dust = ⌊azurite dust × {unique} ÷ {price}⌋, at least 1; legendaries: ⌊azurite dust × {legendary} ÷ {price}⌋, at least 1; the azurite dust then loses {price} for each divine dust"
+tiers = "A property counts with its tier's multiplier; one without a tier counts ×1. A rune bought with other dust than azurite dust is worth nothing here."
+tier = "Tier"
+mult = "Multiplier"
+example = "What an item gives with properties of tier T3 (×1); uniques and legendaries at item level {level} (azurite + divine dust):"
+props = "Properties"
+magic = "Magic or rare"
+unique = "Unique"
+legendary = "Legendary"
+jewels = "Unique jewels give dust by their item level instead: see [{title}]({link})."
 
 [formula.jewel-dismantling]
 jewel_link = "Dismantling it gives divine and azurite dust by its item level: see [{title}]({link})."

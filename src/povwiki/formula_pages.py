@@ -981,7 +981,10 @@ def _ranged_falloff(ctx, page, v):
     rows = [[f"{_n(d)} m", *(_pct(factor(d, 1 + s)) for s in stretches)] for d in (5, 10, 15, 20, 25, 30, 40, 60)]
     return ([ui("formula.ranged-falloff.text", range=_term(ctx, "effective-range", page, start=True), **nums), ""]
             + _formula(ui("formula.ranged-falloff.formula", **nums))
-            + [ui("formula.ranged-falloff.notes"), ""]
+            + [ui("formula.ranged-falloff.notes"), "",
+               # Valheim measures in metres; its "Wood Floor 2x2" piece is 2 m on a side.
+               ui("formula.ranged-falloff.floors", floor=ctx.loc.vkey("piece_woodfloor2x2", "Wood Floor 2x2"),
+                  start=_n(start), start_n=_n(start / 2), end=_n(end), end_n=_n(end / 2)), ""]
             + _table([ui("formula.ranged-falloff.distance"), *(ui("formula.ranged-falloff.with", x=_pct(s)) for s in stretches)], rows))
 
 

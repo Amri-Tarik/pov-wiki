@@ -1142,6 +1142,7 @@ staves = "Staves"
 swords = "Swords"
 
 [formula.ranged-falloff]
+floors = "For scale: a {floor} is 2 m on a side, so {start} m is {start_n} floors in a row and {end} m is {end_n}."
 title = "Effective range"
 text = "{range}: a bow or crossbow shot deals full damage up to {start} m from where it was shot, then less the further it flies, down to × {floor} at {end} m and beyond. Thrown weapons and spells don't fall off."
 formula = "damage factor = 1 − (distance − start) ÷ (end − start) × {drop}, between × {floor} and × 1; start = {start} m × range, end = {end} m × range"

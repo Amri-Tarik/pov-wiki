@@ -177,7 +177,16 @@ def _world(ctx: Ctx) -> dict[str, dict]:
         lines += [ui("patch.pity", biomes=", ".join(biome(b) for b in veins["pityBiomes"]),
                             misses=(veins.get("strike") or {}).get("pity", 1) - 1)] if veins.get("pityBiomes") else []
         out["azurite"] = _entry(ui("patch.azurite"), lines, "crafting/buildings.md")
-    fixed = (loc.data.rendered(loc.lang.mod).get("difficulty") or {}).get("fixedHealth") or []
+    d = loc.data.rendered(loc.lang.mod).get("difficulty") or {}
+    if d.get("health"):  # EnemyDifficulty.Defaults: the biome factors of creatures and bosses
+        from .formula_pages import _n
+
+        out["creature-strength"] = _entry(ui("patch.creature_strength"), [
+            ui("patch.creature_stage", biome=biome(s), health=_n(h, 3), damage=_n(dm, 3), boss_health=_n(bh, 3), boss_damage=_n(bd, 3))
+            for s, h, dm, bh, bd in zip(d.get("stages") or [], d["health"], d["damage"], d["bossHealth"], d["bossDamage"])]
+            + [ui("patch.boss_health", boss=loc.creature(b), factor=_n(f, 3)) for b, f in (d.get("bossHealthFactor") or {}).items()],
+            CREATURES_PAGE)
+    fixed = d.get("fixedHealth") or []
     out["fixed-health"] = _entry(ui("patch.fixed_health"), [loc.creature(c) for c in fixed], CREATURES_PAGE)
     from .formula_pages import loot_per_kill
     from .gear_pages import _one_in

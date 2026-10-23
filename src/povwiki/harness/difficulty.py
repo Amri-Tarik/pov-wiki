@@ -70,6 +70,36 @@ def _summons() -> dict:
             "reserve": {c["id"]: float(Tunables.Of(f"summon.reserve.{c['id']}")) for c in calls + vanilla}}
 
 
+def _boss_health() -> dict:
+    """Bosses with their own health factor (EnemyDifficulty.bossHealth, 5.3.1)."""
+    field = _type("EnemyDifficulty").GetField("bossHealth", _ANY)
+    if field is None:
+        return {}
+    return {str(kv.Key): float(kv.Value) for kv in field.GetValue(None)}
+
+
+def _loot_scale(presets: dict) -> dict:
+    """What each difficulty preset does to loot (LootDifficulty, 5.3.1): the share of the per-star
+    loot bonuses creatures keep (StarScale) and the factor on creatures' and elites' loot quantity
+    (Factor), so that loot per area stays at the Normal preset's. Computed with the mod's own
+    MeanStars and PerArea from each preset's star chance, maximum stars and density, the other
+    settings at their defaults (each star past two 0.5, one modifier per star, always, worth 0.5)."""
+    try:
+        from PassiveTree.Loot import LootDifficulty
+    except ImportError:
+        return {}
+    out = {}
+    normal_mean = float(LootDifficulty.MeanStars(0.18, 0.5, 5))
+    normal_area = float(LootDifficulty.PerArea(1.2, 0.18, 0.5, 5, 1.0, 1.0, 0.5, 1.0))
+    for name, p in presets.items():
+        step, top = p["Star"] / 100, int(p["MaxStars"])
+        mean = float(LootDifficulty.MeanStars(step, 0.5, top))
+        scale = normal_mean / mean if mean > normal_mean and mean > 0 else 1.0
+        area = float(LootDifficulty.PerArea(p["Density"], step, 0.5, top, 1.0, 1.0, 0.5, scale))
+        out[name] = {"star": scale, "quantity": normal_area / area if area > normal_area and area > 0 else 1.0}
+    return out
+
+
 def render_difficulty(errors: list) -> dict:
     from PassiveTree import EnemyDifficulty, Tunables
 
@@ -95,6 +125,8 @@ def render_difficulty(errors: list) -> dict:
             "ringFar": _floats(enemy.GetField("ringFar", _ANY).GetValue(None)),
             "bossStep": [float(Tunables.Of("difficulty.boss-step-near")), float(Tunables.Of("difficulty.boss-step-far"))],
             "presets": presets,
+            "bossHealthFactor": _boss_health(),
+            "lootScale": _loot_scale(presets),
             # Creatures whose health the mod leaves alone (EnemyDifficulty.fixedHealth, 5.1.1: Kall's 2nd phase).
             "fixedHealth": sorted(str(x) for x in (enemy.GetField("fixedHealth", _ANY).GetValue(None) or [])
                                   ) if enemy.GetField("fixedHealth", _ANY) else [],
@@ -123,7 +155,7 @@ def render_difficulty(errors: list) -> dict:
                 "ailment.threshold", "shield.delay-cap",  # the ailment gauge (AilmentDamage.Grip)
                 # Charged attacks, slams, thorns, impale, endurance.
                 "charge.cooldown", "charge.source-cooldown", "charge.source-cooldown.crit", "splash.radius", "movement.charge-distance",
-                "slam.ground-radius", "aftershock.delay", "thorns.increased.base", "thorns.block.share",
+                "slam.ground-radius", "aftershock.delay", "throw.slam-damage", "crossbow.fire-interval-share", "thorns.increased.base", "thorns.block.share",
                 "thorns.riposte.share", "impale.stack", "impale.limit", "impale.window", "endurance.base", "endurance.cap",
                 "rage.more-per-point", "stagger.rune-shield", "phantom.stagger", "xp.ally-kill",
                 "minion.instability-share", "minion.instability-radius", "loot.white-jewel-weight",

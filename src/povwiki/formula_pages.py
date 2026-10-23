@@ -196,6 +196,8 @@ def _strength(ctx, page, v):
             + _table([ui("bosses.biome"), ui("formula.health"), ui("formula.damage"), ui("formula.boss_health"),
                       ui("formula.boss_damage")], rows)
             + [ui("formula.creature-strength.species", species=species), ""]
+            + ([ui("formula.creature-strength.boss_health", bosses=", ".join(
+                f"{ctx.loc.creature(b)} ×{_n(f)}" for b, f in d["bossHealthFactor"].items())), ""] if d.get("bossHealthFactor") else [])
             + ([ui("formula.creature-strength.fixed", creatures=", ".join(ctx.loc.creature(c) for c in d["fixedHealth"])), ""]
                if d.get("fixedHealth") else [])
             + [ui("formula.creature-strength.summons", minions=_term(ctx, "minions", page, start=True),
@@ -277,6 +279,7 @@ def _loot(ctx, page, v):
             + _formula(ui("formula.loot.quantity", star=_n(stars.get("quantityPerStar", 0)), mod=_n(v["per_modifier"])))
             + _formula(ui("formula.loot.rarity", star=_n(stars.get("rarityPerStar", 0))))
             + [ui("formula.loot.notes"), ""]
+            + _loot_scale(ctx)
             + [f"### {ui('formula.loot.sources')}", "", ui("formula.loot.sources_note"), ""]
             + _table([ui("gear.source_label"), ui("formula.loot.gear"), ui("formula.loot.currency"), ui("formula.loot.jewel")], sources)
             + [ui("formula.loot.gates"), ""]
@@ -286,9 +289,20 @@ def _loot(ctx, page, v):
             + [ui("formula.loot.unique", chance=_pct(loot.get("uniqueChance", 0)), level=loot.get("rareGuaranteeMinLevel", 0)), ""])
 
 
+def _loot_scale(ctx) -> list[str]:
+    """Difficulty presets with more stars than Normal (LootDifficulty.StarScale/Factor, 5.3.1)."""
+    ui, scale = ctx.loc.ui, ctx.loc.difficulty.get("lootScale") or {}
+    if not scale:
+        return []
+    rows = [[ui(f"formula.preset.{k}"), _pct(s["star"]), _pct(s["quantity"])] for k, s in scale.items()]
+    return [ui("formula.loot.star_scale"), ""] + _table(
+        [ui("formula.preset_col"), ui("formula.loot.star_share"), ui("formula.loot.quantity_share")], rows)
+
+
 def _vanilla_drops(ctx, page, v):
     ui = ctx.loc.ui
-    return [ui("formula.vanilla-drops.text"), ""] + _formula(ui("formula.vanilla-drops.formula", s=_n(v["per_star"]), cap=v["cap"]))
+    return ([ui("formula.vanilla-drops.text"), ""] + _formula(ui("formula.vanilla-drops.formula", s=_n(v["per_star"]), cap=v["cap"]))
+            + ([ui("formula.vanilla-drops.star_share", loot=_anchor("loot", page)), ""] if ctx.loc.difficulty.get("lootScale") else []))
 
 
 def _experience(ctx, page, v):
@@ -305,7 +319,8 @@ def _experience(ctx, page, v):
 def _crit_multiplier(ctx, page, v):
     ui = ctx.loc.ui
     return ([ui("formula.crit-multiplier.text", term=_term(ctx, "crit", page, start=True)), ""]
-            + _formula(ui("formula.crit-multiplier.formula", base=_n(v["base"]))) + [ui("formula.crit-multiplier.notes"), ""])
+            + _formula(ui("formula.crit-multiplier.formula", base=_n(v["base"]))) + [ui("formula.crit-multiplier.notes"), "",
+               ui("formula.crit-multiplier.magazine", half=_n(v["base"] - 1), magazine=_anchor("crossbow-magazine", page)), ""])
 
 
 def _crit_chance(ctx, page, v):
@@ -769,6 +784,8 @@ def _slams(ctx, page, v):
                radius=_n(t["slam.ground-radius"]), area=_term(ctx, "area", page)), "",
             ui("formula.slams.aftershock", aftershock=_term(ctx, "aftershock", page, start=True), delay=_n(t["aftershock.delay"])), "",
             ui("formula.slams.push"), "",
+            ui("formula.slams.thrown", radius=_n(t["slam.ground-radius"]), pct=_pct(t["throw.slam-damage"]),
+               area=_term(ctx, "area", page), factor=_term(ctx, "skill-factor", page)), "",
             ui("formula.slams.charged", charged=_term(ctx, "charged-attack", page), delay=_n(t["aftershock.delay"])), ""] \
         + _attack_bases(ctx, page, "slam", "formula.slams.bases")
 
@@ -897,14 +914,18 @@ def _hit_increases(ctx, page, v):
     md = [ui("formula.hit-damage.increases"), ""]
     md += [ui("formula.hit-damage.scepters"), ""]
     md += _formula(ui("formula.hit-damage.increases_formula"))
-    return md + [ui("formula.hit-damage.typed"), ""]
+    md += [ui("formula.hit-damage.typed"), "",
+           ui("formula.hit-damage.projectile", proj=_term(ctx, "proj", page, start=True), torch=_term(ctx, "torch", page)), "",
+           ui("formula.hit-damage.ammo"), ""]
+    md += _formula(ui("formula.hit-damage.ammo_formula"))
+    return md + [ui("formula.hit-damage.resources"), ""]
 
 
 def _hit_more(ctx, page, v):
-    """More multipliers (MoreDamage.Of, Rage.DamageMore), projectile and torch factors."""
+    """More multipliers (MoreDamage.Of, Rage.DamageMore), more projectile damage (ProjectileMods.DamageFactor)."""
     ui, t = ctx.loc.ui, ctx.loc.difficulty.get("tunables", {})
     return [ui("formula.hit-damage.more", rage=_term(ctx, "rage", page), per=_pct(t["rage.more-per-point"])), "",
-            ui("formula.hit-damage.projectile", proj=_term(ctx, "proj", page, start=True), torch=_term(ctx, "torch", page)), ""]
+            ui("formula.hit-damage.more_projectile", proj=_term(ctx, "proj", page)), ""]
 
 
 def _hit_target(ctx, page, v):
@@ -953,8 +974,9 @@ def _hit_order(ctx, page, v):
             ui("formula.hit-order.flat", flat=part("flat")),
             ui("formula.hit-order.conversion", conversion=part("conversion"), gain=_term(ctx, "gain-as-extra", page)),
             ui("formula.hit-order.increases", increases=part("increases")),
+            ui("formula.hit-order.ammo"),
             ui("formula.hit-order.more", more=part("more"), rage=_term(ctx, "rage", page)),
-            ui("formula.hit-order.projectile", proj=_term(ctx, "proj", page), torch=_term(ctx, "torch", page))]
+            ui("formula.hit-order.projectile", proj=_term(ctx, "proj", page))]
     lands = [ui("formula.hit-order.crit", crit=sec("crit-multiplier", start=True)),
              ui("formula.hit-order.falloff", falloff=sec("ranged-falloff")),
              ui("formula.hit-order.target", target=part("target", start=False)),
@@ -1047,7 +1069,29 @@ def _ascension(ctx, page, v):
            f"- {ui('formula.ascension.shields', block=block, force=force)}",
            f"- {ui('formula.ascension.staves', strength=strength)}",
            f"- {ui('formula.ascension.durability', durability=ctx.loc.vkey('item_durability', 'Durability').lower())}", ""]
-    return md + [ui("formula.ascension.after", min=_n(v["min_damage"])), "", ui("formula.ascension.vanilla"), ""]
+    return md + [ui("formula.ascension.after", min=_n(v["min_damage"])), "", ui("formula.ascension.keeps"), "",
+                 ui("formula.ascension.vanilla"), ""]
+
+
+def _crossbow_magazine(ctx, page, v):
+    """Crossbow magazines (CrossbowMagazine.Capacity/BaseInterval/FireRate, KeepLoaded, ManualReload)."""
+    from .base_pages import bases, base_path
+
+    ui, t = ctx.loc.ui, ctx.loc.difficulty.get("tunables", {})
+    share = t["crossbow.fire-interval-share"]
+    rows = []
+    for p, b in sorted(bases(ctx).items(), key=lambda kv: kv[1]["name"]):
+        if "kind.Crossbows" not in b["info"]["tags"]:
+            continue
+        reload = (b["shared"].get("m_attack") or {}).get("m_reloadTime") or 3.5  # CrossbowMagazine.BaseInterval's fallback
+        rows.append([f"[{b['name']}]({rel(base_path(p), page)})", f"{_n(reload)} s", f"{_n(reload * share)} s", _n(1 / (reload * share))])
+    md = [ui("formula.crossbow-magazine.text", crossbow=_term(ctx, "crossbow", page, start=True), reload=_term(ctx, "reload", page)), ""]
+    md += _formula(ui("formula.crossbow-magazine.capacity", loaded=_term(ctx, "loaded-bolts", page)))
+    md += _formula(ui("formula.crossbow-magazine.rate", share=_n(share, 4), rate=_term(ctx, "crossbow-fire-rate", page)))
+    md += [ui("formula.crossbow-magazine.shots", position=_term(ctx, "magazine-position", page)), "",
+           ui("formula.crossbow-magazine.crit", crit=_anchor("crit-multiplier", page)), ""]
+    return md + _table([ui("formula.crossbow-magazine.crossbow"), ui("formula.crossbow-magazine.reload_col"),
+                        ui("formula.crossbow-magazine.interval"), ui("formula.crossbow-magazine.per_second")], rows)
 
 
 def _f32(x: float) -> float:
@@ -1153,7 +1197,7 @@ _PAGES = {
     SUMMONS_PAGE: ("summons", [("summoning-staves", _summon_staves), ("held-eitr", _held_eitr), ("summon-lifetime", _summon_lifetime),
                                ("summon-strength", _summon_strength), ("vanilla-summons", _vanilla_summons),
                                ("minion-bonuses", _minion_bonuses)]),
-    COMBAT_PAGE: ("combat", [("attributes", _attributes), ("hit-order", _hit_order), ("hit-damage", _hit_damage), ("ranged-falloff", _ranged_falloff),
+    COMBAT_PAGE: ("combat", [("attributes", _attributes), ("hit-order", _hit_order), ("hit-damage", _hit_damage), ("ranged-falloff", _ranged_falloff), ("crossbow-magazine", _crossbow_magazine),
                              ("player-penetration", _player_penetration), ("crit-multiplier", _crit_multiplier), ("crit-chance", _crit_chance), ("evasion", _evasion),
                              ("resistances", _resistances), ("armour", _armour), ("rune-shield", _rune_shield), ("enemy-penetration", _penetration), ("stagger", _stagger),
                              ("block", _block), ("glancing", _glancing), ("endurance", _endurance), ("thorns", _thorns),
@@ -1184,6 +1228,10 @@ TERM_FORMULAS = {
     "resistance-penetration": ["player-penetration", "resistances", "enemy-penetration"],
     "item-quantity": ["loot"],
     "item-rarity": ["loot"],
+    "loaded-bolts": ["crossbow-magazine"],
+    "crossbow-fire-rate": ["crossbow-magazine"],
+    "reload": ["crossbow-magazine"],
+    "magazine-position": ["crossbow-magazine"],
     "refund": ["build-cost"],
     "boss": ["boss-stars"],
     "xp": ["experience", "experience-falloff", "player-levels"],

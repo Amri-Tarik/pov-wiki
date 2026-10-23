@@ -1,0 +1,2564 @@
+{
+ "changes": {
+  "keywords": {
+   "absorption": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "With Gather the Elements and a staff in hand, standing on your own spell ground absorbs it: the patch visibly shrinks and its power goes into infusion. Absorption rate makes the patch shrink faster. Ground that simply expires gives nothing."
+     ],
+     "link": "glossary/absorption.md",
+     "name": "Absorption"
+    },
+    "old": null
+   },
+   "ascension": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "A boss essence ascends a weapon, shield or summoning staff to the biome after its boss. Base damage (in the item's own damage types), durability and block rise to that biome's weapons of the same kind - nothing goes down; a summoning staff's minion becomes as strong as that biome's creatures. Workbench upgrades start over at quality 1 and then cost what that biome's weapon costs. Properties, sockets, sigils and implicits stay. One essence per item, and only upward."
+     ],
+     "link": "glossary/ascension.md",
+     "name": "Ascension"
+    },
+    "old": null
+   },
+   "crossbow": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crossbows have a magazine: additional projectiles become loaded bolts, and additional projectile chance is rolled once when a reload finishes. Each shot fires one bolt; holding the attack keeps firing at the fire rate, based on the crossbow's own reload time. A saved bolt keeps both the ammunition and the loaded shot."
+     ],
+     "link": "items/weapons/crossbows.md",
+     "name": "Crossbows"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "A crossbow fires a loaded bolt without drawing. It must reload before the next shot."
+     ],
+     "link": "items/weapons/crossbows.md",
+     "name": "Crossbows"
+    }
+   },
+   "crossbow-fire-rate": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crossbow fire rate sets the time between loaded shots. Each crossbow's base interval is a share of its own base reload time, so a 3.5 s reload gives about one shot per second. Reload speed changes only the reload."
+     ],
+     "link": "glossary/crossbow-fire-rate.md",
+     "name": "Crossbow fire rate"
+    },
+    "old": null
+   },
+   "loaded-bolts": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Loaded bolts set how many shots one crossbow reload gives. Flat loaded bolts and additional projectiles add to the base of one bolt; increases and multipliers then apply to the whole sum. They never fire extra bolts per shot."
+     ],
+     "link": "glossary/loaded-bolts.md",
+     "name": "Loaded bolts"
+    },
+    "old": null
+   },
+   "magazine-position": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "The first shot is the first bolt released after a completed reload. Saving that bolt does not renew the first-shot bonus. The last loaded shot is released with one loaded bolt remaining. These properties follow the bolt to impact; a one-bolt magazine has both. A dodge-triggered reload uses the normal reload, including costs, speed and instant-reload chance."
+     ],
+     "link": "glossary/magazine-position.md",
+     "name": "Magazine shots"
+    },
+    "old": null
+   },
+   "proj": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "An attack travelling through the world before impact. Pierce passes through targets, chain seeks another enemy, and surface bounce reflects the projectile with reduced damage. Increased projectile damage adds to the same sum as every other damage increase. A bow or crossbow shot is two parts: projectile and arrow (or bolt) damage raise only the arrow or bolt, bow and crossbow damage only the weapon itself; everything else raises the whole shot."
+     ],
+     "link": "glossary/proj.md",
+     "name": "Projectiles"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "An attack travelling through the world before impact. Pierce passes through targets, chain seeks another enemy, and surface bounce reflects the projectile with reduced damage."
+     ],
+     "link": "glossary/proj.md",
+     "name": "Projectiles"
+    }
+   },
+   "projectile-volleys": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Bows spread additional arrows around the aimed shot. Crossbows convert additional projectiles into loaded shots in their magazine. Pierce, chain and bounce continue each projectile independently; they do not spend another loaded shot."
+     ],
+     "link": "glossary/projectile-volleys.md",
+     "name": "Projectile volleys"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Adds projectiles to a shot or throw. Extra arrows spread around the aim, while extra bolts fire in sequence; each consumes its own ammunition unless it is conserved."
+     ],
+     "link": "glossary/projectile-volleys.md",
+     "name": "Projectile volleys"
+    }
+   },
+   "reload": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Reload fills the magazine of Crossbows. Additional projectile chance rolls at successful reload completion. Reload speed shortens the reload; crossbow fire rate controls the interval between loaded shots. Cancelling a reload does not grant loaded shots."
+     ],
+     "link": "glossary/reload.md",
+     "name": "Reload"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "The time a crossbow takes to load the next bolt. Faster reload shortens this time without increasing shot damage."
+     ],
+     "link": "glossary/reload.md",
+     "name": "Reload"
+    }
+   }
+  },
+  "mods": {
+   "ring.damage-blunt": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (5–7)% increased blunt damage",
+      "T4 (item level 19–76, weight 700): (8–11)% increased blunt damage",
+      "T3 (item level 43–129, weight 400): (12–15)% increased blunt damage",
+      "T2 (item level 77–∞, weight 180): (16–20)% increased blunt damage",
+      "T1 (item level 130–∞, weight 60): (21–25)% increased blunt damage"
+     ],
+     "link": "items/mod/ring.damage-blunt.md",
+     "name": "#% increased blunt damage"
+    },
+    "old": null
+   },
+   "ring.damage-fire": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (5–7)% increased fire damage",
+      "T4 (item level 19–76, weight 700): (8–11)% increased fire damage",
+      "T3 (item level 43–129, weight 400): (12–15)% increased fire damage",
+      "T2 (item level 77–∞, weight 180): (16–20)% increased fire damage",
+      "T1 (item level 130–∞, weight 60): (21–25)% increased fire damage"
+     ],
+     "link": "items/mod/ring.damage-fire.md",
+     "name": "#% increased fire damage"
+    },
+    "old": null
+   },
+   "ring.damage-frost": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (5–7)% increased frost damage",
+      "T4 (item level 19–76, weight 700): (8–11)% increased frost damage",
+      "T3 (item level 43–129, weight 400): (12–15)% increased frost damage",
+      "T2 (item level 77–∞, weight 180): (16–20)% increased frost damage",
+      "T1 (item level 130–∞, weight 60): (21–25)% increased frost damage"
+     ],
+     "link": "items/mod/ring.damage-frost.md",
+     "name": "#% increased frost damage"
+    },
+    "old": null
+   },
+   "ring.damage-lightning": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (5–7)% increased lightning damage",
+      "T4 (item level 19–76, weight 700): (8–11)% increased lightning damage",
+      "T3 (item level 43–129, weight 400): (12–15)% increased lightning damage",
+      "T2 (item level 77–∞, weight 180): (16–20)% increased lightning damage",
+      "T1 (item level 130–∞, weight 60): (21–25)% increased lightning damage"
+     ],
+     "link": "items/mod/ring.damage-lightning.md",
+     "name": "#% increased lightning damage"
+    },
+    "old": null
+   },
+   "ring.damage-pierce": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (5–7)% increased piercing damage",
+      "T4 (item level 19–76, weight 700): (8–11)% increased piercing damage",
+      "T3 (item level 43–129, weight 400): (12–15)% increased piercing damage",
+      "T2 (item level 77–∞, weight 180): (16–20)% increased piercing damage",
+      "T1 (item level 130–∞, weight 60): (21–25)% increased piercing damage"
+     ],
+     "link": "items/mod/ring.damage-pierce.md",
+     "name": "#% increased piercing damage"
+    },
+    "old": null
+   },
+   "ring.damage-poison": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (5–7)% increased poison damage",
+      "T4 (item level 19–76, weight 700): (8–11)% increased poison damage",
+      "T3 (item level 43–129, weight 400): (12–15)% increased poison damage",
+      "T2 (item level 77–∞, weight 180): (16–20)% increased poison damage",
+      "T1 (item level 130–∞, weight 60): (21–25)% increased poison damage"
+     ],
+     "link": "items/mod/ring.damage-poison.md",
+     "name": "#% increased poison damage"
+    },
+    "old": null
+   },
+   "ring.damage-slash": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (5–7)% increased slashing damage",
+      "T4 (item level 19–76, weight 700): (8–11)% increased slashing damage",
+      "T3 (item level 43–129, weight 400): (12–15)% increased slashing damage",
+      "T2 (item level 77–∞, weight 180): (16–20)% increased slashing damage",
+      "T1 (item level 130–∞, weight 60): (21–25)% increased slashing damage"
+     ],
+     "link": "items/mod/ring.damage-slash.md",
+     "name": "#% increased slashing damage"
+    },
+    "old": null
+   },
+   "ring.damage-spirit": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (5–7)% increased spirit damage",
+      "T4 (item level 19–76, weight 700): (8–11)% increased spirit damage",
+      "T3 (item level 43–129, weight 400): (12–15)% increased spirit damage",
+      "T2 (item level 77–∞, weight 180): (16–20)% increased spirit damage",
+      "T1 (item level 130–∞, weight 60): (21–25)% increased spirit damage"
+     ],
+     "link": "items/mod/ring.damage-spirit.md",
+     "name": "#% increased spirit damage"
+    },
+    "old": null
+   },
+   "weapon.added-blunt": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): Adds (2–4) blunt damage",
+      "T4 (item level 19–76, weight 700): Adds (5–8) blunt damage",
+      "T3 (item level 43–129, weight 400): Adds (9–14) blunt damage",
+      "T2 (item level 77–∞, weight 180): Adds (15–22) blunt damage",
+      "T1 (item level 130–∞, weight 60): Adds (23–32) blunt damage"
+     ],
+     "link": "items/mod/weapon.added-blunt.md",
+     "name": "Adds # blunt damage"
+    },
+    "old": null
+   },
+   "weapon.added-fire": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): Adds (2–4) fire damage",
+      "T4 (item level 19–76, weight 700): Adds (5–8) fire damage",
+      "T3 (item level 43–129, weight 400): Adds (9–14) fire damage",
+      "T2 (item level 77–∞, weight 180): Adds (15–22) fire damage",
+      "T1 (item level 130–∞, weight 60): Adds (23–32) fire damage"
+     ],
+     "link": "items/mod/weapon.added-fire.md",
+     "name": "Adds # fire damage"
+    },
+    "old": null
+   },
+   "weapon.added-frost": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): Adds (2–4) frost damage",
+      "T4 (item level 19–76, weight 700): Adds (5–8) frost damage",
+      "T3 (item level 43–129, weight 400): Adds (9–14) frost damage",
+      "T2 (item level 77–∞, weight 180): Adds (15–22) frost damage",
+      "T1 (item level 130–∞, weight 60): Adds (23–32) frost damage"
+     ],
+     "link": "items/mod/weapon.added-frost.md",
+     "name": "Adds # frost damage"
+    },
+    "old": null
+   },
+   "weapon.added-lightning": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): Adds (2–4) lightning damage",
+      "T4 (item level 19–76, weight 700): Adds (5–8) lightning damage",
+      "T3 (item level 43–129, weight 400): Adds (9–14) lightning damage",
+      "T2 (item level 77–∞, weight 180): Adds (15–22) lightning damage",
+      "T1 (item level 130–∞, weight 60): Adds (23–32) lightning damage"
+     ],
+     "link": "items/mod/weapon.added-lightning.md",
+     "name": "Adds # lightning damage"
+    },
+    "old": null
+   },
+   "weapon.added-pierce": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): Adds (2–4) piercing damage",
+      "T4 (item level 19–76, weight 700): Adds (5–8) piercing damage",
+      "T3 (item level 43–129, weight 400): Adds (9–14) piercing damage",
+      "T2 (item level 77–∞, weight 180): Adds (15–22) piercing damage",
+      "T1 (item level 130–∞, weight 60): Adds (23–32) piercing damage"
+     ],
+     "link": "items/mod/weapon.added-pierce.md",
+     "name": "Adds # piercing damage"
+    },
+    "old": null
+   },
+   "weapon.added-poison": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): Adds (2–4) poison damage",
+      "T4 (item level 19–76, weight 700): Adds (5–8) poison damage",
+      "T3 (item level 43–129, weight 400): Adds (9–14) poison damage",
+      "T2 (item level 77–∞, weight 180): Adds (15–22) poison damage",
+      "T1 (item level 130–∞, weight 60): Adds (23–32) poison damage"
+     ],
+     "link": "items/mod/weapon.added-poison.md",
+     "name": "Adds # poison damage"
+    },
+    "old": null
+   },
+   "weapon.added-slash": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): Adds (2–4) slashing damage",
+      "T4 (item level 19–76, weight 700): Adds (5–8) slashing damage",
+      "T3 (item level 43–129, weight 400): Adds (9–14) slashing damage",
+      "T2 (item level 77–∞, weight 180): Adds (15–22) slashing damage",
+      "T1 (item level 130–∞, weight 60): Adds (23–32) slashing damage"
+     ],
+     "link": "items/mod/weapon.added-slash.md",
+     "name": "Adds # slashing damage"
+    },
+    "old": null
+   },
+   "weapon.added-spirit": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): Adds (2–4) spirit damage",
+      "T4 (item level 19–76, weight 700): Adds (5–8) spirit damage",
+      "T3 (item level 43–129, weight 400): Adds (9–14) spirit damage",
+      "T2 (item level 77–∞, weight 180): Adds (15–22) spirit damage",
+      "T1 (item level 130–∞, weight 60): Adds (23–32) spirit damage"
+     ],
+     "link": "items/mod/weapon.added-spirit.md",
+     "name": "Adds # spirit damage"
+    },
+    "old": null
+   }
+  },
+  "passives": {
+   "g3_x0": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased armour",
+      "4% increased evasion rating"
+     ],
+     "link": "passives/tree/#g3_x0",
+     "name": "Flexible Mail"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased armour",
+      "4% increased evasion rating"
+     ],
+     "link": "passives/tree/#g3_x0",
+     "name": "Flexible Mail"
+    }
+   },
+   "own10132": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+2% glancing blow chance"
+     ],
+     "link": "passives/tree/#own10132",
+     "name": "Glancing blow chance"
+    },
+    "old": null
+   },
+   "own10138": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+2% glancing blow damage reduction"
+     ],
+     "link": "passives/tree/#own10138",
+     "name": "Glancing Blow Protection"
+    },
+    "old": null
+   },
+   "own10144": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+2% glancing blow chance"
+     ],
+     "link": "passives/tree/#own10144",
+     "name": "Glancing blow chance"
+    },
+    "old": null
+   },
+   "own10150": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+5% glancing blow chance",
+      "+5% glancing blow damage reduction"
+     ],
+     "link": "passives/node/own10150.md",
+     "name": "A Turn of the Edge"
+    },
+    "old": null
+   },
+   "own10195": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased bow projectile speed",
+      "0.5% increased bow draw and reload speed per 20 points of \"Dexterity\"",
+      "Hold the Draw: Drawing a bow while airborne suspends you until 0.3 s after the shot; Hovering costs 8 stamina per second; While drawing a bow in the air you hover, spending stamina. Releasing the string or a dodge roll ends the hover.",
+      "Keep the Tension: A dodge roll keeps the draw you reached on your bow; holding it still drains stamina.",
+      "Charged Volley: +1 bow projectiles per shot or throw with charged attacks"
+     ],
+     "link": "passives/node/own10195.md",
+     "name": "Bowstring Song"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased bow projectile speed",
+      "0.5% increased bow draw and reload speed per 15 points of \"Dexterity\"",
+      "Hold the Draw: Drawing a bow while airborne suspends you until 0.3 s after the shot; Hovering costs 8 stamina per second; While drawing a bow in the air you hover, spending stamina. Releasing the string or a dodge roll ends the hover.",
+      "Keep the Tension: A dodge roll keeps the draw you reached on your bow; holding it still drains stamina.",
+      "Charged Volley: +1 bow projectiles per shot or throw with charged attacks"
+     ],
+     "link": "passives/node/own10195.md",
+     "name": "Bowstring Song"
+    }
+   },
+   "own10299": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+6% equipment ease",
+      "6% increased armour"
+     ],
+     "link": "passives/tree/#own10299",
+     "name": "Armour"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+6% equipment ease",
+      "4% increased armour"
+     ],
+     "link": "passives/tree/#own10299",
+     "name": "Armour"
+    }
+   },
+   "own10302": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased maximum health",
+      "6% increased armour"
+     ],
+     "link": "passives/tree/#own10302",
+     "name": "Health and Armour"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased maximum health",
+      "4% increased armour"
+     ],
+     "link": "passives/tree/#own10302",
+     "name": "Health and Armour"
+    }
+   },
+   "own10317": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased armour"
+     ],
+     "link": "passives/tree/#own10317",
+     "name": "Armour"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased armour"
+     ],
+     "link": "passives/tree/#own10317",
+     "name": "Armour"
+    }
+   },
+   "own10320": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased armour"
+     ],
+     "link": "passives/tree/#own10320",
+     "name": "Health and Armour"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased armour"
+     ],
+     "link": "passives/tree/#own10320",
+     "name": "Health and Armour"
+    }
+   },
+   "own10323": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased armour",
+      "10% increased armour from equipped helmet"
+     ],
+     "link": "passives/node/own10323.md",
+     "name": "Iron Circlet"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased armour",
+      "10% increased armour from equipped helmet"
+     ],
+     "link": "passives/node/own10323.md",
+     "name": "Iron Circlet"
+    }
+   },
+   "own10326": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased armour"
+     ],
+     "link": "passives/node/own10326.md",
+     "name": "Forged Heart"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased armour"
+     ],
+     "link": "passives/node/own10326.md",
+     "name": "Forged Heart"
+    }
+   },
+   "own10329": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+6% equipment ease",
+      "6% increased armour"
+     ],
+     "link": "passives/tree/#own10329",
+     "name": "Armour"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+6% equipment ease",
+      "4% increased armour"
+     ],
+     "link": "passives/tree/#own10329",
+     "name": "Armour"
+    }
+   },
+   "own10332": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased maximum health",
+      "6% increased armour"
+     ],
+     "link": "passives/tree/#own10332",
+     "name": "Health and Armour"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased maximum health",
+      "4% increased armour"
+     ],
+     "link": "passives/tree/#own10332",
+     "name": "Health and Armour"
+    }
+   },
+   "own10622": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+8% bow additional projectile chance"
+     ],
+     "link": "passives/tree/#own10622",
+     "name": "Additional Arrow Chance"
+    },
+    "old": null
+   },
+   "own10624": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased armour"
+     ],
+     "link": "passives/tree/#own10624",
+     "name": "Armour"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased armour"
+     ],
+     "link": "passives/tree/#own10624",
+     "name": "Armour"
+    }
+   },
+   "own10628": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+8% bow additional projectile chance"
+     ],
+     "link": "passives/tree/#own10628",
+     "name": "Additional Arrow Chance"
+    },
+    "old": null
+   },
+   "own10630": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased armour"
+     ],
+     "link": "passives/tree/#own10630",
+     "name": "Armour"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased armour"
+     ],
+     "link": "passives/tree/#own10630",
+     "name": "Armour"
+    }
+   },
+   "own10634": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+20% bow additional projectile chance"
+     ],
+     "link": "passives/node/own10634.md",
+     "name": "Fletched Fortune"
+    },
+    "old": null
+   },
+   "own10636": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased armour",
+      "10% increased armour from equipped body armour",
+      "Tempered Guard: +1 fortification on block",
+      "Rune Tempering: Convert 50% of rune shield  to armour on helmet or body armour; The listed share of rune shield from the helmet and chest piece becomes armour at the inverse defence base ratio. The transferred rune shield is lost. Incompatible with “Plates and Runes”."
+     ],
+     "link": "passives/node/own10636.md",
+     "name": "Retainer's Cuirass"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased armour",
+      "10% increased armour from equipped body armour",
+      "Tempered Guard: +1 fortification on block",
+      "Rune Tempering: Convert 50% of rune shield  to armour on helmet or body armour; The listed share of rune shield from the helmet and chest piece becomes armour at the inverse defence base ratio. The transferred rune shield is lost. Incompatible with “Plates and Runes”."
+     ],
+     "link": "passives/node/own10636.md",
+     "name": "Retainer's Cuirass"
+    }
+   },
+   "own10640": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+8% bow additional projectile chance"
+     ],
+     "link": "passives/tree/#own10640",
+     "name": "Additional Arrow Chance"
+    },
+    "old": null
+   },
+   "own10642": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased armour"
+     ],
+     "link": "passives/tree/#own10642",
+     "name": "Armour"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased armour"
+     ],
+     "link": "passives/tree/#own10642",
+     "name": "Armour"
+    }
+   },
+   "own10646": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased evasion rating"
+     ],
+     "link": "passives/tree/#own10646",
+     "name": "Evasion rating"
+    },
+    "old": null
+   },
+   "own10652": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased evasion rating"
+     ],
+     "link": "passives/tree/#own10652",
+     "name": "Evasion rating"
+    },
+    "old": null
+   },
+   "own10658": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "5% reduced cost when evading"
+     ],
+     "link": "passives/node/own10658.md",
+     "name": "Effortless Evasion"
+    },
+    "old": null
+   },
+   "own10664": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "4% reduced cost when evading"
+     ],
+     "link": "passives/tree/#own10664",
+     "name": "Evasion Stamina Cost"
+    },
+    "old": null
+   },
+   "own10670": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "4% reduced cost when evading"
+     ],
+     "link": "passives/tree/#own10670",
+     "name": "Evasion Stamina Cost"
+    },
+    "old": null
+   },
+   "own10676": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+4% glancing blow chance on evade recently"
+     ],
+     "link": "passives/tree/#own10676",
+     "name": "Glancing after Evasion"
+    },
+    "old": null
+   },
+   "own10682": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+4% glancing blow chance on evade recently"
+     ],
+     "link": "passives/tree/#own10682",
+     "name": "Glancing after Evasion"
+    },
+    "old": null
+   },
+   "own10688": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+10% glancing blow chance on evade recently"
+     ],
+     "link": "passives/node/own10688.md",
+     "name": "Graceful Retreat"
+    },
+    "old": null
+   },
+   "own10694": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased evasion rating"
+     ],
+     "link": "passives/tree/#own10694",
+     "name": "Evasion rating"
+    },
+    "old": null
+   },
+   "own10700": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased evasion rating"
+     ],
+     "link": "passives/tree/#own10700",
+     "name": "Evasion rating"
+    },
+    "old": null
+   },
+   "own10706": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased evasion rating"
+     ],
+     "link": "passives/node/own10706.md",
+     "name": "Elusive Footwork"
+    },
+    "old": null
+   },
+   "own10956": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "9% increased armour at full eitr"
+     ],
+     "link": "passives/tree/#own10956",
+     "name": "Eitr"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased armour at full eitr"
+     ],
+     "link": "passives/tree/#own10956",
+     "name": "Eitr"
+    }
+   },
+   "own10962": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "9% increased armour at full eitr"
+     ],
+     "link": "passives/tree/#own10962",
+     "name": "Eitr"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased armour at full eitr"
+     ],
+     "link": "passives/tree/#own10962",
+     "name": "Eitr"
+    }
+   },
+   "own10968": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "9% increased armour at full eitr"
+     ],
+     "link": "passives/tree/#own10968",
+     "name": "Eitr"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased armour at full eitr"
+     ],
+     "link": "passives/tree/#own10968",
+     "name": "Eitr"
+    }
+   },
+   "own10974": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "22.5% increased armour at full eitr"
+     ],
+     "link": "passives/node/own10974.md",
+     "name": "Clear Thought"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased armour at full eitr"
+     ],
+     "link": "passives/node/own10974.md",
+     "name": "Clear Thought"
+    }
+   },
+   "own11271": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "20% increased arrow and bolt range",
+      "+20% bow additional projectile chance",
+      "10% increased shooting effective range"
+     ],
+     "link": "passives/node/own11271.md",
+     "name": "Distant Flight"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "20% increased arrow and bolt range",
+      "+1 arrows per bow shot",
+      "10% increased shooting effective range"
+     ],
+     "link": "passives/node/own11271.md",
+     "name": "Distant Flight"
+    }
+   },
+   "own11275": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased shot accuracy",
+      "+20% bow additional projectile chance"
+     ],
+     "link": "passives/node/own11275.md",
+     "name": "Twin Nocks"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased shot accuracy",
+      "+1 arrows per bow shot"
+     ],
+     "link": "passives/node/own11275.md",
+     "name": "Twin Nocks"
+    }
+   },
+   "own11287": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased projectile speed",
+      "50% of increased projectile speed is added to projectile damage"
+     ],
+     "link": "passives/node/own11287.md",
+     "name": "Fair Wind"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased projectile speed"
+     ],
+     "link": "passives/node/own11287.md",
+     "name": "Fair Wind"
+    }
+   },
+   "own11288": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "20% increased projectile speed"
+     ],
+     "link": "passives/node/own11288.md",
+     "name": "True Flight"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased projectile area of effect"
+     ],
+     "link": "passives/node/own11288.md",
+     "name": "Arrowhead's Reach"
+    }
+   },
+   "own11423": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased armour"
+     ],
+     "link": "passives/tree/#own11423",
+     "name": "Armour"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased armour"
+     ],
+     "link": "passives/tree/#own11423",
+     "name": "Armour"
+    }
+   },
+   "own11441": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased armour"
+     ],
+     "link": "passives/tree/#own11441",
+     "name": "Armour"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased armour"
+     ],
+     "link": "passives/tree/#own11441",
+     "name": "Armour"
+    }
+   },
+   "own11459": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "30% increased armour at night"
+     ],
+     "link": "passives/node/own11459.md",
+     "name": "Watch by Moonlight"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "20% increased armour at night"
+     ],
+     "link": "passives/node/own11459.md",
+     "name": "Watch by Moonlight"
+    }
+   },
+   "own11465": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased armour"
+     ],
+     "link": "passives/tree/#own11465",
+     "name": "Armour"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased armour"
+     ],
+     "link": "passives/tree/#own11465",
+     "name": "Armour"
+    }
+   },
+   "own11519": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+50% throwing additional projectile chance",
+      "×0.75 projectile damage",
+      "Weapon Return: Thrown weapons return after their flight; automatic turnaround after 1.4 s; Returning throws deal 30% of outgoing damage; Your thrown weapon comes back once its flight is over: after its chains, pierces and ricochets, when it strikes something or after 1.4 s of flight - faster throws fly farther. On the way back it pierces enemies. Its slot stays reserved until it returns; extra projectiles vanish. Arrows and bolts do not return.",
+      "◇ Free option 1: Theme reserve. No gameplay effect yet."
+     ],
+     "link": "passives/node/own11519.md",
+     "name": "Rain of Points"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "+50% throwing additional projectile chance",
+      "×0.75 damage",
+      "Weapon Return: Thrown weapons return after their flight; automatic turnaround after 1.4 s; Returning throws deal 30% of outgoing damage; Your thrown weapon comes back once its flight is over: after its chains, pierces and ricochets, when it strikes something or after 1.4 s of flight - faster throws fly farther. On the way back it pierces enemies. Its slot stays reserved until it returns; extra projectiles vanish. Arrows and bolts do not return.",
+      "◇ Free option 1: Theme reserve. No gameplay effect yet."
+     ],
+     "link": "passives/node/own11519.md",
+     "name": "Rain of Points"
+    }
+   },
+   "own11523": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased armour",
+      "+20 rune shield"
+     ],
+     "link": "passives/node/own11523.md",
+     "name": "Rune Beneath Steel"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased armour",
+      "+20 rune shield"
+     ],
+     "link": "passives/node/own11523.md",
+     "name": "Rune Beneath Steel"
+    }
+   },
+   "own11668": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "30% increased crossbow critical strike chance",
+      "10% increased bolt projectile speed",
+      "40% increased crossbow critical strike chance with the first shot of a magazine"
+     ],
+     "link": "passives/node/own11668.md",
+     "name": "Bolt Through the Gap"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "30% increased crossbow critical strike chance",
+      "10% increased bolt projectile speed"
+     ],
+     "link": "passives/node/own11668.md",
+     "name": "Bolt Through the Gap"
+    }
+   },
+   "own11693": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased bomb damage"
+     ],
+     "link": "passives/tree/#own11693",
+     "name": "Bombs"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased non-projectile damage"
+     ],
+     "link": "passives/tree/#own11693",
+     "name": "Bombs"
+    }
+   },
+   "own11699": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased bomb damage"
+     ],
+     "link": "passives/tree/#own11699",
+     "name": "Bombs"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased non-projectile damage"
+     ],
+     "link": "passives/tree/#own11699",
+     "name": "Bombs"
+    }
+   },
+   "own11705": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased bomb damage"
+     ],
+     "link": "passives/tree/#own11705",
+     "name": "Bombs"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased non-projectile damage"
+     ],
+     "link": "passives/tree/#own11705",
+     "name": "Bombs"
+    }
+   },
+   "own11711": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "20% increased bomb damage",
+      "Impact Detonation: Bomb ricochets lose no power: every touch explodes at full power; A bouncing bomb loses no power on its bounces: every touch explodes at full power.",
+      "Sticky Charge: The first enemy hit attaches the bomb to the target; it explodes after 1.2 s; A bomb's first hit on an enemy attaches it until it explodes. An attached bomb no longer bounces.",
+      "Planted Charge: Thrown bombs become mines that last 45 s; A thrown bomb settles as a mine and waits for an enemy to come close",
+      "Returning fuse: After its first explosion, the bomb returns and explodes again for 100% of its damage; Bombs fly back after exploding and explode again; your own blasts and effects also hit you",
+      "Carpet Bombing: While airborne, drop a carried bomb every 1.6 s; While you are in the air, a random bomb falls from your pack every 1.6 s",
+      "Parting Gift: On Dodge, throw a random carried bomb at a nearby enemy within 12 m; Inventory bomb throw cooldown: 1.8 s; Throw one random carried bomb at a random enemy within 12 m. Cooldown: 1.8 seconds. Requires a real bomb in the inventory. on dodge"
+     ],
+     "link": "passives/node/own11711.md",
+     "name": "Powder Underfoot"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased non-projectile damage",
+      "Impact Detonation: Bomb ricochets lose no power: every touch explodes at full power; A bouncing bomb loses no power on its bounces: every touch explodes at full power.",
+      "Sticky Charge: The first enemy hit attaches the bomb to the target; it explodes after 1.2 s; A bomb's first hit on an enemy attaches it until it explodes. An attached bomb no longer bounces.",
+      "Planted Charge: Thrown bombs become mines that last 45 s; A thrown bomb settles as a mine and waits for an enemy to come close",
+      "Returning fuse: After its first explosion, the bomb returns and explodes again for 100% of its damage; Bombs fly back after exploding and explode again; your own blasts and effects also hit you",
+      "Carpet Bombing: While airborne, drop a carried bomb every 1.6 s; While you are in the air, a random bomb falls from your pack every 1.6 s",
+      "Parting Gift: On Dodge, throw a random carried bomb at a nearby enemy within 12 m; Inventory bomb throw cooldown: 1.8 s; Throw one random carried bomb at a random enemy within 12 m. Cooldown: 1.8 seconds. Requires a real bomb in the inventory. on dodge"
+     ],
+     "link": "passives/node/own11711.md",
+     "name": "Powder Underfoot"
+    }
+   },
+   "own11713": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "20% increased crossbow reload speed on dodge recently",
+      "10% reduced crossbow stamina cost",
+      "15% increased crossbow fire rate on dodge recently"
+     ],
+     "link": "passives/node/own11713.md",
+     "name": "Loader's Hand"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "20% increased crossbow reload speed on dodge recently",
+      "10% reduced crossbow stamina cost"
+     ],
+     "link": "passives/node/own11713.md",
+     "name": "Loader's Hand"
+    }
+   },
+   "own11731": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased bolt knockback",
+      "+1 loaded bolts",
+      "Piercing Charge: +1 crossbow projectile chain with charged attacks",
+      "Winding Tumble: Reload starts with crossbows on dodge"
+     ],
+     "link": "passives/node/own11731.md",
+     "name": "Splintered Shield"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased bolt knockback",
+      "+1 bolts fired per crossbow shot",
+      "Piercing Charge: +1 crossbow projectile chain with charged attacks"
+     ],
+     "link": "passives/node/own11731.md",
+     "name": "Splintered Shield"
+    }
+   },
+   "own11737": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+2% crossbow fire rate"
+     ],
+     "link": "passives/tree/#own11737",
+     "name": "Crossbow fire rate"
+    },
+    "old": null
+   },
+   "own11743": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+2% crossbow fire rate"
+     ],
+     "link": "passives/tree/#own11743",
+     "name": "Crossbow fire rate"
+    },
+    "old": null
+   },
+   "own11749": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+2% crossbow fire rate"
+     ],
+     "link": "passives/tree/#own11749",
+     "name": "Crossbow fire rate"
+    },
+    "old": null
+   },
+   "own11755": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+2% crossbow fire rate"
+     ],
+     "link": "passives/tree/#own11755",
+     "name": "Crossbow fire rate"
+    },
+    "old": null
+   },
+   "own11761": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+2% crossbow fire rate"
+     ],
+     "link": "passives/tree/#own11761",
+     "name": "Crossbow fire rate"
+    },
+    "old": null
+   },
+   "own11767": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+5% crossbow fire rate"
+     ],
+     "link": "passives/node/own11767.md",
+     "name": "Iron Cadence"
+    },
+    "old": null
+   },
+   "own11807": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased armour",
+      "5% increased rune shield"
+     ],
+     "link": "passives/tree/#own11807",
+     "name": "Armour and Rune Shield"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased armour",
+      "5% increased rune shield"
+     ],
+     "link": "passives/tree/#own11807",
+     "name": "Armour and Rune Shield"
+    }
+   },
+   "own11825": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased armour",
+      "5% increased rune shield"
+     ],
+     "link": "passives/tree/#own11825",
+     "name": "Armour and Rune Shield"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased armour",
+      "5% increased rune shield"
+     ],
+     "link": "passives/tree/#own11825",
+     "name": "Armour and Rune Shield"
+    }
+   },
+   "own11831": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased armour",
+      "12.5% increased rune shield"
+     ],
+     "link": "passives/node/own11831.md",
+     "name": "Armour and Rune Shield"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased armour",
+      "12.5% increased rune shield"
+     ],
+     "link": "passives/node/own11831.md",
+     "name": "Armour and Rune Shield"
+    }
+   },
+   "own11874": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "40% increased ailment build-up with crossbows",
+      "30% chance to reload instantly with crossbows",
+      "Piercing Charge: +1 crossbow projectile chain with charged attacks",
+      "Winding Tumble: Reload starts with crossbows on dodge"
+     ],
+     "link": "passives/node/own11874.md",
+     "name": "Latch Click"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "40% increased ailment build-up with crossbows",
+      "+30% crossbow instant action chance on reload start"
+     ],
+     "link": "passives/node/own11874.md",
+     "name": "Latch Click"
+    }
+   },
+   "own11941": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+1 projectiles per shot or throw",
+      "×0.75 projectile damage"
+     ],
+     "link": "passives/node/own11941.md",
+     "name": "Scattered Steel"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "+1 projectiles per shot or throw",
+      "×0.75 damage"
+     ],
+     "link": "passives/node/own11941.md",
+     "name": "Scattered Steel"
+    }
+   },
+   "own11993": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased armour",
+      "5% increased rune shield"
+     ],
+     "link": "passives/tree/#own11993",
+     "name": "Armour and Rune Shield"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased armour",
+      "5% increased rune shield"
+     ],
+     "link": "passives/tree/#own11993",
+     "name": "Armour and Rune Shield"
+    }
+   },
+   "own11999": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased armour",
+      "5% increased rune shield"
+     ],
+     "link": "passives/tree/#own11999",
+     "name": "Armour and Rune Shield"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased armour",
+      "5% increased rune shield"
+     ],
+     "link": "passives/tree/#own11999",
+     "name": "Armour and Rune Shield"
+    }
+   },
+   "own12009": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "10% reduced crossbow stamina cost",
+      "25% increased crossbow damage per type of bolt fired in the last 10 seconds",
+      "5% increased crossbow damage per point of bolt fired recently"
+     ],
+     "link": "passives/node/own12009.md",
+     "name": "Besieger's Stores"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "10% reduced crossbow stamina cost",
+      "25% increased crossbow damage per type of bolt fired in the last 10 seconds"
+     ],
+     "link": "passives/node/own12009.md",
+     "name": "Besieger's Stores"
+    }
+   },
+   "own12280": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+50% throwing additional projectile chance",
+      "×0.75 projectile damage",
+      "Weapon Return: Thrown weapons return after their flight; automatic turnaround after 1.4 s; Returning throws deal 30% of outgoing damage; Your thrown weapon comes back once its flight is over: after its chains, pierces and ricochets, when it strikes something or after 1.4 s of flight - faster throws fly farther. On the way back it pierces enemies. Its slot stays reserved until it returns; extra projectiles vanish. Arrows and bolts do not return.",
+      "◇ Free option 1: Theme reserve. No gameplay effect yet."
+     ],
+     "link": "passives/node/own12280.md",
+     "name": "Handful of Iron"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "+50% throwing additional projectile chance",
+      "×0.75 damage",
+      "Weapon Return: Thrown weapons return after their flight; automatic turnaround after 1.4 s; Returning throws deal 30% of outgoing damage; Your thrown weapon comes back once its flight is over: after its chains, pierces and ricochets, when it strikes something or after 1.4 s of flight - faster throws fly farther. On the way back it pierces enemies. Its slot stays reserved until it returns; extra projectiles vanish. Arrows and bolts do not return.",
+      "◇ Free option 1: Theme reserve. No gameplay effect yet."
+     ],
+     "link": "passives/node/own12280.md",
+     "name": "Handful of Iron"
+    }
+   },
+   "own12375": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased evasion rating",
+      "6% increased armour"
+     ],
+     "link": "passives/tree/#own12375",
+     "name": "Armour and Evasion"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased evasion rating",
+      "4% increased armour"
+     ],
+     "link": "passives/tree/#own12375",
+     "name": "Armour and Evasion"
+    }
+   },
+   "own12381": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased evasion rating",
+      "6% increased armour"
+     ],
+     "link": "passives/tree/#own12381",
+     "name": "Armour and Evasion"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased evasion rating",
+      "4% increased armour"
+     ],
+     "link": "passives/tree/#own12381",
+     "name": "Armour and Evasion"
+    }
+   },
+   "own12405": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased armour"
+     ],
+     "link": "passives/tree/#own12405",
+     "name": "Armour and Evasion"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased armour"
+     ],
+     "link": "passives/tree/#own12405",
+     "name": "Armour and Evasion"
+    }
+   },
+   "own12411": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased armour"
+     ],
+     "link": "passives/tree/#own12411",
+     "name": "Armour and Evasion"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased armour"
+     ],
+     "link": "passives/tree/#own12411",
+     "name": "Armour and Evasion"
+    }
+   },
+   "own12429": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased armour"
+     ],
+     "link": "passives/tree/#own12429",
+     "name": "Armour and Evasion"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased armour"
+     ],
+     "link": "passives/tree/#own12429",
+     "name": "Armour and Evasion"
+    }
+   },
+   "own12435": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased armour"
+     ],
+     "link": "passives/tree/#own12435",
+     "name": "Armour and Evasion"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased armour"
+     ],
+     "link": "passives/tree/#own12435",
+     "name": "Armour and Evasion"
+    }
+   },
+   "own12444": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased armour",
+      "4% increased evasion rating"
+     ],
+     "link": "passives/tree/#own12444",
+     "name": "Armour and Evasion"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased armour",
+      "4% increased evasion rating"
+     ],
+     "link": "passives/tree/#own12444",
+     "name": "Armour and Evasion"
+    }
+   },
+   "own12456": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased armour",
+      "4% increased evasion rating"
+     ],
+     "link": "passives/tree/#own12456",
+     "name": "Armour and Evasion"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased armour",
+      "4% increased evasion rating"
+     ],
+     "link": "passives/tree/#own12456",
+     "name": "Armour and Evasion"
+    }
+   },
+   "own12468": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased armour",
+      "4% increased evasion rating"
+     ],
+     "link": "passives/tree/#own12468",
+     "name": "Armour and Evasion"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased armour",
+      "4% increased evasion rating"
+     ],
+     "link": "passives/tree/#own12468",
+     "name": "Armour and Evasion"
+    }
+   },
+   "own12474": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased armour",
+      "10% increased evasion rating"
+     ],
+     "link": "passives/node/own12474.md",
+     "name": "Supple Forging"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased armour",
+      "10% increased evasion rating"
+     ],
+     "link": "passives/node/own12474.md",
+     "name": "Supple Forging"
+    }
+   },
+   "own12480": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased armour"
+     ],
+     "link": "passives/tree/#own12480",
+     "name": "Armour"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased armour"
+     ],
+     "link": "passives/tree/#own12480",
+     "name": "Armour"
+    }
+   },
+   "own12485": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased armour"
+     ],
+     "link": "passives/tree/#own12485",
+     "name": "Recovery Through Defence"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased armour"
+     ],
+     "link": "passives/tree/#own12485",
+     "name": "Recovery Through Defence"
+    }
+   },
+   "own12497": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased armour"
+     ],
+     "link": "passives/tree/#own12497",
+     "name": "Recovery Through Defence"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased armour"
+     ],
+     "link": "passives/tree/#own12497",
+     "name": "Recovery Through Defence"
+    }
+   },
+   "own12503": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased armour"
+     ],
+     "link": "passives/tree/#own12503",
+     "name": "Recovery Through Defence"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased armour"
+     ],
+     "link": "passives/tree/#own12503",
+     "name": "Recovery Through Defence"
+    }
+   },
+   "own12510": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "30% increased armour when hit recently",
+      "10% increased armour from equipped leg armour"
+     ],
+     "link": "passives/node/own12510.md",
+     "name": "Drengr's Greaves"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "20% increased armour when hit recently",
+      "10% increased armour from equipped leg armour"
+     ],
+     "link": "passives/node/own12510.md",
+     "name": "Drengr's Greaves"
+    }
+   },
+   "own12515": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased armour"
+     ],
+     "link": "passives/tree/#own12515",
+     "name": "Recovery Through Defence"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased armour"
+     ],
+     "link": "passives/tree/#own12515",
+     "name": "Recovery Through Defence"
+    }
+   },
+   "own12521": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased armour"
+     ],
+     "link": "passives/tree/#own12521",
+     "name": "Recovery Through Defence"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased armour"
+     ],
+     "link": "passives/tree/#own12521",
+     "name": "Recovery Through Defence"
+    }
+   },
+   "own12527": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "30% increased armour when hit recently"
+     ],
+     "link": "passives/node/own12527.md",
+     "name": "Tempered by Scars"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "20% increased armour when hit recently"
+     ],
+     "link": "passives/node/own12527.md",
+     "name": "Tempered by Scars"
+    }
+   },
+   "own12533": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased armour"
+     ],
+     "link": "passives/node/own12533.md",
+     "name": "Old Drengr's Armour"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased armour"
+     ],
+     "link": "passives/node/own12533.md",
+     "name": "Old Drengr's Armour"
+    }
+   },
+   "own12540": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased armour"
+     ],
+     "link": "passives/tree/#own12540",
+     "name": "Armour"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased armour"
+     ],
+     "link": "passives/tree/#own12540",
+     "name": "Armour"
+    }
+   },
+   "own12546": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased armour"
+     ],
+     "link": "passives/node/own12546.md",
+     "name": "Anvil's Memory"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased armour"
+     ],
+     "link": "passives/node/own12546.md",
+     "name": "Anvil's Memory"
+    }
+   },
+   "own12552": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased armour"
+     ],
+     "link": "passives/tree/#own12552",
+     "name": "Armour"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased armour"
+     ],
+     "link": "passives/tree/#own12552",
+     "name": "Armour"
+    }
+   },
+   "own12558": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased armour"
+     ],
+     "link": "passives/tree/#own12558",
+     "name": "Armour"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased armour"
+     ],
+     "link": "passives/tree/#own12558",
+     "name": "Armour"
+    }
+   },
+   "own12564": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased armour",
+      "+5 armour"
+     ],
+     "link": "passives/node/own12564.md",
+     "name": "Iron Skin"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased armour",
+      "+5 armour"
+     ],
+     "link": "passives/node/own12564.md",
+     "name": "Iron Skin"
+    }
+   },
+   "own12693": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+20% crossbow critical strike damage",
+      "10% increased bolt knockback",
+      "40% increased crossbow critical strike damage with the last loaded shot"
+     ],
+     "link": "passives/node/own12693.md",
+     "name": "Helm on a Skewer"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "+20% crossbow critical strike damage",
+      "10% increased bolt knockback"
+     ],
+     "link": "passives/node/own12693.md",
+     "name": "Helm on a Skewer"
+    }
+   },
+   "own13019": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased armour"
+     ],
+     "link": "passives/tree/#own13019",
+     "name": "Armour and Rune Shield"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased armour"
+     ],
+     "link": "passives/tree/#own13019",
+     "name": "Armour and Rune Shield"
+    }
+   },
+   "own13024": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased armour"
+     ],
+     "link": "passives/tree/#own13024",
+     "name": "Armour and Rune Shield"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased armour"
+     ],
+     "link": "passives/tree/#own13024",
+     "name": "Armour and Rune Shield"
+    }
+   },
+   "own13029": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased armour"
+     ],
+     "link": "passives/tree/#own13029",
+     "name": "Armour and Rune Shield"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased armour"
+     ],
+     "link": "passives/tree/#own13029",
+     "name": "Armour and Rune Shield"
+    }
+   },
+   "own13034": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased armour"
+     ],
+     "link": "passives/tree/#own13034",
+     "name": "Armour and Rune Shield"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased armour"
+     ],
+     "link": "passives/tree/#own13034",
+     "name": "Armour and Rune Shield"
+    }
+   },
+   "own13039": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased armour",
+      "10% increased armour from equipped helmet"
+     ],
+     "link": "passives/node/own13039.md",
+     "name": "Old Guard's Helm"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased armour",
+      "10% increased armour from equipped helmet"
+     ],
+     "link": "passives/node/own13039.md",
+     "name": "Old Guard's Helm"
+    }
+   },
+   "own13521": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased projectile damage"
+     ],
+     "link": "passives/tree/#own13521",
+     "name": "Projectile damage"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased projectile speed"
+     ],
+     "link": "passives/tree/#own13521",
+     "name": "Projectile Paths"
+    }
+   },
+   "own13527": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased projectile damage"
+     ],
+     "link": "passives/tree/#own13527",
+     "name": "Projectile damage"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased projectile speed"
+     ],
+     "link": "passives/tree/#own13527",
+     "name": "Projectile Paths"
+    }
+   },
+   "own13539": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased projectile damage",
+      "Chain Through Targets: Projectile chains can pick spores, ice crystals and other battle targets created by you and your allies. The hit triggers the target's usual reaction.",
+      "Return Path: Your last ricochet sends the projectile back to you. A returning projectile does not harm its owner and no longer ricochets.",
+      "Wall to Target: A ricochet off the ground or a wall has a 40% chance to head for the nearest valid target instead of reflecting normally.",
+      "◇ Free option 1: Theme reserve. No gameplay effect yet.",
+      "◇ Free option 2: Theme reserve. No gameplay effect yet."
+     ],
+     "link": "passives/node/own13539.md",
+     "name": "Driving Force"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased projectile speed",
+      "Chain Through Targets: Projectile chains can pick spores, ice crystals and other battle targets created by you and your allies. The hit triggers the target's usual reaction.",
+      "Return Path: Your last ricochet sends the projectile back to you. A returning projectile does not harm its owner and no longer ricochets.",
+      "Wall to Target: A ricochet off the ground or a wall has a 40% chance to head for the nearest valid target instead of reflecting normally.",
+      "◇ Free option 1: Theme reserve. No gameplay effect yet.",
+      "◇ Free option 2: Theme reserve. No gameplay effect yet."
+     ],
+     "link": "passives/node/own13539.md",
+     "name": "Swift Trail"
+    }
+   },
+   "own13649": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+2% crossbow fire rate"
+     ],
+     "link": "passives/tree/#own13649",
+     "name": "Crossbow fire rate"
+    },
+    "old": null
+   },
+   "own13655": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+2% crossbow fire rate"
+     ],
+     "link": "passives/tree/#own13655",
+     "name": "Crossbow fire rate"
+    },
+    "old": null
+   },
+   "own13708": {
+    "new": {
+     "kind": "Keystone",
+     "lines": [
+      "+2 projectiles per shot or throw",
+      "×0.5 draw and reload speed",
+      "×0.5 projectile damage"
+     ],
+     "link": "passives/node/own13708.md",
+     "name": "Rain of Arrows"
+    },
+    "old": {
+     "kind": "Keystone",
+     "lines": [
+      "+2 projectiles per shot or throw",
+      "×0.5 draw and reload speed",
+      "×0.5 damage"
+     ],
+     "link": "passives/node/own13708.md",
+     "name": "Rain of Arrows"
+    }
+   },
+   "own13718": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+5% crossbow fire rate"
+     ],
+     "link": "passives/node/own13718.md",
+     "name": "Hailstring"
+    },
+    "old": null
+   },
+   "own13780": {
+    "new": {
+     "kind": "Keystone",
+     "lines": [
+      "×2 shooting effective range when shooting",
+      "×0.5 shooting damage"
+     ],
+     "link": "passives/node/own13780.md",
+     "name": "Distant Horizon"
+    },
+    "old": null
+   },
+   "own13783": {
+    "new": {
+     "kind": "Keystone",
+     "lines": [
+      "×2 crossbow loaded bolts",
+      "×1.3 crossbow fire rate",
+      "×0.4 crossbow damage"
+     ],
+     "link": "passives/node/own13783.md",
+     "name": "Hail of Iron"
+    },
+    "old": null
+   },
+   "own9460": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased armour",
+      "10% increased evasion rating",
+      "+8 Strength",
+      "+8 Dexterity"
+     ],
+     "link": "passives/node/own9460.md",
+     "name": "Huskarl's Mail"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased armour",
+      "10% increased evasion rating",
+      "+8 Strength",
+      "+8 Dexterity"
+     ],
+     "link": "passives/node/own9460.md",
+     "name": "Huskarl's Mail"
+    }
+   },
+   "own9464": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased armour",
+      "12.5% increased rune shield",
+      "12.5% increased maximum eitr",
+      "+8 Intelligence",
+      "+8 Strength"
+     ],
+     "link": "passives/node/own9464.md",
+     "name": "Runeforged Aegis"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased armour",
+      "12.5% increased rune shield",
+      "12.5% increased maximum eitr",
+      "+8 Intelligence",
+      "+8 Strength"
+     ],
+     "link": "passives/node/own9464.md",
+     "name": "Runeforged Aegis"
+    }
+   },
+   "own9471": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased armour"
+     ],
+     "link": "passives/tree/#own9471",
+     "name": "Armour"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased armour"
+     ],
+     "link": "passives/tree/#own9471",
+     "name": "Armour"
+    }
+   },
+   "own9472": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased armour"
+     ],
+     "link": "passives/tree/#own9472",
+     "name": "Armour"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased armour"
+     ],
+     "link": "passives/tree/#own9472",
+     "name": "Armour"
+    }
+   },
+   "own9477": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased armour"
+     ],
+     "link": "passives/tree/#own9477",
+     "name": "Armour"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased armour"
+     ],
+     "link": "passives/tree/#own9477",
+     "name": "Armour"
+    }
+   },
+   "own9478": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased armour"
+     ],
+     "link": "passives/tree/#own9478",
+     "name": "Armour"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased armour"
+     ],
+     "link": "passives/tree/#own9478",
+     "name": "Armour"
+    }
+   },
+   "own9484": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased armour",
+      "+10% stagger resistance"
+     ],
+     "link": "passives/node/own9484.md",
+     "name": "Unbent Oak"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased armour",
+      "+10% stagger resistance"
+     ],
+     "link": "passives/node/own9484.md",
+     "name": "Unbent Oak"
+    }
+   },
+   "own9526": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased armour",
+      "4% increased evasion rating"
+     ],
+     "link": "passives/tree/#own9526",
+     "name": "Armour and evasion"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased armour",
+      "4% increased evasion rating"
+     ],
+     "link": "passives/tree/#own9526",
+     "name": "Armour and evasion"
+    }
+   },
+   "own9530": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased armour",
+      "5% increased rune shield"
+     ],
+     "link": "passives/tree/#own9530",
+     "name": "Armour and Rune Shield"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased armour",
+      "5% increased rune shield"
+     ],
+     "link": "passives/tree/#own9530",
+     "name": "Armour and Rune Shield"
+    }
+   },
+   "own9538": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased armour",
+      "4% increased evasion rating"
+     ],
+     "link": "passives/tree/#own9538",
+     "name": "Armour and evasion"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased armour",
+      "4% increased evasion rating"
+     ],
+     "link": "passives/tree/#own9538",
+     "name": "Armour and evasion"
+    }
+   },
+   "own9542": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased armour",
+      "5% increased rune shield"
+     ],
+     "link": "passives/tree/#own9542",
+     "name": "Armour and Rune Shield"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased armour",
+      "5% increased rune shield"
+     ],
+     "link": "passives/tree/#own9542",
+     "name": "Armour and Rune Shield"
+    }
+   },
+   "own9574": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased armour",
+      "4% increased evasion rating"
+     ],
+     "link": "passives/tree/#own9574",
+     "name": "Armour and evasion"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased armour",
+      "4% increased evasion rating"
+     ],
+     "link": "passives/tree/#own9574",
+     "name": "Armour and evasion"
+    }
+   },
+   "own9578": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased armour",
+      "5% increased rune shield"
+     ],
+     "link": "passives/tree/#own9578",
+     "name": "Armour and Rune Shield"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased armour",
+      "5% increased rune shield"
+     ],
+     "link": "passives/tree/#own9578",
+     "name": "Armour and Rune Shield"
+    }
+   }
+  },
+  "values": {
+   "crossbow.fire-interval-share": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "28.57%"
+     ],
+     "link": null,
+     "name": "Crossbow magazine: base time between loaded shots as a share of the crossbow's own base reload time (3.5 s reload -> ~1 shot/s)"
+    },
+    "old": null
+   },
+   "throw.slam-damage": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "100%"
+     ],
+     "link": null,
+     "name": "A thrown club, mace or sledge slams where it strikes the ground (each bounce again): share of the weapon's damage"
+    },
+    "old": null
+   }
+  },
+  "world": {
+   "creature-strength": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Meadows: health ×1, damage ×1, boss health ×1.65, boss damage ×1.025",
+      "Black Forest: health ×1.2, damage ×1.05, boss health ×1.8, boss damage ×1.05",
+      "Swamp: health ×1.35, damage ×0.99, boss health ×2.25, boss damage ×1.1",
+      "Mountain: health ×2.052, damage ×1.35, boss health ×2.85, boss damage ×1.25",
+      "Plains: health ×2.88, damage ×1.4, boss health ×3.6, boss damage ×1.4",
+      "Mistlands: health ×3, damage ×1.7, boss health ×4.5, boss damage ×1.7",
+      "Ashlands: health ×3.5, damage ×2, boss health ×5.25, boss damage ×2",
+      "Deep North: health ×4, damage ×2.3, boss health ×6, boss damage ×2.3",
+      "Bonemass: health ×1.2 more",
+      "Yagluth: health ×1.2 more"
+     ],
+     "link": "mechanics/creatures.md",
+     "name": "Creature health and damage by biome"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Meadows: health ×1, damage ×1, boss health ×1.65, boss damage ×1.025",
+      "Black Forest: health ×1.2, damage ×1.05, boss health ×1.8, boss damage ×1.05",
+      "Swamp: health ×1.5, damage ×1.1, boss health ×2.25, boss damage ×1.1",
+      "Mountain: health ×1.9, damage ×1.25, boss health ×2.85, boss damage ×1.25",
+      "Plains: health ×2.4, damage ×1.4, boss health ×3.6, boss damage ×1.4",
+      "Mistlands: health ×3, damage ×1.7, boss health ×4.5, boss damage ×1.7",
+      "Ashlands: health ×3.5, damage ×2, boss health ×5.25, boss damage ×2",
+      "Deep North: health ×4, damage ×2.3, boss health ×6, boss damage ×2.3"
+     ],
+     "link": "mechanics/creatures.md",
+     "name": "Creature health and damage by biome"
+    }
+   }
+  }
+ },
+ "date": "2026-10-23",
+ "from": "5.3.0",
+ "to": "5.3.1"
+}

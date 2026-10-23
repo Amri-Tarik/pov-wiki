@@ -41,9 +41,11 @@ anchors = [
     "PassiveTree/DifficultyPreset.cs :: DifficultyPreset.Lay",
     "PassiveTree/MinionLife.cs :: MinionLife.IsActive",
     "PassiveTree/StarterStaves.cs :: StarterStaves.VanillaPower",
+    "PassiveTree/EnemyDifficulty.cs :: EnemyDifficulty.bossHealth",
+    "PassiveTree/EnemyDifficulty.cs :: EnemyDifficulty.BossHealthFactor",
 ]
-fingerprint = "bc82ddb09f69"
-checked = "5.3.0"
+fingerprint = "9385e3404385"
+checked = "5.3.1"
 
 [formula.values]
 tamed = 0.5
@@ -141,9 +143,15 @@ anchors = [
     "PassiveTree.Loot/LootDrops.cs :: LootDrops.JewelReward",
     "PassiveTree/KillCredit.cs :: KillCredit.Of#1",
     "PassiveTree/Tunables.cs :: \"loot.white-jewel-weight\"",
+    "PassiveTree.Loot/LootDrops.cs :: LootDrops.KillContext",
+    "PassiveTree.Loot/LootDrops.cs :: \"RarityRoll.ModRewardShare(val) * (CreatureStars.RealBoss\"",
+    "PassiveTree.Loot/LootDifficulty.cs :: LootDifficulty.StarScale",
+    "PassiveTree.Loot/LootDifficulty.cs :: LootDifficulty.Factor",
+    "PassiveTree.Loot/LootDifficulty.cs :: LootDifficulty.MeanStars",
+    "PassiveTree.Loot/LootDifficulty.cs :: LootDifficulty.PerArea",
 ]
-fingerprint = "94dbb6e24411"
-checked = "5.2.1"
+fingerprint = "0e9ed4a0c679"
+checked = "5.3.1"
 
 [formula.values]
 per_modifier = 0.5
@@ -160,9 +168,10 @@ anchors = [
     "PassiveTree/CreatureStars.cs :: CharacterDrop_GenerateDropList_Stars.Postfix",
     "PassiveTree/RarityLoot.cs :: RarityLoot.ScaleAmount",
     "PassiveTree/RarityRoll.cs :: \"Star loot bonus\"",
+    "PassiveTree/CreatureStars.cs :: CreatureStars.StarShare",
 ]
-fingerprint = "8dc682c13ac8"
-checked = "5.1.1"
+fingerprint = "79fb2c560919"
+checked = "5.3.1"
 
 [formula.values]
 per_star = 0.5
@@ -203,9 +212,10 @@ anchors = [
     "PassiveTree/CriticalHits.cs :: CriticalHits.DamageFactor",
     "PassiveTree/CriticalHits.cs :: \"num7 = DamageFactor(s.Has(Stat.CritNoBonus)\"",
     "PassiveTree/WeaponAffixes.cs :: WeaponAffixes.ColumnStat",
+    "PassiveTree/CriticalHits.cs :: CriticalHits.MagazineCritBonus",
 ]
-fingerprint = "764ab7c7db76"
-checked = "5.2.0"
+fingerprint = "d5aa28e6bb52"
+checked = "5.3.1"
 
 [formula.values]
 base = 1.5
@@ -239,9 +249,10 @@ anchors = [
     "PassiveTree/Evasion.cs :: Evasion.StreakOf",
     "PassiveTree/Evasion.cs :: Evasion.ChanceAgainst",
     "PassiveTree/Evasion.cs :: Evasion.IsHit",
+    "PassiveTree/Evasion.cs :: Evasion.StaminaCost",
 ]
-fingerprint = "c7b47a141fc0"
-checked = "5.3.0"
+fingerprint = "0d60c28fbf3d"
+checked = "5.3.1"
 
 [[formula]]
 id = "resistances"
@@ -421,8 +432,8 @@ anchors = [
     "PassiveTree/Tunables.cs :: \"phantom.interval\"",
     "PassiveTree/Tunables.cs :: \"phantom.delay\"",
 ]
-fingerprint = "fe638bdf75e9"
-checked = "5.2.0"
+fingerprint = "96b311661d15"
+checked = "5.3.1"
 
 [formula.values]
 max_pending = 96
@@ -635,16 +646,22 @@ floor = 0.1
 id = "slams"
 anchors = [
     "PassiveTree/Slams.cs :: Slams.IsSlam",
-    "PassiveTree/GroundStrike.cs :: Make.Postfix",
     "PassiveTree/Aftershock.cs :: Aftershock.Roll",
     "PassiveTree/Aftershock.cs :: Aftershock.Initial",
     "PassiveTree/Aftershock.cs :: Aftershock.OnCharged",
     "PassiveTree/Aftershock.cs :: Aftershock.Erupt",
     "PassiveTree/Tunables.cs :: \"slam.ground-radius\"",
     "PassiveTree/Tunables.cs :: \"aftershock.delay\"",
+    "PassiveTree/GroundStrike.cs :: GroundStrike.Provider",
+    "PassiveTree/Slams.cs :: Slams.CanSlam",
+    "PassiveTree/Slams.cs :: Slams.GroundSlam",
+    "PassiveTree/ThrownImpact.cs :: OnLanding.Postfix",
+    "PassiveTree/ThrownImpact.cs :: ThrownImpact.Of",
+    "PassiveTree/ThrownImpact.cs :: ThrownImpact.Slam",
+    "PassiveTree/Tunables.cs :: \"throw.slam-damage\"",
 ]
-fingerprint = "bdc2a11b2dc6"
-checked = "5.2.0"
+fingerprint = "4dc470dece4a"
+checked = "5.3.1"
 
 [[formula]]
 id = "block"
@@ -812,9 +829,14 @@ anchors = [
     "PassiveTree/CriticalHits.cs :: CriticalHits.Apply",
     "valheim/Attack.cs :: Attack.ModifyDamage",
     "valheim/Character.cs :: Character.RPC_Damage",
+    "PassiveTree/ProjectileMods.cs :: ProjectileMods.SplitsAmmo",
+    "PassiveTree/ProjectileMods.cs :: ProjectileMods.AmmoShare",
+    "PassiveTree/ProjectileMods.cs :: ProjectileMods.AmmoInc",
+    "PassiveTree/ProjectileMods.cs :: ProjectileMods.DamageInc",
+    "PassiveTree/WeaponAffixes.cs :: WeaponAffixes.DamageBonus",
 ]
-fingerprint = "e95a707a9e37"
-checked = "5.3.0"
+fingerprint = "25ff8a01fd76"
+checked = "5.3.1"
 
 [formula.values]
 staggered = 0.15
@@ -830,8 +852,8 @@ anchors = [
     "valheim/Attack.cs :: Attack.ModifyDamage",
     "valheim/Character.cs :: Character.RPC_Damage",
 ]
-fingerprint = "2c3747268896"
-checked = "5.3.0"
+fingerprint = "16c09ace90ca"
+checked = "5.3.1"
 
 [[formula]]
 id = "player-penetration"
@@ -873,8 +895,8 @@ anchors = [
     "PassiveTree/MinionSacrifice.cs :: \"private const float Reach\"",
     "PassiveTree/MinionLife.cs :: MinionLife.Scale",
 ]
-fingerprint = "95ff43d874ae"
-checked = "5.3.0"
+fingerprint = "0a0ff9e902cb"
+checked = "5.3.1"
 
 [formula.values]
 quality_health = 0.25
@@ -892,8 +914,8 @@ anchors = [
     "PassiveTree/MinionReserve.cs :: MinionReserve.Refresh",
     "PassiveTree/MinionLife.cs :: MinionLife.Keep",
 ]
-fingerprint = "331d6f319b3d"
-checked = "5.2.1"
+fingerprint = "a7d01a01a5e5"
+checked = "5.3.1"
 
 [formula.values]
 quality_reserve = 0.15
@@ -922,8 +944,8 @@ anchors = [
     "PassiveTree/StarterStaves.cs :: StarterStaves.VanillaPower",
     "PassiveTree/StarterStaves.cs :: Vanilla_Gate.Prefix",
 ]
-fingerprint = "d275ead0b0c1"
-checked = "5.3.0"
+fingerprint = "2237691989f9"
+checked = "5.3.1"
 
 [[formula]]
 id = "summon-strength"
@@ -936,8 +958,8 @@ anchors = [
     "PassiveTree/StarterStaves.cs :: StarterStaves.VanillaPower",
     "PassiveTree/CreatureBonuses.cs :: CreatureBonuses.HealthFactor",
 ]
-fingerprint = "28e173e00ade"
-checked = "5.3.0"
+fingerprint = "c1659667e014"
+checked = "5.3.1"
 
 [formula.values]
 quality_health = 0.25
@@ -1033,6 +1055,21 @@ fingerprint = "0aaab424c33c"
 checked = "5.3.0"
 
 [[formula]]
+id = "crossbow-magazine"
+anchors = [
+    "PassiveTree/CrossbowMagazine.cs :: CrossbowMagazine.Capacity",
+    "PassiveTree/CrossbowMagazine.cs :: CrossbowMagazine.BaseInterval",
+    "PassiveTree/CrossbowMagazine.cs :: CrossbowMagazine.FireRate",
+    "PassiveTree/CrossbowMagazine.cs :: Fill.Postfix",
+    "PassiveTree/CrossbowMagazine.cs :: KeepLoaded.Prefix",
+    "PassiveTree/CrossbowMagazine.cs :: CrossbowMagazine.ManualReloadBlock",
+    "PassiveTree/CrossbowMagazine.cs :: CrossbowMagazine.ShotPosition",
+    "PassiveTree/Tunables.cs :: \"crossbow.fire-interval-share\"",
+]
+fingerprint = "f9ec2b09c08d"
+checked = "5.3.1"
+
+[[formula]]
 id = "ground-effects"
 anchors = [
     "PassiveTree/GroundEffects.cs :: GroundEffects.FromSpell",
@@ -1096,8 +1133,8 @@ anchors = [
     "PassiveTree.Loot/ItemAscension.cs :: ItemAscension.MinionStage",
     "PassiveTree.Loot/ItemAscension.cs :: ItemAscension.UpgradeRecipe",
 ]
-fingerprint = "71ab93a187f4"
-checked = "5.3.0"
+fingerprint = "2224675b6bac"
+checked = "5.3.1"
 
 [formula.values]
 min_damage = 5

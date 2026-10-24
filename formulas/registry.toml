@@ -22,9 +22,12 @@ anchors = [
     "PassiveTree.Loot/LootDrops.cs :: \"int num2 = CreatureLevels.Of(val);\"",
     "PassiveTree.Loot/LootDrops.cs :: LootDrops.ChestContext",
     "PassiveTree.Loot/TraderLevel.cs :: Buy.Prefix",
+    "PassiveTree/CreatureLevels.cs :: CreatureLevels.NextBossLevel",
+    "PassiveTree/CreatureLevels.cs :: CreatureLevels.NextBossBiome",
+    "PassiveTree/BlightMist.cs :: BlightMist.IsBlighted",
 ]
-fingerprint = "7d08d7f49485"
-checked = "5.2.1"
+fingerprint = "755a718ca95f"
+checked = "5.3.2"
 
 [[formula]]
 id = "creature-strength"
@@ -120,9 +123,14 @@ anchors = [
     "PassiveTree/MonsterPower.cs :: MonsterPower.Price",
     "PassiveTree/Tunables.cs :: \"monster-power.step\"",
     "PassiveTree/Tunables.cs :: \"monster-power.max\"",
+    "PassiveTree/MonsterPower.cs :: MonsterPower.Population",
+    "PassiveTree/MonsterPower.cs :: PopulationSpawns.Prefix",
 ]
-fingerprint = "135b639ae434"
-checked = "5.1.1"
+fingerprint = "440c5efaa343"
+checked = "5.3.2"
+
+[formula.values]
+population = 0.05
 
 [[formula]]
 id = "loot"
@@ -149,9 +157,10 @@ anchors = [
     "PassiveTree.Loot/LootDifficulty.cs :: LootDifficulty.Factor",
     "PassiveTree.Loot/LootDifficulty.cs :: LootDifficulty.MeanStars",
     "PassiveTree.Loot/LootDifficulty.cs :: LootDifficulty.PerArea",
+    "PassiveTree/WombOfCorruption.cs :: WombOfCorruption.Drops",
 ]
-fingerprint = "0e9ed4a0c679"
-checked = "5.3.1"
+fingerprint = "fe902d1f23ad"
+checked = "5.3.2"
 
 [formula.values]
 per_modifier = 0.5
@@ -159,6 +168,7 @@ gear_rate = 0.25
 chest = 3.5
 currency_rate = 0.125
 currency_boost = 1.25
+womb_chance = 0.002
 
 [[formula]]
 id = "vanilla-drops"
@@ -549,8 +559,8 @@ anchors = [
     "PassiveTree/Tunables.cs :: \"shield.delay-cap\"",
     "valheim/Character.cs :: Character.RPC_Damage",
 ]
-fingerprint = "00550da6d1f1"
-checked = "5.3.0"
+fingerprint = "95a9aa950e54"
+checked = "5.3.2"
 
 [formula.values]
 base = 0
@@ -719,9 +729,11 @@ anchors = [
     "PassiveTree/Tunables.cs :: \"thorns.increased.base\"",
     "PassiveTree/Tunables.cs :: \"thorns.block.share\"",
     "PassiveTree/Tunables.cs :: \"thorns.riposte.share\"",
+    "PassiveTree/Cooldowns.cs :: Cooldowns.Of",
+    "PassiveTree/Tunables.cs :: \"thorns.contact-interval\"",
 ]
-fingerprint = "1d1b022eb472"
-checked = "5.3.0"
+fingerprint = "3fafb88c081a"
+checked = "5.3.2"
 
 [formula.values]
 full_range = 3
@@ -895,8 +907,8 @@ anchors = [
     "PassiveTree/MinionSacrifice.cs :: \"private const float Reach\"",
     "PassiveTree/MinionLife.cs :: MinionLife.Scale",
 ]
-fingerprint = "0a0ff9e902cb"
-checked = "5.3.1"
+fingerprint = "400a0ffc83c8"
+checked = "5.3.2"
 
 [formula.values]
 quality_health = 0.25
@@ -958,8 +970,8 @@ anchors = [
     "PassiveTree/StarterStaves.cs :: StarterStaves.VanillaPower",
     "PassiveTree/CreatureBonuses.cs :: CreatureBonuses.HealthFactor",
 ]
-fingerprint = "c1659667e014"
-checked = "5.3.1"
+fingerprint = "33bf161edc24"
+checked = "5.3.2"
 
 [formula.values]
 quality_health = 0.25
@@ -1050,9 +1062,11 @@ anchors = [
     "PassiveTree/RangedFalloff.cs :: RangedFalloff.Stretch",
     "PassiveTree/RangedFalloff.cs :: RangedFalloff.Applies",
     "PassiveTree/RangedFalloff.cs :: RangedFalloff.Apply",
+    "PassiveTree/Tunables.cs :: \"bow.falloff.start\"",
+    "PassiveTree/Tunables.cs :: \"bow.falloff.end\"",
 ]
-fingerprint = "0aaab424c33c"
-checked = "5.3.0"
+fingerprint = "e364203cb12a"
+checked = "5.3.2"
 
 [[formula]]
 id = "crossbow-magazine"
@@ -1088,8 +1102,8 @@ anchors = [
     "PassiveTree/GroundSliding.cs :: Traction.Postfix",
     "PassiveTree/Effects.cs :: Effects.LayerOn",
 ]
-fingerprint = "948d36e02cde"
-checked = "5.3.0"
+fingerprint = "5d503f613875"
+checked = "5.3.2"
 
 [formula.values]
 max_radius = 12

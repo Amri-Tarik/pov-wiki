@@ -146,6 +146,7 @@ tags_note = "What the mod sees this item as. Properties choose the items they ro
 
 # Currency, jewels and unique items (gear_pages.py).
 [gear]
+src_mist = "from a creature, elite or boss killed in the Blight Mist, {chance} each ([loot]({link}))"
 one_in = "1 in {n}"
 thousands = ","
 currency = "Currency"
@@ -605,6 +606,7 @@ resist = "Resistance ignored"
 [formula.creature-level]
 title = "Area levels"
 text = "Every biome has a fixed level. A creature's level is the level of the biome it stands in (stars don't change it): it sets the creature's accuracy and the item level of its loot, a chest takes the level of its biome, and gear bought from a trader the level of the biome the trader is in. It doesn't scale health or damage, except for the monolith bosses. With the Raid level scaling setting (off by default, on in Merciless), raiders take the level of the biome the raid comes from, and scale with it. Each biome also has a recommended player level: up to the next biome's, it gives full experience; past it, experience [falls off]({falloff})."
+blight = "A creature in the Blight Mist takes the level of the next boss's biome by the world's progress (the first boss not yet defeated; the Deep North once Fader is), wherever it stands."
 full_col = "Full experience up to level"
 
 [formula.creature-strength]
@@ -640,19 +642,20 @@ notes = "Modifiers per boss star: {mods} on Normal, 1 on Hard and Merciless."
 
 [formula.monster-power]
 title = "Monster Power"
-text = "Offering boss trophies at an Altar of Power makes the creatures of that biome stronger, and their loot richer:"
+text = "Offering boss trophies at an Altar of Power makes the creatures of that biome stronger, and more of them:"
 formula = "Monster Power = 1 + {step} × offerings, at most ×{max}"
-notes = "It multiplies the health and damage of the biome's wild creatures, bosses included (not tamed ones), and adds Monster Power − 1 to their [loot quantity]({loot}). It reaches its maximum after {n} offerings; each offering costs one trophy more than the last."
+notes = "It multiplies the health and damage of the biome's wild creatures, bosses included (not tamed ones), but doesn't add to their loot. Each offering also raises the biome's hostile population by {pop}: as many more of its wild creatures (not bosses) can be around at once, and they spawn as much faster. Monster Power reaches its maximum after {n} offerings; each offering costs one trophy more than the last."
 
 [formula.loot]
 title = "Loot"
 text = "When a creature dies, its Path of Valheiman loot is rolled with two numbers, {quantity} and {rarity}:"
-quantity = "Quantity = 1 + item quantity + {star} × stars + {mod} × modifiers + (Monster Power − 1)"
+quantity = "Quantity = 1 + item quantity + {star} × stars + {mod} × modifiers"
 rarity = "Rarity = item rarity + {star} × stars"
 star_scale = "On a difficulty preset with more stars than Normal, creatures and elites (not bosses or chests) give less per star: the star and modifier terms of quantity and rarity are × the preset's star share, and their quantity × its quantity factor, so that loot per area stays near Normal's:"
 star_share = "Star share"
 quantity_share = "Quantity factor"
-notes = "Item quantity and item rarity are the killer's own, from passives and gear. Modifiers and Monster Power add quantity, not rarity. A kill by one of your summons, companions or pets counts as yours. The loot's item level is the creature's level; uniques and jewels keep it too (shown with Alt)."
+womb = "A creature, elite or boss killed in the Blight Mist also has a {chance} chance to drop [{womb}]({link})."
+notes = "Item quantity and item rarity are the killer's own, from passives and gear. Modifiers add quantity, not rarity. A kill by one of your summons, companions or pets counts as yours. The loot's item level is the creature's level; uniques and jewels keep it too (shown with Alt)."
 sources = "Drops per kill"
 sources_note = "Each kind rolls its own number of drops: on average this many × quantity."
 lambda = "Drops on average"
@@ -803,7 +806,7 @@ formula = "thorns damage = flat thorns × (1 + damage increases + thorns increas
 type = "It's pierce damage, unless your stats convert part of it to other types or add more as extra damage."
 range = "Full damage to an attacker within {full} m of you (from its edge), falling to nothing at {zero} m."
 block = "On a shield block with {shield}: × {block}. Thorns that work with parries add to a parry's thorns."
-contact = "{carapace} also deals your thorns to enemies touching you."
+contact = "{carapace} also deals your thorns to enemies touching you, once every {interval} s per enemy, shorter with cooldown recovery."
 
 [formula.charged-attacks]
 title = "Charged attacks"
@@ -1200,10 +1203,10 @@ staves = "Staves"
 swords = "Swords"
 
 [formula.ranged-falloff]
-floors = "For scale: a {floor} is 2 m on a side, so {start} m is {start_n} floors in a row and {end} m is {end_n}."
+floors = "For scale: a {piece} is 2 m on a side, so a bow's {bstart} m and {bend} m are {bstart_n} and {bend_n} floors in a row, a crossbow's {start} m and {end} m {start_n} and {end_n}."
 title = "Effective range"
-text = "{range}: a bow or crossbow shot deals full damage up to {start} m from where it was shot, then less the further it flies, down to × {floor} at {end} m and beyond. Thrown weapons and spells don't fall off."
-formula = "damage factor = 1 − (distance − start) ÷ (end − start) × {drop}, between × {floor} and × 1; start = {start} m × range, end = {end} m × range"
+text = "{range}: a bow or crossbow shot deals full damage up to a start distance from where it was shot, then less the further it flies, down to × {floor} at an end distance and beyond: {bstart} m and {bend} m for bows, {start} m and {end} m for crossbows. Thrown weapons and spells don't fall off."
+formula = "damage factor = 1 − (distance − start) ÷ (end − start) × {drop}, between × {floor} and × 1; start and end × range"
 notes = "Range is 1 + your shooting effective range increases (bow or crossbow ones count for that weapon), so +50% puts both distances 1.5 times as far. The factor multiplies the hit when it reaches the enemy, after the critical strike; flat damage against the enemy is added after it and isn't reduced."
 distance = "Distance"
 with = "+{x} range"
@@ -1226,7 +1229,7 @@ text = "{ground}: a passive that creates ground for a damage type ({nodes}) make
 layer = "Each layer comes from the spell's damage of its type, after your damage increases (ground damage increases join them) and before its critical strike:"
 dps = "damage per second = {share} × that damage × your {dot} for the type"
 build = "build-up per second = {share} × that damage, into burning, chill, shock or poison"
-size = "A patch has a radius of {radius} m × (1 + area increases), at most {maxr} m, and lasts {life} s × (1 + effect duration increases), at most {maxl} s."
+size = "A patch has a radius of {radius} m × (1 + area increases; a spell's patch also takes spell area increases), at most {maxr} m, and lasts {life} s × (1 + effect duration increases), at most {maxl} s."
 pay = "Enemies standing on it (on the ground, not swimming) take its damage every {tick} s, paid about once a second, through their resistances. Ground damage is never a critical strike, can't be blocked or evaded, and doesn't stagger. Each enemy takes only the strongest patch of each type, whoever made it; different types add up. Your allies and you take no damage from your patches."
 limit = "You can keep {n} patch at once ({limit}); a new one past the limit removes your oldest. Only spell patches count."
 chilled = "{chilled} makes everyone on it slide, you and your allies too. It doesn't lower speed: speeding up and braking work at {friction} of the usual rate, turning at {steering}."

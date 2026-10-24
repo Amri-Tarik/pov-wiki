@@ -589,6 +589,10 @@ def _unique_sources(ctx: Ctx, item: str, catalog: dict, page: str) -> str:
     elif j.get("globalWeight") or mod.get("globalMinLevel"):
         level = max(1, j.get("globalMinLevel") or mod.get("globalMinLevel") or 0)
         parts.append(ui("gear.src_global", biome=biome(ctx, level), level=level))
+    from .formula_pages import _anchor, _values, shown
+
+    if item == "PT_Jewel_WombOfCorruption" and shown(ctx, "loot"):  # WombOfCorruption.Drops: Blight Mist kills only
+        parts.append(ui("gear.src_mist", chance=_pct(_values().get("loot", {}).get("womb_chance", 0)), link=_anchor("loot", page)))
     bosses = sorted({cr for t in ctx.data.loot.get("tables") or []
                      if any(e["id"] == item for e in t["entries"]) for cr in t["creatures"]}, key=ctx.loc.creature)
     if bosses:

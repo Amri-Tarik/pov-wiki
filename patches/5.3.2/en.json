@@ -1,0 +1,1333 @@
+{
+ "changes": {
+  "crafting": {
+   "own1245": {
+    "new": {
+     "kind": "Craft notable",
+     "lines": [
+      "20% increased Smith crafting speed",
+      "+8% chance to recover each lost unit of metal on salvage",
+      "Nearby Chests (equipment): Crafting and upgrading equipment - weapons, armour, shields and tools - can use materials from accessible nearby chests.",
+      "Master's Mark: Allows upgrading Smith equipment one quality level beyond its normal maximum. Items without upgrades remain unupgradeable. Both profession masteries on a mixed recipe extend its limit only once. Station and material requirements still apply.",
+      "Chest Feed: Smelters and kilns pull ore and coal from nearby chests on their own, with the bonuses of the chest owner. Placing a smelter shows the pull radius with the same ring as crafting from nearby chests. Works with every smelter, kiln and chest in the game",
+      "Balanced Blade: 10% increased damage with Smith equipment; Crafting or upgrading weapons using Smith materials has a 25% chance to add an item affix that increases their damage. Each eligible mastery rolls independently.",
+      "Whetstones: Whetstones can be crafted at the forge. Right-click a whetstone, then left-click equipment to restore 25% durability, up to its metal tier.; You can craft whetstones: a consumable that repairs the weapon or tool in your hands by 25%, away from any workbench. Each metal tier has its own whetstone",
+      "Forge Comfort: 3% increased smelting and charcoal kiln speed per point of comfort; Smelters, kilns and forges near you work faster with every point of comfort, the way hives do",
+      "Fitted Plate: 10% increased armour with Smith equipment; Crafting or upgrading heavy armour has a 25% chance to add an item affix that increases its armour. Each eligible mastery rolls independently."
+     ],
+     "link": "crafting/node/own1245.md",
+     "name": "Smith equipment crafting speed"
+    },
+    "old": {
+     "kind": "Craft notable",
+     "lines": [
+      "20% increased Smith crafting speed",
+      "+8% chance to recover each lost unit of metal on salvage",
+      "Nearby Chests (equipment): Crafting and upgrading equipment - weapons, armour, shields and tools - can use materials from accessible nearby chests.",
+      "Master's Mark: Allows upgrading Smith equipment one quality level beyond its normal maximum. Items without upgrades remain unupgradeable. Both profession masteries on a mixed recipe extend its limit only once. Station and material requirements still apply.",
+      "Chest Feed: Smelters and kilns pull ore and coal from nearby chests on their own, with the bonuses of the chest owner. Placing a smelter shows the pull radius with the same ring as crafting from nearby chests. Works with every smelter, kiln and chest in the game",
+      "Balanced Blade: 10% increased damage with Smith equipment; Crafting or upgrading weapons using Smith materials has a 25% chance to add an item affix that increases their damage. Each eligible mastery rolls independently.",
+      "Whetstones: Whetstones can be crafted at the forge: a consumable that repairs the weapon or tool in hand by 25%, up to its metal tier; You can craft whetstones: a consumable that repairs the weapon or tool in your hands by 25%, away from any workbench. Each metal tier has its own whetstone",
+      "Forge Comfort: 3% increased smelting and charcoal kiln speed per point of comfort; Smelters, kilns and forges near you work faster with every point of comfort, the way hives do",
+      "Fitted Plate: 10% increased armour with Smith equipment; Crafting or upgrading heavy armour has a 25% chance to add an item affix that increases its armour. Each eligible mastery rolls independently."
+     ],
+     "link": "crafting/node/own1245.md",
+     "name": "Smith equipment crafting speed"
+    }
+   },
+   "own650": {
+    "new": {
+     "kind": "Craft notable",
+     "lines": [
+      "+8% chance to recover each lost unit of wood on salvage",
+      "Open-Air Bench: The bench works under open sky",
+      "Floor as Roof: Floors you build are a full roof: what is under them stays dry, is sheltered from rain and counts as under a roof for fires, beds, rest and stations",
+      "Auto Doors: Doors you build open as anyone approaches and close behind them",
+      "Nearby Chests (building): Building draws materials from nearby chests",
+      "Light Frame: Pieces you built lose only 50% of the usual support",
+      "Weatherproof: Pieces you built take no damage from rain, water or waves",
+      "Hugin's Flight: , with a building tool in hand, sends the sight aloft as Hugin: the body hovers in place and pieces are placed within building range of the raven, up to 30 m from the body; [Space] rises, [Ctrl] sinks, [Shift] flies faster,  again returns; With a hammer or hoe in hand, press B to send your sight aloft like Odin's raven and build from the air while your body stays safe on the ground. The view flies up to 30 m from you; pieces are placed within your Building range of the view and still need a workbench in reach and your materials",
+      "No Bounds: Build and remove pieces where building is forbidden: dungeons, boss altars, traders' camps and other no-build places",
+      "Careful Builder: You cannot damage player-built pieces"
+     ],
+     "link": "crafting/node/own650.md",
+     "name": "Wood recovery on salvage"
+    },
+    "old": {
+     "kind": "Craft notable",
+     "lines": [
+      "+8% chance to recover each lost unit of wood on salvage",
+      "Open-Air Bench: The bench works under open sky",
+      "Floor as Roof: Floors you build are a full roof: what is under them stays dry, is sheltered from rain and counts as under a roof for fires, beds, rest and stations",
+      "Auto Doors: Doors you build open as anyone approaches and close behind them",
+      "Nearby Chests (building): Building draws materials from nearby chests",
+      "Light Frame: Pieces you built lose only 50% of the usual support",
+      "Weatherproof: Pieces you built take no damage from rain, water or waves",
+      "Hugin's Flight: , with a building tool in hand, sends the sight aloft as Hugin: the body hovers in place and pieces are placed within building range of the raven, up to 30 m from the body; [Space] rises, [Ctrl] sinks, [Shift] flies faster,  again returns; With a hammer or hoe in hand, press B to send your sight aloft like Odin's raven and build from the air while your body stays safe on the ground. The view flies up to 30 m from you; pieces are placed within your Building range of the view and still need a workbench in reach and your materials",
+      "No Bounds: Build and remove pieces where building is forbidden: dungeons, boss altars, traders' camps and other no-build places"
+     ],
+     "link": "crafting/node/own650.md",
+     "name": "Wood recovery on salvage"
+    }
+   },
+   "own659": {
+    "new": {
+     "kind": "Craft notable",
+     "lines": [
+      "+4 m repair radius",
+      "Open-Air Bench: The bench works under open sky",
+      "Floor as Roof: Floors you build are a full roof: what is under them stays dry, is sheltered from rain and counts as under a roof for fires, beds, rest and stations",
+      "Auto Doors: Doors you build open as anyone approaches and close behind them",
+      "Nearby Chests (building): Building draws materials from nearby chests",
+      "Light Frame: Pieces you built lose only 50% of the usual support",
+      "Weatherproof: Pieces you built take no damage from rain, water or waves",
+      "Hugin's Flight: , with a building tool in hand, sends the sight aloft as Hugin: the body hovers in place and pieces are placed within building range of the raven, up to 30 m from the body; [Space] rises, [Ctrl] sinks, [Shift] flies faster,  again returns; With a hammer or hoe in hand, press B to send your sight aloft like Odin's raven and build from the air while your body stays safe on the ground. The view flies up to 30 m from you; pieces are placed within your Building range of the view and still need a workbench in reach and your materials",
+      "No Bounds: Build and remove pieces where building is forbidden: dungeons, boss altars, traders' camps and other no-build places",
+      "Careful Builder: You cannot damage player-built pieces"
+     ],
+     "link": "crafting/node/own659.md",
+     "name": "Wide Mending"
+    },
+    "old": {
+     "kind": "Craft notable",
+     "lines": [
+      "+4 m repair radius",
+      "Open-Air Bench: The bench works under open sky",
+      "Floor as Roof: Floors you build are a full roof: what is under them stays dry, is sheltered from rain and counts as under a roof for fires, beds, rest and stations",
+      "Auto Doors: Doors you build open as anyone approaches and close behind them",
+      "Nearby Chests (building): Building draws materials from nearby chests",
+      "Light Frame: Pieces you built lose only 50% of the usual support",
+      "Weatherproof: Pieces you built take no damage from rain, water or waves",
+      "Hugin's Flight: , with a building tool in hand, sends the sight aloft as Hugin: the body hovers in place and pieces are placed within building range of the raven, up to 30 m from the body; [Space] rises, [Ctrl] sinks, [Shift] flies faster,  again returns; With a hammer or hoe in hand, press B to send your sight aloft like Odin's raven and build from the air while your body stays safe on the ground. The view flies up to 30 m from you; pieces are placed within your Building range of the view and still need a workbench in reach and your materials",
+      "No Bounds: Build and remove pieces where building is forbidden: dungeons, boss altars, traders' camps and other no-build places"
+     ],
+     "link": "crafting/node/own659.md",
+     "name": "Wide Mending"
+    }
+   },
+   "own663": {
+    "new": {
+     "kind": "Craft notable",
+     "lines": [
+      "+25% rain resistance of buildings",
+      "Open-Air Bench: The bench works under open sky",
+      "Floor as Roof: Floors you build are a full roof: what is under them stays dry, is sheltered from rain and counts as under a roof for fires, beds, rest and stations",
+      "Auto Doors: Doors you build open as anyone approaches and close behind them",
+      "Nearby Chests (building): Building draws materials from nearby chests",
+      "Light Frame: Pieces you built lose only 50% of the usual support",
+      "Weatherproof: Pieces you built take no damage from rain, water or waves",
+      "Hugin's Flight: , with a building tool in hand, sends the sight aloft as Hugin: the body hovers in place and pieces are placed within building range of the raven, up to 30 m from the body; [Space] rises, [Ctrl] sinks, [Shift] flies faster,  again returns; With a hammer or hoe in hand, press B to send your sight aloft like Odin's raven and build from the air while your body stays safe on the ground. The view flies up to 30 m from you; pieces are placed within your Building range of the view and still need a workbench in reach and your materials",
+      "No Bounds: Build and remove pieces where building is forbidden: dungeons, boss altars, traders' camps and other no-build places",
+      "Careful Builder: You cannot damage player-built pieces"
+     ],
+     "link": "crafting/node/own663.md",
+     "name": "Building rain damage resistance"
+    },
+    "old": {
+     "kind": "Craft notable",
+     "lines": [
+      "+25% rain resistance of buildings",
+      "Open-Air Bench: The bench works under open sky",
+      "Floor as Roof: Floors you build are a full roof: what is under them stays dry, is sheltered from rain and counts as under a roof for fires, beds, rest and stations",
+      "Auto Doors: Doors you build open as anyone approaches and close behind them",
+      "Nearby Chests (building): Building draws materials from nearby chests",
+      "Light Frame: Pieces you built lose only 50% of the usual support",
+      "Weatherproof: Pieces you built take no damage from rain, water or waves",
+      "Hugin's Flight: , with a building tool in hand, sends the sight aloft as Hugin: the body hovers in place and pieces are placed within building range of the raven, up to 30 m from the body; [Space] rises, [Ctrl] sinks, [Shift] flies faster,  again returns; With a hammer or hoe in hand, press B to send your sight aloft like Odin's raven and build from the air while your body stays safe on the ground. The view flies up to 30 m from you; pieces are placed within your Building range of the view and still need a workbench in reach and your materials",
+      "No Bounds: Build and remove pieces where building is forbidden: dungeons, boss altars, traders' camps and other no-build places"
+     ],
+     "link": "crafting/node/own663.md",
+     "name": "Building rain damage resistance"
+    }
+   },
+   "own693": {
+    "new": {
+     "kind": "Craft notable",
+     "lines": [
+      "+5 m build range",
+      "Open-Air Bench: The bench works under open sky",
+      "Floor as Roof: Floors you build are a full roof: what is under them stays dry, is sheltered from rain and counts as under a roof for fires, beds, rest and stations",
+      "Auto Doors: Doors you build open as anyone approaches and close behind them",
+      "Nearby Chests (building): Building draws materials from nearby chests",
+      "Light Frame: Pieces you built lose only 50% of the usual support",
+      "Weatherproof: Pieces you built take no damage from rain, water or waves",
+      "Hugin's Flight: , with a building tool in hand, sends the sight aloft as Hugin: the body hovers in place and pieces are placed within building range of the raven, up to 30 m from the body; [Space] rises, [Ctrl] sinks, [Shift] flies faster,  again returns; With a hammer or hoe in hand, press B to send your sight aloft like Odin's raven and build from the air while your body stays safe on the ground. The view flies up to 30 m from you; pieces are placed within your Building range of the view and still need a workbench in reach and your materials",
+      "No Bounds: Build and remove pieces where building is forbidden: dungeons, boss altars, traders' camps and other no-build places",
+      "Careful Builder: You cannot damage player-built pieces"
+     ],
+     "link": "crafting/node/own693.md",
+     "name": "Building range"
+    },
+    "old": {
+     "kind": "Craft notable",
+     "lines": [
+      "+5 m build range",
+      "Open-Air Bench: The bench works under open sky",
+      "Floor as Roof: Floors you build are a full roof: what is under them stays dry, is sheltered from rain and counts as under a roof for fires, beds, rest and stations",
+      "Auto Doors: Doors you build open as anyone approaches and close behind them",
+      "Nearby Chests (building): Building draws materials from nearby chests",
+      "Light Frame: Pieces you built lose only 50% of the usual support",
+      "Weatherproof: Pieces you built take no damage from rain, water or waves",
+      "Hugin's Flight: , with a building tool in hand, sends the sight aloft as Hugin: the body hovers in place and pieces are placed within building range of the raven, up to 30 m from the body; [Space] rises, [Ctrl] sinks, [Shift] flies faster,  again returns; With a hammer or hoe in hand, press B to send your sight aloft like Odin's raven and build from the air while your body stays safe on the ground. The view flies up to 30 m from you; pieces are placed within your Building range of the view and still need a workbench in reach and your materials",
+      "No Bounds: Build and remove pieces where building is forbidden: dungeons, boss altars, traders' camps and other no-build places"
+     ],
+     "link": "crafting/node/own693.md",
+     "name": "Building range"
+    }
+   },
+   "own697": {
+    "new": {
+     "kind": "Craft notable",
+     "lines": [
+      "−25% fuel consumption of light sources you built",
+      "Open-Air Bench: The bench works under open sky",
+      "Floor as Roof: Floors you build are a full roof: what is under them stays dry, is sheltered from rain and counts as under a roof for fires, beds, rest and stations",
+      "Auto Doors: Doors you build open as anyone approaches and close behind them",
+      "Nearby Chests (building): Building draws materials from nearby chests",
+      "Light Frame: Pieces you built lose only 50% of the usual support",
+      "Weatherproof: Pieces you built take no damage from rain, water or waves",
+      "Hugin's Flight: , with a building tool in hand, sends the sight aloft as Hugin: the body hovers in place and pieces are placed within building range of the raven, up to 30 m from the body; [Space] rises, [Ctrl] sinks, [Shift] flies faster,  again returns; With a hammer or hoe in hand, press B to send your sight aloft like Odin's raven and build from the air while your body stays safe on the ground. The view flies up to 30 m from you; pieces are placed within your Building range of the view and still need a workbench in reach and your materials",
+      "No Bounds: Build and remove pieces where building is forbidden: dungeons, boss altars, traders' camps and other no-build places",
+      "Careful Builder: You cannot damage player-built pieces"
+     ],
+     "link": "crafting/node/own697.md",
+     "name": "Light source fuel consumption"
+    },
+    "old": {
+     "kind": "Craft notable",
+     "lines": [
+      "−25% fuel consumption of light sources you built",
+      "Open-Air Bench: The bench works under open sky",
+      "Floor as Roof: Floors you build are a full roof: what is under them stays dry, is sheltered from rain and counts as under a roof for fires, beds, rest and stations",
+      "Auto Doors: Doors you build open as anyone approaches and close behind them",
+      "Nearby Chests (building): Building draws materials from nearby chests",
+      "Light Frame: Pieces you built lose only 50% of the usual support",
+      "Weatherproof: Pieces you built take no damage from rain, water or waves",
+      "Hugin's Flight: , with a building tool in hand, sends the sight aloft as Hugin: the body hovers in place and pieces are placed within building range of the raven, up to 30 m from the body; [Space] rises, [Ctrl] sinks, [Shift] flies faster,  again returns; With a hammer or hoe in hand, press B to send your sight aloft like Odin's raven and build from the air while your body stays safe on the ground. The view flies up to 30 m from you; pieces are placed within your Building range of the view and still need a workbench in reach and your materials",
+      "No Bounds: Build and remove pieces where building is forbidden: dungeons, boss altars, traders' camps and other no-build places"
+     ],
+     "link": "crafting/node/own697.md",
+     "name": "Light source fuel consumption"
+    }
+   },
+   "own699": {
+    "new": {
+     "kind": "Craft notable",
+     "lines": [
+      "+3 comfort level",
+      "Open-Air Bench: The bench works under open sky",
+      "Floor as Roof: Floors you build are a full roof: what is under them stays dry, is sheltered from rain and counts as under a roof for fires, beds, rest and stations",
+      "Auto Doors: Doors you build open as anyone approaches and close behind them",
+      "Nearby Chests (building): Building draws materials from nearby chests",
+      "Light Frame: Pieces you built lose only 50% of the usual support",
+      "Weatherproof: Pieces you built take no damage from rain, water or waves",
+      "Hugin's Flight: , with a building tool in hand, sends the sight aloft as Hugin: the body hovers in place and pieces are placed within building range of the raven, up to 30 m from the body; [Space] rises, [Ctrl] sinks, [Shift] flies faster,  again returns; With a hammer or hoe in hand, press B to send your sight aloft like Odin's raven and build from the air while your body stays safe on the ground. The view flies up to 30 m from you; pieces are placed within your Building range of the view and still need a workbench in reach and your materials",
+      "No Bounds: Build and remove pieces where building is forbidden: dungeons, boss altars, traders' camps and other no-build places",
+      "Careful Builder: You cannot damage player-built pieces"
+     ],
+     "link": "crafting/node/own699.md",
+     "name": "Built shelter comfort"
+    },
+    "old": {
+     "kind": "Craft notable",
+     "lines": [
+      "+3 comfort level",
+      "Open-Air Bench: The bench works under open sky",
+      "Floor as Roof: Floors you build are a full roof: what is under them stays dry, is sheltered from rain and counts as under a roof for fires, beds, rest and stations",
+      "Auto Doors: Doors you build open as anyone approaches and close behind them",
+      "Nearby Chests (building): Building draws materials from nearby chests",
+      "Light Frame: Pieces you built lose only 50% of the usual support",
+      "Weatherproof: Pieces you built take no damage from rain, water or waves",
+      "Hugin's Flight: , with a building tool in hand, sends the sight aloft as Hugin: the body hovers in place and pieces are placed within building range of the raven, up to 30 m from the body; [Space] rises, [Ctrl] sinks, [Shift] flies faster,  again returns; With a hammer or hoe in hand, press B to send your sight aloft like Odin's raven and build from the air while your body stays safe on the ground. The view flies up to 30 m from you; pieces are placed within your Building range of the view and still need a workbench in reach and your materials",
+      "No Bounds: Build and remove pieces where building is forbidden: dungeons, boss altars, traders' camps and other no-build places"
+     ],
+     "link": "crafting/node/own699.md",
+     "name": "Built shelter comfort"
+    }
+   },
+   "own709": {
+    "new": {
+     "kind": "Craft notable",
+     "lines": [
+      "25% increased workbench build range",
+      "Open-Air Bench: The bench works under open sky",
+      "Floor as Roof: Floors you build are a full roof: what is under them stays dry, is sheltered from rain and counts as under a roof for fires, beds, rest and stations",
+      "Auto Doors: Doors you build open as anyone approaches and close behind them",
+      "Nearby Chests (building): Building draws materials from nearby chests",
+      "Light Frame: Pieces you built lose only 50% of the usual support",
+      "Weatherproof: Pieces you built take no damage from rain, water or waves",
+      "Hugin's Flight: , with a building tool in hand, sends the sight aloft as Hugin: the body hovers in place and pieces are placed within building range of the raven, up to 30 m from the body; [Space] rises, [Ctrl] sinks, [Shift] flies faster,  again returns; With a hammer or hoe in hand, press B to send your sight aloft like Odin's raven and build from the air while your body stays safe on the ground. The view flies up to 30 m from you; pieces are placed within your Building range of the view and still need a workbench in reach and your materials",
+      "No Bounds: Build and remove pieces where building is forbidden: dungeons, boss altars, traders' camps and other no-build places",
+      "Careful Builder: You cannot damage player-built pieces"
+     ],
+     "link": "crafting/node/own709.md",
+     "name": "Workbench range"
+    },
+    "old": {
+     "kind": "Craft notable",
+     "lines": [
+      "25% increased workbench build range",
+      "Open-Air Bench: The bench works under open sky",
+      "Floor as Roof: Floors you build are a full roof: what is under them stays dry, is sheltered from rain and counts as under a roof for fires, beds, rest and stations",
+      "Auto Doors: Doors you build open as anyone approaches and close behind them",
+      "Nearby Chests (building): Building draws materials from nearby chests",
+      "Light Frame: Pieces you built lose only 50% of the usual support",
+      "Weatherproof: Pieces you built take no damage from rain, water or waves",
+      "Hugin's Flight: , with a building tool in hand, sends the sight aloft as Hugin: the body hovers in place and pieces are placed within building range of the raven, up to 30 m from the body; [Space] rises, [Ctrl] sinks, [Shift] flies faster,  again returns; With a hammer or hoe in hand, press B to send your sight aloft like Odin's raven and build from the air while your body stays safe on the ground. The view flies up to 30 m from you; pieces are placed within your Building range of the view and still need a workbench in reach and your materials",
+      "No Bounds: Build and remove pieces where building is forbidden: dungeons, boss altars, traders' camps and other no-build places"
+     ],
+     "link": "crafting/node/own709.md",
+     "name": "Workbench range"
+    }
+   },
+   "own710": {
+    "new": {
+     "kind": "Craft notable",
+     "lines": [
+      "+8% chance to recover each lost unit of wood on salvage",
+      "Open-Air Bench: The bench works under open sky",
+      "Floor as Roof: Floors you build are a full roof: what is under them stays dry, is sheltered from rain and counts as under a roof for fires, beds, rest and stations",
+      "Auto Doors: Doors you build open as anyone approaches and close behind them",
+      "Nearby Chests (building): Building draws materials from nearby chests",
+      "Light Frame: Pieces you built lose only 50% of the usual support",
+      "Weatherproof: Pieces you built take no damage from rain, water or waves",
+      "Hugin's Flight: , with a building tool in hand, sends the sight aloft as Hugin: the body hovers in place and pieces are placed within building range of the raven, up to 30 m from the body; [Space] rises, [Ctrl] sinks, [Shift] flies faster,  again returns; With a hammer or hoe in hand, press B to send your sight aloft like Odin's raven and build from the air while your body stays safe on the ground. The view flies up to 30 m from you; pieces are placed within your Building range of the view and still need a workbench in reach and your materials",
+      "No Bounds: Build and remove pieces where building is forbidden: dungeons, boss altars, traders' camps and other no-build places",
+      "Careful Builder: You cannot damage player-built pieces"
+     ],
+     "link": "crafting/node/own710.md",
+     "name": "Wood recovery on salvage"
+    },
+    "old": {
+     "kind": "Craft notable",
+     "lines": [
+      "+8% chance to recover each lost unit of wood on salvage",
+      "Open-Air Bench: The bench works under open sky",
+      "Floor as Roof: Floors you build are a full roof: what is under them stays dry, is sheltered from rain and counts as under a roof for fires, beds, rest and stations",
+      "Auto Doors: Doors you build open as anyone approaches and close behind them",
+      "Nearby Chests (building): Building draws materials from nearby chests",
+      "Light Frame: Pieces you built lose only 50% of the usual support",
+      "Weatherproof: Pieces you built take no damage from rain, water or waves",
+      "Hugin's Flight: , with a building tool in hand, sends the sight aloft as Hugin: the body hovers in place and pieces are placed within building range of the raven, up to 30 m from the body; [Space] rises, [Ctrl] sinks, [Shift] flies faster,  again returns; With a hammer or hoe in hand, press B to send your sight aloft like Odin's raven and build from the air while your body stays safe on the ground. The view flies up to 30 m from you; pieces are placed within your Building range of the view and still need a workbench in reach and your materials",
+      "No Bounds: Build and remove pieces where building is forbidden: dungeons, boss altars, traders' camps and other no-build places"
+     ],
+     "link": "crafting/node/own710.md",
+     "name": "Wood recovery on salvage"
+    }
+   },
+   "own711": {
+    "new": {
+     "kind": "Craft notable",
+     "lines": [
+      "15% increased building and pure-wood equipment durability",
+      "Open-Air Bench: The bench works under open sky",
+      "Floor as Roof: Floors you build are a full roof: what is under them stays dry, is sheltered from rain and counts as under a roof for fires, beds, rest and stations",
+      "Auto Doors: Doors you build open as anyone approaches and close behind them",
+      "Nearby Chests (building): Building draws materials from nearby chests",
+      "Light Frame: Pieces you built lose only 50% of the usual support",
+      "Weatherproof: Pieces you built take no damage from rain, water or waves",
+      "Hugin's Flight: , with a building tool in hand, sends the sight aloft as Hugin: the body hovers in place and pieces are placed within building range of the raven, up to 30 m from the body; [Space] rises, [Ctrl] sinks, [Shift] flies faster,  again returns; With a hammer or hoe in hand, press B to send your sight aloft like Odin's raven and build from the air while your body stays safe on the ground. The view flies up to 30 m from you; pieces are placed within your Building range of the view and still need a workbench in reach and your materials",
+      "No Bounds: Build and remove pieces where building is forbidden: dungeons, boss altars, traders' camps and other no-build places",
+      "Careful Builder: You cannot damage player-built pieces"
+     ],
+     "link": "crafting/node/own711.md",
+     "name": "Built structure durability"
+    },
+    "old": {
+     "kind": "Craft notable",
+     "lines": [
+      "15% increased building and pure-wood equipment durability",
+      "Open-Air Bench: The bench works under open sky",
+      "Floor as Roof: Floors you build are a full roof: what is under them stays dry, is sheltered from rain and counts as under a roof for fires, beds, rest and stations",
+      "Auto Doors: Doors you build open as anyone approaches and close behind them",
+      "Nearby Chests (building): Building draws materials from nearby chests",
+      "Light Frame: Pieces you built lose only 50% of the usual support",
+      "Weatherproof: Pieces you built take no damage from rain, water or waves",
+      "Hugin's Flight: , with a building tool in hand, sends the sight aloft as Hugin: the body hovers in place and pieces are placed within building range of the raven, up to 30 m from the body; [Space] rises, [Ctrl] sinks, [Shift] flies faster,  again returns; With a hammer or hoe in hand, press B to send your sight aloft like Odin's raven and build from the air while your body stays safe on the ground. The view flies up to 30 m from you; pieces are placed within your Building range of the view and still need a workbench in reach and your materials",
+      "No Bounds: Build and remove pieces where building is forbidden: dungeons, boss altars, traders' camps and other no-build places"
+     ],
+     "link": "crafting/node/own711.md",
+     "name": "Built structure durability"
+    }
+   },
+   "own713": {
+    "new": {
+     "kind": "Craft notable",
+     "lines": [
+      "+15% building cost reduction",
+      "Open-Air Bench: The bench works under open sky",
+      "Floor as Roof: Floors you build are a full roof: what is under them stays dry, is sheltered from rain and counts as under a roof for fires, beds, rest and stations",
+      "Auto Doors: Doors you build open as anyone approaches and close behind them",
+      "Nearby Chests (building): Building draws materials from nearby chests",
+      "Light Frame: Pieces you built lose only 50% of the usual support",
+      "Weatherproof: Pieces you built take no damage from rain, water or waves",
+      "Hugin's Flight: , with a building tool in hand, sends the sight aloft as Hugin: the body hovers in place and pieces are placed within building range of the raven, up to 30 m from the body; [Space] rises, [Ctrl] sinks, [Shift] flies faster,  again returns; With a hammer or hoe in hand, press B to send your sight aloft like Odin's raven and build from the air while your body stays safe on the ground. The view flies up to 30 m from you; pieces are placed within your Building range of the view and still need a workbench in reach and your materials",
+      "No Bounds: Build and remove pieces where building is forbidden: dungeons, boss altars, traders' camps and other no-build places",
+      "Careful Builder: You cannot damage player-built pieces"
+     ],
+     "link": "crafting/node/own713.md",
+     "name": "Building cost"
+    },
+    "old": {
+     "kind": "Craft notable",
+     "lines": [
+      "+15% building cost reduction",
+      "Open-Air Bench: The bench works under open sky",
+      "Floor as Roof: Floors you build are a full roof: what is under them stays dry, is sheltered from rain and counts as under a roof for fires, beds, rest and stations",
+      "Auto Doors: Doors you build open as anyone approaches and close behind them",
+      "Nearby Chests (building): Building draws materials from nearby chests",
+      "Light Frame: Pieces you built lose only 50% of the usual support",
+      "Weatherproof: Pieces you built take no damage from rain, water or waves",
+      "Hugin's Flight: , with a building tool in hand, sends the sight aloft as Hugin: the body hovers in place and pieces are placed within building range of the raven, up to 30 m from the body; [Space] rises, [Ctrl] sinks, [Shift] flies faster,  again returns; With a hammer or hoe in hand, press B to send your sight aloft like Odin's raven and build from the air while your body stays safe on the ground. The view flies up to 30 m from you; pieces are placed within your Building range of the view and still need a workbench in reach and your materials",
+      "No Bounds: Build and remove pieces where building is forbidden: dungeons, boss altars, traders' camps and other no-build places"
+     ],
+     "link": "crafting/node/own713.md",
+     "name": "Building cost"
+    }
+   },
+   "own776": {
+    "new": {
+     "kind": "Craft notable",
+     "lines": [
+      "+5% chance for extra quality when crafting or upgrading Smith equipment",
+      "Nearby Chests (equipment): Crafting and upgrading equipment - weapons, armour, shields and tools - can use materials from accessible nearby chests.",
+      "Master's Mark: Allows upgrading Smith equipment one quality level beyond its normal maximum. Items without upgrades remain unupgradeable. Both profession masteries on a mixed recipe extend its limit only once. Station and material requirements still apply.",
+      "Chest Feed: Smelters and kilns pull ore and coal from nearby chests on their own, with the bonuses of the chest owner. Placing a smelter shows the pull radius with the same ring as crafting from nearby chests. Works with every smelter, kiln and chest in the game",
+      "Balanced Blade: 10% increased damage with Smith equipment; Crafting or upgrading weapons using Smith materials has a 25% chance to add an item affix that increases their damage. Each eligible mastery rolls independently.",
+      "Whetstones: Whetstones can be crafted at the forge. Right-click a whetstone, then left-click equipment to restore 25% durability, up to its metal tier.; You can craft whetstones: a consumable that repairs the weapon or tool in your hands by 25%, away from any workbench. Each metal tier has its own whetstone",
+      "Forge Comfort: 3% increased smelting and charcoal kiln speed per point of comfort; Smelters, kilns and forges near you work faster with every point of comfort, the way hives do",
+      "Fitted Plate: 10% increased armour with Smith equipment; Crafting or upgrading heavy armour has a 25% chance to add an item affix that increases its armour. Each eligible mastery rolls independently."
+     ],
+     "link": "crafting/node/own776.md",
+     "name": "Smith equipment extra quality"
+    },
+    "old": {
+     "kind": "Craft notable",
+     "lines": [
+      "+5% chance for extra quality when crafting or upgrading Smith equipment",
+      "Nearby Chests (equipment): Crafting and upgrading equipment - weapons, armour, shields and tools - can use materials from accessible nearby chests.",
+      "Master's Mark: Allows upgrading Smith equipment one quality level beyond its normal maximum. Items without upgrades remain unupgradeable. Both profession masteries on a mixed recipe extend its limit only once. Station and material requirements still apply.",
+      "Chest Feed: Smelters and kilns pull ore and coal from nearby chests on their own, with the bonuses of the chest owner. Placing a smelter shows the pull radius with the same ring as crafting from nearby chests. Works with every smelter, kiln and chest in the game",
+      "Balanced Blade: 10% increased damage with Smith equipment; Crafting or upgrading weapons using Smith materials has a 25% chance to add an item affix that increases their damage. Each eligible mastery rolls independently.",
+      "Whetstones: Whetstones can be crafted at the forge: a consumable that repairs the weapon or tool in hand by 25%, up to its metal tier; You can craft whetstones: a consumable that repairs the weapon or tool in your hands by 25%, away from any workbench. Each metal tier has its own whetstone",
+      "Forge Comfort: 3% increased smelting and charcoal kiln speed per point of comfort; Smelters, kilns and forges near you work faster with every point of comfort, the way hives do",
+      "Fitted Plate: 10% increased armour with Smith equipment; Crafting or upgrading heavy armour has a 25% chance to add an item affix that increases its armour. Each eligible mastery rolls independently."
+     ],
+     "link": "crafting/node/own776.md",
+     "name": "Smith equipment extra quality"
+    }
+   },
+   "own777": {
+    "new": {
+     "kind": "Craft notable",
+     "lines": [
+      "15% increased crafted Smith equipment durability",
+      "Nearby Chests (equipment): Crafting and upgrading equipment - weapons, armour, shields and tools - can use materials from accessible nearby chests.",
+      "Master's Mark: Allows upgrading Smith equipment one quality level beyond its normal maximum. Items without upgrades remain unupgradeable. Both profession masteries on a mixed recipe extend its limit only once. Station and material requirements still apply.",
+      "Chest Feed: Smelters and kilns pull ore and coal from nearby chests on their own, with the bonuses of the chest owner. Placing a smelter shows the pull radius with the same ring as crafting from nearby chests. Works with every smelter, kiln and chest in the game",
+      "Balanced Blade: 10% increased damage with Smith equipment; Crafting or upgrading weapons using Smith materials has a 25% chance to add an item affix that increases their damage. Each eligible mastery rolls independently.",
+      "Whetstones: Whetstones can be crafted at the forge. Right-click a whetstone, then left-click equipment to restore 25% durability, up to its metal tier.; You can craft whetstones: a consumable that repairs the weapon or tool in your hands by 25%, away from any workbench. Each metal tier has its own whetstone",
+      "Forge Comfort: 3% increased smelting and charcoal kiln speed per point of comfort; Smelters, kilns and forges near you work faster with every point of comfort, the way hives do",
+      "Fitted Plate: 10% increased armour with Smith equipment; Crafting or upgrading heavy armour has a 25% chance to add an item affix that increases its armour. Each eligible mastery rolls independently."
+     ],
+     "link": "crafting/node/own777.md",
+     "name": "Crafted Smith equipment durability"
+    },
+    "old": {
+     "kind": "Craft notable",
+     "lines": [
+      "15% increased crafted Smith equipment durability",
+      "Nearby Chests (equipment): Crafting and upgrading equipment - weapons, armour, shields and tools - can use materials from accessible nearby chests.",
+      "Master's Mark: Allows upgrading Smith equipment one quality level beyond its normal maximum. Items without upgrades remain unupgradeable. Both profession masteries on a mixed recipe extend its limit only once. Station and material requirements still apply.",
+      "Chest Feed: Smelters and kilns pull ore and coal from nearby chests on their own, with the bonuses of the chest owner. Placing a smelter shows the pull radius with the same ring as crafting from nearby chests. Works with every smelter, kiln and chest in the game",
+      "Balanced Blade: 10% increased damage with Smith equipment; Crafting or upgrading weapons using Smith materials has a 25% chance to add an item affix that increases their damage. Each eligible mastery rolls independently.",
+      "Whetstones: Whetstones can be crafted at the forge: a consumable that repairs the weapon or tool in hand by 25%, up to its metal tier; You can craft whetstones: a consumable that repairs the weapon or tool in your hands by 25%, away from any workbench. Each metal tier has its own whetstone",
+      "Forge Comfort: 3% increased smelting and charcoal kiln speed per point of comfort; Smelters, kilns and forges near you work faster with every point of comfort, the way hives do",
+      "Fitted Plate: 10% increased armour with Smith equipment; Crafting or upgrading heavy armour has a 25% chance to add an item affix that increases its armour. Each eligible mastery rolls independently."
+     ],
+     "link": "crafting/node/own777.md",
+     "name": "Crafted Smith equipment durability"
+    }
+   },
+   "own781": {
+    "new": {
+     "kind": "Craft notable",
+     "lines": [
+      "20% increased Smith crafting speed",
+      "Nearby Chests (equipment): Crafting and upgrading equipment - weapons, armour, shields and tools - can use materials from accessible nearby chests.",
+      "Master's Mark: Allows upgrading Smith equipment one quality level beyond its normal maximum. Items without upgrades remain unupgradeable. Both profession masteries on a mixed recipe extend its limit only once. Station and material requirements still apply.",
+      "Chest Feed: Smelters and kilns pull ore and coal from nearby chests on their own, with the bonuses of the chest owner. Placing a smelter shows the pull radius with the same ring as crafting from nearby chests. Works with every smelter, kiln and chest in the game",
+      "Balanced Blade: 10% increased damage with Smith equipment; Crafting or upgrading weapons using Smith materials has a 25% chance to add an item affix that increases their damage. Each eligible mastery rolls independently.",
+      "Whetstones: Whetstones can be crafted at the forge. Right-click a whetstone, then left-click equipment to restore 25% durability, up to its metal tier.; You can craft whetstones: a consumable that repairs the weapon or tool in your hands by 25%, away from any workbench. Each metal tier has its own whetstone",
+      "Forge Comfort: 3% increased smelting and charcoal kiln speed per point of comfort; Smelters, kilns and forges near you work faster with every point of comfort, the way hives do",
+      "Fitted Plate: 10% increased armour with Smith equipment; Crafting or upgrading heavy armour has a 25% chance to add an item affix that increases its armour. Each eligible mastery rolls independently."
+     ],
+     "link": "crafting/node/own781.md",
+     "name": "Smith equipment crafting speed"
+    },
+    "old": {
+     "kind": "Craft notable",
+     "lines": [
+      "20% increased Smith crafting speed",
+      "Nearby Chests (equipment): Crafting and upgrading equipment - weapons, armour, shields and tools - can use materials from accessible nearby chests.",
+      "Master's Mark: Allows upgrading Smith equipment one quality level beyond its normal maximum. Items without upgrades remain unupgradeable. Both profession masteries on a mixed recipe extend its limit only once. Station and material requirements still apply.",
+      "Chest Feed: Smelters and kilns pull ore and coal from nearby chests on their own, with the bonuses of the chest owner. Placing a smelter shows the pull radius with the same ring as crafting from nearby chests. Works with every smelter, kiln and chest in the game",
+      "Balanced Blade: 10% increased damage with Smith equipment; Crafting or upgrading weapons using Smith materials has a 25% chance to add an item affix that increases their damage. Each eligible mastery rolls independently.",
+      "Whetstones: Whetstones can be crafted at the forge: a consumable that repairs the weapon or tool in hand by 25%, up to its metal tier; You can craft whetstones: a consumable that repairs the weapon or tool in your hands by 25%, away from any workbench. Each metal tier has its own whetstone",
+      "Forge Comfort: 3% increased smelting and charcoal kiln speed per point of comfort; Smelters, kilns and forges near you work faster with every point of comfort, the way hives do",
+      "Fitted Plate: 10% increased armour with Smith equipment; Crafting or upgrading heavy armour has a 25% chance to add an item affix that increases its armour. Each eligible mastery rolls independently."
+     ],
+     "link": "crafting/node/own781.md",
+     "name": "Smith equipment crafting speed"
+    }
+   },
+   "own804": {
+    "new": {
+     "kind": "Craft notable",
+     "lines": [
+      "+5% chance for extra bar",
+      "Nearby Chests (equipment): Crafting and upgrading equipment - weapons, armour, shields and tools - can use materials from accessible nearby chests.",
+      "Master's Mark: Allows upgrading Smith equipment one quality level beyond its normal maximum. Items without upgrades remain unupgradeable. Both profession masteries on a mixed recipe extend its limit only once. Station and material requirements still apply.",
+      "Chest Feed: Smelters and kilns pull ore and coal from nearby chests on their own, with the bonuses of the chest owner. Placing a smelter shows the pull radius with the same ring as crafting from nearby chests. Works with every smelter, kiln and chest in the game",
+      "Balanced Blade: 10% increased damage with Smith equipment; Crafting or upgrading weapons using Smith materials has a 25% chance to add an item affix that increases their damage. Each eligible mastery rolls independently.",
+      "Whetstones: Whetstones can be crafted at the forge. Right-click a whetstone, then left-click equipment to restore 25% durability, up to its metal tier.; You can craft whetstones: a consumable that repairs the weapon or tool in your hands by 25%, away from any workbench. Each metal tier has its own whetstone",
+      "Forge Comfort: 3% increased smelting and charcoal kiln speed per point of comfort; Smelters, kilns and forges near you work faster with every point of comfort, the way hives do",
+      "Fitted Plate: 10% increased armour with Smith equipment; Crafting or upgrading heavy armour has a 25% chance to add an item affix that increases its armour. Each eligible mastery rolls independently."
+     ],
+     "link": "crafting/node/own804.md",
+     "name": "Extra bar on smelt"
+    },
+    "old": {
+     "kind": "Craft notable",
+     "lines": [
+      "+5% chance for extra bar",
+      "Nearby Chests (equipment): Crafting and upgrading equipment - weapons, armour, shields and tools - can use materials from accessible nearby chests.",
+      "Master's Mark: Allows upgrading Smith equipment one quality level beyond its normal maximum. Items without upgrades remain unupgradeable. Both profession masteries on a mixed recipe extend its limit only once. Station and material requirements still apply.",
+      "Chest Feed: Smelters and kilns pull ore and coal from nearby chests on their own, with the bonuses of the chest owner. Placing a smelter shows the pull radius with the same ring as crafting from nearby chests. Works with every smelter, kiln and chest in the game",
+      "Balanced Blade: 10% increased damage with Smith equipment; Crafting or upgrading weapons using Smith materials has a 25% chance to add an item affix that increases their damage. Each eligible mastery rolls independently.",
+      "Whetstones: Whetstones can be crafted at the forge: a consumable that repairs the weapon or tool in hand by 25%, up to its metal tier; You can craft whetstones: a consumable that repairs the weapon or tool in your hands by 25%, away from any workbench. Each metal tier has its own whetstone",
+      "Forge Comfort: 3% increased smelting and charcoal kiln speed per point of comfort; Smelters, kilns and forges near you work faster with every point of comfort, the way hives do",
+      "Fitted Plate: 10% increased armour with Smith equipment; Crafting or upgrading heavy armour has a 25% chance to add an item affix that increases its armour. Each eligible mastery rolls independently."
+     ],
+     "link": "crafting/node/own804.md",
+     "name": "Extra bar on smelt"
+    }
+   },
+   "own814": {
+    "new": {
+     "kind": "Craft notable",
+     "lines": [
+      "20% increased smelting and kiln speed",
+      "Nearby Chests (equipment): Crafting and upgrading equipment - weapons, armour, shields and tools - can use materials from accessible nearby chests.",
+      "Master's Mark: Allows upgrading Smith equipment one quality level beyond its normal maximum. Items without upgrades remain unupgradeable. Both profession masteries on a mixed recipe extend its limit only once. Station and material requirements still apply.",
+      "Chest Feed: Smelters and kilns pull ore and coal from nearby chests on their own, with the bonuses of the chest owner. Placing a smelter shows the pull radius with the same ring as crafting from nearby chests. Works with every smelter, kiln and chest in the game",
+      "Balanced Blade: 10% increased damage with Smith equipment; Crafting or upgrading weapons using Smith materials has a 25% chance to add an item affix that increases their damage. Each eligible mastery rolls independently.",
+      "Whetstones: Whetstones can be crafted at the forge. Right-click a whetstone, then left-click equipment to restore 25% durability, up to its metal tier.; You can craft whetstones: a consumable that repairs the weapon or tool in your hands by 25%, away from any workbench. Each metal tier has its own whetstone",
+      "Forge Comfort: 3% increased smelting and charcoal kiln speed per point of comfort; Smelters, kilns and forges near you work faster with every point of comfort, the way hives do",
+      "Fitted Plate: 10% increased armour with Smith equipment; Crafting or upgrading heavy armour has a 25% chance to add an item affix that increases its armour. Each eligible mastery rolls independently."
+     ],
+     "link": "crafting/node/own814.md",
+     "name": "Smelting speed"
+    },
+    "old": {
+     "kind": "Craft notable",
+     "lines": [
+      "20% increased smelting and kiln speed",
+      "Nearby Chests (equipment): Crafting and upgrading equipment - weapons, armour, shields and tools - can use materials from accessible nearby chests.",
+      "Master's Mark: Allows upgrading Smith equipment one quality level beyond its normal maximum. Items without upgrades remain unupgradeable. Both profession masteries on a mixed recipe extend its limit only once. Station and material requirements still apply.",
+      "Chest Feed: Smelters and kilns pull ore and coal from nearby chests on their own, with the bonuses of the chest owner. Placing a smelter shows the pull radius with the same ring as crafting from nearby chests. Works with every smelter, kiln and chest in the game",
+      "Balanced Blade: 10% increased damage with Smith equipment; Crafting or upgrading weapons using Smith materials has a 25% chance to add an item affix that increases their damage. Each eligible mastery rolls independently.",
+      "Whetstones: Whetstones can be crafted at the forge: a consumable that repairs the weapon or tool in hand by 25%, up to its metal tier; You can craft whetstones: a consumable that repairs the weapon or tool in your hands by 25%, away from any workbench. Each metal tier has its own whetstone",
+      "Forge Comfort: 3% increased smelting and charcoal kiln speed per point of comfort; Smelters, kilns and forges near you work faster with every point of comfort, the way hives do",
+      "Fitted Plate: 10% increased armour with Smith equipment; Crafting or upgrading heavy armour has a 25% chance to add an item affix that increases its armour. Each eligible mastery rolls independently."
+     ],
+     "link": "crafting/node/own814.md",
+     "name": "Smelting speed"
+    }
+   },
+   "own818": {
+    "new": {
+     "kind": "Craft notable",
+     "lines": [
+      "+8% chance to recover each lost unit of metal on salvage",
+      "Nearby Chests (equipment): Crafting and upgrading equipment - weapons, armour, shields and tools - can use materials from accessible nearby chests.",
+      "Master's Mark: Allows upgrading Smith equipment one quality level beyond its normal maximum. Items without upgrades remain unupgradeable. Both profession masteries on a mixed recipe extend its limit only once. Station and material requirements still apply.",
+      "Chest Feed: Smelters and kilns pull ore and coal from nearby chests on their own, with the bonuses of the chest owner. Placing a smelter shows the pull radius with the same ring as crafting from nearby chests. Works with every smelter, kiln and chest in the game",
+      "Balanced Blade: 10% increased damage with Smith equipment; Crafting or upgrading weapons using Smith materials has a 25% chance to add an item affix that increases their damage. Each eligible mastery rolls independently.",
+      "Whetstones: Whetstones can be crafted at the forge. Right-click a whetstone, then left-click equipment to restore 25% durability, up to its metal tier.; You can craft whetstones: a consumable that repairs the weapon or tool in your hands by 25%, away from any workbench. Each metal tier has its own whetstone",
+      "Forge Comfort: 3% increased smelting and charcoal kiln speed per point of comfort; Smelters, kilns and forges near you work faster with every point of comfort, the way hives do",
+      "Fitted Plate: 10% increased armour with Smith equipment; Crafting or upgrading heavy armour has a 25% chance to add an item affix that increases its armour. Each eligible mastery rolls independently."
+     ],
+     "link": "crafting/node/own818.md",
+     "name": "Metal recovery on salvage"
+    },
+    "old": {
+     "kind": "Craft notable",
+     "lines": [
+      "+8% chance to recover each lost unit of metal on salvage",
+      "Nearby Chests (equipment): Crafting and upgrading equipment - weapons, armour, shields and tools - can use materials from accessible nearby chests.",
+      "Master's Mark: Allows upgrading Smith equipment one quality level beyond its normal maximum. Items without upgrades remain unupgradeable. Both profession masteries on a mixed recipe extend its limit only once. Station and material requirements still apply.",
+      "Chest Feed: Smelters and kilns pull ore and coal from nearby chests on their own, with the bonuses of the chest owner. Placing a smelter shows the pull radius with the same ring as crafting from nearby chests. Works with every smelter, kiln and chest in the game",
+      "Balanced Blade: 10% increased damage with Smith equipment; Crafting or upgrading weapons using Smith materials has a 25% chance to add an item affix that increases their damage. Each eligible mastery rolls independently.",
+      "Whetstones: Whetstones can be crafted at the forge: a consumable that repairs the weapon or tool in hand by 25%, up to its metal tier; You can craft whetstones: a consumable that repairs the weapon or tool in your hands by 25%, away from any workbench. Each metal tier has its own whetstone",
+      "Forge Comfort: 3% increased smelting and charcoal kiln speed per point of comfort; Smelters, kilns and forges near you work faster with every point of comfort, the way hives do",
+      "Fitted Plate: 10% increased armour with Smith equipment; Crafting or upgrading heavy armour has a 25% chance to add an item affix that increases its armour. Each eligible mastery rolls independently."
+     ],
+     "link": "crafting/node/own818.md",
+     "name": "Metal recovery on salvage"
+    }
+   },
+   "own834": {
+    "new": {
+     "kind": "Craft notable",
+     "lines": [
+      "40% increased bar capacity",
+      "Nearby Chests (equipment): Crafting and upgrading equipment - weapons, armour, shields and tools - can use materials from accessible nearby chests.",
+      "Master's Mark: Allows upgrading Smith equipment one quality level beyond its normal maximum. Items without upgrades remain unupgradeable. Both profession masteries on a mixed recipe extend its limit only once. Station and material requirements still apply.",
+      "Chest Feed: Smelters and kilns pull ore and coal from nearby chests on their own, with the bonuses of the chest owner. Placing a smelter shows the pull radius with the same ring as crafting from nearby chests. Works with every smelter, kiln and chest in the game",
+      "Balanced Blade: 10% increased damage with Smith equipment; Crafting or upgrading weapons using Smith materials has a 25% chance to add an item affix that increases their damage. Each eligible mastery rolls independently.",
+      "Whetstones: Whetstones can be crafted at the forge. Right-click a whetstone, then left-click equipment to restore 25% durability, up to its metal tier.; You can craft whetstones: a consumable that repairs the weapon or tool in your hands by 25%, away from any workbench. Each metal tier has its own whetstone",
+      "Forge Comfort: 3% increased smelting and charcoal kiln speed per point of comfort; Smelters, kilns and forges near you work faster with every point of comfort, the way hives do",
+      "Fitted Plate: 10% increased armour with Smith equipment; Crafting or upgrading heavy armour has a 25% chance to add an item affix that increases its armour. Each eligible mastery rolls independently."
+     ],
+     "link": "crafting/node/own834.md",
+     "name": "Bar capacity"
+    },
+    "old": {
+     "kind": "Craft notable",
+     "lines": [
+      "40% increased bar capacity",
+      "Nearby Chests (equipment): Crafting and upgrading equipment - weapons, armour, shields and tools - can use materials from accessible nearby chests.",
+      "Master's Mark: Allows upgrading Smith equipment one quality level beyond its normal maximum. Items without upgrades remain unupgradeable. Both profession masteries on a mixed recipe extend its limit only once. Station and material requirements still apply.",
+      "Chest Feed: Smelters and kilns pull ore and coal from nearby chests on their own, with the bonuses of the chest owner. Placing a smelter shows the pull radius with the same ring as crafting from nearby chests. Works with every smelter, kiln and chest in the game",
+      "Balanced Blade: 10% increased damage with Smith equipment; Crafting or upgrading weapons using Smith materials has a 25% chance to add an item affix that increases their damage. Each eligible mastery rolls independently.",
+      "Whetstones: Whetstones can be crafted at the forge: a consumable that repairs the weapon or tool in hand by 25%, up to its metal tier; You can craft whetstones: a consumable that repairs the weapon or tool in your hands by 25%, away from any workbench. Each metal tier has its own whetstone",
+      "Forge Comfort: 3% increased smelting and charcoal kiln speed per point of comfort; Smelters, kilns and forges near you work faster with every point of comfort, the way hives do",
+      "Fitted Plate: 10% increased armour with Smith equipment; Crafting or upgrading heavy armour has a 25% chance to add an item affix that increases its armour. Each eligible mastery rolls independently."
+     ],
+     "link": "crafting/node/own834.md",
+     "name": "Bar capacity"
+    }
+   },
+   "own850": {
+    "new": {
+     "kind": "Craft notable",
+     "lines": [
+      "15% reduced bar and coal weight",
+      "Nearby Chests (equipment): Crafting and upgrading equipment - weapons, armour, shields and tools - can use materials from accessible nearby chests.",
+      "Master's Mark: Allows upgrading Smith equipment one quality level beyond its normal maximum. Items without upgrades remain unupgradeable. Both profession masteries on a mixed recipe extend its limit only once. Station and material requirements still apply.",
+      "Chest Feed: Smelters and kilns pull ore and coal from nearby chests on their own, with the bonuses of the chest owner. Placing a smelter shows the pull radius with the same ring as crafting from nearby chests. Works with every smelter, kiln and chest in the game",
+      "Balanced Blade: 10% increased damage with Smith equipment; Crafting or upgrading weapons using Smith materials has a 25% chance to add an item affix that increases their damage. Each eligible mastery rolls independently.",
+      "Whetstones: Whetstones can be crafted at the forge. Right-click a whetstone, then left-click equipment to restore 25% durability, up to its metal tier.; You can craft whetstones: a consumable that repairs the weapon or tool in your hands by 25%, away from any workbench. Each metal tier has its own whetstone",
+      "Forge Comfort: 3% increased smelting and charcoal kiln speed per point of comfort; Smelters, kilns and forges near you work faster with every point of comfort, the way hives do",
+      "Fitted Plate: 10% increased armour with Smith equipment; Crafting or upgrading heavy armour has a 25% chance to add an item affix that increases its armour. Each eligible mastery rolls independently."
+     ],
+     "link": "crafting/node/own850.md",
+     "name": "Smelting materials weight"
+    },
+    "old": {
+     "kind": "Craft notable",
+     "lines": [
+      "15% reduced bar and coal weight",
+      "Nearby Chests (equipment): Crafting and upgrading equipment - weapons, armour, shields and tools - can use materials from accessible nearby chests.",
+      "Master's Mark: Allows upgrading Smith equipment one quality level beyond its normal maximum. Items without upgrades remain unupgradeable. Both profession masteries on a mixed recipe extend its limit only once. Station and material requirements still apply.",
+      "Chest Feed: Smelters and kilns pull ore and coal from nearby chests on their own, with the bonuses of the chest owner. Placing a smelter shows the pull radius with the same ring as crafting from nearby chests. Works with every smelter, kiln and chest in the game",
+      "Balanced Blade: 10% increased damage with Smith equipment; Crafting or upgrading weapons using Smith materials has a 25% chance to add an item affix that increases their damage. Each eligible mastery rolls independently.",
+      "Whetstones: Whetstones can be crafted at the forge: a consumable that repairs the weapon or tool in hand by 25%, up to its metal tier; You can craft whetstones: a consumable that repairs the weapon or tool in your hands by 25%, away from any workbench. Each metal tier has its own whetstone",
+      "Forge Comfort: 3% increased smelting and charcoal kiln speed per point of comfort; Smelters, kilns and forges near you work faster with every point of comfort, the way hives do",
+      "Fitted Plate: 10% increased armour with Smith equipment; Crafting or upgrading heavy armour has a 25% chance to add an item affix that increases its armour. Each eligible mastery rolls independently."
+     ],
+     "link": "crafting/node/own850.md",
+     "name": "Smelting materials weight"
+    }
+   },
+   "own851": {
+    "new": {
+     "kind": "Craft notable",
+     "lines": [
+      "15% increased crafted Smith equipment durability",
+      "Nearby Chests (equipment): Crafting and upgrading equipment - weapons, armour, shields and tools - can use materials from accessible nearby chests.",
+      "Master's Mark: Allows upgrading Smith equipment one quality level beyond its normal maximum. Items without upgrades remain unupgradeable. Both profession masteries on a mixed recipe extend its limit only once. Station and material requirements still apply.",
+      "Chest Feed: Smelters and kilns pull ore and coal from nearby chests on their own, with the bonuses of the chest owner. Placing a smelter shows the pull radius with the same ring as crafting from nearby chests. Works with every smelter, kiln and chest in the game",
+      "Balanced Blade: 10% increased damage with Smith equipment; Crafting or upgrading weapons using Smith materials has a 25% chance to add an item affix that increases their damage. Each eligible mastery rolls independently.",
+      "Whetstones: Whetstones can be crafted at the forge. Right-click a whetstone, then left-click equipment to restore 25% durability, up to its metal tier.; You can craft whetstones: a consumable that repairs the weapon or tool in your hands by 25%, away from any workbench. Each metal tier has its own whetstone",
+      "Forge Comfort: 3% increased smelting and charcoal kiln speed per point of comfort; Smelters, kilns and forges near you work faster with every point of comfort, the way hives do",
+      "Fitted Plate: 10% increased armour with Smith equipment; Crafting or upgrading heavy armour has a 25% chance to add an item affix that increases its armour. Each eligible mastery rolls independently."
+     ],
+     "link": "crafting/node/own851.md",
+     "name": "Crafted Smith equipment durability"
+    },
+    "old": {
+     "kind": "Craft notable",
+     "lines": [
+      "15% increased crafted Smith equipment durability",
+      "Nearby Chests (equipment): Crafting and upgrading equipment - weapons, armour, shields and tools - can use materials from accessible nearby chests.",
+      "Master's Mark: Allows upgrading Smith equipment one quality level beyond its normal maximum. Items without upgrades remain unupgradeable. Both profession masteries on a mixed recipe extend its limit only once. Station and material requirements still apply.",
+      "Chest Feed: Smelters and kilns pull ore and coal from nearby chests on their own, with the bonuses of the chest owner. Placing a smelter shows the pull radius with the same ring as crafting from nearby chests. Works with every smelter, kiln and chest in the game",
+      "Balanced Blade: 10% increased damage with Smith equipment; Crafting or upgrading weapons using Smith materials has a 25% chance to add an item affix that increases their damage. Each eligible mastery rolls independently.",
+      "Whetstones: Whetstones can be crafted at the forge: a consumable that repairs the weapon or tool in hand by 25%, up to its metal tier; You can craft whetstones: a consumable that repairs the weapon or tool in your hands by 25%, away from any workbench. Each metal tier has its own whetstone",
+      "Forge Comfort: 3% increased smelting and charcoal kiln speed per point of comfort; Smelters, kilns and forges near you work faster with every point of comfort, the way hives do",
+      "Fitted Plate: 10% increased armour with Smith equipment; Crafting or upgrading heavy armour has a 25% chance to add an item affix that increases its armour. Each eligible mastery rolls independently."
+     ],
+     "link": "crafting/node/own851.md",
+     "name": "Crafted Smith equipment durability"
+    }
+   }
+  },
+  "currency": {
+   "PT_CorruptedPunch": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Recolours a random number of ordinary sockets, at least one, into corrupted sockets. Preserves existing special sockets. Cannot be used with installed sigils."
+     ],
+     "link": "items/currency/PT_CorruptedPunch.md",
+     "name": "Corrupted Punch"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Punches a corrupted socket into an item: it takes Sigils of Blight"
+     ],
+     "link": "items/currency/PT_CorruptedPunch.md",
+     "name": "Corrupted Punch"
+    }
+   },
+   "PT_DivinePunch": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Recolours a random number of ordinary sockets, at least one, into divine sockets. Preserves existing special sockets. Cannot be used with installed sigils."
+     ],
+     "link": "items/currency/PT_DivinePunch.md",
+     "name": "Divine Punch"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Punches a divine socket into an item: a sigil set in it is 50% stronger"
+     ],
+     "link": "items/currency/PT_DivinePunch.md",
+     "name": "Divine Punch"
+    }
+   },
+   "PT_RuneOfAscent": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Adds a new random property to a rare item"
+     ],
+     "link": "items/currency/PT_RuneOfAscent.md",
+     "name": "Great Rune of Ascent"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Adds a modifier to a rare item"
+     ],
+     "link": "items/currency/PT_RuneOfAscent.md",
+     "name": "Rune of Ascent"
+    }
+   },
+   "PT_RuneOfChange": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Reforges a magic item with 1–2 properties, replacing them with 1–2 random properties"
+     ],
+     "link": "items/currency/PT_RuneOfChange.md",
+     "name": "Rune of Change"
+    },
+    "old": null
+   },
+   "PT_RunicPunch": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Changes socket count by +1 (35%) or -1 (65%), within 0–3. Extra socket chance improves the +1 chance; divine chance applies to the added socket. Cannot be used with installed sigils."
+     ],
+     "link": "items/currency/PT_RunicPunch.md",
+     "name": "Runic Punch"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Punches a socket for a sigil into an item (up to three)"
+     ],
+     "link": "items/currency/PT_RunicPunch.md",
+     "name": "Runic Punch"
+    }
+   }
+  },
+  "keywords": {
+   "craft-broad-sowing": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "With this mastery, selecting a seedling enables mass planting. Q/E cycles the centre and four corners, marked by a short green beam. The wheel rotates the bed; Shift+wheel adjusts spacing. Shift+Q/E increases rows or columns, cycling from 15 back to 1. Each plant still requires materials and valid ground. The selected anchor snaps to nearby plantings and building snap points, aligning the rows with them."
+     ],
+     "link": "crafting/mastery/o2522.md",
+     "name": "Broad Sowing"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "The mass-planting control places a group of plants at once. The associated controls adjust its rotation and spacing; each plant still requires materials and valid ground."
+     ],
+     "link": "crafting/mastery/o2522.md",
+     "name": "Broad Sowing"
+    }
+   },
+   "craft-careful-builder": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Your attacks cannot damage player-built pieces, including your own. Enemy attacks and natural objects are unaffected. You can still dismantle pieces with the hammer."
+     ],
+     "link": "crafting/mastery/o3305.md",
+     "name": "Careful Builder"
+    },
+    "old": null
+   },
+   "craft-whetstones": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Right-click this whetstone, then left-click damaged equipment to restore 25% of its durability without a workbench. Works up to its metal tier."
+     ],
+     "link": "crafting/mastery/o2121.md",
+     "name": "Whetstones"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Allows crafting consumables that restore durability to the held weapon or tool without a repair station. Each whetstone has its own material requirements."
+     ],
+     "link": "crafting/mastery/o2121.md",
+     "name": "Whetstones"
+    }
+   },
+   "rarity": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Items: Common items have no random affixes. Magic items have 1–2 affixes: at most 1 prefix and 1 suffix. Rare items have 3–4 affixes: at most 2 prefixes and 2 suffixes. Implicit properties do not count towards these limits. Unique and Legendary items have their own properties and rules. Creatures: no stars means Common, 1–2 stars Magic, 3–4 Rare, and 5 or more Unique. Each star grants a modifier and increases health, damage and loot."
+     ],
+     "link": "glossary/rarity.md",
+     "name": "Rarity"
+    },
+    "old": null
+   },
+   "sockets": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Up to three sockets hold sigils. Runic punches change the count by +1 (35%) or -1 (65%), within 0–3; Runecarver bonuses apply. Divine and corrupted punches recolour 1 to all ordinary sockets at random. No punch can be used with installed sigils. Divine sockets strengthen sigils by 50%. The count can fall to zero. A changed socket displays a floating +1 or −1."
+     ],
+     "link": "glossary/sockets.md",
+     "name": "Sockets"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Up to three sockets on an item hold sigils. Punches open a socket of their own kind: runic, corrupted or divine. A sigil in a divine socket is 50% stronger."
+     ],
+     "link": "glossary/sockets.md",
+     "name": "Sockets"
+    }
+   }
+  },
+  "mods": {
+   "ring.attack-speed": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (1.7–2.3)% increased attack speed",
+      "T4 (item level 19–76, weight 700): (2.7–3.7)% increased attack speed",
+      "T3 (item level 43–129, weight 400): (3.7–5.1)% increased attack speed",
+      "T2 (item level 77–∞, weight 180): (4.8–6.4)% increased attack speed",
+      "T1 (item level 130–∞, weight 60): (6–8)% increased attack speed",
+      "T0 (item level 1–∞, weight 0): (7.6–10.3)% increased attack speed"
+     ],
+     "link": "items/mod/ring.attack-speed.md",
+     "name": "#% increased attack speed"
+    },
+    "old": null
+   },
+   "ring.jump-height": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (5–8)% increased jump height",
+      "T4 (item level 19–76, weight 700): (9–12)% increased jump height",
+      "T3 (item level 43–129, weight 400): (13–16)% increased jump height",
+      "T2 (item level 77–∞, weight 180): (17–21)% increased jump height",
+      "T1 (item level 130–∞, weight 60): (22–28)% increased jump height"
+     ],
+     "link": "items/mod/ring.jump-height.md",
+     "name": "#% increased jump height"
+    },
+    "old": null
+   },
+   "ring.jump-range": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (5–8)% increased jump distance",
+      "T4 (item level 19–76, weight 700): (9–12)% increased jump distance",
+      "T3 (item level 43–129, weight 400): (13–16)% increased jump distance",
+      "T2 (item level 77–∞, weight 180): (17–21)% increased jump distance",
+      "T1 (item level 130–∞, weight 60): (22–28)% increased jump distance"
+     ],
+     "link": "items/mod/ring.jump-range.md",
+     "name": "#% increased jump distance"
+    },
+    "old": null
+   },
+   "tree.attackspeedpct-altattack.w": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (2.5–3.4)% increased alternative attack speed on this item",
+      "T4 (item level 19–76, weight 700): (4.1–5.5)% increased alternative attack speed on this item",
+      "T3 (item level 43–129, weight 400): (5.6–7.6)% increased alternative attack speed on this item",
+      "T2 (item level 77–∞, weight 180): (7.1–9.7)% increased alternative attack speed on this item",
+      "T1 (item level 130–∞, weight 60): (8.9–12.1)% increased alternative attack speed on this item",
+      "T0 (item level 1–∞, weight 0): (11.5–15.5)% increased alternative attack speed on this item"
+     ],
+     "link": "items/mod/tree.attackspeedpct-altattack.w.md",
+     "name": "#% increased alternative attack speed on this item"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (2.5–3.4)% increased alternative attack speed",
+      "T4 (item level 19–76, weight 700): (4.1–5.5)% increased alternative attack speed",
+      "T3 (item level 43–129, weight 400): (5.6–7.6)% increased alternative attack speed",
+      "T2 (item level 77–∞, weight 180): (7.1–9.7)% increased alternative attack speed",
+      "T1 (item level 130–∞, weight 60): (8.9–12.1)% increased alternative attack speed",
+      "T0 (item level 1–∞, weight 0): (11.5–15.5)% increased alternative attack speed"
+     ],
+     "link": "items/mod/tree.attackspeedpct-altattack.w.md",
+     "name": "#% increased alternative attack speed"
+    }
+   },
+   "tree.attackspeedpct-bleed-3_0.w": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (3.5–4.5)% increased attack speed on this item on bleed recently",
+      "T4 (item level 19–76, weight 700): (5.5–7.5)% increased attack speed on this item on bleed recently",
+      "T3 (item level 43–129, weight 400): (7.5–10)% increased attack speed on this item on bleed recently",
+      "T2 (item level 77–∞, weight 180): (9.5–13)% increased attack speed on this item on bleed recently",
+      "T1 (item level 130–∞, weight 60): (12–16)% increased attack speed on this item on bleed recently",
+      "T0 (item level 1–∞, weight 0): (15.5–20.5)% increased attack speed on this item on bleed recently"
+     ],
+     "link": "items/mod/tree.attackspeedpct-bleed-3_0.w.md",
+     "name": "#% increased attack speed on this item on bleed recently"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (3.5–4.5)% increased attack speed on bleed recently",
+      "T4 (item level 19–76, weight 700): (5.5–7.5)% increased attack speed on bleed recently",
+      "T3 (item level 43–129, weight 400): (7.5–10)% increased attack speed on bleed recently",
+      "T2 (item level 77–∞, weight 180): (9.5–13)% increased attack speed on bleed recently",
+      "T1 (item level 130–∞, weight 60): (12–16)% increased attack speed on bleed recently",
+      "T0 (item level 1–∞, weight 0): (15.5–20.5)% increased attack speed on bleed recently"
+     ],
+     "link": "items/mod/tree.attackspeedpct-bleed-3_0.w.md",
+     "name": "#% increased attack speed on bleed recently"
+    }
+   },
+   "tree.attackspeedpct-combofinisher.w": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (3.5–4.5)% increased attack speed on this item on chain finishers",
+      "T4 (item level 19–76, weight 700): (5.5–7.5)% increased attack speed on this item on chain finishers",
+      "T3 (item level 43–129, weight 400): (7.5–10)% increased attack speed on this item on chain finishers",
+      "T2 (item level 77–∞, weight 180): (9.5–13)% increased attack speed on this item on chain finishers",
+      "T1 (item level 130–∞, weight 60): (12–16)% increased attack speed on this item on chain finishers",
+      "T0 (item level 1–∞, weight 0): (15.5–20.5)% increased attack speed on this item on chain finishers"
+     ],
+     "link": "items/mod/tree.attackspeedpct-combofinisher.w.md",
+     "name": "#% increased attack speed on this item on chain finishers"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (3.5–4.5)% increased attack speed on chain finishers",
+      "T4 (item level 19–76, weight 700): (5.5–7.5)% increased attack speed on chain finishers",
+      "T3 (item level 43–129, weight 400): (7.5–10)% increased attack speed on chain finishers",
+      "T2 (item level 77–∞, weight 180): (9.5–13)% increased attack speed on chain finishers",
+      "T1 (item level 130–∞, weight 60): (12–16)% increased attack speed on chain finishers",
+      "T0 (item level 1–∞, weight 0): (15.5–20.5)% increased attack speed on chain finishers"
+     ],
+     "link": "items/mod/tree.attackspeedpct-combofinisher.w.md",
+     "name": "#% increased attack speed on chain finishers"
+    }
+   },
+   "tree.attackspeedpct-crit-3_0.w": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (4–6)% increased attack speed on this item on crit recently",
+      "T4 (item level 19–76, weight 700): (7–9)% increased attack speed on this item on crit recently",
+      "T3 (item level 43–129, weight 400): (9.5–12.5)% increased attack speed on this item on crit recently",
+      "T2 (item level 77–∞, weight 180): (12–16)% increased attack speed on this item on crit recently",
+      "T1 (item level 130–∞, weight 60): (15–20)% increased attack speed on this item on crit recently",
+      "T0 (item level 1–∞, weight 0): (19–26)% increased attack speed on this item on crit recently"
+     ],
+     "link": "items/mod/tree.attackspeedpct-crit-3_0.w.md",
+     "name": "#% increased attack speed on this item on crit recently"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (4–6)% increased attack speed on crit recently",
+      "T4 (item level 19–76, weight 700): (7–9)% increased attack speed on crit recently",
+      "T3 (item level 43–129, weight 400): (9.5–12.5)% increased attack speed on crit recently",
+      "T2 (item level 77–∞, weight 180): (12–16)% increased attack speed on crit recently",
+      "T1 (item level 130–∞, weight 60): (15–20)% increased attack speed on crit recently",
+      "T0 (item level 1–∞, weight 0): (19–26)% increased attack speed on crit recently"
+     ],
+     "link": "items/mod/tree.attackspeedpct-crit-3_0.w.md",
+     "name": "#% increased attack speed on crit recently"
+    }
+   },
+   "tree.attackspeedpct-throwing.w": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (1.7–2.3)% increased throwing attack speed on this item",
+      "T4 (item level 19–76, weight 700): (2.7–3.7)% increased throwing attack speed on this item",
+      "T3 (item level 43–129, weight 400): (3.7–5.1)% increased throwing attack speed on this item",
+      "T2 (item level 77–∞, weight 180): (4.8–6.4)% increased throwing attack speed on this item",
+      "T1 (item level 130–∞, weight 60): (6–8)% increased throwing attack speed on this item",
+      "T0 (item level 1–∞, weight 0): (7.6–10.3)% increased throwing attack speed on this item"
+     ],
+     "link": "items/mod/tree.attackspeedpct-throwing.w.md",
+     "name": "#% increased throwing attack speed on this item"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (1.7–2.3)% increased throwing attack speed",
+      "T4 (item level 19–76, weight 700): (2.7–3.7)% increased throwing attack speed",
+      "T3 (item level 43–129, weight 400): (3.7–5.1)% increased throwing attack speed",
+      "T2 (item level 77–∞, weight 180): (4.8–6.4)% increased throwing attack speed",
+      "T1 (item level 130–∞, weight 60): (6–8)% increased throwing attack speed",
+      "T0 (item level 1–∞, weight 0): (7.6–10.3)% increased throwing attack speed"
+     ],
+     "link": "items/mod/tree.attackspeedpct-throwing.w.md",
+     "name": "#% increased throwing attack speed"
+    }
+   },
+   "tree.attackspeedpct-vsstaggered.w": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (1.7–2.3)% increased attack speed on this item against staggered targets",
+      "T4 (item level 19–76, weight 700): (2.7–3.7)% increased attack speed on this item against staggered targets",
+      "T3 (item level 43–129, weight 400): (3.7–5.1)% increased attack speed on this item against staggered targets",
+      "T2 (item level 77–∞, weight 180): (4.8–6.4)% increased attack speed on this item against staggered targets",
+      "T1 (item level 130–∞, weight 60): (6–8)% increased attack speed on this item against staggered targets",
+      "T0 (item level 1–∞, weight 0): (7.6–10.3)% increased attack speed on this item against staggered targets"
+     ],
+     "link": "items/mod/tree.attackspeedpct-vsstaggered.w.md",
+     "name": "#% increased attack speed on this item against staggered targets"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (1.7–2.3)% increased attack speed against staggered targets",
+      "T4 (item level 19–76, weight 700): (2.7–3.7)% increased attack speed against staggered targets",
+      "T3 (item level 43–129, weight 400): (3.7–5.1)% increased attack speed against staggered targets",
+      "T2 (item level 77–∞, weight 180): (4.8–6.4)% increased attack speed against staggered targets",
+      "T1 (item level 130–∞, weight 60): (6–8)% increased attack speed against staggered targets",
+      "T0 (item level 1–∞, weight 0): (7.6–10.3)% increased attack speed against staggered targets"
+     ],
+     "link": "items/mod/tree.attackspeedpct-vsstaggered.w.md",
+     "name": "#% increased attack speed against staggered targets"
+    }
+   },
+   "tree.attackspeedpct.w": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (1.7–2.3)% increased attack speed on this item",
+      "T4 (item level 19–76, weight 700): (2.7–3.7)% increased attack speed on this item",
+      "T3 (item level 43–129, weight 400): (3.7–5.1)% increased attack speed on this item",
+      "T2 (item level 77–∞, weight 180): (4.8–6.4)% increased attack speed on this item",
+      "T1 (item level 130–∞, weight 60): (6–8)% increased attack speed on this item",
+      "T0 (item level 1–∞, weight 0): (7.6–10.3)% increased attack speed on this item"
+     ],
+     "link": "items/mod/tree.attackspeedpct.w.md",
+     "name": "#% increased attack speed on this item"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (1.7–2.3)% increased attack speed",
+      "T4 (item level 19–76, weight 700): (2.7–3.7)% increased attack speed",
+      "T3 (item level 43–129, weight 400): (3.7–5.1)% increased attack speed",
+      "T2 (item level 77–∞, weight 180): (4.8–6.4)% increased attack speed",
+      "T1 (item level 130–∞, weight 60): (6–8)% increased attack speed",
+      "T0 (item level 1–∞, weight 0): (7.6–10.3)% increased attack speed"
+     ],
+     "link": "items/mod/tree.attackspeedpct.w.md",
+     "name": "#% increased attack speed"
+    }
+   },
+   "tree.castspeedpct-crit-3_0.w": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (8–12)% increased cast speed on this item on crit recently",
+      "T4 (item level 19–76, weight 700): (14–18)% increased cast speed on this item on crit recently",
+      "T3 (item level 43–129, weight 400): (19–25)% increased cast speed on this item on crit recently",
+      "T2 (item level 77–∞, weight 180): (24–32)% increased cast speed on this item on crit recently",
+      "T1 (item level 130–∞, weight 60): (30–40)% increased cast speed on this item on crit recently",
+      "T0 (item level 1–∞, weight 0): (38–52)% increased cast speed on this item on crit recently"
+     ],
+     "link": "items/mod/tree.castspeedpct-crit-3_0.w.md",
+     "name": "#% increased cast speed on this item on crit recently"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (8–12)% increased cast speed on crit recently",
+      "T4 (item level 19–76, weight 700): (14–18)% increased cast speed on crit recently",
+      "T3 (item level 43–129, weight 400): (19–25)% increased cast speed on crit recently",
+      "T2 (item level 77–∞, weight 180): (24–32)% increased cast speed on crit recently",
+      "T1 (item level 130–∞, weight 60): (30–40)% increased cast speed on crit recently",
+      "T0 (item level 1–∞, weight 0): (38–52)% increased cast speed on crit recently"
+     ],
+     "link": "items/mod/tree.castspeedpct-crit-3_0.w.md",
+     "name": "#% increased cast speed on crit recently"
+    }
+   },
+   "tree.castspeedpct.w": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (3.5–4.5)% increased cast speed on this item",
+      "T4 (item level 19–76, weight 700): (5.5–7.5)% increased cast speed on this item",
+      "T3 (item level 43–129, weight 400): (7.5–10)% increased cast speed on this item",
+      "T2 (item level 77–∞, weight 180): (9.5–13)% increased cast speed on this item",
+      "T1 (item level 130–∞, weight 60): (12–16)% increased cast speed on this item",
+      "T0 (item level 1–∞, weight 0): (15.5–20.5)% increased cast speed on this item"
+     ],
+     "link": "items/mod/tree.castspeedpct.w.md",
+     "name": "#% increased cast speed on this item"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (3.5–4.5)% increased cast speed",
+      "T4 (item level 19–76, weight 700): (5.5–7.5)% increased cast speed",
+      "T3 (item level 43–129, weight 400): (7.5–10)% increased cast speed",
+      "T2 (item level 77–∞, weight 180): (9.5–13)% increased cast speed",
+      "T1 (item level 130–∞, weight 60): (12–16)% increased cast speed",
+      "T0 (item level 1–∞, weight 0): (15.5–20.5)% increased cast speed"
+     ],
+     "link": "items/mod/tree.castspeedpct.w.md",
+     "name": "#% increased cast speed"
+    }
+   }
+  },
+  "passives": {
+   "own10660": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+10 thorns",
+      "+0.0625 thorns per point of armour from your equipped body armour",
+      "Cleaving Thorns: 50% thorns piercing damage converted to slashing",
+      "Thorny Carapace: On contact, deal your thorns damage to an enemy; each enemy can take this damage once every 1 s; Body contact deals thorns damage. Base cooldown: 1 second per enemy, affected by cooldown recovery."
+     ],
+     "link": "passives/node/own10660.md",
+     "name": "Thorns on the Cuirass"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "+10 thorns",
+      "+0.0625 thorns per point of armour from your equipped body armour",
+      "Cleaving Thorns: 50% thorns piercing damage converted to slashing",
+      "Thorny Carapace: On contact, deal your thorns damage to an enemy; each enemy can take this damage once every 0.75 s; Body contact deals thorns damage, at most once every 0.75 seconds per enemy."
+     ],
+     "link": "passives/node/own10660.md",
+     "name": "Thorns on the Cuirass"
+    }
+   },
+   "own12471": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "20% increased thorns",
+      "+15 thorns with the shield up",
+      "Cleaving Thorns: 50% thorns piercing damage converted to slashing",
+      "Thorny Carapace: On contact, deal your thorns damage to an enemy; each enemy can take this damage once every 1 s; Body contact deals thorns damage. Base cooldown: 1 second per enemy, affected by cooldown recovery."
+     ],
+     "link": "passives/node/own12471.md",
+     "name": "Heavy Steel's Push"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "20% increased thorns",
+      "+15 thorns with the shield up",
+      "Cleaving Thorns: 50% thorns piercing damage converted to slashing",
+      "Thorny Carapace: On contact, deal your thorns damage to an enemy; each enemy can take this damage once every 0.75 s; Body contact deals thorns damage, at most once every 0.75 seconds per enemy."
+     ],
+     "link": "passives/node/own12471.md",
+     "name": "Heavy Steel's Push"
+    }
+   }
+  },
+  "uniques": {
+   "PT_Jewel_TrailOfTheFirstAntler": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "One of these stats:",
+      "+(0.2–0.3) Strength per allocated passive on the path from this socket to your start (10%)",
+      "+(0.2–0.3) Dexterity per allocated passive on the path from this socket to your start (10%)",
+      "+(0.2–0.3) Intelligence per allocated passive on the path from this socket to your start (10%)",
+      "+(1–2) maximum health per allocated passive on the path from this socket to your start (10%)",
+      "+(0.25–0.4) maximum stamina per allocated passive on the path from this socket to your start (10%)",
+      "+(1–2) maximum eitr per allocated passive on the path from this socket to your start (10%)",
+      "+(1–2) rune shield per allocated passive on the path from this socket to your start (10%)",
+      "+(0.15–0.25) armour per allocated passive on the path from this socket to your start (10%)",
+      "+(0.3–0.5) evasion rating per allocated passive on the path from this socket to your start (10%)",
+      "+(1–2) endurance threshold that falls below it is reduced: 20% at base, at most 75%. The threshold is counted in health points. With Rune Bulwark the rune shield is checked instead of health.\") per allocated passive on the path from this socket to your start (10%)",
+      "Drops: dropped by Eikthyr"
+     ],
+     "link": "items/unique/PT_Jewel_TrailOfTheFirstAntler.md",
+     "name": "Trail of the First Antler"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "One of these stats:",
+      "+(0.4–0.6) Strength per allocated passive on the path from this socket to your start (10%)",
+      "+(0.4–0.6) Dexterity per allocated passive on the path from this socket to your start (10%)",
+      "+(0.4–0.6) Intelligence per allocated passive on the path from this socket to your start (10%)",
+      "+(2–4) maximum health per allocated passive on the path from this socket to your start (10%)",
+      "+(0.5–0.8) maximum stamina per allocated passive on the path from this socket to your start (10%)",
+      "+(2–4) maximum eitr per allocated passive on the path from this socket to your start (10%)",
+      "+(2–4) rune shield per allocated passive on the path from this socket to your start (10%)",
+      "+(0.3–0.5) armour per allocated passive on the path from this socket to your start (10%)",
+      "+(0.6–1) evasion rating per allocated passive on the path from this socket to your start (10%)",
+      "+(2–4) endurance threshold that falls below it is reduced: 20% at base, at most 75%. The threshold is counted in health points. With Rune Bulwark the rune shield is checked instead of health.\") per allocated passive on the path from this socket to your start (10%)",
+      "Drops: dropped by Eikthyr"
+     ],
+     "link": "items/unique/PT_Jewel_TrailOfTheFirstAntler.md",
+     "name": "Trail of the First Antler"
+    }
+   },
+   "PT_Jewel_WombOfCorruption": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Allocates a random keystone",
+      "One of:",
+      "(10–20)% less Damage (16.7%)",
+      "(10–20)% less Armour, Evasion Rating and Rune Shield (16.7%)",
+      "(10–20)% less Maximum Health (16.7%)",
+      "(10–20)% less Maximum Eitr (16.7%)",
+      "(10–20)% less Movement Speed (16.7%)",
+      "(10–20)% less Maximum Stamina (16.7%)",
+      "Drops: from a creature, elite or boss killed in the Blight Mist, 0.2% each (loot)"
+     ],
+     "link": "items/unique/PT_Jewel_WombOfCorruption.md",
+     "name": "Womb of Corruption"
+    },
+    "old": null
+   }
+  },
+  "values": {
+   "bow.falloff.end": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "40 m"
+     ],
+     "link": null,
+     "name": "Bows: damage reaches the floor at this distance"
+    },
+    "old": null
+   },
+   "bow.falloff.start": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "14 m"
+     ],
+     "link": null,
+     "name": "Bows: full damage up to this distance"
+    },
+    "old": null
+   },
+   "ranged.falloff.end": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "30 m"
+     ],
+     "link": null,
+     "name": "Crossbows: damage reaches the floor at this distance"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "30 m"
+     ],
+     "link": null,
+     "name": "Bows and crossbows: damage reaches the floor at this distance"
+    }
+   },
+   "ranged.falloff.start": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "6 m"
+     ],
+     "link": null,
+     "name": "Crossbows: full damage up to this distance"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "6 m"
+     ],
+     "link": null,
+     "name": "Bows and crossbows: full damage up to this distance"
+    }
+   },
+   "thorns.contact-interval": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "1 s"
+     ],
+     "link": null,
+     "name": "Barbed Carapace: shortest gap between two contact thorns on the same enemy"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "0.75 s"
+     ],
+     "link": null,
+     "name": "Barbed Carapace: shortest gap between two contact thorns on the same enemy"
+    }
+   }
+  }
+ },
+ "date": "2026-10-24",
+ "from": "5.3.1",
+ "to": "5.3.2"
+}

@@ -1,0 +1,1297 @@
+{
+ "changes": {
+  "crafting": {
+   "own1245": {
+    "new": {
+     "kind": "Средний узел ремесла",
+     "lines": [
+      "20% увеличение скорость изготовления снаряжения кузнеца",
+      "+8% шанса вернуть каждую потерянную единицу металла при разборе",
+      "Nearby Chests (equipment): Crafting and upgrading equipment - weapons, armour, shields and tools - can use materials from accessible nearby chests.",
+      "Master's Mark: Allows upgrading Smith equipment one quality level beyond its normal maximum. Items without upgrades remain unupgradeable. Both profession masteries on a mixed recipe extend its limit only once. Station and material requirements still apply.",
+      "Chest Feed: Smelters and kilns pull ore and coal from nearby chests on their own, with the bonuses of the chest owner. Placing a smelter shows the pull radius with the same ring as crafting from nearby chests. Works with every smelter, kiln and chest in the game",
+      "Balanced Blade: 10% увеличение урона для снаряжения кузнеца; Crafting or upgrading weapons using Smith materials has a 25% chance to add an item affix that increases their damage. Each eligible mastery rolls independently.",
+      "Whetstones: В кузне можно делать точильные камни. ПКМ по камню, затем ЛКМ по экипировке восстанавливает 25% прочности, до уровня металла камня.; You can craft whetstones: a consumable that repairs the weapon or tool in your hands by 25%, away from any workbench. Each metal tier has its own whetstone",
+      "Forge Comfort: 3% увеличение скорости плавки и обжига угля за каждую единицу комфорт; Smelters, kilns and forges near you work faster with every point of comfort, the way hives do",
+      "Fitted Plate: 10% увеличение брони для снаряжения кузнеца; Crafting or upgrading heavy armour has a 25% chance to add an item affix that increases its armour. Each eligible mastery rolls independently."
+     ],
+     "link": "crafting/node/own1245.md",
+     "name": "Smith equipment crafting speed"
+    },
+    "old": {
+     "kind": "Средний узел ремесла",
+     "lines": [
+      "20% увеличение скорость изготовления снаряжения кузнеца",
+      "+8% шанса вернуть каждую потерянную единицу металла при разборе",
+      "Nearby Chests (equipment): Crafting and upgrading equipment - weapons, armour, shields and tools - can use materials from accessible nearby chests.",
+      "Master's Mark: Allows upgrading Smith equipment one quality level beyond its normal maximum. Items without upgrades remain unupgradeable. Both profession masteries on a mixed recipe extend its limit only once. Station and material requirements still apply.",
+      "Chest Feed: Smelters and kilns pull ore and coal from nearby chests on their own, with the bonuses of the chest owner. Placing a smelter shows the pull radius with the same ring as crafting from nearby chests. Works with every smelter, kiln and chest in the game",
+      "Balanced Blade: 10% увеличение урона для снаряжения кузнеца; Crafting or upgrading weapons using Smith materials has a 25% chance to add an item affix that increases their damage. Each eligible mastery rolls independently.",
+      "Whetstones: В кузне можно делать точильные камни: расходник, который чинит оружие или инструмент в руке на 25%, до его уровня металла; You can craft whetstones: a consumable that repairs the weapon or tool in your hands by 25%, away from any workbench. Each metal tier has its own whetstone",
+      "Forge Comfort: 3% увеличение скорости плавки и обжига угля за каждую единицу комфорт; Smelters, kilns and forges near you work faster with every point of comfort, the way hives do",
+      "Fitted Plate: 10% увеличение брони для снаряжения кузнеца; Crafting or upgrading heavy armour has a 25% chance to add an item affix that increases its armour. Each eligible mastery rolls independently."
+     ],
+     "link": "crafting/node/own1245.md",
+     "name": "Smith equipment crafting speed"
+    }
+   },
+   "own650": {
+    "new": {
+     "kind": "Средний узел ремесла",
+     "lines": [
+      "+8% шанса вернуть каждую потерянную единицу дерева при разборе",
+      "Open-Air Bench: The bench works under open sky",
+      "Пол как крыша: Floors you build are a full roof: what is under them stays dry, is sheltered from rain and counts as under a roof for fires, beds, rest and stations",
+      "Auto Doors: Doors you build open as anyone approaches and close behind them",
+      "Nearby Chests (building): Building draws materials from nearby chests",
+      "Light Frame: Pieces you built lose only 50% of the usual support",
+      "Weatherproof: Pieces you built take no damage from rain, water or waves",
+      "Hugin's Flight: Клавиша  с инструментом строительства в руках поднимает взгляд ввысь, как Хугин: тело зависает на месте, а детали ставятся в пределах дальности строительства от ворона, до 30 м от тела; With a hammer or hoe in hand, press B to send your sight aloft like Odin's raven and build from the air while your body stays safe on the ground. The view flies up to 30 m from you; pieces are placed within your Building range of the view and still need a workbench in reach and your materials",
+      "No Bounds: Build and remove pieces where building is forbidden: dungeons, boss altars, traders' camps and other no-build places",
+      "Бережный строитель: Вы не можете наносить урон постройкам игроков"
+     ],
+     "link": "crafting/node/own650.md",
+     "name": "Wood recovery on salvage"
+    },
+    "old": {
+     "kind": "Средний узел ремесла",
+     "lines": [
+      "+8% шанса вернуть каждую потерянную единицу дерева при разборе",
+      "Open-Air Bench: The bench works under open sky",
+      "Пол как крыша: Floors you build are a full roof: what is under them stays dry, is sheltered from rain and counts as under a roof for fires, beds, rest and stations",
+      "Auto Doors: Doors you build open as anyone approaches and close behind them",
+      "Nearby Chests (building): Building draws materials from nearby chests",
+      "Light Frame: Pieces you built lose only 50% of the usual support",
+      "Weatherproof: Pieces you built take no damage from rain, water or waves",
+      "Hugin's Flight: Клавиша  с инструментом строительства в руках поднимает взгляд ввысь, как Хугин: тело зависает на месте, а детали ставятся в пределах дальности строительства от ворона, до 30 м от тела; With a hammer or hoe in hand, press B to send your sight aloft like Odin's raven and build from the air while your body stays safe on the ground. The view flies up to 30 m from you; pieces are placed within your Building range of the view and still need a workbench in reach and your materials",
+      "No Bounds: Build and remove pieces where building is forbidden: dungeons, boss altars, traders' camps and other no-build places"
+     ],
+     "link": "crafting/node/own650.md",
+     "name": "Wood recovery on salvage"
+    }
+   },
+   "own659": {
+    "new": {
+     "kind": "Средний узел ремесла",
+     "lines": [
+      "+4 м к радиусу починки",
+      "Open-Air Bench: The bench works under open sky",
+      "Пол как крыша: Floors you build are a full roof: what is under them stays dry, is sheltered from rain and counts as under a roof for fires, beds, rest and stations",
+      "Auto Doors: Doors you build open as anyone approaches and close behind them",
+      "Nearby Chests (building): Building draws materials from nearby chests",
+      "Light Frame: Pieces you built lose only 50% of the usual support",
+      "Weatherproof: Pieces you built take no damage from rain, water or waves",
+      "Hugin's Flight: Клавиша  с инструментом строительства в руках поднимает взгляд ввысь, как Хугин: тело зависает на месте, а детали ставятся в пределах дальности строительства от ворона, до 30 м от тела; With a hammer or hoe in hand, press B to send your sight aloft like Odin's raven and build from the air while your body stays safe on the ground. The view flies up to 30 m from you; pieces are placed within your Building range of the view and still need a workbench in reach and your materials",
+      "No Bounds: Build and remove pieces where building is forbidden: dungeons, boss altars, traders' camps and other no-build places",
+      "Бережный строитель: Вы не можете наносить урон постройкам игроков"
+     ],
+     "link": "crafting/node/own659.md",
+     "name": "Wide Mending"
+    },
+    "old": {
+     "kind": "Средний узел ремесла",
+     "lines": [
+      "+4 м к радиусу починки",
+      "Open-Air Bench: The bench works under open sky",
+      "Пол как крыша: Floors you build are a full roof: what is under them stays dry, is sheltered from rain and counts as under a roof for fires, beds, rest and stations",
+      "Auto Doors: Doors you build open as anyone approaches and close behind them",
+      "Nearby Chests (building): Building draws materials from nearby chests",
+      "Light Frame: Pieces you built lose only 50% of the usual support",
+      "Weatherproof: Pieces you built take no damage from rain, water or waves",
+      "Hugin's Flight: Клавиша  с инструментом строительства в руках поднимает взгляд ввысь, как Хугин: тело зависает на месте, а детали ставятся в пределах дальности строительства от ворона, до 30 м от тела; With a hammer or hoe in hand, press B to send your sight aloft like Odin's raven and build from the air while your body stays safe on the ground. The view flies up to 30 m from you; pieces are placed within your Building range of the view and still need a workbench in reach and your materials",
+      "No Bounds: Build and remove pieces where building is forbidden: dungeons, boss altars, traders' camps and other no-build places"
+     ],
+     "link": "crafting/node/own659.md",
+     "name": "Wide Mending"
+    }
+   },
+   "own663": {
+    "new": {
+     "kind": "Средний узел ремесла",
+     "lines": [
+      "+25% стойкости построек к дождю",
+      "Open-Air Bench: The bench works under open sky",
+      "Пол как крыша: Floors you build are a full roof: what is under them stays dry, is sheltered from rain and counts as under a roof for fires, beds, rest and stations",
+      "Auto Doors: Doors you build open as anyone approaches and close behind them",
+      "Nearby Chests (building): Building draws materials from nearby chests",
+      "Light Frame: Pieces you built lose only 50% of the usual support",
+      "Weatherproof: Pieces you built take no damage from rain, water or waves",
+      "Hugin's Flight: Клавиша  с инструментом строительства в руках поднимает взгляд ввысь, как Хугин: тело зависает на месте, а детали ставятся в пределах дальности строительства от ворона, до 30 м от тела; With a hammer or hoe in hand, press B to send your sight aloft like Odin's raven and build from the air while your body stays safe on the ground. The view flies up to 30 m from you; pieces are placed within your Building range of the view and still need a workbench in reach and your materials",
+      "No Bounds: Build and remove pieces where building is forbidden: dungeons, boss altars, traders' camps and other no-build places",
+      "Бережный строитель: Вы не можете наносить урон постройкам игроков"
+     ],
+     "link": "crafting/node/own663.md",
+     "name": "Building rain damage resistance"
+    },
+    "old": {
+     "kind": "Средний узел ремесла",
+     "lines": [
+      "+25% стойкости построек к дождю",
+      "Open-Air Bench: The bench works under open sky",
+      "Пол как крыша: Floors you build are a full roof: what is under them stays dry, is sheltered from rain and counts as under a roof for fires, beds, rest and stations",
+      "Auto Doors: Doors you build open as anyone approaches and close behind them",
+      "Nearby Chests (building): Building draws materials from nearby chests",
+      "Light Frame: Pieces you built lose only 50% of the usual support",
+      "Weatherproof: Pieces you built take no damage from rain, water or waves",
+      "Hugin's Flight: Клавиша  с инструментом строительства в руках поднимает взгляд ввысь, как Хугин: тело зависает на месте, а детали ставятся в пределах дальности строительства от ворона, до 30 м от тела; With a hammer or hoe in hand, press B to send your sight aloft like Odin's raven and build from the air while your body stays safe on the ground. The view flies up to 30 m from you; pieces are placed within your Building range of the view and still need a workbench in reach and your materials",
+      "No Bounds: Build and remove pieces where building is forbidden: dungeons, boss altars, traders' camps and other no-build places"
+     ],
+     "link": "crafting/node/own663.md",
+     "name": "Building rain damage resistance"
+    }
+   },
+   "own693": {
+    "new": {
+     "kind": "Средний узел ремесла",
+     "lines": [
+      "+5 м дальности строительства",
+      "Open-Air Bench: The bench works under open sky",
+      "Пол как крыша: Floors you build are a full roof: what is under them stays dry, is sheltered from rain and counts as under a roof for fires, beds, rest and stations",
+      "Auto Doors: Doors you build open as anyone approaches and close behind them",
+      "Nearby Chests (building): Building draws materials from nearby chests",
+      "Light Frame: Pieces you built lose only 50% of the usual support",
+      "Weatherproof: Pieces you built take no damage from rain, water or waves",
+      "Hugin's Flight: Клавиша  с инструментом строительства в руках поднимает взгляд ввысь, как Хугин: тело зависает на месте, а детали ставятся в пределах дальности строительства от ворона, до 30 м от тела; With a hammer or hoe in hand, press B to send your sight aloft like Odin's raven and build from the air while your body stays safe on the ground. The view flies up to 30 m from you; pieces are placed within your Building range of the view and still need a workbench in reach and your materials",
+      "No Bounds: Build and remove pieces where building is forbidden: dungeons, boss altars, traders' camps and other no-build places",
+      "Бережный строитель: Вы не можете наносить урон постройкам игроков"
+     ],
+     "link": "crafting/node/own693.md",
+     "name": "Building range"
+    },
+    "old": {
+     "kind": "Средний узел ремесла",
+     "lines": [
+      "+5 м дальности строительства",
+      "Open-Air Bench: The bench works under open sky",
+      "Пол как крыша: Floors you build are a full roof: what is under them stays dry, is sheltered from rain and counts as under a roof for fires, beds, rest and stations",
+      "Auto Doors: Doors you build open as anyone approaches and close behind them",
+      "Nearby Chests (building): Building draws materials from nearby chests",
+      "Light Frame: Pieces you built lose only 50% of the usual support",
+      "Weatherproof: Pieces you built take no damage from rain, water or waves",
+      "Hugin's Flight: Клавиша  с инструментом строительства в руках поднимает взгляд ввысь, как Хугин: тело зависает на месте, а детали ставятся в пределах дальности строительства от ворона, до 30 м от тела; With a hammer or hoe in hand, press B to send your sight aloft like Odin's raven and build from the air while your body stays safe on the ground. The view flies up to 30 m from you; pieces are placed within your Building range of the view and still need a workbench in reach and your materials",
+      "No Bounds: Build and remove pieces where building is forbidden: dungeons, boss altars, traders' camps and other no-build places"
+     ],
+     "link": "crafting/node/own693.md",
+     "name": "Building range"
+    }
+   },
+   "own697": {
+    "new": {
+     "kind": "Средний узел ремесла",
+     "lines": [
+      "−25% к расходу топлива построенными светильниками",
+      "Open-Air Bench: The bench works under open sky",
+      "Пол как крыша: Floors you build are a full roof: what is under them stays dry, is sheltered from rain and counts as under a roof for fires, beds, rest and stations",
+      "Auto Doors: Doors you build open as anyone approaches and close behind them",
+      "Nearby Chests (building): Building draws materials from nearby chests",
+      "Light Frame: Pieces you built lose only 50% of the usual support",
+      "Weatherproof: Pieces you built take no damage from rain, water or waves",
+      "Hugin's Flight: Клавиша  с инструментом строительства в руках поднимает взгляд ввысь, как Хугин: тело зависает на месте, а детали ставятся в пределах дальности строительства от ворона, до 30 м от тела; With a hammer or hoe in hand, press B to send your sight aloft like Odin's raven and build from the air while your body stays safe on the ground. The view flies up to 30 m from you; pieces are placed within your Building range of the view and still need a workbench in reach and your materials",
+      "No Bounds: Build and remove pieces where building is forbidden: dungeons, boss altars, traders' camps and other no-build places",
+      "Бережный строитель: Вы не можете наносить урон постройкам игроков"
+     ],
+     "link": "crafting/node/own697.md",
+     "name": "Light source fuel consumption"
+    },
+    "old": {
+     "kind": "Средний узел ремесла",
+     "lines": [
+      "−25% к расходу топлива построенными светильниками",
+      "Open-Air Bench: The bench works under open sky",
+      "Пол как крыша: Floors you build are a full roof: what is under them stays dry, is sheltered from rain and counts as under a roof for fires, beds, rest and stations",
+      "Auto Doors: Doors you build open as anyone approaches and close behind them",
+      "Nearby Chests (building): Building draws materials from nearby chests",
+      "Light Frame: Pieces you built lose only 50% of the usual support",
+      "Weatherproof: Pieces you built take no damage from rain, water or waves",
+      "Hugin's Flight: Клавиша  с инструментом строительства в руках поднимает взгляд ввысь, как Хугин: тело зависает на месте, а детали ставятся в пределах дальности строительства от ворона, до 30 м от тела; With a hammer or hoe in hand, press B to send your sight aloft like Odin's raven and build from the air while your body stays safe on the ground. The view flies up to 30 m from you; pieces are placed within your Building range of the view and still need a workbench in reach and your materials",
+      "No Bounds: Build and remove pieces where building is forbidden: dungeons, boss altars, traders' camps and other no-build places"
+     ],
+     "link": "crafting/node/own697.md",
+     "name": "Light source fuel consumption"
+    }
+   },
+   "own699": {
+    "new": {
+     "kind": "Средний узел ремесла",
+     "lines": [
+      "+3 уровня комфорта",
+      "Open-Air Bench: The bench works under open sky",
+      "Пол как крыша: Floors you build are a full roof: what is under them stays dry, is sheltered from rain and counts as under a roof for fires, beds, rest and stations",
+      "Auto Doors: Doors you build open as anyone approaches and close behind them",
+      "Nearby Chests (building): Building draws materials from nearby chests",
+      "Light Frame: Pieces you built lose only 50% of the usual support",
+      "Weatherproof: Pieces you built take no damage from rain, water or waves",
+      "Hugin's Flight: Клавиша  с инструментом строительства в руках поднимает взгляд ввысь, как Хугин: тело зависает на месте, а детали ставятся в пределах дальности строительства от ворона, до 30 м от тела; With a hammer or hoe in hand, press B to send your sight aloft like Odin's raven and build from the air while your body stays safe on the ground. The view flies up to 30 m from you; pieces are placed within your Building range of the view and still need a workbench in reach and your materials",
+      "No Bounds: Build and remove pieces where building is forbidden: dungeons, boss altars, traders' camps and other no-build places",
+      "Бережный строитель: Вы не можете наносить урон постройкам игроков"
+     ],
+     "link": "crafting/node/own699.md",
+     "name": "Built shelter comfort"
+    },
+    "old": {
+     "kind": "Средний узел ремесла",
+     "lines": [
+      "+3 уровня комфорта",
+      "Open-Air Bench: The bench works under open sky",
+      "Пол как крыша: Floors you build are a full roof: what is under them stays dry, is sheltered from rain and counts as under a roof for fires, beds, rest and stations",
+      "Auto Doors: Doors you build open as anyone approaches and close behind them",
+      "Nearby Chests (building): Building draws materials from nearby chests",
+      "Light Frame: Pieces you built lose only 50% of the usual support",
+      "Weatherproof: Pieces you built take no damage from rain, water or waves",
+      "Hugin's Flight: Клавиша  с инструментом строительства в руках поднимает взгляд ввысь, как Хугин: тело зависает на месте, а детали ставятся в пределах дальности строительства от ворона, до 30 м от тела; With a hammer or hoe in hand, press B to send your sight aloft like Odin's raven and build from the air while your body stays safe on the ground. The view flies up to 30 m from you; pieces are placed within your Building range of the view and still need a workbench in reach and your materials",
+      "No Bounds: Build and remove pieces where building is forbidden: dungeons, boss altars, traders' camps and other no-build places"
+     ],
+     "link": "crafting/node/own699.md",
+     "name": "Built shelter comfort"
+    }
+   },
+   "own709": {
+    "new": {
+     "kind": "Средний узел ремесла",
+     "lines": [
+      "25% увеличение радиуса верстака",
+      "Open-Air Bench: The bench works under open sky",
+      "Пол как крыша: Floors you build are a full roof: what is under them stays dry, is sheltered from rain and counts as under a roof for fires, beds, rest and stations",
+      "Auto Doors: Doors you build open as anyone approaches and close behind them",
+      "Nearby Chests (building): Building draws materials from nearby chests",
+      "Light Frame: Pieces you built lose only 50% of the usual support",
+      "Weatherproof: Pieces you built take no damage from rain, water or waves",
+      "Hugin's Flight: Клавиша  с инструментом строительства в руках поднимает взгляд ввысь, как Хугин: тело зависает на месте, а детали ставятся в пределах дальности строительства от ворона, до 30 м от тела; With a hammer or hoe in hand, press B to send your sight aloft like Odin's raven and build from the air while your body stays safe on the ground. The view flies up to 30 m from you; pieces are placed within your Building range of the view and still need a workbench in reach and your materials",
+      "No Bounds: Build and remove pieces where building is forbidden: dungeons, boss altars, traders' camps and other no-build places",
+      "Бережный строитель: Вы не можете наносить урон постройкам игроков"
+     ],
+     "link": "crafting/node/own709.md",
+     "name": "Workbench range"
+    },
+    "old": {
+     "kind": "Средний узел ремесла",
+     "lines": [
+      "25% увеличение радиуса верстака",
+      "Open-Air Bench: The bench works under open sky",
+      "Пол как крыша: Floors you build are a full roof: what is under them stays dry, is sheltered from rain and counts as under a roof for fires, beds, rest and stations",
+      "Auto Doors: Doors you build open as anyone approaches and close behind them",
+      "Nearby Chests (building): Building draws materials from nearby chests",
+      "Light Frame: Pieces you built lose only 50% of the usual support",
+      "Weatherproof: Pieces you built take no damage from rain, water or waves",
+      "Hugin's Flight: Клавиша  с инструментом строительства в руках поднимает взгляд ввысь, как Хугин: тело зависает на месте, а детали ставятся в пределах дальности строительства от ворона, до 30 м от тела; With a hammer or hoe in hand, press B to send your sight aloft like Odin's raven and build from the air while your body stays safe on the ground. The view flies up to 30 m from you; pieces are placed within your Building range of the view and still need a workbench in reach and your materials",
+      "No Bounds: Build and remove pieces where building is forbidden: dungeons, boss altars, traders' camps and other no-build places"
+     ],
+     "link": "crafting/node/own709.md",
+     "name": "Workbench range"
+    }
+   },
+   "own710": {
+    "new": {
+     "kind": "Средний узел ремесла",
+     "lines": [
+      "+8% шанса вернуть каждую потерянную единицу дерева при разборе",
+      "Open-Air Bench: The bench works under open sky",
+      "Пол как крыша: Floors you build are a full roof: what is under them stays dry, is sheltered from rain and counts as under a roof for fires, beds, rest and stations",
+      "Auto Doors: Doors you build open as anyone approaches and close behind them",
+      "Nearby Chests (building): Building draws materials from nearby chests",
+      "Light Frame: Pieces you built lose only 50% of the usual support",
+      "Weatherproof: Pieces you built take no damage from rain, water or waves",
+      "Hugin's Flight: Клавиша  с инструментом строительства в руках поднимает взгляд ввысь, как Хугин: тело зависает на месте, а детали ставятся в пределах дальности строительства от ворона, до 30 м от тела; With a hammer or hoe in hand, press B to send your sight aloft like Odin's raven and build from the air while your body stays safe on the ground. The view flies up to 30 m from you; pieces are placed within your Building range of the view and still need a workbench in reach and your materials",
+      "No Bounds: Build and remove pieces where building is forbidden: dungeons, boss altars, traders' camps and other no-build places",
+      "Бережный строитель: Вы не можете наносить урон постройкам игроков"
+     ],
+     "link": "crafting/node/own710.md",
+     "name": "Wood recovery on salvage"
+    },
+    "old": {
+     "kind": "Средний узел ремесла",
+     "lines": [
+      "+8% шанса вернуть каждую потерянную единицу дерева при разборе",
+      "Open-Air Bench: The bench works under open sky",
+      "Пол как крыша: Floors you build are a full roof: what is under them stays dry, is sheltered from rain and counts as under a roof for fires, beds, rest and stations",
+      "Auto Doors: Doors you build open as anyone approaches and close behind them",
+      "Nearby Chests (building): Building draws materials from nearby chests",
+      "Light Frame: Pieces you built lose only 50% of the usual support",
+      "Weatherproof: Pieces you built take no damage from rain, water or waves",
+      "Hugin's Flight: Клавиша  с инструментом строительства в руках поднимает взгляд ввысь, как Хугин: тело зависает на месте, а детали ставятся в пределах дальности строительства от ворона, до 30 м от тела; With a hammer or hoe in hand, press B to send your sight aloft like Odin's raven and build from the air while your body stays safe on the ground. The view flies up to 30 m from you; pieces are placed within your Building range of the view and still need a workbench in reach and your materials",
+      "No Bounds: Build and remove pieces where building is forbidden: dungeons, boss altars, traders' camps and other no-build places"
+     ],
+     "link": "crafting/node/own710.md",
+     "name": "Wood recovery on salvage"
+    }
+   },
+   "own711": {
+    "new": {
+     "kind": "Средний узел ремесла",
+     "lines": [
+      "15% увеличение прочности возведённых построек",
+      "Open-Air Bench: The bench works under open sky",
+      "Пол как крыша: Floors you build are a full roof: what is under them stays dry, is sheltered from rain and counts as under a roof for fires, beds, rest and stations",
+      "Auto Doors: Doors you build open as anyone approaches and close behind them",
+      "Nearby Chests (building): Building draws materials from nearby chests",
+      "Light Frame: Pieces you built lose only 50% of the usual support",
+      "Weatherproof: Pieces you built take no damage from rain, water or waves",
+      "Hugin's Flight: Клавиша  с инструментом строительства в руках поднимает взгляд ввысь, как Хугин: тело зависает на месте, а детали ставятся в пределах дальности строительства от ворона, до 30 м от тела; With a hammer or hoe in hand, press B to send your sight aloft like Odin's raven and build from the air while your body stays safe on the ground. The view flies up to 30 m from you; pieces are placed within your Building range of the view and still need a workbench in reach and your materials",
+      "No Bounds: Build and remove pieces where building is forbidden: dungeons, boss altars, traders' camps and other no-build places",
+      "Бережный строитель: Вы не можете наносить урон постройкам игроков"
+     ],
+     "link": "crafting/node/own711.md",
+     "name": "Built structure durability"
+    },
+    "old": {
+     "kind": "Средний узел ремесла",
+     "lines": [
+      "15% увеличение прочности возведённых построек",
+      "Open-Air Bench: The bench works under open sky",
+      "Пол как крыша: Floors you build are a full roof: what is under them stays dry, is sheltered from rain and counts as under a roof for fires, beds, rest and stations",
+      "Auto Doors: Doors you build open as anyone approaches and close behind them",
+      "Nearby Chests (building): Building draws materials from nearby chests",
+      "Light Frame: Pieces you built lose only 50% of the usual support",
+      "Weatherproof: Pieces you built take no damage from rain, water or waves",
+      "Hugin's Flight: Клавиша  с инструментом строительства в руках поднимает взгляд ввысь, как Хугин: тело зависает на месте, а детали ставятся в пределах дальности строительства от ворона, до 30 м от тела; With a hammer or hoe in hand, press B to send your sight aloft like Odin's raven and build from the air while your body stays safe on the ground. The view flies up to 30 m from you; pieces are placed within your Building range of the view and still need a workbench in reach and your materials",
+      "No Bounds: Build and remove pieces where building is forbidden: dungeons, boss altars, traders' camps and other no-build places"
+     ],
+     "link": "crafting/node/own711.md",
+     "name": "Built structure durability"
+    }
+   },
+   "own713": {
+    "new": {
+     "kind": "Средний узел ремесла",
+     "lines": [
+      "+15% снижения стоимости построек",
+      "Open-Air Bench: The bench works under open sky",
+      "Пол как крыша: Floors you build are a full roof: what is under them stays dry, is sheltered from rain and counts as under a roof for fires, beds, rest and stations",
+      "Auto Doors: Doors you build open as anyone approaches and close behind them",
+      "Nearby Chests (building): Building draws materials from nearby chests",
+      "Light Frame: Pieces you built lose only 50% of the usual support",
+      "Weatherproof: Pieces you built take no damage from rain, water or waves",
+      "Hugin's Flight: Клавиша  с инструментом строительства в руках поднимает взгляд ввысь, как Хугин: тело зависает на месте, а детали ставятся в пределах дальности строительства от ворона, до 30 м от тела; With a hammer or hoe in hand, press B to send your sight aloft like Odin's raven and build from the air while your body stays safe on the ground. The view flies up to 30 m from you; pieces are placed within your Building range of the view and still need a workbench in reach and your materials",
+      "No Bounds: Build and remove pieces where building is forbidden: dungeons, boss altars, traders' camps and other no-build places",
+      "Бережный строитель: Вы не можете наносить урон постройкам игроков"
+     ],
+     "link": "crafting/node/own713.md",
+     "name": "Building cost"
+    },
+    "old": {
+     "kind": "Средний узел ремесла",
+     "lines": [
+      "+15% снижения стоимости построек",
+      "Open-Air Bench: The bench works under open sky",
+      "Пол как крыша: Floors you build are a full roof: what is under them stays dry, is sheltered from rain and counts as under a roof for fires, beds, rest and stations",
+      "Auto Doors: Doors you build open as anyone approaches and close behind them",
+      "Nearby Chests (building): Building draws materials from nearby chests",
+      "Light Frame: Pieces you built lose only 50% of the usual support",
+      "Weatherproof: Pieces you built take no damage from rain, water or waves",
+      "Hugin's Flight: Клавиша  с инструментом строительства в руках поднимает взгляд ввысь, как Хугин: тело зависает на месте, а детали ставятся в пределах дальности строительства от ворона, до 30 м от тела; With a hammer or hoe in hand, press B to send your sight aloft like Odin's raven and build from the air while your body stays safe on the ground. The view flies up to 30 m from you; pieces are placed within your Building range of the view and still need a workbench in reach and your materials",
+      "No Bounds: Build and remove pieces where building is forbidden: dungeons, boss altars, traders' camps and other no-build places"
+     ],
+     "link": "crafting/node/own713.md",
+     "name": "Building cost"
+    }
+   },
+   "own776": {
+    "new": {
+     "kind": "Средний узел ремесла",
+     "lines": [
+      "+5% шанса на лишнее качество при изготовлении или улучшении снаряжения кузнеца",
+      "Nearby Chests (equipment): Crafting and upgrading equipment - weapons, armour, shields and tools - can use materials from accessible nearby chests.",
+      "Master's Mark: Allows upgrading Smith equipment one quality level beyond its normal maximum. Items without upgrades remain unupgradeable. Both profession masteries on a mixed recipe extend its limit only once. Station and material requirements still apply.",
+      "Chest Feed: Smelters and kilns pull ore and coal from nearby chests on their own, with the bonuses of the chest owner. Placing a smelter shows the pull radius with the same ring as crafting from nearby chests. Works with every smelter, kiln and chest in the game",
+      "Balanced Blade: 10% увеличение урона для снаряжения кузнеца; Crafting or upgrading weapons using Smith materials has a 25% chance to add an item affix that increases their damage. Each eligible mastery rolls independently.",
+      "Whetstones: В кузне можно делать точильные камни. ПКМ по камню, затем ЛКМ по экипировке восстанавливает 25% прочности, до уровня металла камня.; You can craft whetstones: a consumable that repairs the weapon or tool in your hands by 25%, away from any workbench. Each metal tier has its own whetstone",
+      "Forge Comfort: 3% увеличение скорости плавки и обжига угля за каждую единицу комфорт; Smelters, kilns and forges near you work faster with every point of comfort, the way hives do",
+      "Fitted Plate: 10% увеличение брони для снаряжения кузнеца; Crafting or upgrading heavy armour has a 25% chance to add an item affix that increases its armour. Each eligible mastery rolls independently."
+     ],
+     "link": "crafting/node/own776.md",
+     "name": "Smith equipment extra quality"
+    },
+    "old": {
+     "kind": "Средний узел ремесла",
+     "lines": [
+      "+5% шанса на лишнее качество при изготовлении или улучшении снаряжения кузнеца",
+      "Nearby Chests (equipment): Crafting and upgrading equipment - weapons, armour, shields and tools - can use materials from accessible nearby chests.",
+      "Master's Mark: Allows upgrading Smith equipment one quality level beyond its normal maximum. Items without upgrades remain unupgradeable. Both profession masteries on a mixed recipe extend its limit only once. Station and material requirements still apply.",
+      "Chest Feed: Smelters and kilns pull ore and coal from nearby chests on their own, with the bonuses of the chest owner. Placing a smelter shows the pull radius with the same ring as crafting from nearby chests. Works with every smelter, kiln and chest in the game",
+      "Balanced Blade: 10% увеличение урона для снаряжения кузнеца; Crafting or upgrading weapons using Smith materials has a 25% chance to add an item affix that increases their damage. Each eligible mastery rolls independently.",
+      "Whetstones: В кузне можно делать точильные камни: расходник, который чинит оружие или инструмент в руке на 25%, до его уровня металла; You can craft whetstones: a consumable that repairs the weapon or tool in your hands by 25%, away from any workbench. Each metal tier has its own whetstone",
+      "Forge Comfort: 3% увеличение скорости плавки и обжига угля за каждую единицу комфорт; Smelters, kilns and forges near you work faster with every point of comfort, the way hives do",
+      "Fitted Plate: 10% увеличение брони для снаряжения кузнеца; Crafting or upgrading heavy armour has a 25% chance to add an item affix that increases its armour. Each eligible mastery rolls independently."
+     ],
+     "link": "crafting/node/own776.md",
+     "name": "Smith equipment extra quality"
+    }
+   },
+   "own777": {
+    "new": {
+     "kind": "Средний узел ремесла",
+     "lines": [
+      "15% увеличение прочность изготовленного снаряжения кузнеца",
+      "Nearby Chests (equipment): Crafting and upgrading equipment - weapons, armour, shields and tools - can use materials from accessible nearby chests.",
+      "Master's Mark: Allows upgrading Smith equipment one quality level beyond its normal maximum. Items without upgrades remain unupgradeable. Both profession masteries on a mixed recipe extend its limit only once. Station and material requirements still apply.",
+      "Chest Feed: Smelters and kilns pull ore and coal from nearby chests on their own, with the bonuses of the chest owner. Placing a smelter shows the pull radius with the same ring as crafting from nearby chests. Works with every smelter, kiln and chest in the game",
+      "Balanced Blade: 10% увеличение урона для снаряжения кузнеца; Crafting or upgrading weapons using Smith materials has a 25% chance to add an item affix that increases their damage. Each eligible mastery rolls independently.",
+      "Whetstones: В кузне можно делать точильные камни. ПКМ по камню, затем ЛКМ по экипировке восстанавливает 25% прочности, до уровня металла камня.; You can craft whetstones: a consumable that repairs the weapon or tool in your hands by 25%, away from any workbench. Each metal tier has its own whetstone",
+      "Forge Comfort: 3% увеличение скорости плавки и обжига угля за каждую единицу комфорт; Smelters, kilns and forges near you work faster with every point of comfort, the way hives do",
+      "Fitted Plate: 10% увеличение брони для снаряжения кузнеца; Crafting or upgrading heavy armour has a 25% chance to add an item affix that increases its armour. Each eligible mastery rolls independently."
+     ],
+     "link": "crafting/node/own777.md",
+     "name": "Crafted Smith equipment durability"
+    },
+    "old": {
+     "kind": "Средний узел ремесла",
+     "lines": [
+      "15% увеличение прочность изготовленного снаряжения кузнеца",
+      "Nearby Chests (equipment): Crafting and upgrading equipment - weapons, armour, shields and tools - can use materials from accessible nearby chests.",
+      "Master's Mark: Allows upgrading Smith equipment one quality level beyond its normal maximum. Items without upgrades remain unupgradeable. Both profession masteries on a mixed recipe extend its limit only once. Station and material requirements still apply.",
+      "Chest Feed: Smelters and kilns pull ore and coal from nearby chests on their own, with the bonuses of the chest owner. Placing a smelter shows the pull radius with the same ring as crafting from nearby chests. Works with every smelter, kiln and chest in the game",
+      "Balanced Blade: 10% увеличение урона для снаряжения кузнеца; Crafting or upgrading weapons using Smith materials has a 25% chance to add an item affix that increases their damage. Each eligible mastery rolls independently.",
+      "Whetstones: В кузне можно делать точильные камни: расходник, который чинит оружие или инструмент в руке на 25%, до его уровня металла; You can craft whetstones: a consumable that repairs the weapon or tool in your hands by 25%, away from any workbench. Each metal tier has its own whetstone",
+      "Forge Comfort: 3% увеличение скорости плавки и обжига угля за каждую единицу комфорт; Smelters, kilns and forges near you work faster with every point of comfort, the way hives do",
+      "Fitted Plate: 10% увеличение брони для снаряжения кузнеца; Crafting or upgrading heavy armour has a 25% chance to add an item affix that increases its armour. Each eligible mastery rolls independently."
+     ],
+     "link": "crafting/node/own777.md",
+     "name": "Crafted Smith equipment durability"
+    }
+   },
+   "own781": {
+    "new": {
+     "kind": "Средний узел ремесла",
+     "lines": [
+      "20% увеличение скорость изготовления снаряжения кузнеца",
+      "Nearby Chests (equipment): Crafting and upgrading equipment - weapons, armour, shields and tools - can use materials from accessible nearby chests.",
+      "Master's Mark: Allows upgrading Smith equipment one quality level beyond its normal maximum. Items without upgrades remain unupgradeable. Both profession masteries on a mixed recipe extend its limit only once. Station and material requirements still apply.",
+      "Chest Feed: Smelters and kilns pull ore and coal from nearby chests on their own, with the bonuses of the chest owner. Placing a smelter shows the pull radius with the same ring as crafting from nearby chests. Works with every smelter, kiln and chest in the game",
+      "Balanced Blade: 10% увеличение урона для снаряжения кузнеца; Crafting or upgrading weapons using Smith materials has a 25% chance to add an item affix that increases their damage. Each eligible mastery rolls independently.",
+      "Whetstones: В кузне можно делать точильные камни. ПКМ по камню, затем ЛКМ по экипировке восстанавливает 25% прочности, до уровня металла камня.; You can craft whetstones: a consumable that repairs the weapon or tool in your hands by 25%, away from any workbench. Each metal tier has its own whetstone",
+      "Forge Comfort: 3% увеличение скорости плавки и обжига угля за каждую единицу комфорт; Smelters, kilns and forges near you work faster with every point of comfort, the way hives do",
+      "Fitted Plate: 10% увеличение брони для снаряжения кузнеца; Crafting or upgrading heavy armour has a 25% chance to add an item affix that increases its armour. Each eligible mastery rolls independently."
+     ],
+     "link": "crafting/node/own781.md",
+     "name": "Smith equipment crafting speed"
+    },
+    "old": {
+     "kind": "Средний узел ремесла",
+     "lines": [
+      "20% увеличение скорость изготовления снаряжения кузнеца",
+      "Nearby Chests (equipment): Crafting and upgrading equipment - weapons, armour, shields and tools - can use materials from accessible nearby chests.",
+      "Master's Mark: Allows upgrading Smith equipment one quality level beyond its normal maximum. Items without upgrades remain unupgradeable. Both profession masteries on a mixed recipe extend its limit only once. Station and material requirements still apply.",
+      "Chest Feed: Smelters and kilns pull ore and coal from nearby chests on their own, with the bonuses of the chest owner. Placing a smelter shows the pull radius with the same ring as crafting from nearby chests. Works with every smelter, kiln and chest in the game",
+      "Balanced Blade: 10% увеличение урона для снаряжения кузнеца; Crafting or upgrading weapons using Smith materials has a 25% chance to add an item affix that increases their damage. Each eligible mastery rolls independently.",
+      "Whetstones: В кузне можно делать точильные камни: расходник, который чинит оружие или инструмент в руке на 25%, до его уровня металла; You can craft whetstones: a consumable that repairs the weapon or tool in your hands by 25%, away from any workbench. Each metal tier has its own whetstone",
+      "Forge Comfort: 3% увеличение скорости плавки и обжига угля за каждую единицу комфорт; Smelters, kilns and forges near you work faster with every point of comfort, the way hives do",
+      "Fitted Plate: 10% увеличение брони для снаряжения кузнеца; Crafting or upgrading heavy armour has a 25% chance to add an item affix that increases its armour. Each eligible mastery rolls independently."
+     ],
+     "link": "crafting/node/own781.md",
+     "name": "Smith equipment crafting speed"
+    }
+   },
+   "own804": {
+    "new": {
+     "kind": "Средний узел ремесла",
+     "lines": [
+      "+5% шанса на прибавку слитков",
+      "Nearby Chests (equipment): Crafting and upgrading equipment - weapons, armour, shields and tools - can use materials from accessible nearby chests.",
+      "Master's Mark: Allows upgrading Smith equipment one quality level beyond its normal maximum. Items without upgrades remain unupgradeable. Both profession masteries on a mixed recipe extend its limit only once. Station and material requirements still apply.",
+      "Chest Feed: Smelters and kilns pull ore and coal from nearby chests on their own, with the bonuses of the chest owner. Placing a smelter shows the pull radius with the same ring as crafting from nearby chests. Works with every smelter, kiln and chest in the game",
+      "Balanced Blade: 10% увеличение урона для снаряжения кузнеца; Crafting or upgrading weapons using Smith materials has a 25% chance to add an item affix that increases their damage. Each eligible mastery rolls independently.",
+      "Whetstones: В кузне можно делать точильные камни. ПКМ по камню, затем ЛКМ по экипировке восстанавливает 25% прочности, до уровня металла камня.; You can craft whetstones: a consumable that repairs the weapon or tool in your hands by 25%, away from any workbench. Each metal tier has its own whetstone",
+      "Forge Comfort: 3% увеличение скорости плавки и обжига угля за каждую единицу комфорт; Smelters, kilns and forges near you work faster with every point of comfort, the way hives do",
+      "Fitted Plate: 10% увеличение брони для снаряжения кузнеца; Crafting or upgrading heavy armour has a 25% chance to add an item affix that increases its armour. Each eligible mastery rolls independently."
+     ],
+     "link": "crafting/node/own804.md",
+     "name": "Extra bar on smelt"
+    },
+    "old": {
+     "kind": "Средний узел ремесла",
+     "lines": [
+      "+5% шанса на прибавку слитков",
+      "Nearby Chests (equipment): Crafting and upgrading equipment - weapons, armour, shields and tools - can use materials from accessible nearby chests.",
+      "Master's Mark: Allows upgrading Smith equipment one quality level beyond its normal maximum. Items without upgrades remain unupgradeable. Both profession masteries on a mixed recipe extend its limit only once. Station and material requirements still apply.",
+      "Chest Feed: Smelters and kilns pull ore and coal from nearby chests on their own, with the bonuses of the chest owner. Placing a smelter shows the pull radius with the same ring as crafting from nearby chests. Works with every smelter, kiln and chest in the game",
+      "Balanced Blade: 10% увеличение урона для снаряжения кузнеца; Crafting or upgrading weapons using Smith materials has a 25% chance to add an item affix that increases their damage. Each eligible mastery rolls independently.",
+      "Whetstones: В кузне можно делать точильные камни: расходник, который чинит оружие или инструмент в руке на 25%, до его уровня металла; You can craft whetstones: a consumable that repairs the weapon or tool in your hands by 25%, away from any workbench. Each metal tier has its own whetstone",
+      "Forge Comfort: 3% увеличение скорости плавки и обжига угля за каждую единицу комфорт; Smelters, kilns and forges near you work faster with every point of comfort, the way hives do",
+      "Fitted Plate: 10% увеличение брони для снаряжения кузнеца; Crafting or upgrading heavy armour has a 25% chance to add an item affix that increases its armour. Each eligible mastery rolls independently."
+     ],
+     "link": "crafting/node/own804.md",
+     "name": "Extra bar on smelt"
+    }
+   },
+   "own814": {
+    "new": {
+     "kind": "Средний узел ремесла",
+     "lines": [
+      "20% увеличение скорости плавки и обжига угля",
+      "Nearby Chests (equipment): Crafting and upgrading equipment - weapons, armour, shields and tools - can use materials from accessible nearby chests.",
+      "Master's Mark: Allows upgrading Smith equipment one quality level beyond its normal maximum. Items without upgrades remain unupgradeable. Both profession masteries on a mixed recipe extend its limit only once. Station and material requirements still apply.",
+      "Chest Feed: Smelters and kilns pull ore and coal from nearby chests on their own, with the bonuses of the chest owner. Placing a smelter shows the pull radius with the same ring as crafting from nearby chests. Works with every smelter, kiln and chest in the game",
+      "Balanced Blade: 10% увеличение урона для снаряжения кузнеца; Crafting or upgrading weapons using Smith materials has a 25% chance to add an item affix that increases their damage. Each eligible mastery rolls independently.",
+      "Whetstones: В кузне можно делать точильные камни. ПКМ по камню, затем ЛКМ по экипировке восстанавливает 25% прочности, до уровня металла камня.; You can craft whetstones: a consumable that repairs the weapon or tool in your hands by 25%, away from any workbench. Each metal tier has its own whetstone",
+      "Forge Comfort: 3% увеличение скорости плавки и обжига угля за каждую единицу комфорт; Smelters, kilns and forges near you work faster with every point of comfort, the way hives do",
+      "Fitted Plate: 10% увеличение брони для снаряжения кузнеца; Crafting or upgrading heavy armour has a 25% chance to add an item affix that increases its armour. Each eligible mastery rolls independently."
+     ],
+     "link": "crafting/node/own814.md",
+     "name": "Smelting speed"
+    },
+    "old": {
+     "kind": "Средний узел ремесла",
+     "lines": [
+      "20% увеличение скорости плавки и обжига угля",
+      "Nearby Chests (equipment): Crafting and upgrading equipment - weapons, armour, shields and tools - can use materials from accessible nearby chests.",
+      "Master's Mark: Allows upgrading Smith equipment one quality level beyond its normal maximum. Items without upgrades remain unupgradeable. Both profession masteries on a mixed recipe extend its limit only once. Station and material requirements still apply.",
+      "Chest Feed: Smelters and kilns pull ore and coal from nearby chests on their own, with the bonuses of the chest owner. Placing a smelter shows the pull radius with the same ring as crafting from nearby chests. Works with every smelter, kiln and chest in the game",
+      "Balanced Blade: 10% увеличение урона для снаряжения кузнеца; Crafting or upgrading weapons using Smith materials has a 25% chance to add an item affix that increases their damage. Each eligible mastery rolls independently.",
+      "Whetstones: В кузне можно делать точильные камни: расходник, который чинит оружие или инструмент в руке на 25%, до его уровня металла; You can craft whetstones: a consumable that repairs the weapon or tool in your hands by 25%, away from any workbench. Each metal tier has its own whetstone",
+      "Forge Comfort: 3% увеличение скорости плавки и обжига угля за каждую единицу комфорт; Smelters, kilns and forges near you work faster with every point of comfort, the way hives do",
+      "Fitted Plate: 10% увеличение брони для снаряжения кузнеца; Crafting or upgrading heavy armour has a 25% chance to add an item affix that increases its armour. Each eligible mastery rolls independently."
+     ],
+     "link": "crafting/node/own814.md",
+     "name": "Smelting speed"
+    }
+   },
+   "own818": {
+    "new": {
+     "kind": "Средний узел ремесла",
+     "lines": [
+      "+8% шанса вернуть каждую потерянную единицу металла при разборе",
+      "Nearby Chests (equipment): Crafting and upgrading equipment - weapons, armour, shields and tools - can use materials from accessible nearby chests.",
+      "Master's Mark: Allows upgrading Smith equipment one quality level beyond its normal maximum. Items without upgrades remain unupgradeable. Both profession masteries on a mixed recipe extend its limit only once. Station and material requirements still apply.",
+      "Chest Feed: Smelters and kilns pull ore and coal from nearby chests on their own, with the bonuses of the chest owner. Placing a smelter shows the pull radius with the same ring as crafting from nearby chests. Works with every smelter, kiln and chest in the game",
+      "Balanced Blade: 10% увеличение урона для снаряжения кузнеца; Crafting or upgrading weapons using Smith materials has a 25% chance to add an item affix that increases their damage. Each eligible mastery rolls independently.",
+      "Whetstones: В кузне можно делать точильные камни. ПКМ по камню, затем ЛКМ по экипировке восстанавливает 25% прочности, до уровня металла камня.; You can craft whetstones: a consumable that repairs the weapon or tool in your hands by 25%, away from any workbench. Each metal tier has its own whetstone",
+      "Forge Comfort: 3% увеличение скорости плавки и обжига угля за каждую единицу комфорт; Smelters, kilns and forges near you work faster with every point of comfort, the way hives do",
+      "Fitted Plate: 10% увеличение брони для снаряжения кузнеца; Crafting or upgrading heavy armour has a 25% chance to add an item affix that increases its armour. Each eligible mastery rolls independently."
+     ],
+     "link": "crafting/node/own818.md",
+     "name": "Metal recovery on salvage"
+    },
+    "old": {
+     "kind": "Средний узел ремесла",
+     "lines": [
+      "+8% шанса вернуть каждую потерянную единицу металла при разборе",
+      "Nearby Chests (equipment): Crafting and upgrading equipment - weapons, armour, shields and tools - can use materials from accessible nearby chests.",
+      "Master's Mark: Allows upgrading Smith equipment one quality level beyond its normal maximum. Items without upgrades remain unupgradeable. Both profession masteries on a mixed recipe extend its limit only once. Station and material requirements still apply.",
+      "Chest Feed: Smelters and kilns pull ore and coal from nearby chests on their own, with the bonuses of the chest owner. Placing a smelter shows the pull radius with the same ring as crafting from nearby chests. Works with every smelter, kiln and chest in the game",
+      "Balanced Blade: 10% увеличение урона для снаряжения кузнеца; Crafting or upgrading weapons using Smith materials has a 25% chance to add an item affix that increases their damage. Each eligible mastery rolls independently.",
+      "Whetstones: В кузне можно делать точильные камни: расходник, который чинит оружие или инструмент в руке на 25%, до его уровня металла; You can craft whetstones: a consumable that repairs the weapon or tool in your hands by 25%, away from any workbench. Each metal tier has its own whetstone",
+      "Forge Comfort: 3% увеличение скорости плавки и обжига угля за каждую единицу комфорт; Smelters, kilns and forges near you work faster with every point of comfort, the way hives do",
+      "Fitted Plate: 10% увеличение брони для снаряжения кузнеца; Crafting or upgrading heavy armour has a 25% chance to add an item affix that increases its armour. Each eligible mastery rolls independently."
+     ],
+     "link": "crafting/node/own818.md",
+     "name": "Metal recovery on salvage"
+    }
+   },
+   "own834": {
+    "new": {
+     "kind": "Средний узел ремесла",
+     "lines": [
+      "40% увеличение вместимости слитков на ячейку",
+      "Nearby Chests (equipment): Crafting and upgrading equipment - weapons, armour, shields and tools - can use materials from accessible nearby chests.",
+      "Master's Mark: Allows upgrading Smith equipment one quality level beyond its normal maximum. Items without upgrades remain unupgradeable. Both profession masteries on a mixed recipe extend its limit only once. Station and material requirements still apply.",
+      "Chest Feed: Smelters and kilns pull ore and coal from nearby chests on their own, with the bonuses of the chest owner. Placing a smelter shows the pull radius with the same ring as crafting from nearby chests. Works with every smelter, kiln and chest in the game",
+      "Balanced Blade: 10% увеличение урона для снаряжения кузнеца; Crafting or upgrading weapons using Smith materials has a 25% chance to add an item affix that increases their damage. Each eligible mastery rolls independently.",
+      "Whetstones: В кузне можно делать точильные камни. ПКМ по камню, затем ЛКМ по экипировке восстанавливает 25% прочности, до уровня металла камня.; You can craft whetstones: a consumable that repairs the weapon or tool in your hands by 25%, away from any workbench. Each metal tier has its own whetstone",
+      "Forge Comfort: 3% увеличение скорости плавки и обжига угля за каждую единицу комфорт; Smelters, kilns and forges near you work faster with every point of comfort, the way hives do",
+      "Fitted Plate: 10% увеличение брони для снаряжения кузнеца; Crafting or upgrading heavy armour has a 25% chance to add an item affix that increases its armour. Each eligible mastery rolls independently."
+     ],
+     "link": "crafting/node/own834.md",
+     "name": "Bar capacity"
+    },
+    "old": {
+     "kind": "Средний узел ремесла",
+     "lines": [
+      "40% увеличение вместимости слитков на ячейку",
+      "Nearby Chests (equipment): Crafting and upgrading equipment - weapons, armour, shields and tools - can use materials from accessible nearby chests.",
+      "Master's Mark: Allows upgrading Smith equipment one quality level beyond its normal maximum. Items without upgrades remain unupgradeable. Both profession masteries on a mixed recipe extend its limit only once. Station and material requirements still apply.",
+      "Chest Feed: Smelters and kilns pull ore and coal from nearby chests on their own, with the bonuses of the chest owner. Placing a smelter shows the pull radius with the same ring as crafting from nearby chests. Works with every smelter, kiln and chest in the game",
+      "Balanced Blade: 10% увеличение урона для снаряжения кузнеца; Crafting or upgrading weapons using Smith materials has a 25% chance to add an item affix that increases their damage. Each eligible mastery rolls independently.",
+      "Whetstones: В кузне можно делать точильные камни: расходник, который чинит оружие или инструмент в руке на 25%, до его уровня металла; You can craft whetstones: a consumable that repairs the weapon or tool in your hands by 25%, away from any workbench. Each metal tier has its own whetstone",
+      "Forge Comfort: 3% увеличение скорости плавки и обжига угля за каждую единицу комфорт; Smelters, kilns and forges near you work faster with every point of comfort, the way hives do",
+      "Fitted Plate: 10% увеличение брони для снаряжения кузнеца; Crafting or upgrading heavy armour has a 25% chance to add an item affix that increases its armour. Each eligible mastery rolls independently."
+     ],
+     "link": "crafting/node/own834.md",
+     "name": "Bar capacity"
+    }
+   },
+   "own850": {
+    "new": {
+     "kind": "Средний узел ремесла",
+     "lines": [
+      "15% уменьшение bar и coal weight",
+      "Nearby Chests (equipment): Crafting and upgrading equipment - weapons, armour, shields and tools - can use materials from accessible nearby chests.",
+      "Master's Mark: Allows upgrading Smith equipment one quality level beyond its normal maximum. Items without upgrades remain unupgradeable. Both profession masteries on a mixed recipe extend its limit only once. Station and material requirements still apply.",
+      "Chest Feed: Smelters and kilns pull ore and coal from nearby chests on their own, with the bonuses of the chest owner. Placing a smelter shows the pull radius with the same ring as crafting from nearby chests. Works with every smelter, kiln and chest in the game",
+      "Balanced Blade: 10% увеличение урона для снаряжения кузнеца; Crafting or upgrading weapons using Smith materials has a 25% chance to add an item affix that increases their damage. Each eligible mastery rolls independently.",
+      "Whetstones: В кузне можно делать точильные камни. ПКМ по камню, затем ЛКМ по экипировке восстанавливает 25% прочности, до уровня металла камня.; You can craft whetstones: a consumable that repairs the weapon or tool in your hands by 25%, away from any workbench. Each metal tier has its own whetstone",
+      "Forge Comfort: 3% увеличение скорости плавки и обжига угля за каждую единицу комфорт; Smelters, kilns and forges near you work faster with every point of comfort, the way hives do",
+      "Fitted Plate: 10% увеличение брони для снаряжения кузнеца; Crafting or upgrading heavy armour has a 25% chance to add an item affix that increases its armour. Each eligible mastery rolls independently."
+     ],
+     "link": "crafting/node/own850.md",
+     "name": "Smelting materials weight"
+    },
+    "old": {
+     "kind": "Средний узел ремесла",
+     "lines": [
+      "15% уменьшение bar и coal weight",
+      "Nearby Chests (equipment): Crafting and upgrading equipment - weapons, armour, shields and tools - can use materials from accessible nearby chests.",
+      "Master's Mark: Allows upgrading Smith equipment one quality level beyond its normal maximum. Items without upgrades remain unupgradeable. Both profession masteries on a mixed recipe extend its limit only once. Station and material requirements still apply.",
+      "Chest Feed: Smelters and kilns pull ore and coal from nearby chests on their own, with the bonuses of the chest owner. Placing a smelter shows the pull radius with the same ring as crafting from nearby chests. Works with every smelter, kiln and chest in the game",
+      "Balanced Blade: 10% увеличение урона для снаряжения кузнеца; Crafting or upgrading weapons using Smith materials has a 25% chance to add an item affix that increases their damage. Each eligible mastery rolls independently.",
+      "Whetstones: В кузне можно делать точильные камни: расходник, который чинит оружие или инструмент в руке на 25%, до его уровня металла; You can craft whetstones: a consumable that repairs the weapon or tool in your hands by 25%, away from any workbench. Each metal tier has its own whetstone",
+      "Forge Comfort: 3% увеличение скорости плавки и обжига угля за каждую единицу комфорт; Smelters, kilns and forges near you work faster with every point of comfort, the way hives do",
+      "Fitted Plate: 10% увеличение брони для снаряжения кузнеца; Crafting or upgrading heavy armour has a 25% chance to add an item affix that increases its armour. Each eligible mastery rolls independently."
+     ],
+     "link": "crafting/node/own850.md",
+     "name": "Smelting materials weight"
+    }
+   },
+   "own851": {
+    "new": {
+     "kind": "Средний узел ремесла",
+     "lines": [
+      "15% увеличение прочность изготовленного снаряжения кузнеца",
+      "Nearby Chests (equipment): Crafting and upgrading equipment - weapons, armour, shields and tools - can use materials from accessible nearby chests.",
+      "Master's Mark: Allows upgrading Smith equipment one quality level beyond its normal maximum. Items without upgrades remain unupgradeable. Both profession masteries on a mixed recipe extend its limit only once. Station and material requirements still apply.",
+      "Chest Feed: Smelters and kilns pull ore and coal from nearby chests on their own, with the bonuses of the chest owner. Placing a smelter shows the pull radius with the same ring as crafting from nearby chests. Works with every smelter, kiln and chest in the game",
+      "Balanced Blade: 10% увеличение урона для снаряжения кузнеца; Crafting or upgrading weapons using Smith materials has a 25% chance to add an item affix that increases their damage. Each eligible mastery rolls independently.",
+      "Whetstones: В кузне можно делать точильные камни. ПКМ по камню, затем ЛКМ по экипировке восстанавливает 25% прочности, до уровня металла камня.; You can craft whetstones: a consumable that repairs the weapon or tool in your hands by 25%, away from any workbench. Each metal tier has its own whetstone",
+      "Forge Comfort: 3% увеличение скорости плавки и обжига угля за каждую единицу комфорт; Smelters, kilns and forges near you work faster with every point of comfort, the way hives do",
+      "Fitted Plate: 10% увеличение брони для снаряжения кузнеца; Crafting or upgrading heavy armour has a 25% chance to add an item affix that increases its armour. Each eligible mastery rolls independently."
+     ],
+     "link": "crafting/node/own851.md",
+     "name": "Crafted Smith equipment durability"
+    },
+    "old": {
+     "kind": "Средний узел ремесла",
+     "lines": [
+      "15% увеличение прочность изготовленного снаряжения кузнеца",
+      "Nearby Chests (equipment): Crafting and upgrading equipment - weapons, armour, shields and tools - can use materials from accessible nearby chests.",
+      "Master's Mark: Allows upgrading Smith equipment one quality level beyond its normal maximum. Items without upgrades remain unupgradeable. Both profession masteries on a mixed recipe extend its limit only once. Station and material requirements still apply.",
+      "Chest Feed: Smelters and kilns pull ore and coal from nearby chests on their own, with the bonuses of the chest owner. Placing a smelter shows the pull radius with the same ring as crafting from nearby chests. Works with every smelter, kiln and chest in the game",
+      "Balanced Blade: 10% увеличение урона для снаряжения кузнеца; Crafting or upgrading weapons using Smith materials has a 25% chance to add an item affix that increases their damage. Each eligible mastery rolls independently.",
+      "Whetstones: В кузне можно делать точильные камни: расходник, который чинит оружие или инструмент в руке на 25%, до его уровня металла; You can craft whetstones: a consumable that repairs the weapon or tool in your hands by 25%, away from any workbench. Each metal tier has its own whetstone",
+      "Forge Comfort: 3% увеличение скорости плавки и обжига угля за каждую единицу комфорт; Smelters, kilns and forges near you work faster with every point of comfort, the way hives do",
+      "Fitted Plate: 10% увеличение брони для снаряжения кузнеца; Crafting or upgrading heavy armour has a 25% chance to add an item affix that increases its armour. Each eligible mastery rolls independently."
+     ],
+     "link": "crafting/node/own851.md",
+     "name": "Crafted Smith equipment durability"
+    }
+   }
+  },
+  "currency": {
+   "PT_CorruptedPunch": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Перекрашивает случайное число обычных гнёзд, не менее одного, в осквернённые. Сохраняет уже особые гнёзда. Нельзя применять с установленными сигилами."
+     ],
+     "link": "items/currency/PT_CorruptedPunch.md",
+     "name": "Corrupted Punch"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Punches a corrupted socket into an item: it takes Sigils of Blight"
+     ],
+     "link": "items/currency/PT_CorruptedPunch.md",
+     "name": "Corrupted Punch"
+    }
+   },
+   "PT_DivinePunch": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Перекрашивает случайное число обычных гнёзд, не менее одного, в божественные. Сохраняет уже особые гнёзда. Нельзя применять с установленными сигилами."
+     ],
+     "link": "items/currency/PT_DivinePunch.md",
+     "name": "Divine Punch"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Punches a divine socket into an item: a sigil set in it is 50% stronger"
+     ],
+     "link": "items/currency/PT_DivinePunch.md",
+     "name": "Divine Punch"
+    }
+   },
+   "PT_RuneOfAscent": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Добавляет новое случайное свойство редкому предмету"
+     ],
+     "link": "items/currency/PT_RuneOfAscent.md",
+     "name": "Великая руна Восхождения"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Добавляет модификатор редкому предмету"
+     ],
+     "link": "items/currency/PT_RuneOfAscent.md",
+     "name": "Руна Восхождения"
+    }
+   },
+   "PT_RuneOfChange": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Перековывает волшебный предмет с 1–2 свойствами, заменяя их 1–2 случайными свойствами"
+     ],
+     "link": "items/currency/PT_RuneOfChange.md",
+     "name": "Руна перемен"
+    },
+    "old": null
+   },
+   "PT_RunicPunch": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Меняет число гнёзд на +1 (35%) или −1 (65%) в пределах 0–3. Шанс дополнительного гнезда повышает шанс +1; шанс божественного действует на добавленное гнездо. Нельзя применять с установленными сигилами."
+     ],
+     "link": "items/currency/PT_RunicPunch.md",
+     "name": "Runic Punch"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Punches a socket for a sigil into an item (up to three)"
+     ],
+     "link": "items/currency/PT_RunicPunch.md",
+     "name": "Runic Punch"
+    }
+   }
+  },
+  "keywords": {
+   "craft-broad-sowing": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "С этим мастерством выбор саженца включает массовую посадку. Q/E переключает центр и четыре угла, отмеченные коротким зелёным лучом. Колесо поворачивает грядку, Shift+колесо меняет расстояние. Shift+Q/E увеличивает число рядов или столбцов, после 15 возвращаясь к 1. Каждому растению по-прежнему нужны материалы и подходящая земля. Выбранная точка привязывается к соседним посадкам и точкам привязки построек, выравнивая по ним ряды."
+     ],
+     "link": "crafting/mastery/o2522.md",
+     "name": "Широкий сев"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Управление массовой посадкой размещает группу растений сразу. Соответствующие кнопки меняют поворот и расстояние; каждому растению всё ещё нужны материалы и подходящая земля."
+     ],
+     "link": "crafting/mastery/o2522.md",
+     "name": "Широкий сев"
+    }
+   },
+   "craft-careful-builder": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Ваши атаки не наносят урон постройкам игроков, включая ваши собственные. Атаки врагов и природные объекты не затронуты. Молотом по-прежнему можно разбирать постройки."
+     ],
+     "link": "crafting/mastery/o3305.md",
+     "name": "Бережный строитель"
+    },
+    "old": null
+   },
+   "craft-whetstones": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Нажмите ПКМ по точильному камню, затем ЛКМ по повреждённой экипировке, чтобы восстановить 25% прочности без верстака. Действует до уровня металла камня."
+     ],
+     "link": "crafting/mastery/o2121.md",
+     "name": "Точильные камни"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Позволяет делать расходники для восстановления прочности оружия или инструмента в руках без ремонтной станции. У каждого камня свои требования материалов."
+     ],
+     "link": "crafting/mastery/o2121.md",
+     "name": "Точильные камни"
+    }
+   },
+   "rarity": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Предметы: обычные не имеют случайных аффиксов. Волшебные имеют 1–2 аффикса: не более 1 префикса и 1 суффикса. Редкие имеют 3–4 аффикса: не более 2 префиксов и 2 суффиксов. Собственные свойства не входят в эти лимиты. Уникальные и легендарные предметы имеют свои свойства и правила. Существа: без звёзд — обычные, 1–2 звезды — волшебные, 3–4 — редкие, от 5 — уникальные. Каждая звезда даёт модификатор и увеличивает здоровье, урон и добычу."
+     ],
+     "link": "glossary/rarity.md",
+     "name": "Редкость"
+    },
+    "old": null
+   },
+   "sockets": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "До трёх гнёзд вмещают сигилы. Рунный гвоздь меняет число на +1 (35%) или −1 (65%) в пределах 0–3; бонусы Рунограна действуют. Божественный и осквернённый гвозди перекрашивают случайное число обычных гнёзд от одного до всех. С установленными сигилами гвозди не применяются. Божественное гнездо усиливает сигил на 50%. Число гнёзд может упасть до нуля. Из изменённого гнезда вылетает надпись +1 или −1."
+     ],
+     "link": "glossary/sockets.md",
+     "name": "Гнёзда"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "До трёх гнёзд на предмете вмещают сигилы. Пробойники открывают гнездо своего вида: рунное, осквернённое или божественное. Сигил в божественном гнезде на 50% сильнее."
+     ],
+     "link": "glossary/sockets.md",
+     "name": "Гнёзда"
+    }
+   }
+  },
+  "mods": {
+   "ring.attack-speed": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (уровень предмета 1–42, вес 1000): (1.7–2.3)% увеличение скорости атаки",
+      "T4 (уровень предмета 19–76, вес 700): (2.7–3.7)% увеличение скорости атаки",
+      "T3 (уровень предмета 43–129, вес 400): (3.7–5.1)% увеличение скорости атаки",
+      "T2 (уровень предмета 77–∞, вес 180): (4.8–6.4)% увеличение скорости атаки",
+      "T1 (уровень предмета 130–∞, вес 60): (6–8)% увеличение скорости атаки",
+      "T0 (уровень предмета 1–∞, вес 0): (7.6–10.3)% увеличение скорости атаки"
+     ],
+     "link": "items/mod/ring.attack-speed.md",
+     "name": "#% увеличение скорости атаки"
+    },
+    "old": null
+   },
+   "ring.jump-height": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (уровень предмета 1–42, вес 1000): (5–8)% увеличение высоты прыжка",
+      "T4 (уровень предмета 19–76, вес 700): (9–12)% увеличение высоты прыжка",
+      "T3 (уровень предмета 43–129, вес 400): (13–16)% увеличение высоты прыжка",
+      "T2 (уровень предмета 77–∞, вес 180): (17–21)% увеличение высоты прыжка",
+      "T1 (уровень предмета 130–∞, вес 60): (22–28)% увеличение высоты прыжка"
+     ],
+     "link": "items/mod/ring.jump-height.md",
+     "name": "#% увеличение высоты прыжка"
+    },
+    "old": null
+   },
+   "ring.jump-range": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (уровень предмета 1–42, вес 1000): (5–8)% увеличение дальности прыжка",
+      "T4 (уровень предмета 19–76, вес 700): (9–12)% увеличение дальности прыжка",
+      "T3 (уровень предмета 43–129, вес 400): (13–16)% увеличение дальности прыжка",
+      "T2 (уровень предмета 77–∞, вес 180): (17–21)% увеличение дальности прыжка",
+      "T1 (уровень предмета 130–∞, вес 60): (22–28)% увеличение дальности прыжка"
+     ],
+     "link": "items/mod/ring.jump-range.md",
+     "name": "#% увеличение дальности прыжка"
+    },
+    "old": null
+   },
+   "tree.attackspeedpct-altattack.w": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (уровень предмета 1–42, вес 1000): (2.5–3.4)% увеличение скорости атаки альтернативной атаки на этом предмете",
+      "T4 (уровень предмета 19–76, вес 700): (4.1–5.5)% увеличение скорости атаки альтернативной атаки на этом предмете",
+      "T3 (уровень предмета 43–129, вес 400): (5.6–7.6)% увеличение скорости атаки альтернативной атаки на этом предмете",
+      "T2 (уровень предмета 77–∞, вес 180): (7.1–9.7)% увеличение скорости атаки альтернативной атаки на этом предмете",
+      "T1 (уровень предмета 130–∞, вес 60): (8.9–12.1)% увеличение скорости атаки альтернативной атаки на этом предмете",
+      "T0 (уровень предмета 1–∞, вес 0): (11.5–15.5)% увеличение скорости атаки альтернативной атаки на этом предмете"
+     ],
+     "link": "items/mod/tree.attackspeedpct-altattack.w.md",
+     "name": "#% увеличение скорости атаки альтернативной атаки на этом предмете"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "T5 (уровень предмета 1–42, вес 1000): (2.5–3.4)% увеличение скорости атаки альтернативной атаки",
+      "T4 (уровень предмета 19–76, вес 700): (4.1–5.5)% увеличение скорости атаки альтернативной атаки",
+      "T3 (уровень предмета 43–129, вес 400): (5.6–7.6)% увеличение скорости атаки альтернативной атаки",
+      "T2 (уровень предмета 77–∞, вес 180): (7.1–9.7)% увеличение скорости атаки альтернативной атаки",
+      "T1 (уровень предмета 130–∞, вес 60): (8.9–12.1)% увеличение скорости атаки альтернативной атаки",
+      "T0 (уровень предмета 1–∞, вес 0): (11.5–15.5)% увеличение скорости атаки альтернативной атаки"
+     ],
+     "link": "items/mod/tree.attackspeedpct-altattack.w.md",
+     "name": "#% увеличение скорости атаки альтернативной атаки"
+    }
+   },
+   "tree.attackspeedpct-bleed-3_0.w": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (уровень предмета 1–42, вес 1000): (3.5–4.5)% увеличение скорости атаки на этом предмете при наложении кровотечения недавно",
+      "T4 (уровень предмета 19–76, вес 700): (5.5–7.5)% увеличение скорости атаки на этом предмете при наложении кровотечения недавно",
+      "T3 (уровень предмета 43–129, вес 400): (7.5–10)% увеличение скорости атаки на этом предмете при наложении кровотечения недавно",
+      "T2 (уровень предмета 77–∞, вес 180): (9.5–13)% увеличение скорости атаки на этом предмете при наложении кровотечения недавно",
+      "T1 (уровень предмета 130–∞, вес 60): (12–16)% увеличение скорости атаки на этом предмете при наложении кровотечения недавно",
+      "T0 (уровень предмета 1–∞, вес 0): (15.5–20.5)% увеличение скорости атаки на этом предмете при наложении кровотечения недавно"
+     ],
+     "link": "items/mod/tree.attackspeedpct-bleed-3_0.w.md",
+     "name": "#% увеличение скорости атаки на этом предмете при наложении кровотечения недавно"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "T5 (уровень предмета 1–42, вес 1000): (3.5–4.5)% увеличение скорости атаки при наложении кровотечения недавно",
+      "T4 (уровень предмета 19–76, вес 700): (5.5–7.5)% увеличение скорости атаки при наложении кровотечения недавно",
+      "T3 (уровень предмета 43–129, вес 400): (7.5–10)% увеличение скорости атаки при наложении кровотечения недавно",
+      "T2 (уровень предмета 77–∞, вес 180): (9.5–13)% увеличение скорости атаки при наложении кровотечения недавно",
+      "T1 (уровень предмета 130–∞, вес 60): (12–16)% увеличение скорости атаки при наложении кровотечения недавно",
+      "T0 (уровень предмета 1–∞, вес 0): (15.5–20.5)% увеличение скорости атаки при наложении кровотечения недавно"
+     ],
+     "link": "items/mod/tree.attackspeedpct-bleed-3_0.w.md",
+     "name": "#% увеличение скорости атаки при наложении кровотечения недавно"
+    }
+   },
+   "tree.attackspeedpct-combofinisher.w": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (уровень предмета 1–42, вес 1000): (3.5–4.5)% увеличение скорости атаки на этом предмете на Завершениях цепочки",
+      "T4 (уровень предмета 19–76, вес 700): (5.5–7.5)% увеличение скорости атаки на этом предмете на Завершениях цепочки",
+      "T3 (уровень предмета 43–129, вес 400): (7.5–10)% увеличение скорости атаки на этом предмете на Завершениях цепочки",
+      "T2 (уровень предмета 77–∞, вес 180): (9.5–13)% увеличение скорости атаки на этом предмете на Завершениях цепочки",
+      "T1 (уровень предмета 130–∞, вес 60): (12–16)% увеличение скорости атаки на этом предмете на Завершениях цепочки",
+      "T0 (уровень предмета 1–∞, вес 0): (15.5–20.5)% увеличение скорости атаки на этом предмете на Завершениях цепочки"
+     ],
+     "link": "items/mod/tree.attackspeedpct-combofinisher.w.md",
+     "name": "#% увеличение скорости атаки на этом предмете на Завершениях цепочки"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "T5 (уровень предмета 1–42, вес 1000): (3.5–4.5)% увеличение скорости атаки на Завершениях цепочки",
+      "T4 (уровень предмета 19–76, вес 700): (5.5–7.5)% увеличение скорости атаки на Завершениях цепочки",
+      "T3 (уровень предмета 43–129, вес 400): (7.5–10)% увеличение скорости атаки на Завершениях цепочки",
+      "T2 (уровень предмета 77–∞, вес 180): (9.5–13)% увеличение скорости атаки на Завершениях цепочки",
+      "T1 (уровень предмета 130–∞, вес 60): (12–16)% увеличение скорости атаки на Завершениях цепочки",
+      "T0 (уровень предмета 1–∞, вес 0): (15.5–20.5)% увеличение скорости атаки на Завершениях цепочки"
+     ],
+     "link": "items/mod/tree.attackspeedpct-combofinisher.w.md",
+     "name": "#% увеличение скорости атаки на Завершениях цепочки"
+    }
+   },
+   "tree.attackspeedpct-crit-3_0.w": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (уровень предмета 1–42, вес 1000): (4–6)% увеличение скорости атаки на этом предмете при критическом попадании недавно",
+      "T4 (уровень предмета 19–76, вес 700): (7–9)% увеличение скорости атаки на этом предмете при критическом попадании недавно",
+      "T3 (уровень предмета 43–129, вес 400): (9.5–12.5)% увеличение скорости атаки на этом предмете при критическом попадании недавно",
+      "T2 (уровень предмета 77–∞, вес 180): (12–16)% увеличение скорости атаки на этом предмете при критическом попадании недавно",
+      "T1 (уровень предмета 130–∞, вес 60): (15–20)% увеличение скорости атаки на этом предмете при критическом попадании недавно",
+      "T0 (уровень предмета 1–∞, вес 0): (19–26)% увеличение скорости атаки на этом предмете при критическом попадании недавно"
+     ],
+     "link": "items/mod/tree.attackspeedpct-crit-3_0.w.md",
+     "name": "#% увеличение скорости атаки на этом предмете при критическом попадании недавно"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "T5 (уровень предмета 1–42, вес 1000): (4–6)% увеличение скорости атаки при критическом попадании недавно",
+      "T4 (уровень предмета 19–76, вес 700): (7–9)% увеличение скорости атаки при критическом попадании недавно",
+      "T3 (уровень предмета 43–129, вес 400): (9.5–12.5)% увеличение скорости атаки при критическом попадании недавно",
+      "T2 (уровень предмета 77–∞, вес 180): (12–16)% увеличение скорости атаки при критическом попадании недавно",
+      "T1 (уровень предмета 130–∞, вес 60): (15–20)% увеличение скорости атаки при критическом попадании недавно",
+      "T0 (уровень предмета 1–∞, вес 0): (19–26)% увеличение скорости атаки при критическом попадании недавно"
+     ],
+     "link": "items/mod/tree.attackspeedpct-crit-3_0.w.md",
+     "name": "#% увеличение скорости атаки при критическом попадании недавно"
+    }
+   },
+   "tree.attackspeedpct-throwing.w": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (уровень предмета 1–42, вес 1000): (1.7–2.3)% увеличение скорости атаки при метании на этом предмете",
+      "T4 (уровень предмета 19–76, вес 700): (2.7–3.7)% увеличение скорости атаки при метании на этом предмете",
+      "T3 (уровень предмета 43–129, вес 400): (3.7–5.1)% увеличение скорости атаки при метании на этом предмете",
+      "T2 (уровень предмета 77–∞, вес 180): (4.8–6.4)% увеличение скорости атаки при метании на этом предмете",
+      "T1 (уровень предмета 130–∞, вес 60): (6–8)% увеличение скорости атаки при метании на этом предмете",
+      "T0 (уровень предмета 1–∞, вес 0): (7.6–10.3)% увеличение скорости атаки при метании на этом предмете"
+     ],
+     "link": "items/mod/tree.attackspeedpct-throwing.w.md",
+     "name": "#% увеличение скорости атаки при метании на этом предмете"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "T5 (уровень предмета 1–42, вес 1000): (1.7–2.3)% увеличение скорости атаки при метании",
+      "T4 (уровень предмета 19–76, вес 700): (2.7–3.7)% увеличение скорости атаки при метании",
+      "T3 (уровень предмета 43–129, вес 400): (3.7–5.1)% увеличение скорости атаки при метании",
+      "T2 (уровень предмета 77–∞, вес 180): (4.8–6.4)% увеличение скорости атаки при метании",
+      "T1 (уровень предмета 130–∞, вес 60): (6–8)% увеличение скорости атаки при метании",
+      "T0 (уровень предмета 1–∞, вес 0): (7.6–10.3)% увеличение скорости атаки при метании"
+     ],
+     "link": "items/mod/tree.attackspeedpct-throwing.w.md",
+     "name": "#% увеличение скорости атаки при метании"
+    }
+   },
+   "tree.attackspeedpct-vsstaggered.w": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (уровень предмета 1–42, вес 1000): (1.7–2.3)% увеличение скорости атаки на этом предмете против оглушённых целей",
+      "T4 (уровень предмета 19–76, вес 700): (2.7–3.7)% увеличение скорости атаки на этом предмете против оглушённых целей",
+      "T3 (уровень предмета 43–129, вес 400): (3.7–5.1)% увеличение скорости атаки на этом предмете против оглушённых целей",
+      "T2 (уровень предмета 77–∞, вес 180): (4.8–6.4)% увеличение скорости атаки на этом предмете против оглушённых целей",
+      "T1 (уровень предмета 130–∞, вес 60): (6–8)% увеличение скорости атаки на этом предмете против оглушённых целей",
+      "T0 (уровень предмета 1–∞, вес 0): (7.6–10.3)% увеличение скорости атаки на этом предмете против оглушённых целей"
+     ],
+     "link": "items/mod/tree.attackspeedpct-vsstaggered.w.md",
+     "name": "#% увеличение скорости атаки на этом предмете против оглушённых целей"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "T5 (уровень предмета 1–42, вес 1000): (1.7–2.3)% увеличение скорости атаки против оглушённых целей",
+      "T4 (уровень предмета 19–76, вес 700): (2.7–3.7)% увеличение скорости атаки против оглушённых целей",
+      "T3 (уровень предмета 43–129, вес 400): (3.7–5.1)% увеличение скорости атаки против оглушённых целей",
+      "T2 (уровень предмета 77–∞, вес 180): (4.8–6.4)% увеличение скорости атаки против оглушённых целей",
+      "T1 (уровень предмета 130–∞, вес 60): (6–8)% увеличение скорости атаки против оглушённых целей",
+      "T0 (уровень предмета 1–∞, вес 0): (7.6–10.3)% увеличение скорости атаки против оглушённых целей"
+     ],
+     "link": "items/mod/tree.attackspeedpct-vsstaggered.w.md",
+     "name": "#% увеличение скорости атаки против оглушённых целей"
+    }
+   },
+   "tree.attackspeedpct.w": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (уровень предмета 1–42, вес 1000): (1.7–2.3)% увеличение скорости атаки на этом предмете",
+      "T4 (уровень предмета 19–76, вес 700): (2.7–3.7)% увеличение скорости атаки на этом предмете",
+      "T3 (уровень предмета 43–129, вес 400): (3.7–5.1)% увеличение скорости атаки на этом предмете",
+      "T2 (уровень предмета 77–∞, вес 180): (4.8–6.4)% увеличение скорости атаки на этом предмете",
+      "T1 (уровень предмета 130–∞, вес 60): (6–8)% увеличение скорости атаки на этом предмете",
+      "T0 (уровень предмета 1–∞, вес 0): (7.6–10.3)% увеличение скорости атаки на этом предмете"
+     ],
+     "link": "items/mod/tree.attackspeedpct.w.md",
+     "name": "#% увеличение скорости атаки на этом предмете"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "T5 (уровень предмета 1–42, вес 1000): (1.7–2.3)% увеличение скорости атаки",
+      "T4 (уровень предмета 19–76, вес 700): (2.7–3.7)% увеличение скорости атаки",
+      "T3 (уровень предмета 43–129, вес 400): (3.7–5.1)% увеличение скорости атаки",
+      "T2 (уровень предмета 77–∞, вес 180): (4.8–6.4)% увеличение скорости атаки",
+      "T1 (уровень предмета 130–∞, вес 60): (6–8)% увеличение скорости атаки",
+      "T0 (уровень предмета 1–∞, вес 0): (7.6–10.3)% увеличение скорости атаки"
+     ],
+     "link": "items/mod/tree.attackspeedpct.w.md",
+     "name": "#% увеличение скорости атаки"
+    }
+   },
+   "tree.castspeedpct-crit-3_0.w": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (уровень предмета 1–42, вес 1000): (8–12)% увеличение скорости каста на этом предмете при критическом попадании недавно",
+      "T4 (уровень предмета 19–76, вес 700): (14–18)% увеличение скорости каста на этом предмете при критическом попадании недавно",
+      "T3 (уровень предмета 43–129, вес 400): (19–25)% увеличение скорости каста на этом предмете при критическом попадании недавно",
+      "T2 (уровень предмета 77–∞, вес 180): (24–32)% увеличение скорости каста на этом предмете при критическом попадании недавно",
+      "T1 (уровень предмета 130–∞, вес 60): (30–40)% увеличение скорости каста на этом предмете при критическом попадании недавно",
+      "T0 (уровень предмета 1–∞, вес 0): (38–52)% увеличение скорости каста на этом предмете при критическом попадании недавно"
+     ],
+     "link": "items/mod/tree.castspeedpct-crit-3_0.w.md",
+     "name": "#% увеличение скорости каста на этом предмете при критическом попадании недавно"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "T5 (уровень предмета 1–42, вес 1000): (8–12)% увеличение скорости каста при критическом попадании недавно",
+      "T4 (уровень предмета 19–76, вес 700): (14–18)% увеличение скорости каста при критическом попадании недавно",
+      "T3 (уровень предмета 43–129, вес 400): (19–25)% увеличение скорости каста при критическом попадании недавно",
+      "T2 (уровень предмета 77–∞, вес 180): (24–32)% увеличение скорости каста при критическом попадании недавно",
+      "T1 (уровень предмета 130–∞, вес 60): (30–40)% увеличение скорости каста при критическом попадании недавно",
+      "T0 (уровень предмета 1–∞, вес 0): (38–52)% увеличение скорости каста при критическом попадании недавно"
+     ],
+     "link": "items/mod/tree.castspeedpct-crit-3_0.w.md",
+     "name": "#% увеличение скорости каста при критическом попадании недавно"
+    }
+   },
+   "tree.castspeedpct.w": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (уровень предмета 1–42, вес 1000): (3.5–4.5)% увеличение скорости каста на этом предмете",
+      "T4 (уровень предмета 19–76, вес 700): (5.5–7.5)% увеличение скорости каста на этом предмете",
+      "T3 (уровень предмета 43–129, вес 400): (7.5–10)% увеличение скорости каста на этом предмете",
+      "T2 (уровень предмета 77–∞, вес 180): (9.5–13)% увеличение скорости каста на этом предмете",
+      "T1 (уровень предмета 130–∞, вес 60): (12–16)% увеличение скорости каста на этом предмете",
+      "T0 (уровень предмета 1–∞, вес 0): (15.5–20.5)% увеличение скорости каста на этом предмете"
+     ],
+     "link": "items/mod/tree.castspeedpct.w.md",
+     "name": "#% увеличение скорости каста на этом предмете"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "T5 (уровень предмета 1–42, вес 1000): (3.5–4.5)% увеличение скорости каста",
+      "T4 (уровень предмета 19–76, вес 700): (5.5–7.5)% увеличение скорости каста",
+      "T3 (уровень предмета 43–129, вес 400): (7.5–10)% увеличение скорости каста",
+      "T2 (уровень предмета 77–∞, вес 180): (9.5–13)% увеличение скорости каста",
+      "T1 (уровень предмета 130–∞, вес 60): (12–16)% увеличение скорости каста",
+      "T0 (уровень предмета 1–∞, вес 0): (15.5–20.5)% увеличение скорости каста"
+     ],
+     "link": "items/mod/tree.castspeedpct.w.md",
+     "name": "#% увеличение скорости каста"
+    }
+   }
+  },
+  "passives": {
+   "own10660": {
+    "new": {
+     "kind": "Средний узел",
+     "lines": [
+      "+10 шипов",
+      "+0.0625 шипов за каждую единицу брони надетого нагрудника",
+      "Рассекающие шипы: 50% урона типа «шипы колющий» преобразуется в урон типа «рассекающий»",
+      "Колючий панцирь: При соприкосновении наносит врагу урон шипов; не чаще раза в 1 с на каждого врага; Касание телом наносит урон шипами. Базовый откат: 1 секунда на каждого врага; скорость восстановления откатов сокращает его."
+     ],
+     "link": "passives/node/own10660.md",
+     "name": "Шипы на кирасе"
+    },
+    "old": {
+     "kind": "Средний узел",
+     "lines": [
+      "+10 шипов",
+      "+0.0625 шипов за каждую единицу брони надетого нагрудника",
+      "Рассекающие шипы: 50% урона типа «шипы колющий» преобразуется в урон типа «рассекающий»",
+      "Колючий панцирь: При соприкосновении наносит врагу урон шипов; не чаще раза в 0.75 с на каждого врага; Касание телом наносит урон шипами, не чаще раза в 0,75 секунды на каждого врага."
+     ],
+     "link": "passives/node/own10660.md",
+     "name": "Шипы на кирасе"
+    }
+   },
+   "own12471": {
+    "new": {
+     "kind": "Средний узел",
+     "lines": [
+      "20% увеличение шипов",
+      "+15 шипов с поднятым щитом",
+      "Рассекающие шипы: 50% урона типа «шипы колющий» преобразуется в урон типа «рассекающий»",
+      "Колючий панцирь: При соприкосновении наносит врагу урон шипов; не чаще раза в 1 с на каждого врага; Касание телом наносит урон шипами. Базовый откат: 1 секунда на каждого врага; скорость восстановления откатов сокращает его."
+     ],
+     "link": "passives/node/own12471.md",
+     "name": "Толчок тяжёлой стали"
+    },
+    "old": {
+     "kind": "Средний узел",
+     "lines": [
+      "20% увеличение шипов",
+      "+15 шипов с поднятым щитом",
+      "Рассекающие шипы: 50% урона типа «шипы колющий» преобразуется в урон типа «рассекающий»",
+      "Колючий панцирь: При соприкосновении наносит врагу урон шипов; не чаще раза в 0.75 с на каждого врага; Касание телом наносит урон шипами, не чаще раза в 0,75 секунды на каждого врага."
+     ],
+     "link": "passives/node/own12471.md",
+     "name": "Толчок тяжёлой стали"
+    }
+   }
+  },
+  "uniques": {
+   "PT_Jewel_TrailOfTheFirstAntler": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Одна из этих характеристик:",
+      "+(0.2–0.3) Силы per allocated passive on the path from this socket to your start (10%)",
+      "+(0.2–0.3) Ловкости per allocated passive on the path from this socket to your start (10%)",
+      "+(0.2–0.3) Интеллекта per allocated passive on the path from this socket to your start (10%)",
+      "+(1–2) максимума здоровья per allocated passive on the path from this socket to your start (10%)",
+      "+(0.25–0.4) максимума выносливости per allocated passive on the path from this socket to your start (10%)",
+      "+(1–2) максимума эйтра per allocated passive on the path from this socket to your start (10%)",
+      "+(1–2) рунного щита per allocated passive on the path from this socket to your start (10%)",
+      "+(0.15–0.25) брони per allocated passive on the path from this socket to your start (10%)",
+      "+(0.3–0.5) рейтинга уклонения per allocated passive on the path from this socket to your start (10%)",
+      "+(1–2) к порогу стойкости, приходящаяся ниже порога, уменьшается: 20% в базе, не больше 75%. Порог считается в очках здоровья. С Рунным бастионом вместо здоровья проверяется рунный щит.\") per allocated passive on the path from this socket to your start (10%)",
+      "Выпадает: выпадает с: Эйктюр"
+     ],
+     "link": "items/unique/PT_Jewel_TrailOfTheFirstAntler.md",
+     "name": "Trail of the First Antler"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Одна из этих характеристик:",
+      "+(0.4–0.6) Силы per allocated passive on the path from this socket to your start (10%)",
+      "+(0.4–0.6) Ловкости per allocated passive on the path from this socket to your start (10%)",
+      "+(0.4–0.6) Интеллекта per allocated passive on the path from this socket to your start (10%)",
+      "+(2–4) максимума здоровья per allocated passive on the path from this socket to your start (10%)",
+      "+(0.5–0.8) максимума выносливости per allocated passive on the path from this socket to your start (10%)",
+      "+(2–4) максимума эйтра per allocated passive on the path from this socket to your start (10%)",
+      "+(2–4) рунного щита per allocated passive on the path from this socket to your start (10%)",
+      "+(0.3–0.5) брони per allocated passive on the path from this socket to your start (10%)",
+      "+(0.6–1) рейтинга уклонения per allocated passive on the path from this socket to your start (10%)",
+      "+(2–4) к порогу стойкости, приходящаяся ниже порога, уменьшается: 20% в базе, не больше 75%. Порог считается в очках здоровья. С Рунным бастионом вместо здоровья проверяется рунный щит.\") per allocated passive on the path from this socket to your start (10%)",
+      "Выпадает: выпадает с: Эйктюр"
+     ],
+     "link": "items/unique/PT_Jewel_TrailOfTheFirstAntler.md",
+     "name": "Trail of the First Antler"
+    }
+   },
+   "PT_Jewel_WombOfCorruption": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Allocates случайный ключевой узел",
+      "Одно из:",
+      "На (10–20)% меньше урона (16.7%)",
+      "На (10–20)% меньше брони, рейтинга уклонения и рунного щита (16.7%)",
+      "На (10–20)% меньше максимума здоровья (16.7%)",
+      "На (10–20)% меньше максимума эйтра (16.7%)",
+      "На (10–20)% меньше скорости передвижения (16.7%)",
+      "На (10–20)% меньше максимума выносливости (16.7%)",
+      "Выпадает: с существа, элитного или босса, убитых в Тумане скверны, с шансом 0.2% (добыча)"
+     ],
+     "link": "items/unique/PT_Jewel_WombOfCorruption.md",
+     "name": "Утроба скверны"
+    },
+    "old": null
+   }
+  },
+  "values": {
+   "bow.falloff.end": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "40 m"
+     ],
+     "link": null,
+     "name": "Bows: damage reaches the floor at this distance"
+    },
+    "old": null
+   },
+   "bow.falloff.start": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "14 m"
+     ],
+     "link": null,
+     "name": "Bows: full damage up to this distance"
+    },
+    "old": null
+   },
+   "thorns.contact-interval": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "1 s"
+     ],
+     "link": null,
+     "name": "Barbed Carapace: shortest gap between two contact thorns on the same enemy"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "0.75 s"
+     ],
+     "link": null,
+     "name": "Barbed Carapace: shortest gap between two contact thorns on the same enemy"
+    }
+   }
+  }
+ },
+ "date": "2026-10-24",
+ "from": "5.3.1",
+ "to": "5.3.2"
+}

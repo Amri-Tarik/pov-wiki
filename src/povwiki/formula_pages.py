@@ -102,7 +102,7 @@ def _range_end(b: dict) -> int:
 def _level(ctx, page, v):
     ui = ctx.loc.ui
     rows = [[_biome(ctx, b), str(b["level"]), str(_range_end(b))] for b in _area_biomes(ctx)]
-    return ([ui("formula.creature-level.text", falloff=_anchor("experience-falloff", page)), ""]
+    return ([ui("formula.creature-level.text", falloff=_anchor("experience-falloff", page)), "", ui("formula.creature-level.blight"), ""]
             + _table([ui("bosses.biome"), ui("formula.level"), ui("formula.creature-level.full_col")], rows))
 
 
@@ -245,7 +245,8 @@ def _power(ctx, page, v):
     step, cap = mp["step"] + mp["biome-step"], mp["max"]
     return ([ui("formula.monster-power.text"), ""]
             + _formula(ui("formula.monster-power.formula", step=_n(step), max=_n(cap)))
-            + [ui("formula.monster-power.notes", n=round((cap - 1) / step) if step else 0, loot=_anchor("loot", page)), ""])
+            + [ui("formula.monster-power.notes", n=round((cap - 1) / step) if step else 0, loot=_anchor("loot", page),
+                  pop=_pct(v["population"])), ""])
 
 
 def loot_per_kill(ctx: Ctx, s: dict) -> dict[str, float]:
@@ -279,6 +280,7 @@ def _loot(ctx, page, v):
             + _formula(ui("formula.loot.quantity", star=_n(stars.get("quantityPerStar", 0)), mod=_n(v["per_modifier"])))
             + _formula(ui("formula.loot.rarity", star=_n(stars.get("rarityPerStar", 0))))
             + [ui("formula.loot.notes"), ""]
+            + _womb(ctx, page, v)
             + _loot_scale(ctx)
             + [f"### {ui('formula.loot.sources')}", "", ui("formula.loot.sources_note"), ""]
             + _table([ui("gear.source_label"), ui("formula.loot.gear"), ui("formula.loot.currency"), ui("formula.loot.jewel")], sources)
@@ -287,6 +289,17 @@ def _loot(ctx, page, v):
             + _formula(ui("formula.loot.curve"))
             + _table([ui("formula.level"), ui("formula.loot.common"), ui("formula.loot.magic"), ui("formula.loot.rare")], levels)
             + [ui("formula.loot.unique", chance=_pct(loot.get("uniqueChance", 0)), level=loot.get("rareGuaranteeMinLevel", 0)), ""])
+
+
+def _womb(ctx, page, v) -> list[str]:
+    """Womb of Corruption: a unique jewel only Blight Mist kills drop (WombOfCorruption.Drops, 5.3.2)."""
+    from .gear_pages import unique_path
+
+    item = (ctx.loc.gear.get("jewels") or {}).get("PT_Jewel_WombOfCorruption")
+    if not item or not v.get("womb_chance"):
+        return []
+    return [ctx.loc.ui("formula.loot.womb", chance=_pct(v["womb_chance"]), womb=item["name"],
+                       link=rel(unique_path("PT_Jewel_WombOfCorruption"), page)), ""]
 
 
 def _loot_scale(ctx) -> list[str]:
@@ -823,7 +836,8 @@ def _thorns(ctx, page, v):
     md += [ui("formula.thorns.type"), "",
            ui("formula.thorns.range", full=_n(v["full_range"]), zero=_n(v["zero_range"])), "",
            ui("formula.thorns.block", block=_pct(t["thorns.block.share"]), shield=_mastery_link(ctx, "ShieldBlockThorns", page)), "",
-           ui("formula.thorns.contact", carapace=_mastery_link(ctx, "ThornsContact", page)), ""]
+           ui("formula.thorns.contact", carapace=_mastery_link(ctx, "ThornsContact", page),
+              interval=_n(ctx.loc.difficulty.get("tunables", {}).get("thorns.contact-interval", 0))), ""]
     return md
 
 
@@ -992,22 +1006,27 @@ def _hit_order(ctx, page, v):
 def _ranged_falloff(ctx, page, v):
     """Bow and crossbow damage by distance (RangedFalloff.Factor/Stretch/Applies)."""
     ui, t = ctx.loc.ui, ctx.loc.difficulty.get("tunables", {})
+    # Bows have their own distances (bow.falloff.*, 5.3.2); crossbows keep ranged.falloff.*.
     start, end, floor = t["ranged.falloff.start"], t["ranged.falloff.end"], t["ranged.falloff.floor"]
+    bstart, bend = t.get("bow.falloff.start") or start, t.get("bow.falloff.end") or end
 
-    def factor(d: float, stretch: float) -> float:
-        a, b = start * stretch, max(start * stretch + 0.01, end * stretch)
+    def factor(d: float, stretch: float, a0: float, b0: float) -> float:
+        a, b = a0 * stretch, max(a0 * stretch + 0.01, b0 * stretch)
         return 1.0 if d <= a else floor if d >= b else 1 - (d - a) / (b - a) * (1 - floor)
 
-    nums = {"start": _n(start), "end": _n(end), "floor": _n(floor), "drop": _n(1 - floor)}
+    nums = {"start": _n(start), "end": _n(end), "bstart": _n(bstart), "bend": _n(bend), "floor": _n(floor), "drop": _n(1 - floor)}
     stretches = (0, 0.25, 0.5, 1)
-    rows = [[f"{_n(d)} m", *(_pct(factor(d, 1 + s)) for s in stretches)] for d in (5, 10, 15, 20, 25, 30, 40, 60)]
-    return ([ui("formula.ranged-falloff.text", range=_term(ctx, "effective-range", page, start=True), **nums), ""]
-            + _formula(ui("formula.ranged-falloff.formula", **nums))
-            + [ui("formula.ranged-falloff.notes"), "",
-               # Valheim measures in metres; its "Wood Floor 2x2" piece is 2 m on a side.
-               ui("formula.ranged-falloff.floors", floor=ctx.loc.vkey("piece_woodfloor2x2", "Wood Floor 2x2"),
-                  start=_n(start), start_n=_n(start / 2), end=_n(end), end_n=_n(end / 2)), ""]
-            + _table([ui("formula.ranged-falloff.distance"), *(ui("formula.ranged-falloff.with", x=_pct(s)) for s in stretches)], rows))
+    header = [ui("formula.ranged-falloff.distance"), *(ui("formula.ranged-falloff.with", x=_pct(s)) for s in stretches)]
+    md = [ui("formula.ranged-falloff.text", range=_term(ctx, "effective-range", page, start=True), **nums), ""]
+    md += _formula(ui("formula.ranged-falloff.formula", **nums))
+    md += [ui("formula.ranged-falloff.notes"), "",
+           # Valheim measures in metres; its "Wood Floor 2x2" piece is 2 m on a side.
+           ui("formula.ranged-falloff.floors", piece=ctx.loc.vkey("piece_woodfloor2x2", "Wood Floor 2x2"),
+              **nums, start_n=_n(start / 2), end_n=_n(end / 2), bstart_n=_n(bstart / 2), bend_n=_n(bend / 2)), ""]
+    for slug, a0, b0 in (("bows", bstart, bend), ("crossbows", start, end)):
+        rows = [[f"{_n(d)} m", *(_pct(factor(d, 1 + s, a0, b0)) for s in stretches)] for d in (5, 10, 15, 20, 30, 40, 50, 60, 80)]
+        md += [f"#### {ui(f'weapons.{slug}')}", ""] + _table(header, rows)
+    return md
 
 
 def _granting_all(ctx, stat: str, page: str) -> str:

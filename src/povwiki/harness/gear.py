@@ -158,6 +158,14 @@ def _code_only_uniques(uniques: dict) -> None:
             # The ascendancy class each SubclassReveal subject stands for (Subclasses.ByChip), by its shown name:
             # the portals the Eye can point at are hidden without their class.
             "classes": _class_names()}
+    # Womb of Corruption (WombOfCorruption.Roll, 5.3.2): a random keystone, and one of the
+    # LootAffixes.WombPenalties at 10-20% less.
+    if "PT_Jewel_WombOfCorruption" not in uniques and hasattr(PassiveTree, "WombOfCorruption"):
+        node = LootAffixes.AllocatesNode
+        uniques["PT_Jewel_WombOfCorruption"] = {"lines": [
+            {"affix": str(node.Id), "count": 1, "distinct": False, "template": L.Id("affix." + node.Id, node.Text), "pick": "keystone"},
+            {"oneOf": [{"affix": str(d.Id), "count": 1, "distinct": False, "text": _numeric(d, 10, 20), "weight": 1.0}
+                       for d in LootAffixes.WombPenalties]}]}
 
 
 def _class_names() -> dict[str, str]:

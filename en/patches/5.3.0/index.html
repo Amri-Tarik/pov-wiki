@@ -1,0 +1,4302 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  
+    <meta name="description" content="What changed in the game data from 5.2.1 to 5.3.0, found by comparing the two versions. Struck text is gone, marked text is new. Only the data is compared: a…">
+  
+  
+    <link rel="canonical" href="https://povdb.wiki/en/patches/5.3.0/">
+  
+  
+    
+      <link rel="alternate" href="https://povdb.wiki/en/patches/5.3.0/" hreflang="en">
+    
+      <link rel="alternate" href="https://povdb.wiki/ru/patches/5.3.0/" hreflang="ru">
+    
+    <link rel="alternate" href="https://povdb.wiki/en/patches/5.3.0/" hreflang="x-default">
+  
+  
+  <link rel="icon" href="../../assets/images/favicon.png">
+  <meta name="generator" content="zensical-0.0.71">
+
+    
+      
+        <title>Patch 5.3.0 - Path of Valheiman DB</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.e442bf79.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.b60ce83d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/pov.css?v=8a061e478e">
+    
+      <link rel="stylesheet" href="../../stylesheets/theme.css?v=effe823b4d">
+    
+    <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  
+  
+  
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Path of Valheiman DB">
+  <meta property="og:title" content="Patch 5.3.0">
+  <meta property="og:description" content="What changed in the game data from 5.2.1 to 5.3.0, found by comparing the two versions. Struck text is gone, marked text is new. Only the data is compared: a…">
+  <meta property="og:url" content="https://povdb.wiki/en/patches/5.3.0/">
+  <meta property="og:image" content="https://povdb.wiki/en/assets/images/social.png">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Patch 5.3.0">
+  <meta name="twitter:description" content="What changed in the game data from 5.2.1 to 5.3.0, found by comparing the two versions. Struck text is gone, marked text is new. Only the data is compared: a…">
+  <meta name="twitter:image" content="https://povdb.wiki/en/assets/images/social.png">
+  <meta name="pov-ui" data-menu="Menu" data-toc="On this page" data-open="Open the navigation" data-hint="Swipe from the edge, or tap Menu, to browse the wiki.">
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-hidden="true"></label>
+    <div data-md-component="skip">
+      <a href="#__skip" class="md-skip">
+        Skip to content
+      </a>
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Path of Valheiman DB" class="md-header__button md-logo" aria-label="Path of Valheiman DB" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Path of Valheiman DB
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Patch 5.3.0
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-moon" viewBox="0 0 24 24"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-languages" viewBox="0 0 24 24"><path d="m5 8 6 6M4 14l6-6 2-3M2 5h12M7 2h1M22 22l-5-10-5 10M14 18h6"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="../../../en/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="../../../ru/" hreflang="ru" class="md-select__link">
+              Русский
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+        <a href="https://github.com/Amri-Tarik/pov-wiki" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../passives/tree/" class="md-tabs__link">
+          
+  
+  Passive Tree
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../crafting/tree/" class="md-tabs__link">
+          
+  
+  Crafting
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../items/mods/" class="md-tabs__link">
+          
+  
+  Items
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../monsters/mods/" class="md-tabs__link">
+          
+  
+  Monsters
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../mechanics/creatures/" class="md-tabs__link">
+          
+  
+  Mechanics
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+      
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  Patches
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../about/" class="md-tabs__link">
+        
+  
+  About
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Path of Valheiman DB" class="md-nav__button md-logo" aria-label="Path of Valheiman DB" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    Path of Valheiman DB
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Amri-Tarik/pov-wiki" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Home
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Passive Tree
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Passive Tree
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../passives/tree/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Passive Tree Viewer
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../passives/keystones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Keystones
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../passives/notables/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Notables
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../passives/masteries/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Masteries
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Crafting
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Crafting
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../crafting/tree/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Craft Tree Viewer
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../crafting/professions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Professions
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../crafting/notables/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Craft Notables
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../crafting/masteries/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Craft Masteries
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../crafting/buildings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Buildings
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Items
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Items
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../items/mods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Mods
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../items/bases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Item bases
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Weapon types
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Weapon types
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../items/weapons/axes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Axes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../items/weapons/bombs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Bombs
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../items/weapons/bows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Bows
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../items/weapons/clubs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Clubs
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../items/weapons/crossbows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Crossbows
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../items/weapons/fists/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Fist weapons
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../items/weapons/knives/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Knives
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../items/weapons/pickaxes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Pickaxes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../items/weapons/polearms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Polearms
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../items/weapons/sceptres/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Sceptres
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../items/weapons/spears/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Spears
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../items/weapons/staves/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Staves
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../items/weapons/swords/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Swords
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Currency
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Currency
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../items/currency/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  All currency
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../items/runes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Runes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../items/great-runes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Great runes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../items/corrupted-runes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Corrupted runes
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../items/essences/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Essences
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../items/sigils/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Sigils
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../items/punches/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Punches
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../items/materials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Materials
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../items/trophies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Trophies
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../items/jewels/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Jewels
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../items/uniques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Uniques
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Monsters
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Monsters
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../monsters/mods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Monster Modifiers
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../monsters/bosses/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Bosses
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../monsters/creatures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Creatures
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../monsters/taming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Taming
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Mechanics
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_6">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Mechanics
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanics/creatures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Creature scaling
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanics/experience/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Experience and levels
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanics/loot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Loot and experience
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanics/combat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Combat and building
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanics/summons/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Summons
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Patches
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_7">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Patches
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.3.2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Patch 5.3.2
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.3.1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Patch 5.3.1
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Patch 5.3.0
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Patch 5.3.0
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#passive-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Passive Tree
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Passive Tree">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changed-26" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Changed (26)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#new-137" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        New (137)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mods" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Mods
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changed-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Changed (3)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#new-33" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        New (33)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#item-bases" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Item bases
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Item bases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changed-51" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Changed (51)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uniques" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Uniques
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Uniques">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changed-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Changed (1)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#currency" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Currency
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Currency">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changed-3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Changed (3)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#values" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Values
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Values">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changed-3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Changed (3)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#new-42" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        New (42)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removed-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Removed (1)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#keywords" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Keywords
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Keywords">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changed-9" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Changed (9)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#new-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        New (8)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.2.1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Patch 5.2.1
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.2.0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Patch 5.2.0
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.1.2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Patch 5.1.2
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.1.1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Patch 5.1.1
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.1.0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Patch 5.1.0
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  About
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#passive-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Passive Tree
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Passive Tree">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changed-26" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Changed (26)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#new-137" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        New (137)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mods" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Mods
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changed-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Changed (3)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#new-33" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        New (33)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#item-bases" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Item bases
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Item bases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changed-51" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Changed (51)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uniques" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Uniques
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Uniques">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changed-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Changed (1)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#currency" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Currency
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Currency">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changed-3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Changed (3)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#values" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Values
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Values">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changed-3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Changed (3)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#new-42" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        New (42)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removed-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Removed (1)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#keywords" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Keywords
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Keywords">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changed-9" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Changed (9)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#new-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        New (8)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  
+  <span class="md-ellipsis">
+    Patches
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                <a id="__skip" tabindex="-1"></a>
+                
+                  
+
+  
+  
+
+
+<h1 id="patch-530">Patch 5.3.0<a class="headerlink" href="#patch-530" title="Permanent link">&para;</a></h1>
+<p>What changed in the game data from 5.2.1 to 5.3.0, found by comparing the two versions. <del>Struck</del> text is gone, <ins>marked</ins> text is new. Only the data is compared: a change to how the code works doesn't show here.</p>
+<h2 id="passive-tree">Passive Tree<a class="headerlink" href="#passive-tree" title="Permanent link">&para;</a></h2>
+<h3 id="changed-26">Changed (26)<a class="headerlink" href="#changed-26" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../../passives/tree/#own11881"><b>Bomb Conservation</b></a> ×5</td>
+<td>Passive</td>
+<td><del>+5% bomb</del> → <ins>5%</ins> chance to <del>spend</del> → <ins>save</ins> <del>nothing</del> → <ins>bomb</ins> <del>when</del> → <ins>on</ins> <del>throwing</del> → <ins>bomb throw</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own11276"><b>Bows</b></a> ×2</td>
+<td>Passive</td>
+<td><ins>4% increased shooting effective range</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own11271/"><strong>Distant Flight</strong></a></td>
+<td>Notable</td>
+<td><ins>10% increased shooting effective range</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own11150/"><strong>Eternal Pyre</strong></a></td>
+<td>Keystone</td>
+<td><del>×2</del> → <ins>+4</ins> burning damage<ins> per 100 points of current health</ins><br><del>Permanent</del> → <ins>You</ins> <del>self-burning</del> → <ins>are</ins> <del>has</del> → <ins>always</ins> <del>a</del> → <ins>under</ins> <del>base</del> → <ins>the effect</ins> of <ins>your own ignite: it burns </ins>4%<ins> of your</ins> current health per second<del>.</del> → <ins>,</ins> <del>Own</del> → <ins>your own</ins> fire and burning modifiers <del>also</del> → <ins>apply</ins> <del>scale</del> → <ins>to</ins> <del>this</del> → <ins>it,</ins> <del>burn.</del> → <ins>fire</ins> <del>Defenses</del> → <ins>resistance</ins> <del>reduce</del> → <ins>reduces</ins> <del>damage</del> → <ins>it</ins> <del>taken.</del> → <ins>and</ins> <del>Water</del> → <ins>water</ins> cannot <del>extinguish</del> → <ins>put</ins> it<ins> out</ins>.<br><del>Burning damage is multiplied by 2. Permanent self-burning has a base of 4% current health per second. Own fire and burning modifiers also scale this burn. Defenses reduce damage taken. Water cannot extinguish it.</del></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own10970/"><strong>Frugal Archer</strong></a></td>
+<td>Notable</td>
+<td><del>+20% shooting</del> → <ins>20%</ins> chance to <del>spend</del> → <ins>save</ins> <del>nothing</del> → <ins>arrow or bolt on shot</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own11420/"><strong>Raider&#x27;s Thunder</strong></a>, <a href="../../passives/node/own11711/"><strong>Powder Underfoot</strong></a>, <a href="../../passives/node/own12622/"><strong>Fuse Spark</strong></a>, <a href="../../passives/node/own12625/"><strong>Double Peal</strong></a>, <a href="../../passives/node/own12634/"><strong>Demolisher&#x27;s Hand</strong></a>, <a href="../../passives/node/own12637/"><strong>Shrapnel Wound</strong></a></td>
+<td>Notable</td>
+<td><del>Impact Detonation: Each bomb ricochet detonates and spends 35% of the bomb’s remaining explosion power; A bouncing bomb explodes where it touches and keeps flying. Later explosions share the power of the original bomb.</del><br><ins>Impact Detonation: Bomb ricochets lose no power: every touch explodes at full power; A bouncing bomb loses no power on its bounces: every touch explodes at full power.</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own10952"><b>Ranged Combat</b></a> ×3</td>
+<td>Passive</td>
+<td><del>+8% shooting</del> → <ins>8%</ins> chance to <del>spend</del> → <ins>save</ins> <del>nothing</del> → <ins>arrow or bolt on shot</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own10872/"><strong>Sky&#x27;s Sting</strong></a></td>
+<td>Notable</td>
+<td><del>20%</del> → <ins>+25%</ins> <del>increased</del> → <ins>ailment effect</ins> shock<del> effect</del></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own11911/"><strong>Spare Fuse</strong></a>, <a href="../../passives/node/own12532/"><strong>Careful Throw</strong></a></td>
+<td>Notable</td>
+<td><del>+12.5% bomb</del> → <ins>12.5%</ins> chance to <del>spend</del> → <ins>save</ins> <del>nothing</del> → <ins>bomb</ins> <del>when</del> → <ins>on</ins> <del>throwing</del> → <ins>bomb throw</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own10794/"><strong>Swift Word</strong></a>, <a href="../../passives/node/own13110/"><strong>Whisper Above the Runes</strong></a>, <a href="../../passives/node/own13134/"><strong>Flowing Incantation</strong></a>, <a href="../../passives/node/own13540/"><strong>Caster&#x27;s Gesture</strong></a></td>
+<td>Notable</td>
+<td><del>Charged</del> → <ins>Gather</ins> <del>Casts</del> → <ins>the Elements</ins>: <del>Spells</del> → <ins>Absorb</ins> <del>can</del> → <ins>your</ins> <del>spend</del> → <ins>ground</ins> <del>an</del> → <ins>effects</ins> <del>attack</del> → <ins>while</ins> <del>charge</del> → <ins>wielding</ins> <del>and</del> → <ins>a</ins> <del>become charged casts</del> → <ins>staff</ins><br>Spell Echo: +100% staff repeat chance when casting with <del>charged</del> → <ins>infused</ins> <del>attacks</del> → <ins>casts</ins>; +0.2 staff s repeat delay when casting with <del>charged</del> → <ins>infused</ins> <del>attacks</del> → <ins>casts</ins></td>
+</tr>
+</tbody>
+</table>
+<h3 id="new-137">New (137)<a class="headerlink" href="#new-137" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../../passives/tree/#own10147"><b>Additional Projectile Chance</b></a> ×10</td>
+<td>Passive</td>
+<td><ins>+8% overflowing chance to fire an additional projectile</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own13212/"><strong>Ashen Wake</strong></a></td>
+<td>Notable</td>
+<td><ins>20% increased fire damage with ground effects</ins><br><ins>10% increased fire area of effect with ground effects</ins><br><ins>30% increased eitr regeneration while on Burning Ground</ins><br><ins>Spells create ground when they hit terrain with fire damage</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own13610"><b>Bleeding Damage</b></a> ×3</td>
+<td>Passive</td>
+<td><ins>8% increased bleed damage</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own13465/"><strong>Blighted Soil</strong></a></td>
+<td>Notable</td>
+<td><ins>20% increased poison damage with ground effects</ins><br><ins>30% increased poison damage over time while on Poisoned Ground</ins><br><ins>Spells create ground when they hit terrain with poison damage</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own13188"><b>Burning Ground</b></a> ×2</td>
+<td>Passive</td>
+<td><ins>8% increased fire damage with ground effects</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own13224"><b>Burning Ground</b></a> ×2</td>
+<td>Passive</td>
+<td><ins>4% increased fire area of effect with ground effects</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own10971/"><strong>Charged Vulnerability</strong></a></td>
+<td>Notable</td>
+<td><ins>+25% ailment effect shock</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own13266"><b>Chilled Ground</b></a> ×2</td>
+<td>Passive</td>
+<td><ins>4% increased frost area of effect with ground effects</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own13302"><b>Chilled Ground</b></a></td>
+<td>Passive</td>
+<td><ins>16% increased chill build-up with ground effects</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own13326"><b>Chilled Ground</b></a></td>
+<td>Passive</td>
+<td><ins>8% increased frost damage with ground effects</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own10623"><b>Damage over Time</b></a> ×5</td>
+<td>Passive</td>
+<td><ins>+2% damage over time multiplier</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own13172"><b>Damage over Time — Fire</b></a> ×2, <a href="../../passives/tree/#own13759"><b>Fire Damage over Time</b></a> ×6</td>
+<td>Passive</td>
+<td><ins>+2% fire damage over time multiplier</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own10114"><b>Damage over Time — Frost</b></a> ×2, <a href="../../passives/tree/#own13174"><b>Frost Damage over Time</b></a> ×2</td>
+<td>Passive</td>
+<td><ins>+2% frost damage over time multiplier</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own13176"><b>Damage over Time — Lightning</b></a> ×2, <a href="../../passives/tree/#own13741"><b>Lightning Damage over Time</b></a> ×2</td>
+<td>Passive</td>
+<td><ins>+2% lightning damage over time multiplier</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own11515"><b>Damage over Time — Physical</b></a> ×2, <a href="../../passives/tree/#own13598"><b>Physical Damage over Time</b></a> ×4</td>
+<td>Passive</td>
+<td><ins>+2% physical damage over time multiplier</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own11633"><b>Damage over Time — Poison</b></a> ×2, <a href="../../passives/tree/#own12250"><b>Poison Damage over Time</b></a> ×6</td>
+<td>Passive</td>
+<td><ins>+2% poison damage over time multiplier</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own11687/"><strong>Deep Venom</strong></a>, <a href="../../passives/node/own12262/"><strong>Patient Toxin</strong></a>, <a href="../../passives/node/own12923/"><strong>Deepening Venom</strong></a></td>
+<td>Notable</td>
+<td><ins>+5% poison damage over time multiplier</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own11418/"><strong>Drawing the Earth</strong></a></td>
+<td>Notable</td>
+<td><ins>+10% absorption rate for infusion</ins><br><ins>15% increased potency for infusion</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own13256/"><strong>Embers That Endure</strong></a>, <a href="../../passives/node/own13777/"><strong>Enduring Flame</strong></a>, <a href="../../passives/node/own13778/"><strong>Tenacious Embers</strong></a></td>
+<td>Notable</td>
+<td><ins>+5% fire damage over time multiplier</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own10790/"><strong>Endless Volley</strong></a>, <a href="../../passives/node/own13775/"><strong>One More Projectile</strong></a></td>
+<td>Notable</td>
+<td><ins>+20% overflowing chance to fire an additional projectile</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own13338/"><strong>Frozen Memory</strong></a></td>
+<td>Notable</td>
+<td><ins>20% increased frost damage with ground effects</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own11350/"><strong>Gathered Essence</strong></a></td>
+<td>Notable</td>
+<td><ins>15% increased potency for infusion</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own13290/"><strong>Glassbound</strong></a></td>
+<td>Notable</td>
+<td><ins>10% increased frost area of effect with ground effects</ins><br><ins>15% reduced cost while on Chilled Ground</ins><br><ins>Spells create ground when they hit terrain with frost damage</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own10887"><b>Ground Effects</b></a> ×2</td>
+<td>Passive</td>
+<td><ins>4% increased ground area of effect</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own10899"><b>Ground Effects</b></a> ×2</td>
+<td>Passive</td>
+<td><ins>8% increased ground effect duration</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own13182"><b>Ground Effects</b></a> ×2</td>
+<td>Passive</td>
+<td><ins>16% increased ground build-up</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own13218"><b>Ground Effects</b></a> ×2</td>
+<td>Passive</td>
+<td><ins>10% increased ground ailment effect</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own9788/"><strong>Held in the Hands</strong></a></td>
+<td>Notable</td>
+<td><ins>20% increased effect duration for infusion</ins><br><ins>15% increased potency for infusion</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own11347"><b>Infusion</b></a> ×5</td>
+<td>Passive</td>
+<td><ins>6% increased potency for infusion</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own11400"><b>Infusion</b></a></td>
+<td>Passive</td>
+<td><ins>+4% absorption rate for infusion</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own11406"><b>Infusion</b></a> ×2</td>
+<td>Passive</td>
+<td><ins>+4% absorption rate for infusion</ins><br><ins>6% increased potency for infusion</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own9782"><b>Infusion</b></a></td>
+<td>Passive</td>
+<td><ins>8% increased effect duration for infusion</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own13260/"><strong>Lingering Voltage</strong></a>, <a href="../../passives/node/own13753/"><strong>Lingering Current</strong></a></td>
+<td>Notable</td>
+<td><ins>+5% lightning damage over time multiplier</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own11521/"><strong>Mortal Wound</strong></a></td>
+<td>Notable</td>
+<td><ins>+5% physical damage over time multiplier</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own13441"><b>Poisoned Ground</b></a> ×2</td>
+<td>Passive</td>
+<td><ins>4% increased poison area of effect with ground effects</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own13447"><b>Poisoned Ground</b></a> ×2</td>
+<td>Passive</td>
+<td><ins>8% increased poison damage with ground effects</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own13477"><b>Poisoned Ground</b></a></td>
+<td>Passive</td>
+<td><ins>8% increased poison damage with ground effects</ins><br><ins>4% increased poison area of effect with ground effects</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own10135"><b>Projectile Chain Chance</b></a> ×4</td>
+<td>Passive</td>
+<td><ins>+8% overflowing chance to chain an additional time</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own10911/"><strong>Rune Circle</strong></a></td>
+<td>Notable</td>
+<td><ins>10% increased ground area of effect</ins><br><ins>20% increased ground effect duration</ins><br><ins>+2 ground limit</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own10953"><b>Shock</b></a> ×3</td>
+<td>Passive</td>
+<td><ins>+10% ailment effect shock</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own10977"><b>Shock</b></a> ×2</td>
+<td>Passive</td>
+<td><ins>4% increased shock duration</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own11263"><b>Shocked Ground</b></a></td>
+<td>Passive</td>
+<td><ins>4% increased lightning area of effect with ground effects</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own11371"><b>Shocked Ground</b></a> ×4</td>
+<td>Passive</td>
+<td><ins>8% increased lightning damage with ground effects</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own10255"><b>Shooting Effective Range</b></a> ×9</td>
+<td>Passive</td>
+<td><ins>5% increased shooting effective range</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own10635/"><strong>Slow Ruin</strong></a>, <a href="../../passives/node/own13732/"><strong>Unrelenting Decay</strong></a></td>
+<td>Notable</td>
+<td><ins>+5% damage over time multiplier</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own10153/"><strong>Splintering Flight</strong></a>, <a href="../../passives/node/own10778/"><strong>Forking Paths</strong></a></td>
+<td>Notable</td>
+<td><ins>+20% overflowing chance to chain an additional time</ins><br><ins>+20% overflowing chance to fire an additional projectile</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own10267/"><strong>Steady Shot</strong></a>, <a href="../../passives/node/own10291/"><strong>Patient Hunter</strong></a>, <a href="../../passives/node/own10910/"><strong>Point Blank</strong></a></td>
+<td>Notable</td>
+<td><ins>12% increased shooting effective range</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own11375/"><strong>Stormbed</strong></a></td>
+<td>Notable</td>
+<td><ins>10% increased lightning area of effect with ground effects</ins><br><ins>7.5% increased cast speed while on Shocked Ground</ins><br><ins>Spells create ground when they hit terrain with lightning damage</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own10989/"><strong>Sustained Discharge</strong></a></td>
+<td>Notable</td>
+<td><ins>10% increased shock duration</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own10802/"><strong>Unbroken Chain</strong></a></td>
+<td>Notable</td>
+<td><ins>+20% overflowing chance to chain an additional time</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own13640/"><strong>Unceasing Wound</strong></a></td>
+<td>Notable</td>
+<td><ins>+5% physical damage over time multiplier</ins><br><ins>20% increased bleed damage</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own13206/"><strong>Unsettled Ground</strong></a></td>
+<td>Notable</td>
+<td><ins>40% increased ground build-up</ins><br><ins>25% increased ground ailment effect</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own13471/"><strong>Venomous Reach</strong></a></td>
+<td>Notable</td>
+<td><ins>10% increased poison area of effect with ground effects</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own10126/"><strong>Winter Without End</strong></a>, <a href="../../passives/node/own13258/"><strong>Lasting Rime</strong></a></td>
+<td>Notable</td>
+<td><ins>+5% frost damage over time multiplier</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own13314/"><strong>Winter&#x27;s Reach</strong></a></td>
+<td>Notable</td>
+<td><ins>40% increased chill build-up with ground effects</ins></td>
+</tr>
+</tbody>
+</table>
+<h2 id="mods">Mods<a class="headerlink" href="#mods" title="Permanent link">&para;</a></h2>
+<h3 id="changed-3">Changed (3)<a class="headerlink" href="#changed-3" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../../items/mod/jewel.base.dex.81f2bd8ccb/"><strong>#% chance to save arrow or bolt on shot</strong></a></td>
+<td><del>+#% shooting chance to spend nothing</del> → <ins>#% chance to save arrow or bolt on shot</ins><br>T3 (item level 1–96, weight 1000): <del>+</del>(6.5–8)% <del>shooting </del>chance to <del>spend</del> → <ins>save</ins> <del>nothing</del> → <ins>arrow or bolt on shot</ins><br>T2 (item level 43–∞, weight 600): <del>+</del>(8–10.5)% <del>shooting </del>chance to <del>spend</del> → <ins>save</ins> <del>nothing</del> → <ins>arrow or bolt on shot</ins><br>T1 (item level 97–∞, weight 250): <del>+</del>(10.5–13)% <del>shooting </del>chance to <del>spend</del> → <ins>save</ins> <del>nothing</del> → <ins>arrow or bolt on shot</ins><br>T0 (item level 1–∞, weight 0): <del>+</del>(14.5–16)% <del>shooting </del>chance to <del>spend</del> → <ins>save</ins> <del>nothing</del> → <ins>arrow or bolt on shot</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/tree.refundchance-shooting.w/"><strong>#% chance to save arrow or bolt on shot</strong></a></td>
+<td><del>+#% shooting chance to spend nothing</del> → <ins>#% chance to save arrow or bolt on shot</ins><br>T5 (item level 1–42, weight 1000): <del>+</del>(7–9)% <del>shooting </del>chance to <del>spend</del> → <ins>save</ins> <del>nothing</del> → <ins>arrow or bolt on shot</ins><br>T4 (item level 19–76, weight 700): <del>+</del>(11–15)% <del>shooting </del>chance to <del>spend</del> → <ins>save</ins> <del>nothing</del> → <ins>arrow or bolt on shot</ins><br>T3 (item level 43–129, weight 400): <del>+</del>(15–20)% <del>shooting </del>chance to <del>spend</del> → <ins>save</ins> <del>nothing</del> → <ins>arrow or bolt on shot</ins><br>T2 (item level 77–∞, weight 180): <del>+</del>(19–26)% <del>shooting </del>chance to <del>spend</del> → <ins>save</ins> <del>nothing</del> → <ins>arrow or bolt on shot</ins><br>T1 (item level 130–∞, weight 60): <del>+</del>(24–32)% <del>shooting </del>chance to <del>spend</del> → <ins>save</ins> <del>nothing</del> → <ins>arrow or bolt on shot</ins><br>T0 (item level 1–∞, weight 0): <del>+</del>(31–41)% <del>shooting </del>chance to <del>spend</del> → <ins>save</ins> <del>nothing</del> → <ins>arrow or bolt on shot</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/weapon.shock-effect/"><strong>+#% ailment effect shock</strong></a></td>
+<td><del>#% increased shock effect</del> → <ins>+#% ailment effect shock</ins><br>T5 (item level 1–42, weight 1000): <ins>+</ins>(<del>10</del> → <ins>5</ins>–<del>15</del> → <ins>8</ins>)% <del>increased</del> → <ins>ailment effect</ins> shock<del> effect</del><br>T4 (item level 19–76, weight 700): <ins>+</ins>(<del>16</del> → <ins>9</ins>–<del>25</del> → <ins>13</ins>)% <del>increased</del> → <ins>ailment effect</ins> shock<del> effect</del><br>T3 (item level 43–129, weight 400): <ins>+</ins>(<del>26</del> → <ins>14</ins>–<del>37</del> → <ins>19</ins>)% <del>increased</del> → <ins>ailment effect</ins> shock<del> effect</del><br>T2 (item level 77–∞, weight 180): <ins>+</ins>(<del>38</del> → <ins>20</ins>–<del>50</del> → <ins>26</ins>)% <del>increased</del> → <ins>ailment effect</ins> shock<del> effect</del><br>T1 (item level 130–∞, weight 60): <ins>+</ins>(<del>51</del> → <ins>27</ins>–<del>65</del> → <ins>35</ins>)% <del>increased</del> → <ins>ailment effect</ins> shock<del> effect</del></td>
+</tr>
+</tbody>
+</table>
+<h3 id="new-33">New (33)<a class="headerlink" href="#new-33" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../../items/mod/ring.on-lightning-ground/"><strong>#% increased cast speed while on Shocked Ground</strong></a></td>
+<td><ins>T5 (item level 1–42, weight 1000): (3–5)% increased cast speed while on Shocked Ground</ins><br><ins>T4 (item level 19–76, weight 700): (6–8)% increased cast speed while on Shocked Ground</ins><br><ins>T3 (item level 43–129, weight 400): (9–12)% increased cast speed while on Shocked Ground</ins><br><ins>T2 (item level 77–∞, weight 180): (13–16)% increased cast speed while on Shocked Ground</ins><br><ins>T1 (item level 130–∞, weight 60): (17–22)% increased cast speed while on Shocked Ground</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/ring.on-fire-ground/"><strong>#% increased eitr regeneration while on Burning Ground</strong></a></td>
+<td><ins>T5 (item level 1–42, weight 1000): (3–5)% increased eitr regeneration while on Burning Ground</ins><br><ins>T4 (item level 19–76, weight 700): (6–8)% increased eitr regeneration while on Burning Ground</ins><br><ins>T3 (item level 43–129, weight 400): (9–12)% increased eitr regeneration while on Burning Ground</ins><br><ins>T2 (item level 77–∞, weight 180): (13–16)% increased eitr regeneration while on Burning Ground</ins><br><ins>T1 (item level 130–∞, weight 60): (17–22)% increased eitr regeneration while on Burning Ground</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/caster.ground-area/"><strong>#% increased ground area of effect</strong></a></td>
+<td><ins>T5 (item level 1–42, weight 1000): (4–6)% increased ground area of effect</ins><br><ins>T4 (item level 19–76, weight 700): (7–10)% increased ground area of effect</ins><br><ins>T3 (item level 43–129, weight 400): (11–14)% increased ground area of effect</ins><br><ins>T2 (item level 77–∞, weight 180): (15–19)% increased ground area of effect</ins><br><ins>T1 (item level 130–∞, weight 60): (20–25)% increased ground area of effect</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/jewel.ground-area/"><strong>#% increased ground area of effect</strong></a></td>
+<td><ins>T5 (item level 1–42, weight 1000): (2–3)% increased ground area of effect</ins><br><ins>T4 (item level 19–76, weight 700): (4–5)% increased ground area of effect</ins><br><ins>T3 (item level 43–129, weight 400): (6–7)% increased ground area of effect</ins><br><ins>T2 (item level 77–∞, weight 180): (8–9)% increased ground area of effect</ins><br><ins>T1 (item level 130–∞, weight 60): (10–12)% increased ground area of effect</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/caster.ground-build/"><strong>#% increased ground build-up</strong></a></td>
+<td><ins>T5 (item level 1–42, weight 1000): (8–12)% increased ground build-up</ins><br><ins>T4 (item level 19–76, weight 700): (13–19)% increased ground build-up</ins><br><ins>T3 (item level 43–129, weight 400): (20–28)% increased ground build-up</ins><br><ins>T2 (item level 77–∞, weight 180): (29–38)% increased ground build-up</ins><br><ins>T1 (item level 130–∞, weight 60): (39–50)% increased ground build-up</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/caster.ground-damage/"><strong>#% increased ground damage</strong></a></td>
+<td><ins>T5 (item level 1–42, weight 1000): (8–12)% increased ground damage</ins><br><ins>T4 (item level 19–76, weight 700): (13–19)% increased ground damage</ins><br><ins>T3 (item level 43–129, weight 400): (20–28)% increased ground damage</ins><br><ins>T2 (item level 77–∞, weight 180): (29–38)% increased ground damage</ins><br><ins>T1 (item level 130–∞, weight 60): (39–50)% increased ground damage</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/caster.ground-duration/"><strong>#% increased ground effect duration</strong></a></td>
+<td><ins>T5 (item level 1–42, weight 1000): (6–10)% increased ground effect duration</ins><br><ins>T4 (item level 19–76, weight 700): (11–15)% increased ground effect duration</ins><br><ins>T3 (item level 43–129, weight 400): (16–21)% increased ground effect duration</ins><br><ins>T2 (item level 77–∞, weight 180): (22–28)% increased ground effect duration</ins><br><ins>T1 (item level 130–∞, weight 60): (29–36)% increased ground effect duration</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/ring.on-poison-ground/"><strong>#% increased poison damage over time while on Poisoned Ground</strong></a></td>
+<td><ins>T5 (item level 1–42, weight 1000): (3–5)% increased poison damage over time while on Poisoned Ground</ins><br><ins>T4 (item level 19–76, weight 700): (6–8)% increased poison damage over time while on Poisoned Ground</ins><br><ins>T3 (item level 43–129, weight 400): (9–12)% increased poison damage over time while on Poisoned Ground</ins><br><ins>T2 (item level 77–∞, weight 180): (13–16)% increased poison damage over time while on Poisoned Ground</ins><br><ins>T1 (item level 130–∞, weight 60): (17–22)% increased poison damage over time while on Poisoned Ground</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/caster.infusion-potency/"><strong>#% increased potency for infusion</strong></a></td>
+<td><ins>T5 (item level 1–42, weight 1000): (6–9)% increased potency for infusion</ins><br><ins>T4 (item level 19–76, weight 700): (10–14)% increased potency for infusion</ins><br><ins>T3 (item level 43–129, weight 400): (15–20)% increased potency for infusion</ins><br><ins>T2 (item level 77–∞, weight 180): (21–27)% increased potency for infusion</ins><br><ins>T1 (item level 130–∞, weight 60): (28–35)% increased potency for infusion</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/jewel.infusion-potency/"><strong>#% increased potency for infusion</strong></a></td>
+<td><ins>T5 (item level 1–42, weight 1000): (2–4)% increased potency for infusion</ins><br><ins>T4 (item level 19–76, weight 700): (5–7)% increased potency for infusion</ins><br><ins>T3 (item level 43–129, weight 400): (8–10)% increased potency for infusion</ins><br><ins>T2 (item level 77–∞, weight 180): (11–13)% increased potency for infusion</ins><br><ins>T1 (item level 130–∞, weight 60): (14–17)% increased potency for infusion</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/ring.infusion-potency/"><strong>#% increased potency for infusion</strong></a></td>
+<td><ins>T5 (item level 1–42, weight 1000): (3–5)% increased potency for infusion</ins><br><ins>T4 (item level 19–76, weight 700): (6–8)% increased potency for infusion</ins><br><ins>T3 (item level 43–129, weight 400): (9–12)% increased potency for infusion</ins><br><ins>T2 (item level 77–∞, weight 180): (13–16)% increased potency for infusion</ins><br><ins>T1 (item level 130–∞, weight 60): (17–21)% increased potency for infusion</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/weapon.shooting-effective-range/"><strong>#% increased shooting effective range</strong></a></td>
+<td><ins>T4 (item level 1–76, weight 400): (10–15)% increased shooting effective range</ins><br><ins>T3 (item level 43–129, weight 300): (16–24)% increased shooting effective range</ins><br><ins>T2 (item level 77–∞, weight 180): (25–34)% increased shooting effective range</ins><br><ins>T1 (item level 130–∞, weight 60): (35–45)% increased shooting effective range</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/ring.on-frost-ground/"><strong>#% reduced cost while on Chilled Ground</strong></a></td>
+<td><ins>T5 (item level 1–42, weight 1000): (1–2)% reduced cost while on Chilled Ground</ins><br><ins>T4 (item level 19–76, weight 700): (2–3)% reduced cost while on Chilled Ground</ins><br><ins>T3 (item level 43–129, weight 400): (3–4)% reduced cost while on Chilled Ground</ins><br><ins>T2 (item level 77–∞, weight 180): (4–5)% reduced cost while on Chilled Ground</ins><br><ins>T1 (item level 130–∞, weight 60): (6–7)% reduced cost while on Chilled Ground</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/caster.infusion-absorption/"><strong>+#% absorption rate for infusion</strong></a></td>
+<td><ins>T5 (item level 1–42, weight 1000): +(4–6)% absorption rate for infusion</ins><br><ins>T4 (item level 19–76, weight 700): +(7–10)% absorption rate for infusion</ins><br><ins>T3 (item level 43–129, weight 400): +(11–15)% absorption rate for infusion</ins><br><ins>T2 (item level 77–∞, weight 180): +(16–21)% absorption rate for infusion</ins><br><ins>T1 (item level 130–∞, weight 60): +(22–28)% absorption rate for infusion</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/jewel.shock-effect/"><strong>+#% ailment effect shock</strong></a></td>
+<td><ins>T5 (item level 1–42, weight 1000): +(3–5)% ailment effect shock</ins><br><ins>T4 (item level 19–76, weight 700): +(6–8)% ailment effect shock</ins><br><ins>T3 (item level 43–129, weight 400): +(9–11)% ailment effect shock</ins><br><ins>T2 (item level 77–∞, weight 180): +(12–14)% ailment effect shock</ins><br><ins>T1 (item level 130–∞, weight 60): +(15–18)% ailment effect shock</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/caster.dot-multiplier/"><strong>+#% damage over time multiplier</strong></a></td>
+<td><ins>T5 (item level 1–42, weight 1000): +(2–4)% damage over time multiplier</ins><br><ins>T4 (item level 19–76, weight 700): +(5–7)% damage over time multiplier</ins><br><ins>T3 (item level 43–129, weight 400): +(8–11)% damage over time multiplier</ins><br><ins>T2 (item level 77–∞, weight 180): +(12–15)% damage over time multiplier</ins><br><ins>T1 (item level 130–∞, weight 60): +(16–20)% damage over time multiplier</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/jewel.dot-multiplier/"><strong>+#% damage over time multiplier</strong></a></td>
+<td><ins>T5 (item level 1–42, weight 1000): +(1–2)% damage over time multiplier</ins><br><ins>T4 (item level 19–76, weight 700): +(2–3)% damage over time multiplier</ins><br><ins>T3 (item level 43–129, weight 400): +(3–4)% damage over time multiplier</ins><br><ins>T2 (item level 77–∞, weight 180): +(4–5)% damage over time multiplier</ins><br><ins>T1 (item level 130–∞, weight 60): +(5–7)% damage over time multiplier</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/ring.dot-multiplier/"><strong>+#% damage over time multiplier</strong></a></td>
+<td><ins>T5 (item level 1–42, weight 1000): +(1–2)% damage over time multiplier</ins><br><ins>T4 (item level 19–76, weight 700): +(3–4)% damage over time multiplier</ins><br><ins>T3 (item level 43–129, weight 400): +(5–6)% damage over time multiplier</ins><br><ins>T2 (item level 77–∞, weight 180): +(7–9)% damage over time multiplier</ins><br><ins>T1 (item level 130–∞, weight 60): +(10–12)% damage over time multiplier</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/jewel.fire-dot-multiplier/"><strong>+#% fire damage over time multiplier</strong></a></td>
+<td><ins>T5 (item level 1–42, weight 1000): +(2–3)% fire damage over time multiplier</ins><br><ins>T4 (item level 19–76, weight 700): +(3–4)% fire damage over time multiplier</ins><br><ins>T3 (item level 43–129, weight 400): +(4–5)% fire damage over time multiplier</ins><br><ins>T2 (item level 77–∞, weight 180): +(6–7)% fire damage over time multiplier</ins><br><ins>T1 (item level 130–∞, weight 60): +(8–10)% fire damage over time multiplier</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/ring.fire-dot-multiplier/"><strong>+#% fire damage over time multiplier</strong></a></td>
+<td><ins>T5 (item level 1–42, weight 1000): +(2–3)% fire damage over time multiplier</ins><br><ins>T4 (item level 19–76, weight 700): +(4–6)% fire damage over time multiplier</ins><br><ins>T3 (item level 43–129, weight 400): +(7–9)% fire damage over time multiplier</ins><br><ins>T2 (item level 77–∞, weight 180): +(10–13)% fire damage over time multiplier</ins><br><ins>T1 (item level 130–∞, weight 60): +(14–18)% fire damage over time multiplier</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/weapon.fire-dot-multiplier/"><strong>+#% fire damage over time multiplier</strong></a></td>
+<td><ins>T5 (item level 1–42, weight 1000): +(3–5)% fire damage over time multiplier</ins><br><ins>T4 (item level 19–76, weight 700): +(6–9)% fire damage over time multiplier</ins><br><ins>T3 (item level 43–129, weight 400): +(10–14)% fire damage over time multiplier</ins><br><ins>T2 (item level 77–∞, weight 180): +(15–19)% fire damage over time multiplier</ins><br><ins>T1 (item level 130–∞, weight 60): +(20–25)% fire damage over time multiplier</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/jewel.frost-dot-multiplier/"><strong>+#% frost damage over time multiplier</strong></a></td>
+<td><ins>T5 (item level 1–42, weight 1000): +(2–3)% frost damage over time multiplier</ins><br><ins>T4 (item level 19–76, weight 700): +(3–4)% frost damage over time multiplier</ins><br><ins>T3 (item level 43–129, weight 400): +(4–5)% frost damage over time multiplier</ins><br><ins>T2 (item level 77–∞, weight 180): +(6–7)% frost damage over time multiplier</ins><br><ins>T1 (item level 130–∞, weight 60): +(8–10)% frost damage over time multiplier</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/ring.frost-dot-multiplier/"><strong>+#% frost damage over time multiplier</strong></a></td>
+<td><ins>T5 (item level 1–42, weight 1000): +(2–3)% frost damage over time multiplier</ins><br><ins>T4 (item level 19–76, weight 700): +(4–6)% frost damage over time multiplier</ins><br><ins>T3 (item level 43–129, weight 400): +(7–9)% frost damage over time multiplier</ins><br><ins>T2 (item level 77–∞, weight 180): +(10–13)% frost damage over time multiplier</ins><br><ins>T1 (item level 130–∞, weight 60): +(14–18)% frost damage over time multiplier</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/weapon.frost-dot-multiplier/"><strong>+#% frost damage over time multiplier</strong></a></td>
+<td><ins>T5 (item level 1–42, weight 1000): +(3–5)% frost damage over time multiplier</ins><br><ins>T4 (item level 19–76, weight 700): +(6–9)% frost damage over time multiplier</ins><br><ins>T3 (item level 43–129, weight 400): +(10–14)% frost damage over time multiplier</ins><br><ins>T2 (item level 77–∞, weight 180): +(15–19)% frost damage over time multiplier</ins><br><ins>T1 (item level 130–∞, weight 60): +(20–25)% frost damage over time multiplier</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/jewel.lightning-dot-multiplier/"><strong>+#% lightning damage over time multiplier</strong></a></td>
+<td><ins>T5 (item level 1–42, weight 1000): +(2–3)% lightning damage over time multiplier</ins><br><ins>T4 (item level 19–76, weight 700): +(3–4)% lightning damage over time multiplier</ins><br><ins>T3 (item level 43–129, weight 400): +(4–5)% lightning damage over time multiplier</ins><br><ins>T2 (item level 77–∞, weight 180): +(6–7)% lightning damage over time multiplier</ins><br><ins>T1 (item level 130–∞, weight 60): +(8–10)% lightning damage over time multiplier</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/ring.lightning-dot-multiplier/"><strong>+#% lightning damage over time multiplier</strong></a></td>
+<td><ins>T5 (item level 1–42, weight 1000): +(2–3)% lightning damage over time multiplier</ins><br><ins>T4 (item level 19–76, weight 700): +(4–6)% lightning damage over time multiplier</ins><br><ins>T3 (item level 43–129, weight 400): +(7–9)% lightning damage over time multiplier</ins><br><ins>T2 (item level 77–∞, weight 180): +(10–13)% lightning damage over time multiplier</ins><br><ins>T1 (item level 130–∞, weight 60): +(14–18)% lightning damage over time multiplier</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/weapon.lightning-dot-multiplier/"><strong>+#% lightning damage over time multiplier</strong></a></td>
+<td><ins>T5 (item level 1–42, weight 1000): +(3–5)% lightning damage over time multiplier</ins><br><ins>T4 (item level 19–76, weight 700): +(6–9)% lightning damage over time multiplier</ins><br><ins>T3 (item level 43–129, weight 400): +(10–14)% lightning damage over time multiplier</ins><br><ins>T2 (item level 77–∞, weight 180): +(15–19)% lightning damage over time multiplier</ins><br><ins>T1 (item level 130–∞, weight 60): +(20–25)% lightning damage over time multiplier</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/jewel.physical-dot-multiplier/"><strong>+#% physical damage over time multiplier</strong></a></td>
+<td><ins>T5 (item level 1–42, weight 1000): +(2–3)% physical damage over time multiplier</ins><br><ins>T4 (item level 19–76, weight 700): +(3–4)% physical damage over time multiplier</ins><br><ins>T3 (item level 43–129, weight 400): +(4–5)% physical damage over time multiplier</ins><br><ins>T2 (item level 77–∞, weight 180): +(6–7)% physical damage over time multiplier</ins><br><ins>T1 (item level 130–∞, weight 60): +(8–10)% physical damage over time multiplier</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/ring.physical-dot-multiplier/"><strong>+#% physical damage over time multiplier</strong></a></td>
+<td><ins>T5 (item level 1–42, weight 1000): +(2–3)% physical damage over time multiplier</ins><br><ins>T4 (item level 19–76, weight 700): +(4–6)% physical damage over time multiplier</ins><br><ins>T3 (item level 43–129, weight 400): +(7–9)% physical damage over time multiplier</ins><br><ins>T2 (item level 77–∞, weight 180): +(10–13)% physical damage over time multiplier</ins><br><ins>T1 (item level 130–∞, weight 60): +(14–18)% physical damage over time multiplier</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/weapon.physical-dot-multiplier/"><strong>+#% physical damage over time multiplier</strong></a></td>
+<td><ins>T5 (item level 1–42, weight 1000): +(3–5)% physical damage over time multiplier</ins><br><ins>T4 (item level 19–76, weight 700): +(6–9)% physical damage over time multiplier</ins><br><ins>T3 (item level 43–129, weight 400): +(10–14)% physical damage over time multiplier</ins><br><ins>T2 (item level 77–∞, weight 180): +(15–19)% physical damage over time multiplier</ins><br><ins>T1 (item level 130–∞, weight 60): +(20–25)% physical damage over time multiplier</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/jewel.poison-dot-multiplier/"><strong>+#% poison damage over time multiplier</strong></a></td>
+<td><ins>T5 (item level 1–42, weight 1000): +(2–3)% poison damage over time multiplier</ins><br><ins>T4 (item level 19–76, weight 700): +(3–4)% poison damage over time multiplier</ins><br><ins>T3 (item level 43–129, weight 400): +(4–5)% poison damage over time multiplier</ins><br><ins>T2 (item level 77–∞, weight 180): +(6–7)% poison damage over time multiplier</ins><br><ins>T1 (item level 130–∞, weight 60): +(8–10)% poison damage over time multiplier</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/ring.poison-dot-multiplier/"><strong>+#% poison damage over time multiplier</strong></a></td>
+<td><ins>T5 (item level 1–42, weight 1000): +(2–3)% poison damage over time multiplier</ins><br><ins>T4 (item level 19–76, weight 700): +(4–6)% poison damage over time multiplier</ins><br><ins>T3 (item level 43–129, weight 400): +(7–9)% poison damage over time multiplier</ins><br><ins>T2 (item level 77–∞, weight 180): +(10–13)% poison damage over time multiplier</ins><br><ins>T1 (item level 130–∞, weight 60): +(14–18)% poison damage over time multiplier</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/weapon.poison-dot-multiplier/"><strong>+#% poison damage over time multiplier</strong></a></td>
+<td><ins>T5 (item level 1–42, weight 1000): +(3–5)% poison damage over time multiplier</ins><br><ins>T4 (item level 19–76, weight 700): +(6–9)% poison damage over time multiplier</ins><br><ins>T3 (item level 43–129, weight 400): +(10–14)% poison damage over time multiplier</ins><br><ins>T2 (item level 77–∞, weight 180): +(15–19)% poison damage over time multiplier</ins><br><ins>T1 (item level 130–∞, weight 60): +(20–25)% poison damage over time multiplier</ins></td>
+</tr>
+</tbody>
+</table>
+<h2 id="item-bases">Item bases<a class="headerlink" href="#item-bases" title="Permanent link">&para;</a></h2>
+<h3 id="changed-51">Changed (51)<a class="headerlink" href="#changed-51" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../../items/base/ArmorAshlandsMediumChest/"><strong>Breastplate of Ask</strong></a>, <a href="../../items/base/ArmorAshlandsMediumlegs/"><strong>Trousers of Ask</strong></a></td>
+<td>Quality 1: Armour 28, Evasion <del>28</del> → <ins>37.8</ins><br>Quality 2: Armour 30, Evasion <del>30</del> → <ins>40.5</ins><br>Quality 3: Armour 32, Evasion <del>32</del> → <ins>43.2</ins><br>Quality 4: Armour 34, Evasion <del>34</del> → <ins>45.9</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/base/ArmorDeepNorthHeavyChest/"><strong>Breastplate of the Protector</strong></a>, <a href="../../items/base/ArmorDeepNorthHeavylegs/"><strong>Trousers of the Protector</strong></a></td>
+<td>Quality 1: Armour 44, Evasion <del>44</del> → <ins>59.4</ins><br>Quality 2: Armour 46, Evasion <del>46</del> → <ins>62.1</ins><br>Quality 3: Armour 48, Evasion <del>48</del> → <ins>64.8</ins><br>Quality 4: Armour 50, Evasion <del>50</del> → <ins>67.5</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/base/ArmorDeepNorthMediumChest/"><strong>Chestpiece of the Vanguard</strong></a>, <a href="../../items/base/ArmorDeepNorthMediumlegs/"><strong>Trousers of the Vanguard</strong></a></td>
+<td>Quality 1: Armour 34, Evasion <del>34</del> → <ins>45.9</ins><br>Quality 2: Armour 36, Evasion <del>36</del> → <ins>48.6</ins><br>Quality 3: Armour 38, Evasion <del>38</del> → <ins>51.3</ins><br>Quality 4: Armour 40, Evasion <del>40</del> → <ins>54</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/base/ArmorFenringChest/"><strong>Fenris Coat</strong></a>, <a href="../../items/base/ArmorFenringLegs/"><strong>Fenris Leggings</strong></a>, <a href="../../items/base/HelmetFenring/"><strong>Fenris Hood</strong></a></td>
+<td>Quality 1: Armour 10, Evasion <del>10</del> → <ins>13.5</ins><br>Quality 2: Armour 12, Evasion <del>12</del> → <ins>16.2</ins><br>Quality 3: Armour 14, Evasion <del>14</del> → <ins>18.9</ins><br>Quality 4: Armour 16, Evasion <del>16</del> → <ins>21.6</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/base/ArmorLeatherChest/"><strong>Leather Tunic</strong></a>, <a href="../../items/base/ArmorLeatherLegs/"><strong>Leather Trousers</strong></a>, <a href="../../items/base/HelmetLeather/"><strong>Leather Helmet</strong></a></td>
+<td>Quality 1: Armour 2, Evasion <del>2</del> → <ins>2.7</ins><br>Quality 2: Armour 4, Evasion <del>4</del> → <ins>5.4</ins><br>Quality 3: Armour 6, Evasion <del>6</del> → <ins>8.1</ins><br>Quality 4: Armour 8, Evasion <del>8</del> → <ins>10.8</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/base/ArmorLoxChest/"><strong>Lox Fur Jacket</strong></a>, <a href="../../items/base/ArmorLoxLegs/"><strong>Lox Fur Trousers</strong></a></td>
+<td>Quality 1: Armour 16, Evasion <del>16</del> → <ins>21.6</ins><br>Quality 2: Armour 18, Evasion <del>18</del> → <ins>24.3</ins><br>Quality 3: Armour 20, Evasion <del>20</del> → <ins>27</ins><br>Quality 4: Armour 22, Evasion <del>22</del> → <ins>29.7</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/base/ArmorBerserkerChest/"><strong>Patterns of the Bear</strong></a>, <a href="../../items/base/ArmorBerserkerLegs/"><strong>Loincloth of the Bear</strong></a></td>
+<td>Quality 1: Armour 7, Evasion <del>7</del> → <ins>9.45</ins><br>Quality 2: Armour 9, Evasion <del>9</del> → <ins>12.15</ins><br>Quality 3: Armour 11, Evasion <del>11</del> → <ins>14.85</ins><br>Quality 4: Armour 13, Evasion <del>13</del> → <ins>17.55</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/base/ArmorDress1/"><strong>Plain Brown Dress</strong></a>, <a href="../../items/base/ArmorDress10/"><strong>Simple Undyed Dress</strong></a>, <a href="../../items/base/ArmorDress2/"><strong>Brown Dress with Shawl</strong></a>, <a href="../../items/base/ArmorDress3/"><strong>Brown Dress with Beads</strong></a>, <a href="../../items/base/ArmorDress4/"><strong>Plain Blue Dress</strong></a>, <a href="../../items/base/ArmorDress5/"><strong>Blue Dress with Shawl</strong></a>, <a href="../../items/base/ArmorDress6/"><strong>Blue Dress with Beads</strong></a>, <a href="../../items/base/ArmorDress7/"><strong>Plain Yellow Dress</strong></a>, <a href="../../items/base/ArmorDress8/"><strong>Yellow Dress with Shawl</strong></a>, <a href="../../items/base/ArmorDress9/"><strong>Yellow Dress with Beads</strong></a>, <a href="../../items/base/ArmorHarvester1/"><strong>Harvest Tunic</strong></a>, <a href="../../items/base/ArmorHarvester2/"><strong>Harvest Dress</strong></a>, <a href="../../items/base/ArmorTunic1/"><strong>Plain Blue Tunic</strong></a>, <a href="../../items/base/ArmorTunic10/"><strong>Simple Undyed Tunic</strong></a>, <a href="../../items/base/ArmorTunic2/"><strong>Blue Tunic with Cape</strong></a>, <a href="../../items/base/ArmorTunic3/"><strong>Blue Tunic with Beads</strong></a>, <a href="../../items/base/ArmorTunic4/"><strong>Plain Red Tunic</strong></a>, <a href="../../items/base/ArmorTunic5/"><strong>Red Tunic with Cape</strong></a>, <a href="../../items/base/ArmorTunic6/"><strong>Red Tunic with Beads</strong></a>, <a href="../../items/base/ArmorTunic7/"><strong>Plain Yellow Tunic</strong></a>, <a href="../../items/base/ArmorTunic8/"><strong>Yellow Tunic with Cape</strong></a>, <a href="../../items/base/ArmorTunic9/"><strong>Yellow Tunic with Beads</strong></a></td>
+<td>Quality 1: Armour 1, Evasion <del>1</del> → <ins>1.35</ins><br>Quality 2: Armour 2, Evasion <del>2</del> → <ins>2.7</ins><br>Quality 3: Armour 3, Evasion <del>3</del> → <ins>4.05</ins><br>Quality 4: Armour 4, Evasion <del>4</del> → <ins>5.4</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/base/ArmorRagsChest/"><strong>Rag Tunic</strong></a>, <a href="../../items/base/ArmorRagsLegs/"><strong>Rag Trousers</strong></a></td>
+<td>Quality 1: Armour 1, Evasion <del>1</del> → <ins>1.35</ins><br>Quality 2: Armour 2, Evasion <del>2</del> → <ins>2.7</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/base/ArmorRootChest/"><strong>Root Harnesk</strong></a>, <a href="../../items/base/ArmorRootLegs/"><strong>Root Leggings</strong></a>, <a href="../../items/base/HelmetRoot/"><strong>Root Mask</strong></a></td>
+<td>Quality 1: Armour 8, Evasion <del>4</del> → <ins>5.4</ins><br>Quality 2: Armour 10, Evasion <del>5</del> → <ins>6.75</ins><br>Quality 3: Armour 12, Evasion <del>6</del> → <ins>8.1</ins><br>Quality 4: Armour 14, Evasion <del>7</del> → <ins>9.45</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/base/PT_StaffStorm/"><strong>Stormstaff</strong></a>, <a href="../../items/base/StaffClusterbomb/"><strong>Staff of Fracturing</strong></a>, <a href="../../items/base/StaffLightning/"><strong>Dundr</strong></a></td>
+<td><ins>Projectiles of one cast may all strike the same target</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/base/ArmorTrollLeatherChest/"><strong>Troll Leather Tunic</strong></a>, <a href="../../items/base/ArmorTrollLeatherLegs/"><strong>Troll Leather Trousers</strong></a>, <a href="../../items/base/HelmetTrollLeather/"><strong>Troll Leather Hood</strong></a></td>
+<td>Quality 1: Armour 6, Evasion <del>6</del> → <ins>8.1</ins><br>Quality 2: Armour 8, Evasion <del>8</del> → <ins>10.8</ins><br>Quality 3: Armour 10, Evasion <del>10</del> → <ins>13.5</ins><br>Quality 4: Armour 12, Evasion <del>12</del> → <ins>16.2</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/base/ArmorBerserkerUndeadChest/"><strong>Vilebone Cage</strong></a>, <a href="../../items/base/ArmorBerserkerUndeadLegs/"><strong>Vilebone Drapes</strong></a></td>
+<td>Quality 1: Armour 18, Evasion <del>18</del> → <ins>24.3</ins><br>Quality 2: Armour 20, Evasion <del>20</del> → <ins>27</ins><br>Quality 3: Armour 22, Evasion <del>22</del> → <ins>29.7</ins><br>Quality 4: Armour 24, Evasion <del>24</del> → <ins>32.4</ins></td>
+</tr>
+</tbody>
+</table>
+<h2 id="uniques">Uniques<a class="headerlink" href="#uniques" title="Permanent link">&para;</a></h2>
+<h3 id="changed-1">Changed (1)<a class="headerlink" href="#changed-1" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../../items/unique/PT_Jewel_TrailOfTheFirstAntler/"><strong>Trail of the First Antler</strong></a></td>
+<td>+(<del>0.6</del> → <ins>2</ins>–<del>1</del> → <ins>4</ins>) maximum health per allocated passive on the path from this socket to your start (10%)<br>+(<del>0.5</del> → <ins>2</ins>–<del>0.8</del> → <ins>4</ins>) maximum eitr per allocated passive on the path from this socket to your start (10%)<br>+(<del>0.4</del> → <ins>2</ins>–<del>0.7</del> → <ins>4</ins>) rune shield per allocated passive on the path from this socket to your start (10%)<br>+(<del>0.3</del> → <ins>2</ins>–<del>0.5</del> → <ins>4</ins>) endurance threshold<ins> that falls below it is reduced: 20% at base, at most 75%. The threshold is counted in health points. With Rune Bulwark the rune shield is checked instead of health.&quot;)</ins> per allocated passive on the path from this socket to your start (10%)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="currency">Currency<a class="headerlink" href="#currency" title="Permanent link">&para;</a></h2>
+<h3 id="changed-3_1">Changed (3)<a class="headerlink" href="#changed-3_1" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../../items/currency/PT_EssenceOfEikthyr/"><strong>Essence of Eikthyr</strong></a></td>
+<td><del>Adds a random lightning property to an item, up to its best tier, or one of Eikthyr&#x27;s own</del></td>
+</tr>
+<tr>
+<td><a href="../../items/currency/PT_GreatRuneOfFate/"><strong>Great Rune of Fate</strong></a></td>
+<td>Randomises the numeric values of modifiers on an item<ins>. An item from an older version becomes current: its outdated modifiers are replaced with today&#x27;s.</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/currency/PT_RuneOfBloodChallenge/"><strong>Rune of the Blood Challenge</strong></a></td>
+<td>Offer at an altar of summoning<ins> or a boss altar</ins>: the next <del>guardian</del> → <ins>boss</ins> rises with one more star (up to five)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="values">Values<a class="headerlink" href="#values" title="Permanent link">&para;</a></h2>
+<h3 id="changed-3_2">Changed (3)<a class="headerlink" href="#changed-3_2" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Armour base converted to evasion rating</strong></td>
+<td><del>1</del> → <ins>1.35</ins></td>
+</tr>
+<tr>
+<td><strong>Most chance to evade a hit</strong></td>
+<td><del>75%</del> → <ins>100%</ins></td>
+</tr>
+<tr>
+<td>*<em>Unused since 22.10.2026 (the old curve 1 - H<em>A/(A+E)); kept for old configs</em></em></td>
+<td><del>Hit factor H in evade = 1 - H<em>A/(A+E); evasion below A</em>(H-1) evades nothing</del> → <ins>Unused since 22.10.2026 (the old curve 1 - H*A/(A+E)); kept for old configs</ins></td>
+</tr>
+</tbody>
+</table>
+<h3 id="new-42">New (42)<a class="headerlink" href="#new-42" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A boss&#x27;s evasion count resets after it lands no attack for this long</strong></td>
+<td><ins>30 s</ins></td>
+</tr>
+<tr>
+<td><strong>Absorption: full and release cue volume</strong>, <strong>Base maximum shock</strong></td>
+<td><ins>50%</ins></td>
+</tr>
+<tr>
+<td><strong>Absorption: loop sound volume</strong></td>
+<td><ins>22%</ins></td>
+</tr>
+<tr>
+<td><strong>An attacker&#x27;s evasion count resets after it lands no attack for this long</strong></td>
+<td><ins>8 s</ins></td>
+</tr>
+<tr>
+<td><strong>Area per infusion unit</strong></td>
+<td><ins>2 m²</ins></td>
+</tr>
+<tr>
+<td><strong>Base active poisons per attacker-target</strong></td>
+<td><ins>3</ins></td>
+</tr>
+<tr>
+<td><strong>Base area absorbed per second</strong></td>
+<td><ins>6 m²/s</ins></td>
+</tr>
+<tr>
+<td><strong>Base bleeding damage per second from source</strong>, <strong>Source damage used for buildup per second</strong>, <strong>Source damage dealt per second</strong>, <strong>Bows and crossbows: damage multiplier at and beyond the far distance</strong></td>
+<td><ins>20%</ins></td>
+</tr>
+<tr>
+<td><strong>Base bleeding duration</strong>, <strong>Base burning duration</strong>, <strong>Base poison duration</strong>, <strong>Base ground duration</strong></td>
+<td><ins>4 s</ins></td>
+</tr>
+<tr>
+<td><strong>Base burning damage per second from source</strong></td>
+<td><ins>25%</ins></td>
+</tr>
+<tr>
+<td><strong>Base ground radius</strong></td>
+<td><ins>2 m</ins></td>
+</tr>
+<tr>
+<td><strong>Base infusion duration</strong></td>
+<td><ins>10 s</ins></td>
+</tr>
+<tr>
+<td><strong>Base poison damage per second from source</strong></td>
+<td><ins>15%</ins></td>
+</tr>
+<tr>
+<td><strong>Base shock duration</strong></td>
+<td><ins>3 s</ins></td>
+</tr>
+<tr>
+<td><strong>Base simultaneous ground patches</strong>, <strong>Shock stagger taken per unit of shock</strong></td>
+<td><ins>1</ins></td>
+</tr>
+<tr>
+<td><strong>Bows and crossbows: damage reaches the floor at this distance</strong></td>
+<td><ins>30 m</ins></td>
+</tr>
+<tr>
+<td><strong>Bows and crossbows: full damage up to this distance</strong></td>
+<td><ins>6 m</ins></td>
+</tr>
+<tr>
+<td><strong>Chilled ground friction multiplier</strong></td>
+<td><ins>0.15</ins></td>
+</tr>
+<tr>
+<td><strong>Chilled ground steering multiplier</strong></td>
+<td><ins>0.35</ins></td>
+</tr>
+<tr>
+<td><strong>Dismantling a unique jewel: azurite dust at item level 1</strong>, <strong>Base stored infusion units</strong></td>
+<td><ins>10</ins></td>
+</tr>
+<tr>
+<td><strong>Dismantling a unique jewel: divine dust at item level 1</strong></td>
+<td><ins>40</ins></td>
+</tr>
+<tr>
+<td><strong>Dismantling a unique jewel: item levels per +100% dust (level 250 gives twice the level-1 return)</strong></td>
+<td><ins>249 lvl</ins></td>
+</tr>
+<tr>
+<td><strong>Each evasion against an attacker keeps this share of the chance against it</strong></td>
+<td><ins>80%</ins></td>
+</tr>
+<tr>
+<td><strong>Each evasion costs this share of maximum stamina; without it there is no evasion</strong></td>
+<td><ins>18%</ins></td>
+</tr>
+<tr>
+<td><strong>Evasion rating per point of enemy accuracy that gives 100% chance to evade (chance = rating / (this × accuracy))</strong></td>
+<td><ins>3 x</ins></td>
+</tr>
+<tr>
+<td><strong>Logical ground tick</strong></td>
+<td><ins>0.2 s</ins></td>
+</tr>
+<tr>
+<td><strong>Minimum applied shock</strong></td>
+<td><ins>5%</ins></td>
+</tr>
+<tr>
+<td><strong>Permadeath one-shot guard: a single hit above this share of maximum health counts as a one-shot</strong></td>
+<td><ins>95%</ins></td>
+</tr>
+<tr>
+<td><strong>Permadeath one-shot guard: cooldown</strong></td>
+<td><ins>1800 s</ins></td>
+</tr>
+<tr>
+<td><strong>Permadeath right to a mistake: hours of play before the right comes back</strong></td>
+<td><ins>2 h</ins></td>
+</tr>
+<tr>
+<td><strong>Shock curve coefficient</strong></td>
+<td><ins>0.5</ins></td>
+</tr>
+<tr>
+<td><strong>Shock curve exponent</strong></td>
+<td><ins>0.4</ins></td>
+</tr>
+<tr>
+<td><strong>Source damage stored per infusion unit</strong></td>
+<td><ins>6%</ins></td>
+</tr>
+</tbody>
+</table>
+<h3 id="removed-1">Removed (1)<a class="headerlink" href="#removed-1" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Impact Detonation: share of the bomb&#x27;s remaining power each touch explosion spends</strong></td>
+<td><del>35%</del></td>
+</tr>
+</tbody>
+</table>
+<h2 id="keywords">Keywords<a class="headerlink" href="#keywords" title="Permanent link">&para;</a></h2>
+<h3 id="changed-9">Changed (9)<a class="headerlink" href="#changed-9" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../../glossary/ailment-damage/"><strong>Ailment damage</strong></a></td>
+<td>Increases damage over time from bleeding, burning and poison<ins>, separately from the damage of the hit that caused them</ins>. It does not affect chill<ins>.</ins> <del>or</del> → <ins>Old</ins> shock<del>,</del> → <ins>-damage</ins> <del>which</del> → <ins>bonuses</ins> <del>deal</del> → <ins>now</ins> <del>no</del> → <ins>act</ins> <del>health</del> → <ins>as</ins> <del>damage</del> → <ins>shock effect</ins>.</td>
+</tr>
+<tr>
+<td><a href="../../glossary/bleed/"><strong>Bleeding</strong></a></td>
+<td>Slash damage fills the bleeding gauge. When <del>applied</del> → <ins>it fills</ins>, bleeding deals<ins> 20% of the slash damage of the strongest hit in the build-up per second for 4 s, over time and through armour. Bleeding damage, the</ins> damage over time <del>that bypasses armour; bleeding damage</del> → <ins>multiplier</ins> and duration <del>modify</del> → <ins>change</ins> <del>the effect</del> → <ins>it</ins> separately.<ins> Each player keeps their own strongest bleed on a target; a weaker one does not refresh it.</ins></td>
+</tr>
+<tr>
+<td><a href="../../glossary/burn/"><strong>Burning</strong></a></td>
+<td>Fire damage fills the burning gauge. <del>Burning</del> → <ins>When it fills, burning</ins> deals<ins> 25% of the fire damage of the strongest hit in the build-up per second for 4 s, as</ins> fire damage over time<del>;</del> → <ins>. Burning damage and the damage over time multiplier make it stronger, duration makes it last longer. Each player keeps their own strongest burn on</ins> a <del>stronger burn replaces</del> → <ins>target;</ins> a weaker one<del>,</del> → <ins> does not refresh it.</ins> Wet shortens it, and chill removes it.</td>
+</tr>
+<tr>
+<td><a href="../../glossary/endurance/"><strong>Endurance</strong></a></td>
+<td>While your health is below the endurance threshold, the part of <del>each</del> → <ins>any</ins> <del>hit</del> → <ins>incoming damage (hits and damage over time alike)</ins> that falls below it is reduced: 20% at base, at most 75%. The threshold is counted in health points. With Rune Bulwark the rune shield is checked instead of health.</td>
+</tr>
+<tr>
+<td><a href="../../glossary/evade/"><strong>Evasion rating</strong></a></td>
+<td>Evasion rating grants a chance to avoid a hit completely, including its damage, stagger, knockback and ailment. The chance weighs evasion rating against the attacker&#x27;s accuracy and <del>is</del> → <ins>reaches 100%</ins> at <del>most</del> → <ins>3</ins> <del>75%; an accumulator smooths</del> → <ins>times</ins> the <del>sequence</del> → <ins>accuracy. Each evasion against the same attacker leaves 80%</ins> of <del>hits</del> → <ins>the</ins> <del>and</del> → <ins>chance</ins> <del>evasions</del> → <ins>against it, until it lands no attack for 8 (30 for a boss). Each evasion costs 18% of maximum stamina; without that stamina the hit lands</ins>. Damage over time, persistent damaging ground and environmental damage cannot be evaded; a successful passive evasion triggers on evade, independently of a manual dodge roll.</td>
+</tr>
+<tr>
+<td><a href="../../glossary/lightning-damage/"><strong>Lightning damage</strong></a></td>
+<td>An elemental damage type that fills the shock gauge. <del>Shock</del> → <ins>A</ins> <del>increases</del> → <ins>shocked target takes more damage and builds up</ins> stagger <del>build-up</del> → <ins>faster</ins> <del>rather</del> → <ins>for</ins> <del>than</del> → <ins>a</ins> <del>dealing</del> → <ins>few</ins> <del>additional health damage</del> → <ins>seconds</ins>.</td>
+</tr>
+<tr>
+<td><a href="../../glossary/poison/"><strong>Poison</strong></a></td>
+<td>Poison damage fills the poison gauge. <ins>When it fills, poison deals 15% of the poison damage of the strongest hit in the build-up per second for 4 s. Each player can keep up to 3 poisons on a target at once, and a poison limit raises that; a new poison on a full set replaces the weakest, if it is stronger. </ins>Poison <del>deals</del> → <ins>damage and the</ins> damage over time<del>;</del> <del>a</del> → <ins>multiplier make it</ins> stronger<del> effect replaces a weaker one</del>. Poison is separate from elemental damage.</td>
+</tr>
+<tr>
+<td><a href="../../glossary/shock/"><strong>Shock</strong></a></td>
+<td>Lightning damage fills the shock gauge. <del>Shock</del> → <ins>When</ins> <del>increases</del> → <ins>it fills, the target is shocked for 3 s: it takes more damage from every source and builds up</ins> stagger<ins> faster, both by the shock&#x27;s strength. Strength depends on the lightning damage of the strongest hit in the</ins> build-up<ins>,</ins> <del>without</del> → <ins>before</ins> <del>dealing</del> → <ins>the</ins> <del>additional</del> → <ins>target&#x27;s</ins> <del>health</del> → <ins>defences,</ins> <del>damage;</del> → <ins>compared</ins> <del>immediate</del> → <ins>with</ins> <del>stagger</del> → <ins>the</ins> <del>chance</del> → <ins>target&#x27;s ailment threshold: a hit of 1% of it shocks for about 8%. Below 5% there</ins> is <ins>no shock, and it never goes above 50%. Shock effect makes it stronger, ailment duration makes it last longer. Only the strongest shock on </ins>a <del>separate</del> → <ins>target</ins> <del>bonus</del> → <ins>acts, and a weaker one does not refresh it</ins>.<ins> Shock is not a stun and deals no damage itself.</ins></td>
+</tr>
+<tr>
+<td><a href="../../glossary/strike/"><strong>Strike</strong></a></td>
+<td>A<ins> vertical</ins> melee weapon swing<del>: a horizontal or vertical attack of a melee weapon</del>, primary or alternative. <del>Slams</del> → <ins>Horizontal swings and slams</ins> are not strikes, and a sceptre&#x27;s strike is its Smite. Strike bonuses, strike copies and Critical Echo apply to these hits.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="new-8">New (8)<a class="headerlink" href="#new-8" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../../glossary/burning-ground/"><strong>Burning Ground</strong></a></td>
+<td><ins>Deals fire damage over time and builds burning through its explicit ailment channel. Spells create it when they hit terrain if you have the corresponding source. Identical overlapping ground does not stack.</ins></td>
+</tr>
+<tr>
+<td><a href="../../glossary/chilled-ground/"><strong>Chilled Ground</strong></a></td>
+<td><ins>Deals cold damage over time and builds chill. All grounded characters slide on it, including its creator and allies. Sliding changes traction and braking, not movement speed. Identical overlapping ground does not stack.</ins></td>
+</tr>
+<tr>
+<td><a href="../../glossary/damage-over-time-multiplier/"><strong>Damage over Time Multiplier</strong></a></td>
+<td><ins>Applicable general and typed damage over time multiplier bonuses add together and form one multiplier. +20% general and +15% fire give fire damage over time ×1.35. This is separate from increased damage and does not repeat the original hit&#x27;s damage modifiers.</ins></td>
+</tr>
+<tr>
+<td><a href="../../glossary/effective-range/"><strong>Effective Range</strong></a></td>
+<td><ins>Bow and crossbow shots deal full damage only up to their effective range, a little beyond melee distance. Further away the damage falls off with the distance to the target, down to a fifth at five times that distance. Increased effective range moves both distances further out.</ins></td>
+</tr>
+<tr>
+<td><a href="../../glossary/ground-effects/"><strong>Ground Effects</strong></a></td>
+<td><ins>Ground effects occupy separate patches. Your base limit is 1 patch across all types; global skill limit and ground limit increase it. Each projectile can create a patch: three projectiles can leave three patches at limit 3. At the limit, a new patch replaces the oldest. Identical effects do not stack where they overlap. Ground damage is damage over time, not a hit or an aura.</ins></td>
+</tr>
+<tr>
+<td><a href="../../glossary/infusion/"><strong>Infusion</strong></a></td>
+<td><ins>Absorbing your ground with a staff shrinks the patch and accumulates matching infusion. The next eligible manually cast damaging spell consumes the stored infusion once. Its added damage is shared between the cast&#x27;s projectiles and repeats; ordinary spell damage is not divided. Natural ground expiry grants no infusion. Absorption cannot repeatedly harvest overlapping area or recapture its own spent infusion for a net gain.</ins></td>
+</tr>
+<tr>
+<td><a href="../../glossary/poisoned-ground/"><strong>Poisoned Ground</strong></a></td>
+<td><ins>Deals poison damage over time and builds poisoning through its explicit ailment channel. Poison is its own damage type. Identical overlapping ground does not stack.</ins></td>
+</tr>
+<tr>
+<td><a href="../../glossary/shocked-ground/"><strong>Shocked Ground</strong></a></td>
+<td><ins>Deals lightning damage over time and builds shock. Shock strength uses the source potency, independent of tick frequency. Identical overlapping ground does not stack.</ins></td>
+</tr>
+</tbody>
+</table>
+<p><small>Data from Path of Valheiman 5.3.2, extracted 2026-10-24.</small></p>
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../5.3.1/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Patch 5.3.1">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Patch 5.3.1
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../5.2.1/" class="md-footer__link md-footer__link--next" aria-label="Next: Patch 5.2.1">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Patch 5.2.1
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog" role="status" aria-atomic="true">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      
+      
+        
+        
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.tabs","navigation.top","navigation.tracking","search.highlight"],"redirect":null,"search":"../../assets/javascripts/workers/search.c47bb847.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","clipboard.error":"Could not copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.a2388154.min.js"></script>
+      
+        <script src="../../javascripts/tree.js?v=fb1a5c629c"></script>
+      
+        <script src="../../javascripts/search-boost.js?v=2d19aeaf0a"></script>
+      
+        <script src="../../javascripts/mobile-nav.js?v=f4f597eea1"></script>
+      
+        <script src="../../javascripts/ascension.js?v=e621c80fd8"></script>
+      
+    
+  </body>
+</html>

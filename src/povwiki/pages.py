@@ -1002,5 +1002,6 @@ def nav() -> list:
                            ("formula.summons_page", "mechanics/summons.md")]),
         *([("patch.index", [("patch.all", INDEX), *((("patch.title", {"version": v}), patch_path(v)) for v in versions())])]
           if versions() else []),
+        ("tools.title", [("tools.ascension.title", "tools/ascension.md")]),
         ("nav.about", "about.md"),
     ]

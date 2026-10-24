@@ -238,3 +238,49 @@ def ascended(ctx: Ctx, prefab: str, s: dict) -> list[dict]:
             o["durL"] = max(o["durL"], _value(refs, eff, dst, _DUR_L))
         out.append(o | {"damages": d, "damagesPerLevel": dl})
     return sorted(out, key=lambda o: (stages.index(o["biome"]) if o["biome"] in stages else 0, o["essence"]))
+
+
+def calculator_data(ctx: Ctx) -> dict:
+    """Everything the ascension calculator needs (javascripts/ascension.js): the references and
+    curve, the essences, and every item base that can ascend, with names in this language."""
+    from .base_pages import bases
+
+    targets = ctx.loc.loot.get("ascension") or {}
+    if not targets or not ctx.loc.valheim:
+        return {}
+    loc, stages, refs = ctx.loc, ctx.loc.difficulty["stages"], _refs(ctx)
+    dmg_keys = [k for k in _COMBAT if k != "m_damage"] + ["m_chop", "m_pickaxe"]
+    items = []
+    for prefab, b in sorted(bases(ctx).items(), key=lambda kv: kv[1]["name"]):
+        s = b["shared"]
+        cls = _class(ctx, s, prefab)
+        if cls is None:
+            continue
+        items.append({"id": prefab, "name": b["name"], "cls": cls, "src": base_biome(ctx, prefab),
+                      "maxQ": s.get("m_maxQuality") or 1, "useDur": bool(s.get("m_useDurability")),
+                      "d": {k: v for k in dmg_keys if (v := (s.get("m_damages") or {}).get(k))},
+                      "dl": {k: v for k in dmg_keys if (v := (s.get("m_damagesPerLevel") or {}).get(k))},
+                      **{key: s.get(f) or 0 for key, f in (("dur", "m_maxDurability"), ("durL", "m_durabilityPerLevel"),
+                                                          ("block", "m_blockPower"), ("blockL", "m_blockPowerPerLevel"),
+                                                          ("defl", "m_deflectionForce"), ("deflL", "m_deflectionForcePerLevel"))}})
+    kinds = sorted({i["cls"].split("/")[0] for i in items if "/" in i["cls"]} | {k.split("/")[0] for c in refs["cells"] for k in c
+                                                                               if "/" in k and not k.startswith("*")})
+
+    def kind_name(k: str) -> str:
+        name = loc.ui(f"tag.kind.{k}")
+        return name.capitalize() if name != f"tag.kind.{k}" else k
+
+    ui = loc.ui
+    return {
+        "stages": [loc.vkey(f"biome_{st.lower()}", st) for st in stages],
+        "targets": [{"id": e, "name": loc.loot["items"].get(e, {}).get("name", e), "stage": stages.index(t["biome"]), "level": t["level"]}
+                    for e, t in sorted(targets.items(), key=lambda kv: (kv[1]["level"], kv[0])) if t["biome"] in stages],
+        "cells": refs["cells"], "curve": refs["curve"],
+        "kinds": [[k, kind_name(k)] for k in kinds],
+        "damage": [[k, loc.vkey(f"inventory_{k.removeprefix('m_')}", k)] for k in dmg_keys],
+        "items": items,
+        "ui": {k: ui(f"tools.ascension.{k}") for k in (
+            "base", "custom", "kind", "hands", "h1", "h2", "bow", "shield", "summon", "round", "tower", "buckler", "biome", "biome_col",
+            "quality", "at_q1", "shield_kind", "damage_col", "per_quality", "durability", "block", "parry", "essence", "result", "none", "not_eligible",
+            "already", "uses_durability", "curve_note", "biome_note", "step_note")},
+    }

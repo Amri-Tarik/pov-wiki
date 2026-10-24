@@ -1094,6 +1094,49 @@ targets = "When it drops, its line points at one of the tree's portals, picked a
 hidden = "normally revealed only to the {classes} ascendancy class"
 text = "Socketed in an allocated socket (once identified), it turns the hidden node beside the socket into a portal, the Rift of the Eye. Like every portal, the rift connects to all the others, so the path can go on from there. The portal it points at is revealed too, even without its ascendancy class. Take the jewel out and the rift closes; that portal is unallocated again if it would be hidden."
 
+
+# Tools: calculators (tools_pages.py, javascripts/<tool>.js).
+[tools]
+title = "Tools"
+noscript = "This calculator needs JavaScript."
+
+[tools.ascension]
+biome_note = "An item's biome is that of the highest-level material in its recipe (upgrade items like idols don't count); a summoning staff's is its thrall's. Only essences of a later biome can ascend it."
+step_note = "Beside each stat: how much it changed from the row above (the first row: from the item as it is now)."
+mechanic_link = "Try it on any item, or type in your own: [{title}]({link})."
+title = "Ascension calculator"
+intro = "What each boss essence makes of a weapon, shield or summoning staff. Pick an item base to fill in its stats, or type in your own (for an item from another mod, say), then change anything. The math is the game's own: see [Ascension]({link})."
+base = "Item base"
+custom = "— type in your own —"
+kind = "Kind"
+hands = "Type"
+h1 = "One-handed"
+h2 = "Two-handed"
+bow = "Bow"
+shield = "Shield"
+summon = "Summoning staff"
+round = "Round shield"
+tower = "Tower shield"
+buckler = "Buckler"
+biome = "Its biome"
+biome_col = "Biome"
+item_link = "At another quality, or with other stats: [{title}]({link})."
+quality = "Its quality"
+at_q1 = "At quality 1"
+shield_kind = "Shield type"
+damage_col = "Damage"
+per_quality = "Per quality"
+durability = "Durability"
+block = "Block power"
+parry = "Parry force"
+essence = "Essence"
+result = "After ascending (quality 1; in brackets: what each quality adds)"
+none = "No essence can ascend this item: it is already of the Deep North."
+not_eligible = "This item can't ascend: a weapon needs at least 5 combat damage (everything but chopping and mining)."
+already = "already of this biome or later"
+uses_durability = "Has durability"
+curve_note = "Valheim has no item of this kind to measure against here (or it is an elemental staff or a sceptre), so its damage rises by how much weapon damage grows from biome to biome."
+
 # Patch pages: what an update changed (patch_pages.py).
 [patch]
 crafted_level = "Crafted item level {level}"

@@ -136,11 +136,12 @@ def build_language(lang: Language, default: Language, enabled: list[Language], d
     from .formula_pages import page_formulas
     from .monster_pages import page_bosses, page_creatures, page_monster_mods
     from .patch_pages import page_patches
+    from .tools_pages import page_tools
     from .weapon_pages import page_weapons
 
     jobs += [(gen.__name__, gen, ctxs[0]) for gen in (page_mods, page_bases, page_weapons, page_currency, page_jewels, page_uniques,
                                                       page_monster_mods, page_bosses, page_creatures, page_buildings,
-                                                      page_formulas, page_patches)]
+                                                      page_formulas, page_patches, page_tools)]
     for label, gen, ctx in jobs:
         with _timed(label):
             for rel, text in gen(ctx).items():

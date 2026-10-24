@@ -461,8 +461,12 @@ def _ascension_section(ctx: Ctx, prefab: str, b: dict, page: str) -> list[str]:
     header = [ui("formula.ascension.essence"), ui("bosses.biome"), *(label for label, _ in cols)]
     table = [[f"[{loc.loot['items'].get(r['essence'], {}).get('name', r['essence'])}]({rel(currency_path(r['essence']), page)})",
               f"{vk(f'biome_{r['biome'].lower()}', r['biome'])} ({r['level']})", *(cell(r) for _, cell in cols)] for r in rows]
+    from .tools_pages import ASCENSION_PAGE
+
+    calc = f"{rel(ASCENSION_PAGE, page)}#{prefab}"  # the calculator, with this item filled in
     return ([f"## {ui('formula.ascension.title')}", "",
-             ui("formula.ascension.item_intro", link=_anchor("ascension", page), title=ui("formula.ascension.title")), ""] + _table(header, table))
+             ui("formula.ascension.item_intro", link=_anchor("ascension", page), title=ui("formula.ascension.title")), ""] + _table(header, table)
+            + [ui("tools.ascension.item_link", link=calc, title=ui("tools.ascension.title")), ""])
 
 
 def _bomb_section(ctx: Ctx, mod: dict | None, page: str) -> list[str]:

@@ -30,9 +30,10 @@ PAGE_SIZES = ("Keystone", "Notable")
 # Node types that are part of the tree's structure even without stats.
 STRUCTURAL_SIZES = ("Root", "Starter", "Socket", "Portal")
 
-# The ascension calculator and the per-item ascension tables on base pages: off while their numbers
-# disagree with the game (a Wood Shield ascended with Eikthyr's essence keeps block 24 in game;
-# povwiki.ascension says 81).
+# The ascension calculator and the per-item ascension tables on base pages: left out. Their numbers
+# hold for a game with no other item mods, but ItemAscension takes its references from every item
+# not added through Jotunn, so mods like Therzie's Warfare change the results (in game, a Wood Shield
+# ascended with Eikthyr's essence gets block 24 against ShieldBronzeBanded_TW; without them, 81).
 ASCENSION_ON = False
 
 

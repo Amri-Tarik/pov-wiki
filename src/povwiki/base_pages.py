@@ -438,8 +438,9 @@ def _ascension_section(ctx: Ctx, prefab: str, b: dict, page: str) -> list[str]:
     from .ascension import ascended
     from .formula_pages import _anchor, shown
     from .gear_pages import currency_path
+    from .pages import ASCENSION_ON
 
-    rows = ascended(ctx, prefab, b["shared"]) if shown(ctx, "ascension") else []
+    rows = ascended(ctx, prefab, b["shared"]) if ASCENSION_ON and shown(ctx, "ascension") else []
     if not rows:
         return []
     loc, ui, vk = ctx.loc, ctx.loc.ui, ctx.loc.vkey

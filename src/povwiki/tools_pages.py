@@ -6,7 +6,7 @@ written per language by the build (names and labels in that language).
 
 import json
 
-from .pages import Ctx, _footer
+from .pages import ASCENSION_ON, Ctx, _footer
 
 ASCENSION_PAGE = "tools/ascension.md"
 ASCENSION_DATA = "assets/data/ascension.json"
@@ -17,7 +17,7 @@ def page_tools(ctx: Ctx) -> dict[str, str]:
     from .formula_pages import LOOT_PAGE, formula_block, shown
     from .markup import rel
 
-    data = calculator_data(ctx) if shown(ctx, "ascension") else {}
+    data = calculator_data(ctx) if ASCENSION_ON and shown(ctx, "ascension") else {}
     if not data:
         return {}
     ui = ctx.loc.ui

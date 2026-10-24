@@ -30,6 +30,11 @@ PAGE_SIZES = ("Keystone", "Notable")
 # Node types that are part of the tree's structure even without stats.
 STRUCTURAL_SIZES = ("Root", "Starter", "Socket", "Portal")
 
+# The ascension calculator and the per-item ascension tables on base pages: off while their numbers
+# disagree with the game (a Wood Shield ascended with Eikthyr's essence keeps block 24 in game;
+# povwiki.ascension says 81).
+ASCENSION_ON = False
+
 
 def _hex(c: tuple[float, float, float]) -> str:
     return "#" + "".join(f"{round(v * 255):02x}" for v in c)
@@ -1002,6 +1007,6 @@ def nav() -> list:
                            ("formula.summons_page", "mechanics/summons.md")]),
         *([("patch.index", [("patch.all", INDEX), *((("patch.title", {"version": v}), patch_path(v)) for v in versions())])]
           if versions() else []),
-        ("tools.title", [("tools.ascension.title", "tools/ascension.md")]),
+        *([("tools.title", [("tools.ascension.title", "tools/ascension.md")])] if ASCENSION_ON else []),
         ("nav.about", "about.md"),
     ]

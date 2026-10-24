@@ -1088,10 +1088,11 @@ def _ascension(ctx, page, v):
            f"- {ui('formula.ascension.shields', block=block, force=force)}",
            f"- {ui('formula.ascension.staves', strength=strength)}",
            f"- {ui('formula.ascension.durability', durability=ctx.loc.vkey('item_durability', 'Durability').lower())}", ""]
+    from .pages import ASCENSION_ON
     from .tools_pages import ASCENSION_PAGE
 
     md += [ui("formula.ascension.after", min=_n(v["min_damage"])), "", ui("formula.ascension.keeps"), "", ui("formula.ascension.vanilla"), ""]
-    if page != ASCENSION_PAGE:  # the calculator shows this section itself
+    if ASCENSION_ON and page != ASCENSION_PAGE:  # the calculator shows this section itself
         md += [ui("tools.ascension.mechanic_link", title=ui("tools.ascension.title"), link=rel(ASCENSION_PAGE, page)), ""]
     return md
 

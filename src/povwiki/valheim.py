@@ -9,7 +9,8 @@ still carry their type trees, so UnityPy can read component data directly:
   every language);
 - status effects items apply (equip, set, attack...): class and fields;
 - creatures (Character components): their name string, whether they are a boss, their base
-  health, and the trophy they drop (CharacterDrop), whose icon pictures them;
+  health, and the trophy they drop (CharacterDrop), whose icon pictures them; their AI (MonsterAI
+  or AnimalAI) and the foods it eats, taming (Tameable) and breeding (Procreation);
 - pieces (Piece components): name, description, category, build station and cost, keyed by
   prefab; smelters (Smelter components): fuel, capacity, timing and conversions;
 - pickables (Pickable components): the item each gives and its regrow time, and whether the
@@ -31,7 +32,7 @@ from .paths import CACHE
 VALHEIM = CACHE / "valheim"
 
 
-FORMAT = 3  # bump when the extraction gains data, so older extractions are redone
+FORMAT = 5  # bump when the extraction gains data, so older extractions are redone
 
 
 def _format(out: Path) -> int | None:
@@ -103,6 +104,7 @@ def extract(data: Path, out: Path) -> Path:
 
     items, recipes, icon_refs, effects, creatures, pieces, smelters = {}, [], {}, {}, {}, {}, {}
     pickables, plants, trophies = {}, set(), {}
+    ais, tames, breeds = {}, {}, {}  # by creature prefab: MonsterAI/AnimalAI, Tameable, Procreation
 
     def keep_effects(owner, shared: dict) -> None:
         """Status effects an item applies (equip, set, attack...): their class and fields."""
@@ -141,6 +143,22 @@ def extract(data: Path, out: Path) -> Path:
             prefab = obj.read().m_GameObject.read().m_Name
             drops = [name_of(obj, d.get("m_prefab")) for d in tree["m_drops"]]
             trophies[prefab] = next((d for d in drops if d and d.startswith("Trophy")), None)
+        elif "m_consumeItems" in tree or "m_timeToSafe" in tree:  # MonsterAI (eats), AnimalAI (flees)
+            prefab = obj.read().m_GameObject.read().m_Name
+            ais.setdefault(prefab, {"kind": "monster" if "m_alertRange" in tree else "animal",
+                                    "foods": [f for f in (name_of(obj, r) for r in tree.get("m_consumeItems") or []) if f]})
+        elif "m_fedDuration" in tree and "m_tamingTime" in tree:  # Tameable
+            prefab = obj.read().m_GameObject.read().m_Name
+            tames.setdefault(prefab, {"fed": tree["m_fedDuration"], "taming": tree["m_tamingTime"],
+                                      "startsTamed": bool(tree.get("m_startsTamed")), "commandable": bool(tree.get("m_commandable")),
+                                      "saddle": name_of(obj, tree.get("m_saddleItem"))})
+        elif "m_pregnancyChance" in tree and "m_offspring" in tree:  # Procreation
+            prefab = obj.read().m_GameObject.read().m_Name
+            breeds.setdefault(prefab, {
+                "offspring": name_of(obj, tree["m_offspring"]), "chance": tree["m_pregnancyChance"],
+                "duration": tree.get("m_pregnancyDuration"), "interval": tree.get("m_updateInterval"),
+                "max": tree.get("m_maxCreatures"), "range": tree.get("m_totalCheckRange"), "partner": tree.get("m_partnerCheckRange"),
+                "love": tree.get("m_requiredLovePoints")})
         elif "m_resources" in tree and "m_category" in tree and "m_icon" in tree:  # Piece
             prefab = obj.read().m_GameObject.read().m_Name
             if prefab in pieces:
@@ -200,6 +218,9 @@ def extract(data: Path, out: Path) -> Path:
 
     for prefab, c in creatures.items():
         c["trophy"] = trophies.get(prefab)
+        c["ai"] = ais.get(prefab)
+        c["tame"] = tames.get(prefab)
+        c["breed"] = breeds.get(prefab)
     stations = sorted({r["station"] for r in recipes if r["station"]})
     (out / "items.json").write_text(json.dumps(items, ensure_ascii=False), encoding="utf-8")
     (out / "creatures.json").write_text(json.dumps(creatures, ensure_ascii=False), encoding="utf-8")

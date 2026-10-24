@@ -320,3 +320,97 @@ def summons_section(ctx: Ctx, item: str, page: str) -> list[str]:
     if not called:
         return []
     return [f"## {ui('bosses.summons')}", "", ", ".join(called), ""]
+
+
+TAMING_PAGE = "monsters/taming.md"
+# CraftBeast (Any Beast): which creatures it makes tameable besides the animals (AnimalAI), and the
+# taming window: a player with the mastery stamps nearby beasts every 3 s, within 25 m, and their
+# taming moves on for 12 s after a stamp.
+_BEAST_EXTRA = ("Neck", "Bjorn", "Unbjorn")
+_BEAST_RANGE, _BEAST_WINDOW = 25, 12
+# Tameable.TamingUpdate: every 3 s a fed, calm creature loses 3 s of taming time; DecreaseRemainingTime
+# multiplies it while a player within m_tamingSpeedMultiplierRange has a taming boost (60 m, x2).
+_TAME_RANGE, _TAME_BOOST = 60, 2
+_HERDER = ("craft-any-beast", "craft-herd-call", "craft-beast-portal", "craft-stable-keeper", "craft-beast-bearer",
+           "craft-named-herd")
+
+
+def _time(ctx: Ctx, seconds: float) -> str:
+    ui = ctx.loc.ui
+    return ui("taming.minutes", n=_num(seconds / 60)) if seconds >= 60 and seconds % 60 == 0 else ui("taming.seconds", n=_num(seconds))
+
+
+def _thing(ctx: Ctx, prefab: str, page: str) -> str:
+    """An item (icon and name) or a creature (trophy and name), for table cells."""
+    from .base_pages import _icon, _item_name
+
+    if prefab in ((ctx.loc.valheim or {}).get("items") or {}):
+        return f'<span class="pov-inline">{_icon(ctx, prefab, page, 24)}{_item_name(ctx, prefab)}</span>'
+    return _named(ctx, prefab, page)
+
+
+def page_taming(ctx: Ctx) -> dict[str, str]:
+    """Tameable creatures (Valheim's Tameable, MonsterAI foods, Procreation), the ones the Any Beast
+    mastery adds (CraftBeast), and the crafting tree's herder masteries."""
+    from .formula_pages import _term
+    from .markup import to_md
+
+    creatures = (ctx.loc.valheim or {}).get("creatures") or {}
+    if not any(c.get("tame") for c in creatures.values()):
+        return {}
+    ui, page = ctx.loc.ui, TAMING_PAGE
+    # Tameable animals: those that also breed (summons arrive tame and don't: the spirit caller's,
+    # which carry a copy of their animal's components, are left out by name).
+    tame = {p: c for p, c in creatures.items() if c.get("tame") and c.get("breed") and not c["boss"] and "_spiritcaller" not in p}
+    items = (ctx.loc.valheim or {}).get("items") or {}
+    mead = next((p for p, s in items.items() if s.get("m_consumeStatusEffect") == "Potion_tamer" and not p.startswith("MeadBase")), None)
+    md = [f"# {ui('taming.title')}", "", ui("taming.intro", taming=_term(ctx, "taming", page)), "",
+          ui("taming.how", range=_TAME_RANGE, mead=_thing(ctx, mead, page) if mead else "", boost=_TAME_BOOST), ""]
+
+    def foods(c: dict) -> str:
+        return " ".join(f'<span class="pov-chip">{_thing(ctx, f, page)}</span>' for f in (c.get("ai") or {}).get("foods") or [])
+
+    def notes(t: dict) -> str:
+        return "<br>".join(([ui("taming.starts_tame")] if t["startsTamed"] else [])
+                           + ([ui("taming.commandable")] if t["commandable"] else []))
+
+    rows = [[_named(ctx, p, page, 32), foods(c), "—" if c["tame"]["startsTamed"] else _time(ctx, c["tame"]["taming"]),
+             _time(ctx, c["tame"]["fed"]), _thing(ctx, c["tame"]["saddle"], page) if c["tame"]["saddle"] else "—", notes(c["tame"])]
+            for p, c in tame.items()]
+    md += _table([ui("creatures.creature"), ui("taming.foods"), ui("taming.taming_time"), ui("taming.fed"), ui("taming.saddle"),
+                  ui("taming.notes")], rows)
+
+    md += [f"## {ui('taming.breeding')} {{ #breeding }}", "", ui("taming.breeding_intro"), ""]
+    rows = [[_named(ctx, p, page, 32), _thing(ctx, b["offspring"], page) if b["offspring"] else "—",
+             ui("taming.check_cell", pct=round((1 - b["chance"]) * 100), every=_time(ctx, b["interval"])), _num(b["love"]),
+             _time(ctx, b["duration"]),
+             ui("taming.limit_cell", n=b["max"], range=_num(b["range"])), ui("taming.meters", n=_num(b["partner"]))]
+            for p, c in tame.items() for b in [c["breed"]]]
+    md += _table([ui("creatures.creature"), ui("taming.offspring"), ui("taming.check"), ui("taming.love"), ui("taming.gestation"), ui("taming.limit"), ui("taming.partner")], rows)
+
+    # Any Beast: animals get the boar's foods and taming values; the extras the wolf's values, and
+    # its foods when they eat nothing.
+    boar, wolf = creatures.get("Boar") or {}, creatures.get("Wolf") or {}
+    animals = [p for p, c in creatures.items() if (c.get("ai") or {}).get("kind") == "animal" and not c["boss"]
+               and not c.get("tame") and not ctx.loc.creature(p).startswith("$")]
+    extras = [p for p in _BEAST_EXTRA if (creatures.get(p) or {}).get("ai") and not creatures[p].get("tame")]
+    if boar.get("tame") and wolf.get("tame"):
+        md += [f"## {ui('taming.any_beast')} {{ #any-beast }}", "",
+               ui("taming.any_beast_intro", mastery=_term(ctx, "craft-any-beast", page, start=True), boar=ctx.loc.creature("Boar"),
+                  wolf=ctx.loc.creature("Wolf"), extra=", ".join(ctx.loc.creature(p) for p in extras),
+                  range=_BEAST_RANGE, window=_BEAST_WINDOW), ""]
+        rows = [[" ".join(f'<span class="pov-chip">{_named(ctx, p, page, 32)}</span>' for p in animals), foods(boar),
+                 _time(ctx, boar["tame"]["taming"]), _time(ctx, boar["tame"]["fed"])]] if animals else []
+        for p in extras:
+            own = (creatures[p].get("ai") or {}).get("foods")
+            rows.append([_named(ctx, p, page, 32), foods(creatures[p] if own else wolf),
+                         _time(ctx, wolf["tame"]["taming"]), _time(ctx, wolf["tame"]["fed"])])
+        md += _table([ui("creatures.creature"), ui("taming.foods"), ui("taming.taming_time"), ui("taming.fed")], rows)
+
+    herder = [k for k in _HERDER if k in ctx.loc.wiki]
+    if herder:
+        md += [f"## {ui('taming.herder')} {{ #herder }}", "", ui("taming.herder_intro"), ""]
+        md += _table([ui("taming.mastery"), ui("taming.effect")],
+                     [[_term(ctx, k, page, start=True), " ".join(to_md(line, ctx.loc, page) for line in ctx.loc.wiki[k]["text"])]
+                      for k in herder])
+    return {page: "\n".join(md + _footer(ctx))}

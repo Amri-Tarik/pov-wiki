@@ -123,6 +123,11 @@
   margin: 0 auto;
 }
 /* A small icon in front of a name, on the same line. */
+.md-typeset .pov-chip {
+  display: inline-block;
+  margin: 0 0.6em 0.2em 0;
+  white-space: nowrap;
+}
 .md-typeset .pov-inline .pov-art {
   display: inline-block;
   vertical-align: middle;

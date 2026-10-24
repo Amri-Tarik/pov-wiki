@@ -819,11 +819,14 @@ def _related_pages(ctx: Ctx) -> dict[str, list[tuple[str, str, str]]]:
     for term, ids in links.items():
         found[term] += [(display_name(ctx, by_id[i]), building_path(i), ctx.loc.ui("buildings.kind"))
                         for i in ids if i in by_id]
-    from .monster_pages import BOSSES_PAGE, CREATURES_PAGE
+    from .monster_pages import _HERDER, BOSSES_PAGE, CREATURES_PAGE, TAMING_PAGE
 
     if ctx.loc.bosses.get("mistMother"):
         found["boss"].append((ctx.loc.ui("bosses.title"), BOSSES_PAGE, ctx.loc.ui("monsters.title")))
         found["rune-monolith"].append((ctx.loc.ui("creatures.runic"), CREATURES_PAGE + "#runic", ctx.loc.ui("monsters.title")))
+    if any(c.get("tame") for c in ((ctx.loc.valheim or {}).get("creatures") or {}).values()):
+        for term in ("taming", "profession-work-herder", *_HERDER):
+            found[term].append((ctx.loc.ui("taming.title"), TAMING_PAGE, ctx.loc.ui("monsters.title")))
     if ctx.loc.monsters.get("mods"):
         for term in ("item-quantity", "item-rarity"):
             found[term].append((ctx.loc.ui("monsters.mods"), MODS_PAGE, ctx.loc.ui("monsters.title")))
@@ -1002,7 +1005,7 @@ def nav() -> list:
                                             *((f"gear.group.{g}", group_path(g)) for g in _GROUPS)]),
                          ("gear.jewels", "items/jewels.md"), ("gear.uniques", "items/uniques.md")]),
         ("monsters.title", [("monsters.mods", "monsters/mods.md"), ("bosses.title", "monsters/bosses.md"),
-                            ("creatures.title", "monsters/creatures.md")]),
+                            ("creatures.title", "monsters/creatures.md"), ("taming.title", "monsters/taming.md")]),
         ("formula.title", [("formula.creatures", "mechanics/creatures.md"), ("formula.experience_page", "mechanics/experience.md"),
                            ("formula.loot_page", "mechanics/loot.md"), ("formula.combat", "mechanics/combat.md"),
                            ("formula.summons_page", "mechanics/summons.md")]),

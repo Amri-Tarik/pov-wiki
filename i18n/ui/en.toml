@@ -780,8 +780,21 @@ hits = "Each additional strike is a new hit of the same attack: it rolls its own
 double = "With {double}, the attack's first critical strike, from the swing or from one of its strikes, doubles its additional strikes, once per attack."
 focus = "With {focus}, every additional strike hits the first target instead, at {pct} damage each, and they stop if it dies or gets out of reach."
 combo = "{combo} counts one hit per attack: additional strikes and phantom strikes never add to it."
+smite = "A sceptre's strike is its {smite}: it takes additional strikes as additional Smites."
 bases_primary = "Primary attacks that are strikes: {items}."
 bases_secondary = "Alternative attacks that are strikes: {items}."
+
+[formula.smite]
+title = "Smite"
+item_link = "How its Smite works: [{title}]({link})."
+text = "Every swing of the {pious} calls down Smite, a bolt of lightning. The swing itself hits like a club, with only the sceptre's physical damage; Smite carries its elemental damage (fire, frost, lightning, poison and spirit) at the sceptre's quality, and each swing costs {eitr} eitr. It lands on the first enemy the swing hit; if the swing hit none, on the nearest enemy within its radius of a point {ahead} m in front of you, or else on that point."
+burst = "It hits every creature within {radius} m × your {area} of where it lands, except players and tamed creatures, × the sceptre's skill multiplier. Its hits can't be blocked or dodged. Each of them is a spell hit, a strike and an area hit at once ({spell}, {strike}): spell, strike and area damage bonuses all apply."
+extra = "Additional Smites: your {targets} plus your {strikes}, whole ones only. Each lands on a different random enemy within {range} m × your area increases of the first, never on the first enemy again, and hits in the same way; with fewer enemies around, fewer land."
+focus = "With {focus}, they all strike the first enemy instead, at {pct} damage each, and stop if it dies; with no enemy to land on, there are none."
+double = "With {double}, a critical strike from one of a cast's Smites doubles its additional Smites, once per cast."
+combo = "Casting Smite ends your {combo}."
+ground = "{ground}: every Smite also leaves a spell ground patch where it lands."
+thrown = "A thrown Sceptre of the Pious casts Smite where it lands, with the throw's damage."
 
 [formula.phantom-strikes]
 title = "Phantom strikes"
@@ -939,7 +952,7 @@ gain = "{gain}: worked out from the slash, pierce and blunt damage before conver
 increases_title = "Increases"
 increases = "All the increased and reduced damage that applies to a hit is added into one sum, and the hit is multiplied by 1 + that sum once: general damage, your weapon kind's, melee, ranged or spell damage, attacks', alternative attacks', that of hits that aren't projectiles, a running attack's bonus, and the increases that depend on the enemy (below)."
 scepters = "A scepter's hits count as the kind of attack they are: its spells take spell damage increases, its other attacks melee or ranged ones."
-smite = "A sceptre's Smite also takes your area damage increases and flat area damage."
+smite = "A sceptre's {smite} also takes your area damage increases and flat area damage."
 increases_formula = "damage of a type = (weapon damage × skill multiplier + oils + flat damage × skill multiplier) × (1 + increases + that type's increases)"
 typed = "Each damage type adds its own increases to the sum, for that type only: fire, frost and lightning also add elemental damage increases, and slash, pierce and blunt add physical damage increases. So +50% damage and +50% fire damage make fire damage × 2, not × 2.25."
 more_title = "More multipliers"

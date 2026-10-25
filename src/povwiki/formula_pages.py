@@ -436,8 +436,30 @@ def _strikes(ctx, page, v):
             + [ui("formula.strikes.hits"), "",
                ui("formula.strikes.double", double=_mastery_link(ctx, "StrikeCritDouble", page)), "",
                ui("formula.strikes.focus", focus=_mastery_link(ctx, "StrikeFocusFire", page), pct=_pct(t["strike.focus-damage"])), "",
-               ui("formula.strikes.combo", combo=_term(ctx, "series", page, start=True)), ""]
+               ui("formula.strikes.combo", combo=_term(ctx, "series", page, start=True)), "",
+               ui("formula.strikes.smite", smite=f"[{ui('formula.smite.title')}]({_anchor('smite', page)})"), ""]
             + _attack_bases(ctx, page, "strike", "formula.strikes.bases"))
+
+
+def _smite(ctx, page, v):
+    """The Sceptre of the Pious's Smite (Sceptres.Swing, Smite.Fire/Burst/Extra, SpellGround.Impact)."""
+    from .base_pages import base_path
+
+    ui, t = ctx.loc.ui, ctx.loc.difficulty.get("tunables", {})
+    pious = ctx.loc.items.get("PT_SceptrePious") or {}
+    name = (pious.get("mod") or {}).get("shared", {}).get("m_name", "PT_SceptrePious")
+    link = f"[{name}]({rel(base_path('PT_SceptrePious'), page)})"
+    strikes = f"[{ui('formula.strikes.title').lower()}]({_anchor('strikes', page)})"
+    return [ui("formula.smite.text", pious=link, eitr=_n(v["eitr"]), ahead=_n(v["ahead"])), "",
+            ui("formula.smite.burst", radius=_n(v["radius"]), area=_term(ctx, "area", page), spell=_term(ctx, "spells", page),
+               strike=_term(ctx, "strike", page)), "",
+            ui("formula.smite.extra", targets=ctx.loc.text("@stat.StrikeTargets.ability", "Strike targets").lower(), strikes=strikes,
+               range=_n(v["range"])), "",
+            ui("formula.smite.focus", focus=_mastery_link(ctx, "StrikeFocusFire", page), pct=_pct(t["strike.focus-damage"])), "",
+            ui("formula.smite.double", double=_mastery_link(ctx, "StrikeCritDouble", page)), "",
+            ui("formula.smite.combo", combo=_term(ctx, "series", page)), "",
+            ui("formula.smite.ground", ground=_term(ctx, "ground-effects", page, start=True)), "",
+            ui("formula.smite.thrown"), ""]
 
 
 def _attack_bases(ctx, page, kind: str, key: str) -> list[str]:
@@ -928,7 +950,7 @@ def _hit_increases(ctx, page, v):
     each type adding its own."""
     ui = ctx.loc.ui
     md = [ui("formula.hit-damage.increases"), ""]
-    md += [ui("formula.hit-damage.scepters"), "", ui("formula.hit-damage.smite"), ""]
+    md += [ui("formula.hit-damage.scepters"), "", ui("formula.hit-damage.smite", smite=f"[{ui('formula.smite.title')}]({_anchor('smite', page)})"), ""]
     md += _formula(ui("formula.hit-damage.increases_formula"))
     md += [ui("formula.hit-damage.typed"), "",
            ui("formula.hit-damage.projectile", proj=_term(ctx, "proj", page, start=True), torch=_term(ctx, "torch", page)), "",
@@ -1235,7 +1257,7 @@ _PAGES = {
                              ("player-penetration", _player_penetration), ("crit-multiplier", _crit_multiplier), ("crit-chance", _crit_chance), ("evasion", _evasion),
                              ("resistances", _resistances), ("armour", _armour), ("rune-shield", _rune_shield), ("enemy-penetration", _penetration), ("stagger", _stagger),
                              ("block", _block), ("glancing", _glancing), ("endurance", _endurance), ("thorns", _thorns),
-                             ("charged-attacks", _charged), ("strikes", _strikes), ("phantom-strikes", _phantoms), ("area", _area), ("slams", _slams),
+                             ("charged-attacks", _charged), ("strikes", _strikes), ("smite", _smite), ("phantom-strikes", _phantoms), ("area", _area), ("slams", _slams),
                              ("ailments", _ailments), ("armour-break", _armour_break), ("impale", _impale), ("limit", _limit), ("ground-effects", _ground_effects), ("infusion", _infusion), ("lifesteal", _lifesteal), ("build-cost", _build_cost)]),
 }
 _TITLES = {"creatures": "formula.creatures", "loot": "formula.loot_page", "combat": "formula.combat",
@@ -1271,7 +1293,7 @@ TERM_FORMULAS = {
     "xp": ["experience", "experience-falloff", "player-levels"],
     "biome-level": ["creature-level", "experience-falloff"],
     "death-xp": ["player-levels"],
-    "strike": ["strikes"],
+    "strike": ["strikes", "smite"],
     "attributes": ["attributes"],
     "might": ["attributes"],
     "finesse": ["attributes"],

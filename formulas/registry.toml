@@ -421,6 +421,34 @@ fingerprint = "baf5bbbc64a6"
 checked = "5.3.3"
 
 [[formula]]
+id = "smite"
+anchors = [
+    "PassiveTree/Sceptres.cs :: Swing.Prefix",
+    "PassiveTree/Sceptres.cs :: Swing.Finalizer",
+    "PassiveTree/Sceptres.cs :: Sceptres.SmiteArea",
+    "PassiveTree/Sceptres.cs :: \"SmiteRadius = \"",
+    "PassiveTree/Sceptres.cs :: \"SmiteEitr = \"",
+    "PassiveTree/Sceptres.cs :: Sceptres.CastOnGround",
+    "PassiveTree/Smite.cs :: Smite.Cast#2",
+    "PassiveTree/Smite.cs :: Smite.Fire",
+    "PassiveTree/Smite.cs :: Smite.Burst",
+    "PassiveTree/Smite.cs :: Smite.Extra",
+    "PassiveTree/Smite.cs :: Smite.Nearest",
+    "PassiveTree/Smite.cs :: Smite.Critical",
+    "PassiveTree/Smite.cs :: Smite.AdditionalStrikesValue",
+    "PassiveTree/Smite.cs :: Smite.DirectArea",
+    "PassiveTree/SpellGround.cs :: SpellGround.Impact",
+]
+fingerprint = "c8f0a6ece6b8"
+checked = "5.3.3"
+
+[formula.values]
+eitr = 5
+ahead = 2.5
+radius = 2.5
+range = 8
+
+[[formula]]
 id = "phantom-strikes"
 anchors = [
     "PassiveTree/Phantoms.cs :: Phantoms.OnHit",

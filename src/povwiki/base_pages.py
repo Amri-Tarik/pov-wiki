@@ -387,6 +387,10 @@ def _base_page(ctx: Ctx, prefab: str, b: dict, found: dict) -> str:
     md += [f"<b>{_kind_line(ctx, b, page)}</b>", ""]
     if s.get("m_description"):
         md += [f"*{loc.vtext(s['m_description'])}*".replace("\n", " "), ""]
+    from .formula_pages import _anchor, shown
+
+    if prefab == "PT_SceptrePious" and shown(ctx, "smite"):  # Sceptres.Pious: its swing calls down Smite
+        md += [loc.ui("formula.smite.item_link", title=loc.ui("formula.smite.title"), link=_anchor("smite", page)), ""]
     summons = loc.difficulty.get("summons") or {}
     if any(c["id"] == prefab for c in summons.get("calls", []) + summons.get("vanilla", [])):
         from .formula_pages import SUMMONS_PAGE

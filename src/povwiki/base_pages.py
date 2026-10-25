@@ -43,7 +43,7 @@ def bases(ctx: Ctx) -> dict[str, dict]:
         if not tags & _RPG or tags & _NOT_RPG:
             continue
         if info.get("mod"):  # the mod's own gear (rings, belts): named by the mod
-            shared = info["mod"]["shared"]
+            shared = _rolled(info["mod"]["shared"], base_rolls(ctx).get(prefab))
             out[prefab] = {"shared": shared, "info": info, "name": shared["m_name"]}
             continue
         # Player items have a translated name and an inventory icon; monster attacks have
@@ -55,6 +55,23 @@ def bases(ctx: Ctx) -> dict[str, dict]:
             continue
         out[prefab] = {"shared": shared, "info": info, "name": name}
     return _one_per_name(ctx, out)
+
+
+def base_rolls(ctx: Ctx) -> dict[str, dict]:
+    """The loot catalog's item base rolls (itemBaseRolls, 5.3.3): damage multipliers stamped on an
+    item when it is crafted, and whether it ascends against one-handed weapons."""
+    return ctx.data.loot.get("itemBaseRolls") or {}
+
+
+def _rolled(shared: dict, roll: dict | None) -> dict:
+    """An item's data with its base roll applied (ItemBaseRolls.OwnDamage: damage × damageMultiplier,
+    damage per quality × damagePerLevelMultiplier, which defaults to the first)."""
+    if not roll:
+        return shared
+    d = roll.get("damageMultiplier", 1.0)
+    dl = roll.get("damagePerLevelMultiplier", d)
+    scale = lambda dmg, k: {key: v * k if isinstance(v, (int, float)) else v for key, v in (dmg or {}).items()}  # noqa: E731
+    return shared | {"m_damages": scale(shared.get("m_damages"), d), "m_damagesPerLevel": scale(shared.get("m_damagesPerLevel"), dl)}
 
 
 def _one_per_name(ctx: Ctx, found: dict[str, dict]) -> dict[str, dict]:

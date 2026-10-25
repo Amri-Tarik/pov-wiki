@@ -159,8 +159,8 @@ anchors = [
     "PassiveTree.Loot/LootDifficulty.cs :: LootDifficulty.PerArea",
     "PassiveTree/WombOfCorruption.cs :: WombOfCorruption.Drops",
 ]
-fingerprint = "fe902d1f23ad"
-checked = "5.3.2"
+fingerprint = "c34c1b97c478"
+checked = "5.3.3"
 
 [formula.values]
 per_modifier = 0.5
@@ -261,8 +261,8 @@ anchors = [
     "PassiveTree/Evasion.cs :: Evasion.IsHit",
     "PassiveTree/Evasion.cs :: Evasion.StaminaCost",
 ]
-fingerprint = "0d60c28fbf3d"
-checked = "5.3.1"
+fingerprint = "1302093dc110"
+checked = "5.3.3"
 
 [[formula]]
 id = "resistances"
@@ -417,8 +417,8 @@ anchors = [
     "PassiveTree/Tunables.cs :: \"strike.reach\"",
     "PassiveTree/Tunables.cs :: \"strike.radius\"",
 ]
-fingerprint = "2de37cc9e5a0"
-checked = "5.3.0"
+fingerprint = "baf5bbbc64a6"
+checked = "5.3.3"
 
 [[formula]]
 id = "phantom-strikes"
@@ -669,9 +669,11 @@ anchors = [
     "PassiveTree/ThrownImpact.cs :: ThrownImpact.Of",
     "PassiveTree/ThrownImpact.cs :: ThrownImpact.Slam",
     "PassiveTree/Tunables.cs :: \"throw.slam-damage\"",
+    "PassiveTree/Slams.cs :: Slams.Restrict",
+    "PassiveTree/Slams.cs :: Slams.ExtraFlat",
 ]
-fingerprint = "4dc470dece4a"
-checked = "5.3.1"
+fingerprint = "7e23f70217a4"
+checked = "5.3.3"
 
 [[formula]]
 id = "block"
@@ -817,6 +819,7 @@ anchors = [
     "PassiveTree/Effects.cs :: Effects.ContextFlat",
     "PassiveTree/Effects.cs :: Effects.OutgoingMult",
     "PassiveTree/Effects.cs :: Effects.ContextOutgoingMult",
+    "PassiveTree/Smite.cs :: Smite.DirectArea",
     "PassiveTree/Effects.cs :: Effects.LayerOn",
     "PassiveTree/Effects.cs :: SkillFactor.Postfix",
     "PassiveTree/CombatCategories.cs :: CombatCategories.DamageBonus",
@@ -847,8 +850,8 @@ anchors = [
     "PassiveTree/ProjectileMods.cs :: ProjectileMods.DamageInc",
     "PassiveTree/WeaponAffixes.cs :: WeaponAffixes.DamageBonus",
 ]
-fingerprint = "25ff8a01fd76"
-checked = "5.3.1"
+fingerprint = "fb01a4d821ef"
+checked = "5.3.3"
 
 [formula.values]
 staggered = 0.15
@@ -864,8 +867,8 @@ anchors = [
     "valheim/Attack.cs :: Attack.ModifyDamage",
     "valheim/Character.cs :: Character.RPC_Damage",
 ]
-fingerprint = "16c09ace90ca"
-checked = "5.3.1"
+fingerprint = "3c17f142ada6"
+checked = "5.3.3"
 
 [[formula]]
 id = "player-penetration"
@@ -907,8 +910,8 @@ anchors = [
     "PassiveTree/MinionSacrifice.cs :: \"private const float Reach\"",
     "PassiveTree/MinionLife.cs :: MinionLife.Scale",
 ]
-fingerprint = "400a0ffc83c8"
-checked = "5.3.2"
+fingerprint = "7659d61d4586"
+checked = "5.3.3"
 
 [formula.values]
 quality_health = 0.25
@@ -1146,9 +1149,12 @@ anchors = [
     "PassiveTree.Loot/ItemAscension.cs :: ItemAscension.BaseBiome",
     "PassiveTree.Loot/ItemAscension.cs :: ItemAscension.MinionStage",
     "PassiveTree.Loot/ItemAscension.cs :: ItemAscension.UpgradeRecipe",
+    "PassiveTree.Loot/ItemBaseRolls.cs :: ItemBaseRolls.OneHandedAscension",
+    "PassiveTree.Loot/ItemBaseRolls.cs :: ItemBaseRolls.Ascension",
+    "PassiveTree.Loot/ItemBaseRolls.cs :: OwnDamage.Postfix",
 ]
-fingerprint = "2224675b6bac"
-checked = "5.3.1"
+fingerprint = "580bbf40e6dc"
+checked = "5.3.3"
 
 [formula.values]
 min_damage = 5

@@ -359,6 +359,7 @@ def _evasion(ctx, page, v):
             + _formula(ui("formula.evasion.accuracy", base=_n(t["evasion.accuracy.base"]), per=_n(t["evasion.accuracy.per-level"]),
                           star=_pct(t["evasion.accuracy.per-star"])))
             + _formula(ui("formula.evasion.chance", ratio=_n(t["evasion.full-ratio"]), cap=_pct(t["evasion.cap"])))
+            + [ui("formula.evasion.regen", unbroken=_granted(ctx, "UninterruptedEvasion", page)), ""]
             + [ui("formula.evasion.notes", decay=_pct(t["evasion.decay"]), reset=_n(t["evasion.decay-reset"]),
                   boss=_n(t["evasion.decay-reset-boss"]), stamina=_pct(t["evasion.stamina-cost"])), ""]
             + _table([ui("bosses.biome"), ui("formula.evasion.acc_col"), *(ui("formula.evasion.rating_col", n=r) for r in ratings)], rows))
@@ -795,6 +796,7 @@ def _slams(ctx, page, v):
     ui, t = ctx.loc.ui, ctx.loc.difficulty.get("tunables", {})
     return [ui("formula.slams.text", slam=_term(ctx, "slam", page, start=True), ground=_mastery_link(ctx, "MasterySlam1", page),
                radius=_n(t["slam.ground-radius"]), area=_term(ctx, "area", page)), "",
+            ui("formula.slams.blunt"), "",
             ui("formula.slams.aftershock", aftershock=_term(ctx, "aftershock", page, start=True), delay=_n(t["aftershock.delay"])), "",
             ui("formula.slams.push"), "",
             ui("formula.slams.thrown", radius=_n(t["slam.ground-radius"]), pct=_pct(t["throw.slam-damage"]),
@@ -926,7 +928,7 @@ def _hit_increases(ctx, page, v):
     each type adding its own."""
     ui = ctx.loc.ui
     md = [ui("formula.hit-damage.increases"), ""]
-    md += [ui("formula.hit-damage.scepters"), ""]
+    md += [ui("formula.hit-damage.scepters"), "", ui("formula.hit-damage.smite"), ""]
     md += _formula(ui("formula.hit-damage.increases_formula"))
     md += [ui("formula.hit-damage.typed"), "",
            ui("formula.hit-damage.projectile", proj=_term(ctx, "proj", page, start=True), torch=_term(ctx, "torch", page)), "",
@@ -990,11 +992,13 @@ def _hit_order(ctx, page, v):
             ui("formula.hit-order.increases", increases=part("increases")),
             ui("formula.hit-order.ammo"),
             ui("formula.hit-order.more", more=part("more"), rage=_term(ctx, "rage", page)),
-            ui("formula.hit-order.projectile", proj=_term(ctx, "proj", page))]
+            ui("formula.hit-order.projectile", proj=_term(ctx, "proj", page)),
+            ui("formula.hit-order.slam", slam=sec("slams", start=True))]
     lands = [ui("formula.hit-order.crit", crit=sec("crit-multiplier", start=True)),
              ui("formula.hit-order.falloff", falloff=sec("ranged-falloff")),
              ui("formula.hit-order.target", target=part("target", start=False)),
              ui("formula.hit-order.both"),
+             ui("formula.hit-order.slam_again"),
              ui("formula.hit-order.physical", brk=sec("armour-break", start=True), impale=sec("impale")),
              ui("formula.hit-order.resist", pen=sec("player-penetration"))]
     md = [ui("formula.hit-order.text"), "", f"**{ui('formula.hit-order.made')}**", ""]
@@ -1081,10 +1085,16 @@ def _ascension(ctx, page, v):
             for e, b in sorted(targets.items(), key=lambda kv: (kv[1]["level"], kv[0]))]
     strength = f"[{ui('formula.summon-strength.title').lower()}]({_anchor('summon-strength', page)})"
     block, force = ctx.loc.vkey("item_blockarmor", "Block armour").lower(), ctx.loc.vkey("item_blockforce", "Block force").lower()
+    from .base_pages import base_path, base_rolls
+
+    one_handed = ", ".join(f"[{name}]({rel(base_path(p), page)})" for p, name in sorted(
+        (p, ctx.loc.items[p]["mod"]["shared"]["m_name"] if (ctx.loc.items.get(p) or {}).get("mod") else p)
+        for p, r in base_rolls(ctx).items() if r.get("oneHandedAscensionReference")))
     md = [ui("formula.ascension.text"), ""]
     md += _table([ui("formula.ascension.essence"), ui("bosses.biome"), ui("formula.level")], rows)
     md += [ui("formula.ascension.how"), "",
            f"- {ui('formula.ascension.weapons')}",
+           *([f"- {ui('formula.ascension.one_handed', items=one_handed)}"] if one_handed else []),
            f"- {ui('formula.ascension.shields', block=block, force=force)}",
            f"- {ui('formula.ascension.staves', strength=strength)}",
            f"- {ui('formula.ascension.durability', durability=ctx.loc.vkey('item_durability', 'Durability').lower())}", ""]

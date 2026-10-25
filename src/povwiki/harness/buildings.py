@@ -11,6 +11,8 @@ Make() changes, reading the mod's own tables where it has them:
   mastery grants Stat.GoldlightGate.
 - Vacuum Chest (VacuumChest.Make): piece_chest + VacuumChest.Extra, built at the Rune Carver
   Table; needs Stat.VacuumChest. Radius and timing: its constants.
+- Runic Chest (RuneChest.Ensure, 5.3.3): a copy of piece_chest_private; its cost is written inline,
+  built at the Rune Carver Table.
 - Wild Sowing (WildSowing.Build): one Cultivator sapling per wild plant that regrows; the plants
   come from Valheim's Pickables, so the page works them out (herbs, excluded plants and seeds
   are listed here).
@@ -79,6 +81,14 @@ def render_buildings(errors: list) -> list[dict]:
             "every": float(_static("VacuumChest", "Every")), "feedPerTick": int(_static("VacuumChest", "FeedPerTick")),
             "categories": [L.Id(f"ui.vacuum.cat.{k}", n) for k, n in zip(keys, names)],
         })
+        if _type("RuneChest") is not None:
+            out.append({
+                "id": "PT_RuneVault", "source": "piece_chest_private",
+                "name": text("piece.runevault.name"), "description": text("piece.runevault.desc"), "icon": None,
+                "resources": [{"item": "Iron", "amount": 10}, {"item": "PT_AzuriteDust", "amount": 2000},
+                              {"item": "FineWood", "amount": 10}],  # inline in Ensure()
+                "station": "PT_RuneCarverTable",
+            })
         seeds = _static("CraftItems", "Seeds")
         out.append({
             "id": "PT_wild_", "source": "sapling_carrot", "tool": "Cultivator",

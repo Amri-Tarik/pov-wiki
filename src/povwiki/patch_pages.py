@@ -77,13 +77,21 @@ def _affixes(ctx: Ctx) -> dict[str, dict]:
 
 def _bases(ctx: Ctx) -> dict[str, dict]:
     """Item bases: the level crafted copies get, defences by quality and implicit lines."""
-    from .base_pages import _DEFENCES, _level, base_path, bases
+    from .base_pages import _DAMAGES, _DEFENCES, _level, base_path, bases
 
     ui, out = ctx.loc.ui, {}
+
+    def damages(d: dict | None) -> str:
+        return ", ".join(f"{ctx.loc.vkey(label)} {d[k]:g}" for k, label in _DAMAGES if (d or {}).get(k))
+
     for prefab, b in bases(ctx).items():
         info, lines = b["info"], []
         if (level := _level(ctx, prefab)) is not None:
             lines.append(ui("patch.crafted_level", level=level))
+        if dmg := damages(b["shared"].get("m_damages")):
+            lines.append(ui("patch.damage", values=dmg))
+        if per := damages(b["shared"].get("m_damagesPerLevel")):
+            lines.append(ui("patch.damage_per", values=per))
         for q, d in enumerate(info.get("defences") or [], 1):
             if values := ", ".join(f"{ui(key)} {d[k]:g}" for k, key in _DEFENCES if d.get(k)):
                 lines.append(f"{ui('items.quality_n', n=q)}: {values}")
@@ -196,8 +204,30 @@ def _world(ctx: Ctx) -> dict[str, dict]:
             ui("patch.loot_source", source=ui(f"gear.source.{s['id']}"), gear=_one_in(ctx, p["gear"]),
                currency=_one_in(ctx, p["currency"]), jewels=_one_in(ctx, p["gems"]))
             for s in sources for p in [loot_per_kill(ctx, s)]], LOOT_PAGE)
+    from .formula_pages import SUMMONS_PAGE
+
+    if calls := (d.get("summons") or {}).get("calls"):
+        out["staff-benches"] = _entry(ui("patch.staff_benches"), [
+            ui("patch.staff_bench", staff=_item_name(ctx, c["id"]), bench=c["bench"]) for c in calls], SUMMONS_PAGE)
     if (chance := loc.gear.get("monolithUniqueChance")) is not None:
         out["monolith-unique"] = _entry(ui("patch.monolith_unique"), [_pct(chance)], LOOT_PAGE)
+    return out
+
+
+def _buildings(ctx: Ctx) -> dict[str, dict]:
+    """The mod's buildings: what each costs and the station it needs nearby."""
+    from .base_pages import _item_name
+    from .building_pages import building_path, cost, display_name
+
+    ui, out = ctx.loc.ui, {}
+    for b in ctx.loc.buildings:
+        if b["id"].endswith("_"):  # Wild Sowing: not a piece
+            continue
+        lines = [ui("patch.cost", items=", ".join(f"{_item_name(ctx, r['item'])} {r['amount']}" for r in cost(ctx, b)))]
+        if station := b.get("station"):
+            other = next((x for x in ctx.loc.buildings if x["id"] == station), None)
+            lines.append(ui("patch.station", station=display_name(ctx, other) if other else station))
+        out[b["id"]] = _entry(display_name(ctx, b), lines, building_path(b["id"]))
     return out
 
 
@@ -228,6 +258,7 @@ SECTIONS = {  # id: (title key, entries); the passive and craft trees take their
     "currency": ("gear.currency", _currency),
     "drops": ("patch.boss_drops", _drops),
     "monster-mods": ("monsters.mods", _monster_mods),
+    "buildings": ("buildings.title", _buildings),
     "world": ("patch.world", _world),
     "values": ("patch.values", _values),
     "keywords": ("patch.keywords", _keywords),

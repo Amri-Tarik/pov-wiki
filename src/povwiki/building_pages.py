@@ -172,6 +172,9 @@ def _building_page(ctx: Ctx, b: dict, found: dict, unlocks: dict) -> str:
         md += [f"- {ui('buildings.vacuum_radius', min=_num(r0), max=_num(r2), default=_num(r1))}",
                f"- {ui('buildings.vacuum_every', s=_num(b['every']), n=b['feedPerTick'])}",
                f"- {ui('buildings.vacuum_categories', list=', '.join(b['categories']))}", ""]
+    elif b["id"] == "PT_RuneVault":  # RuneChest: Slots(), one container slot, the recovery chest
+        md += [f"## {ui('buildings.how_it_works')}", ""]
+        md += [f"- {ui('buildings.vault_slots')}", f"- {ui('buildings.vault_work')}", f"- {ui('buildings.vault_recovery')}", ""]
     elif b["id"] == "PT_GoldlightGate":
         md += [f"## {ui('buildings.how_it_works')}", "", f"- {ui('buildings.gate_max', n=b['maxGates'])}", ""]
     return "\n".join(md + _footer(ctx))
@@ -207,6 +210,9 @@ def _crafted_here(ctx: Ctx, b: dict, page: str, found: dict) -> list[str]:
     made += [i for i, info in ctx.loc.items.items() if _station_id(info) == b["id"]]  # rings, belts...
     md = [f"## {ui('buildings.crafted_here')} ({len(made)})", ""]
     md += _table(["", ui("col.name")], [[_icon(ctx, i, page, 32), _link(ctx, i, page, found)] for i in made])
+    near = [x for x in ctx.loc.buildings if x.get("station") == b["id"]]  # pieces built near it (chests)
+    if near:
+        md += [f"## {ui('buildings.built_near')}", "", ", ".join(building_link(ctx, x, page) for x in near), ""]
     return md
 
 

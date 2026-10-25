@@ -1,0 +1,199 @@
+{
+ "changes": {
+  "bases": {
+   "PT_SceptrePious": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 1",
+      "Damage: Blunt 4, Fire 8, Lightning 8",
+      "Per quality: Blunt 1.2, Fire 2.4, Lightning 2.4"
+     ],
+     "link": "items/base/PT_SceptrePious.md",
+     "name": "Sceptre of the Pious"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 1",
+      "Damage: Blunt 10, Fire 20, Lightning 20",
+      "Per quality: Blunt 5, Fire 10, Lightning 10"
+     ],
+     "link": "items/base/PT_SceptrePious.md",
+     "name": "Sceptre of the Pious"
+    }
+   }
+  },
+  "buildings": {
+   "PT_RuneVault": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Cost: Iron 10, Azurite Dust 2000, Finewood 10",
+      "Built near: Rune Carver Table"
+     ],
+     "link": "crafting/building/PT_RuneVault.md",
+     "name": "Runic Chest"
+    },
+    "old": null
+   }
+  },
+  "keywords": {
+   "evade": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Evasion rating grants a chance to avoid a hit completely, including its damage, stagger, knockback and ailment. The chance weighs evasion rating against the attacker's accuracy and reaches 100% at 3 times the accuracy. Each evasion against the same attacker leaves 80% of the chance against it, until it lands no attack for 8 (30 for a boss). Each evasion costs 18% of maximum stamina; without that stamina the hit lands. Damage over time, persistent damaging ground and environmental damage cannot be evaded; a successful passive evasion triggers on evade, independently of a manual dodge roll. Passive evasions interrupt stamina regeneration unless an effect explicitly prevents this."
+     ],
+     "link": "glossary/evade.md",
+     "name": "Evasion rating"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Evasion rating grants a chance to avoid a hit completely, including its damage, stagger, knockback and ailment. The chance weighs evasion rating against the attacker's accuracy and reaches 100% at 3 times the accuracy. Each evasion against the same attacker leaves 80% of the chance against it, until it lands no attack for 8 (30 for a boss). Each evasion costs 18% of maximum stamina; without that stamina the hit lands. Damage over time, persistent damaging ground and environmental damage cannot be evaded; a successful passive evasion triggers on evade, independently of a manual dodge roll."
+     ],
+     "link": "glossary/evade.md",
+     "name": "Evasion rating"
+    }
+   },
+   "slam": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "An attack that hits the ground in an area and deals only blunt damage: the area attacks of sledges and similar weapons, and alternative attacks that a mastery turns into a slam. Slam bonuses and aftershocks apply to these hits. A slam is not a strike and never splits its damage between targets."
+     ],
+     "link": "glossary/slam.md",
+     "name": "Slam"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "An attack that hits the ground in an area: the area attacks of sledges and similar weapons, and alternative attacks that a mastery turns into a slam. Slam bonuses and aftershocks apply to these hits. A slam is not a strike and never splits its damage between targets."
+     ],
+     "link": "glossary/slam.md",
+     "name": "Slam"
+    }
+   }
+  },
+  "passives": {
+   "own10185": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased area of effect on primary attack hit recently",
+      "Ground Strike: Heavy melee weapons replace their alternative attack with a ground slam that deals only blunt damage; Base slam radius for weapons without an area attack: 3 m; Heavy melee weapons replace their alternative attack with a ground slam that deals only blunt damage, without the leap.",
+      "Fault Line: Slams cover a line with a base width of 1.4 m instead of a circle, preserving total area; Your slams hit a narrow line ahead of you instead of a circle, covering the same area.",
+      "Raise the Earth: Slamming your created object consumes it and raises an impassable ridge for 4 s; Base ridge length: 3.5 m; ×0.7 area with the slam that raises the ridge; Slamming one of your own created objects consumes it and leaves a brief impassable ridge. That slam's area is smaller. Buildings are not damaged."
+     ],
+     "link": "passives/node/own10185.md",
+     "name": "Old Fighter's Sweep"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased area of effect on primary attack hit recently",
+      "Ground Strike: Heavy melee weapons replace their alternative attack with a ground slam; Base slam radius for weapons without an area attack: 3 m; Heavy melee weapons replace their alternative attack with a ground slam, without the leap.",
+      "Fault Line: Slams cover a line with a base width of 1.4 m instead of a circle, preserving total area; Your slams hit a narrow line ahead of you instead of a circle, covering the same area.",
+      "Raise the Earth: Slamming your created object consumes it and raises an impassable ridge for 4 s; Base ridge length: 3.5 m; ×0.7 area with the slam that raises the ridge; Slamming one of your own created objects consumes it and leaves a brief impassable ridge. That slam's area is smaller. Buildings are not damaged."
+     ],
+     "link": "passives/node/own10185.md",
+     "name": "Old Fighter's Sweep"
+    }
+   },
+   "own10882": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased slam area of effect",
+      "Ground Strike: Heavy melee weapons replace their alternative attack with a ground slam that deals only blunt damage; Base slam radius for weapons without an area attack: 3 m; Heavy melee weapons replace their alternative attack with a ground slam that deals only blunt damage, without the leap.",
+      "Fault Line: Slams cover a line with a base width of 1.4 m instead of a circle, preserving total area; Your slams hit a narrow line ahead of you instead of a circle, covering the same area.",
+      "Raise the Earth: Slamming your created object consumes it and raises an impassable ridge for 4 s; Base ridge length: 3.5 m; ×0.7 area with the slam that raises the ridge; Slamming one of your own created objects consumes it and leaves a brief impassable ridge. That slam's area is smaller. Buildings are not damaged."
+     ],
+     "link": "passives/node/own10882.md",
+     "name": "Fractured Plains"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased slam area of effect",
+      "Ground Strike: Heavy melee weapons replace their alternative attack with a ground slam; Base slam radius for weapons without an area attack: 3 m; Heavy melee weapons replace their alternative attack with a ground slam, without the leap.",
+      "Fault Line: Slams cover a line with a base width of 1.4 m instead of a circle, preserving total area; Your slams hit a narrow line ahead of you instead of a circle, covering the same area.",
+      "Raise the Earth: Slamming your created object consumes it and raises an impassable ridge for 4 s; Base ridge length: 3.5 m; ×0.7 area with the slam that raises the ridge; Slamming one of your own created objects consumes it and leaves a brief impassable ridge. That slam's area is smaller. Buildings are not damaged."
+     ],
+     "link": "passives/node/own10882.md",
+     "name": "Fractured Plains"
+    }
+   },
+   "own13508": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased slam area of effect",
+      "5% reduced slam stamina cost",
+      "Ground Strike: Heavy melee weapons replace their alternative attack with a ground slam that deals only blunt damage; Base slam radius for weapons without an area attack: 3 m; Heavy melee weapons replace their alternative attack with a ground slam that deals only blunt damage, without the leap.",
+      "Fault Line: Slams cover a line with a base width of 1.4 m instead of a circle, preserving total area; Your slams hit a narrow line ahead of you instead of a circle, covering the same area.",
+      "Raise the Earth: Slamming your created object consumes it and raises an impassable ridge for 4 s; Base ridge length: 3.5 m; ×0.7 area with the slam that raises the ridge; Slamming one of your own created objects consumes it and leaves a brief impassable ridge. That slam's area is smaller. Buildings are not damaged."
+     ],
+     "link": "passives/node/own13508.md",
+     "name": "Valley Hammer"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased slam area of effect",
+      "5% reduced slam stamina cost",
+      "Ground Strike: Heavy melee weapons replace their alternative attack with a ground slam; Base slam radius for weapons without an area attack: 3 m; Heavy melee weapons replace their alternative attack with a ground slam, without the leap.",
+      "Fault Line: Slams cover a line with a base width of 1.4 m instead of a circle, preserving total area; Your slams hit a narrow line ahead of you instead of a circle, covering the same area.",
+      "Raise the Earth: Slamming your created object consumes it and raises an impassable ridge for 4 s; Base ridge length: 3.5 m; ×0.7 area with the slam that raises the ridge; Slamming one of your own created objects consumes it and leaves a brief impassable ridge. That slam's area is smaller. Buildings are not damaged."
+     ],
+     "link": "passives/node/own13508.md",
+     "name": "Valley Hammer"
+    }
+   },
+   "own13786": {
+    "new": {
+     "kind": "Keystone",
+     "lines": [
+      "Passive evasions do not interrupt stamina regeneration",
+      "×0.7 evasion rating"
+     ],
+     "link": "passives/node/own13786.md",
+     "name": "Unbroken Footing"
+    },
+    "old": null
+   }
+  },
+  "world": {
+   "staff-benches": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Bone Call Staff: workbench level 1",
+      "Grave Call Staff: workbench level 2",
+      "Barrow Call Staff: workbench level 3",
+      "Frostbone Call Staff: workbench level 3",
+      "Warbone Call Staff: workbench level 5"
+     ],
+     "link": "mechanics/summons.md",
+     "name": "Summoning staves"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Bone Call Staff: workbench level 1",
+      "Grave Call Staff: workbench level 2",
+      "Barrow Call Staff: workbench level 3",
+      "Frostbone Call Staff: workbench level 4",
+      "Warbone Call Staff: workbench level 5"
+     ],
+     "link": "mechanics/summons.md",
+     "name": "Summoning staves"
+    }
+   }
+  }
+ },
+ "date": "2026-10-25",
+ "from": "5.3.2",
+ "to": "5.3.3"
+}

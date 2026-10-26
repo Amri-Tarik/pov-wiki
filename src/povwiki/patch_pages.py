@@ -271,7 +271,9 @@ def snapshot(ctxs: list[Ctx]) -> dict[str, dict[str, dict]]:
 
 
 def _same(a: dict, b: dict) -> bool:
-    return a["name"] == b["name"] and a["lines"] == b["lines"]
+    """Same entry: a name that only changed its capitals (5.3.4 moved node titles to their own
+    translation keys, "Critical Strikes" -> "Critical strikes") isn't a change to the game."""
+    return a["name"].casefold() == b["name"].casefold() and a["lines"] == b["lines"]
 
 
 def compare(old: dict, new: dict) -> dict:

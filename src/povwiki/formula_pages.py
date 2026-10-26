@@ -351,7 +351,7 @@ def _evasion(ctx, page, v):
         return max(1, base) * (1 + max(0, t["evasion.accuracy.per-star"]) * stars)
 
     def chance(rating: float, a: float) -> float:  # Evasion.Chance
-        return max(0.0, min(min(1.0, t["evasion.cap"]), rating / (max(0.01, t["evasion.full-ratio"]) * max(1, a))))
+        return max(0.0, min(max(0.0, t["evasion.cap"]), rating / (max(0.01, t["evasion.full-ratio"]) * max(1, a))))
 
     ratings = (50, 100, 200, 400)
     rows = [[name, _n(accuracy(lvl), 0), *(_pct(chance(r, accuracy(lvl))) for r in ratings)] for name, lvl in _biomes(ctx)]
@@ -360,6 +360,8 @@ def _evasion(ctx, page, v):
                           star=_pct(t["evasion.accuracy.per-star"])))
             + _formula(ui("formula.evasion.chance", ratio=_n(t["evasion.full-ratio"]), cap=_pct(t["evasion.cap"])))
             + [ui("formula.evasion.regen", unbroken=_granted(ctx, "UninterruptedEvasion", page)), ""]
+            + [ui("formula.evasion.cost", min=_pct(t["evasion.stamina-cost-min"]), max=_pct(t["evasion.stamina-cost"]),
+                  low=_pct(t["evasion.cost-low-hit"]), full=_n(t["evasion.cost-full-hit"])), ""]
             + [ui("formula.evasion.notes", decay=_pct(t["evasion.decay"]), reset=_n(t["evasion.decay-reset"]),
                   boss=_n(t["evasion.decay-reset-boss"]), stamina=_pct(t["evasion.stamina-cost"])), ""]
             + _table([ui("bosses.biome"), ui("formula.evasion.acc_col"), *(ui("formula.evasion.rating_col", n=r) for r in ratings)], rows))
@@ -382,7 +384,7 @@ def _armour(ctx, page, v):
     rows = [[str(a), *(_n(taken(h, a), 1) for h in hits)] for a in armours]
     return ([ui("formula.armour.text", term=_term(ctx, "armor", page, start=True)), ""]
             + _formula(ui("formula.armour.formula"))
-            + _formula(ui("formula.armour.effective", effect=_n(t.get("armor.effect", 1))))
+            + _formula(ui("formula.armour.effective", effect=_n(t.get("armor.effect", 1)), eff=ui("formula.armour.eff_plain")))
             + [ui("formula.armour.notes", pen=_anchor("enemy-penetration", page)), ""]
             + _table([ui("formula.armour.armour_col"), *(ui("formula.armour.hit_col", n=h) for h in hits)], rows))
 
@@ -570,7 +572,7 @@ def _minion_bonuses(ctx, page, v):
     nums = {"lo": _pct(v["taken_min"]), "hi": _pct(v["taken_max"]),
             "ailment": _pct(v["ailment_cap"]), "resist": _pct(v["resist_cap"]), "attack": _pct(v["attack_speed_floor"]),
             "move": _pct(v["move_floor"]), "regen": _pct(v["shield_regen"]), "delay": _n(v["shield_delay"]),
-            "base": _n(v["crit_base"]), "seek": _n(v["seek"])}
+            "base": _n(v["crit_base"]), "seek": _n(v["seek"]), "chance": _pct(v["crit_chance"])}
     md = [ui("formula.minion-bonuses.text"), ""]
     md += [f"- {ui(f'formula.minion-bonuses.{k}', **nums)}" for k in ("damage", "health", "taken", "ailments")] + [""]
     md += [ui("formula.minion-bonuses.managed"), ""]
@@ -1010,17 +1012,15 @@ def _hit_order(ctx, page, v):
     made = [ui("formula.hit-order.base", factor=_term(ctx, "skill-factor", page)),
             ui("formula.hit-order.oil", oil=_term(ctx, "oil", page)),
             ui("formula.hit-order.flat", flat=part("flat")),
-            ui("formula.hit-order.conversion", conversion=part("conversion"), gain=_term(ctx, "gain-as-extra", page)),
+            ui("formula.hit-order.conversion", conversion=part("conversion"), gain=_term(ctx, "gain-as-extra", page), slams=sec("slams")),
             ui("formula.hit-order.increases", increases=part("increases")),
             ui("formula.hit-order.ammo"),
             ui("formula.hit-order.more", more=part("more"), rage=_term(ctx, "rage", page)),
-            ui("formula.hit-order.projectile", proj=_term(ctx, "proj", page)),
-            ui("formula.hit-order.slam", slam=sec("slams", start=True))]
+            ui("formula.hit-order.projectile", proj=_term(ctx, "proj", page))]
     lands = [ui("formula.hit-order.crit", crit=sec("crit-multiplier", start=True)),
              ui("formula.hit-order.falloff", falloff=sec("ranged-falloff")),
              ui("formula.hit-order.target", target=part("target", start=False)),
              ui("formula.hit-order.both"),
-             ui("formula.hit-order.slam_again"),
              ui("formula.hit-order.physical", brk=sec("armour-break", start=True), impale=sec("impale")),
              ui("formula.hit-order.resist", pen=sec("player-penetration"))]
     md = [ui("formula.hit-order.text"), "", f"**{ui('formula.hit-order.made')}**", ""]
@@ -1036,11 +1036,19 @@ def _ranged_falloff(ctx, page, v):
     start, end, floor = t["ranged.falloff.start"], t["ranged.falloff.end"], t["ranged.falloff.floor"]
     bstart, bend = t.get("bow.falloff.start") or start, t.get("bow.falloff.end") or end
 
+    share, mid = v["mid_share"], max(floor, v["mid_factor"])
+
     def factor(d: float, stretch: float, a0: float, b0: float) -> float:
         a, b = a0 * stretch, max(a0 * stretch + 0.01, b0 * stretch)
-        return 1.0 if d <= a else floor if d >= b else 1 - (d - a) / (b - a) * (1 - floor)
+        m = a + (b - a) * share
+        if d <= a:
+            return 1.0
+        if d >= b:
+            return floor
+        return 1 + (mid - 1) * (d - a) / (m - a) if d <= m else mid + (floor - mid) * (d - m) / (b - m)
 
-    nums = {"start": _n(start), "end": _n(end), "bstart": _n(bstart), "bend": _n(bend), "floor": _n(floor), "drop": _n(1 - floor)}
+    nums = {"start": _n(start), "end": _n(end), "bstart": _n(bstart), "bend": _n(bend), "floor": _n(floor), "mid": _n(mid),
+            "share": _pct(share), "bmid": _n(bstart + (bend - bstart) * share), "cmid": _n(start + (end - start) * share)}
     stretches = (0, 0.25, 0.5, 1)
     header = [ui("formula.ranged-falloff.distance"), *(ui("formula.ranged-falloff.with", x=_pct(s)) for s in stretches)]
     md = [ui("formula.ranged-falloff.text", range=_term(ctx, "effective-range", page, start=True), **nums), ""]
@@ -1050,7 +1058,7 @@ def _ranged_falloff(ctx, page, v):
            ui("formula.ranged-falloff.floors", piece=ctx.loc.vkey("piece_woodfloor2x2", "Wood Floor 2x2"),
               **nums, start_n=_n(start / 2), end_n=_n(end / 2), bstart_n=_n(bstart / 2), bend_n=_n(bend / 2)), ""]
     for slug, a0, b0 in (("bows", bstart, bend), ("crossbows", start, end)):
-        rows = [[f"{_n(d)} m", *(_pct(factor(d, 1 + s, a0, b0)) for s in stretches)] for d in (5, 10, 15, 20, 30, 40, 50, 60, 80)]
+        rows = [[f"{_n(d)} m", *(_pct(factor(d, 1 + s, a0, b0)) for s in stretches)] for d in (5, 10, 15, 18, 20, 25, 30, 40, 50, 60)]
         md += [f"#### {ui(f'weapons.{slug}')}", ""] + _table(header, rows)
     return md
 
@@ -1119,6 +1127,7 @@ def _ascension(ctx, page, v):
            *([f"- {ui('formula.ascension.one_handed', items=one_handed)}"] if one_handed else []),
            f"- {ui('formula.ascension.shields', block=block, force=force)}",
            f"- {ui('formula.ascension.staves', strength=strength)}",
+           f"- {ui('formula.ascension.jewellery')}",
            f"- {ui('formula.ascension.durability', durability=ctx.loc.vkey('item_durability', 'Durability').lower())}", ""]
     from .pages import ASCENSION_ON
     from .tools_pages import ASCENSION_PAGE

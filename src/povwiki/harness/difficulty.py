@@ -136,6 +136,8 @@ def render_difficulty(errors: list) -> dict:
                 "evasion.accuracy.base", "evasion.accuracy.per-level", "evasion.accuracy.growth",
                 "evasion.accuracy.per-star", "evasion.full-ratio", "evasion.cap", "evasion.decay",
                 "evasion.decay-reset", "evasion.decay-reset-boss", "evasion.stamina-cost", "armor.effect",
+                # The evasion cost by the damage a hit would deal (Evasion.CostShare, 5.3.4).
+                "evasion.stamina-cost-min", "evasion.cost-low-hit", "evasion.cost-full-hit",
                 # Ranged falloff, ground effects, infusion, unique jewel dust, permadeath (5.3.0).
                 "ranged.falloff.start", "ranged.falloff.end", "ranged.falloff.floor",
                 "groundfield.base-limit", "groundfield.radius", "groundfield.duration", "groundfield.damage-share",

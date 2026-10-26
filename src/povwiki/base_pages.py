@@ -193,7 +193,7 @@ _HEAVY_SKILLS = {1, 3, 4, 7}  # GroundStrike.Heavy: two-handed swords, clubs, po
 
 def attack_kinds(b: dict) -> dict[str, str]:
     """Which of a weapon's attacks are slams or strikes: {"primary"|"secondary": "slam"|"strike"}.
-    The mod's ItemTooltip.AttackTags: area attacks are slams (Slams.IsSlam); a melee weapon's
+    The mod's ItemTooltip.AttackTags: area attacks with the sledge's swing are slams (Slams.IsSlam); a melee weapon's
     vertical swings are strikes (Strikes.IsStrikeSwing). Sceptres are left out (every smite
     counts as a strike, but never gets additional strikes: see Strikes.Eligible)."""
     s, tags = b["shared"], b["info"]["tags"]
@@ -204,7 +204,7 @@ def attack_kinds(b: dict) -> dict[str, str]:
         a = s.get(key) or {}
         if not a.get("m_attackAnimation"):  # ItemData.HaveSecondaryAttack
             continue
-        if a.get("m_attackType") == _AREA:
+        if a.get("m_attackType") == _AREA and a.get("m_attackAnimation") == "swing_sledge":  # 5.3.4: the sledge's swing only
             out[slot] = "slam"
         elif a.get("m_attackType") == _VERTICAL and s.get("m_skillType") in _MELEE_SKILLS:
             out[slot] = "strike"

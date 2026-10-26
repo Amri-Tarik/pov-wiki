@@ -1,0 +1,5487 @@
+{
+ "changes": {
+  "crafting": {
+   "own1221": {
+    "new": {
+     "kind": "Craft notable",
+     "lines": [
+      "+30 carry weight",
+      "+5% chance for extra ore",
+      "Divine Touch: +2% chance for divine azurite; Each chisel hit on a plain azurite vein outside the mist has a chance to turn it divine, with the same lightning as a heavenly strike. Any chisel works, in any biome.",
+      "Ascendant Rune: +10% chance that a property added by a rune rises one tier; When a rune adds or raises a property, it has a chance to rise one tier more as a separate step, beyond the item's level limit. You see a second flash, hear a chime and read \"+1 affix tier\".",
+      "Perfect Inscription: +10% chance that a property rolled by a rune takes the highest value of its tier; A property rolled by a rune (Fate included) has a chance to take the highest value of its tier."
+     ],
+     "link": "crafting/node/own1221.md",
+     "name": "Ore Hauler"
+    },
+    "old": {
+     "kind": "Craft notable",
+     "lines": [
+      "+30 carry weight",
+      "+5% chance for extra ore",
+      "Runecarver mastery: Reserved: this profession is not designed yet."
+     ],
+     "link": "crafting/node/own1221.md",
+     "name": "Ore Hauler"
+    }
+   }
+  },
+  "keywords": {
+   "armour-effectiveness": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Armour effectiveness increases the armour value used to mitigate incoming hits without increasing the displayed armour rating. It does not increase armour-derived damage or other bonuses based on armour."
+     ],
+     "link": "glossary/armour-effectiveness.md",
+     "name": "Armour effectiveness"
+    },
+    "old": null
+   },
+   "ascension": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "A boss essence ascends a weapon, shield or summoning staff to the biome after its boss. Base damage (in the item's own damage types), durability and block rise to that biome's weapons of the same kind - nothing goes down; a summoning staff's minion becomes as strong as that biome's creatures. Workbench upgrades start over at quality 1 and then cost what that biome's weapon costs. Properties, sockets, sigils and implicits stay. One essence per item, and only upward. Rings and belts can also ascend: only their item level rises, unlocking higher property tiers on future rolls. Their current properties, implicit effects, base stats and quality remain unchanged."
+     ],
+     "link": "glossary/ascension.md",
+     "name": "Ascension"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "A boss essence ascends a weapon, shield or summoning staff to the biome after its boss. Base damage (in the item's own damage types), durability and block rise to that biome's weapons of the same kind - nothing goes down; a summoning staff's minion becomes as strong as that biome's creatures. Workbench upgrades start over at quality 1 and then cost what that biome's weapon costs. Properties, sockets, sigils and implicits stay. One essence per item, and only upward."
+     ],
+     "link": "glossary/ascension.md",
+     "name": "Ascension"
+    }
+   },
+   "cooldown": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "The waiting time before an ability can trigger again. It is separate from loading a crossbow magazine."
+     ],
+     "link": "glossary/cooldown.md",
+     "name": "Ability cooldown"
+    },
+    "old": null
+   },
+   "effective-range": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Bow and crossbow shots deal full damage up to their effective range. Beyond it, damage first decreases gradually, then falls more steeply to a fifth at the far limit. Increased effective range stretches the entire curve."
+     ],
+     "link": "glossary/effective-range.md",
+     "name": "Effective Range"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Bow and crossbow shots deal full damage only up to their effective range, a little beyond melee distance. Further away the damage falls off with the distance to the target, down to a fifth at five times that distance. Increased effective range moves both distances further out."
+     ],
+     "link": "glossary/effective-range.md",
+     "name": "Effective Range"
+    }
+   },
+   "evade": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Evasion rating gives a chance to avoid an attack or spell hit completely, capped at 150% before decay; each successful evasion multiplies the chance against every attacker by 80%, resetting after 8 without an eligible incoming hit. The cost ranges from 4% to 18% of maximum stamina according to the damage that would reach health after blocking, resistances, armour, endurance and rune shields, compared with maximum health; evasion cost reductions and a chance to spend no stamina apply. Damage-over-time ticks cannot be evaded, and a successful passive evasion triggers on-evade effects and interrupts stamina regeneration unless an effect prevents this; a manual dodge roll is a separate action."
+     ],
+     "link": "glossary/evade.md",
+     "name": "Evasion rating"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Evasion rating grants a chance to avoid a hit completely, including its damage, stagger, knockback and ailment. The chance weighs evasion rating against the attacker's accuracy and reaches 100% at 3 times the accuracy. Each evasion against the same attacker leaves 80% of the chance against it, until it lands no attack for 8 (30 for a boss). Each evasion costs 18% of maximum stamina; without that stamina the hit lands. Damage over time, persistent damaging ground and environmental damage cannot be evaded; a successful passive evasion triggers on evade, independently of a manual dodge roll. Passive evasions interrupt stamina regeneration unless an effect explicitly prevents this."
+     ],
+     "link": "glossary/evade.md",
+     "name": "Evasion rating"
+    }
+   },
+   "finesse": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Per point: 0.185% increased stamina regeneration, 0.15% increased evasion rating. Dexterity also contributes to the skill multiplier of the weapons it governs."
+     ],
+     "link": "glossary/finesse.md",
+     "name": "Dexterity"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Per point: 0.185% increased stamina regeneration, 0.2% increased evasion rating. Dexterity also contributes to the skill multiplier of the weapons it governs."
+     ],
+     "link": "glossary/finesse.md",
+     "name": "Dexterity"
+    }
+   },
+   "fists": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Fists include both unarmed attacks and fist weapons such as claws. Fist bonuses apply to both; unarmed bonuses apply only without a weapon."
+     ],
+     "link": "items/weapons/fists.md",
+     "name": "Fists"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Fist weapons and unarmed attacks share fist bonuses. Unarmed bonuses require empty hands; unarmed attacks count as dual-wield without a shield and one-handed with a shield."
+     ],
+     "link": "items/weapons/fists.md",
+     "name": "Fists"
+    }
+   },
+   "reload": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Reload fills the magazine of Crossbows. Additional projectile chance rolls at successful reload completion. Reload speed shortens the reload; crossbow fire rate controls the interval between loaded shots. Cancelling a reload does not grant loaded shots."
+     ],
+     "link": "glossary/reload.md",
+     "name": "Crossbow reload"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Reload fills the magazine of Crossbows. Additional projectile chance rolls at successful reload completion. Reload speed shortens the reload; crossbow fire rate controls the interval between loaded shots. Cancelling a reload does not grant loaded shots."
+     ],
+     "link": "glossary/reload.md",
+     "name": "Reload"
+    }
+   },
+   "slam": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "An area attack against the ground using blunt damage as its basis. Damage converted into blunt contributes and elemental conversion from that basis remains effective; raw non-blunt damage, slashing and piercing cannot be dealt by a slam. Sledges’ ground attacks and alternatives turned into slams gain slam bonuses and aftershocks, are not strikes and never split damage between targets."
+     ],
+     "link": "glossary/slam.md",
+     "name": "Slam"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "An attack that hits the ground in an area and deals only blunt damage: the area attacks of sledges and similar weapons, and alternative attacks that a mastery turns into a slam. Slam bonuses and aftershocks apply to these hits. A slam is not a strike and never splits its damage between targets."
+     ],
+     "link": "glossary/slam.md",
+     "name": "Slam"
+    }
+   },
+   "unarmed": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Unarmed attacks use empty hands, without a fist weapon. They also count as fists; without a shield they count as dual-wield, and with a shield as one-handed."
+     ],
+     "link": "glossary/unarmed.md",
+     "name": "Unarmed"
+    },
+    "old": null
+   }
+  },
+  "mods": {
+   "armour.local-evasion": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (7.5–14.25)% increased item evasion rating",
+      "T4 (item level 19–76, weight 700): (15–21.75)% increased item evasion rating",
+      "T3 (item level 43–129, weight 400): (22.5–33)% increased item evasion rating",
+      "T2 (item level 77–∞, weight 180): (33.75–44.25)% increased item evasion rating",
+      "T1 (item level 130–∞, weight 60): (45–60)% increased item evasion rating"
+     ],
+     "link": "items/mod/armour.local-evasion.md",
+     "name": "#% increased item evasion rating"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (10–19)% increased item evasion rating",
+      "T4 (item level 19–76, weight 700): (20–29)% increased item evasion rating",
+      "T3 (item level 43–129, weight 400): (30–44)% increased item evasion rating",
+      "T2 (item level 77–∞, weight 180): (45–59)% increased item evasion rating",
+      "T1 (item level 130–∞, weight 60): (60–80)% increased item evasion rating"
+     ],
+     "link": "items/mod/armour.local-evasion.md",
+     "name": "#% increased item evasion rating"
+    }
+   },
+   "belt.evasion": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(1.5–3) evasion rating",
+      "T4 (item level 19–76, weight 700): +(3–5.25) evasion rating",
+      "T3 (item level 43–129, weight 400): +(5.25–8.25) evasion rating",
+      "T2 (item level 77–∞, weight 180): +(8.25–12) evasion rating",
+      "T1 (item level 130–∞, weight 60): +(12–16.5) evasion rating"
+     ],
+     "link": "items/mod/belt.evasion.md",
+     "name": "+# evasion rating"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(2–4) evasion rating",
+      "T4 (item level 19–76, weight 700): +(4–7) evasion rating",
+      "T3 (item level 43–129, weight 400): +(7–11) evasion rating",
+      "T2 (item level 77–∞, weight 180): +(11–16) evasion rating",
+      "T1 (item level 130–∞, weight 60): +(16–22) evasion rating"
+     ],
+     "link": "items/mod/belt.evasion.md",
+     "name": "+# evasion rating"
+    }
+   },
+   "body.armour-effectiveness": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T3 (item level 1–∞, weight 1000): (2–3)% increased armour effectiveness",
+      "T2 (item level 43–∞, weight 400): (4–5)% increased armour effectiveness",
+      "T1 (item level 77–∞, weight 100): (6–8)% increased armour effectiveness"
+     ],
+     "link": "items/mod/body.armour-effectiveness.md",
+     "name": "#% increased armour effectiveness"
+    },
+    "old": null
+   },
+   "evasion.sneaking.a0": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (4.125–5.625)% increased evasion rating while sneaking",
+      "T4 (item level 19–76, weight 700): (6.75–9)% increased evasion rating while sneaking",
+      "T3 (item level 43–129, weight 400): (9–12)% increased evasion rating while sneaking",
+      "T2 (item level 77–∞, weight 180): (11.25–15.75)% increased evasion rating while sneaking",
+      "T1 (item level 130–∞, weight 60): (14.25–19.5)% increased evasion rating while sneaking",
+      "T0 (item level 1–∞, weight 0): (18–24.75)% increased evasion rating while sneaking"
+     ],
+     "link": "items/mod/evasion.sneaking.a0.md",
+     "name": "#% increased evasion rating while sneaking"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (5.5–7.5)% increased evasion rating while sneaking",
+      "T4 (item level 19–76, weight 700): (9–12)% increased evasion rating while sneaking",
+      "T3 (item level 43–129, weight 400): (12–16)% increased evasion rating while sneaking",
+      "T2 (item level 77–∞, weight 180): (15–21)% increased evasion rating while sneaking",
+      "T1 (item level 130–∞, weight 60): (19–26)% increased evasion rating while sneaking",
+      "T0 (item level 1–∞, weight 0): (24–33)% increased evasion rating while sneaking"
+     ],
+     "link": "items/mod/evasion.sneaking.a0.md",
+     "name": "#% increased evasion rating while sneaking"
+    }
+   },
+   "evasion.sneaking.h0": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (4.125–5.625)% increased evasion rating while sneaking",
+      "T4 (item level 19–76, weight 700): (6.75–9)% increased evasion rating while sneaking",
+      "T3 (item level 43–129, weight 400): (9–12)% increased evasion rating while sneaking",
+      "T2 (item level 77–∞, weight 180): (11.25–15.75)% increased evasion rating while sneaking",
+      "T1 (item level 130–∞, weight 60): (14.25–19.5)% increased evasion rating while sneaking",
+      "T0 (item level 1–∞, weight 0): (18–24.75)% increased evasion rating while sneaking"
+     ],
+     "link": "items/mod/evasion.sneaking.h0.md",
+     "name": "#% increased evasion rating while sneaking"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (5.5–7.5)% increased evasion rating while sneaking",
+      "T4 (item level 19–76, weight 700): (9–12)% increased evasion rating while sneaking",
+      "T3 (item level 43–129, weight 400): (12–16)% increased evasion rating while sneaking",
+      "T2 (item level 77–∞, weight 180): (15–21)% increased evasion rating while sneaking",
+      "T1 (item level 130–∞, weight 60): (19–26)% increased evasion rating while sneaking",
+      "T0 (item level 1–∞, weight 0): (24–33)% increased evasion rating while sneaking"
+     ],
+     "link": "items/mod/evasion.sneaking.h0.md",
+     "name": "#% increased evasion rating while sneaking"
+    }
+   },
+   "jewel.base.dex-int.b37fb22775": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T3 (item level 1–96, weight 1000): (2.4–3)% increased evasion rating",
+      "T2 (item level 43–∞, weight 600): (3–3.9)% increased evasion rating",
+      "T1 (item level 97–∞, weight 250): (3.9–4.8)% increased evasion rating",
+      "T0 (item level 1–∞, weight 0): (5.4–6)% increased evasion rating"
+     ],
+     "link": "items/mod/jewel.base.dex-int.b37fb22775.md",
+     "name": "#% increased evasion rating"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "T3 (item level 1–96, weight 1000): (3.2–4)% increased evasion rating",
+      "T2 (item level 43–∞, weight 600): (4–5.2)% increased evasion rating",
+      "T1 (item level 97–∞, weight 250): (5.2–6.4)% increased evasion rating",
+      "T0 (item level 1–∞, weight 0): (7.2–8)% increased evasion rating"
+     ],
+     "link": "items/mod/jewel.base.dex-int.b37fb22775.md",
+     "name": "#% increased evasion rating"
+    }
+   },
+   "jewel.base.dex.035e6dbf09": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T3 (item level 1–96, weight 1000): (0.6–0.75)% increased evasion rating per 10 points of comfort",
+      "T2 (item level 43–∞, weight 600): (0.75–0.975)% increased evasion rating per 10 points of comfort",
+      "T1 (item level 97–∞, weight 250): (0.975–1.2)% increased evasion rating per 10 points of comfort",
+      "T0 (item level 1–∞, weight 0): (1.35–1.5)% increased evasion rating per 10 points of comfort"
+     ],
+     "link": "items/mod/jewel.base.dex.035e6dbf09.md",
+     "name": "#% increased evasion rating per # points of comfort"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "T3 (item level 1–96, weight 1000): (0.8–1)% increased evasion rating per 10 points of comfort",
+      "T2 (item level 43–∞, weight 600): (1–1.3)% increased evasion rating per 10 points of comfort",
+      "T1 (item level 97–∞, weight 250): (1.3–1.6)% increased evasion rating per 10 points of comfort",
+      "T0 (item level 1–∞, weight 0): (1.8–2)% increased evasion rating per 10 points of comfort"
+     ],
+     "link": "items/mod/jewel.base.dex.035e6dbf09.md",
+     "name": "#% increased evasion rating per # points of comfort"
+    }
+   },
+   "jewel.base.dex.130bd81c1a": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T3 (item level 1–96, weight 1000): (7.5–9)% increased evasion rating from equipped body armour",
+      "T2 (item level 43–∞, weight 600): (9–12)% increased evasion rating from equipped body armour",
+      "T1 (item level 97–∞, weight 250): (12–14.25)% increased evasion rating from equipped body armour",
+      "T0 (item level 1–∞, weight 0): (16.5–18)% increased evasion rating from equipped body armour"
+     ],
+     "link": "items/mod/jewel.base.dex.130bd81c1a.md",
+     "name": "#% increased evasion rating from equipped body armour"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "T3 (item level 1–96, weight 1000): (10–12)% increased evasion rating from equipped body armour",
+      "T2 (item level 43–∞, weight 600): (12–16)% increased evasion rating from equipped body armour",
+      "T1 (item level 97–∞, weight 250): (16–19)% increased evasion rating from equipped body armour",
+      "T0 (item level 1–∞, weight 0): (22–24)% increased evasion rating from equipped body armour"
+     ],
+     "link": "items/mod/jewel.base.dex.130bd81c1a.md",
+     "name": "#% increased evasion rating from equipped body armour"
+    }
+   },
+   "jewel.base.dex.6908e3ffed": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T3 (item level 1–96, weight 1000): (4.875–6)% increased evasion rating at night",
+      "T2 (item level 43–∞, weight 600): (6–7.875)% increased evasion rating at night",
+      "T1 (item level 97–∞, weight 250): (7.875–9.75)% increased evasion rating at night",
+      "T0 (item level 1–∞, weight 0): (10.875–12)% increased evasion rating at night"
+     ],
+     "link": "items/mod/jewel.base.dex.6908e3ffed.md",
+     "name": "#% increased evasion rating at night"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "T3 (item level 1–96, weight 1000): (6.5–8)% increased evasion rating at night",
+      "T2 (item level 43–∞, weight 600): (8–10.5)% increased evasion rating at night",
+      "T1 (item level 97–∞, weight 250): (10.5–13)% increased evasion rating at night",
+      "T0 (item level 1–∞, weight 0): (14.5–16)% increased evasion rating at night"
+     ],
+     "link": "items/mod/jewel.base.dex.6908e3ffed.md",
+     "name": "#% increased evasion rating at night"
+    }
+   },
+   "jewel.base.dex.9981bf93e3": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T3 (item level 1–96, weight 1000): (4.875–6)% increased evasion rating at low stamina",
+      "T2 (item level 43–∞, weight 600): (6–7.875)% increased evasion rating at low stamina",
+      "T1 (item level 97–∞, weight 250): (7.875–9.75)% increased evasion rating at low stamina",
+      "T0 (item level 1–∞, weight 0): (10.875–12)% increased evasion rating at low stamina"
+     ],
+     "link": "items/mod/jewel.base.dex.9981bf93e3.md",
+     "name": "#% increased evasion rating at low stamina"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "T3 (item level 1–96, weight 1000): (6.5–8)% increased evasion rating at low stamina",
+      "T2 (item level 43–∞, weight 600): (8–10.5)% increased evasion rating at low stamina",
+      "T1 (item level 97–∞, weight 250): (10.5–13)% increased evasion rating at low stamina",
+      "T0 (item level 1–∞, weight 0): (14.5–16)% increased evasion rating at low stamina"
+     ],
+     "link": "items/mod/jewel.base.dex.9981bf93e3.md",
+     "name": "#% increased evasion rating at low stamina"
+    }
+   },
+   "jewel.base.dex.b37fb22775": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T3 (item level 1–96, weight 1000): (2.4–3)% increased evasion rating",
+      "T2 (item level 43–∞, weight 600): (3–3.9)% increased evasion rating",
+      "T1 (item level 97–∞, weight 250): (3.9–4.8)% increased evasion rating",
+      "T0 (item level 1–∞, weight 0): (5.4–6)% increased evasion rating"
+     ],
+     "link": "items/mod/jewel.base.dex.b37fb22775.md",
+     "name": "#% increased evasion rating"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "T3 (item level 1–96, weight 1000): (3.2–4)% increased evasion rating",
+      "T2 (item level 43–∞, weight 600): (4–5.2)% increased evasion rating",
+      "T1 (item level 97–∞, weight 250): (5.2–6.4)% increased evasion rating",
+      "T0 (item level 1–∞, weight 0): (7.2–8)% increased evasion rating"
+     ],
+     "link": "items/mod/jewel.base.dex.b37fb22775.md",
+     "name": "#% increased evasion rating"
+    }
+   },
+   "jewel.base.dex.eac83b1f24": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T3 (item level 1–96, weight 1000): (3–3.75)% increased evasion rating while moving",
+      "T2 (item level 43–∞, weight 600): (3.75–4.875)% increased evasion rating while moving",
+      "T1 (item level 97–∞, weight 250): (4.875–6)% increased evasion rating while moving",
+      "T0 (item level 1–∞, weight 0): (6.75–7.5)% increased evasion rating while moving"
+     ],
+     "link": "items/mod/jewel.base.dex.eac83b1f24.md",
+     "name": "#% increased evasion rating while moving"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "T3 (item level 1–96, weight 1000): (4–5)% increased evasion rating while moving",
+      "T2 (item level 43–∞, weight 600): (5–6.5)% increased evasion rating while moving",
+      "T1 (item level 97–∞, weight 250): (6.5–8)% increased evasion rating while moving",
+      "T0 (item level 1–∞, weight 0): (9–10)% increased evasion rating while moving"
+     ],
+     "link": "items/mod/jewel.base.dex.eac83b1f24.md",
+     "name": "#% increased evasion rating while moving"
+    }
+   },
+   "jewel.base.str-dex.035e6dbf09": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T3 (item level 1–96, weight 1000): (0.6–0.75)% increased evasion rating per 10 points of comfort",
+      "T2 (item level 43–∞, weight 600): (0.75–0.975)% increased evasion rating per 10 points of comfort",
+      "T1 (item level 97–∞, weight 250): (0.975–1.2)% increased evasion rating per 10 points of comfort",
+      "T0 (item level 1–∞, weight 0): (1.35–1.5)% increased evasion rating per 10 points of comfort"
+     ],
+     "link": "items/mod/jewel.base.str-dex.035e6dbf09.md",
+     "name": "#% increased evasion rating per # points of comfort"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "T3 (item level 1–96, weight 1000): (0.8–1)% increased evasion rating per 10 points of comfort",
+      "T2 (item level 43–∞, weight 600): (1–1.3)% increased evasion rating per 10 points of comfort",
+      "T1 (item level 97–∞, weight 250): (1.3–1.6)% increased evasion rating per 10 points of comfort",
+      "T0 (item level 1–∞, weight 0): (1.8–2)% increased evasion rating per 10 points of comfort"
+     ],
+     "link": "items/mod/jewel.base.str-dex.035e6dbf09.md",
+     "name": "#% increased evasion rating per # points of comfort"
+    }
+   },
+   "jewel.base.str-dex.b37fb22775": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T3 (item level 1–96, weight 1000): (2.4–3)% increased evasion rating",
+      "T2 (item level 43–∞, weight 600): (3–3.9)% increased evasion rating",
+      "T1 (item level 97–∞, weight 250): (3.9–4.8)% increased evasion rating",
+      "T0 (item level 1–∞, weight 0): (5.4–6)% increased evasion rating"
+     ],
+     "link": "items/mod/jewel.base.str-dex.b37fb22775.md",
+     "name": "#% increased evasion rating"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "T3 (item level 1–96, weight 1000): (3.2–4)% increased evasion rating",
+      "T2 (item level 43–∞, weight 600): (4–5.2)% increased evasion rating",
+      "T1 (item level 97–∞, weight 250): (5.2–6.4)% increased evasion rating",
+      "T0 (item level 1–∞, weight 0): (7.2–8)% increased evasion rating"
+     ],
+     "link": "items/mod/jewel.base.str-dex.b37fb22775.md",
+     "name": "#% increased evasion rating"
+    }
+   },
+   "jewel.base.str-dex.eac83b1f24": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T3 (item level 1–96, weight 1000): (3–3.75)% increased evasion rating while moving",
+      "T2 (item level 43–∞, weight 600): (3.75–4.875)% increased evasion rating while moving",
+      "T1 (item level 97–∞, weight 250): (4.875–6)% increased evasion rating while moving",
+      "T0 (item level 1–∞, weight 0): (6.75–7.5)% increased evasion rating while moving"
+     ],
+     "link": "items/mod/jewel.base.str-dex.eac83b1f24.md",
+     "name": "#% increased evasion rating while moving"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "T3 (item level 1–96, weight 1000): (4–5)% increased evasion rating while moving",
+      "T2 (item level 43–∞, weight 600): (5–6.5)% increased evasion rating while moving",
+      "T1 (item level 97–∞, weight 250): (6.5–8)% increased evasion rating while moving",
+      "T0 (item level 1–∞, weight 0): (9–10)% increased evasion rating while moving"
+     ],
+     "link": "items/mod/jewel.base.str-dex.eac83b1f24.md",
+     "name": "#% increased evasion rating while moving"
+    }
+   },
+   "tree.evasionrating.a0": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(1.5–3) evasion rating",
+      "T4 (item level 19–76, weight 700): +(3–5.25) evasion rating",
+      "T3 (item level 43–129, weight 400): +(5.25–8.25) evasion rating",
+      "T2 (item level 77–∞, weight 180): +(8.25–12) evasion rating",
+      "T1 (item level 130–∞, weight 60): +(12–16.5) evasion rating",
+      "T0 (item level 1–∞, weight 0): +(16.5–21) evasion rating"
+     ],
+     "link": "items/mod/tree.evasionrating.a0.md",
+     "name": "+# evasion rating"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(2–4) evasion rating",
+      "T4 (item level 19–76, weight 700): +(4–7) evasion rating",
+      "T3 (item level 43–129, weight 400): +(7–11) evasion rating",
+      "T2 (item level 77–∞, weight 180): +(11–16) evasion rating",
+      "T1 (item level 130–∞, weight 60): +(16–22) evasion rating",
+      "T0 (item level 1–∞, weight 0): +(22–28) evasion rating"
+     ],
+     "link": "items/mod/tree.evasionrating.a0.md",
+     "name": "+# evasion rating"
+    }
+   },
+   "tree.evasionrating.h0": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(1.5–3) evasion rating",
+      "T4 (item level 19–76, weight 700): +(3–5.25) evasion rating",
+      "T3 (item level 43–129, weight 400): +(5.25–8.25) evasion rating",
+      "T2 (item level 77–∞, weight 180): +(8.25–12) evasion rating",
+      "T1 (item level 130–∞, weight 60): +(12–16.5) evasion rating",
+      "T0 (item level 1–∞, weight 0): +(16.5–21) evasion rating"
+     ],
+     "link": "items/mod/tree.evasionrating.h0.md",
+     "name": "+# evasion rating"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(2–4) evasion rating",
+      "T4 (item level 19–76, weight 700): +(4–7) evasion rating",
+      "T3 (item level 43–129, weight 400): +(7–11) evasion rating",
+      "T2 (item level 77–∞, weight 180): +(11–16) evasion rating",
+      "T1 (item level 130–∞, weight 60): +(16–22) evasion rating",
+      "T0 (item level 1–∞, weight 0): +(22–28) evasion rating"
+     ],
+     "link": "items/mod/tree.evasionrating.h0.md",
+     "name": "+# evasion rating"
+    }
+   },
+   "tree.evasionratingpct-lowstamina.a0": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (5.25–6.75)% increased evasion rating at low stamina",
+      "T4 (item level 19–76, weight 700): (8.25–11.25)% increased evasion rating at low stamina",
+      "T3 (item level 43–129, weight 400): (11.25–15)% increased evasion rating at low stamina",
+      "T2 (item level 77–∞, weight 180): (14.25–19.5)% increased evasion rating at low stamina",
+      "T1 (item level 130–∞, weight 60): (18–24)% increased evasion rating at low stamina",
+      "T0 (item level 1–∞, weight 0): (23.25–30.75)% increased evasion rating at low stamina"
+     ],
+     "link": "items/mod/tree.evasionratingpct-lowstamina.a0.md",
+     "name": "#% increased evasion rating at low stamina"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (7–9)% increased evasion rating at low stamina",
+      "T4 (item level 19–76, weight 700): (11–15)% increased evasion rating at low stamina",
+      "T3 (item level 43–129, weight 400): (15–20)% increased evasion rating at low stamina",
+      "T2 (item level 77–∞, weight 180): (19–26)% increased evasion rating at low stamina",
+      "T1 (item level 130–∞, weight 60): (24–32)% increased evasion rating at low stamina",
+      "T0 (item level 1–∞, weight 0): (31–41)% increased evasion rating at low stamina"
+     ],
+     "link": "items/mod/tree.evasionratingpct-lowstamina.a0.md",
+     "name": "#% increased evasion rating at low stamina"
+    }
+   },
+   "tree.evasionratingpct-lowstamina.h0": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (5.25–6.75)% increased evasion rating at low stamina",
+      "T4 (item level 19–76, weight 700): (8.25–11.25)% increased evasion rating at low stamina",
+      "T3 (item level 43–129, weight 400): (11.25–15)% increased evasion rating at low stamina",
+      "T2 (item level 77–∞, weight 180): (14.25–19.5)% increased evasion rating at low stamina",
+      "T1 (item level 130–∞, weight 60): (18–24)% increased evasion rating at low stamina",
+      "T0 (item level 1–∞, weight 0): (23.25–30.75)% increased evasion rating at low stamina"
+     ],
+     "link": "items/mod/tree.evasionratingpct-lowstamina.h0.md",
+     "name": "#% increased evasion rating at low stamina"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (7–9)% increased evasion rating at low stamina",
+      "T4 (item level 19–76, weight 700): (11–15)% increased evasion rating at low stamina",
+      "T3 (item level 43–129, weight 400): (15–20)% increased evasion rating at low stamina",
+      "T2 (item level 77–∞, weight 180): (19–26)% increased evasion rating at low stamina",
+      "T1 (item level 130–∞, weight 60): (24–32)% increased evasion rating at low stamina",
+      "T0 (item level 1–∞, weight 0): (31–41)% increased evasion rating at low stamina"
+     ],
+     "link": "items/mod/tree.evasionratingpct-lowstamina.h0.md",
+     "name": "#% increased evasion rating at low stamina"
+    }
+   },
+   "tree.evasionratingpct-moving.a0": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (3–4.5)% increased evasion rating while moving",
+      "T4 (item level 19–76, weight 700): (5.25–6.75)% increased evasion rating while moving",
+      "T3 (item level 43–129, weight 400): (7.125–9.375)% increased evasion rating while moving",
+      "T2 (item level 77–∞, weight 180): (9–12)% increased evasion rating while moving",
+      "T1 (item level 130–∞, weight 60): (11.25–15)% increased evasion rating while moving",
+      "T0 (item level 1–∞, weight 0): (14.25–19.5)% increased evasion rating while moving"
+     ],
+     "link": "items/mod/tree.evasionratingpct-moving.a0.md",
+     "name": "#% increased evasion rating while moving"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (4–6)% increased evasion rating while moving",
+      "T4 (item level 19–76, weight 700): (7–9)% increased evasion rating while moving",
+      "T3 (item level 43–129, weight 400): (9.5–12.5)% increased evasion rating while moving",
+      "T2 (item level 77–∞, weight 180): (12–16)% increased evasion rating while moving",
+      "T1 (item level 130–∞, weight 60): (15–20)% increased evasion rating while moving",
+      "T0 (item level 1–∞, weight 0): (19–26)% increased evasion rating while moving"
+     ],
+     "link": "items/mod/tree.evasionratingpct-moving.a0.md",
+     "name": "#% increased evasion rating while moving"
+    }
+   },
+   "tree.evasionratingpct-moving.h0": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (3–4.5)% increased evasion rating while moving",
+      "T4 (item level 19–76, weight 700): (5.25–6.75)% increased evasion rating while moving",
+      "T3 (item level 43–129, weight 400): (7.125–9.375)% increased evasion rating while moving",
+      "T2 (item level 77–∞, weight 180): (9–12)% increased evasion rating while moving",
+      "T1 (item level 130–∞, weight 60): (11.25–15)% increased evasion rating while moving",
+      "T0 (item level 1–∞, weight 0): (14.25–19.5)% increased evasion rating while moving"
+     ],
+     "link": "items/mod/tree.evasionratingpct-moving.h0.md",
+     "name": "#% increased evasion rating while moving"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): (4–6)% increased evasion rating while moving",
+      "T4 (item level 19–76, weight 700): (7–9)% increased evasion rating while moving",
+      "T3 (item level 43–129, weight 400): (9.5–12.5)% increased evasion rating while moving",
+      "T2 (item level 77–∞, weight 180): (12–16)% increased evasion rating while moving",
+      "T1 (item level 130–∞, weight 60): (15–20)% increased evasion rating while moving",
+      "T0 (item level 1–∞, weight 0): (19–26)% increased evasion rating while moving"
+     ],
+     "link": "items/mod/tree.evasionratingpct-moving.h0.md",
+     "name": "#% increased evasion rating while moving"
+    }
+   }
+  },
+  "passives": {
+   "g3_x0": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased armour",
+      "3% increased evasion rating"
+     ],
+     "link": "passives/tree/#g3_x0",
+     "name": "Flexible Mail"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased armour",
+      "4% increased evasion rating"
+     ],
+     "link": "passives/tree/#g3_x0",
+     "name": "Flexible Mail"
+    }
+   },
+   "g4_x0": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+1.5 evasion rating"
+     ],
+     "link": "passives/tree/#g4_x0",
+     "name": "Evasion"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+2 evasion rating"
+     ],
+     "link": "passives/tree/#g4_x0",
+     "name": "Evasion"
+    }
+   },
+   "g5_x0": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+1.5 evasion rating",
+      "+8 rune shield"
+     ],
+     "link": "passives/tree/#g5_x0",
+     "name": "Runic Veil"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+2 evasion rating",
+      "+8 rune shield"
+     ],
+     "link": "passives/tree/#g5_x0",
+     "name": "Runic Veil"
+    }
+   },
+   "own10115": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "1% increased damage per 10 points of % of missing health"
+     ],
+     "link": "passives/tree/#own10115",
+     "name": "Last Strength"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "1% increased damage per 10 points of % of missing health"
+     ],
+     "link": "passives/tree/#own10115",
+     "name": "Strength Running Out"
+    }
+   },
+   "own10121": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "1% increased damage per 10 points of % of missing health"
+     ],
+     "link": "passives/tree/#own10121",
+     "name": "Last Strength"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "1% increased damage per 10 points of % of missing health"
+     ],
+     "link": "passives/tree/#own10121",
+     "name": "Strength Running Out"
+    }
+   },
+   "own10185": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased area of effect on primary attack hit recently",
+      "Ground Strike: Heavy melee weapons replace their alternative attack with a ground slam; Base slam radius for weapons without an area attack: 3 m; Heavy melee weapons replace their alternative attack with a ground slam, without the leap.",
+      "Fault Line: Slams cover a line with a base width of 1.4 m instead of a circle, preserving total area; Your slams hit a narrow line ahead of you instead of a circle, covering the same area.",
+      "Raise the Earth: Slamming your created object consumes it and raises an impassable ridge for 4 s; Base ridge length: 3.5 m; ×0.7 area with the slam that raises the ridge; Slamming one of your own created objects consumes it and leaves a brief impassable ridge. That slam's area is smaller. Buildings are not damaged."
+     ],
+     "link": "passives/node/own10185.md",
+     "name": "Old Fighter's Sweep"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased area of effect on primary attack hit recently",
+      "Ground Strike: Heavy melee weapons replace their alternative attack with a ground slam that deals only blunt damage; Base slam radius for weapons without an area attack: 3 m; Heavy melee weapons replace their alternative attack with a ground slam that deals only blunt damage, without the leap.",
+      "Fault Line: Slams cover a line with a base width of 1.4 m instead of a circle, preserving total area; Your slams hit a narrow line ahead of you instead of a circle, covering the same area.",
+      "Raise the Earth: Slamming your created object consumes it and raises an impassable ridge for 4 s; Base ridge length: 3.5 m; ×0.7 area with the slam that raises the ridge; Slamming one of your own created objects consumes it and leaves a brief impassable ridge. That slam's area is smaller. Buildings are not damaged."
+     ],
+     "link": "passives/node/own10185.md",
+     "name": "Old Fighter's Sweep"
+    }
+   },
+   "own10417": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "40% increased impale build-up with thorns"
+     ],
+     "link": "passives/node/own10417.md",
+     "name": "Thorn Under the Skin"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "40% increased impale build-up with thorns"
+     ],
+     "link": "passives/node/own10417.md",
+     "name": "Thorn Beneath the Skin"
+    }
+   },
+   "own10442": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "7.5% increased evasion rating",
+      "22.5% increased evasion rating from equipped body armour"
+     ],
+     "link": "passives/node/own10442.md",
+     "name": "Tracker's Leather"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased evasion rating",
+      "30% increased evasion rating from equipped body armour"
+     ],
+     "link": "passives/node/own10442.md",
+     "name": "Tracker's Leather"
+    }
+   },
+   "own10501": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+5 endurance threshold"
+     ],
+     "link": "passives/tree/#own10501",
+     "name": "Fortitude"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+5 endurance threshold"
+     ],
+     "link": "passives/tree/#own10501",
+     "name": "Endurance"
+    }
+   },
+   "own10507": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+5 endurance threshold"
+     ],
+     "link": "passives/tree/#own10507",
+     "name": "Fortitude"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+5 endurance threshold"
+     ],
+     "link": "passives/tree/#own10507",
+     "name": "Endurance"
+    }
+   },
+   "own10525": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+5 endurance threshold",
+      "+2% endurance"
+     ],
+     "link": "passives/tree/#own10525",
+     "name": "Fortitude"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+5 endurance threshold",
+      "+2% endurance"
+     ],
+     "link": "passives/tree/#own10525",
+     "name": "Endurance"
+    }
+   },
+   "own10537": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+5 endurance threshold"
+     ],
+     "link": "passives/tree/#own10537",
+     "name": "Fortitude"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+5 endurance threshold"
+     ],
+     "link": "passives/tree/#own10537",
+     "name": "Endurance"
+    }
+   },
+   "own10549": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "4% reduced melee stamina cost with attacks"
+     ],
+     "link": "passives/tree/#own10549",
+     "name": "Melee Impact"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% reduced melee stamina cost with attacks"
+     ],
+     "link": "passives/tree/#own10549",
+     "name": "Recovery Rhythm"
+    }
+   },
+   "own10553": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased evasion rating"
+     ],
+     "link": "passives/tree/#own10553",
+     "name": "Back in Line"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased evasion rating"
+     ],
+     "link": "passives/tree/#own10553",
+     "name": "Back in Line"
+    }
+   },
+   "own10555": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "4% reduced melee stamina cost with attacks"
+     ],
+     "link": "passives/tree/#own10555",
+     "name": "Melee Impact"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% reduced melee stamina cost with attacks"
+     ],
+     "link": "passives/tree/#own10555",
+     "name": "Recovery Rhythm"
+    }
+   },
+   "own10559": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased evasion rating"
+     ],
+     "link": "passives/tree/#own10559",
+     "name": "Back in Line"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased evasion rating"
+     ],
+     "link": "passives/tree/#own10559",
+     "name": "Back in Line"
+    }
+   },
+   "own10561": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "10% reduced melee stamina cost with attacks"
+     ],
+     "link": "passives/node/own10561.md",
+     "name": "Fighter’s Grip"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "10% reduced melee stamina cost with attacks"
+     ],
+     "link": "passives/node/own10561.md",
+     "name": "Fighter's Grip"
+    }
+   },
+   "own10565": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "7.5% increased evasion rating",
+      "20% increased stamina regeneration on evade recently",
+      "Countermove: After evading a hit, your next primary attack sidesteps 2.2 m away from the incoming blow; Countermove expires after 4 s; After you evade a hit, your next primary attack also sidesteps away from the incoming blow."
+     ],
+     "link": "passives/node/own10565.md",
+     "name": "Elusive Sign"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased evasion rating",
+      "20% increased stamina regeneration on evade recently",
+      "Countermove: After evading a hit, your next primary attack sidesteps 2.2 m away from the incoming blow; Countermove expires after 4 s; After you evade a hit, your next primary attack also sidesteps away from the incoming blow."
+     ],
+     "link": "passives/node/own10565.md",
+     "name": "Elusive Sign"
+    }
+   },
+   "own10646": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased evasion rating"
+     ],
+     "link": "passives/tree/#own10646",
+     "name": "Evasion rating"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased evasion rating"
+     ],
+     "link": "passives/tree/#own10646",
+     "name": "Evasion rating"
+    }
+   },
+   "own10648": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+4 thorns"
+     ],
+     "link": "passives/tree/#own10648",
+     "name": "Thorns"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+4 thorns"
+     ],
+     "link": "passives/tree/#own10648",
+     "name": "Spikes"
+    }
+   },
+   "own10652": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased evasion rating"
+     ],
+     "link": "passives/tree/#own10652",
+     "name": "Evasion rating"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased evasion rating"
+     ],
+     "link": "passives/tree/#own10652",
+     "name": "Evasion rating"
+    }
+   },
+   "own10654": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+4 thorns"
+     ],
+     "link": "passives/tree/#own10654",
+     "name": "Thorns"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+4 thorns"
+     ],
+     "link": "passives/tree/#own10654",
+     "name": "Spikes"
+    }
+   },
+   "own10658": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "10% reduced cost when evading"
+     ],
+     "link": "passives/node/own10658.md",
+     "name": "Effortless Evasion"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "5% reduced cost when evading"
+     ],
+     "link": "passives/node/own10658.md",
+     "name": "Effortless Evasion"
+    }
+   },
+   "own10661": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "5% increased movement speed",
+      "1.5% increased movement speed per 5 points of comfort",
+      "Build Momentum: Jumping exchanges 35% of horizontal sprint momentum for upward momentum; Gain 0.8 upward momentum per horizontal momentum exchanged; Jumping turns part of your sprint momentum into jump height, shortening horizontal travel.",
+      "Gather Speed: Raising your block preserves sprint momentum for 0.35 s; Raising your block does not stop a sprint at once: the remaining momentum carries you briefly forward while blocking.",
+      "Walk Under Load: 50% increased movement speed while encumbered",
+      "◇ Free option 1: Theme reserve. No gameplay effect yet."
+     ],
+     "link": "passives/node/own10661.md",
+     "name": "Path from the Hearth"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "5% increased movement speed",
+      "1.5% increased movement speed per 5 points of comfort",
+      "Build Momentum: Jumping exchanges 35% of horizontal sprint momentum for upward momentum; Gain 0.8 upward momentum per horizontal momentum exchanged; Jumping turns part of your sprint momentum into jump height, shortening horizontal travel.",
+      "Gather Speed: Raising your block preserves sprint momentum for 0.35 s; Raising your block does not stop a sprint at once: the remaining momentum carries you briefly forward while blocking.",
+      "Walk Under Load: 50% increased movement speed while encumbered",
+      "◇ Free option 1: Theme reserve. No gameplay effect yet."
+     ],
+     "link": "passives/node/own10661.md",
+     "name": "Trail From the Hearth"
+    }
+   },
+   "own10666": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased thorns"
+     ],
+     "link": "passives/tree/#own10666",
+     "name": "Thorns"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased thorns"
+     ],
+     "link": "passives/tree/#own10666",
+     "name": "Spikes"
+    }
+   },
+   "own10672": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased thorns"
+     ],
+     "link": "passives/tree/#own10672",
+     "name": "Thorns"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased thorns"
+     ],
+     "link": "passives/tree/#own10672",
+     "name": "Spikes"
+    }
+   },
+   "own10678": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+4 thorns"
+     ],
+     "link": "passives/tree/#own10678",
+     "name": "Thorns"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+4 thorns"
+     ],
+     "link": "passives/tree/#own10678",
+     "name": "Spikes"
+    }
+   },
+   "own10684": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+4 thorns"
+     ],
+     "link": "passives/tree/#own10684",
+     "name": "Thorns"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+4 thorns"
+     ],
+     "link": "passives/tree/#own10684",
+     "name": "Spikes"
+    }
+   },
+   "own10694": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased evasion rating"
+     ],
+     "link": "passives/tree/#own10694",
+     "name": "Evasion rating"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased evasion rating"
+     ],
+     "link": "passives/tree/#own10694",
+     "name": "Evasion rating"
+    }
+   },
+   "own10696": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+4 thorns"
+     ],
+     "link": "passives/tree/#own10696",
+     "name": "Thorns"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+4 thorns"
+     ],
+     "link": "passives/tree/#own10696",
+     "name": "Spikes"
+    }
+   },
+   "own10700": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased evasion rating"
+     ],
+     "link": "passives/tree/#own10700",
+     "name": "Evasion rating"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased evasion rating"
+     ],
+     "link": "passives/tree/#own10700",
+     "name": "Evasion rating"
+    }
+   },
+   "own10702": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased thorns"
+     ],
+     "link": "passives/tree/#own10702",
+     "name": "Thorns"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased thorns"
+     ],
+     "link": "passives/tree/#own10702",
+     "name": "Spikes"
+    }
+   },
+   "own10706": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "7.5% increased evasion rating"
+     ],
+     "link": "passives/node/own10706.md",
+     "name": "Elusive Footwork"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased evasion rating"
+     ],
+     "link": "passives/node/own10706.md",
+     "name": "Elusive Footwork"
+    }
+   },
+   "own10717": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "4% reduced two-handed stamina cost with attacks"
+     ],
+     "link": "passives/tree/#own10717",
+     "name": "Two-Handed Melee Weapons"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% reduced two-handed stamina cost with attacks"
+     ],
+     "link": "passives/tree/#own10717",
+     "name": "Weapon speed"
+    }
+   },
+   "own10723": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "4% reduced two-handed stamina cost with attacks"
+     ],
+     "link": "passives/tree/#own10723",
+     "name": "Two-Handed Melee Weapons"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% reduced two-handed stamina cost with attacks"
+     ],
+     "link": "passives/tree/#own10723",
+     "name": "Weapon speed"
+    }
+   },
+   "own10744": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "10% reduced club stamina cost"
+     ],
+     "link": "passives/node/own10744.md",
+     "name": "Bonebreaker’s Grip"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "10% reduced club stamina cost"
+     ],
+     "link": "passives/node/own10744.md",
+     "name": "Bonebreaker's Grip"
+    }
+   },
+   "own10764": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased spirit damage"
+     ],
+     "link": "passives/node/own10764.md",
+     "name": "Song of Enchantment"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased spirit damage"
+     ],
+     "link": "passives/node/own10764.md",
+     "name": "Enchantment Song"
+    }
+   },
+   "own10769": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "4% reduced cost when evading"
+     ],
+     "link": "passives/tree/#own10769",
+     "name": "Measured Evasion"
+    },
+    "old": null
+   },
+   "own10775": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "4% reduced cost when evading"
+     ],
+     "link": "passives/tree/#own10775",
+     "name": "Measured Evasion"
+    },
+    "old": null
+   },
+   "own10781": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "10% reduced cost when evading"
+     ],
+     "link": "passives/node/own10781.md",
+     "name": "Measured Footwork"
+    },
+    "old": null
+   },
+   "own10787": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "5% increased maximum stamina"
+     ],
+     "link": "passives/tree/#own10787",
+     "name": "Stamina"
+    },
+    "old": null
+   },
+   "own10793": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "12.5% increased maximum stamina"
+     ],
+     "link": "passives/node/own10793.md",
+     "name": "Deep Reserves"
+    },
+    "old": null
+   },
+   "own10799": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "4% chance to evade without spending stamina"
+     ],
+     "link": "passives/tree/#own10799",
+     "name": "Effortless Evasion"
+    },
+    "old": null
+   },
+   "own10805": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "10% chance to evade without spending stamina"
+     ],
+     "link": "passives/node/own10805.md",
+     "name": "Feather Step"
+    },
+    "old": null
+   },
+   "own10811": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "4% reduced cost when evading"
+     ],
+     "link": "passives/tree/#own10811",
+     "name": "Measured Evasion"
+    },
+    "old": null
+   },
+   "own10817": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "4% reduced cost when evading"
+     ],
+     "link": "passives/tree/#own10817",
+     "name": "Measured Evasion"
+    },
+    "old": null
+   },
+   "own10823": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "4% chance to evade without spending stamina"
+     ],
+     "link": "passives/tree/#own10823",
+     "name": "Effortless Evasion"
+    },
+    "old": null
+   },
+   "own10829": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "5% increased maximum stamina"
+     ],
+     "link": "passives/tree/#own10829",
+     "name": "Stamina"
+    },
+    "old": null
+   },
+   "own10832": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+2% endurance"
+     ],
+     "link": "passives/tree/#own10832",
+     "name": "Resilience"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+2% endurance"
+     ],
+     "link": "passives/tree/#own10832",
+     "name": "Endurance"
+    }
+   },
+   "own10838": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+2% endurance"
+     ],
+     "link": "passives/tree/#own10838",
+     "name": "Resilience"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+2% endurance"
+     ],
+     "link": "passives/tree/#own10838",
+     "name": "Endurance"
+    }
+   },
+   "own10844": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+5% endurance"
+     ],
+     "link": "passives/node/own10844.md",
+     "name": "Brawler’s Stance"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "+5% endurance"
+     ],
+     "link": "passives/node/own10844.md",
+     "name": "Brawler's Stance"
+    }
+   },
+   "own10850": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "4% reduced fist stamina cost"
+     ],
+     "link": "passives/tree/#own10850",
+     "name": "Fists"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% reduced fist stamina cost"
+     ],
+     "link": "passives/tree/#own10850",
+     "name": "Weapon speed"
+    }
+   },
+   "own10856": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "4% reduced fist stamina cost"
+     ],
+     "link": "passives/tree/#own10856",
+     "name": "Fists"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% reduced fist stamina cost"
+     ],
+     "link": "passives/tree/#own10856",
+     "name": "Weapon speed"
+    }
+   },
+   "own10862": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "4% reduced fist stamina cost"
+     ],
+     "link": "passives/tree/#own10862",
+     "name": "Fists"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% reduced fist stamina cost"
+     ],
+     "link": "passives/tree/#own10862",
+     "name": "Weapon speed"
+    }
+   },
+   "own10875": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "4% reduced elemental staff stamina and eitr cost"
+     ],
+     "link": "passives/tree/#own10875",
+     "name": "Spells"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% reduced elemental staff stamina and eitr cost"
+     ],
+     "link": "passives/tree/#own10875",
+     "name": "Cast speed"
+    }
+   },
+   "own10880": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "30% increased fist critical strike chance",
+      "20% increased unarmed damage",
+      "Dash Punch: Fist attacks dash towards the aimed target within 7 m; Without an aimed target, fist attacks step 2 m forward; Fist and unarmed attacks dash towards the aimed target, stopping at striking range when the hit is released. Obstacles stop the dash; area modifiers do not increase its range.",
+      "Phantom Fist: +100% Phantom strike chance with fists with charged attacks"
+     ],
+     "link": "passives/node/own10880.md",
+     "name": "Stout Fist"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "30% increased fist critical strike chance",
+      "20% increased unarmed damage",
+      "Dash Punch: Fist attacks dash towards the aimed target within 7 m; Without an aimed target, fist attacks step 2 m forward; Fist and unarmed attacks dash towards the aimed target, stopping at striking range when the hit is released. Obstacles stop the dash; area modifiers do not increase its range.",
+      "Phantom Fist: +100% Phantom strike chance with fists with charged attacks"
+     ],
+     "link": "passives/node/own10880.md",
+     "name": "Giant's Punch"
+    }
+   },
+   "own10882": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased slam area of effect",
+      "Ground Strike: Heavy melee weapons replace their alternative attack with a ground slam; Base slam radius for weapons without an area attack: 3 m; Heavy melee weapons replace their alternative attack with a ground slam, without the leap.",
+      "Fault Line: Slams cover a line with a base width of 1.4 m instead of a circle, preserving total area; Your slams hit a narrow line ahead of you instead of a circle, covering the same area.",
+      "Raise the Earth: Slamming your created object consumes it and raises an impassable ridge for 4 s; Base ridge length: 3.5 m; ×0.7 area with the slam that raises the ridge; Slamming one of your own created objects consumes it and leaves a brief impassable ridge. That slam's area is smaller. Buildings are not damaged."
+     ],
+     "link": "passives/node/own10882.md",
+     "name": "Fractured Plains"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased slam area of effect",
+      "Ground Strike: Heavy melee weapons replace their alternative attack with a ground slam that deals only blunt damage; Base slam radius for weapons without an area attack: 3 m; Heavy melee weapons replace their alternative attack with a ground slam that deals only blunt damage, without the leap.",
+      "Fault Line: Slams cover a line with a base width of 1.4 m instead of a circle, preserving total area; Your slams hit a narrow line ahead of you instead of a circle, covering the same area.",
+      "Raise the Earth: Slamming your created object consumes it and raises an impassable ridge for 4 s; Base ridge length: 3.5 m; ×0.7 area with the slam that raises the ridge; Slamming one of your own created objects consumes it and leaves a brief impassable ridge. That slam's area is smaller. Buildings are not damaged."
+     ],
+     "link": "passives/node/own10882.md",
+     "name": "Fractured Plains"
+    }
+   },
+   "own10889": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased evasion rating"
+     ],
+     "link": "passives/tree/#own10889",
+     "name": "Evasion"
+    },
+    "old": null
+   },
+   "own10890": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased chill build-up"
+     ],
+     "link": "passives/tree/#own10890",
+     "name": "Frost"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased chill build-up"
+     ],
+     "link": "passives/tree/#own10890",
+     "name": "Cold"
+    }
+   },
+   "own10895": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased evasion rating"
+     ],
+     "link": "passives/tree/#own10895",
+     "name": "Evasion"
+    },
+    "old": null
+   },
+   "own10896": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased chill build-up"
+     ],
+     "link": "passives/tree/#own10896",
+     "name": "Frost"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased chill build-up"
+     ],
+     "link": "passives/tree/#own10896",
+     "name": "Cold"
+    }
+   },
+   "own10901": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+2% glancing blow chance"
+     ],
+     "link": "passives/tree/#own10901",
+     "name": "Glancing Blows"
+    },
+    "old": null
+   },
+   "own10907": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+2% glancing blow chance"
+     ],
+     "link": "passives/tree/#own10907",
+     "name": "Glancing Blows"
+    },
+    "old": null
+   },
+   "own10913": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "7.5% increased evasion rating",
+      "+10% glancing blow chance on evade recently"
+     ],
+     "link": "passives/node/own10913.md",
+     "name": "Slipping Guard"
+    },
+    "old": null
+   },
+   "own10954": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+5 endurance threshold"
+     ],
+     "link": "passives/tree/#own10954",
+     "name": "Fortitude"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+5 endurance threshold"
+     ],
+     "link": "passives/tree/#own10954",
+     "name": "Endurance"
+    }
+   },
+   "own10960": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+5 endurance threshold"
+     ],
+     "link": "passives/tree/#own10960",
+     "name": "Fortitude"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+5 endurance threshold"
+     ],
+     "link": "passives/tree/#own10960",
+     "name": "Endurance"
+    }
+   },
+   "own10966": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+5 endurance threshold"
+     ],
+     "link": "passives/tree/#own10966",
+     "name": "Fortitude"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+5 endurance threshold"
+     ],
+     "link": "passives/tree/#own10966",
+     "name": "Endurance"
+    }
+   },
+   "own10978": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+5 endurance threshold"
+     ],
+     "link": "passives/tree/#own10978",
+     "name": "Fortitude"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+5 endurance threshold"
+     ],
+     "link": "passives/tree/#own10978",
+     "name": "Endurance"
+    }
+   },
+   "own10984": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+5 endurance threshold"
+     ],
+     "link": "passives/tree/#own10984",
+     "name": "Fortitude"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+5 endurance threshold"
+     ],
+     "link": "passives/tree/#own10984",
+     "name": "Endurance"
+    }
+   },
+   "own11021": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased damage against frozen targets"
+     ],
+     "link": "passives/tree/#own11021",
+     "name": "Frost"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased damage against frozen targets"
+     ],
+     "link": "passives/tree/#own11021",
+     "name": "Cold"
+    }
+   },
+   "own11081": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased damage against frozen targets",
+      "+4% frost resistance penetration"
+     ],
+     "link": "passives/tree/#own11081",
+     "name": "Frost"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased damage against frozen targets",
+      "+4% frost resistance penetration"
+     ],
+     "link": "passives/tree/#own11081",
+     "name": "Cold"
+    }
+   },
+   "own11105": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased damage against frozen targets"
+     ],
+     "link": "passives/tree/#own11105",
+     "name": "Frost"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased damage against frozen targets"
+     ],
+     "link": "passives/tree/#own11105",
+     "name": "Cold"
+    }
+   },
+   "own11151": {
+    "new": {
+     "kind": "Keystone",
+     "lines": [
+      "−100 carry weight",
+      "15% increased jump height",
+      "25% reduced fall damage"
+     ],
+     "link": "passives/node/own11151.md",
+     "name": "Featherlight"
+    },
+    "old": {
+     "kind": "Keystone",
+     "lines": [
+      "−100 carry weight",
+      "15% increased jump height",
+      "25% reduced fall damage"
+     ],
+     "link": "passives/node/own11151.md",
+     "name": "Feather"
+    }
+   },
+   "own11176": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "60% increased eitr regeneration airborne",
+      "+1 projectiles per shot or throw airborne",
+      "Aerial Recoil: Airborne casts push you backwards at 0.6 m/s per eitr spent; Casting while airborne pushes you away from where you aim. The eitr cost and the shot direction set the impulse."
+     ],
+     "link": "passives/node/own11176.md",
+     "name": "Runes on the Wind"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "60% increased eitr regeneration airborne",
+      "+1 projectiles per shot or throw airborne",
+      "Aerial Recoil: Airborne casts push you backwards at 0.6 m/s per eitr spent; Casting while airborne pushes you away from where you aim. The eitr cost and the shot direction set the impulse."
+     ],
+     "link": "passives/node/own11176.md",
+     "name": "Runes in the Wind"
+    }
+   },
+   "own11262": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "Gain 6% of physical damage as extra frost"
+     ],
+     "link": "passives/tree/#own11262",
+     "name": "Frost"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "Gain 6% of physical damage as extra frost"
+     ],
+     "link": "passives/tree/#own11262",
+     "name": "Cold"
+    }
+   },
+   "own11277": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased evasion rating"
+     ],
+     "link": "passives/tree/#own11277",
+     "name": "Passive Evasion"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased evasion rating"
+     ],
+     "link": "passives/tree/#own11277",
+     "name": "Passive Evasion"
+    }
+   },
+   "own11278": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased evasion rating"
+     ],
+     "link": "passives/tree/#own11278",
+     "name": "Passive Evasion"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased evasion rating"
+     ],
+     "link": "passives/tree/#own11278",
+     "name": "Passive Evasion"
+    }
+   },
+   "own11279": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased evasion rating"
+     ],
+     "link": "passives/tree/#own11279",
+     "name": "Passive Evasion"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased evasion rating"
+     ],
+     "link": "passives/tree/#own11279",
+     "name": "Passive Evasion"
+    }
+   },
+   "own11280": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased evasion rating"
+     ],
+     "link": "passives/tree/#own11280",
+     "name": "Passive Evasion"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased evasion rating"
+     ],
+     "link": "passives/tree/#own11280",
+     "name": "Passive Evasion"
+    }
+   },
+   "own11380": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased evasion rating"
+     ],
+     "link": "passives/tree/#own11380",
+     "name": "Evasion"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased evasion rating"
+     ],
+     "link": "passives/tree/#own11380",
+     "name": "Evasion"
+    }
+   },
+   "own11383": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased evasion rating"
+     ],
+     "link": "passives/tree/#own11383",
+     "name": "Evasion"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased evasion rating"
+     ],
+     "link": "passives/tree/#own11383",
+     "name": "Evasion"
+    }
+   },
+   "own11386": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "7.5% increased evasion rating"
+     ],
+     "link": "passives/node/own11386.md",
+     "name": "Elusive Shade"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased evasion rating"
+     ],
+     "link": "passives/node/own11386.md",
+     "name": "Elusive Shade"
+    }
+   },
+   "own11404": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+1 comfort level",
+      "0.75% increased evasion rating per 10 points of comfort"
+     ],
+     "link": "passives/tree/#own11404",
+     "name": "Comfort"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+1 comfort level",
+      "1% increased evasion rating per 10 points of comfort"
+     ],
+     "link": "passives/tree/#own11404",
+     "name": "Comfort"
+    }
+   },
+   "own11410": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+1 comfort level",
+      "0.75% increased evasion rating per 10 points of comfort"
+     ],
+     "link": "passives/tree/#own11410",
+     "name": "Comfort"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+1 comfort level",
+      "1% increased evasion rating per 10 points of comfort"
+     ],
+     "link": "passives/tree/#own11410",
+     "name": "Comfort"
+    }
+   },
+   "own11416": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+2.5 comfort level",
+      "1.875% increased evasion rating per 10 points of comfort"
+     ],
+     "link": "passives/node/own11416.md",
+     "name": "Soft Pelt"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "+2.5 comfort level",
+      "2.5% increased evasion rating per 10 points of comfort"
+     ],
+     "link": "passives/node/own11416.md",
+     "name": "Soft Pelt"
+    }
+   },
+   "own11495": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased food nourishment eitr"
+     ],
+     "link": "passives/tree/#own11495",
+     "name": "Food Eitr"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased food nourishment eitr"
+     ],
+     "link": "passives/tree/#own11495",
+     "name": "Eitr from food"
+    }
+   },
+   "own11501": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "20% increased food nourishment eitr",
+      "+1.25 rune shield per 50 points of eitr from food",
+      "2.5% increased elemental damage per 15 points of eitr from food",
+      "Undying Meal: Food retains 100% of its resource bonuses until it expires; Food retains its full bonuses until it expires",
+      "Other Food: Convert 30% of maximum health from active food to rune shield; Part of the health your active food gives becomes rune shield instead."
+     ],
+     "link": "passives/node/own11501.md",
+     "name": "Feast Beneath Runes"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "20% increased food nourishment eitr",
+      "+1.25 rune shield per 50 points of eitr from food",
+      "2.5% increased elemental damage per 15 points of eitr from food",
+      "Undying Meal: Food retains 100% of its resource bonuses until it expires; Food retains its full bonuses until it expires",
+      "Other Food: Convert 30% of maximum health from active food to rune shield; Part of the health your active food gives becomes rune shield instead."
+     ],
+     "link": "passives/node/own11501.md",
+     "name": "Strength on the Road"
+    }
+   },
+   "own11507": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased food nourishment eitr"
+     ],
+     "link": "passives/tree/#own11507",
+     "name": "Food Eitr"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased food nourishment eitr"
+     ],
+     "link": "passives/tree/#own11507",
+     "name": "Eitr from food"
+    }
+   },
+   "own11561": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased damage against poisoned targets"
+     ],
+     "link": "passives/tree/#own11561",
+     "name": "Poisoning"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased damage against poisoned targets"
+     ],
+     "link": "passives/tree/#own11561",
+     "name": "Poison"
+    }
+   },
+   "own11563": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased blunt knockback"
+     ],
+     "link": "passives/tree/#own11563",
+     "name": "Blunt Onslaught"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased blunt knockback"
+     ],
+     "link": "passives/tree/#own11563",
+     "name": "Weight of Steel"
+    }
+   },
+   "own11567": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased damage against poisoned targets"
+     ],
+     "link": "passives/tree/#own11567",
+     "name": "Poisoning"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased damage against poisoned targets"
+     ],
+     "link": "passives/tree/#own11567",
+     "name": "Poison"
+    }
+   },
+   "own11569": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased blunt knockback"
+     ],
+     "link": "passives/tree/#own11569",
+     "name": "Blunt Onslaught"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased blunt knockback"
+     ],
+     "link": "passives/tree/#own11569",
+     "name": "Weight of Steel"
+    }
+   },
+   "own11575": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased blunt knockback"
+     ],
+     "link": "passives/node/own11575.md",
+     "name": "Crushing Push"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased blunt knockback"
+     ],
+     "link": "passives/node/own11575.md",
+     "name": "Mass of the Verdict"
+    }
+   },
+   "own11579": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "Gain 6% of physical damage as extra poison"
+     ],
+     "link": "passives/tree/#own11579",
+     "name": "Poisoning"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "Gain 6% of physical damage as extra poison"
+     ],
+     "link": "passives/tree/#own11579",
+     "name": "Poison"
+    }
+   },
+   "own11581": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased blunt damage with attacks"
+     ],
+     "link": "passives/tree/#own11581",
+     "name": "Blunt Onslaught"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased blunt damage with attacks"
+     ],
+     "link": "passives/tree/#own11581",
+     "name": "Weight of Steel"
+    }
+   },
+   "own11585": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "Gain 6% of physical damage as extra poison"
+     ],
+     "link": "passives/tree/#own11585",
+     "name": "Poisoning"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "Gain 6% of physical damage as extra poison"
+     ],
+     "link": "passives/tree/#own11585",
+     "name": "Poison"
+    }
+   },
+   "own11587": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased blunt damage with attacks"
+     ],
+     "link": "passives/tree/#own11587",
+     "name": "Blunt Onslaught"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased blunt damage with attacks"
+     ],
+     "link": "passives/tree/#own11587",
+     "name": "Weight of Steel"
+    }
+   },
+   "own11591": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "Gain 6% of physical damage as extra poison"
+     ],
+     "link": "passives/tree/#own11591",
+     "name": "Poisoning"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "Gain 6% of physical damage as extra poison"
+     ],
+     "link": "passives/tree/#own11591",
+     "name": "Poison"
+    }
+   },
+   "own11593": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased blunt damage with attacks"
+     ],
+     "link": "passives/tree/#own11593",
+     "name": "Blunt Onslaught"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased blunt damage with attacks"
+     ],
+     "link": "passives/tree/#own11593",
+     "name": "Weight of Steel"
+    }
+   },
+   "own11597": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased poison damage over time against low life enemies"
+     ],
+     "link": "passives/tree/#own11597",
+     "name": "Poisoning"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased poison damage over time against low life enemies"
+     ],
+     "link": "passives/tree/#own11597",
+     "name": "Poison"
+    }
+   },
+   "own11599": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased armour break build-up with blunt damage"
+     ],
+     "link": "passives/tree/#own11599",
+     "name": "Blunt Onslaught"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased armour break build-up with blunt damage"
+     ],
+     "link": "passives/tree/#own11599",
+     "name": "Weight of Steel"
+    }
+   },
+   "own11603": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased poison damage over time against low life enemies"
+     ],
+     "link": "passives/tree/#own11603",
+     "name": "Poisoning"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased poison damage over time against low life enemies"
+     ],
+     "link": "passives/tree/#own11603",
+     "name": "Poison"
+    }
+   },
+   "own11605": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased armour break build-up with blunt damage"
+     ],
+     "link": "passives/tree/#own11605",
+     "name": "Blunt Onslaught"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased armour break build-up with blunt damage"
+     ],
+     "link": "passives/tree/#own11605",
+     "name": "Weight of Steel"
+    }
+   },
+   "own11610": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "12.5% increased rune shield recharge",
+      "−25% rune shield recharge delay on block recently"
+     ],
+     "link": "passives/node/own11610.md",
+     "name": "Ward Rune"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "12.5% increased rune shield recharge",
+      "−25% rune shield recharge delay on block recently"
+     ],
+     "link": "passives/node/own11610.md",
+     "name": "Sign Upon the Brow"
+    }
+   },
+   "own11611": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "40% increased armour break build-up with blunt damage"
+     ],
+     "link": "passives/node/own11611.md",
+     "name": "Yielding Armour"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "40% increased armour break build-up with blunt damage"
+     ],
+     "link": "passives/node/own11611.md",
+     "name": "Forge's Weight"
+    }
+   },
+   "own11617": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "20% increased blunt damage with attacks",
+      "Steel Ablaze: 50% blunt damage converted to fire with attacks"
+     ],
+     "link": "passives/node/own11617.md",
+     "name": "Steel Stride"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "20% increased blunt damage with attacks",
+      "Steel Ablaze: 50% blunt damage converted to fire with attacks"
+     ],
+     "link": "passives/node/own11617.md",
+     "name": "Thorny Forging"
+    }
+   },
+   "own11621": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "Gain 6% of physical damage as extra poison",
+      "8% increased damage against poisoned targets"
+     ],
+     "link": "passives/tree/#own11621",
+     "name": "Poisoning"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "Gain 6% of physical damage as extra poison",
+      "8% increased damage against poisoned targets"
+     ],
+     "link": "passives/tree/#own11621",
+     "name": "Poison"
+    }
+   },
+   "own11623": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased blunt damage with attacks",
+      "4% increased blunt knockback"
+     ],
+     "link": "passives/tree/#own11623",
+     "name": "Blunt Onslaught"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased blunt damage with attacks",
+      "4% increased blunt knockback"
+     ],
+     "link": "passives/tree/#own11623",
+     "name": "Weight of Steel"
+    }
+   },
+   "own11627": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "Gain 6% of physical damage as extra poison",
+      "8% increased damage against poisoned targets"
+     ],
+     "link": "passives/tree/#own11627",
+     "name": "Poisoning"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "Gain 6% of physical damage as extra poison",
+      "8% increased damage against poisoned targets"
+     ],
+     "link": "passives/tree/#own11627",
+     "name": "Poison"
+    }
+   },
+   "own11629": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased blunt damage with attacks",
+      "4% increased blunt knockback"
+     ],
+     "link": "passives/tree/#own11629",
+     "name": "Blunt Onslaught"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased blunt damage with attacks",
+      "4% increased blunt knockback"
+     ],
+     "link": "passives/tree/#own11629",
+     "name": "Weight of Steel"
+    }
+   },
+   "own11635": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "0.75% increased evasion rating per 10 points of comfort"
+     ],
+     "link": "passives/tree/#own11635",
+     "name": "Comfort"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "1% increased evasion rating per 10 points of comfort"
+     ],
+     "link": "passives/tree/#own11635",
+     "name": "Comfort"
+    }
+   },
+   "own11683": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "0.75% increased evasion rating per 10 points of comfort"
+     ],
+     "link": "passives/tree/#own11683",
+     "name": "Comfort"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "1% increased evasion rating per 10 points of comfort"
+     ],
+     "link": "passives/tree/#own11683",
+     "name": "Comfort"
+    }
+   },
+   "own11689": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "1.875% increased evasion rating per 10 points of comfort"
+     ],
+     "link": "passives/node/own11689.md",
+     "name": "Warmth of Home"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "2.5% increased evasion rating per 10 points of comfort"
+     ],
+     "link": "passives/node/own11689.md",
+     "name": "Warmth of Home"
+    }
+   },
+   "own11788": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "18.75% increased parry bonus on glancing blow recently",
+      "Ready Answer: A successful parry charges your next attack (2 s cooldown); Charge your next attack on parry",
+      "Quick riposte: A parry gives back 15% of the health you lost recently",
+      "Stunning Answer: A parry staggers everything around you",
+      "Barbed Riposte: ×2.5 parry response thorns",
+      "Projectile Reflection: Parrying a projectile reflects it towards the attacker; Reflected projectile speed: 25 m/s, accelerating by 60 m/s each second up to 80 m/s; A parried enemy projectile flies back at its attacker with 100% of its damage",
+      "◇ Free option 1: Theme reserve. No gameplay effect yet."
+     ],
+     "link": "passives/node/own11788.md",
+     "name": "Gliding Riposte"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "18.75% increased parry bonus on glancing blow recently",
+      "Ready Answer: A successful parry charges your next attack (2 s cooldown); Charge your next attack on parry",
+      "Quick riposte: A parry gives back 15% of the health you lost recently",
+      "Stunning Answer: A parry staggers everything around you",
+      "Barbed Riposte: ×2.5 parry response thorns",
+      "Projectile Reflection: Parrying a projectile reflects it towards the attacker; Reflected projectile speed: 25 m/s, accelerating by 60 m/s each second up to 80 m/s; A parried enemy projectile flies back at its attacker with 100% of its damage",
+      "◇ Free option 1: Theme reserve. No gameplay effect yet."
+     ],
+     "link": "passives/node/own11788.md",
+     "name": "Sparks on the Buckler"
+    }
+   },
+   "own11809": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased evasion rating",
+      "5% increased rune shield"
+     ],
+     "link": "passives/tree/#own11809",
+     "name": "Evasion and rune shield"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased evasion rating",
+      "5% increased rune shield"
+     ],
+     "link": "passives/tree/#own11809",
+     "name": "Evasion and Rune Shield"
+    }
+   },
+   "own11827": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased evasion rating",
+      "5% increased rune shield"
+     ],
+     "link": "passives/tree/#own11827",
+     "name": "Evasion and rune shield"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased evasion rating",
+      "5% increased rune shield"
+     ],
+     "link": "passives/tree/#own11827",
+     "name": "Evasion and Rune Shield"
+    }
+   },
+   "own11833": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "7.5% increased evasion rating",
+      "12.5% increased rune shield"
+     ],
+     "link": "passives/node/own11833.md",
+     "name": "Evasion and rune shield"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased evasion rating",
+      "12.5% increased rune shield"
+     ],
+     "link": "passives/node/own11833.md",
+     "name": "Evasion and Rune Shield"
+    }
+   },
+   "own11835": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+0.5% life leech"
+     ],
+     "link": "passives/node/own11835.md",
+     "name": "Battle Hunger"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "+0.5% life leech"
+     ],
+     "link": "passives/node/own11835.md",
+     "name": "Battle Thirst"
+    }
+   },
+   "own11838": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "12.5% increased parry bonus"
+     ],
+     "link": "passives/node/own11838.md",
+     "name": "Precise Interception"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "12.5% increased parry bonus"
+     ],
+     "link": "passives/node/own11838.md",
+     "name": "Strength on the Road"
+    }
+   },
+   "own11839": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "22.5% increased evasion rating from equipped body armour",
+      "12.5% increased rune shield from equipped body armour"
+     ],
+     "link": "passives/node/own11839.md",
+     "name": "Ghostly Vestment"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "30% increased evasion rating from equipped body armour",
+      "12.5% increased rune shield from equipped body armour"
+     ],
+     "link": "passives/node/own11839.md",
+     "name": "Ghostly Vestment"
+    }
+   },
+   "own11907": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "20% increased food nourishment stamina",
+      "Undying Meal: Food retains 100% of its resource bonuses until it expires; Food retains its full bonuses until it expires",
+      "Other Food: Convert 30% of maximum health from active food to rune shield; Part of the health your active food gives becomes rune shield instead."
+     ],
+     "link": "passives/node/own11907.md",
+     "name": "Hearty Reserves"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "20% increased food nourishment stamina",
+      "Undying Meal: Food retains 100% of its resource bonuses until it expires; Food retains its full bonuses until it expires",
+      "Other Food: Convert 30% of maximum health from active food to rune shield; Part of the health your active food gives becomes rune shield instead."
+     ],
+     "link": "passives/node/own11907.md",
+     "name": "Draught With the Feast"
+    }
+   },
+   "own11960": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+2% endurance"
+     ],
+     "link": "passives/tree/#own11960",
+     "name": "Resilience"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+2% endurance"
+     ],
+     "link": "passives/tree/#own11960",
+     "name": "Endurance"
+    }
+   },
+   "own11966": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+2% endurance"
+     ],
+     "link": "passives/tree/#own11966",
+     "name": "Resilience"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+2% endurance"
+     ],
+     "link": "passives/tree/#own11966",
+     "name": "Endurance"
+    }
+   },
+   "own11991": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+0.2% life leech"
+     ],
+     "link": "passives/tree/#own11991",
+     "name": "Health Leech"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+0.2% life leech"
+     ],
+     "link": "passives/tree/#own11991",
+     "name": "Slash Damage"
+    }
+   },
+   "own11995": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased evasion rating",
+      "5% increased rune shield"
+     ],
+     "link": "passives/tree/#own11995",
+     "name": "Evasion and rune shield"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased evasion rating",
+      "5% increased rune shield"
+     ],
+     "link": "passives/tree/#own11995",
+     "name": "Evasion and Rune Shield"
+    }
+   },
+   "own11997": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+0.2% life leech"
+     ],
+     "link": "passives/tree/#own11997",
+     "name": "Health Leech"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+0.2% life leech"
+     ],
+     "link": "passives/tree/#own11997",
+     "name": "Slash Damage"
+    }
+   },
+   "own12001": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased evasion rating",
+      "5% increased rune shield"
+     ],
+     "link": "passives/tree/#own12001",
+     "name": "Evasion and rune shield"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased evasion rating",
+      "5% increased rune shield"
+     ],
+     "link": "passives/tree/#own12001",
+     "name": "Evasion and Rune Shield"
+    }
+   },
+   "own12011": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+15% trinket effect duration",
+      "2.5% increased stamina regeneration per 10 points of current adrenaline"
+     ],
+     "link": "passives/node/own12011.md",
+     "name": "Viking's Pulse"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "+15% trinket effect duration",
+      "2.5% increased stamina regeneration per 10 points of current adrenaline"
+     ],
+     "link": "passives/node/own12011.md",
+     "name": "Viking Pulse"
+    }
+   },
+   "own12023": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+1.25 s adrenaline decay delay"
+     ],
+     "link": "passives/node/own12023.md",
+     "name": "Unfading Zeal"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "+1.25 s adrenaline decay delay"
+     ],
+     "link": "passives/node/own12023.md",
+     "name": "Unfaded Fervour"
+    }
+   },
+   "own12042": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased stagger build-up with alternative attacks"
+     ],
+     "link": "passives/tree/#own12042",
+     "name": "Alternate Attacks"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased stagger build-up with alternative attacks"
+     ],
+     "link": "passives/tree/#own12042",
+     "name": "Alternative attacks"
+    }
+   },
+   "own12048": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased stagger build-up with alternative attacks"
+     ],
+     "link": "passives/tree/#own12048",
+     "name": "Alternate Attacks"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased stagger build-up with alternative attacks"
+     ],
+     "link": "passives/tree/#own12048",
+     "name": "Alternative attacks"
+    }
+   },
+   "own12054": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased stagger build-up with alternative attacks",
+      "4% reduced alternative attack stamina cost"
+     ],
+     "link": "passives/tree/#own12054",
+     "name": "Alternate Attacks"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased stagger build-up with alternative attacks",
+      "4% reduced alternative attack stamina cost"
+     ],
+     "link": "passives/tree/#own12054",
+     "name": "Alternative attacks"
+    }
+   },
+   "own12060": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased alternative attack speed"
+     ],
+     "link": "passives/tree/#own12060",
+     "name": "Alternate Attacks"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased alternative attack speed"
+     ],
+     "link": "passives/tree/#own12060",
+     "name": "Alternative attacks"
+    }
+   },
+   "own12066": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased alternative attack speed"
+     ],
+     "link": "passives/tree/#own12066",
+     "name": "Alternate Attacks"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased alternative attack speed"
+     ],
+     "link": "passives/tree/#own12066",
+     "name": "Alternative attacks"
+    }
+   },
+   "own12084": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "4% reduced alternative attack stamina cost"
+     ],
+     "link": "passives/tree/#own12084",
+     "name": "Alternate Attacks"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% reduced alternative attack stamina cost"
+     ],
+     "link": "passives/tree/#own12084",
+     "name": "Alternative attacks"
+    }
+   },
+   "own12090": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "4% reduced alternative attack stamina cost"
+     ],
+     "link": "passives/tree/#own12090",
+     "name": "Alternate Attacks"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% reduced alternative attack stamina cost"
+     ],
+     "link": "passives/tree/#own12090",
+     "name": "Alternative attacks"
+    }
+   },
+   "own12096": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased stagger build-up with alternative attacks"
+     ],
+     "link": "passives/tree/#own12096",
+     "name": "Alternate Attacks"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased stagger build-up with alternative attacks"
+     ],
+     "link": "passives/tree/#own12096",
+     "name": "Alternative attacks"
+    }
+   },
+   "own12102": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased stagger build-up with alternative attacks"
+     ],
+     "link": "passives/tree/#own12102",
+     "name": "Alternate Attacks"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased stagger build-up with alternative attacks"
+     ],
+     "link": "passives/tree/#own12102",
+     "name": "Alternative attacks"
+    }
+   },
+   "own12108": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased stagger build-up with alternative attacks"
+     ],
+     "link": "passives/tree/#own12108",
+     "name": "Alternate Attacks"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "16% increased stagger build-up with alternative attacks"
+     ],
+     "link": "passives/tree/#own12108",
+     "name": "Alternative attacks"
+    }
+   },
+   "own12120": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3.75% increased evasion rating while moving"
+     ],
+     "link": "passives/tree/#own12120",
+     "name": "Armour and Passive Evasion"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "5% increased evasion rating while moving"
+     ],
+     "link": "passives/tree/#own12120",
+     "name": "Armour and Passive Evasion"
+    }
+   },
+   "own12126": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased evasion rating"
+     ],
+     "link": "passives/tree/#own12126",
+     "name": "Armour and Passive Evasion"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased evasion rating"
+     ],
+     "link": "passives/tree/#own12126",
+     "name": "Armour and Passive Evasion"
+    }
+   },
+   "own12132": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3.75% increased evasion rating while moving"
+     ],
+     "link": "passives/tree/#own12132",
+     "name": "Armour and Passive Evasion"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "5% increased evasion rating while moving"
+     ],
+     "link": "passives/tree/#own12132",
+     "name": "Armour and Passive Evasion"
+    }
+   },
+   "own12138": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased evasion rating"
+     ],
+     "link": "passives/tree/#own12138",
+     "name": "Armour and Passive Evasion"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased evasion rating"
+     ],
+     "link": "passives/tree/#own12138",
+     "name": "Armour and Passive Evasion"
+    }
+   },
+   "own12144": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "7.5% increased evasion rating",
+      "45% increased evasion rating from equipped body armour on dodge recently"
+     ],
+     "link": "passives/node/own12144.md",
+     "name": "Hunter's Cloak"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased evasion rating",
+      "60% increased evasion rating from equipped body armour on dodge recently"
+     ],
+     "link": "passives/node/own12144.md",
+     "name": "Hunter's Cloak"
+    }
+   },
+   "own12146": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "2.5% increased stamina regeneration per 10 points of comfort"
+     ],
+     "link": "passives/node/own12146.md",
+     "name": "Breath of the Hearth"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "2.5% increased stamina regeneration per 10 points of comfort"
+     ],
+     "link": "passives/node/own12146.md",
+     "name": "Living Hearth"
+    }
+   },
+   "own12150": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "7.5% increased evasion rating",
+      "30% increased evasion rating from equipped helmet"
+     ],
+     "link": "passives/node/own12150.md",
+     "name": "Wanderer's Hood"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased evasion rating",
+      "40% increased evasion rating from equipped helmet"
+     ],
+     "link": "passives/node/own12150.md",
+     "name": "Wanderer's Hood"
+    }
+   },
+   "own12252": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "4% reduced alternative attack stamina cost"
+     ],
+     "link": "passives/tree/#own12252",
+     "name": "Alternate Attacks"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% reduced alternative attack stamina cost"
+     ],
+     "link": "passives/tree/#own12252",
+     "name": "Alternative attacks"
+    }
+   },
+   "own12258": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "4% reduced alternative attack stamina cost"
+     ],
+     "link": "passives/tree/#own12258",
+     "name": "Alternate Attacks"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% reduced alternative attack stamina cost"
+     ],
+     "link": "passives/tree/#own12258",
+     "name": "Alternative attacks"
+    }
+   },
+   "own12267": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased movement speed at night"
+     ],
+     "link": "passives/tree/#own12267",
+     "name": "Movement"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased movement speed at night"
+     ],
+     "link": "passives/tree/#own12267",
+     "name": "Stamina"
+    }
+   },
+   "own12273": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased movement speed at night"
+     ],
+     "link": "passives/tree/#own12273",
+     "name": "Movement"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased movement speed at night"
+     ],
+     "link": "passives/tree/#own12273",
+     "name": "Stamina"
+    }
+   },
+   "own12285": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased charged attack area of effect",
+      "8% reduced charged attack stamina cost"
+     ],
+     "link": "passives/tree/#own12285",
+     "name": "Charge"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased charged attack area of effect",
+      "8% reduced charged attack stamina cost"
+     ],
+     "link": "passives/tree/#own12285",
+     "name": "Charge Fundamentals"
+    }
+   },
+   "own12289": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased poison damage over time against low life enemies",
+      "4% increased poison duration"
+     ],
+     "link": "passives/tree/#own12289",
+     "name": "Poisoning"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased poison damage over time against low life enemies",
+      "4% increased poison duration"
+     ],
+     "link": "passives/tree/#own12289",
+     "name": "Poison"
+    }
+   },
+   "own12290": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased alternative attack damage",
+      "+10% alternative attack critical strike damage"
+     ],
+     "link": "passives/tree/#own12290",
+     "name": "Alternate Attacks"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased alternative attack damage",
+      "+10% alternative attack critical strike damage"
+     ],
+     "link": "passives/tree/#own12290",
+     "name": "Alternative attacks"
+    }
+   },
+   "own12295": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased poison damage over time against low life enemies"
+     ],
+     "link": "passives/tree/#own12295",
+     "name": "Poisoning"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased poison damage over time against low life enemies"
+     ],
+     "link": "passives/tree/#own12295",
+     "name": "Poison"
+    }
+   },
+   "own12296": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased alternative attack damage"
+     ],
+     "link": "passives/tree/#own12296",
+     "name": "Alternate Attacks"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased alternative attack damage"
+     ],
+     "link": "passives/tree/#own12296",
+     "name": "Alternative attacks"
+    }
+   },
+   "own12297": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% reduced charged attack stamina cost"
+     ],
+     "link": "passives/tree/#own12297",
+     "name": "Charge"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "8% reduced charged attack stamina cost"
+     ],
+     "link": "passives/tree/#own12297",
+     "name": "Damage"
+    }
+   },
+   "own12301": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased poison duration"
+     ],
+     "link": "passives/tree/#own12301",
+     "name": "Poisoning"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased poison duration"
+     ],
+     "link": "passives/tree/#own12301",
+     "name": "Poison"
+    }
+   },
+   "own12302": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+10% alternative attack critical strike damage"
+     ],
+     "link": "passives/tree/#own12302",
+     "name": "Alternate Attacks"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+10% alternative attack critical strike damage"
+     ],
+     "link": "passives/tree/#own12302",
+     "name": "Alternative attacks"
+    }
+   },
+   "own12351": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased alternative attack speed"
+     ],
+     "link": "passives/tree/#own12351",
+     "name": "Alternate Attacks"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased alternative attack speed"
+     ],
+     "link": "passives/tree/#own12351",
+     "name": "Alternative attacks"
+    }
+   },
+   "own12357": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased alternative attack speed"
+     ],
+     "link": "passives/tree/#own12357",
+     "name": "Alternate Attacks"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased alternative attack speed"
+     ],
+     "link": "passives/tree/#own12357",
+     "name": "Alternative attacks"
+    }
+   },
+   "own12363": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased alternative attack speed"
+     ],
+     "link": "passives/tree/#own12363",
+     "name": "Alternate Attacks"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased alternative attack speed"
+     ],
+     "link": "passives/tree/#own12363",
+     "name": "Alternative attacks"
+    }
+   },
+   "own12375": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased evasion rating",
+      "6% increased armour"
+     ],
+     "link": "passives/tree/#own12375",
+     "name": "Armour and evasion"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased evasion rating",
+      "6% increased armour"
+     ],
+     "link": "passives/tree/#own12375",
+     "name": "Armour and Evasion"
+    }
+   },
+   "own12381": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased evasion rating",
+      "6% increased armour"
+     ],
+     "link": "passives/tree/#own12381",
+     "name": "Armour and evasion"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased evasion rating",
+      "6% increased armour"
+     ],
+     "link": "passives/tree/#own12381",
+     "name": "Armour and Evasion"
+    }
+   },
+   "own12387": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased armour from equipped body armour",
+      "22.5% increased evasion rating from equipped body armour"
+     ],
+     "link": "passives/node/own12387.md",
+     "name": "Traveller's Mail"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased armour from equipped body armour",
+      "30% increased evasion rating from equipped body armour"
+     ],
+     "link": "passives/node/own12387.md",
+     "name": "Traveller's Mail"
+    }
+   },
+   "own12393": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased evasion rating"
+     ],
+     "link": "passives/tree/#own12393",
+     "name": "Armour and evasion"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased evasion rating"
+     ],
+     "link": "passives/tree/#own12393",
+     "name": "Armour and Evasion"
+    }
+   },
+   "own12399": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased evasion rating"
+     ],
+     "link": "passives/tree/#own12399",
+     "name": "Armour and evasion"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased evasion rating"
+     ],
+     "link": "passives/tree/#own12399",
+     "name": "Armour and Evasion"
+    }
+   },
+   "own12417": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased evasion rating"
+     ],
+     "link": "passives/tree/#own12417",
+     "name": "Armour and evasion"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased evasion rating"
+     ],
+     "link": "passives/tree/#own12417",
+     "name": "Armour and Evasion"
+    }
+   },
+   "own12423": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased evasion rating"
+     ],
+     "link": "passives/tree/#own12423",
+     "name": "Armour and evasion"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased evasion rating"
+     ],
+     "link": "passives/tree/#own12423",
+     "name": "Armour and Evasion"
+    }
+   },
+   "own12441": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+4 thorns"
+     ],
+     "link": "passives/tree/#own12441",
+     "name": "Thorns"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+4 thorns"
+     ],
+     "link": "passives/tree/#own12441",
+     "name": "Spikes"
+    }
+   },
+   "own12444": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased armour",
+      "3% increased evasion rating"
+     ],
+     "link": "passives/tree/#own12444",
+     "name": "Armour and evasion"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased armour",
+      "4% increased evasion rating"
+     ],
+     "link": "passives/tree/#own12444",
+     "name": "Armour and Evasion"
+    }
+   },
+   "own12445": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "2% increased swim speed"
+     ],
+     "link": "passives/tree/#own12445",
+     "name": "Combat in Water"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "2% increased swim speed"
+     ],
+     "link": "passives/tree/#own12445",
+     "name": "Movement"
+    }
+   },
+   "own12447": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased thorns"
+     ],
+     "link": "passives/tree/#own12447",
+     "name": "Thorns"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased thorns"
+     ],
+     "link": "passives/tree/#own12447",
+     "name": "Spikes"
+    }
+   },
+   "own12450": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased evasion rating"
+     ],
+     "link": "passives/tree/#own12450",
+     "name": "Armour and evasion"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased evasion rating"
+     ],
+     "link": "passives/tree/#own12450",
+     "name": "Armour and Evasion"
+    }
+   },
+   "own12453": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+6 thorns with the shield up"
+     ],
+     "link": "passives/tree/#own12453",
+     "name": "Thorns"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+6 thorns with the shield up"
+     ],
+     "link": "passives/tree/#own12453",
+     "name": "Spikes"
+    }
+   },
+   "own12456": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased armour",
+      "3% increased evasion rating"
+     ],
+     "link": "passives/tree/#own12456",
+     "name": "Armour and evasion"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased armour",
+      "4% increased evasion rating"
+     ],
+     "link": "passives/tree/#own12456",
+     "name": "Armour and Evasion"
+    }
+   },
+   "own12459": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased thorns"
+     ],
+     "link": "passives/tree/#own12459",
+     "name": "Thorns"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased thorns"
+     ],
+     "link": "passives/tree/#own12459",
+     "name": "Spikes"
+    }
+   },
+   "own12462": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased evasion rating"
+     ],
+     "link": "passives/tree/#own12462",
+     "name": "Armour and evasion"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased evasion rating"
+     ],
+     "link": "passives/tree/#own12462",
+     "name": "Armour and Evasion"
+    }
+   },
+   "own12465": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+6 thorns with the shield up"
+     ],
+     "link": "passives/tree/#own12465",
+     "name": "Thorns"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+6 thorns with the shield up"
+     ],
+     "link": "passives/tree/#own12465",
+     "name": "Spikes"
+    }
+   },
+   "own12468": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased armour",
+      "3% increased evasion rating"
+     ],
+     "link": "passives/tree/#own12468",
+     "name": "Armour and evasion"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased armour",
+      "4% increased evasion rating"
+     ],
+     "link": "passives/tree/#own12468",
+     "name": "Armour and Evasion"
+    }
+   },
+   "own12471": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "20% increased thorns",
+      "+15 thorns with the shield up",
+      "Cleaving Thorns: 50% thorns piercing damage converted to slashing",
+      "Thorny Carapace: On contact, deal your thorns damage to an enemy; each enemy can take this damage once every 1 s; Body contact deals thorns damage. Base cooldown: 1 second per enemy, affected by cooldown recovery."
+     ],
+     "link": "passives/node/own12471.md",
+     "name": "Barbed Ward"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "20% increased thorns",
+      "+15 thorns with the shield up",
+      "Cleaving Thorns: 50% thorns piercing damage converted to slashing",
+      "Thorny Carapace: On contact, deal your thorns damage to an enemy; each enemy can take this damage once every 1 s; Body contact deals thorns damage. Base cooldown: 1 second per enemy, affected by cooldown recovery."
+     ],
+     "link": "passives/node/own12471.md",
+     "name": "Heavy Steel's Push"
+    }
+   },
+   "own12474": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased armour",
+      "7.5% increased evasion rating"
+     ],
+     "link": "passives/node/own12474.md",
+     "name": "Supple Forging"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased armour",
+      "10% increased evasion rating"
+     ],
+     "link": "passives/node/own12474.md",
+     "name": "Supple Forging"
+    }
+   },
+   "own12599": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "4% reduced scepter stamina and eitr cost with attacks"
+     ],
+     "link": "passives/tree/#own12599",
+     "name": "Sceptres"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% reduced scepter stamina and eitr cost with attacks"
+     ],
+     "link": "passives/tree/#own12599",
+     "name": "Ailment buildup"
+    }
+   },
+   "own12603": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "0.75% increased evasion rating per 10 points of comfort"
+     ],
+     "link": "passives/tree/#own12603",
+     "name": "Comfort"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "1% increased evasion rating per 10 points of comfort"
+     ],
+     "link": "passives/tree/#own12603",
+     "name": "Comfort"
+    }
+   },
+   "own12617": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "4% reduced scepter stamina and eitr cost with attacks"
+     ],
+     "link": "passives/tree/#own12617",
+     "name": "Sceptres"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% reduced scepter stamina and eitr cost with attacks"
+     ],
+     "link": "passives/tree/#own12617",
+     "name": "Ailment buildup"
+    }
+   },
+   "own12645": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "1.875% increased evasion rating per 10 points of comfort"
+     ],
+     "link": "passives/node/own12645.md",
+     "name": "Rest Beneath the Rafters"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "2.5% increased evasion rating per 10 points of comfort"
+     ],
+     "link": "passives/node/own12645.md",
+     "name": "Rest Beneath the Rafters"
+    }
+   },
+   "own12884": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% reduced charged attack stamina cost"
+     ],
+     "link": "passives/tree/#own12884",
+     "name": "Charge"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "8% reduced charged attack stamina cost"
+     ],
+     "link": "passives/tree/#own12884",
+     "name": "Weapon speed"
+    }
+   },
+   "own12890": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "8% reduced charged attack stamina cost"
+     ],
+     "link": "passives/tree/#own12890",
+     "name": "Charge"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "8% reduced charged attack stamina cost"
+     ],
+     "link": "passives/tree/#own12890",
+     "name": "Weapon speed"
+    }
+   },
+   "own12902": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased evasion rating"
+     ],
+     "link": "passives/tree/#own12902",
+     "name": "Armour and Passive Evasion"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased evasion rating"
+     ],
+     "link": "passives/tree/#own12902",
+     "name": "Armour and Passive Evasion"
+    }
+   },
+   "own12903": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased evasion rating"
+     ],
+     "link": "passives/tree/#own12903",
+     "name": "Armour and Passive Evasion"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased evasion rating"
+     ],
+     "link": "passives/tree/#own12903",
+     "name": "Armour and Passive Evasion"
+    }
+   },
+   "own12904": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased evasion rating"
+     ],
+     "link": "passives/tree/#own12904",
+     "name": "Armour and Passive Evasion"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased evasion rating"
+     ],
+     "link": "passives/tree/#own12904",
+     "name": "Armour and Passive Evasion"
+    }
+   },
+   "own12905": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased evasion rating"
+     ],
+     "link": "passives/tree/#own12905",
+     "name": "Armour and Passive Evasion"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased evasion rating"
+     ],
+     "link": "passives/tree/#own12905",
+     "name": "Armour and Passive Evasion"
+    }
+   },
+   "own12906": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "9.375% increased evasion rating while moving",
+      "22.5% increased evasion rating from equipped leg armour"
+     ],
+     "link": "passives/node/own12906.md",
+     "name": "Step Through Grass"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "12.5% increased evasion rating while moving",
+      "30% increased evasion rating from equipped leg armour"
+     ],
+     "link": "passives/node/own12906.md",
+     "name": "Step Through Grass"
+    }
+   },
+   "own13122": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "4% reduced cast stamina and eitr cost"
+     ],
+     "link": "passives/tree/#own13122",
+     "name": "Spell Rhythm"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% reduced cast stamina and eitr cost"
+     ],
+     "link": "passives/tree/#own13122",
+     "name": "Cast speed"
+    }
+   },
+   "own13407": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "12.5% increased stamina regeneration while fed",
+      "0.5% increased attack speed per 30 points of stamina from food"
+     ],
+     "link": "passives/node/own13407.md",
+     "name": "Bread for the Road"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "12.5% increased stamina regeneration while fed",
+      "0.5% increased attack speed per 30 points of stamina from food"
+     ],
+     "link": "passives/node/own13407.md",
+     "name": "Wisdom of the Feast"
+    }
+   },
+   "own13460": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+20% adrenaline gain on block recently"
+     ],
+     "link": "passives/node/own13460.md",
+     "name": "Shield Riposte"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "+20% adrenaline gain on block recently"
+     ],
+     "link": "passives/node/own13460.md",
+     "name": "Answer on the Shield"
+    }
+   },
+   "own13466": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+20% adrenaline gain on consecutive hits recently"
+     ],
+     "link": "passives/node/own13466.md",
+     "name": "Rising Thrill"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "+20% adrenaline gain on consecutive hits recently"
+     ],
+     "link": "passives/node/own13466.md",
+     "name": "Rising Ardour"
+    }
+   },
+   "own13508": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased slam area of effect",
+      "5% reduced slam stamina cost",
+      "Ground Strike: Heavy melee weapons replace their alternative attack with a ground slam; Base slam radius for weapons without an area attack: 3 m; Heavy melee weapons replace their alternative attack with a ground slam, without the leap.",
+      "Fault Line: Slams cover a line with a base width of 1.4 m instead of a circle, preserving total area; Your slams hit a narrow line ahead of you instead of a circle, covering the same area.",
+      "Raise the Earth: Slamming your created object consumes it and raises an impassable ridge for 4 s; Base ridge length: 3.5 m; ×0.7 area with the slam that raises the ridge; Slamming one of your own created objects consumes it and leaves a brief impassable ridge. That slam's area is smaller. Buildings are not damaged."
+     ],
+     "link": "passives/node/own13508.md",
+     "name": "Valley Hammer"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased slam area of effect",
+      "5% reduced slam stamina cost",
+      "Ground Strike: Heavy melee weapons replace their alternative attack with a ground slam that deals only blunt damage; Base slam radius for weapons without an area attack: 3 m; Heavy melee weapons replace their alternative attack with a ground slam that deals only blunt damage, without the leap.",
+      "Fault Line: Slams cover a line with a base width of 1.4 m instead of a circle, preserving total area; Your slams hit a narrow line ahead of you instead of a circle, covering the same area.",
+      "Raise the Earth: Slamming your created object consumes it and raises an impassable ridge for 4 s; Base ridge length: 3.5 m; ×0.7 area with the slam that raises the ridge; Slamming one of your own created objects consumes it and leaves a brief impassable ridge. That slam's area is smaller. Buildings are not damaged."
+     ],
+     "link": "passives/node/own13508.md",
+     "name": "Valley Hammer"
+    }
+   },
+   "own13520": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "2% reduced block stamina cost"
+     ],
+     "link": "passives/tree/#own13520",
+     "name": "Steadfast Bulwark"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "2% reduced block stamina cost"
+     ],
+     "link": "passives/tree/#own13520",
+     "name": "Steadfast Guard"
+    }
+   },
+   "own13523": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "2% reduced block stamina cost"
+     ],
+     "link": "passives/tree/#own13523",
+     "name": "Steadfast Bulwark"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "2% reduced block stamina cost"
+     ],
+     "link": "passives/tree/#own13523",
+     "name": "Steadfast Guard"
+    }
+   },
+   "own13526": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "2% reduced block stamina cost"
+     ],
+     "link": "passives/tree/#own13526",
+     "name": "Steadfast Bulwark"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "2% reduced block stamina cost"
+     ],
+     "link": "passives/tree/#own13526",
+     "name": "Steadfast Guard"
+    }
+   },
+   "own13529": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "2% reduced block stamina cost"
+     ],
+     "link": "passives/tree/#own13529",
+     "name": "Steadfast Bulwark"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "2% reduced block stamina cost"
+     ],
+     "link": "passives/tree/#own13529",
+     "name": "Steadfast Guard"
+    }
+   },
+   "own13575": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased evasion rating at low stamina"
+     ],
+     "link": "passives/tree/#own13575",
+     "name": "Stamina"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased evasion rating at low stamina"
+     ],
+     "link": "passives/tree/#own13575",
+     "name": "Stamina"
+    }
+   },
+   "own13578": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased evasion rating at night"
+     ],
+     "link": "passives/tree/#own13578",
+     "name": "Night"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased evasion rating at night"
+     ],
+     "link": "passives/tree/#own13578",
+     "name": "Night"
+    }
+   },
+   "own13581": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased evasion rating at low stamina"
+     ],
+     "link": "passives/tree/#own13581",
+     "name": "Stamina"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased evasion rating at low stamina"
+     ],
+     "link": "passives/tree/#own13581",
+     "name": "Stamina"
+    }
+   },
+   "own13584": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased evasion rating at night"
+     ],
+     "link": "passives/tree/#own13584",
+     "name": "Night"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased evasion rating at night"
+     ],
+     "link": "passives/tree/#own13584",
+     "name": "Night"
+    }
+   },
+   "own13587": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased evasion rating at low stamina"
+     ],
+     "link": "passives/tree/#own13587",
+     "name": "Stamina"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased evasion rating at low stamina"
+     ],
+     "link": "passives/tree/#own13587",
+     "name": "Stamina"
+    }
+   },
+   "own13590": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased evasion rating at night"
+     ],
+     "link": "passives/tree/#own13590",
+     "name": "Night"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "8% increased evasion rating at night"
+     ],
+     "link": "passives/tree/#own13590",
+     "name": "Night"
+    }
+   },
+   "own13593": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased evasion rating at low stamina"
+     ],
+     "link": "passives/node/own13593.md",
+     "name": "Deer's Manoeuvre"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "20% increased evasion rating at low stamina"
+     ],
+     "link": "passives/node/own13593.md",
+     "name": "Deer's Manoeuvre"
+    }
+   },
+   "own13596": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased evasion rating at night"
+     ],
+     "link": "passives/node/own13596.md",
+     "name": "Steps Between Shadows"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "20% increased evasion rating at night"
+     ],
+     "link": "passives/node/own13596.md",
+     "name": "Steps Between Shadows"
+    }
+   },
+   "own13707": {
+    "new": {
+     "kind": "Keystone",
+     "lines": [
+      "+1 unarmed damage per 10 points of \"Strength\"",
+      "×0.8 attack speed"
+     ],
+     "link": "passives/node/own13707.md",
+     "name": "Giant's Blow"
+    },
+    "old": {
+     "kind": "Keystone",
+     "lines": [
+      "+1 unarmed damage per 10 points of \"Strength\"",
+      "×0.8 attack speed"
+     ],
+     "link": "passives/node/own13707.md",
+     "name": "Giant's Punch"
+    }
+   },
+   "own13708": {
+    "new": {
+     "kind": "Keystone",
+     "lines": [
+      "+2 projectiles per shot or throw",
+      "×0.5 draw and reload speed",
+      "×0.5 projectile damage"
+     ],
+     "link": "passives/node/own13708.md",
+     "name": "Arrow Rain"
+    },
+    "old": {
+     "kind": "Keystone",
+     "lines": [
+      "+2 projectiles per shot or throw",
+      "×0.5 draw and reload speed",
+      "×0.5 projectile damage"
+     ],
+     "link": "passives/node/own13708.md",
+     "name": "Rain of Arrows"
+    }
+   },
+   "own13756": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "2% increased armour effectiveness"
+     ],
+     "link": "passives/tree/#own13756",
+     "name": "Armour Effectiveness"
+    },
+    "old": null
+   },
+   "own13762": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "2% increased armour effectiveness"
+     ],
+     "link": "passives/tree/#own13762",
+     "name": "Armour Effectiveness"
+    },
+    "old": null
+   },
+   "own13768": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "2% increased armour effectiveness"
+     ],
+     "link": "passives/tree/#own13768",
+     "name": "Armour Effectiveness"
+    },
+    "old": null
+   },
+   "own13774": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "5% increased armour effectiveness"
+     ],
+     "link": "passives/node/own13774.md",
+     "name": "Tempered Defence"
+    },
+    "old": null
+   },
+   "own9460": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased armour",
+      "7.5% increased evasion rating",
+      "+8 Strength",
+      "+8 Dexterity"
+     ],
+     "link": "passives/node/own9460.md",
+     "name": "Huskarl's Mail"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "15% increased armour",
+      "10% increased evasion rating",
+      "+8 Strength",
+      "+8 Dexterity"
+     ],
+     "link": "passives/node/own9460.md",
+     "name": "Huskarl's Mail"
+    }
+   },
+   "own9461": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "7.5% increased evasion rating",
+      "5% increased movement speed",
+      "+15 Dexterity"
+     ],
+     "link": "passives/node/own9461.md",
+     "name": "Fox's Stride"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased evasion rating",
+      "5% increased movement speed",
+      "+15 Dexterity"
+     ],
+     "link": "passives/node/own9461.md",
+     "name": "Fox's Stride"
+    }
+   },
+   "own9462": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "20% increased eitr regeneration",
+      "7.5% increased evasion rating",
+      "12.5% increased rune shield",
+      "+8 Dexterity",
+      "+8 Intelligence"
+     ],
+     "link": "passives/node/own9462.md",
+     "name": "Runewoven Cloak"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "20% increased eitr regeneration",
+      "10% increased evasion rating",
+      "12.5% increased rune shield",
+      "+8 Dexterity",
+      "+8 Intelligence"
+     ],
+     "link": "passives/node/own9462.md",
+     "name": "Runewoven Cloak"
+    }
+   },
+   "own9474": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased evasion rating",
+      "5% increased rune shield"
+     ],
+     "link": "passives/tree/#own9474",
+     "name": "Evasion and rune shield"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased evasion rating",
+      "5% increased rune shield"
+     ],
+     "link": "passives/tree/#own9474",
+     "name": "Evasion and rune shield"
+    }
+   },
+   "own9480": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased evasion rating",
+      "5% increased rune shield"
+     ],
+     "link": "passives/tree/#own9480",
+     "name": "Evasion and rune shield"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased evasion rating",
+      "5% increased rune shield"
+     ],
+     "link": "passives/tree/#own9480",
+     "name": "Evasion and rune shield"
+    }
+   },
+   "own9486": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "7.5% increased evasion rating",
+      "12.5% increased rune shield"
+     ],
+     "link": "passives/node/own9486.md",
+     "name": "Mistveil"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased evasion rating",
+      "12.5% increased rune shield"
+     ],
+     "link": "passives/node/own9486.md",
+     "name": "Mistveil"
+    }
+   },
+   "own9515": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased evasion rating"
+     ],
+     "link": "passives/tree/#own9515",
+     "name": "Evasion"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased evasion rating"
+     ],
+     "link": "passives/tree/#own9515",
+     "name": "Evasion"
+    }
+   },
+   "own9526": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased armour",
+      "3% increased evasion rating"
+     ],
+     "link": "passives/tree/#own9526",
+     "name": "Armour and evasion"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased armour",
+      "4% increased evasion rating"
+     ],
+     "link": "passives/tree/#own9526",
+     "name": "Armour and evasion"
+    }
+   },
+   "own9527": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased evasion rating"
+     ],
+     "link": "passives/tree/#own9527",
+     "name": "Evasion"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased evasion rating"
+     ],
+     "link": "passives/tree/#own9527",
+     "name": "Evasion"
+    }
+   },
+   "own9528": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased evasion rating",
+      "5% increased rune shield"
+     ],
+     "link": "passives/tree/#own9528",
+     "name": "Evasion and rune shield"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased evasion rating",
+      "5% increased rune shield"
+     ],
+     "link": "passives/tree/#own9528",
+     "name": "Evasion and rune shield"
+    }
+   },
+   "own9538": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased armour",
+      "3% increased evasion rating"
+     ],
+     "link": "passives/tree/#own9538",
+     "name": "Armour and evasion"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased armour",
+      "4% increased evasion rating"
+     ],
+     "link": "passives/tree/#own9538",
+     "name": "Armour and evasion"
+    }
+   },
+   "own9540": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+1.5 evasion rating",
+      "+8 rune shield"
+     ],
+     "link": "passives/tree/#own9540",
+     "name": "Evasion and rune shield"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+2 evasion rating",
+      "+8 rune shield"
+     ],
+     "link": "passives/tree/#own9540",
+     "name": "Evasion and rune shield"
+    }
+   },
+   "own9574": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased armour",
+      "3% increased evasion rating"
+     ],
+     "link": "passives/tree/#own9574",
+     "name": "Armour and evasion"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased armour",
+      "4% increased evasion rating"
+     ],
+     "link": "passives/tree/#own9574",
+     "name": "Armour and evasion"
+    }
+   },
+   "own9575": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased evasion rating"
+     ],
+     "link": "passives/tree/#own9575",
+     "name": "Evasion"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased evasion rating"
+     ],
+     "link": "passives/tree/#own9575",
+     "name": "Evasion"
+    }
+   },
+   "own9576": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased evasion rating",
+      "5% increased rune shield"
+     ],
+     "link": "passives/tree/#own9576",
+     "name": "Evasion and rune shield"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased evasion rating",
+      "5% increased rune shield"
+     ],
+     "link": "passives/tree/#own9576",
+     "name": "Evasion and rune shield"
+    }
+   },
+   "own9629": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased evasion rating",
+      "5% increased dodge speed"
+     ],
+     "link": "passives/tree/#own9629",
+     "name": "Dodge speed"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased evasion rating",
+      "5% increased dodge speed"
+     ],
+     "link": "passives/tree/#own9629",
+     "name": "Dodge speed"
+    }
+   },
+   "own9641": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "7.5% increased evasion rating",
+      "12.5% increased dodge speed",
+      "5% reduced dodge stamina cost"
+     ],
+     "link": "passives/node/own9641.md",
+     "name": "Wind Dancer"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased evasion rating",
+      "12.5% increased dodge speed",
+      "5% reduced dodge stamina cost"
+     ],
+     "link": "passives/node/own9641.md",
+     "name": "Wind Dancer"
+    }
+   },
+   "own9653": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "3% increased evasion rating",
+      "5% increased dodge speed"
+     ],
+     "link": "passives/tree/#own9653",
+     "name": "Dodge speed"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% increased evasion rating",
+      "5% increased dodge speed"
+     ],
+     "link": "passives/tree/#own9653",
+     "name": "Dodge speed"
+    }
+   },
+   "own9657": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "2% increased armour effectiveness"
+     ],
+     "link": "passives/tree/#own9657",
+     "name": "Armour Effectiveness"
+    },
+    "old": null
+   },
+   "own9669": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "2% increased armour effectiveness"
+     ],
+     "link": "passives/tree/#own9669",
+     "name": "Armour Effectiveness"
+    },
+    "old": null
+   },
+   "own9681": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "2% increased armour effectiveness"
+     ],
+     "link": "passives/tree/#own9681",
+     "name": "Armour Effectiveness"
+    },
+    "old": null
+   },
+   "own9693": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "5% increased armour effectiveness"
+     ],
+     "link": "passives/node/own9693.md",
+     "name": "Tempered Defence"
+    },
+    "old": null
+   },
+   "own9847": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "7.5% increased evasion rating",
+      "12.5% increased rune shield",
+      "−12.5% rune shield recharge delay"
+     ],
+     "link": "passives/node/own9847.md",
+     "name": "Shadow Behind the Rune"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "10% increased evasion rating",
+      "12.5% increased rune shield",
+      "−12.5% rune shield recharge delay"
+     ],
+     "link": "passives/node/own9847.md",
+     "name": "Shadow Behind the Rune"
+    }
+   },
+   "own9921": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+4 thorns"
+     ],
+     "link": "passives/tree/#own9921",
+     "name": "Thorns"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+4 thorns"
+     ],
+     "link": "passives/tree/#own9921",
+     "name": "Spikes"
+    }
+   },
+   "own9927": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+4 thorns"
+     ],
+     "link": "passives/tree/#own9927",
+     "name": "Thorns"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+4 thorns"
+     ],
+     "link": "passives/tree/#own9927",
+     "name": "Spikes"
+    }
+   },
+   "own9935": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "20% increased food nourishment eitr",
+      "25% increased eitr regeneration while fed"
+     ],
+     "link": "passives/node/own9935.md",
+     "name": "Runecarver's Feast"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "20% increased food nourishment eitr",
+      "25% increased eitr regeneration while fed"
+     ],
+     "link": "passives/node/own9935.md",
+     "name": "Runekeeper's Feast"
+    }
+   },
+   "own9939": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+4 thorns"
+     ],
+     "link": "passives/tree/#own9939",
+     "name": "Thorns"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+4 thorns"
+     ],
+     "link": "passives/tree/#own9939",
+     "name": "Spikes"
+    }
+   },
+   "own9945": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+4 thorns"
+     ],
+     "link": "passives/tree/#own9945",
+     "name": "Thorns"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+4 thorns"
+     ],
+     "link": "passives/tree/#own9945",
+     "name": "Spikes"
+    }
+   },
+   "own9962": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+4% eitr reservation efficiency for minions"
+     ],
+     "link": "passives/tree/#own9962",
+     "name": "Minion Eitr Reservation"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+4% eitr reservation efficiency for minions"
+     ],
+     "link": "passives/tree/#own9962",
+     "name": "Ring prefixes"
+    }
+   },
+   "own9974": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+4% eitr reservation efficiency for minions"
+     ],
+     "link": "passives/tree/#own9974",
+     "name": "Minion Eitr Reservation"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+4% eitr reservation efficiency for minions"
+     ],
+     "link": "passives/tree/#own9974",
+     "name": "Ring suffixes"
+    }
+   },
+   "own9986": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+4% eitr reservation efficiency for minions"
+     ],
+     "link": "passives/tree/#own9986",
+     "name": "Minion Eitr Reservation"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+4% eitr reservation efficiency for minions"
+     ],
+     "link": "passives/tree/#own9986",
+     "name": "Ring suffixes"
+    }
+   },
+   "own9993": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "4% reduced slam stamina cost"
+     ],
+     "link": "passives/tree/#own9993",
+     "name": "Slams"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% reduced slam stamina cost"
+     ],
+     "link": "passives/tree/#own9993",
+     "name": "Damage"
+    }
+   },
+   "own9999": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "4% reduced slam stamina cost"
+     ],
+     "link": "passives/tree/#own9999",
+     "name": "Slams"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "4% reduced slam stamina cost"
+     ],
+     "link": "passives/tree/#own9999",
+     "name": "Damage"
+    }
+   }
+  },
+  "uniques": {
+   "PT_Jewel_TrailOfTheFirstAntler": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "One of these stats:",
+      "+(0.2–0.3) Strength per allocated passive on the path from this socket to your start (10%)",
+      "+(0.2–0.3) Dexterity per allocated passive on the path from this socket to your start (10%)",
+      "+(0.2–0.3) Intelligence per allocated passive on the path from this socket to your start (10%)",
+      "+(1–2) maximum health per allocated passive on the path from this socket to your start (10%)",
+      "+(0.25–0.4) maximum stamina per allocated passive on the path from this socket to your start (10%)",
+      "+(1–2) maximum eitr per allocated passive on the path from this socket to your start (10%)",
+      "+(1–2) rune shield per allocated passive on the path from this socket to your start (10%)",
+      "+(0.15–0.25) armour per allocated passive on the path from this socket to your start (10%)",
+      "+(0.225–0.375) evasion rating per allocated passive on the path from this socket to your start (10%)",
+      "+(1–2) endurance threshold that falls below it is reduced: 20% at base, at most 75%. The threshold is counted in health points. With Rune Bulwark the rune shield is checked instead of health.\") per allocated passive on the path from this socket to your start (10%)",
+      "Drops: dropped by Eikthyr"
+     ],
+     "link": "items/unique/PT_Jewel_TrailOfTheFirstAntler.md",
+     "name": "Trail of the First Antler"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "One of these stats:",
+      "+(0.2–0.3) Strength per allocated passive on the path from this socket to your start (10%)",
+      "+(0.2–0.3) Dexterity per allocated passive on the path from this socket to your start (10%)",
+      "+(0.2–0.3) Intelligence per allocated passive on the path from this socket to your start (10%)",
+      "+(1–2) maximum health per allocated passive on the path from this socket to your start (10%)",
+      "+(0.25–0.4) maximum stamina per allocated passive on the path from this socket to your start (10%)",
+      "+(1–2) maximum eitr per allocated passive on the path from this socket to your start (10%)",
+      "+(1–2) rune shield per allocated passive on the path from this socket to your start (10%)",
+      "+(0.15–0.25) armour per allocated passive on the path from this socket to your start (10%)",
+      "+(0.3–0.5) evasion rating per allocated passive on the path from this socket to your start (10%)",
+      "+(1–2) endurance threshold that falls below it is reduced: 20% at base, at most 75%. The threshold is counted in health points. With Rune Bulwark the rune shield is checked instead of health.\") per allocated passive on the path from this socket to your start (10%)",
+      "Drops: dropped by Eikthyr"
+     ],
+     "link": "items/unique/PT_Jewel_TrailOfTheFirstAntler.md",
+     "name": "Trail of the First Antler"
+    }
+   }
+  },
+  "values": {
+   "bow.falloff.end": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "28 m"
+     ],
+     "link": null,
+     "name": "Bows: damage reaches the floor at this distance"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "40 m"
+     ],
+     "link": null,
+     "name": "Bows: damage reaches the floor at this distance"
+    }
+   },
+   "bow.falloff.start": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "12 m"
+     ],
+     "link": null,
+     "name": "Bows: full damage up to this distance"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "14 m"
+     ],
+     "link": null,
+     "name": "Bows: full damage up to this distance"
+    }
+   },
+   "equipment.evasion.coefficient": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "1.013"
+     ],
+     "link": null,
+     "name": "Armour base converted to evasion rating for newly created equipment"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "1.35"
+     ],
+     "link": null,
+     "name": "Armour base converted to evasion rating"
+    }
+   },
+   "evasion.cap": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "150%"
+     ],
+     "link": null,
+     "name": "Most pre-decay chance to evade a hit"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "100%"
+     ],
+     "link": null,
+     "name": "Most chance to evade a hit"
+    }
+   },
+   "evasion.cost-full-hit": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "2 x"
+     ],
+     "link": null,
+     "name": "Damage / maximum health at which evasion reaches its full cost"
+    },
+    "old": null
+   },
+   "evasion.cost-low-hit": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "30%"
+     ],
+     "link": null,
+     "name": "Damage / maximum health below which evasion has minimum cost"
+    },
+    "old": null
+   },
+   "evasion.decay": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "80%"
+     ],
+     "link": null,
+     "name": "Each successful evasion keeps this share of the chance against all attackers"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "80%"
+     ],
+     "link": null,
+     "name": "Each evasion against an attacker keeps this share of the chance against it"
+    }
+   },
+   "evasion.decay-reset": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "8 s"
+     ],
+     "link": null,
+     "name": "Global evasion count resets after no eligible incoming hit for this long"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "8 s"
+     ],
+     "link": null,
+     "name": "An attacker's evasion count resets after it lands no attack for this long"
+    }
+   },
+   "evasion.decay-reset-boss": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "30 s"
+     ],
+     "link": null,
+     "name": "Legacy setting: unused since evasion decay became global"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "30 s"
+     ],
+     "link": null,
+     "name": "A boss's evasion count resets after it lands no attack for this long"
+    }
+   },
+   "evasion.stamina-cost": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "18%"
+     ],
+     "link": null,
+     "name": "Maximum stamina cost of a successful evasion, as a share of maximum stamina"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "18%"
+     ],
+     "link": null,
+     "name": "Each evasion costs this share of maximum stamina; without it there is no evasion"
+    }
+   },
+   "evasion.stamina-cost-min": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "4%"
+     ],
+     "link": null,
+     "name": "Minimum evasion cost as a share of maximum stamina"
+    },
+    "old": null
+   },
+   "ranged.falloff.end": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "28 m"
+     ],
+     "link": null,
+     "name": "Crossbows: damage reaches the floor at this distance"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "30 m"
+     ],
+     "link": null,
+     "name": "Crossbows: damage reaches the floor at this distance"
+    }
+   },
+   "ranged.falloff.start": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "12 m"
+     ],
+     "link": null,
+     "name": "Crossbows: full damage up to this distance"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "6 m"
+     ],
+     "link": null,
+     "name": "Crossbows: full damage up to this distance"
+    }
+   }
+  }
+ },
+ "date": "2026-10-26",
+ "from": "5.3.3",
+ "to": "5.3.4"
+}

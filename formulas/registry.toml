@@ -47,8 +47,8 @@ anchors = [
     "PassiveTree/EnemyDifficulty.cs :: EnemyDifficulty.bossHealth",
     "PassiveTree/EnemyDifficulty.cs :: EnemyDifficulty.BossHealthFactor",
 ]
-fingerprint = "9385e3404385"
-checked = "5.3.1"
+fingerprint = "5b44b1475cc8"
+checked = "5.3.4"
 
 [formula.values]
 tamed = 0.5
@@ -256,13 +256,16 @@ anchors = [
     "PassiveTree/Evasion.cs :: Evasion.Chance",
     "PassiveTree/Evasion.cs :: Evasion.Rating",
     "PassiveTree/Evasion.cs :: Evasion.TryEvade",
-    "PassiveTree/Evasion.cs :: Evasion.StreakOf",
+    "PassiveTree/Evasion.cs :: Evasion.CostShare",
+    "PassiveTree/Evasion.cs :: Evasion.StaminaCost#2",
+    "PassiveTree/Evasion.cs :: Evasion.Accuracy",
+    "PassiveTree/EvasionForecast.cs :: EvasionForecast.HealthDamage",
     "PassiveTree/Evasion.cs :: Evasion.ChanceAgainst",
     "PassiveTree/Evasion.cs :: Evasion.IsHit",
     "PassiveTree/Evasion.cs :: Evasion.StaminaCost",
 ]
-fingerprint = "1302093dc110"
-checked = "5.3.3"
+fingerprint = "1f85eb1749fc"
+checked = "5.3.4"
 
 [[formula]]
 id = "resistances"
@@ -288,8 +291,8 @@ anchors = [
     "PassiveTree/ArmorPen.cs :: Humanoid_GetBodyArmor.Postfix",
     "PassiveTree/Tunables.cs :: \"armor.effect\"",
 ]
-fingerprint = "e9f5560c9d11"
-checked = "5.1.1"
+fingerprint = "5afb264eb1ec"
+checked = "5.3.4"
 
 [[formula]]
 id = "build-cost"
@@ -313,8 +316,8 @@ anchors = [
     "PassiveTree/ArmorEffect.cs :: Player_GetBodyArmor_Effect.Postfix",
     "PassiveTree/ArmorPen.cs :: Humanoid_GetBodyArmor.Postfix",
 ]
-fingerprint = "d8b9a9b1d323"
-checked = "5.1.1"
+fingerprint = "4f6c46b541b5"
+checked = "5.3.4"
 
 [[formula]]
 id = "item-level"
@@ -697,11 +700,11 @@ anchors = [
     "PassiveTree/ThrownImpact.cs :: ThrownImpact.Of",
     "PassiveTree/ThrownImpact.cs :: ThrownImpact.Slam",
     "PassiveTree/Tunables.cs :: \"throw.slam-damage\"",
-    "PassiveTree/Slams.cs :: Slams.Restrict",
+    "PassiveTree/Conversion.cs :: Conversion.Hit#3",
     "PassiveTree/Slams.cs :: Slams.ExtraFlat",
 ]
-fingerprint = "7e23f70217a4"
-checked = "5.3.3"
+fingerprint = "fd546ab68ac1"
+checked = "5.3.4"
 
 [[formula]]
 id = "block"
@@ -734,8 +737,8 @@ anchors = [
     "PassiveTree/Plugin.cs :: \"Glancing blow chance for everyone\"",
     "PassiveTree/Plugin.cs :: \"Glancing blow reduction\"",
 ]
-fingerprint = "46934a4494af"
-checked = "5.3.0"
+fingerprint = "27e63b72484a"
+checked = "5.3.4"
 
 [formula.values]
 chance = 0.25
@@ -762,8 +765,8 @@ anchors = [
     "PassiveTree/Cooldowns.cs :: Cooldowns.Of",
     "PassiveTree/Tunables.cs :: \"thorns.contact-interval\"",
 ]
-fingerprint = "3fafb88c081a"
-checked = "5.3.2"
+fingerprint = "b49ef45ac154"
+checked = "5.3.4"
 
 [formula.values]
 full_range = 3
@@ -801,8 +804,8 @@ anchors = [
     "PassiveTree/Tunables.cs :: \"impale.limit\"",
     "PassiveTree/Tunables.cs :: \"impale.window\"",
 ]
-fingerprint = "1535bd610d1b"
-checked = "5.1.2"
+fingerprint = "edabb1e0560a"
+checked = "5.3.4"
 
 [formula.values]
 min_window = 0.5
@@ -818,8 +821,8 @@ anchors = [
     "PassiveTree/Tunables.cs :: \"endurance.base\"",
     "PassiveTree/Tunables.cs :: \"endurance.cap\"",
 ]
-fingerprint = "0139615a1fb4"
-checked = "5.3.0"
+fingerprint = "ce1876829850"
+checked = "5.3.4"
 
 [[formula]]
 id = "armour-break"
@@ -832,8 +835,8 @@ anchors = [
     "PassiveTree/AilmentDamage.cs :: AilmentDamage.Component",
     "PassiveTree/XpSources.cs :: Character_Damage.Prefix",
 ]
-fingerprint = "d1a53f208f93"
-checked = "5.1.2"
+fingerprint = "14822ac3d79b"
+checked = "5.3.4"
 
 [formula.values]
 seconds = 8
@@ -878,8 +881,8 @@ anchors = [
     "PassiveTree/ProjectileMods.cs :: ProjectileMods.DamageInc",
     "PassiveTree/WeaponAffixes.cs :: WeaponAffixes.DamageBonus",
 ]
-fingerprint = "fb01a4d821ef"
-checked = "5.3.3"
+fingerprint = "2582ced822a6"
+checked = "5.3.4"
 
 [formula.values]
 staggered = 0.15
@@ -895,8 +898,8 @@ anchors = [
     "valheim/Attack.cs :: Attack.ModifyDamage",
     "valheim/Character.cs :: Character.RPC_Damage",
 ]
-fingerprint = "3c17f142ada6"
-checked = "5.3.3"
+fingerprint = "19276052e95e"
+checked = "5.3.4"
 
 [[formula]]
 id = "player-penetration"
@@ -1031,11 +1034,13 @@ anchors = [
     "PassiveTree/Tunables.cs :: \"minion.instability-radius\"",
     "PassiveTree/Tunables.cs :: \"minion.guard-seconds\"",
     "PassiveTree/Tunables.cs :: \"minion.guard-share\"",
+    "PassiveTree/CreatureBonuses.cs :: CreatureBonuses.MinionChance",
 ]
-fingerprint = "b964105cd1f3"
-checked = "5.3.0"
+fingerprint = "f5acbcc8acad"
+checked = "5.3.4"
 
 [formula.values]
+crit_chance = 0.05
 taken_min = 0.4
 taken_max = 5.0
 ailment_cap = 0.9
@@ -1090,14 +1095,19 @@ links = 1
 id = "ranged-falloff"
 anchors = [
     "PassiveTree/RangedFalloff.cs :: RangedFalloff.Factor",
+    "PassiveTree/Tunables.cs :: \"ranged.falloff.floor\"",
     "PassiveTree/RangedFalloff.cs :: RangedFalloff.Stretch",
     "PassiveTree/RangedFalloff.cs :: RangedFalloff.Applies",
     "PassiveTree/RangedFalloff.cs :: RangedFalloff.Apply",
     "PassiveTree/Tunables.cs :: \"bow.falloff.start\"",
     "PassiveTree/Tunables.cs :: \"bow.falloff.end\"",
 ]
-fingerprint = "e364203cb12a"
-checked = "5.3.2"
+fingerprint = "f61ff0e578e2"
+checked = "5.3.4"
+
+[formula.values]
+mid_share = 0.375
+mid_factor = 0.8
 
 [[formula]]
 id = "crossbow-magazine"
@@ -1181,8 +1191,8 @@ anchors = [
     "PassiveTree.Loot/ItemBaseRolls.cs :: ItemBaseRolls.Ascension",
     "PassiveTree.Loot/ItemBaseRolls.cs :: OwnDamage.Postfix",
 ]
-fingerprint = "580bbf40e6dc"
-checked = "5.3.3"
+fingerprint = "0dccbf1d810a"
+checked = "5.3.4"
 
 [formula.values]
 min_damage = 5

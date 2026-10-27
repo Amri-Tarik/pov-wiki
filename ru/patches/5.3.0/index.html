@@ -1,0 +1,4430 @@
+
+<!doctype html>
+<html lang="ru" class="no-js">
+  <head>
+    
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  
+    <meta name="description" content="Что изменилось в игровых данных с 5.2.1 до 5.3.0 — по сравнению двух версий. Зачёркнутое удалено, выделенное добавлено. Сравниваются только данные: изменения…">
+  
+  
+    <link rel="canonical" href="https://povdb.wiki/ru/patches/5.3.0/">
+  
+  
+    
+      <link rel="alternate" href="https://povdb.wiki/en/patches/5.3.0/" hreflang="en">
+    
+      <link rel="alternate" href="https://povdb.wiki/ru/patches/5.3.0/" hreflang="ru">
+    
+    <link rel="alternate" href="https://povdb.wiki/en/patches/5.3.0/" hreflang="x-default">
+  
+  
+  <link rel="icon" href="../../assets/images/favicon.png">
+  <meta name="generator" content="zensical-0.0.71">
+
+    
+      
+        <title>Патч 5.3.0 - Path of Valheiman DB</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.e442bf79.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.b60ce83d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/pov.css?v=8a061e478e">
+    
+      <link rel="stylesheet" href="../../stylesheets/theme.css?v=effe823b4d">
+    
+    <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  
+  
+  
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Path of Valheiman DB">
+  <meta property="og:title" content="Патч 5.3.0">
+  <meta property="og:description" content="Что изменилось в игровых данных с 5.2.1 до 5.3.0 — по сравнению двух версий. Зачёркнутое удалено, выделенное добавлено. Сравниваются только данные: изменения…">
+  <meta property="og:url" content="https://povdb.wiki/ru/patches/5.3.0/">
+  <meta property="og:image" content="https://povdb.wiki/ru/assets/images/social.png">
+  <meta property="og:locale" content="ru_RU">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Патч 5.3.0">
+  <meta name="twitter:description" content="Что изменилось в игровых данных с 5.2.1 до 5.3.0 — по сравнению двух версий. Зачёркнутое удалено, выделенное добавлено. Сравниваются только данные: изменения…">
+  <meta name="twitter:image" content="https://povdb.wiki/ru/assets/images/social.png">
+  <meta name="pov-ui" data-menu="Меню" data-toc="На странице" data-open="Открыть навигацию" data-hint="Проведите от края экрана или нажмите «Меню», чтобы листать вики.">
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-hidden="true"></label>
+    <div data-md-component="skip">
+      <a href="#__skip" class="md-skip">
+        Перейти к содержанию
+      </a>
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Верхний колонтитул">
+    <a href="../.." title="Path of Valheiman DB" class="md-header__button md-logo" aria-label="Path of Valheiman DB" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Навигация">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Path of Valheiman DB
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Патч 5.3.0
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-moon" viewBox="0 0 24 24"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Выберите язык">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-languages" viewBox="0 0 24 24"><path d="m5 8 6 6M4 14l6-6 2-3M2 5h12M7 2h1M22 22l-5-10-5 10M14 18h6"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="../../../en/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="../../../ru/" hreflang="ru" class="md-select__link">
+              Русский
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Поиск">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Поиск">
+  <button type="button" class="md-search__button">
+    Поиск
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+        <a href="https://github.com/Amri-Tarik/pov-wiki" title="Перейти к репозиторию" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Вкладки" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  Главная
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../passives/tree/" class="md-tabs__link">
+          
+  
+  Дерево навыков
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../crafting/tree/" class="md-tabs__link">
+          
+  
+  Ремесло
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../items/mods/" class="md-tabs__link">
+          
+  
+  Предметы
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../monsters/mods/" class="md-tabs__link">
+          
+  
+  Монстры
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+      
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../mechanics/creatures/" class="md-tabs__link">
+          
+  
+  Механики
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+      
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  Патчи
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../about/" class="md-tabs__link">
+        
+  
+  О сайте
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Навигация" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Path of Valheiman DB" class="md-nav__button md-logo" aria-label="Path of Valheiman DB" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    Path of Valheiman DB
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Amri-Tarik/pov-wiki" title="Перейти к репозиторию" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Главная
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Дерево навыков
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Дерево навыков
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../passives/tree/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Просмотр дерева навыков
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../passives/keystones/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Ключевые узлы
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../passives/notables/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Средние узлы
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../passives/masteries/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Мастерства
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Ремесло
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Ремесло
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../crafting/tree/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Просмотр дерева ремёсел
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../crafting/professions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Профессии
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../crafting/notables/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Средние узлы ремесла
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../crafting/masteries/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Мастерства ремесла
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../crafting/buildings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Постройки
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Предметы
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Предметы
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../items/mods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Свойства
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../items/bases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Базовые предметы
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Типы оружия
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Типы оружия
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../items/weapons/axes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Топоры
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../items/weapons/bombs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Бомбы
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../items/weapons/bows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Луки
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../items/weapons/clubs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Дубины
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../items/weapons/crossbows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Арбалеты
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../items/weapons/fists/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Кастеты
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../items/weapons/knives/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Ножи
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../items/weapons/pickaxes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Кирки
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../items/weapons/polearms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Древковое оружие
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../items/weapons/sceptres/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Скипетры
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../items/weapons/spears/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Копья
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../items/weapons/staves/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Посохи
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../items/weapons/swords/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Мечи
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Валюта
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_4_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Валюта
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../items/currency/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Вся валюта
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../items/runes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Руны
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../items/great-runes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Великие руны
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../items/corrupted-runes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Осквернённые руны
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../items/essences/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Эссенции
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../items/sigils/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Сигилы
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../items/punches/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Пробойники
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../items/materials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Материалы
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../items/trophies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Трофеи
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../items/jewels/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Самоцветы
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../items/uniques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Уникальные предметы
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Монстры
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Монстры
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../monsters/mods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Модификаторы монстров
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../monsters/bosses/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Боссы
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../monsters/creatures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Существа
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../monsters/taming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Приручение
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Механики
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_6">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Механики
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanics/creatures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Сила существ
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanics/experience/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Опыт и уровни
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanics/loot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Добыча и опыт
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanics/combat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Бой и строительство
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanics/summons/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Призыв
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Патчи
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_7">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Патчи
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.3.6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Патч 5.3.6
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.3.5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Патч 5.3.5
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.3.4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Патч 5.3.4
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.3.3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Патч 5.3.3
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.3.2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Патч 5.3.2
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.3.1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Патч 5.3.1
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Патч 5.3.0
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Патч 5.3.0
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Дерево навыков
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Дерево навыков">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#26" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Изменено (26)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#137" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Новое (137)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Свойства
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Свойства">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Изменено (3)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Новое (33)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Базовые предметы
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Базовые предметы">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Изменено (51)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Уникальные предметы
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Уникальные предметы">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Изменено (1)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Валюта
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Валюта">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Изменено (3)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Значения
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Значения">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Изменено (2)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Новое (42)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Удалено (1)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Ключевые слова
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ключевые слова">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Изменено (9)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Новое (8)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.2.1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Патч 5.2.1
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.2.0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Патч 5.2.0
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.1.2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Патч 5.1.2
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.1.1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Патч 5.1.1
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.1.0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Патч 5.1.0
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  О сайте
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Дерево навыков
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Дерево навыков">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#26" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Изменено (26)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#137" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Новое (137)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Свойства
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Свойства">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Изменено (3)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Новое (33)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Базовые предметы
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Базовые предметы">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Изменено (51)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Уникальные предметы
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Уникальные предметы">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Изменено (1)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Валюта
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Валюта">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Изменено (3)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Значения
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Значения">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Изменено (2)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Новое (42)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Удалено (1)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Ключевые слова
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ключевые слова">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Изменено (9)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Новое (8)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Навигация" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  
+  <span class="md-ellipsis">
+    Главная
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  
+  <span class="md-ellipsis">
+    Патчи
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                <a id="__skip" tabindex="-1"></a>
+                
+                  
+
+  
+  
+
+
+<h1 id="530">Патч 5.3.0<a class="headerlink" href="#530" title="Permanent link">&para;</a></h1>
+<p>Что изменилось в игровых данных с 5.2.1 до 5.3.0 — по сравнению двух версий. <del>Зачёркнутое</del> удалено, <ins>выделенное</ins> добавлено. Сравниваются только данные: изменения в работе кода здесь не видны.</p>
+<h2 id="_1">Дерево навыков<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h3 id="26">Изменено (26)<a class="headerlink" href="#26" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Название</th>
+<th>Тип</th>
+<th>Изменение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../../passives/node/own10970/"><strong>Бережливый лучник</strong></a></td>
+<td>Средний узел</td>
+<td><del>+20%</del> → <ins>20%</ins> <del>возврата</del> → <ins>шанс</ins> <del>потраченного</del> → <ins>сберечь</ins> <del>стрельбы</del> → <ins>стрелу или болт при выстреле</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own10794/"><strong>Быстрое слово</strong></a>, <a href="../../passives/node/own13110/"><strong>Шёпот над рунами</strong></a>, <a href="../../passives/node/own13134/"><strong>Связное заклятье</strong></a>, <a href="../../passives/node/own13540/"><strong>Жест заклинателя</strong></a></td>
+<td>Средний узел</td>
+<td><del>Заряженные</del> → <ins>Собрать</ins> <del>касты</del> → <ins>стихии</ins>: <del>Чары</del> → <ins>Поглощение</ins> <del>могут</del> → <ins>своих</ins> <del>тратить</del> → <ins>эффектов</ins> <del>заряд</del> → <ins>земли</ins> <del>атаки</del> → <ins>с</ins> <del>и</del> → <ins>посохом</ins> <del>становиться</del> → <ins>в</ins> <del>заряженными кастами</del> → <ins>руках</ins><br>Эхо заклинания: +100% repeat chance посохов при колдовстве <del>заряженными</del> → <ins>насыщенными</ins> <del>атаками</del> → <ins>кастами</ins>; +0.2 с задержки повтора посохов при колдовстве <del>заряженными</del> → <ins>насыщенными</ins> <del>атаками</del> → <ins>кастами</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own11150/"><strong>Вечный костёр</strong></a></td>
+<td>Ключевой узел</td>
+<td><del>×2</del> → <ins>+4</ins> урона горения<ins> за каждые 100 единиц нынешнего здоровья</ins><br><del>Постоянный</del> → <ins>Вы</ins> <del>собственный</del> → <ins>всегда</ins> <del>поджог</del> → <ins>под</ins> <del>имеет</del> → <ins>действием</ins> <del>базу</del> → <ins>собственного поджога: он сжигает</ins> 4% текущего здоровья в секунду<del>.</del> → <ins>,</ins> <del>К</del> → <ins>на</ins> <del>нему</del> → <ins>него</ins> <del>также</del> → <ins>действуют</ins> <del>применяются собственные</del> → <ins>ваши</ins> модификаторы огня и <del>поджога.</del> → <ins>горения,</ins> <del>Защита</del> → <ins>сопротивление огню его</ins> снижает<ins>,</ins> <del>получаемый</del> → <ins>а</ins> <del>урон. Вода</del> → <ins>вода</ins> не <del>прекращает</del> → <ins>может</ins> <del>горение</del> → <ins>его потушить</ins>.<br><del>Урон поджога умножается на 2. Постоянный собственный поджог имеет базу 4% текущего здоровья в секунду. К нему также применяются собственные модификаторы огня и поджога. Защита снижает получаемый урон. Вода не прекращает горение.</del></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own11420/"><strong>Грохот налётчика</strong></a>, <a href="../../passives/node/own11711/"><strong>Порох под ногами</strong></a>, <a href="../../passives/node/own12622/"><strong>Искра запала</strong></a>, <a href="../../passives/node/own12625/"><strong>Двойной раскат</strong></a>, <a href="../../passives/node/own12634/"><strong>Рука подрывника</strong></a>, <a href="../../passives/node/own12637/"><strong>Осколочная рана</strong></a></td>
+<td>Средний узел</td>
+<td><del>Ударная детонация: Каждый рикошет бомбы вызывает взрыв и расходует 35% оставшейся силы взрыва; При рикошете бомба взрывается в точке касания и летит дальше. Последующие взрывы делят общий запас силы исходной бомбы.</del><br><ins>Ударная детонация: Рикошеты бомбы не теряют силы: каждое касание взрывается в полную силу; Отскакивающая бомба не теряет силы на отскоках: каждое касание взрывается в полную силу.</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own11271/"><strong>Дальний перелёт</strong></a></td>
+<td>Средний узел</td>
+<td><ins>10% увеличение shooting effective range</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own11911/"><strong>Запасной запал</strong></a>, <a href="../../passives/node/own12532/"><strong>Бережный бросок</strong></a></td>
+<td>Средний узел</td>
+<td><del>+12.5%</del> → <ins>12.5%</ins> <del>возврата</del> → <ins>шанс</ins> <del>потраченного</del> → <ins>сберечь</ins> <del>бомб</del> → <ins>бомбу</ins> при <del>метании</del> → <ins>броске</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own11276"><b>Луки</b></a> ×2</td>
+<td>Малый узел</td>
+<td><ins>4% увеличение shooting effective range</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own10872/"><strong>Небесное жало</strong></a></td>
+<td>Средний узел</td>
+<td><del>20%</del> → <ins>+25%</ins> <del>увеличение</del> → <ins>к</ins> <del>эффекта</del> → <ins>эффекту</ins> <del>шока</del> → <ins>недуга шок</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own11881"><b>Сохранение бомб</b></a> ×5</td>
+<td>Малый узел</td>
+<td><del>+5%</del> → <ins>5%</ins> <del>возврата</del> → <ins>шанс</ins> <del>потраченного</del> → <ins>сберечь</ins> <del>бомб</del> → <ins>бомбу</ins> при <del>метании</del> → <ins>броске</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own10952"><b>Стрелковый бой</b></a> ×3</td>
+<td>Малый узел</td>
+<td><del>+8%</del> → <ins>8%</ins> <del>возврата</del> → <ins>шанс</ins> <del>потраченного</del> → <ins>сберечь</ins> <del>стрельбы</del> → <ins>стрелу или болт при выстреле</ins></td>
+</tr>
+</tbody>
+</table>
+<h3 id="137">Новое (137)<a class="headerlink" href="#137" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Название</th>
+<th>Тип</th>
+<th>Изменение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../../passives/node/own10790/"><strong>Бесконечный залп</strong></a>, <a href="../../passives/node/own13775/"><strong>Ещё один снаряд</strong></a></td>
+<td>Средний узел</td>
+<td><ins>+20% избыточный шанс выпустить дополнительный снаряд</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own13206/"><strong>Беспокойная земля</strong></a></td>
+<td>Средний узел</td>
+<td><ins>40% увеличение земли накопления</ins><br><ins>25% увеличение земли ailment effect</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own9788/"><strong>В руках</strong></a></td>
+<td>Средний узел</td>
+<td><ins>20% увеличение длительности эффектов для насыщения</ins><br><ins>15% увеличение силы для насыщения</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own11418/"><strong>Вбирая землю</strong></a></td>
+<td>Средний узел</td>
+<td><ins>+10% к скорости поглощения для насыщения</ins><br><ins>15% увеличение силы для насыщения</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own10267/"><strong>Верный выстрел</strong></a>, <a href="../../passives/node/own10291/"><strong>Терпеливый охотник</strong></a>, <a href="../../passives/node/own10910/"><strong>В упор</strong></a></td>
+<td>Средний узел</td>
+<td><ins>12% увеличение shooting effective range</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own11687/"><strong>Глубокий яд</strong></a>, <a href="../../passives/node/own12262/"><strong>Терпеливая отрава</strong></a>, <a href="../../passives/node/own12923/"><strong>Густеющий яд</strong></a></td>
+<td>Средний узел</td>
+<td><ins>+5% damage over time multiplier от яда</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own13465/"><strong>Гнилая почва</strong></a></td>
+<td>Средний узел</td>
+<td><ins>20% увеличение урона от яда эффектами земли</ins><br><ins>30% увеличение урона со временем отравления на ядовитой земле</ins><br><ins>Заклинания создают землю при попадании в поверхность при нанесении урона типа «яд»</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own13188"><b>Горящая земля</b></a> ×2</td>
+<td>Малый узел</td>
+<td><ins>8% увеличение урона от огня эффектами земли</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own13224"><b>Горящая земля</b></a> ×2</td>
+<td>Малый узел</td>
+<td><ins>4% увеличение области действия эффектов от огня эффектами земли</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own13314/"><strong>Длань зимы</strong></a></td>
+<td>Средний узел</td>
+<td><ins>40% увеличение накопления обморожения эффектами земли</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own10623"><b>Длительный урон</b></a> ×5</td>
+<td>Малый узел</td>
+<td><ins>+2% к множителю длительного урона</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own13176"><b>Длительный урон — молния</b></a> ×2, <a href="../../passives/tree/#own13741"><b>Длительный урон молнией</b></a> ×2</td>
+<td>Малый узел</td>
+<td><ins>+2% damage over time multiplier от молнии</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own13172"><b>Длительный урон — огонь</b></a> ×2, <a href="../../passives/tree/#own13759"><b>Длительный урон огнём</b></a> ×6</td>
+<td>Малый узел</td>
+<td><ins>+2% damage over time multiplier от огня</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own11515"><b>Длительный урон — физический</b></a> ×2, <a href="../../passives/tree/#own13598"><b>Длительный физический урон</b></a> ×4</td>
+<td>Малый узел</td>
+<td><ins>+2% физического damage over time multiplier</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own10114"><b>Длительный урон — холод</b></a> ×2, <a href="../../passives/tree/#own13174"><b>Длительный урон холодом</b></a> ×2</td>
+<td>Малый узел</td>
+<td><ins>+2% damage over time multiplier от холода</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own11633"><b>Длительный урон — яд</b></a> ×2, <a href="../../passives/tree/#own12250"><b>Длительный урон ядом</b></a> ×6</td>
+<td>Малый узел</td>
+<td><ins>+2% damage over time multiplier от яда</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own11263"><b>Заряженная земля</b></a></td>
+<td>Малый узел</td>
+<td><ins>4% увеличение области действия эффектов от молнии эффектами земли</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own11371"><b>Заряженная земля</b></a> ×4</td>
+<td>Малый узел</td>
+<td><ins>8% увеличение урона от молнии эффектами земли</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own10971/"><strong>Заряженная уязвимость</strong></a></td>
+<td>Средний узел</td>
+<td><ins>+25% к эффекту недуга шок</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own13338/"><strong>Застывшая память</strong></a></td>
+<td>Средний узел</td>
+<td><ins>20% увеличение урона от холода эффектами земли</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own10989/"><strong>Затяжной разряд</strong></a></td>
+<td>Средний узел</td>
+<td><ins>10% увеличение длительности шока</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own10126/"><strong>Зима без конца</strong></a>, <a href="../../passives/node/own13258/"><strong>Долгий иней</strong></a></td>
+<td>Средний узел</td>
+<td><ins>+5% damage over time multiplier от холода</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own11375/"><strong>Ложе бури</strong></a></td>
+<td>Средний узел</td>
+<td><ins>10% увеличение области действия эффектов от молнии эффектами земли</ins><br><ins>7.5% увеличение скорости каста на заряженной земле</ins><br><ins>Заклинания создают землю при попадании в поверхность при нанесении урона типа «молния»</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own10635/"><strong>Медленная погибель</strong></a>, <a href="../../passives/node/own13732/"><strong>Неумолимый распад</strong></a></td>
+<td>Средний узел</td>
+<td><ins>+5% к множителю длительного урона</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own11347"><b>Насыщение</b></a> ×5</td>
+<td>Малый узел</td>
+<td><ins>6% увеличение силы для насыщения</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own11400"><b>Насыщение</b></a></td>
+<td>Малый узел</td>
+<td><ins>+4% к скорости поглощения для насыщения</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own11406"><b>Насыщение</b></a> ×2</td>
+<td>Малый узел</td>
+<td><ins>+4% к скорости поглощения для насыщения</ins><br><ins>6% увеличение силы для насыщения</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own9782"><b>Насыщение</b></a></td>
+<td>Малый узел</td>
+<td><ins>8% увеличение длительности эффектов для насыщения</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own13640/"><strong>Незаживающая рана</strong></a></td>
+<td>Средний узел</td>
+<td><ins>+5% физического damage over time multiplier</ins><br><ins>20% увеличение урона кровотечения</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own10802/"><strong>Неразрывная цепь</strong></a></td>
+<td>Средний узел</td>
+<td><ins>+20% избыточный шанс перескочить по цепи ещё раз</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own13260/"><strong>Остаточное напряжение</strong></a>, <a href="../../passives/node/own13753/"><strong>Остаточный ток</strong></a></td>
+<td>Средний узел</td>
+<td><ins>+5% damage over time multiplier от молнии</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own13212/"><strong>Пепельный след</strong></a></td>
+<td>Средний узел</td>
+<td><ins>20% увеличение урона от огня эффектами земли</ins><br><ins>10% увеличение области действия эффектов от огня эффектами земли</ins><br><ins>30% увеличение регенерации эйтра на горящей земле</ins><br><ins>Заклинания создают землю при попадании в поверхность при нанесении урона типа «огонь»</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own10153/"><strong>Расщеплённый полёт</strong></a>, <a href="../../passives/node/own10778/"><strong>Расходящиеся тропы</strong></a></td>
+<td>Средний узел</td>
+<td><ins>+20% избыточный шанс перескочить по цепи ещё раз</ins><br><ins>+20% избыточный шанс выпустить дополнительный снаряд</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own10911/"><strong>Рунный круг</strong></a></td>
+<td>Средний узел</td>
+<td><ins>10% увеличение земли области действия эффектов</ins><br><ins>20% увеличение земли длительности эффектов</ins><br><ins>+2 земли предела</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own13290/"><strong>Скованный стеклом</strong></a></td>
+<td>Средний узел</td>
+<td><ins>10% увеличение области действия эффектов от холода эффектами земли</ins><br><ins>15% уменьшение расхода на стылой земле</ins><br><ins>Заклинания создают землю при попадании в поверхность при нанесении урона типа «холод»</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own11521/"><strong>Смертельная рана</strong></a></td>
+<td>Средний узел</td>
+<td><ins>+5% физического damage over time multiplier</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own11350/"><strong>Собранная суть</strong></a></td>
+<td>Средний узел</td>
+<td><ins>15% увеличение силы для насыщения</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own13266"><b>Стылая земля</b></a> ×2</td>
+<td>Малый узел</td>
+<td><ins>4% увеличение области действия эффектов от холода эффектами земли</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own13302"><b>Стылая земля</b></a></td>
+<td>Малый узел</td>
+<td><ins>16% увеличение накопления обморожения эффектами земли</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own13326"><b>Стылая земля</b></a></td>
+<td>Малый узел</td>
+<td><ins>8% увеличение урона от холода эффектами земли</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own13256/"><strong>Угли, что не гаснут</strong></a>, <a href="../../passives/node/own13777/"><strong>Негаснущее пламя</strong></a>, <a href="../../passives/node/own13778/"><strong>Цепкие угли</strong></a></td>
+<td>Средний узел</td>
+<td><ins>+5% damage over time multiplier от огня</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own13610"><b>Урон кровотечением</b></a> ×3</td>
+<td>Малый узел</td>
+<td><ins>8% увеличение урона кровотечения</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own10147"><b>Шанс дополнительного снаряда</b></a> ×10</td>
+<td>Малый узел</td>
+<td><ins>+8% избыточный шанс выпустить дополнительный снаряд</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own10135"><b>Шанс цепи снарядов</b></a> ×4</td>
+<td>Малый узел</td>
+<td><ins>+8% избыточный шанс перескочить по цепи ещё раз</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own10953"><b>Шок</b></a> ×3</td>
+<td>Малый узел</td>
+<td><ins>+10% к эффекту недуга шок</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own10977"><b>Шок</b></a> ×2</td>
+<td>Малый узел</td>
+<td><ins>4% увеличение длительности шока</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own10255"><b>Эффективная дальность стрельбы</b></a> ×9</td>
+<td>Малый узел</td>
+<td><ins>5% увеличение shooting effective range</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own10887"><b>Эффекты земли</b></a> ×2</td>
+<td>Малый узел</td>
+<td><ins>4% увеличение земли области действия эффектов</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own10899"><b>Эффекты земли</b></a> ×2</td>
+<td>Малый узел</td>
+<td><ins>8% увеличение земли длительности эффектов</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own13182"><b>Эффекты земли</b></a> ×2</td>
+<td>Малый узел</td>
+<td><ins>16% увеличение земли накопления</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own13218"><b>Эффекты земли</b></a> ×2</td>
+<td>Малый узел</td>
+<td><ins>10% увеличение земли ailment effect</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own13441"><b>Ядовитая земля</b></a> ×2</td>
+<td>Малый узел</td>
+<td><ins>4% увеличение области действия эффектов от яда эффектами земли</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own13447"><b>Ядовитая земля</b></a> ×2</td>
+<td>Малый узел</td>
+<td><ins>8% увеличение урона от яда эффектами земли</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/tree/#own13477"><b>Ядовитая земля</b></a></td>
+<td>Малый узел</td>
+<td><ins>8% увеличение урона от яда эффектами земли</ins><br><ins>4% увеличение области действия эффектов от яда эффектами земли</ins></td>
+</tr>
+<tr>
+<td><a href="../../passives/node/own13471/"><strong>Ядовитый охват</strong></a></td>
+<td>Средний узел</td>
+<td><ins>10% увеличение области действия эффектов от яда эффектами земли</ins></td>
+</tr>
+</tbody>
+</table>
+<h2 id="_2">Свойства<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="3">Изменено (3)<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Название</th>
+<th>Изменение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../../items/mod/jewel.base.dex.81f2bd8ccb/"><strong>#% шанс сберечь стрелу или болт при выстреле</strong></a></td>
+<td><del>+#% возврата потраченного стрельбы</del> → <ins>#% шанс сберечь стрелу или болт при выстреле</ins><br>T3 (уровень предмета 1–96, вес 1000): <del>+</del>(6.5–8)% <del>возврата</del> → <ins>шанс</ins> <del>потраченного</del> → <ins>сберечь</ins> <del>стрельбы</del> → <ins>стрелу или болт при выстреле</ins><br>T2 (уровень предмета 43–∞, вес 600): <del>+</del>(8–10.5)% <del>возврата</del> → <ins>шанс</ins> <del>потраченного</del> → <ins>сберечь</ins> <del>стрельбы</del> → <ins>стрелу или болт при выстреле</ins><br>T1 (уровень предмета 97–∞, вес 250): <del>+</del>(10.5–13)% <del>возврата</del> → <ins>шанс</ins> <del>потраченного</del> → <ins>сберечь</ins> <del>стрельбы</del> → <ins>стрелу или болт при выстреле</ins><br>T0 (уровень предмета 1–∞, вес 0): <del>+</del>(14.5–16)% <del>возврата</del> → <ins>шанс</ins> <del>потраченного</del> → <ins>сберечь</ins> <del>стрельбы</del> → <ins>стрелу или болт при выстреле</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/tree.refundchance-shooting.w/"><strong>#% шанс сберечь стрелу или болт при выстреле</strong></a></td>
+<td><del>+#% возврата потраченного стрельбы</del> → <ins>#% шанс сберечь стрелу или болт при выстреле</ins><br>T5 (уровень предмета 1–42, вес 1000): <del>+</del>(7–9)% <del>возврата</del> → <ins>шанс</ins> <del>потраченного</del> → <ins>сберечь</ins> <del>стрельбы</del> → <ins>стрелу или болт при выстреле</ins><br>T4 (уровень предмета 19–76, вес 700): <del>+</del>(11–15)% <del>возврата</del> → <ins>шанс</ins> <del>потраченного</del> → <ins>сберечь</ins> <del>стрельбы</del> → <ins>стрелу или болт при выстреле</ins><br>T3 (уровень предмета 43–129, вес 400): <del>+</del>(15–20)% <del>возврата</del> → <ins>шанс</ins> <del>потраченного</del> → <ins>сберечь</ins> <del>стрельбы</del> → <ins>стрелу или болт при выстреле</ins><br>T2 (уровень предмета 77–∞, вес 180): <del>+</del>(19–26)% <del>возврата</del> → <ins>шанс</ins> <del>потраченного</del> → <ins>сберечь</ins> <del>стрельбы</del> → <ins>стрелу или болт при выстреле</ins><br>T1 (уровень предмета 130–∞, вес 60): <del>+</del>(24–32)% <del>возврата</del> → <ins>шанс</ins> <del>потраченного</del> → <ins>сберечь</ins> <del>стрельбы</del> → <ins>стрелу или болт при выстреле</ins><br>T0 (уровень предмета 1–∞, вес 0): <del>+</del>(31–41)% <del>возврата</del> → <ins>шанс</ins> <del>потраченного</del> → <ins>сберечь</ins> <del>стрельбы</del> → <ins>стрелу или болт при выстреле</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/weapon.shock-effect/"><strong>+#% к эффекту недуга шок</strong></a></td>
+<td><del>#% increased shock effect</del> → <ins>+#% к эффекту недуга шок</ins><br>T5 (уровень предмета 1–42, вес 1000): <ins>+</ins>(<del>10</del> → <ins>5</ins>–<del>15</del> → <ins>8</ins>)% <del>increased</del> → <ins>к</ins> <del>shock</del> → <ins>эффекту</ins> <del>effect</del> → <ins>недуга шок</ins><br>T4 (уровень предмета 19–76, вес 700): <ins>+</ins>(<del>16</del> → <ins>9</ins>–<del>25</del> → <ins>13</ins>)% <del>increased</del> → <ins>к</ins> <del>shock</del> → <ins>эффекту</ins> <del>effect</del> → <ins>недуга шок</ins><br>T3 (уровень предмета 43–129, вес 400): <ins>+</ins>(<del>26</del> → <ins>14</ins>–<del>37</del> → <ins>19</ins>)% <del>increased</del> → <ins>к</ins> <del>shock</del> → <ins>эффекту</ins> <del>effect</del> → <ins>недуга шок</ins><br>T2 (уровень предмета 77–∞, вес 180): <ins>+</ins>(<del>38</del> → <ins>20</ins>–<del>50</del> → <ins>26</ins>)% <del>increased</del> → <ins>к</ins> <del>shock</del> → <ins>эффекту</ins> <del>effect</del> → <ins>недуга шок</ins><br>T1 (уровень предмета 130–∞, вес 60): <ins>+</ins>(<del>51</del> → <ins>27</ins>–<del>65</del> → <ins>35</ins>)% <del>increased</del> → <ins>к</ins> <del>shock</del> → <ins>эффекту</ins> <del>effect</del> → <ins>недуга шок</ins></td>
+</tr>
+</tbody>
+</table>
+<h3 id="33">Новое (33)<a class="headerlink" href="#33" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Название</th>
+<th>Изменение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../../items/mod/weapon.shooting-effective-range/"><strong>#% увеличение shooting effective range</strong></a></td>
+<td><ins>T4 (уровень предмета 1–76, вес 400): (10–15)% увеличение shooting effective range</ins><br><ins>T3 (уровень предмета 43–129, вес 300): (16–24)% увеличение shooting effective range</ins><br><ins>T2 (уровень предмета 77–∞, вес 180): (25–34)% увеличение shooting effective range</ins><br><ins>T1 (уровень предмета 130–∞, вес 60): (35–45)% увеличение shooting effective range</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/caster.ground-duration/"><strong>#% увеличение земли длительности эффектов</strong></a></td>
+<td><ins>T5 (уровень предмета 1–42, вес 1000): (6–10)% увеличение земли длительности эффектов</ins><br><ins>T4 (уровень предмета 19–76, вес 700): (11–15)% увеличение земли длительности эффектов</ins><br><ins>T3 (уровень предмета 43–129, вес 400): (16–21)% увеличение земли длительности эффектов</ins><br><ins>T2 (уровень предмета 77–∞, вес 180): (22–28)% увеличение земли длительности эффектов</ins><br><ins>T1 (уровень предмета 130–∞, вес 60): (29–36)% увеличение земли длительности эффектов</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/caster.ground-build/"><strong>#% увеличение земли накопления</strong></a></td>
+<td><ins>T5 (уровень предмета 1–42, вес 1000): (8–12)% увеличение земли накопления</ins><br><ins>T4 (уровень предмета 19–76, вес 700): (13–19)% увеличение земли накопления</ins><br><ins>T3 (уровень предмета 43–129, вес 400): (20–28)% увеличение земли накопления</ins><br><ins>T2 (уровень предмета 77–∞, вес 180): (29–38)% увеличение земли накопления</ins><br><ins>T1 (уровень предмета 130–∞, вес 60): (39–50)% увеличение земли накопления</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/caster.ground-area/"><strong>#% увеличение земли области действия эффектов</strong></a></td>
+<td><ins>T5 (уровень предмета 1–42, вес 1000): (4–6)% увеличение земли области действия эффектов</ins><br><ins>T4 (уровень предмета 19–76, вес 700): (7–10)% увеличение земли области действия эффектов</ins><br><ins>T3 (уровень предмета 43–129, вес 400): (11–14)% увеличение земли области действия эффектов</ins><br><ins>T2 (уровень предмета 77–∞, вес 180): (15–19)% увеличение земли области действия эффектов</ins><br><ins>T1 (уровень предмета 130–∞, вес 60): (20–25)% увеличение земли области действия эффектов</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/jewel.ground-area/"><strong>#% увеличение земли области действия эффектов</strong></a></td>
+<td><ins>T5 (уровень предмета 1–42, вес 1000): (2–3)% увеличение земли области действия эффектов</ins><br><ins>T4 (уровень предмета 19–76, вес 700): (4–5)% увеличение земли области действия эффектов</ins><br><ins>T3 (уровень предмета 43–129, вес 400): (6–7)% увеличение земли области действия эффектов</ins><br><ins>T2 (уровень предмета 77–∞, вес 180): (8–9)% увеличение земли области действия эффектов</ins><br><ins>T1 (уровень предмета 130–∞, вес 60): (10–12)% увеличение земли области действия эффектов</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/caster.ground-damage/"><strong>#% увеличение земли урона</strong></a></td>
+<td><ins>T5 (уровень предмета 1–42, вес 1000): (8–12)% увеличение земли урона</ins><br><ins>T4 (уровень предмета 19–76, вес 700): (13–19)% увеличение земли урона</ins><br><ins>T3 (уровень предмета 43–129, вес 400): (20–28)% увеличение земли урона</ins><br><ins>T2 (уровень предмета 77–∞, вес 180): (29–38)% увеличение земли урона</ins><br><ins>T1 (уровень предмета 130–∞, вес 60): (39–50)% увеличение земли урона</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/ring.on-fire-ground/"><strong>#% увеличение регенерации эйтра на горящей земле</strong></a></td>
+<td><ins>T5 (уровень предмета 1–42, вес 1000): (3–5)% увеличение регенерации эйтра на горящей земле</ins><br><ins>T4 (уровень предмета 19–76, вес 700): (6–8)% увеличение регенерации эйтра на горящей земле</ins><br><ins>T3 (уровень предмета 43–129, вес 400): (9–12)% увеличение регенерации эйтра на горящей земле</ins><br><ins>T2 (уровень предмета 77–∞, вес 180): (13–16)% увеличение регенерации эйтра на горящей земле</ins><br><ins>T1 (уровень предмета 130–∞, вес 60): (17–22)% увеличение регенерации эйтра на горящей земле</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/caster.infusion-potency/"><strong>#% увеличение силы для насыщения</strong></a></td>
+<td><ins>T5 (уровень предмета 1–42, вес 1000): (6–9)% увеличение силы для насыщения</ins><br><ins>T4 (уровень предмета 19–76, вес 700): (10–14)% увеличение силы для насыщения</ins><br><ins>T3 (уровень предмета 43–129, вес 400): (15–20)% увеличение силы для насыщения</ins><br><ins>T2 (уровень предмета 77–∞, вес 180): (21–27)% увеличение силы для насыщения</ins><br><ins>T1 (уровень предмета 130–∞, вес 60): (28–35)% увеличение силы для насыщения</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/jewel.infusion-potency/"><strong>#% увеличение силы для насыщения</strong></a></td>
+<td><ins>T5 (уровень предмета 1–42, вес 1000): (2–4)% увеличение силы для насыщения</ins><br><ins>T4 (уровень предмета 19–76, вес 700): (5–7)% увеличение силы для насыщения</ins><br><ins>T3 (уровень предмета 43–129, вес 400): (8–10)% увеличение силы для насыщения</ins><br><ins>T2 (уровень предмета 77–∞, вес 180): (11–13)% увеличение силы для насыщения</ins><br><ins>T1 (уровень предмета 130–∞, вес 60): (14–17)% увеличение силы для насыщения</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/ring.infusion-potency/"><strong>#% увеличение силы для насыщения</strong></a></td>
+<td><ins>T5 (уровень предмета 1–42, вес 1000): (3–5)% увеличение силы для насыщения</ins><br><ins>T4 (уровень предмета 19–76, вес 700): (6–8)% увеличение силы для насыщения</ins><br><ins>T3 (уровень предмета 43–129, вес 400): (9–12)% увеличение силы для насыщения</ins><br><ins>T2 (уровень предмета 77–∞, вес 180): (13–16)% увеличение силы для насыщения</ins><br><ins>T1 (уровень предмета 130–∞, вес 60): (17–21)% увеличение силы для насыщения</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/ring.on-lightning-ground/"><strong>#% увеличение скорости каста на заряженной земле</strong></a></td>
+<td><ins>T5 (уровень предмета 1–42, вес 1000): (3–5)% увеличение скорости каста на заряженной земле</ins><br><ins>T4 (уровень предмета 19–76, вес 700): (6–8)% увеличение скорости каста на заряженной земле</ins><br><ins>T3 (уровень предмета 43–129, вес 400): (9–12)% увеличение скорости каста на заряженной земле</ins><br><ins>T2 (уровень предмета 77–∞, вес 180): (13–16)% увеличение скорости каста на заряженной земле</ins><br><ins>T1 (уровень предмета 130–∞, вес 60): (17–22)% увеличение скорости каста на заряженной земле</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/ring.on-poison-ground/"><strong>#% увеличение урона со временем отравления на ядовитой земле</strong></a></td>
+<td><ins>T5 (уровень предмета 1–42, вес 1000): (3–5)% увеличение урона со временем отравления на ядовитой земле</ins><br><ins>T4 (уровень предмета 19–76, вес 700): (6–8)% увеличение урона со временем отравления на ядовитой земле</ins><br><ins>T3 (уровень предмета 43–129, вес 400): (9–12)% увеличение урона со временем отравления на ядовитой земле</ins><br><ins>T2 (уровень предмета 77–∞, вес 180): (13–16)% увеличение урона со временем отравления на ядовитой земле</ins><br><ins>T1 (уровень предмета 130–∞, вес 60): (17–22)% увеличение урона со временем отравления на ядовитой земле</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/ring.on-frost-ground/"><strong>#% уменьшение расхода на стылой земле</strong></a></td>
+<td><ins>T5 (уровень предмета 1–42, вес 1000): (1–2)% уменьшение расхода на стылой земле</ins><br><ins>T4 (уровень предмета 19–76, вес 700): (2–3)% уменьшение расхода на стылой земле</ins><br><ins>T3 (уровень предмета 43–129, вес 400): (3–4)% уменьшение расхода на стылой земле</ins><br><ins>T2 (уровень предмета 77–∞, вес 180): (4–5)% уменьшение расхода на стылой земле</ins><br><ins>T1 (уровень предмета 130–∞, вес 60): (6–7)% уменьшение расхода на стылой земле</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/jewel.lightning-dot-multiplier/"><strong>+#% damage over time multiplier от молнии</strong></a></td>
+<td><ins>T5 (уровень предмета 1–42, вес 1000): +(2–3)% damage over time multiplier от молнии</ins><br><ins>T4 (уровень предмета 19–76, вес 700): +(3–4)% damage over time multiplier от молнии</ins><br><ins>T3 (уровень предмета 43–129, вес 400): +(4–5)% damage over time multiplier от молнии</ins><br><ins>T2 (уровень предмета 77–∞, вес 180): +(6–7)% damage over time multiplier от молнии</ins><br><ins>T1 (уровень предмета 130–∞, вес 60): +(8–10)% damage over time multiplier от молнии</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/ring.lightning-dot-multiplier/"><strong>+#% damage over time multiplier от молнии</strong></a></td>
+<td><ins>T5 (уровень предмета 1–42, вес 1000): +(2–3)% damage over time multiplier от молнии</ins><br><ins>T4 (уровень предмета 19–76, вес 700): +(4–6)% damage over time multiplier от молнии</ins><br><ins>T3 (уровень предмета 43–129, вес 400): +(7–9)% damage over time multiplier от молнии</ins><br><ins>T2 (уровень предмета 77–∞, вес 180): +(10–13)% damage over time multiplier от молнии</ins><br><ins>T1 (уровень предмета 130–∞, вес 60): +(14–18)% damage over time multiplier от молнии</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/weapon.lightning-dot-multiplier/"><strong>+#% damage over time multiplier от молнии</strong></a></td>
+<td><ins>T5 (уровень предмета 1–42, вес 1000): +(3–5)% damage over time multiplier от молнии</ins><br><ins>T4 (уровень предмета 19–76, вес 700): +(6–9)% damage over time multiplier от молнии</ins><br><ins>T3 (уровень предмета 43–129, вес 400): +(10–14)% damage over time multiplier от молнии</ins><br><ins>T2 (уровень предмета 77–∞, вес 180): +(15–19)% damage over time multiplier от молнии</ins><br><ins>T1 (уровень предмета 130–∞, вес 60): +(20–25)% damage over time multiplier от молнии</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/jewel.fire-dot-multiplier/"><strong>+#% damage over time multiplier от огня</strong></a></td>
+<td><ins>T5 (уровень предмета 1–42, вес 1000): +(2–3)% damage over time multiplier от огня</ins><br><ins>T4 (уровень предмета 19–76, вес 700): +(3–4)% damage over time multiplier от огня</ins><br><ins>T3 (уровень предмета 43–129, вес 400): +(4–5)% damage over time multiplier от огня</ins><br><ins>T2 (уровень предмета 77–∞, вес 180): +(6–7)% damage over time multiplier от огня</ins><br><ins>T1 (уровень предмета 130–∞, вес 60): +(8–10)% damage over time multiplier от огня</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/ring.fire-dot-multiplier/"><strong>+#% damage over time multiplier от огня</strong></a></td>
+<td><ins>T5 (уровень предмета 1–42, вес 1000): +(2–3)% damage over time multiplier от огня</ins><br><ins>T4 (уровень предмета 19–76, вес 700): +(4–6)% damage over time multiplier от огня</ins><br><ins>T3 (уровень предмета 43–129, вес 400): +(7–9)% damage over time multiplier от огня</ins><br><ins>T2 (уровень предмета 77–∞, вес 180): +(10–13)% damage over time multiplier от огня</ins><br><ins>T1 (уровень предмета 130–∞, вес 60): +(14–18)% damage over time multiplier от огня</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/weapon.fire-dot-multiplier/"><strong>+#% damage over time multiplier от огня</strong></a></td>
+<td><ins>T5 (уровень предмета 1–42, вес 1000): +(3–5)% damage over time multiplier от огня</ins><br><ins>T4 (уровень предмета 19–76, вес 700): +(6–9)% damage over time multiplier от огня</ins><br><ins>T3 (уровень предмета 43–129, вес 400): +(10–14)% damage over time multiplier от огня</ins><br><ins>T2 (уровень предмета 77–∞, вес 180): +(15–19)% damage over time multiplier от огня</ins><br><ins>T1 (уровень предмета 130–∞, вес 60): +(20–25)% damage over time multiplier от огня</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/jewel.frost-dot-multiplier/"><strong>+#% damage over time multiplier от холода</strong></a></td>
+<td><ins>T5 (уровень предмета 1–42, вес 1000): +(2–3)% damage over time multiplier от холода</ins><br><ins>T4 (уровень предмета 19–76, вес 700): +(3–4)% damage over time multiplier от холода</ins><br><ins>T3 (уровень предмета 43–129, вес 400): +(4–5)% damage over time multiplier от холода</ins><br><ins>T2 (уровень предмета 77–∞, вес 180): +(6–7)% damage over time multiplier от холода</ins><br><ins>T1 (уровень предмета 130–∞, вес 60): +(8–10)% damage over time multiplier от холода</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/ring.frost-dot-multiplier/"><strong>+#% damage over time multiplier от холода</strong></a></td>
+<td><ins>T5 (уровень предмета 1–42, вес 1000): +(2–3)% damage over time multiplier от холода</ins><br><ins>T4 (уровень предмета 19–76, вес 700): +(4–6)% damage over time multiplier от холода</ins><br><ins>T3 (уровень предмета 43–129, вес 400): +(7–9)% damage over time multiplier от холода</ins><br><ins>T2 (уровень предмета 77–∞, вес 180): +(10–13)% damage over time multiplier от холода</ins><br><ins>T1 (уровень предмета 130–∞, вес 60): +(14–18)% damage over time multiplier от холода</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/weapon.frost-dot-multiplier/"><strong>+#% damage over time multiplier от холода</strong></a></td>
+<td><ins>T5 (уровень предмета 1–42, вес 1000): +(3–5)% damage over time multiplier от холода</ins><br><ins>T4 (уровень предмета 19–76, вес 700): +(6–9)% damage over time multiplier от холода</ins><br><ins>T3 (уровень предмета 43–129, вес 400): +(10–14)% damage over time multiplier от холода</ins><br><ins>T2 (уровень предмета 77–∞, вес 180): +(15–19)% damage over time multiplier от холода</ins><br><ins>T1 (уровень предмета 130–∞, вес 60): +(20–25)% damage over time multiplier от холода</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/jewel.poison-dot-multiplier/"><strong>+#% damage over time multiplier от яда</strong></a></td>
+<td><ins>T5 (уровень предмета 1–42, вес 1000): +(2–3)% damage over time multiplier от яда</ins><br><ins>T4 (уровень предмета 19–76, вес 700): +(3–4)% damage over time multiplier от яда</ins><br><ins>T3 (уровень предмета 43–129, вес 400): +(4–5)% damage over time multiplier от яда</ins><br><ins>T2 (уровень предмета 77–∞, вес 180): +(6–7)% damage over time multiplier от яда</ins><br><ins>T1 (уровень предмета 130–∞, вес 60): +(8–10)% damage over time multiplier от яда</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/ring.poison-dot-multiplier/"><strong>+#% damage over time multiplier от яда</strong></a></td>
+<td><ins>T5 (уровень предмета 1–42, вес 1000): +(2–3)% damage over time multiplier от яда</ins><br><ins>T4 (уровень предмета 19–76, вес 700): +(4–6)% damage over time multiplier от яда</ins><br><ins>T3 (уровень предмета 43–129, вес 400): +(7–9)% damage over time multiplier от яда</ins><br><ins>T2 (уровень предмета 77–∞, вес 180): +(10–13)% damage over time multiplier от яда</ins><br><ins>T1 (уровень предмета 130–∞, вес 60): +(14–18)% damage over time multiplier от яда</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/weapon.poison-dot-multiplier/"><strong>+#% damage over time multiplier от яда</strong></a></td>
+<td><ins>T5 (уровень предмета 1–42, вес 1000): +(3–5)% damage over time multiplier от яда</ins><br><ins>T4 (уровень предмета 19–76, вес 700): +(6–9)% damage over time multiplier от яда</ins><br><ins>T3 (уровень предмета 43–129, вес 400): +(10–14)% damage over time multiplier от яда</ins><br><ins>T2 (уровень предмета 77–∞, вес 180): +(15–19)% damage over time multiplier от яда</ins><br><ins>T1 (уровень предмета 130–∞, вес 60): +(20–25)% damage over time multiplier от яда</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/caster.dot-multiplier/"><strong>+#% к множителю длительного урона</strong></a></td>
+<td><ins>T5 (уровень предмета 1–42, вес 1000): +(2–4)% к множителю длительного урона</ins><br><ins>T4 (уровень предмета 19–76, вес 700): +(5–7)% к множителю длительного урона</ins><br><ins>T3 (уровень предмета 43–129, вес 400): +(8–11)% к множителю длительного урона</ins><br><ins>T2 (уровень предмета 77–∞, вес 180): +(12–15)% к множителю длительного урона</ins><br><ins>T1 (уровень предмета 130–∞, вес 60): +(16–20)% к множителю длительного урона</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/jewel.dot-multiplier/"><strong>+#% к множителю длительного урона</strong></a></td>
+<td><ins>T5 (уровень предмета 1–42, вес 1000): +(1–2)% к множителю длительного урона</ins><br><ins>T4 (уровень предмета 19–76, вес 700): +(2–3)% к множителю длительного урона</ins><br><ins>T3 (уровень предмета 43–129, вес 400): +(3–4)% к множителю длительного урона</ins><br><ins>T2 (уровень предмета 77–∞, вес 180): +(4–5)% к множителю длительного урона</ins><br><ins>T1 (уровень предмета 130–∞, вес 60): +(5–7)% к множителю длительного урона</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/ring.dot-multiplier/"><strong>+#% к множителю длительного урона</strong></a></td>
+<td><ins>T5 (уровень предмета 1–42, вес 1000): +(1–2)% к множителю длительного урона</ins><br><ins>T4 (уровень предмета 19–76, вес 700): +(3–4)% к множителю длительного урона</ins><br><ins>T3 (уровень предмета 43–129, вес 400): +(5–6)% к множителю длительного урона</ins><br><ins>T2 (уровень предмета 77–∞, вес 180): +(7–9)% к множителю длительного урона</ins><br><ins>T1 (уровень предмета 130–∞, вес 60): +(10–12)% к множителю длительного урона</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/caster.infusion-absorption/"><strong>+#% к скорости поглощения для насыщения</strong></a></td>
+<td><ins>T5 (уровень предмета 1–42, вес 1000): +(4–6)% к скорости поглощения для насыщения</ins><br><ins>T4 (уровень предмета 19–76, вес 700): +(7–10)% к скорости поглощения для насыщения</ins><br><ins>T3 (уровень предмета 43–129, вес 400): +(11–15)% к скорости поглощения для насыщения</ins><br><ins>T2 (уровень предмета 77–∞, вес 180): +(16–21)% к скорости поглощения для насыщения</ins><br><ins>T1 (уровень предмета 130–∞, вес 60): +(22–28)% к скорости поглощения для насыщения</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/jewel.shock-effect/"><strong>+#% к эффекту недуга шок</strong></a></td>
+<td><ins>T5 (уровень предмета 1–42, вес 1000): +(3–5)% к эффекту недуга шок</ins><br><ins>T4 (уровень предмета 19–76, вес 700): +(6–8)% к эффекту недуга шок</ins><br><ins>T3 (уровень предмета 43–129, вес 400): +(9–11)% к эффекту недуга шок</ins><br><ins>T2 (уровень предмета 77–∞, вес 180): +(12–14)% к эффекту недуга шок</ins><br><ins>T1 (уровень предмета 130–∞, вес 60): +(15–18)% к эффекту недуга шок</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/jewel.physical-dot-multiplier/"><strong>+#% физического damage over time multiplier</strong></a></td>
+<td><ins>T5 (уровень предмета 1–42, вес 1000): +(2–3)% физического damage over time multiplier</ins><br><ins>T4 (уровень предмета 19–76, вес 700): +(3–4)% физического damage over time multiplier</ins><br><ins>T3 (уровень предмета 43–129, вес 400): +(4–5)% физического damage over time multiplier</ins><br><ins>T2 (уровень предмета 77–∞, вес 180): +(6–7)% физического damage over time multiplier</ins><br><ins>T1 (уровень предмета 130–∞, вес 60): +(8–10)% физического damage over time multiplier</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/ring.physical-dot-multiplier/"><strong>+#% физического damage over time multiplier</strong></a></td>
+<td><ins>T5 (уровень предмета 1–42, вес 1000): +(2–3)% физического damage over time multiplier</ins><br><ins>T4 (уровень предмета 19–76, вес 700): +(4–6)% физического damage over time multiplier</ins><br><ins>T3 (уровень предмета 43–129, вес 400): +(7–9)% физического damage over time multiplier</ins><br><ins>T2 (уровень предмета 77–∞, вес 180): +(10–13)% физического damage over time multiplier</ins><br><ins>T1 (уровень предмета 130–∞, вес 60): +(14–18)% физического damage over time multiplier</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/mod/weapon.physical-dot-multiplier/"><strong>+#% физического damage over time multiplier</strong></a></td>
+<td><ins>T5 (уровень предмета 1–42, вес 1000): +(3–5)% физического damage over time multiplier</ins><br><ins>T4 (уровень предмета 19–76, вес 700): +(6–9)% физического damage over time multiplier</ins><br><ins>T3 (уровень предмета 43–129, вес 400): +(10–14)% физического damage over time multiplier</ins><br><ins>T2 (уровень предмета 77–∞, вес 180): +(15–19)% физического damage over time multiplier</ins><br><ins>T1 (уровень предмета 130–∞, вес 60): +(20–25)% физического damage over time multiplier</ins></td>
+</tr>
+</tbody>
+</table>
+<h2 id="_3">Базовые предметы<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="51">Изменено (51)<a class="headerlink" href="#51" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Название</th>
+<th>Изменение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../../items/base/ArmorBerserkerUndeadChest/"><strong>Гнилокостная нагрудная клетка</strong></a>, <a href="../../items/base/ArmorBerserkerUndeadLegs/"><strong>Гнилокостный набедренник</strong></a></td>
+<td>Качество 1: Броня 18, Уклонение <del>18</del> → <ins>24.3</ins><br>Качество 2: Броня 20, Уклонение <del>20</del> → <ins>27</ins><br>Качество 3: Броня 22, Уклонение <del>22</del> → <ins>29.7</ins><br>Качество 4: Броня 24, Уклонение <del>24</del> → <ins>32.4</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/base/ArmorAshlandsMediumChest/"><strong>Кираса Аска</strong></a>, <a href="../../items/base/ArmorAshlandsMediumlegs/"><strong>Штаны Аска</strong></a></td>
+<td>Качество 1: Броня 28, Уклонение <del>28</del> → <ins>37.8</ins><br>Качество 2: Броня 30, Уклонение <del>30</del> → <ins>40.5</ins><br>Качество 3: Броня 32, Уклонение <del>32</del> → <ins>43.2</ins><br>Качество 4: Броня 34, Уклонение <del>34</del> → <ins>45.9</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/base/ArmorLeatherChest/"><strong>Кожаная туника</strong></a>, <a href="../../items/base/ArmorLeatherLegs/"><strong>Кожаные штаны</strong></a>, <a href="../../items/base/HelmetLeather/"><strong>Кожаный шлем</strong></a></td>
+<td>Качество 1: Броня 2, Уклонение <del>2</del> → <ins>2.7</ins><br>Качество 2: Броня 4, Уклонение <del>4</del> → <ins>5.4</ins><br>Качество 3: Броня 6, Уклонение <del>6</del> → <ins>8.1</ins><br>Качество 4: Броня 8, Уклонение <del>8</del> → <ins>10.8</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/base/ArmorRootChest/"><strong>Корневой нагрудник</strong></a>, <a href="../../items/base/ArmorRootLegs/"><strong>Корневые поножи</strong></a>, <a href="../../items/base/HelmetRoot/"><strong>Корневая маска</strong></a></td>
+<td>Качество 1: Броня 8, Уклонение <del>4</del> → <ins>5.4</ins><br>Качество 2: Броня 10, Уклонение <del>5</del> → <ins>6.75</ins><br>Качество 3: Броня 12, Уклонение <del>6</del> → <ins>8.1</ins><br>Качество 4: Броня 14, Уклонение <del>7</del> → <ins>9.45</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/base/ArmorLoxChest/"><strong>Куртка из меха быкоящера</strong></a>, <a href="../../items/base/ArmorLoxLegs/"><strong>Штаны из меха быкоящера</strong></a></td>
+<td>Качество 1: Броня 16, Уклонение <del>16</del> → <ins>21.6</ins><br>Качество 2: Броня 18, Уклонение <del>18</del> → <ins>24.3</ins><br>Качество 3: Броня 20, Уклонение <del>20</del> → <ins>27</ins><br>Качество 4: Броня 22, Уклонение <del>22</del> → <ins>29.7</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/base/ArmorBerserkerChest/"><strong>Медвежьи узоры</strong></a>, <a href="../../items/base/ArmorBerserkerLegs/"><strong>Медвежья повязка</strong></a></td>
+<td>Качество 1: Броня 7, Уклонение <del>7</del> → <ins>9.45</ins><br>Качество 2: Броня 9, Уклонение <del>9</del> → <ins>12.15</ins><br>Качество 3: Броня 11, Уклонение <del>11</del> → <ins>14.85</ins><br>Качество 4: Броня 13, Уклонение <del>13</del> → <ins>17.55</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/base/ArmorDeepNorthMediumChest/"><strong>Нагрудник авангарда</strong></a>, <a href="../../items/base/ArmorDeepNorthMediumlegs/"><strong>Штаны авангарда</strong></a></td>
+<td>Качество 1: Броня 34, Уклонение <del>34</del> → <ins>45.9</ins><br>Качество 2: Броня 36, Уклонение <del>36</del> → <ins>48.6</ins><br>Качество 3: Броня 38, Уклонение <del>38</del> → <ins>51.3</ins><br>Качество 4: Броня 40, Уклонение <del>40</del> → <ins>54</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/base/ArmorDeepNorthHeavyChest/"><strong>Нагрудник защитника</strong></a>, <a href="../../items/base/ArmorDeepNorthHeavylegs/"><strong>Штаны защитника</strong></a></td>
+<td>Качество 1: Броня 44, Уклонение <del>44</del> → <ins>59.4</ins><br>Качество 2: Броня 46, Уклонение <del>46</del> → <ins>62.1</ins><br>Качество 3: Броня 48, Уклонение <del>48</del> → <ins>64.8</ins><br>Качество 4: Броня 50, Уклонение <del>50</del> → <ins>67.5</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/base/ArmorFenringChest/"><strong>Облачение Фенриса</strong></a>, <a href="../../items/base/ArmorFenringLegs/"><strong>Поножи Фенриса</strong></a>, <a href="../../items/base/HelmetFenring/"><strong>Капюшон Фенриса</strong></a></td>
+<td>Качество 1: Броня 10, Уклонение <del>10</del> → <ins>13.5</ins><br>Качество 2: Броня 12, Уклонение <del>12</del> → <ins>16.2</ins><br>Качество 3: Броня 14, Уклонение <del>14</del> → <ins>18.9</ins><br>Качество 4: Броня 16, Уклонение <del>16</del> → <ins>21.6</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/base/PT_StaffStorm/"><strong>Посох бури</strong></a>, <a href="../../items/base/StaffClusterbomb/"><strong>Посох раскалывания</strong></a>, <a href="../../items/base/StaffLightning/"><strong>Дундр</strong></a></td>
+<td><ins>Projectiles of one cast may all strike the same target</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/base/ArmorDress1/"><strong>Простое коричневое платье</strong></a>, <a href="../../items/base/ArmorDress10/"><strong>Простое платье</strong></a>, <a href="../../items/base/ArmorDress2/"><strong>Коричневое платье с шалью</strong></a>, <a href="../../items/base/ArmorDress3/"><strong>Коричневое платье в бусинах</strong></a>, <a href="../../items/base/ArmorDress4/"><strong>Простое синее платье</strong></a>, <a href="../../items/base/ArmorDress5/"><strong>Синее платье с шалью</strong></a>, <a href="../../items/base/ArmorDress6/"><strong>Синее платье в бусинах</strong></a>, <a href="../../items/base/ArmorDress7/"><strong>Простое желтое платье</strong></a>, <a href="../../items/base/ArmorDress8/"><strong>Желтое платье с шалью</strong></a>, <a href="../../items/base/ArmorDress9/"><strong>Желтое платье в бусинах</strong></a>, <a href="../../items/base/ArmorHarvester1/"><strong>Туника урожая</strong></a>, <a href="../../items/base/ArmorHarvester2/"><strong>Одежда урожая</strong></a>, <a href="../../items/base/ArmorTunic1/"><strong>Простая синяя туника</strong></a>, <a href="../../items/base/ArmorTunic10/"><strong>Простая туника</strong></a>, <a href="../../items/base/ArmorTunic2/"><strong>Синяя туника с капюшоном</strong></a>, <a href="../../items/base/ArmorTunic3/"><strong>Синяя туника в бусинах</strong></a>, <a href="../../items/base/ArmorTunic4/"><strong>Простая красная туника</strong></a>, <a href="../../items/base/ArmorTunic5/"><strong>Красная туника с капюшоном</strong></a>, <a href="../../items/base/ArmorTunic6/"><strong>Красная туника в бусинах</strong></a>, <a href="../../items/base/ArmorTunic7/"><strong>Простая желтая туника</strong></a>, <a href="../../items/base/ArmorTunic8/"><strong>Желтая туника с капюшоном</strong></a>, <a href="../../items/base/ArmorTunic9/"><strong>Желтая туника в бусинах</strong></a></td>
+<td>Качество 1: Броня 1, Уклонение <del>1</del> → <ins>1.35</ins><br>Качество 2: Броня 2, Уклонение <del>2</del> → <ins>2.7</ins><br>Качество 3: Броня 3, Уклонение <del>3</del> → <ins>4.05</ins><br>Качество 4: Броня 4, Уклонение <del>4</del> → <ins>5.4</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/base/ArmorTrollLeatherChest/"><strong>Туника из кожи тролля</strong></a>, <a href="../../items/base/ArmorTrollLeatherLegs/"><strong>Штаны из кожи тролля</strong></a>, <a href="../../items/base/HelmetTrollLeather/"><strong>Шлем из кожи тролля</strong></a></td>
+<td>Качество 1: Броня 6, Уклонение <del>6</del> → <ins>8.1</ins><br>Качество 2: Броня 8, Уклонение <del>8</del> → <ins>10.8</ins><br>Качество 3: Броня 10, Уклонение <del>10</del> → <ins>13.5</ins><br>Качество 4: Броня 12, Уклонение <del>12</del> → <ins>16.2</ins></td>
+</tr>
+<tr>
+<td><a href="../../items/base/ArmorRagsChest/"><strong>Холщовая туника</strong></a>, <a href="../../items/base/ArmorRagsLegs/"><strong>Холщовые штаны</strong></a></td>
+<td>Качество 1: Броня 1, Уклонение <del>1</del> → <ins>1.35</ins><br>Качество 2: Броня 2, Уклонение <del>2</del> → <ins>2.7</ins></td>
+</tr>
+</tbody>
+</table>
+<h2 id="_4">Уникальные предметы<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h3 id="1">Изменено (1)<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Название</th>
+<th>Изменение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../../items/unique/PT_Jewel_TrailOfTheFirstAntler/"><strong>Trail of the First Antler</strong></a></td>
+<td>+(<del>0.6</del> → <ins>2</ins>–<del>1</del> → <ins>4</ins>) максимума здоровья per allocated passive on the path from this socket to your start (10%)<br>+(<del>0.5</del> → <ins>2</ins>–<del>0.8</del> → <ins>4</ins>) максимума эйтра per allocated passive on the path from this socket to your start (10%)<br>+(<del>0.4</del> → <ins>2</ins>–<del>0.7</del> → <ins>4</ins>) рунного щита per allocated passive on the path from this socket to your start (10%)<br>+(<del>0.3</del> → <ins>2</ins>–<del>0.5</del> → <ins>4</ins>) к порогу стойкости<ins>, приходящаяся ниже порога, уменьшается: 20% в базе, не больше 75%. Порог считается в очках здоровья. С Рунным бастионом вместо здоровья проверяется рунный щит.&quot;)</ins> per allocated passive on the path from this socket to your start (10%)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_5">Валюта<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h3 id="3_1">Изменено (3)<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Название</th>
+<th>Изменение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../../items/currency/PT_EssenceOfEikthyr/"><strong>Essence of Eikthyr</strong></a></td>
+<td><del>Adds a random lightning property to an item, up to its best tier, or one of Eikthyr&#x27;s own</del></td>
+</tr>
+<tr>
+<td><a href="../../items/currency/PT_RuneOfBloodChallenge/"><strong>Rune of the Blood Challenge</strong></a></td>
+<td>Offer at an altar of summoning<ins> or a boss altar</ins>: the next <del>guardian</del> → <ins>boss</ins> rises with one more star (up to five)</td>
+</tr>
+<tr>
+<td><a href="../../items/currency/PT_GreatRuneOfFate/"><strong>Великая руна Судьбы</strong></a></td>
+<td><del>Заново определяет числовые значения свойств предмета</del><br><ins>Randomises the numeric values of modifiers on an item. An item from an older version becomes current: its outdated modifiers are replaced with today&#x27;s.</ins></td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">Значения<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h3 id="2">Изменено (2)<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Название</th>
+<th>Изменение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Доля базовой брони, переходящая в рейтинг уклонения</strong></td>
+<td><del>1</del> → <ins>1.35</ins></td>
+</tr>
+<tr>
+<td><strong>Наибольший шанс уклониться от удара</strong></td>
+<td><del>75%</del> → <ins>100%</ins></td>
+</tr>
+</tbody>
+</table>
+<h3 id="42">Новое (42)<a class="headerlink" href="#42" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Название</th>
+<th>Изменение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Базовая длительность кровотечения</strong>, <strong>Базовая длительность горения</strong>, <strong>Базовая длительность яда</strong>, <strong>Базовая длительность земли</strong></td>
+<td><ins>4 s</ins></td>
+</tr>
+<tr>
+<td><strong>Базовая длительность насыщения</strong></td>
+<td><ins>10 s</ins></td>
+</tr>
+<tr>
+<td><strong>Базовая длительность шока</strong></td>
+<td><ins>3 s</ins></td>
+</tr>
+<tr>
+<td><strong>Базовая площадь поглощения в секунду</strong></td>
+<td><ins>6 m²/s</ins></td>
+</tr>
+<tr>
+<td><strong>Базовое число активных ядов на пару атакующий — цель</strong></td>
+<td><ins>3</ins></td>
+</tr>
+<tr>
+<td><strong>Базовое число одновременных участков земли</strong>, <strong>Ошеломление от шока на единицу шока</strong></td>
+<td><ins>1</ins></td>
+</tr>
+<tr>
+<td><strong>Базовый радиус земли</strong></td>
+<td><ins>2 m</ins></td>
+</tr>
+<tr>
+<td><strong>Базовый урон горения в секунду от исходного</strong></td>
+<td><ins>25%</ins></td>
+</tr>
+<tr>
+<td><strong>Базовый урон кровотечения в секунду от исходного</strong>, <strong>Доля исходного урона на накопление в секунду</strong>, <strong>Доля исходного урона, наносимая в секунду</strong>, <strong>Луки и арбалеты: множитель урона на дальнем расстоянии и дальше</strong></td>
+<td><ins>20%</ins></td>
+</tr>
+<tr>
+<td><strong>Базовый урон яда в секунду от исходного</strong></td>
+<td><ins>15%</ins></td>
+</tr>
+<tr>
+<td><strong>Доля исходного урона на единицу насыщения</strong></td>
+<td><ins>6%</ins></td>
+</tr>
+<tr>
+<td><strong>Каждое уклонение от атакующего оставляет эту долю шанса против него</strong></td>
+<td><ins>80%</ins></td>
+</tr>
+<tr>
+<td><strong>Каждое уклонение стоит эту долю максимальной выносливости; без неё уклонения нет</strong></td>
+<td><ins>18%</ins></td>
+</tr>
+<tr>
+<td><strong>Коэффициент кривой шока</strong></td>
+<td><ins>0.5</ins></td>
+</tr>
+<tr>
+<td><strong>Логический такт земли</strong></td>
+<td><ins>0.2 s</ins></td>
+</tr>
+<tr>
+<td><strong>Луки и арбалеты: полный урон до этого расстояния</strong></td>
+<td><ins>6 m</ins></td>
+</tr>
+<tr>
+<td><strong>Луки и арбалеты: урон доходит до минимума на этом расстоянии</strong></td>
+<td><ins>30 m</ins></td>
+</tr>
+<tr>
+<td><strong>Наименьший применяемый шок</strong></td>
+<td><ins>5%</ins></td>
+</tr>
+<tr>
+<td><strong>Окончательная смерть, защита от убийства с одного удара: один удар больше этой доли максимального здоровья считается убийством с одного удара</strong></td>
+<td><ins>95%</ins></td>
+</tr>
+<tr>
+<td><strong>Окончательная смерть, защита от убийства с одного удара: перезарядка</strong></td>
+<td><ins>1800 s</ins></td>
+</tr>
+<tr>
+<td><strong>Окончательная смерть, право на ошибку: часов игры до его возвращения</strong></td>
+<td><ins>2 h</ins></td>
+</tr>
+<tr>
+<td><strong>Площадь на единицу насыщения</strong></td>
+<td><ins>2 m²</ins></td>
+</tr>
+<tr>
+<td><strong>Поглощение: громкость звука в цикле</strong></td>
+<td><ins>22%</ins></td>
+</tr>
+<tr>
+<td><strong>Поглощение: громкость сигналов заполнения и высвобождения</strong>, <strong>Базовый максимум шока</strong></td>
+<td><ins>50%</ins></td>
+</tr>
+<tr>
+<td><strong>Показатель кривой шока</strong></td>
+<td><ins>0.4</ins></td>
+</tr>
+<tr>
+<td><strong>Разбор уникального самоцвета: азуритовая пыль на уровне предмета 1</strong>, <strong>Базовый запас единиц насыщения</strong></td>
+<td><ins>10</ins></td>
+</tr>
+<tr>
+<td><strong>Разбор уникального самоцвета: божественная пыль на уровне предмета 1</strong></td>
+<td><ins>40</ins></td>
+</tr>
+<tr>
+<td><strong>Разбор уникального самоцвета: уровней предмета на +100% пыли (уровень 250 даёт вдвое больше уровня 1)</strong></td>
+<td><ins>249 lvl</ins></td>
+</tr>
+<tr>
+<td><strong>Рейтинг уклонения на очко точности врага, дающий 100% шанс уклонения (шанс = рейтинг / (это × точность))</strong></td>
+<td><ins>3 x</ins></td>
+</tr>
+<tr>
+<td><strong>Стылая земля: множитель трения</strong></td>
+<td><ins>0.15</ins></td>
+</tr>
+<tr>
+<td><strong>Стылая земля: множитель управляемости</strong></td>
+<td><ins>0.35</ins></td>
+</tr>
+<tr>
+<td><strong>Счёт уклонений от атакующего сбрасывается, если он столько времени не проводит атак</strong></td>
+<td><ins>8 s</ins></td>
+</tr>
+<tr>
+<td><strong>Счёт уклонений от босса сбрасывается, если он столько времени не проводит атак</strong></td>
+<td><ins>30 s</ins></td>
+</tr>
+</tbody>
+</table>
+<h3 id="1_1">Удалено (1)<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Название</th>
+<th>Изменение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Ударная детонация: доля оставшейся силы бомбы, расходуемая каждым взрывом от касания</strong></td>
+<td><del>35%</del></td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">Ключевые слова<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<h3 id="9">Изменено (9)<a class="headerlink" href="#9" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Название</th>
+<th>Изменение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../../glossary/burn/"><strong>Горение</strong></a></td>
+<td>Урон огнём заполняет шкалу горения. <del>Горение</del> → <ins>Когда она полна, горение</ins> наносит<ins> в секунду 25% урона огнём сильнейшего удара в накоплении, 4 с, как</ins> периодический урон огнём<ins>. Урон горения и множитель длительного урона делают его сильнее, длительность - дольше. У каждого игрока на цели своё сильнейшее горение</ins>; <del>сильное</del> → <ins>слабое</ins> <del>заменяет</del> → <ins>его</ins> <del>слабое,</del> → <ins>не</ins> <del>промокание</del> → <ins>обновляет. Промокание</ins> сокращает его, а охлаждение снимает.</td>
+</tr>
+<tr>
+<td><a href="../../glossary/bleed/"><strong>Кровотечение</strong></a></td>
+<td>Рубящий урон заполняет шкалу кровотечения. <del>Наложенное</del> → <ins>Когда она полна,</ins> кровотечение наносит <del>периодический</del> → <ins>в</ins> <del>урон</del> → <ins>секунду 20% рубящего урона сильнейшего удара в накоплении, 4 с, периодически и</ins> сквозь броню<del>;</del> → <ins>.</ins> <del>урон</del> → <ins>Урон кровотечения, множитель длительного урона</ins> и длительность <del>кровотечения</del> → <ins>меняют</ins> <del>меняются</del> → <ins>его</ins> отдельно.<ins> У каждого игрока на цели своё сильнейшее кровотечение; слабое его не обновляет.</ins></td>
+</tr>
+<tr>
+<td><a href="../../glossary/poison/"><strong>Отравление</strong></a></td>
+<td>Урон ядом заполняет шкалу отравления. <del>Отравление</del> → <ins>Когда она полна, отравление</ins> наносит <del>периодический</del> → <ins>в</ins> <del>урон</del> → <ins>секунду 15% урона ядом сильнейшего удара в накоплении, 4 с. Каждый игрок держит на цели до 3 отравлений сразу, предел отравления увеличивает это число</ins>; <del>сильный</del> → <ins>новое</ins> <del>эффект</del> → <ins>отравление при полном наборе</ins> заменяет <del>слабый</del> → <ins>самое слабое, если оно сильнее. Урон отравления и множитель длительного урона делают его сильнее</ins>. Яд не относится к стихиям.</td>
+</tr>
+<tr>
+<td><a href="../../glossary/evade/"><strong>Рейтинг уклонения</strong></a></td>
+<td>Рейтинг уклонения даёт шанс полностью избежать <del>хита вместе с уроном</del> → <ins>попадания</ins>, <del>стаггером</del> → <ins>включая его урон</ins>, <del>отталкиванием</del> → <ins>оглушение, отбрасывание</ins> и <del>недугом</del> → <ins>недуг</ins>. Шанс сравнивает рейтинг уклонения с точностью атакующего и <ins>достигает 100% при рейтинге в 3 от точности. Каждое уклонение от одного и того же атакующего оставляет 80% шанса против него, пока он </ins>не <del>превышает</del> → <ins>проведёт</ins> <del>75%;</del> → <ins>8</ins> <del>накопитель вероятности сглаживает последовательность</del> → <ins>без</ins> попаданий <del>и</del> → <ins>(30</ins> <del>уклонений</del> → <ins>для босса)</ins>. <del>Периодический</del> → <ins>Каждое</ins> <del>урон</del> → <ins>уклонение стоит 18% максимальной выносливости; без этой выносливости удар проходит. От длительного урона</ins>, <del>опасная</del> → <ins>постоянной</ins> <del>земля</del> → <ins>опасной земли</ins> и <del>урон</del> → <ins>урона</ins> окружения <del>не</del> → <ins>уклониться</ins> <del>уклоняются</del> → <ins>нельзя</ins>; успешное пассивное уклонение <del>вызывает</del> → <ins>срабатывает</ins> <del>событие</del> → <ins>как</ins> <del>On</del> → <ins>«при</ins> <del>Evade</del> → <ins>уклонении»</ins>, <del>отдельное</del> → <ins>независимо</ins> от ручного <del>кувырка</del> → <ins>переката</ins>.</td>
+</tr>
+<tr>
+<td><a href="../../glossary/endurance/"><strong>Стойкость</strong></a></td>
+<td>Пока здоровье ниже порога стойкости, часть <del>каждого</del> → <ins>любого</ins> <del>удара</del> → <ins>входящего урона (и ударов, и периодического)</ins>, приходящаяся ниже порога, уменьшается: 20% в базе, не больше 75%. Порог считается в очках здоровья. С Рунным бастионом вместо здоровья проверяется рунный щит.</td>
+</tr>
+<tr>
+<td><a href="../../glossary/strike/"><strong>Страйк</strong></a></td>
+<td><del>Взмах</del> → <ins>Вертикальный взмах</ins> оружием ближнего боя<del>:</del> → <ins>,</ins> <del>горизонтальная</del> → <ins>основной</ins> или <del>вертикальная атака оружия ближнего боя, основная или альтернативная</del> → <ins>альтернативный</ins>. <del>Слэмы</del> → <ins>Горизонтальные взмахи и слэмы</ins> - не страйки, а страйк скипетра - его <del>Кара</del> → <ins>Смайт</ins>. К этим ударам применяются <del>прибавки</del> → <ins>бонусы</ins> <del>к страйкам</del> → <ins>страйков</ins>, копии страйков и Критическое эхо.</td>
+</tr>
+<tr>
+<td><a href="../../glossary/lightning-damage/"><strong>Урон молнией</strong></a></td>
+<td>Стихийный урон, заполняющий шкалу шока. <del>Шок</del> → <ins>Шокированная</ins> <del>усиливает</del> → <ins>цель</ins> <del>накопление</del> → <ins>несколько</ins> <del>оглушения</del> → <ins>секунд</ins> <del>без</del> → <ins>получает</ins> <del>дополнительного</del> → <ins>больше</ins> урона <del>здоровью</del> → <ins>и быстрее копит оглушение</ins>.</td>
+</tr>
+<tr>
+<td><a href="../../glossary/ailment-damage/"><strong>Урон недугов</strong></a></td>
+<td>Усиливает периодический урон кровотечения, горения и отравления<ins> отдельно от урона удара, который их вызвал</ins>. Не действует на охлаждение<ins>.</ins> <del>и</del> → <ins>Старые</ins> <del>шок,</del> → <ins>бонусы</ins> <del>которые</del> → <ins>к</ins> <del>не</del> → <ins>урону</ins> <del>наносят</del> → <ins>шока</ins> <del>урон</del> → <ins>теперь</ins> <del>здоровью</del> → <ins>работают как эффект шока</ins>.</td>
+</tr>
+<tr>
+<td><a href="../../glossary/shock/"><strong>Шок</strong></a></td>
+<td>Урон молнией заполняет шкалу шока. <del>Шок</del> → <ins>Когда</ins> <del>усиливает</del> → <ins>она</ins> <del>накопление</del> → <ins>полна,</ins> <del>оглушения</del> → <ins>цель</ins> <del>без</del> → <ins>шокирована</ins> <del>дополнительного</del> → <ins>на 3 с: она получает больше</ins> урона <del>здоровью;</del> → <ins>от</ins> <del>мгновенное</del> → <ins>любых источников и быстрее копит</ins> оглушение <del>—</del> → <ins>-</ins> <del>отдельный</del> → <ins>и</ins> <del>шанс</del> → <ins>то и другое на силу шока</ins>.<ins> Сила зависит от урона молнией сильнейшего удара в накоплении до защиты цели по сравнению с порогом недуга цели: удар в 1% порога шокирует примерно на 8%. Слабее 5% шок не накладывается и не бывает сильнее 50%. Эффект шока делает его сильнее, длительность недугов - дольше. На цели действует только сильнейший шок, а слабый его не обновляет. Шок - не оглушение и сам урона не наносит.</ins></td>
+</tr>
+</tbody>
+</table>
+<h3 id="8">Новое (8)<a class="headerlink" href="#8" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Название</th>
+<th>Изменение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../../glossary/burning-ground/"><strong>Горящая земля</strong></a></td>
+<td><ins>Наносит длительный урон огнём и накапливает горение своим явным каналом недуга. Заклинания создают её при попадании в землю, если у вас есть соответствующий источник. Одинаковая земля при наложении не складывается.</ins></td>
+</tr>
+<tr>
+<td><a href="../../glossary/shocked-ground/"><strong>Заряженная земля</strong></a></td>
+<td><ins>Наносит длительный урон молнией и накапливает шок. Сила шока берётся от мощности источника и не зависит от частоты тиков. Одинаковая земля при наложении не складывается.</ins></td>
+</tr>
+<tr>
+<td><a href="../../glossary/damage-over-time-multiplier/"><strong>Множитель длительного урона</strong></a></td>
+<td><ins>Подходящие общие и типовые бонусы к множителю длительного урона складываются и образуют один множитель. +20% общего и +15% огненного дают длительному урону огнём ×1,35. Это отдельно от повышения урона и не повторяет модификаторы урона исходного удара.</ins></td>
+</tr>
+<tr>
+<td><a href="../../glossary/infusion/"><strong>Насыщение</strong></a></td>
+<td><ins>Поглощение своей земли посохом уменьшает участок и копит насыщение того же вида. Следующее подходящее атакующее заклинание, применённое вручную, однажды расходует накопленное насыщение. Добавленный им урон делится между снарядами и повторами каста; обычный урон заклинания не делится. Естественное исчезновение земли насыщения не даёт. Поглощение не может раз за разом собирать перекрытую площадь или возвращать своё потраченное насыщение с выгодой.</ins></td>
+</tr>
+<tr>
+<td><a href="../../glossary/chilled-ground/"><strong>Стылая земля</strong></a></td>
+<td><ins>Наносит длительный урон холодом и накапливает обморожение. На ней скользят все стоящие на земле, включая создателя и союзников. Скольжение меняет сцепление и торможение, а не скорость передвижения. Одинаковая земля при наложении не складывается.</ins></td>
+</tr>
+<tr>
+<td><a href="../../glossary/effective-range/"><strong>Эффективная дальность</strong></a></td>
+<td><ins>Выстрелы из лука и арбалета наносят полный урон только в пределах своей эффективной дальности - чуть дальше расстояния ближнего боя. Дальше урон падает с расстоянием до цели, вплоть до пятой части на пятикратном расстоянии. Увеличенная эффективная дальность отодвигает обе границы дальше.</ins></td>
+</tr>
+<tr>
+<td><a href="../../glossary/ground-effects/"><strong>Эффекты земли</strong></a></td>
+<td><ins>Эффекты земли занимают отдельные участки. Базовый предел - 1 участок на все виды; общий предел умений и предел земли его повышают. Каждый снаряд может создать участок: три снаряда при пределе 3 оставят три участка. На пределе новый участок заменяет самый старый. Одинаковые эффекты в местах наложения не складываются. Урон землёй - длительный урон, а не попадание и не аура.</ins></td>
+</tr>
+<tr>
+<td><a href="../../glossary/poisoned-ground/"><strong>Ядовитая земля</strong></a></td>
+<td><ins>Наносит длительный урон ядом и накапливает отравление своим явным каналом недуга. Яд - отдельный вид урона. Одинаковая земля при наложении не складывается.</ins></td>
+</tr>
+</tbody>
+</table>
+<p><small>Данные из Path of Valheiman 5.3.6, извлечены 2026-10-27.</small></p>
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
+  К началу
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Нижний колонтитул" >
+        
+          
+          <a href="../5.3.1/" class="md-footer__link md-footer__link--prev" aria-label="Назад: Патч 5.3.1">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Назад
+              </span>
+              <div class="md-ellipsis">
+                Патч 5.3.1
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../5.2.1/" class="md-footer__link md-footer__link--next" aria-label="Вперед: Патч 5.2.1">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Вперед
+              </span>
+              <div class="md-ellipsis">
+                Патч 5.2.1
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog" role="status" aria-atomic="true">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      
+      
+        
+        
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.tabs","navigation.top","navigation.tracking","search.highlight"],"redirect":null,"search":"../../assets/javascripts/workers/search.c47bb847.min.js","tags":null,"translations":{"clipboard.copied":"Скопировано в буфер","clipboard.copy":"Копировать в буфер","clipboard.error":"Could not copy to clipboard","search.result.more.one":"Ещё 1 на этой странице","search.result.more.other":"Ещё # на этой странице","search.result.none":"Совпадений не найдено","search.result.one":"Найдено 1 совпадение","search.result.other":"Найдено совпадений: #","search.result.placeholder":"Начните печатать для поиска","search.result.term.missing":"Отсутствует","select.version":"Выберите версию"},"version":null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.a2388154.min.js"></script>
+      
+        <script src="../../javascripts/tree.js?v=fb1a5c629c"></script>
+      
+        <script src="../../javascripts/search-boost.js?v=2d19aeaf0a"></script>
+      
+        <script src="../../javascripts/mobile-nav.js?v=f4f597eea1"></script>
+      
+        <script src="../../javascripts/ascension.js?v=e621c80fd8"></script>
+      
+    
+  </body>
+</html>

@@ -360,6 +360,7 @@ def _evasion(ctx, page, v):
                           star=_pct(t["evasion.accuracy.per-star"])))
             + _formula(ui("formula.evasion.chance", ratio=_n(t["evasion.full-ratio"]), cap=_pct(t["evasion.cap"])))
             + [ui("formula.evasion.regen", unbroken=_granted(ctx, "UninterruptedEvasion", page)), ""]
+            + [ui("formula.evasion.avoided"), ""]
             + [ui("formula.evasion.cost", min=_pct(t["evasion.stamina-cost-min"]), max=_pct(t["evasion.stamina-cost"]),
                   low=_pct(t["evasion.cost-low-hit"]), full=_n(t["evasion.cost-full-hit"])), ""]
             + [ui("formula.evasion.notes", decay=_pct(t["evasion.decay"]), reset=_n(t["evasion.decay-reset"]),
@@ -562,7 +563,8 @@ def _summon_strength(ctx, page, v):
     md += _formula(ui("formula.summon-strength.formula"))
     return md + [ui("formula.summon-strength.terms", stages=_anchor("creature-strength", page),
                     quality=_pct(v["quality_health"])), "",
-                 ui("formula.summon-strength.ascended", asc=_anchor("ascension", page)), ""]
+                 ui("formula.summon-strength.ascended", asc=_anchor("ascension", page)), "",
+                 ui("formula.summon-strength.roots"), ""]
 
 
 def _minion_bonuses(ctx, page, v):
@@ -708,7 +710,7 @@ def _ailments(ctx, page, v):
     for a in _AILMENTS:
         first, *rest = _ail_effect(ctx, page, v, a)
         md += [f"- {_term(ctx, a, page, start=True)}: {first}"] + [f"    {line}" if line else "" for line in rest]
-    return md + [""] + _ail_damaging(ctx)
+    return md + [""] + _ail_damaging(ctx) + [ui("formula.ailments.doom", doom=_granted(ctx, "CritMultiplierAsDot", page)), ""]
 
 
 def _ailment_view(ailment: str):
@@ -820,7 +822,7 @@ def _slams(ctx, page, v):
     ui, t = ctx.loc.ui, ctx.loc.difficulty.get("tunables", {})
     return [ui("formula.slams.text", slam=_term(ctx, "slam", page, start=True), ground=_mastery_link(ctx, "MasterySlam1", page),
                radius=_n(t["slam.ground-radius"]), area=_term(ctx, "area", page)), "",
-            ui("formula.slams.blunt"), "",
+            ui("formula.slams.blunt", fold=_pct(t["slam.cutting-to-blunt"])), "",
             ui("formula.slams.aftershock", aftershock=_term(ctx, "aftershock", page, start=True), delay=_n(t["aftershock.delay"])), "",
             ui("formula.slams.push"), "",
             ui("formula.slams.thrown", radius=_n(t["slam.ground-radius"]), pct=_pct(t["throw.slam-damage"]),
@@ -1012,7 +1014,8 @@ def _hit_order(ctx, page, v):
     made = [ui("formula.hit-order.base", factor=_term(ctx, "skill-factor", page)),
             ui("formula.hit-order.oil", oil=_term(ctx, "oil", page)),
             ui("formula.hit-order.flat", flat=part("flat")),
-            ui("formula.hit-order.conversion", conversion=part("conversion"), gain=_term(ctx, "gain-as-extra", page), slams=sec("slams")),
+            ui("formula.hit-order.conversion", conversion=part("conversion"), gain=_term(ctx, "gain-as-extra", page), slams=sec("slams"),
+               fold=_pct(ctx.loc.difficulty.get("tunables", {})["slam.cutting-to-blunt"])),
             ui("formula.hit-order.increases", increases=part("increases")),
             ui("formula.hit-order.ammo"),
             ui("formula.hit-order.more", more=part("more"), rage=_term(ctx, "rage", page)),

@@ -1,0 +1,66 @@
+{
+ "changes": {
+  "mods": {
+   "tree.extrabolts.w": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(1–2) loaded bolts",
+      "T4 (item level 19–76, weight 700): +(2–3) loaded bolts",
+      "T3 (item level 43–129, weight 400): +(3–4) loaded bolts",
+      "T2 (item level 77–∞, weight 180): +(4–6) loaded bolts",
+      "T1 (item level 130–∞, weight 60): +(6–8) loaded bolts",
+      "T0 (item level 1–∞, weight 0): +(9–12) loaded bolts"
+     ],
+     "link": "items/mod/tree.extrabolts.w.md",
+     "name": "+# loaded bolts"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "T3 (item level 43–129, weight 400): +1 bolts fired per crossbow shot",
+      "T2 (item level 77–∞, weight 180): +(1–2) bolts fired per crossbow shot",
+      "T1 (item level 130–∞, weight 60): +2 bolts fired per crossbow shot",
+      "T0 (item level 1–∞, weight 0): +3 bolts fired per crossbow shot"
+     ],
+     "link": "items/mod/tree.extrabolts.w.md",
+     "name": "+# bolts fired per crossbow shot"
+    }
+   },
+   "weapon.crossbow-extra-projectile-chance": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(10–16)% crossbow additional projectile chance",
+      "T4 (item level 19–76, weight 700): +(18–24)% crossbow additional projectile chance",
+      "T3 (item level 43–129, weight 400): +(26–34)% crossbow additional projectile chance",
+      "T2 (item level 77–∞, weight 180): +(36–44)% crossbow additional projectile chance",
+      "T1 (item level 130–∞, weight 60): +(46–56)% crossbow additional projectile chance"
+     ],
+     "link": "items/mod/weapon.crossbow-extra-projectile-chance.md",
+     "name": "+#% crossbow additional projectile chance"
+    },
+    "old": null
+   },
+   "weapon.crossbow-fire-rate": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 1–42, weight 1000): +(5–8)% crossbow fire rate",
+      "T4 (item level 19–76, weight 700): +(9–12)% crossbow fire rate",
+      "T3 (item level 43–129, weight 400): +(13–17)% crossbow fire rate",
+      "T2 (item level 77–∞, weight 180): +(18–22)% crossbow fire rate",
+      "T1 (item level 130–∞, weight 60): +(23–28)% crossbow fire rate",
+      "T0 (item level 1–∞, weight 0): +(30–36)% crossbow fire rate"
+     ],
+     "link": "items/mod/weapon.crossbow-fire-rate.md",
+     "name": "+#% crossbow fire rate"
+    },
+    "old": null
+   }
+  }
+ },
+ "date": "2026-10-27",
+ "from": "5.3.4",
+ "to": "5.3.5"
+}

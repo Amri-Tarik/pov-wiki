@@ -231,6 +231,11 @@ def _buildings(ctx: Ctx) -> dict[str, dict]:
     return out
 
 
+# The author's notes in a tunable's title, like "(owner 27.10.2026, t1907: three times fewer ticks)":
+# a bracketed part with a date in it. Not the game's own wording; left out.
+_NOTE = re.compile(r"\s*\([^()]*\b\d{1,2}\.\d{1,2}\.\d{4}\b[^()]*\)")
+
+
 def _values(ctx: Ctx) -> dict[str, dict]:
     """The mod's tunables (Tunables.All): the constants its formulas use, by default. Named by the
     game's own title, or this language's name for it (ui "knob.<id>") when there is one."""
@@ -240,7 +245,7 @@ def _values(ctx: Ctx) -> dict[str, dict]:
     for k, v in ((ctx.loc.difficulty or {}).get("knobs") or {}).items():
         name = ctx.loc.ui(f"knob.{k}")
         value = _pct(v["value"]) if v["pct"] else " ".join(filter(None, (_n(v["value"], 3), v["unit"])))
-        out[k] = _entry(v["title"] if name == f"knob.{k}" else name, [value])
+        out[k] = _entry(_NOTE.sub("", v["title"]).strip() if name == f"knob.{k}" else name, [value])
     return out
 
 

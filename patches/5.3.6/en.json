@@ -1,0 +1,357 @@
+{
+ "changes": {
+  "keywords": {
+   "immobilize": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "An immobilized enemy cannot move for a short time (2 s at base). It is applied by chance on hit: from the tree, and natively by Ashlands nature weapons. It is a status of its own, not an ailment: ailment rows do not affect it. Duration rows with the immobilize chip lengthen it; many rows are stronger against immobilized enemies."
+     ],
+     "link": "glossary/immobilize.md",
+     "name": "Immobilize"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "An immobilized enemy cannot move for a short time (2 s at base). It is applied by chance on hit: from the tree, and natively by Ashlands nature weapons. Duration rows with the immobilize chip lengthen it; many rows are stronger against immobilized enemies."
+     ],
+     "link": "glossary/immobilize.md",
+     "name": "Immobilize"
+    }
+   },
+   "slam": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "An area attack against the ground. Half of its slashing and piercing damage is dealt as blunt instead, and the other half is lost; blunt, elemental and all other damage is dealt in full. Sledges’ ground attacks and alternatives turned into slams gain slam bonuses and aftershocks, are not strikes and never split damage between targets."
+     ],
+     "link": "glossary/slam.md",
+     "name": "Slam"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "An area attack against the ground using blunt damage as its basis. Damage converted into blunt contributes and elemental conversion from that basis remains effective; raw non-blunt damage, slashing and piercing cannot be dealt by a slam. Sledges’ ground attacks and alternatives turned into slams gain slam bonuses and aftershocks, are not strikes and never split damage between targets."
+     ],
+     "link": "glossary/slam.md",
+     "name": "Slam"
+    }
+   },
+   "two-handed": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "A single weapon that occupies both hands. It cannot be used with a shield and is separate from dual-wield weapons. Bows and crossbows count as two-handed weapons; staves do not."
+     ],
+     "link": "glossary/two-handed.md",
+     "name": "Two-handed weapons"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "A single weapon that occupies both hands. It cannot be used with a shield and is separate from dual-wield weapons."
+     ],
+     "link": "glossary/two-handed.md",
+     "name": "Two-handed weapons"
+    }
+   }
+  },
+  "passives": {
+   "own10203": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased two-handed damage in melee",
+      "2% increased two-handed attack speed in melee"
+     ],
+     "link": "passives/tree/#own10203",
+     "name": "Two-Handed Melee Weapons"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased two-handed damage",
+      "2% increased two-handed attack speed"
+     ],
+     "link": "passives/tree/#own10203",
+     "name": "Two-Handed Melee Weapons"
+    }
+   },
+   "own10209": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased two-handed damage in melee"
+     ],
+     "link": "passives/tree/#own10209",
+     "name": "Two-Handed Melee Weapons"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased two-handed damage"
+     ],
+     "link": "passives/tree/#own10209",
+     "name": "Two-Handed Melee Weapons"
+    }
+   },
+   "own10215": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased two-handed damage in melee",
+      "2% increased two-handed attack speed in melee"
+     ],
+     "link": "passives/tree/#own10215",
+     "name": "Two-Handed Melee Weapons"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "6% increased two-handed damage",
+      "2% increased two-handed attack speed"
+     ],
+     "link": "passives/tree/#own10215",
+     "name": "Two-Handed Melee Weapons"
+    }
+   },
+   "own11501": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "20% increased food nourishment eitr",
+      "+1.25 rune shield per 50 points of eitr from food",
+      "2.5% increased poison damage per 15 points of eitr from food",
+      "Undying Meal: Food retains 100% of its resource bonuses until it expires; Food retains its full bonuses until it expires",
+      "Other Food: Convert 30% of maximum health from active food to rune shield; Part of the health your active food gives becomes rune shield instead."
+     ],
+     "link": "passives/node/own11501.md",
+     "name": "Feast Beneath Runes"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "20% increased food nourishment eitr",
+      "+1.25 rune shield per 50 points of eitr from food",
+      "2.5% increased elemental damage per 15 points of eitr from food",
+      "Undying Meal: Food retains 100% of its resource bonuses until it expires; Food retains its full bonuses until it expires",
+      "Other Food: Convert 30% of maximum health from active food to rune shield; Part of the health your active food gives becomes rune shield instead."
+     ],
+     "link": "passives/node/own11501.md",
+     "name": "Feast Beneath Runes"
+    }
+   },
+   "own12155": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "12% increased two-handed critical strike chance in melee",
+      "+8% two-handed critical strike damage in melee"
+     ],
+     "link": "passives/tree/#own12155",
+     "name": "Two-Handed Melee Weapons"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "12% increased two-handed critical strike chance",
+      "+8% two-handed critical strike damage"
+     ],
+     "link": "passives/tree/#own12155",
+     "name": "Two-Handed Melee Weapons"
+    }
+   },
+   "own12161": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+8% two-handed critical strike damage in melee"
+     ],
+     "link": "passives/tree/#own12161",
+     "name": "Two-Handed Melee Weapons"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "+8% two-handed critical strike damage"
+     ],
+     "link": "passives/tree/#own12161",
+     "name": "Two-Handed Melee Weapons"
+    }
+   },
+   "own12173": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "12% increased two-handed critical strike chance in melee",
+      "+8% two-handed critical strike damage in melee"
+     ],
+     "link": "passives/tree/#own12173",
+     "name": "Two-Handed Melee Weapons"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "12% increased two-handed critical strike chance",
+      "+8% two-handed critical strike damage"
+     ],
+     "link": "passives/tree/#own12173",
+     "name": "Two-Handed Melee Weapons"
+    }
+   },
+   "own12185": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "12% increased two-handed critical strike chance in melee"
+     ],
+     "link": "passives/tree/#own12185",
+     "name": "Two-Handed Melee Weapons"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "12% increased two-handed critical strike chance"
+     ],
+     "link": "passives/tree/#own12185",
+     "name": "Two-Handed Melee Weapons"
+    }
+   },
+   "own13707": {
+    "new": {
+     "kind": "Keystone",
+     "lines": [
+      "+1 unarmed damage per 10 points of \"Strength\"",
+      "×0.8 fist attack speed"
+     ],
+     "link": "passives/node/own13707.md",
+     "name": "Giant's Blow"
+    },
+    "old": {
+     "kind": "Keystone",
+     "lines": [
+      "+1 unarmed damage per 10 points of \"Strength\"",
+      "×0.8 attack speed"
+     ],
+     "link": "passives/node/own13707.md",
+     "name": "Giant's Blow"
+    }
+   },
+   "own13713": {
+    "new": {
+     "kind": "Keystone",
+     "lines": [
+      "Critical strikes deal no extra damage. They still count as critical strikes and trigger critical effects.",
+      "The damage over time multiplier of ailments from critical hits equals the crit multiplier",
+      "Non-critical hits cannot inflict ailments"
+     ],
+     "link": "passives/node/own13713.md",
+     "name": "Deferred Doom"
+    },
+    "old": null
+   },
+   "own13780": {
+    "new": {
+     "kind": "Keystone",
+     "lines": [
+      "×2 shooting effective range when shooting",
+      "×0.5 bow draw and reload speed"
+     ],
+     "link": "passives/node/own13780.md",
+     "name": "Distant Horizon"
+    },
+    "old": {
+     "kind": "Keystone",
+     "lines": [
+      "×2 shooting effective range when shooting",
+      "×0.5 shooting damage"
+     ],
+     "link": "passives/node/own13780.md",
+     "name": "Distant Horizon"
+    }
+   }
+  },
+  "values": {
+   "blight.tick-share": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "33.33%"
+     ],
+     "link": null,
+     "name": "Blight Mist: share of rolled Blight Leeches (ticks) that stay leeches; the rest become the mist's common herald"
+    },
+    "old": null
+   },
+   "dome.rim-pass": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "1.5 m"
+     ],
+     "link": null,
+     "name": "Runic dome: a projectile from under the dome passes the shell only to a creature under the dome at most this far behind it (the rim band where the shell curves in)"
+    },
+    "old": null
+   },
+   "dungeon.reawaken-reach": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "10 m"
+     ],
+     "link": null,
+     "name": "Great Rune of Awakening used from the bag: the farthest a dungeon entrance may be (m)"
+    },
+    "old": null
+   },
+   "monolith-boss.spike-bleed": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "60%"
+     ],
+     "link": null,
+     "name": "Morgrim: bleeding build-up a landed stone spike adds, as a share of the struck player's maximum health"
+    },
+    "old": null
+   },
+   "slam.cutting-to-blunt": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "50%"
+     ],
+     "link": null,
+     "name": "Slams: share of slashing and piercing damage dealt as blunt instead (the rest of it is lost)"
+    },
+    "old": null
+   },
+   "summon.power-damage.PT_StaffRot": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "1 x"
+     ],
+     "link": null,
+     "name": "Rotstaff root: damage multiplier on top of its staff's biome"
+    },
+    "old": null
+   },
+   "summon.power-health.PT_StaffRot": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "1 x"
+     ],
+     "link": null,
+     "name": "Rotstaff root: health multiplier on top of its staff's biome"
+    },
+    "old": null
+   }
+  }
+ },
+ "date": "2026-10-27",
+ "from": "5.3.5",
+ "to": "5.3.6"
+}

@@ -47,8 +47,8 @@ anchors = [
     "PassiveTree/EnemyDifficulty.cs :: EnemyDifficulty.bossHealth",
     "PassiveTree/EnemyDifficulty.cs :: EnemyDifficulty.BossHealthFactor",
 ]
-fingerprint = "5b44b1475cc8"
-checked = "5.3.4"
+fingerprint = "d60d3bc34a07"
+checked = "5.3.6"
 
 [formula.values]
 tamed = 0.5
@@ -224,8 +224,8 @@ anchors = [
     "PassiveTree/WeaponAffixes.cs :: WeaponAffixes.ColumnStat",
     "PassiveTree/CriticalHits.cs :: CriticalHits.MagazineCritBonus",
 ]
-fingerprint = "d5aa28e6bb52"
-checked = "5.3.1"
+fingerprint = "92be8453b945"
+checked = "5.3.6"
 
 [formula.values]
 base = 1.5
@@ -252,6 +252,8 @@ ceiling = 1.0
 [[formula]]
 id = "evasion"
 anchors = [
+    "PassiveTree/IncomingHit.cs :: EvadeGate.Prefix",
+    "PassiveTree/IncomingHit.cs :: Gate.Prefix",
     "PassiveTree/Evasion.cs :: Evasion.AccuracyAt",
     "PassiveTree/Evasion.cs :: Evasion.Chance",
     "PassiveTree/Evasion.cs :: Evasion.Rating",
@@ -264,8 +266,8 @@ anchors = [
     "PassiveTree/Evasion.cs :: Evasion.IsHit",
     "PassiveTree/Evasion.cs :: Evasion.StaminaCost",
 ]
-fingerprint = "1f85eb1749fc"
-checked = "5.3.4"
+fingerprint = "2f0961c5bd35"
+checked = "5.3.6"
 
 [[formula]]
 id = "resistances"
@@ -473,8 +475,8 @@ anchors = [
     "PassiveTree/Tunables.cs :: \"phantom.interval\"",
     "PassiveTree/Tunables.cs :: \"phantom.delay\"",
 ]
-fingerprint = "96b311661d15"
-checked = "5.3.1"
+fingerprint = "4e77d7aaa8a5"
+checked = "5.3.6"
 
 [formula.values]
 max_pending = 96
@@ -509,6 +511,8 @@ full_points = 300
 [[formula]]
 id = "ailments"
 anchors = [
+    "PassiveTree/CritAilments.cs :: CritAilments.Rule",
+    "PassiveTree/CritAilments.cs :: CritAilments.Capture",
     "PassiveTree/AilmentGauges.cs :: AilmentGauges.Feed",
     "PassiveTree/AilmentGauges.cs :: AilmentGauges.Melt",
     "PassiveTree/AilmentGauges.cs :: AilmentGauges.Live",
@@ -560,8 +564,8 @@ anchors = [
     "PassiveTree/Combat.cs :: Combat.OpenWound",
     "PassiveTree/Combat.cs :: Combat.Wounded",
 ]
-fingerprint = "c6fae1ce4a76"
-checked = "5.3.0"
+fingerprint = "c54359e0e924"
+checked = "5.3.6"
 
 [formula.values]
 hold = 3
@@ -638,6 +642,7 @@ stagger_guard = 0.5
 [[formula]]
 id = "charged-attacks"
 anchors = [
+    "PassiveTree/Cooldowns.cs :: Cooldowns.Shorten",
     "PassiveTree/ChargedAttacks.cs :: ChargedAttacks.Increase",
     "PassiveTree/ChargedAttacks.cs :: ChargedAttacks.SharedFor",
     "PassiveTree/ChargedAttacks.cs :: ChargedAttacks.SourceCooldownOf",
@@ -666,8 +671,8 @@ anchors = [
     "PassiveTree/MovementOps.cs :: \"runDistance += Vector3.Distance\"",
     "PassiveTree/Tunables.cs :: \"movement.charge-distance\"",
 ]
-fingerprint = "9e41c6dc4762"
-checked = "5.2.0"
+fingerprint = "0b53f4e83a44"
+checked = "5.3.6"
 
 [formula.values]
 increase = 0.25
@@ -701,10 +706,13 @@ anchors = [
     "PassiveTree/ThrownImpact.cs :: ThrownImpact.Slam",
     "PassiveTree/Tunables.cs :: \"throw.slam-damage\"",
     "PassiveTree/Conversion.cs :: Conversion.Hit#3",
+    "PassiveTree/Slams.cs :: Slams.Fold",
+    "PassiveTree/Slams.cs :: Slams.FoldOne",
+    "PassiveTree/Tunables.cs :: \"slam.cutting-to-blunt\"",
     "PassiveTree/Slams.cs :: Slams.ExtraFlat",
 ]
-fingerprint = "fd546ab68ac1"
-checked = "5.3.4"
+fingerprint = "c9f3182f54a4"
+checked = "5.3.6"
 
 [[formula]]
 id = "block"
@@ -737,8 +745,8 @@ anchors = [
     "PassiveTree/Plugin.cs :: \"Glancing blow chance for everyone\"",
     "PassiveTree/Plugin.cs :: \"Glancing blow reduction\"",
 ]
-fingerprint = "27e63b72484a"
-checked = "5.3.4"
+fingerprint = "f2569593dc86"
+checked = "5.3.6"
 
 [formula.values]
 chance = 0.25
@@ -765,8 +773,8 @@ anchors = [
     "PassiveTree/Cooldowns.cs :: Cooldowns.Of",
     "PassiveTree/Tunables.cs :: \"thorns.contact-interval\"",
 ]
-fingerprint = "b49ef45ac154"
-checked = "5.3.4"
+fingerprint = "f7dc99695634"
+checked = "5.3.6"
 
 [formula.values]
 full_range = 3
@@ -804,8 +812,8 @@ anchors = [
     "PassiveTree/Tunables.cs :: \"impale.limit\"",
     "PassiveTree/Tunables.cs :: \"impale.window\"",
 ]
-fingerprint = "edabb1e0560a"
-checked = "5.3.4"
+fingerprint = "384aa5ef18b4"
+checked = "5.3.6"
 
 [formula.values]
 min_window = 0.5
@@ -835,8 +843,8 @@ anchors = [
     "PassiveTree/AilmentDamage.cs :: AilmentDamage.Component",
     "PassiveTree/XpSources.cs :: Character_Damage.Prefix",
 ]
-fingerprint = "14822ac3d79b"
-checked = "5.3.4"
+fingerprint = "35b9aad08d79"
+checked = "5.3.6"
 
 [formula.values]
 seconds = 8
@@ -881,8 +889,8 @@ anchors = [
     "PassiveTree/ProjectileMods.cs :: ProjectileMods.DamageInc",
     "PassiveTree/WeaponAffixes.cs :: WeaponAffixes.DamageBonus",
 ]
-fingerprint = "2582ced822a6"
-checked = "5.3.4"
+fingerprint = "34c2d9c73807"
+checked = "5.3.6"
 
 [formula.values]
 staggered = 0.15
@@ -898,8 +906,8 @@ anchors = [
     "valheim/Attack.cs :: Attack.ModifyDamage",
     "valheim/Character.cs :: Character.RPC_Damage",
 ]
-fingerprint = "19276052e95e"
-checked = "5.3.4"
+fingerprint = "88d7942c3cfa"
+checked = "5.3.6"
 
 [[formula]]
 id = "player-penetration"
@@ -990,12 +998,13 @@ anchors = [
     "PassiveTree/StarterStaves.cs :: StarterStaves.VanillaPower",
     "PassiveTree/StarterStaves.cs :: Vanilla_Gate.Prefix",
 ]
-fingerprint = "2237691989f9"
-checked = "5.3.1"
+fingerprint = "617740d6db31"
+checked = "5.3.6"
 
 [[formula]]
 id = "summon-strength"
 anchors = [
+    "PassiveTree/StarterStaves.cs :: StarterStaves.IsSown",
     "PassiveTree/EnemyDifficulty.cs :: EnemyDifficulty.Desired",
     "PassiveTree/EnemyDifficulty.cs :: EnemyDifficulty.Soften",
     "PassiveTree/EnemyDifficulty.cs :: EnemyDifficulty.Defaults",
@@ -1004,8 +1013,8 @@ anchors = [
     "PassiveTree/StarterStaves.cs :: StarterStaves.VanillaPower",
     "PassiveTree/CreatureBonuses.cs :: CreatureBonuses.HealthFactor",
 ]
-fingerprint = "33bf161edc24"
-checked = "5.3.2"
+fingerprint = "6a24ceea57ea"
+checked = "5.3.6"
 
 [formula.values]
 quality_health = 0.25
@@ -1036,8 +1045,8 @@ anchors = [
     "PassiveTree/Tunables.cs :: \"minion.guard-share\"",
     "PassiveTree/CreatureBonuses.cs :: CreatureBonuses.MinionChance",
 ]
-fingerprint = "f5acbcc8acad"
-checked = "5.3.4"
+fingerprint = "956bbb5fae7d"
+checked = "5.3.6"
 
 [formula.values]
 crit_chance = 0.05

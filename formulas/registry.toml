@@ -1436,3 +1436,134 @@ anchors = [
 ]
 fingerprint = "0380031b6cc5"
 checked = "6.0.0"
+
+[[formula]]
+id = "halls-board"
+anchors = [
+    "PassiveTree.Encounters.HallMaps/HallMapKnobs.cs :: HallMapKnobs.Knobs",
+    "PassiveTree.Encounters.HallMaps/HallMapKnobs.cs :: HallMapKnobs.RoomsFor",
+    "PassiveTree.Encounters.HallMaps/HallMapKnobs.cs :: HallMapKnobs.SizeFor",
+    "PassiveTree.Encounters.HallMaps/HallMapKnobs.cs :: HallMapKnobs.MinPathOf",
+    "PassiveTree.Encounters.HallMaps/HallMapKnobs.cs :: HallMapKnobs.MaxRooms",
+    "PassiveTree.Encounters.HallMaps/HallMapBoard.cs :: HallMapBoard.NewBoard#2",
+    "PassiveTree.Encounters.HallMaps/HallMapBoard.cs :: HallMapBoard.Carve",
+    "PassiveTree.Encounters.HallMaps/HallMapBoard.cs :: HallMapBoard.WhyNotPlace",
+    "PassiveTree.Encounters.HallMaps/HallMapBoard.cs :: HallMapBoard.Validate",
+    "PassiveTree.Encounters.HallMaps/HallMapServer.cs :: HallMapServer.NewBoardInto",
+    "PassiveTree.Encounters.HallMaps/HallMapServer.cs :: HallMapServer.Gate",
+    "PassiveTree.Encounters.HallMaps/HallMapServer.cs :: \"Vector3.Distance(((Component)allPlayer).transform.position, a.At) < 30f\"",
+    "PassiveTree.Encounters.HallMaps/HallMapItems.cs :: \"if (Item(odb, d.Id, Name(d)\"",
+]
+
+[formula.values]
+rooms_low = 5
+rooms_high = 30
+level_low = 19
+level_high = 181
+open = 0.55
+w_max = 8
+h_max = 8
+min_path = 4
+max_rooms = 24
+party_range = 30
+stack = 20
+
+[[formula]]
+id = "halls-fights"
+anchors = [
+    "PassiveTree.Encounters.HallMaps/HallMapRun.cs :: HallMapRun.Knobs",
+    "PassiveTree.Encounters.HallMaps/HallMapRun.cs :: HallMapRun.RoomNumber",
+    "PassiveTree.Encounters.HallMaps/HallMapRun.cs :: HallMapRun.StartFight",
+    "PassiveTree.Encounters.HallMaps/HallMapRun.cs :: HallMapRun.PartyIn",
+    "PassiveTree.Encounters.HallMaps/HallMapRun.cs :: HallMapRun.SpawnMob",
+    "PassiveTree.Encounters.Halls/HallsParty.cs :: HallsParty.Knobs",
+    "PassiveTree.Encounters.Halls/HallsParty.cs :: HallsParty.Grow",
+    "PassiveTree.Encounters.Halls/HallsParty.cs :: HallsParty.Count",
+    "PassiveTree.Encounters.Halls/HallsParty.cs :: HallsParty.Elites",
+    "PassiveTree.Encounters.Halls/HallsParty.cs :: HallsParty.Hp",
+]
+
+[formula.values]
+room_mobs = 28
+first_wave = 18
+cap = 32
+elites = 2
+party_count = 0.5
+elite_per = 2
+party_hp = 0.3
+party_boss_hp = 0.7
+elite_stars = 1
+elite_star_chance = 0.35
+boss_stars = 2
+
+[[formula]]
+id = "halls-ascension"
+anchors = [
+    "PassiveTree.Encounters.Halls/HallsPoints.cs :: HallsPoints.PerTier",
+    "PassiveTree.Encounters.Halls/HallsPoints.cs :: HallsPoints.Granted",
+    "PassiveTree.Encounters.Halls/HallsPoints.cs :: HallsPoints.Apply",
+    "PassiveTree.Encounters.Halls/HallsDefs.cs :: HallsDefs.TierOf",
+    "PassiveTree.Encounters.Halls/HallsDefs.cs :: \"halls.tier1\"",
+    "PassiveTree.Encounters.Halls/HallsDefs.cs :: \"halls.tier2\"",
+    "PassiveTree.Encounters.Halls/HallsDefs.cs :: \"halls.tier3\"",
+    "PassiveTree.Encounters.Halls/HallsDefs.cs :: \"halls.tier4\"",
+    "PassiveTree.Encounters.HallMaps/HallMapRun.cs :: HallMapRun.Tier",
+    "PassiveTree.Encounters.HallMaps/HallMapRun.cs :: HallMapRun.Victory",
+    "PassiveTree.Encounters.HallMaps/HallMapRun.cs :: HallMapRun.AltarAsk",
+    "PassiveTree.Encounters.HallMaps/HallMapWindow.cs :: HallMapWindow.PointsMark",
+]
+
+[formula.values]
+per_tier = 2
+tier_levels = [19, 77, 130, 181]
+
+[[formula]]
+id = "halls-merchant"
+anchors = [
+    "PassiveTree.Encounters.HallMaps/HallMapKnobs.cs :: HallMapKnobs.Knobs",
+    "PassiveTree.Encounters.HallMaps/HallMapShop.cs :: HallMapShop.Price",
+    "PassiveTree.Encounters.HallMaps/HallMapShop.cs :: HallMapShop.Period",
+    "PassiveTree.Encounters.HallMaps/HallMapShop.cs :: HallMapShop.Offerable",
+    "PassiveTree.Encounters.HallMaps/HallMapShop.cs :: HallMapShop.Make",
+    "PassiveTree.Encounters.HallMaps/HallMapShop.cs :: HallMapShop.Ensure",
+    "PassiveTree.Encounters.HallMaps/HallMapDefs.cs :: HallMapDefs.Obtainable",
+]
+
+[formula.values]
+count = 8
+days = 3
+prices = [40, 70, 110, 160, 220, 300, 400]
+
+[[formula]]
+id = "halls-room-drops"
+anchors = [
+    "PassiveTree.Loot/LootDrops.cs :: LootDrops.CurrencyHere",
+    "PassiveTree.Loot/LootDrops.cs :: LootDrops.CurrencyReward",
+    "PassiveTree.Loot/LootDrops.cs :: LootDrops.CurrencyOpen",
+    "PassiveTree.Loot/LootCatalog.cs :: CurrencyDef.From",
+    "PassiveTree.Encounters.HallMaps/HallMapDrops.cs :: HallMapDrops.RoomsBlockedAt",
+    "PassiveTree.Encounters.HallMaps/HallMapDefs.cs :: HallMapDefs.Build",
+]
+
+[[formula]]
+id = "halls-map-modifiers"
+anchors = [
+    "PassiveTree.Encounters.HallMaps/HallMapAffixes.cs :: HallMapAffixes.Runes",
+    "PassiveTree.Encounters.HallMaps/HallMapAffixes.cs :: HallMapAffixes.MagicMax",
+    "PassiveTree.Encounters.HallMaps/HallMapAffixes.cs :: HallMapAffixes.GradeOf",
+    "PassiveTree.Encounters.HallMaps/HallMapAffixes.cs :: HallMapAffixes.Fits",
+    "PassiveTree.Encounters.HallMaps/HallMapAffixes.cs :: HallMapAffixes.TierOpen",
+    "PassiveTree.Encounters.HallMaps/HallMapAffixes.cs :: HallMapAffixes.WhyNot",
+    "PassiveTree.Encounters.HallMaps/HallMapAffixes.cs :: HallMapAffixes.Apply",
+    "PassiveTree.Encounters.HallMaps/HallMapAffixes.cs :: HallMapAffixes.Add",
+    "PassiveTree.Encounters.HallMaps/HallMapAffixes.cs :: HallMapAffixes.TierW",
+    "PassiveTree.Encounters.HallMaps/HallMapAffixes.cs :: HallMapAffixes.Values",
+    "PassiveTree.Encounters.HallMaps/HallMapAffixes.cs :: HallMapAffixes.Round",
+    "PassiveTree.Encounters.HallMaps/HallMapServer.cs :: HallMapServer.Rune",
+    "PassiveTree.Encounters.HallMaps/HallMapWindow.cs :: \"string text = HallMapAffixes.WhyNot((string)rune2, s.Map, s.Phase);\"",
+]
+
+[formula.values]
+magic_max = 2
+max = 6
+last_floor = 0.8

@@ -1001,6 +1001,7 @@ def nav() -> list:
     Glossary term pages are reached from keyword links and search."""
     from .enchant_pages import ENCHANT_PAGE, SCROLLS_PAGE, enchant_built
     from .gear_pages import _GROUPS, group_path
+    from .halls_pages import NAV as HALLS_NAV
     from .patch_pages import INDEX, patch_path, versions
     from .weapon_pages import WEAPON_TYPES, weapon_path
 
@@ -1018,6 +1019,7 @@ def nav() -> list:
         ("monsters.title", [("monsters.mods", "monsters/mods.md"), ("bosses.title", "monsters/bosses.md"),
                             ("creatures.title", "monsters/creatures.md"), ("taming.title", "monsters/taming.md")]),
         ("ascendancy.title", "ascendancy/index.md"),
+        *([("halls.title", HALLS_NAV)] if HALLS_NAV else []),  # only when this version has the halls' maps
         ("formula.title", [("formula.creatures", "mechanics/creatures.md"), ("formula.experience_page", "mechanics/experience.md"),
                            ("formula.loot_page", "mechanics/loot.md"), ("formula.combat", "mechanics/combat.md"),
                            ("formula.summons_page", "mechanics/summons.md")]),

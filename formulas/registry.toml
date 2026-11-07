@@ -949,8 +949,8 @@ anchors = [
     "PassiveTree/MinionSacrifice.cs :: \"private const float Reach\"",
     "PassiveTree/MinionLife.cs :: MinionLife.Scale",
 ]
-fingerprint = "7659d61d4586"
-checked = "5.3.3"
+fingerprint = "f8f94b3aabbb"
+checked = "6.0.0"
 
 [formula.values]
 quality_health = 0.25
@@ -968,8 +968,8 @@ anchors = [
     "PassiveTree/MinionReserve.cs :: MinionReserve.Refresh",
     "PassiveTree/MinionLife.cs :: MinionLife.Keep",
 ]
-fingerprint = "a7d01a01a5e5"
-checked = "5.3.1"
+fingerprint = "bd124e4d1a15"
+checked = "6.0.0"
 
 [formula.values]
 quality_reserve = 0.15
@@ -985,8 +985,8 @@ anchors = [
     "PassiveTree/MinionLife.cs :: MinionLife.Expire",
     "PassiveTree/MinionLife.cs :: MinionLife.Keep",
 ]
-fingerprint = "4a00bb49501c"
-checked = "5.2.0"
+fingerprint = "4cf7e3ff4b5b"
+checked = "6.0.0"
 
 [[formula]]
 id = "vanilla-summons"
@@ -997,9 +997,13 @@ anchors = [
     "PassiveTree/StarterStaves.cs :: StarterStaves.ClaimVanilla",
     "PassiveTree/StarterStaves.cs :: StarterStaves.VanillaPower",
     "PassiveTree/StarterStaves.cs :: Vanilla_Gate.Prefix",
+    "PassiveTree/MinionLife.cs :: MinionLife.Scale",
 ]
-fingerprint = "617740d6db31"
-checked = "5.3.6"
+fingerprint = "a8fb6c9cf262"
+checked = "6.0.0"
+
+[formula.values]
+quality_health = 0.25
 
 [[formula]]
 id = "summon-strength"
@@ -1013,8 +1017,8 @@ anchors = [
     "PassiveTree/StarterStaves.cs :: StarterStaves.VanillaPower",
     "PassiveTree/CreatureBonuses.cs :: CreatureBonuses.HealthFactor",
 ]
-fingerprint = "6a24ceea57ea"
-checked = "5.3.6"
+fingerprint = "8583fdcacc40"
+checked = "6.0.0"
 
 [formula.values]
 quality_health = 0.25
@@ -1044,9 +1048,12 @@ anchors = [
     "PassiveTree/Tunables.cs :: \"minion.guard-seconds\"",
     "PassiveTree/Tunables.cs :: \"minion.guard-share\"",
     "PassiveTree/CreatureBonuses.cs :: CreatureBonuses.MinionChance",
+    "PassiveTree/CreatureBonuses.cs :: CreatureBonuses.DamageMore",
+    "PassiveTree/CreatureBonuses.cs :: CreatureBonuses.LowHealth",
+    "PassiveTree/CreatureBonuses.cs :: CreatureBonuses.MinionRegen",
 ]
-fingerprint = "956bbb5fae7d"
-checked = "5.3.6"
+fingerprint = "19d6d23a2aa6"
+checked = "6.0.0"
 
 [formula.values]
 crit_chance = 0.05
@@ -1061,6 +1068,7 @@ shield_delay = 3
 crit_base = 1.5
 seek = 10
 low = 0.35
+pet_resist_cap = 0.75
 
 [[formula]]
 id = "ally-kills"
@@ -1085,7 +1093,15 @@ anchors = [
     "PassiveTree/StarterStaves.cs :: StarterStaves.PerCast",
     "PassiveTree/CreatedTargets.cs :: CreatedTargets.Limit",
     "PassiveTree/Impale.cs :: Impale.LimitOf",
-    "PassiveTree/AllyLinks.cs :: \"public static int Limit =>\"",
+    "PassiveTree/AllyLinks.cs :: AllyLinks.Limit",
+    "PassiveTree/Ballista.cs :: Ballista.Limit",
+    "PassiveTree/Ballista.cs :: Ballista.Own",
+    "PassiveTree/Constructs.cs :: Constructs.Rows",
+    "PassiveTree/CreatedTargets.cs :: CreatedTargets.ChipOf",
+    "PassiveTree/CreatedTargets.cs :: CreatedTargets.NameOf",
+    "PassiveTree/DamagingAilments.cs :: DamagingAilments.PoisonLimit",
+    "PassiveTree/Tunables.cs :: \"ballista.limit\"",
+    "PassiveTree/Tunables.cs :: \"bell.limit\"",
     "PassiveTree/ChainLightning.cs :: ChainLightning.Targets",
     "PassiveTree/Tunables.cs :: \"spore.limit\"",
     "PassiveTree/Tunables.cs :: \"crystal.limit\"",
@@ -1093,12 +1109,13 @@ anchors = [
     "PassiveTree/Tunables.cs :: \"impale.limit\"",
     "PassiveTree/Tunables.cs :: \"chain.targets\"",
 ]
-fingerprint = "110ef7a7f5e9"
-checked = "5.2.1"
+fingerprint = "0fc59054f6c3"
+checked = "6.0.0"
 
 [formula.values]
 per_cast = 1
 links = 1
+bell_mod = "unique.bell-summon"
 
 [[formula]]
 id = "ranged-falloff"
@@ -1199,9 +1216,14 @@ anchors = [
     "PassiveTree.Loot/ItemBaseRolls.cs :: ItemBaseRolls.OneHandedAscension",
     "PassiveTree.Loot/ItemBaseRolls.cs :: ItemBaseRolls.Ascension",
     "PassiveTree.Loot/ItemBaseRolls.cs :: OwnDamage.Postfix",
+    "PassiveTree.Loot/ItemAscension.cs :: ItemAscension.Hands",
+    "PassiveTree.Loot/ItemAscension.cs :: ItemAscension.Slot",
+    "PassiveTree.Loot/ItemAscension.cs :: ItemAscension.LevelOnlyKind",
+    "PassiveTree.Loot/RuneActions.cs :: RuneActions.CanTarget",
+    "PassiveTree/Rarity.cs :: Rarity.CanHave",
 ]
-fingerprint = "0dccbf1d810a"
-checked = "5.3.4"
+fingerprint = "91da9ccd093c"
+checked = "6.0.0"
 
 [formula.values]
 min_damage = 5
@@ -1218,9 +1240,11 @@ anchors = [
     "PassiveTree.Loot/Disenchant.cs :: Disenchant.UniqueDivine",
     "PassiveTree.Loot/Disenchant.cs :: Disenchant.LegendaryDivine",
     "PassiveTree.Loot/Disenchant.cs :: Disenchant.DivinePrice",
+    "PassiveTree.Loot/Disenchant.cs :: Disenchant.Returns#2",
+    "PassiveTree/Tunables.cs :: \"disenchant.corrupted-share\"",
 ]
-fingerprint = "a7e68bd86c05"
-checked = "5.3.0"
+fingerprint = "922c94972088"
+checked = "6.0.0"
 
 [formula.values]
 chain = [
@@ -1235,24 +1259,26 @@ legendary_divine = 0.2
 divine_price = 2
 example_level = 100
 example_props = 6
+corrupted_dust = "PT_CorruptedAzuriteDust"
 
 [formula.values.tiers]
 T0 = 2.0
-T1 = 1.45
-T2 = 1.2
-T3 = 1.0
-T4 = 0.85
-T5 = 0.7
+T4 = 1.45
+T5 = 1.2
+T6 = 1.0
+T7 = 0.85
+T8 = 0.7
 
 [[formula]]
 id = "jewel-dismantling"
 anchors = [
     "PassiveTree.Loot/Disenchant.cs :: Disenchant.Returns",
+    "PassiveTree.Loot/Disenchant.cs :: Disenchant.Returns#2",
     "PassiveTree/CraftSalvage.cs :: CraftSalvage.DisenchantSeconds",
     "PassiveTree/CraftSalvage.cs :: CraftSalvage.DisenchantStep",
 ]
-fingerprint = "1811bcbb504c"
-checked = "5.3.0"
+fingerprint = "75f611c066f8"
+checked = "6.0.0"
 
 [formula.values]
 seconds = 0.5
@@ -1264,6 +1290,10 @@ anchors = [
     "PassiveTree/Permadeath.cs :: Permadeath.Decide",
     "PassiveTree/Permadeath.cs :: Permadeath.DestroyItems",
     "PassiveTree/Progress.cs :: Progress.PermadeathWipe",
+    "PassiveTree.Encounters.HallMaps/HallMapRunDeath.cs :: HallMapRunDeath.Spared",
+    "PassiveTree.Encounters.HallMaps/HallMapDrops.cs :: HallMapDrops.RoomsBlockedAt",
+    "PassiveTree/Permadeath.cs :: Permadeath.Unpunished",
+    "PassiveTree/XpSources.cs :: Skills_OnDeath.Prefix",
 ]
-fingerprint = "0faa3429152f"
-checked = "5.3.0"
+fingerprint = "215065d98faf"
+checked = "6.0.0"

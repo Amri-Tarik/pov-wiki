@@ -247,6 +247,9 @@ def _currency_page(ctx: Ctx, item: str, catalog: dict, uses: dict, found: dict) 
         from .pages import _keywords_section
 
         md += _keywords_section(ctx, page, [], [], SIGIL_KEYWORDS[item])
+    from .gem_pages import sigil_gems_section
+
+    md += sigil_gems_section(ctx, item, page)
     md += _mining_section(ctx, item, page, found)
     md += _made_section(ctx, item, page, found)
     md += _currency_drops(ctx, item, catalog)

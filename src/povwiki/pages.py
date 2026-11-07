@@ -844,6 +844,12 @@ def _related_pages(ctx: Ctx) -> dict[str, list[tuple[str, str, str]]]:
         if item in (ctx.loc.loot.get("items") or {}):
             found.update({k: found[k] + [(ctx.loc.loot["items"][item]["name"], currency_path(item), ctx.loc.ui("gear.group.Sigil"))]
                           for k in keys})
+    if ctx.loc.gems.get("gems"):  # the skill board's auras reserve eitr
+        from .gem_pages import BOARD_PAGE, INDEX_PAGE
+
+        found["aura"].append((ctx.loc.ui("gems.group.Aura"), INDEX_PAGE + "#aura", ctx.loc.ui("gems.title")))
+        found["eitr"].append((ctx.loc.ui("gems.eitr_title"), BOARD_PAGE + "#eitr", ctx.loc.ui("gems.title")))
+        found["skill"].append((ctx.loc.ui("gems.board"), BOARD_PAGE, ctx.loc.ui("gems.title")))
     rune = ctx.loc.items.get("PT_RuneOfResurrection")
     if rune and rune.get("mod"):  # brings a dead companion back
         found["companion"].append((rune["mod"]["shared"]["m_name"], "items/base/PT_RuneOfResurrection.md", ctx.loc.ui("items.bases")))
@@ -996,9 +1002,10 @@ GLOBAL = [page_glossary]
 TREES = [PASSIVES, CRAFTING]
 
 
-def nav() -> list:
+def nav(loc: Localizer | None = None) -> list:
     """Navigation: (ui title key, page path | children). Titles are translated per language.
-    Glossary term pages are reached from keyword links and search."""
+    Glossary term pages are reached from keyword links and search. With a language's data
+    (loc), sections the data version doesn't have are left out (skill gems before 6.0)."""
     from .enchant_pages import ENCHANT_PAGE, SCROLLS_PAGE, enchant_built
     from .gear_pages import _GROUPS, group_path
     from .halls_pages import NAV as HALLS_NAV
@@ -1015,7 +1022,9 @@ def nav() -> list:
                                             *((f"gear.group.{g}", group_path(g)) for g in _GROUPS)]),
                          ("gear.jewels", "items/jewels.md"), ("gear.uniques", "items/uniques.md"),
                          *([("enchant.title", [("enchant.all", ENCHANT_PAGE), ("enchant.scrolls_title", SCROLLS_PAGE)])]
-                           if enchant_built() else [])]),
+                           if enchant_built() else []),
+                         *([("gems.title", [("gems.all", "items/gems.md"), ("gems.board", "items/gems/board.md")])]
+                           if loc is None or loc.gems.get("gems") else [])]),
         ("monsters.title", [("monsters.mods", "monsters/mods.md"), ("bosses.title", "monsters/bosses.md"),
                             ("creatures.title", "monsters/creatures.md"), ("taming.title", "monsters/taming.md")]),
         ("ascendancy.title", "ascendancy/index.md"),

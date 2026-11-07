@@ -110,6 +110,7 @@ def render_tree(data, language: str, valheim: Path | None = None) -> dict:
     from .monsters import render_monsters
     from .classes import render_classes
     from .enchant import render_enchant
+    from .gems import render_gems
 
     return {
         "language": language, "revision": data.Revision, "errors": errors,
@@ -119,6 +120,8 @@ def render_tree(data, language: str, valheim: Path | None = None) -> dict:
         "veins": render_veins(errors), "difficulty": render_difficulty(errors), "wiki": render_wiki(errors),
         "classes": render_classes(icons, formatted, _unformatted, errors),
         "enchant": render_enchant(items, errors),
+        # After the wiki: it adds the board's terms to the in-game wiki (keys with ":"), kept apart.
+        "gems": render_gems(errors),
     }
 
 

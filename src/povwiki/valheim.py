@@ -32,7 +32,7 @@ from .paths import CACHE
 VALHEIM = CACHE / "valheim"
 
 
-FORMAT = 5  # bump when the extraction gains data, so older extractions are redone
+FORMAT = 6  # bump when the extraction gains data, so older extractions are redone
 
 
 def _format(out: Path) -> int | None:
@@ -197,7 +197,7 @@ def extract(data: Path, out: Path) -> Path:
                 "stationLevel": tree.get("m_minStationLevel", 1),
                 "resources": [
                     {"item": name_of(obj, r["m_resItem"]), "amount": r["m_amount"], "perLevel": r["m_amountPerLevel"],
-                     "recover": bool(r.get("m_recover", True))}
+                     "recover": bool(r.get("m_recover", True)), "upgrader": bool(r.get("m_upgraderResource", False))}
                     for r in tree["m_resources"] if r["m_resItem"].get("m_PathID")
                 ],
             })

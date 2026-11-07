@@ -17,7 +17,7 @@ import urllib.request
 import zipfile
 from pathlib import Path
 
-from .paths import CACHE, EXTRACTED
+from .paths import CACHE, EXTRACTED, RENDERED
 
 DEPS = CACHE / "deps"
 BEPINEX_PACK = "denikson-BepInExPack_Valheim-5.4.2351"
@@ -121,7 +121,7 @@ def render(version: str, languages: list[str] | None = None) -> Path:
     """Render game text with the mod's code: the published languages unless asked for others
     ("all" = every language the mod ships). Languages render in parallel, one process each:
     every process hosts its own .NET runtime, and they share nothing."""
-    out = EXTRACTED / version / "rendered"
+    out = EXTRACTED / version / RENDERED
     meta = json.loads((EXTRACTED / version / "extract.json").read_text(encoding="utf-8"))
     if languages == ["all"]:
         languages = mod_languages(version)

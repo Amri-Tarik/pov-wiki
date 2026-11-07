@@ -5,7 +5,7 @@ from dataclasses import dataclass
 from functools import cached_property
 from pathlib import Path
 
-from .paths import EXTRACTED
+from .paths import EXTRACTED, RENDERED
 
 
 def _version_key(v: str):
@@ -51,7 +51,7 @@ class GameData:
 
     def rendered(self, mod_language: str) -> dict:
         """Game text rendered by the mod's own code (`povwiki render`)."""
-        path = self.dir / "rendered" / f"{mod_language}.json"
+        path = self.dir / RENDERED / f"{mod_language}.json"
         if not path.exists():
             raise SystemExit(f"No rendered text for {mod_language}. Run `povwiki render` first.")
         return json.loads(path.read_text(encoding="utf-8"))

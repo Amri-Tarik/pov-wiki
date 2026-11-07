@@ -99,10 +99,16 @@ def _range_end(b: dict) -> int:
     return _range_start(b) + b.get("recommendedBand", b.get("band", 0))
 
 
+def _halls(ctx) -> str:
+    """The Halls of Oaths, by the mod's own name for them (6.0)."""
+    return ctx.loc.text("@enc.halls.name", "")
+
+
 def _level(ctx, page, v):
     ui = ctx.loc.ui
     rows = [[_biome(ctx, b), str(b["level"]), str(_range_end(b))] for b in _area_biomes(ctx)]
-    return ([ui("formula.creature-level.text", falloff=_anchor("experience-falloff", page)), "", ui("formula.creature-level.blight"), ""]
+    return ([ui("formula.creature-level.text", falloff=_anchor("experience-falloff", page)), "",
+             ui("formula.creature-level.arena", halls=_halls(ctx)), "", ui("formula.creature-level.blight"), ""]
             + _table([ui("bosses.biome"), ui("formula.level"), ui("formula.creature-level.full_col")], rows))
 
 
@@ -111,30 +117,27 @@ def _item_level(ctx, page, v):
     from .gear_pages import UNIQUES_PAGE
 
     ui = ctx.loc.ui
+    glyph = ctx.loc.text("@item.PT_GlyphAscension.name", "")  # runic crafting (ItemMarks.Level, 6.0)
+    deep_north = next((b["level"] for b in _area_biomes(ctx) if b["id"] == "DeepNorth"), 0)
     return ([ui("formula.item-level.text", areas=_anchor("creature-level", page)), "",
              ui("formula.item-level.crafted", bases=rel(BASES_PAGE, page)), ""]
-            + _idols(ctx)
+            + _stations(ctx, v)
+            + ([ui("formula.item-level.glyph", glyph=glyph, n=_n(v["glyph_levels"]), cap=deep_north), ""]
+               if glyph and v.get("glyph_levels") and deep_north else [])
             + [ui("formula.item-level.gates", mods=rel("items/mods.md", page), uniques=rel(UNIQUES_PAGE, page)), "",
                ui("formula.item-level.ascended", asc=_anchor("ascension", page)), ""])
 
 
-def _idols(ctx) -> list[str]:
-    """The level each upgrade idol counts as (CraftLevel.ByPrefix: Upgrader<tier>Weapon/Armor, by
-    the tier's biome since 5.1.2), from the levels the game gives them."""
-    from .base_pages import _item_name
-
-    items, by_level = ctx.loc.items, {b["level"]: b for b in _area_biomes(ctx)}
-    rows = []
-    for tier in range(10):
-        found = [p for p in (f"Upgrader{tier}Weapon", f"Upgrader{tier}Armor") if p in items]
-        if found:
-            level = items[found[0]]["craftLevel"]
-            biome = _biome(ctx, by_level[level]) if level in by_level else "—"
-            rows.append([" / ".join(_item_name(ctx, p) for p in found), biome, str(level)])
+def _stations(ctx, v) -> list[str]:
+    """The level a recipe's crafting station sets at the least (CraftLevel.stations, by the
+    station's name token: Valheim's "$piece_forge"...), with the biome's level."""
+    levels = {b["id"]: b["level"] for b in _area_biomes(ctx)}
+    rows = [[ctx.loc.vtext(token), ctx.loc.vkey(f"biome_{biome.lower()}", biome), str(levels.get(biome, "—"))]
+            for token, biome in (v.get("stations") or {}).items()]
     if not rows:
         return []
-    return [ctx.loc.ui("formula.item-level.idols"), ""] + _table(
-        [ctx.loc.ui("formula.item-level.idol_col"), ctx.loc.ui("bosses.biome"), ctx.loc.ui("formula.level")], rows)
+    return [ctx.loc.ui("formula.item-level.stations"), ""] + _table(
+        [ctx.loc.ui("formula.item-level.station_col"), ctx.loc.ui("bosses.biome"), ctx.loc.ui("formula.level")], rows)
 
 
 def _falloff(ctx, page, v):
@@ -181,7 +184,23 @@ def _player_levels(ctx, page, v):
                ui("formula.player-levels.death", death=_pct(v["death"]), term=_term(ctx, "death-xp", page)), ""])
 
 
+def _growth(ctx) -> list[str]:
+    """Where the biome factors grow by the same ratio each biome (EnemyDifficulty.Defaults, 6.0:
+    from the Plains on), with that ratio; nothing when they don't."""
+    d, stages = ctx.loc.difficulty, _stages(ctx)
+    health, damage = d["health"], d["damage"]
+    for start in range(1, len(health) - 2):  # at least three steps in a row
+        rh = [b / a for a, b in zip(health[start - 1:], health[start:])]
+        rd = [b / a for a, b in zip(damage[start - 1:], damage[start:])]
+        if max(rh) - min(rh) < 0.02 and max(rd) - min(rd) < 0.02 and min(rh) > 1.05:
+            return [ctx.loc.ui("formula.creature-strength.growth", biome=stages[start],
+                               h=_n(sum(rh) / len(rh)), d=_n(sum(rd) / len(rd))), ""]
+    return []
+
+
 def _strength(ctx, page, v):
+    from .monster_pages import MODS_PAGE
+
     ui, d = ctx.loc.ui, ctx.loc.difficulty
     rows = [[n, f"×{_n(h, 3)}", f"×{_n(dm, 3)}", f"×{_n(bh, 3)}", f"×{_n(bd, 3)}"]
             for n, h, dm, bh, bd in zip(_stages(ctx), d["health"], d["damage"], d["bossHealth"], d["bossDamage"])]
@@ -191,8 +210,9 @@ def _strength(ctx, page, v):
     return ([ui("formula.creature-strength.text"), ""]
             + _formula(ui("formula.creature-strength.health")) + _formula(ui("formula.creature-strength.damage"))
             + [ui("formula.creature-strength.terms", tamed=_pct(v["tamed"]), power=_anchor("monster-power", page),
-                  stars=_anchor("stars", page)), ""]
+                  stars=_anchor("stars", page), soul=_soul_eater(ctx), mods=rel(MODS_PAGE, page)), ""]
             + [f"### {ui('formula.stage_table')}", "", ui("formula.stage_note"), ""]
+            + _growth(ctx)
             + _table([ui("bosses.biome"), ui("formula.health"), ui("formula.damage"), ui("formula.boss_health"),
                       ui("formula.boss_damage")], rows)
             + [ui("formula.creature-strength.species", species=species), ""]
@@ -206,6 +226,11 @@ def _strength(ctx, page, v):
             + _formula(ui("formula.creature-strength.soften"))
             + _table([ui("formula.preset_col"), ui("formula.health_scale"), ui("formula.damage_scale"),
                       ui("formula.star_chance"), ui("formula.max_stars")], presets))
+
+
+def _soul_eater(ctx) -> str:
+    """The Soul Eater modifier's name (RarityMods3.SoulFactor, 6.0)."""
+    return next((m["name"] for m in ctx.loc.monsters.get("mods", []) if m["id"] == "souleater"), "Soul Eater")
 
 
 def _boss_step(ctx, page, v):
@@ -225,6 +250,7 @@ def _stars(ctx, page, v):
     odds = [["0", _pct(1 - p)], ["1", _pct(p * (1 - p))], ["2+", _pct(p * p)]]
     return ([ui("formula.stars.text", rarity=rel(MODS_PAGE, page)), ""]
             + _formula(ui("formula.stars.health", h=_n(v["health"]))) + _formula(ui("formula.stars.damage", d=_n(v["damage"])))
+            + [ui("formula.stars.stacking", h=_n(v["health"]), h2=_n(v["health"] ** 2), h5=_n(v["health"] ** 5), h8=_n(v["health"] ** 8)), ""]
             + [ui("formula.stars.chance", chance=_pct(p), above=_pct(v["above_two"]), mods=v["mods_per_star"],
                   home=v["home_max_level"] - 1), ""]
             + _table([ui("monsters.stars"), ui("formula.odds")], odds))
@@ -234,8 +260,10 @@ def _boss_stars(ctx, page, v):
     from .monster_pages import BOSSES_PAGE
 
     ui = ctx.loc.ui
+    cap = int((ctx.loc.difficulty.get("presets", {}).get("normal") or {}).get("MaxStars", 0))
     return ([ui("formula.boss-stars.text", chance=_pct(v["chance"]), two=_pct(v["two"]), bosses=rel(BOSSES_PAGE, page),
-                    max=_n(v["blood_max"])), ""]
+                    max=_n(v["blood_max"]), above=_pct(_values()["stars"]["above_two"]), cap=cap,
+                    stars=_anchor("stars", page)), ""]
             + _formula(ui("formula.boss-stars.health", h=_n(v["health"]))) + _formula(ui("formula.boss-stars.damage", d=_n(v["damage"])))
             + [ui("formula.boss-stars.notes", mods=v["mods_per_star"]), ""])
 
@@ -279,9 +307,9 @@ def _loot(ctx, page, v):
     return ([ui("formula.loot.text", quantity=_term(ctx, "item-quantity", page), rarity=_term(ctx, "item-rarity", page)), ""]
             + _formula(ui("formula.loot.quantity", star=_n(stars.get("quantityPerStar", 0)), mod=_n(v["per_modifier"])))
             + _formula(ui("formula.loot.rarity", star=_n(stars.get("rarityPerStar", 0))))
-            + [ui("formula.loot.notes"), ""]
+            + [ui("formula.loot.notes", cap=v["star_cap"], halls=_halls(ctx)), ""]
             + _womb(ctx, page, v)
-            + _loot_scale(ctx)
+            + _loot_scale(ctx, v)
             + [f"### {ui('formula.loot.sources')}", "", ui("formula.loot.sources_note"), ""]
             + _table([ui("gear.source_label"), ui("formula.loot.gear"), ui("formula.loot.currency"), ui("formula.loot.jewel")], sources)
             + [ui("formula.loot.gates"), ""]
@@ -296,25 +324,33 @@ def _womb(ctx, page, v) -> list[str]:
     from .gear_pages import unique_path
 
     item = (ctx.loc.gear.get("jewels") or {}).get("PT_Jewel_WombOfCorruption")
-    if not item or not v.get("womb_chance"):
+    # 6.0: the catalog's table for the "corrupted-kill" event (LootDrops.EventRewards).
+    table = next((t for t in ctx.data.loot.get("tables", []) if "corrupted-kill" in (t.get("events") or [])), None)
+    chance = table["chance"] * table.get("attempts", 1) if table else v.get("womb_chance")
+    if not item or not chance:
         return []
-    return [ctx.loc.ui("formula.loot.womb", chance=_pct(v["womb_chance"]), womb=item["name"],
+    return [ctx.loc.ui("formula.loot.womb", chance=_pct(chance), womb=item["name"],
                        link=rel(unique_path("PT_Jewel_WombOfCorruption"), page)), ""]
 
 
-def _loot_scale(ctx) -> list[str]:
-    """Difficulty presets with more stars than Normal (LootDifficulty.StarScale/Factor, 5.3.1)."""
+def _loot_scale(ctx, v) -> list[str]:
+    """Difficulty presets with more stars or creatures than the reference: Normal's stars at
+    density 1.2 (LootDifficulty.StarScale/Factor, 5.3.1; NormalDensity, which 6.0's Normal
+    density of 1.38 is above)."""
     ui, scale = ctx.loc.ui, ctx.loc.difficulty.get("lootScale") or {}
     if not scale:
         return []
     rows = [[ui(f"formula.preset.{k}"), _pct(s["star"]), _pct(s["quantity"])] for k, s in scale.items()]
-    return [ui("formula.loot.star_scale"), ""] + _table(
+    return [ui("formula.loot.star_scale", density=_n(v.get("reference_density", 1.2))), ""] + _table(
         [ui("formula.preset_col"), ui("formula.loot.star_share"), ui("formula.loot.quantity_share")], rows)
 
 
 def _vanilla_drops(ctx, page, v):
     ui = ctx.loc.ui
-    return ([ui("formula.vanilla-drops.text"), ""] + _formula(ui("formula.vanilla-drops.formula", s=_n(v["per_star"]), cap=v["cap"]))
+    return ([ui("formula.vanilla-drops.text"), ""]
+            + _formula(ui("formula.vanilla-drops.formula", cap=v["cap"]))
+            + [ui("formula.vanilla-drops.monolith"), ""]
+            + _formula(ui("formula.vanilla-drops.monolith_formula", s=_n(v["per_star"]), stars=v["star_cap"], cap=v["cap"]))
             + ([ui("formula.vanilla-drops.star_share", loot=_anchor("loot", page)), ""] if ctx.loc.difficulty.get("lootScale") else []))
 
 

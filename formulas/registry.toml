@@ -1689,6 +1689,8 @@ anchors = [
     "PassiveTree.Encounters/TreasureMapCache.cs :: TreasureMapCache.Eject",
     "PassiveTree.Encounters/EncounterLoot.cs :: EncounterLoot.Context",
 ]
+fingerprint = "cc1840721f8b"
+checked = "6.0.0"
 
 [formula.values]
 near = 250
@@ -1732,6 +1734,8 @@ anchors = [
     "PassiveTree.Encounters.Halls/HallsParty.cs :: HallsParty.ShipGuardians",
     "PassiveTree.Encounters.Halls/HallsDefs.cs :: \"Rune of the Open Gate: chance among the gifts of a burial ship\"",
 ]
+fingerprint = "6d294027e9f9"
+checked = "6.0.0"
 
 [formula.values]
 per_zone = 0.018
@@ -1750,64 +1754,47 @@ hazard_rarity = 0.25
 hazard_quantity = 0.15
 barrow_quantity = 0.3
 open_gate = 0.03
-coins = [15, 30]
+coins = [
+    15,
+    30,
+]
 coins_per = 40
+materials = [
+    { id = "Copper", level = 19, min = 6, max = 12 },
+    { id = "Tin", level = 19, min = 6, max = 12 },
+    { id = "Bronze", level = 19, min = 4, max = 8 },
+    { id = "Iron", level = 43, min = 4, max = 9 },
+    { id = "Silver", level = 77, min = 4, max = 8 },
+    { id = "BlackMetal", level = 97, min = 4, max = 8 },
+    { id = "Carapace", level = 130, min = 4, max = 9 },
+    { id = "FlametalNew", level = 181, min = 3, max = 6 },
+]
 
 [formula.values.rolls]
-warrior = [4, 6]
-guard = [4, 6]
-smith = [5, 8]
-runecarver = [4, 6]
-seafarer = [2, 4]
-jarl = [5, 7]
-
-[[formula.values.materials]]
-id = "Copper"
-level = 19
-min = 6
-max = 12
-
-[[formula.values.materials]]
-id = "Tin"
-level = 19
-min = 6
-max = 12
-
-[[formula.values.materials]]
-id = "Bronze"
-level = 19
-min = 4
-max = 8
-
-[[formula.values.materials]]
-id = "Iron"
-level = 43
-min = 4
-max = 9
-
-[[formula.values.materials]]
-id = "Silver"
-level = 77
-min = 4
-max = 8
-
-[[formula.values.materials]]
-id = "BlackMetal"
-level = 97
-min = 4
-max = 8
-
-[[formula.values.materials]]
-id = "Carapace"
-level = 130
-min = 4
-max = 9
-
-[[formula.values.materials]]
-id = "FlametalNew"
-level = 181
-min = 3
-max = 6
+warrior = [
+    4,
+    6,
+]
+guard = [
+    4,
+    6,
+]
+smith = [
+    5,
+    8,
+]
+runecarver = [
+    4,
+    6,
+]
+seafarer = [
+    2,
+    4,
+]
+jarl = [
+    5,
+    7,
+]
 
 [[formula]]
 id = "merchants"
@@ -1840,12 +1827,19 @@ anchors = [
     "PassiveTree.Encounters/Finds.cs :: Finds.Make",
     "PassiveTree.Encounters.HallMaps/HallMapShop.cs :: HallMapShop.ServerRenew",
 ]
+fingerprint = "96a87fa5ecc4"
+checked = "6.0.0"
 
 [formula.values]
 ragn_cell = 10
 ragn_chance = 0.25
 ragn_discover = 300
-ragn_odds = [0.5, 0.35, 0.145, 0.005]
+ragn_odds = [
+    0.5,
+    0.35,
+    0.145,
+    0.005,
+]
 ragn_open_gate = 0.02
 price_level = 0.04
 finds_min = 6

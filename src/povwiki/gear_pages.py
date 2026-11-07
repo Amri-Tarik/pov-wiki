@@ -253,6 +253,9 @@ def _currency_page(ctx: Ctx, item: str, catalog: dict, uses: dict, found: dict) 
     md += _essence_section(ctx, item, page)
     md += _ascension_line(ctx, item, page)
     md += _dismantling_line(ctx, item, page)
+    from .enchant_pages import enchant_section
+
+    md += enchant_section(ctx, item, page)
     used = sorted(set(uses.get(item, [])), key=lambda i: _item_name(ctx, i))
     ground = _ground_into(ctx, item, page, found)
     if used or ground:

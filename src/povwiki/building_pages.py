@@ -166,6 +166,9 @@ def _building_page(ctx: Ctx, b: dict, found: dict, unlocks: dict) -> str:
         md += _kiln_section(ctx, b, page, found)
     elif b["id"] == "PT_RuneCarverTable":
         md += _crafted_here(ctx, b, page, found)
+        from .enchant_pages import table_section
+
+        md += table_section(ctx, page)  # its Enchant tab (6.0)
     elif b["id"] == "PT_VacuumBox":
         r0, r1, r2 = b["radius"]
         md += [f"## {ui('buildings.how_it_works')}", ""]

@@ -190,11 +190,14 @@ def page_bosses(ctx: Ctx) -> dict[str, str]:
     # Valheim's bosses in biome order, then those that only have a loot table (Kall).
     order = list(biomes) + sorted(_boss_tables(ctx) - set(biomes) - set(mine))
     rows = []
+    from .enchant_pages import boss_scroll_link
+
     for prefab in order:
         anchor = f'<span id="{prefab.lower()}"></span>'
         biome = _biome_name(ctx, biomes[prefab]) if prefab in biomes else "—"
-        rows.append([_trophy(ctx, prefab, page, 40), f"{anchor}**{ctx.loc.creature(prefab)}**", biome,
-                     ", ".join(r[1] for r in _drops(ctx, prefab, page)) or "—"])
+        # Its Scroll of Ancient Will (EnchantLoot.BossDrop), one for each player nearby.
+        drops = [r[1] for r in _drops(ctx, prefab, page)] + [s for s in [boss_scroll_link(ctx, prefab, page)] if s]
+        rows.append([_trophy(ctx, prefab, page, 40), f"{anchor}**{ctx.loc.creature(prefab)}**", biome, ", ".join(drops) or "—"])
     md += _table(["", ui("col.name"), ui("bosses.biome"), ui("bosses.drops")], rows)
     pages[page] = "\n".join(md + _footer(ctx))
 

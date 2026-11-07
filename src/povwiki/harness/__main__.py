@@ -109,6 +109,7 @@ def render_tree(data, language: str, valheim: Path | None = None) -> dict:
     from .buildings import render_buildings, render_veins
     from .monsters import render_monsters
     from .classes import render_classes
+    from .enchant import render_enchant
 
     return {
         "language": language, "revision": data.Revision, "errors": errors,
@@ -117,6 +118,7 @@ def render_tree(data, language: str, valheim: Path | None = None) -> dict:
         "buildings": render_buildings(errors), "bosses": render_bosses(errors),
         "veins": render_veins(errors), "difficulty": render_difficulty(errors), "wiki": render_wiki(errors),
         "classes": render_classes(icons, formatted, _unformatted, errors),
+        "enchant": render_enchant(items, errors),
     }
 
 

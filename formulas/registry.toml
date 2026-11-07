@@ -1385,3 +1385,22 @@ anchors = [
 ]
 fingerprint = "0faa3429152f"
 checked = "5.3.0"
+
+[[formula]]
+id = "enchant-scrolls"
+anchors = [
+    "PassiveTree.RunicCraft/EnchantLoot.cs :: EnchantLoot.Chance",
+    "PassiveTree.RunicCraft/EnchantLoot.cs :: EnchantLoot.LevelOf",
+    "PassiveTree.RunicCraft/EnchantLoot.cs :: EnchantLoot.Roll",
+    "PassiveTree.RunicCraft/EnchantLoot.cs :: EnchantLoot.PerfectChance",
+    "PassiveTree.RunicCraft/EnchantLoot.cs :: EnchantLoot.PerfectFrom",
+    "PassiveTree.RunicCraft/EnchantLoot.cs :: EnchantLoot.BossDrop",
+    "PassiveTree.RunicCraft/EnchantLoot.cs :: EnchantLoot.BossRange",
+    "PassiveTree.RunicCraft/EnchantLoot.cs :: Death.Postfix",
+    "PassiveTree.RunicCraft/EnchantLoot.cs :: Pickup.Prefix",
+    "PassiveTree.RunicCraft/EnchantLoot.cs :: Use.Prefix",
+    "PassiveTree.RunicCraft/Enchants.cs :: Enchants.LearnTheme",
+    "PassiveTree.RunicCraft/GlyphLoot.cs :: GlyphLoot.Stage",
+    "PassiveTree.RunicCraft/Defs.cs :: Defs.Stage",
+    "PassiveTree.Loot/LootDrops.cs :: \"Reward reward6 = EnchantLoot.Roll(ctx, rng);\"",
+]

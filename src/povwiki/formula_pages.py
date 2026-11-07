@@ -440,20 +440,33 @@ def _strikes(ctx, page, v):
                ui("formula.strikes.double", double=_mastery_link(ctx, "StrikeCritDouble", page)), "",
                ui("formula.strikes.focus", focus=_mastery_link(ctx, "StrikeFocusFire", page), pct=_pct(t["strike.focus-damage"])), "",
                ui("formula.strikes.combo", combo=_term(ctx, "series", page, start=True)), "",
+               # Strikes.Eligible: a primary swing that Echoes.Claims (EchoThrusts for its weapon) makes no additional strikes.
+               ui("formula.strikes.echo", echo=ctx.loc.text("@stat.EchoThrusts.ability", "Echo Strikes")), "",
                ui("formula.strikes.smite", smite=f"[{ui('formula.smite.title')}]({_anchor('smite', page)})"), ""]
             + _attack_bases(ctx, page, "strike", "formula.strikes.bases"))
 
 
 def _smite(ctx, page, v):
     """The Sceptre of the Pious's Smite (Sceptres.Swing, Smite.Fire/Burst/Extra, SpellGround.Impact)."""
-    from .base_pages import base_path
+    from .base_pages import _item_name, base_path
+    from .gear_pages import unique_path
 
     ui, t = ctx.loc.ui, ctx.loc.difficulty.get("tunables", {})
     pious = ctx.loc.items.get("PT_SceptrePious") or {}
     name = (pious.get("mod") or {}).get("shared", {}).get("m_name", "PT_SceptrePious")
     link = f"[{name}]({rel(base_path('PT_SceptrePious'), page)})"
     strikes = f"[{ui('formula.strikes.title').lower()}]({_anchor('strikes', page)})"
-    return [ui("formula.smite.text", pious=link, eitr=_n(v["eitr"]), ahead=_n(v["ahead"])), "",
+    # Sceptres.Is / CastOnGround: a unique whose donor is the Pious swings and lands as the Pious.
+    uniques = [u["id"] for u in ctx.data.loot.get("uniqueGear") or [] if u.get("donor") == "PT_SceptrePious"]
+    shown = ctx.loc.gear.get("uniques") or {}
+
+    def uname(u: str) -> str:
+        n = _item_name(ctx, u)
+        return ctx.loc.text(f"@item.{u}.name", u) if n == u else n
+
+    names = [f"[{uname(u)}]({rel(unique_path(u), page)})" if u in shown else uname(u) for u in uniques]
+    more = ui("formula.smite.uniques", items=", ".join(names)) if names else ""
+    return [ui("formula.smite.text", pious=link, uniques=more, eitr=_n(v["eitr"]), ahead=_n(v["ahead"])), "",
             ui("formula.smite.burst", radius=_n(v["radius"]), area=_term(ctx, "area", page), spell=_term(ctx, "spells", page),
                strike=_term(ctx, "strike", page)), "",
             ui("formula.smite.extra", targets=ctx.loc.text("@stat.StrikeTargets.ability", "Strike targets").lower(), strikes=strikes,
@@ -462,7 +475,7 @@ def _smite(ctx, page, v):
             ui("formula.smite.double", double=_mastery_link(ctx, "StrikeCritDouble", page)), "",
             ui("formula.smite.combo", combo=_term(ctx, "series", page)), "",
             ui("formula.smite.ground", ground=_term(ctx, "ground-effects", page, start=True)), "",
-            ui("formula.smite.thrown"), ""]
+            ui("formula.smite.thrown", pious=link), ""]
 
 
 def _attack_bases(ctx, page, kind: str, key: str) -> list[str]:
@@ -763,10 +776,13 @@ def _charged(ctx, page, v):
     eligible weapon attack; its damage bonus, cooldowns, Unbound Charge and hit splash."""
     ui, t = ctx.loc.ui, ctx.loc.difficulty.get("tunables", {})
     return ([ui("formula.charged-attacks.text", charged=_term(ctx, "charged-attack", page, start=True),
-                spells=_mastery_link(ctx, "ChargeApplicability", page)), ""]
+                # ChargedAttacks.Eligible: spells need ChargeApplicability; nothing in the tree grants it, so its own name.
+                spells=_mastery_link(ctx, "ChargeApplicability", page) if _mastery(ctx, "ChargeApplicability")[1]
+                else ctx.loc.text("@stat.ChargeApplicability.ability", "Charged Casts")), ""]
             + _formula(ui("formula.charged-attacks.formula", inc=_pct(v["increase"])))
             + [ui("formula.charged-attacks.cooldown", source=_n(t["charge.source-cooldown"]), crit=_n(t["charge.source-cooldown.crit"]),
                   shared=_n(t["charge.cooldown"])), "",
+               ui("formula.charged-attacks.dash", dash=_granted(ctx, "FistDash", page)), "",
                *_charge_sources(ctx, page),
                ui("formula.charged-attacks.alt", only_alt=_mastery_link(ctx, "MasteryCharged1", page),
                   no_alt=_mastery_link(ctx, "MasteryAlternative2", page)), "",
@@ -827,7 +843,8 @@ def _slams(ctx, page, v):
             ui("formula.slams.push"), "",
             ui("formula.slams.thrown", radius=_n(t["slam.ground-radius"]), pct=_pct(t["throw.slam-damage"]),
                area=_term(ctx, "area", page), factor=_term(ctx, "skill-factor", page)), "",
-            ui("formula.slams.charged", charged=_term(ctx, "charged-attack", page), delay=_n(t["aftershock.delay"])), ""] \
+            ui("formula.slams.charged", charged=_term(ctx, "charged-attack", page), delay=_n(t["aftershock.delay"]),
+               radius=_n(t["slam.ground-radius"])), ""] \
         + _attack_bases(ctx, page, "slam", "formula.slams.bases")
 
 
@@ -886,6 +903,7 @@ def _lifesteal(ctx, page, v):
     ui = ctx.loc.ui
     md = [ui("formula.lifesteal.text", leech=_term(ctx, "lifesteal", page, start=True)), ""]
     md += _formula(ui("formula.lifesteal.formula"))
+    md += [ui("formula.lifesteal.typed"), ""]
     md += [ui("formula.lifesteal.rate", rate=_pct(v["rate"]), cap=_pct(v["ceiling"]), n=_n(v["ceiling"] / v["rate"])), ""]
     return md
 
@@ -1022,6 +1040,7 @@ def _hit_order(ctx, page, v):
             ui("formula.hit-order.projectile", proj=_term(ctx, "proj", page))]
     lands = [ui("formula.hit-order.crit", crit=sec("crit-multiplier", start=True)),
              ui("formula.hit-order.falloff", falloff=sec("ranged-falloff")),
+             ui("formula.hit-order.consume"),
              ui("formula.hit-order.target", target=part("target", start=False)),
              ui("formula.hit-order.both"),
              ui("formula.hit-order.physical", brk=sec("armour-break", start=True), impale=sec("impale")),
@@ -1033,16 +1052,13 @@ def _hit_order(ctx, page, v):
 
 
 def _ranged_falloff(ctx, page, v):
-    """Bow and crossbow damage by distance (RangedFalloff.Factor/Stretch/Applies)."""
+    """Bow damage by distance (RangedFalloff.Factor/Stretch/Applies: bows only)."""
     ui, t = ctx.loc.ui, ctx.loc.difficulty.get("tunables", {})
-    # Bows have their own distances (bow.falloff.*, 5.3.2); crossbows keep ranged.falloff.*.
-    start, end, floor = t["ranged.falloff.start"], t["ranged.falloff.end"], t["ranged.falloff.floor"]
-    bstart, bend = t.get("bow.falloff.start") or start, t.get("bow.falloff.end") or end
-
+    start, end, floor = t["bow.falloff.start"], t["bow.falloff.end"], t["ranged.falloff.floor"]
     share, mid = v["mid_share"], max(floor, v["mid_factor"])
 
-    def factor(d: float, stretch: float, a0: float, b0: float) -> float:
-        a, b = a0 * stretch, max(a0 * stretch + 0.01, b0 * stretch)
+    def factor(d: float, stretch: float) -> float:
+        a, b = start * stretch, max(start * stretch + 0.01, end * stretch)
         m = a + (b - a) * share
         if d <= a:
             return 1.0
@@ -1050,8 +1066,8 @@ def _ranged_falloff(ctx, page, v):
             return floor
         return 1 + (mid - 1) * (d - a) / (m - a) if d <= m else mid + (floor - mid) * (d - m) / (b - m)
 
-    nums = {"start": _n(start), "end": _n(end), "bstart": _n(bstart), "bend": _n(bend), "floor": _n(floor), "mid": _n(mid),
-            "share": _pct(share), "bmid": _n(bstart + (bend - bstart) * share), "cmid": _n(start + (end - start) * share)}
+    nums = {"bstart": _n(start), "bend": _n(end), "floor": _n(floor), "mid": _n(mid), "share": _pct(share),
+            "bmid": _n(start + (end - start) * share)}
     stretches = (0, 0.25, 0.5, 1)
     header = [ui("formula.ranged-falloff.distance"), *(ui("formula.ranged-falloff.with", x=_pct(s)) for s in stretches)]
     md = [ui("formula.ranged-falloff.text", range=_term(ctx, "effective-range", page, start=True), **nums), ""]
@@ -1059,11 +1075,9 @@ def _ranged_falloff(ctx, page, v):
     md += [ui("formula.ranged-falloff.notes"), "",
            # Valheim measures in metres; its "Wood Floor 2x2" piece is 2 m on a side.
            ui("formula.ranged-falloff.floors", piece=ctx.loc.vkey("piece_woodfloor2x2", "Wood Floor 2x2"),
-              **nums, start_n=_n(start / 2), end_n=_n(end / 2), bstart_n=_n(bstart / 2), bend_n=_n(bend / 2)), ""]
-    for slug, a0, b0 in (("bows", bstart, bend), ("crossbows", start, end)):
-        rows = [[f"{_n(d)} m", *(_pct(factor(d, 1 + s, a0, b0)) for s in stretches)] for d in (5, 10, 15, 18, 20, 25, 30, 40, 50, 60)]
-        md += [f"#### {ui(f'weapons.{slug}')}", ""] + _table(header, rows)
-    return md
+              **nums, bstart_n=_n(start / 2), bend_n=_n(end / 2)), ""]
+    rows = [[f"{_n(d)} m", *(_pct(factor(d, 1 + s)) for s in stretches)] for d in (5, 10, 15, 18, 20, 25, 30, 40, 50, 60)]
+    return md + _table(header, rows)
 
 
 def _granting_all(ctx, stat: str, page: str) -> str:

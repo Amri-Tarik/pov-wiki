@@ -524,8 +524,12 @@ def _profession_page(ctx: Ctx, sector: dict, prof: dict, notables: list[dict], u
                 ])
             unit = lead["shown"].split(" · ")[1].split(" ", 1)[1] if " · " in lead["shown"] else ""
             md += [f'??? note "{ctx.ui("variants", count=len(fam))}"', ""]
+            # Long variant lists (hundreds of rows in Russian) would pass the search index's 32 KB per
+            # section: they stay out of search; the quest itself is found by its heading and summary.
+            md += ['    <div data-search-exclude markdown="1">', ""]
             md += ["    " + line for line in _table(
                 [ctx.ui("conditions"), ctx.ui("target"), *(f"{c} ({unit})" if unit else c for c in stage_cols)], rows)]
+            md += ["    </div>", ""]
 
     # Tasks in the files that the quest system never offers.
     dead = [t for t in ctx.loc.craft["quests"]["tasks"] if t["profession"] == prof["id"] and not t["template"]]

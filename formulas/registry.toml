@@ -426,6 +426,7 @@ checked = "5.1.1"
 id = "strikes"
 anchors = [
     "PassiveTree/Strikes.cs :: Strikes.Eligible",
+    "PassiveTree/Echoes.cs :: Echoes.Claims",
     "PassiveTree/Strikes.cs :: Strikes.IsStrikeSwing",
     "PassiveTree/Strikes.cs :: Swing.Postfix",
     "PassiveTree/Strikes.cs :: Strikes.Critical",
@@ -439,8 +440,8 @@ anchors = [
     "PassiveTree/Tunables.cs :: \"strike.reach\"",
     "PassiveTree/Tunables.cs :: \"strike.radius\"",
 ]
-fingerprint = "baf5bbbc64a6"
-checked = "5.3.3"
+fingerprint = "5a43d0f7c7f2"
+checked = "6.0.0"
 
 [[formula]]
 id = "smite"
@@ -451,6 +452,7 @@ anchors = [
     "PassiveTree/Sceptres.cs :: \"SmiteRadius = \"",
     "PassiveTree/Sceptres.cs :: \"SmiteEitr = \"",
     "PassiveTree/Sceptres.cs :: Sceptres.CastOnGround",
+    "PassiveTree/Sceptres.cs :: Sceptres.Is",
     "PassiveTree/Smite.cs :: Smite.Cast#2",
     "PassiveTree/Smite.cs :: Smite.Fire",
     "PassiveTree/Smite.cs :: Smite.Burst",
@@ -461,8 +463,8 @@ anchors = [
     "PassiveTree/Smite.cs :: Smite.DirectArea",
     "PassiveTree/SpellGround.cs :: SpellGround.Impact",
 ]
-fingerprint = "c8f0a6ece6b8"
-checked = "5.3.3"
+fingerprint = "c3f419cda81d"
+checked = "6.0.0"
 
 [formula.values]
 eitr = 5
@@ -479,6 +481,8 @@ anchors = [
     "PassiveTree/Phantoms.cs :: Phantoms.Copy",
     "PassiveTree/Phantoms.cs :: Phantoms.Continue",
     "PassiveTree/Phantoms.cs :: Phantoms.Pick",
+    "PassiveTree/Phantoms.cs :: Phantoms.Radius",
+    "PassiveTree/Phantoms.cs :: Phantoms.Builds",
     "PassiveTree/Phantoms.cs :: Phantoms.Strike",
     "PassiveTree/CriticalHits.cs :: CriticalHits.PhantomCrit",
     "PassiveTree/AilmentGauges.cs :: AilmentGauges.Phantom",
@@ -492,8 +496,8 @@ anchors = [
     "PassiveTree/Tunables.cs :: \"phantom.interval\"",
     "PassiveTree/Tunables.cs :: \"phantom.delay\"",
 ]
-fingerprint = "4e77d7aaa8a5"
-checked = "5.3.6"
+fingerprint = "7d12fc126264"
+checked = "6.0.0"
 
 [formula.values]
 max_pending = 96
@@ -687,9 +691,10 @@ anchors = [
     "PassiveTree/MovementOps.cs :: \"ChargedAttacks.GrantFrom(Trigger.Sprint)\"",
     "PassiveTree/MovementOps.cs :: \"runDistance += Vector3.Distance\"",
     "PassiveTree/Tunables.cs :: \"movement.charge-distance\"",
+    "PassiveTree/FistDash.cs :: Humanoid_StartAttack.Postfix",
 ]
-fingerprint = "0b53f4e83a44"
-checked = "5.3.6"
+fingerprint = "3dd10b73902a"
+checked = "6.0.0"
 
 [formula.values]
 increase = 0.25
@@ -713,6 +718,7 @@ anchors = [
     "PassiveTree/Aftershock.cs :: Aftershock.Initial",
     "PassiveTree/Aftershock.cs :: Aftershock.OnCharged",
     "PassiveTree/Aftershock.cs :: Aftershock.Erupt",
+    "PassiveTree/Aftershock.cs :: Aftershock.Grow",
     "PassiveTree/Tunables.cs :: \"slam.ground-radius\"",
     "PassiveTree/Tunables.cs :: \"aftershock.delay\"",
     "PassiveTree/GroundStrike.cs :: GroundStrike.Provider",
@@ -728,8 +734,8 @@ anchors = [
     "PassiveTree/Tunables.cs :: \"slam.cutting-to-blunt\"",
     "PassiveTree/Slams.cs :: Slams.ExtraFlat",
 ]
-fingerprint = "c9f3182f54a4"
-checked = "5.3.6"
+fingerprint = "7ffe42ef2370"
+checked = "6.0.0"
 
 [[formula]]
 id = "block"
@@ -806,11 +812,14 @@ anchors = [
     "PassiveTree/DamageNet.cs :: DamageNet.Leech",
     "PassiveTree/DamageNet.cs :: DamageNet.Pull",
     "PassiveTree/DamageNet.cs :: DamageNet.Take",
+    "PassiveTree/DamageNet.cs :: DamageNet.LeechShare",
+    "PassiveTree/DamageNet.cs :: DamageNet.LeechKind",
+    "PassiveTree/DamageNet.cs :: DamageNet.LeechPerInstance",
     "PassiveTree/Plugin.cs :: \"Leech rate per instance\"",
     "PassiveTree/Plugin.cs :: \"Leech recovery ceiling\"",
 ]
-fingerprint = "3b5aa3160184"
-checked = "5.1.2"
+fingerprint = "17b0d757e6d8"
+checked = "6.0.0"
 
 [formula.values]
 rate = 0.02
@@ -905,9 +914,12 @@ anchors = [
     "PassiveTree/ProjectileMods.cs :: ProjectileMods.AmmoInc",
     "PassiveTree/ProjectileMods.cs :: ProjectileMods.DamageInc",
     "PassiveTree/WeaponAffixes.cs :: WeaponAffixes.DamageBonus",
+    "PassiveTree/ItemAffixes.cs :: ItemAffixes.LocalGains",
+    "PassiveTree/ItemAffixes.cs :: ItemAffixes.AddLocalGains",
+    "PassiveTree/ProjectileMods.cs :: ProjectileMods.ShotDamage",
 ]
-fingerprint = "34c2d9c73807"
-checked = "5.3.6"
+fingerprint = "98a8c130a628"
+checked = "6.0.0"
 
 [formula.values]
 staggered = 0.15
@@ -922,9 +934,11 @@ anchors = [
     "PassiveTree/Penetration.cs :: Penetration.Apply",
     "valheim/Attack.cs :: Attack.ModifyDamage",
     "valheim/Character.cs :: Character.RPC_Damage",
+    "PassiveTree/ConsumeOps.cs :: ConsumeOps.Hit",
+    "PassiveTree/RangedFalloff.cs :: RangedFalloff.Applies",
 ]
-fingerprint = "88d7942c3cfa"
-checked = "5.3.6"
+fingerprint = "8be2862f06e3"
+checked = "6.0.0"
 
 [[formula]]
 id = "player-penetration"
@@ -1128,8 +1142,8 @@ anchors = [
     "PassiveTree/Tunables.cs :: \"bow.falloff.start\"",
     "PassiveTree/Tunables.cs :: \"bow.falloff.end\"",
 ]
-fingerprint = "f61ff0e578e2"
-checked = "5.3.4"
+fingerprint = "ac05c55fab13"
+checked = "6.0.0"
 
 [formula.values]
 mid_share = 0.375

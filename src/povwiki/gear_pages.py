@@ -418,21 +418,22 @@ def _dismantling_line(ctx: Ctx, item: str, page: str) -> list[str]:
     """Azurite and divine dust: dismantling items gives them (Disenchant.Returns)."""
     from .formula_pages import _anchor, shown
 
-    if item not in ("PT_AzuriteDust", "PT_DivineAzuriteDust") or not shown(ctx, "dismantling"):
+    if item not in ("PT_AzuriteDust", "PT_DivineAzuriteDust", "PT_CorruptedAzuriteDust") or not shown(ctx, "dismantling"):
         return []
     ui = ctx.loc.ui
-    return [ui("formula.dismantling.dust_link", title=ui("formula.dismantling.title"), link=_anchor("dismantling", page)), ""]
+    key = "corrupted_link" if item == "PT_CorruptedAzuriteDust" else "dust_link"  # Disenchant.Returns, 6.0
+    return [ui(f"formula.dismantling.{key}", title=ui("formula.dismantling.title"), link=_anchor("dismantling", page)), ""]
 
 
 def _ascension_line(ctx: Ctx, item: str, page: str) -> list[str]:
-    """A boss essence's ascension (5.3.0, ItemAscension), linked to how it works."""
+    """A Lord's Brand's ascension (ItemAscension.Targets; boss essences in 5.3), linked to how it works."""
     from .formula_pages import _anchor, shown
 
     b = (ctx.loc.loot.get("ascension") or {}).get(item)
     if not b or not shown(ctx, "ascension"):
         return []
     ui = ctx.loc.ui
-    return [ui("formula.ascension.essence_link", biome=ctx.loc.vkey(f"biome_{b['biome'].lower()}", b["biome"]), level=b["level"],
+    return [ui("formula.ascension.brand_link", biome=ctx.loc.vkey(f"biome_{b['biome'].lower()}", b["biome"]), level=b["level"],
                title=ui("formula.ascension.title"), link=_anchor("ascension", page)), ""]
 
 

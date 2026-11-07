@@ -598,7 +598,7 @@ def _vanilla_summons(ctx, page, v):
     rows = [[_staff(ctx, c["id"], page), stages[c["stage"]], f"{_n(c['life'])} s", _n(s["reserve"][c["id"]]),
              f"×{_n(t.get('summon.power-health.' + c['id'], 1))}", f"×{_n(t.get('summon.power-damage.' + c['id'], 1))}"]
             for c in s.get("vanilla", [])]
-    md = [ui("formula.vanilla-summons.text"), "", ui("formula.vanilla-summons.off"), ""]
+    md = [ui("formula.vanilla-summons.text"), "", ui("formula.vanilla-summons.off", health=_pct(v["quality_health"])), ""]
     md += _table([ui("formula.summoning-staves.staff"), ui("bosses.biome"), ui("formula.summoning-staves.life"),
                   ui("formula.summoning-staves.eitr"), ui("formula.vanilla-summons.health"),
                   ui("formula.vanilla-summons.damage")], rows)
@@ -623,11 +623,14 @@ def _minion_bonuses(ctx, page, v):
     nums = {"lo": _pct(v["taken_min"]), "hi": _pct(v["taken_max"]),
             "ailment": _pct(v["ailment_cap"]), "resist": _pct(v["resist_cap"]), "attack": _pct(v["attack_speed_floor"]),
             "move": _pct(v["move_floor"]), "regen": _pct(v["shield_regen"]), "delay": _n(v["shield_delay"]),
-            "base": _n(v["crit_base"]), "seek": _n(v["seek"]), "chance": _pct(v["crit_chance"])}
+            "base": _n(v["crit_base"]), "seek": _n(v["seek"]), "chance": _pct(v["crit_chance"]), "low": _pct(v["low"]),
+            "pet_resist": _pct(v["pet_resist_cap"]), "pets": _term(ctx, "pets", page, start=True),
+            "companions": _term(ctx, "companion", page)}
     md = [ui("formula.minion-bonuses.text"), ""]
-    md += [f"- {ui(f'formula.minion-bonuses.{k}', **nums)}" for k in ("damage", "health", "taken", "ailments")] + [""]
+    md += [f"- {ui(f'formula.minion-bonuses.{k}', **nums)}" for k in ("damage", "low_damage", "health", "taken", "ailments")] + [""]
     md += [ui("formula.minion-bonuses.managed"), ""]
-    md += [f"- {ui(f'formula.minion-bonuses.{k}', **nums)}" for k in ("resists", "armour", "speed", "own_shield", "crit", "seek")]
+    md += [f"- {ui(f'formula.minion-bonuses.{k}', **nums)}" for k in ("resists", "armour", "regen", "speed", "own_shield", "crit", "seek")]
+    md += ["", ui("formula.minion-bonuses.pet_resists", **nums)]
     return md + ["", ui("formula.minion-bonuses.guard", guard=_granted(ctx, "MinionSharedGuard", page),
                         seconds=_n(t["minion.guard-seconds"]), share=_pct(t["minion.guard-share"]), shield=shield), "",
                  ui("formula.minion-bonuses.last", last=_granted(ctx, "MinionLastStand", page), shield=shield), "",
@@ -1060,20 +1063,29 @@ def _impale(ctx, page, v):
 
 
 def _limit(ctx, page, v):
-    """Limits (Stat.Limit): an unscoped bonus raises every limit that reads it; Chain Lightning
-    requires its own subject (ChainLightning.Targets)."""
+    """Limits (Stat.Limit): an unscoped bonus raises every limit that reads it; ally links
+    (AllyLinks.Limit, slotted rows only) and Chain Lightning (ChainLightning.Targets) count only
+    their own; ballistas and Mountain Bells add construct bonuses (Ballista.Limit, CreatedTargets.Limit)."""
+    from .item_pages import mod_path
+
     ui, t = ctx.loc.ui, ctx.loc.difficulty.get("tunables", {})
+    knobs = ctx.loc.difficulty.get("knobs", {})
+    bell = rel(mod_path({"id": v["bell_mod"]}), page)  # the unique property calling the Bell (Bells, CreatedKind.Bell)
     rows = [[ui("formula.limit.per_cast"), _n(v["per_cast"])],
+            [ui("formula.limit.ballistas", ballista=_term(ctx, "ballista", page, start=True)), _n(knobs["ballista.limit"]["value"])],
+            [ui("formula.limit.bells", bell=bell), _n(knobs["bell.limit"]["value"])],
             [ui("formula.limit.spores", spore=_term(ctx, "spore", page, start=True)), _n(t["spore.limit"])],
             [ui("formula.limit.crystals", crystal=_term(ctx, "ice-crystal", page, start=True)), _n(t["crystal.limit"])],
             [ui("formula.limit.shards"), _n(t["shard.limit"])],
             [ui("formula.limit.impales", impale=_term(ctx, "impale", page, start=True)), _n(t["impale.limit"])],
+            [ui("formula.limit.poisons"), _n(t["ailment.poison.base-limit"])],
             [ui("formula.limit.links", link=_term(ctx, "ally-link", page, start=True)), _n(v["links"])],
             [ui("formula.limit.ground", ground=_term(ctx, "ground-effects", page, start=True)), _n(t["groundfield.base-limit"])],
             [ui("formula.limit.infusion", infusion=_term(ctx, "infusion", page, start=True)), _n(t["infusion.base-limit"])]]
     md = [ui("formula.limit.text", limit=_term(ctx, "limit", page, start=True)), ""]
     md += _table([ui("formula.limit.effect"), ui("formula.limit.base")], rows)
-    return md + [ui("formula.limit.chain", n=_n(t["chain.targets"])), ""]
+    return md + [ui("formula.limit.constructs", construct=_term(ctx, "construct", page)), "",
+                 ui("formula.limit.own", link=_term(ctx, "ally-link", page), n=_n(t["chain.targets"])), ""]
 
 
 def _endurance(ctx, page, v):
@@ -1268,7 +1280,8 @@ def _infusion(ctx, page, v):
 
 
 def _ascension(ctx, page, v):
-    """Boss essences raising an item to a later biome (ItemAscension)."""
+    """Lord's Brands raising an item to a later biome (ItemAscension): weapons, shields, armour and
+    summoning staves by Valheim's items of their kind (Compute); other equipment by item level only."""
     from .gear_pages import currency_path
 
     ui, loot = ctx.loc.ui, ctx.loc.loot
@@ -1289,13 +1302,14 @@ def _ascension(ctx, page, v):
            f"- {ui('formula.ascension.weapons')}",
            *([f"- {ui('formula.ascension.one_handed', items=one_handed)}"] if one_handed else []),
            f"- {ui('formula.ascension.shields', block=block, force=force)}",
+           f"- {ui('formula.ascension.armour', armour=ctx.loc.vkey('item_armor', 'Armor').lower())}",
            f"- {ui('formula.ascension.staves', strength=strength)}",
-           f"- {ui('formula.ascension.jewellery')}",
-           f"- {ui('formula.ascension.durability', durability=ctx.loc.vkey('item_durability', 'Durability').lower())}", ""]
+           f"- {ui('formula.ascension.durability', durability=ctx.loc.vkey('item_durability', 'Durability').lower())}", "",
+           ui("formula.ascension.level_only", min=_n(v["min_damage"])), ""]
     from .pages import ASCENSION_ON
     from .tools_pages import ASCENSION_PAGE
 
-    md += [ui("formula.ascension.after", min=_n(v["min_damage"])), "", ui("formula.ascension.keeps"), "", ui("formula.ascension.vanilla"), ""]
+    md += [ui("formula.ascension.after"), "", ui("formula.ascension.keeps"), "", ui("formula.ascension.vanilla"), ""]
     if ASCENSION_ON and page != ASCENSION_PAGE:  # the calculator shows this section itself
         md += [ui("tools.ascension.mechanic_link", title=ui("tools.ascension.title"), link=rel(ASCENSION_PAGE, page)), ""]
     return md
@@ -1367,6 +1381,12 @@ def _dismantling(ctx, page, v):
     md += [ui("formula.dismantling.example", level=level), ""]
     md += _table([ui("formula.dismantling.props"), ui("formula.dismantling.magic"), ui("formula.dismantling.unique"),
                   ui("formula.dismantling.legendary")], rows)
+    from .gear_pages import currency_path
+
+    corrupted = f"[{loot[v['corrupted_dust']]['name']}]({rel(currency_path(v['corrupted_dust']), page)})"
+    share = ctx.loc.difficulty.get("knobs", {})["disenchant.corrupted-share"]["value"]
+    md += [ui("formula.dismantling.corrupted", share=_pct(share), dust=corrupted,
+              corruption=_term(ctx, "corruption", page, start=True)), ""]
     return md + [ui("formula.dismantling.jewels", link=_anchor("jewel-dismantling", page),
                     title=ui("formula.jewel-dismantling.title")), ""]
 
@@ -1384,7 +1404,8 @@ def _jewel_dismantling(ctx, page, v):
     md = [ui("formula.jewel-dismantling.text"), ""]
     md += _formula(ui("formula.jewel-dismantling.formula", divine=_n(divine), azurite=_n(azurite), step=_n(step)))
     md += _table([ui("bosses.biome"), ui("formula.level"), ui("formula.jewel-dismantling.divine"), ui("formula.jewel-dismantling.azurite")], rows)
-    return md + [ui("formula.jewel-dismantling.speed", s=_n(v["seconds"])), ""]
+    return md + [ui("formula.jewel-dismantling.corrupted", link=_anchor("dismantling", page), title=ui("formula.dismantling.title")), "",
+                 ui("formula.jewel-dismantling.speed", s=_n(v["seconds"])), ""]
 
 
 def _permadeath(ctx, page, v):
@@ -1394,7 +1415,7 @@ def _permadeath(ctx, page, v):
     md += [f"- {ui(f'formula.permadeath.{k}')}" for k in ("items", "combat", "craft", "blink")]
     md += [f"- {ui('formula.permadeath.guard', share=_pct(t['permadeath.oneshot-share']), minutes=_n(t['permadeath.oneshot-cooldown'] / 60))}",
            f"- {ui('formula.permadeath.mercy', hours=_n(t['permadeath.mercy-hours']))}", ""]
-    return md
+    return md + [ui("formula.permadeath.halls"), ""]
 
 
 _MODIFIERS = ("very_weak", "weak", "slightly_weak", "normal", "slightly_resistant", "resistant", "very_resistant", "immune")

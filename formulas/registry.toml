@@ -1267,3 +1267,65 @@ anchors = [
 ]
 fingerprint = "0faa3429152f"
 checked = "5.3.0"
+
+[[formula]]
+id = "gem-capacity"
+anchors = [
+    "PassiveTree.Gems/GemBoard.cs :: GemBoard.CapacityOf",
+    "PassiveTree.Gems/GemPlayer.cs :: GemPlayer.Capacity",
+    "PassiveTree/Progress.cs :: Progress.EarnedPoints",
+    'PassiveTree.Gems/GemCatalog.cs :: "gemDef2.Num("capacity""',
+    "PassiveTree.Gems/GemCatalog.cs :: GemCatalog.Knobs",
+    "PassiveTree.Gems/GemBoard.cs :: GemBoard.Resolve",
+    "PassiveTree.Gems/GemPlayer.cs :: GemPlayer.Validate",
+]
+
+[[formula]]
+id = "gem-costs"
+anchors = [
+    "PassiveTree.Gems/GemBoard.cs :: GemBoard.Resolve",
+    "PassiveTree.Gems/GemBoard.cs :: GemBoard.ReserveOf",
+    "PassiveTree.Gems/GemBoard.cs :: GemBoard.SupportOn",
+    "PassiveTree.Gems/GemPlayer.cs :: GemPlayer.Efficiency",
+    "PassiveTree.Gems/GemPlayer.cs :: MaxEitr.Postfix",
+    "PassiveTree.Gems/GemPlayer.cs :: GemPlayer.Validate",
+    "PassiveTree.Gems/GemRuntime.cs :: AttackCost.Postfix",
+    "PassiveTree.Gems/GemRuntime.cs :: BlockCost.Postfix",
+]
+
+[formula.values]
+duration_share = 0.5
+efficiency_cap = 0.75
+
+[[formula]]
+id = "gem-curses"
+anchors = [
+    "PassiveTree.Gems/Curses.cs :: Curses.Limit",
+    "PassiveTree.Gems/Curses.cs :: Curses.Value#2",
+    "PassiveTree.Gems/Curses.cs :: Curses.Seconds",
+    "PassiveTree.Gems/Curses.cs :: Curses.Cast",
+    "PassiveTree.Gems/Curses.cs :: Curses.Store",
+    "PassiveTree/EffectDuration.cs :: EffectDuration.Factor",
+    "PassiveTree.Gems/GemBoard.cs :: GemBoard.SupportOn",
+]
+
+[formula.values]
+max = 0.75
+limit_max = 8
+max_seconds = 120
+
+[[formula]]
+id = "gem-ranks"
+anchors = [
+    "PassiveTree.Gems/GemCatalog.cs :: GemCatalog.Rank",
+    "PassiveTree.Gems/GemCatalog.cs :: GemCatalog.Value",
+    "PassiveTree.Gems/GemCatalog.cs :: GemCatalog.rankFree",
+    "PassiveTree.Gems/GemBoard.cs :: GemBoard.SupportOn",
+    "PassiveTree.Gems/GemAuras.cs :: GemAuras.Strength",
+    "PassiveTree.Gems/GemItems.cs :: GemItems.RankForLevel",
+    "PassiveTree.Gems/GemItems.cs :: GemItems.Opens",
+    "PassiveTree.Gems/GemCut.cs :: GemCut.WhyNot",
+    "PassiveTree.Gems/GemCut.cs :: GemCut.Defeated",
+    "PassiveTree.Gems/GemCut.cs :: GemCut.Cut",
+    "PassiveTree.Gems/GemCut.cs :: GemCut.Raise",
+]

@@ -138,6 +138,11 @@ class Localizer:
         """Enemy difficulty tables (harness/difficulty.py)."""
         return self.data.rendered(self.lang.mod).get("difficulty") or {}
 
+    @cached_property
+    def gems(self) -> dict:
+        """Skill gems and the skill board (harness/gems.py)."""
+        return self.data.rendered(self.lang.mod).get("gems") or {}
+
     def creature(self, prefab: str) -> str:
         """A creature's name: the mod's own bosses, else Valheim's (creatures.json)."""
         if prefab in self.gear.get("creatures", {}):

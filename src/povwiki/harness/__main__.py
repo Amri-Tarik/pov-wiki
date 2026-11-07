@@ -93,8 +93,10 @@ def render_tree(data, language: str, valheim: Path | None = None) -> dict:
     from .quests import render_quests
 
     craft["quests"] = render_quests(craft_renderer.tree)
+    from . import unity
     from .loot import render_loot
 
+    unity.install()  # the loot catalog reads item rarities (Rarity: colours parsed by native Unity code)
     loot = render_loot(errors)
     items = {}
     if valheim is not None:
@@ -106,6 +108,7 @@ def render_tree(data, language: str, valheim: Path | None = None) -> dict:
     from .difficulty import render_difficulty
     from .buildings import render_buildings, render_veins
     from .monsters import render_monsters
+    from .gems import render_gems
 
     return {
         "language": language, "revision": data.Revision, "errors": errors,
@@ -113,6 +116,8 @@ def render_tree(data, language: str, valheim: Path | None = None) -> dict:
         "monsters": render_monsters(icons, errors),
         "buildings": render_buildings(errors), "bosses": render_bosses(errors),
         "veins": render_veins(errors), "difficulty": render_difficulty(errors), "wiki": render_wiki(errors),
+        # After the wiki: it adds the board's terms to the in-game wiki (keys with ":"), kept apart.
+        "gems": render_gems(errors),
     }
 
 

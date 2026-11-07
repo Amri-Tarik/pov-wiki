@@ -68,7 +68,7 @@ def _write_config(lang: Language, enabled: list[Language], loc: Localizer, out) 
     extra["pov_social_image"] = f"{_site_url(lang)}assets/images/social.png"
     # Labels and the one-time hint of the mobile navigation (javascripts/mobile-nav.js).
     extra["pov_ui"] = {k: loc.ui(f"nav.{k}") for k in ("menu", "on_this_page", "open_menu", "swipe_hint")}
-    p["nav"] = _nav(nav(), loc)
+    p["nav"] = _nav(nav(loc.data), loc)
     if len(enabled) > 1:
         p.setdefault("extra", {})["alternate"] = [
             {"name": o.name, "link": f"../{o.code}/", "lang": o.code} for o in enabled
@@ -138,10 +138,11 @@ def build_language(lang: Language, default: Language, enabled: list[Language], d
     from .patch_pages import page_patches
     from .tools_pages import page_tools
     from .weapon_pages import page_weapons
+    from .world_pages import page_world
 
     jobs += [(gen.__name__, gen, ctxs[0]) for gen in (page_mods, page_bases, page_weapons, page_currency, page_jewels, page_uniques,
                                                       page_monster_mods, page_bosses, page_creatures, page_taming, page_buildings,
-                                                      page_formulas, page_patches, page_tools)]
+                                                      page_world, page_formulas, page_patches, page_tools)]
     for label, gen, ctx in jobs:
         with _timed(label):
             for rel, text in gen(ctx).items():

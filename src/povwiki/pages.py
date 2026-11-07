@@ -836,6 +836,16 @@ def _related_pages(ctx: Ctx) -> dict[str, list[tuple[str, str, str]]]:
         if item in (ctx.loc.loot.get("items") or {}):
             found.update({k: found[k] + [(ctx.loc.loot["items"][item]["name"], currency_path(item), ctx.loc.ui("gear.group.Sigil"))]
                           for k in keys})
+    from .world_pages import SHIPS_PAGE, TREASURE_PAGE, available
+
+    if available(ctx.data):  # treasure chests and burial ships roll with chest quantity and rarity
+        world = ctx.loc.ui("world.title")
+        for term in ("chest-item-quantity", "chest-item-rarity"):
+            found[term] += [(ctx.loc.ui("world.tmap.title"), TREASURE_PAGE + "#chest", world),
+                            (ctx.loc.ui("world.ship.title"), SHIPS_PAGE, world)]
+        found["undead"].append((ctx.loc.ui("world.ship.title"), SHIPS_PAGE, world))
+    if any((i.get("mod") or {}).get("quiver") for i in ctx.loc.items.values()):  # quivers hold arrows and bolts
+        found["arrows"].append((ctx.loc.ui("class.quivers"), "items/bases.md", ctx.loc.ui("items.bases")))
     rune = ctx.loc.items.get("PT_RuneOfResurrection")
     if rune and rune.get("mod"):  # brings a dead companion back
         found["companion"].append((rune["mod"]["shared"]["m_name"], "items/base/PT_RuneOfResurrection.md", ctx.loc.ui("items.bases")))
@@ -988,12 +998,14 @@ GLOBAL = [page_glossary]
 TREES = [PASSIVES, CRAFTING]
 
 
-def nav() -> list:
+def nav(data: GameData | None = None) -> list:
     """Navigation: (ui title key, page path | children). Titles are translated per language.
-    Glossary term pages are reached from keyword links and search."""
+    Glossary term pages are reached from keyword links and search. Sections that only some
+    versions have (the world, 6.0) are listed when the data has them."""
     from .gear_pages import _GROUPS, group_path
     from .patch_pages import INDEX, patch_path, versions
     from .weapon_pages import WEAPON_TYPES, weapon_path
+    from .world_pages import MERCHANTS_PAGE, SHIPS_PAGE, TREASURE_PAGE, available
 
     return [
         ("nav.home", "index.md"),
@@ -1006,6 +1018,8 @@ def nav() -> list:
                          ("gear.jewels", "items/jewels.md"), ("gear.uniques", "items/uniques.md")]),
         ("monsters.title", [("monsters.mods", "monsters/mods.md"), ("bosses.title", "monsters/bosses.md"),
                             ("creatures.title", "monsters/creatures.md"), ("taming.title", "monsters/taming.md")]),
+        *([("world.title", [("world.tmap.title", TREASURE_PAGE), ("world.ship.title", SHIPS_PAGE), ("world.merch.title", MERCHANTS_PAGE)])]
+          if data is not None and available(data) else []),
         ("formula.title", [("formula.creatures", "mechanics/creatures.md"), ("formula.experience_page", "mechanics/experience.md"),
                            ("formula.loot_page", "mechanics/loot.md"), ("formula.combat", "mechanics/combat.md"),
                            ("formula.summons_page", "mechanics/summons.md")]),

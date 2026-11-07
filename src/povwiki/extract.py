@@ -20,6 +20,8 @@ import dnfile
 from .paths import EXTRACTED, MODS
 
 RESOURCE_PREFIX = "PassiveTree."
+# Sounds, model textures and meshes, platform bundles: not game data, not extracted.
+_MEDIA = (".pcm", ".jpg", ".mesh", ".anchor", ".osx", ".win")
 DLL_PATH = Path("plugins/PathOfValheiman/PathOfValheiman.dll")
 
 
@@ -46,7 +48,7 @@ def extract(source: Path) -> Path:
         shutil.rmtree(out)
     (out / "loc").mkdir(parents=True)
 
-    written = []
+    written, skipped = [], []
     pe = dnfile.dnPE(str(dll), fast_load=False)
     for res in pe.net.resources:
         name = str(res.name).removeprefix(RESOURCE_PREFIX)
@@ -61,6 +63,8 @@ def extract(source: Path) -> Path:
         elif name.endswith((".json", ".cfg")):
             target = out / name
         else:
+            if not name.endswith(_MEDIA):  # data of a kind not read yet: noted, so a new one is seen
+                skipped.append(name)
             continue
         target.write_bytes(data)
         if not name.endswith(".png"):
@@ -73,6 +77,9 @@ def extract(source: Path) -> Path:
         "dll": str(dll.resolve()),
         "dll_sha256": hashlib.sha256(dll.read_bytes()).hexdigest(),
         "files": sorted(written),
+        "skipped": sorted(skipped),
     }
+    if skipped:
+        print(f"skipped {len(skipped)} embedded files of kinds not read yet: {', '.join(sorted(skipped)[:10])}")
     (out / "extract.json").write_text(json.dumps(meta, indent=2), encoding="utf-8")
     return out

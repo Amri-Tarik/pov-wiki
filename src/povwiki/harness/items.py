@@ -137,7 +137,8 @@ def render_items(valheim: Path, errors: list) -> dict:
     recipes = json.loads((valheim / "recipes.json").read_text(encoding="utf-8"))
     build = _Builder(effects)
     tag_set = clr.GetClrType(ItemTags).GetField("set", _INSTANCE)
-    craft_level = _CraftLevel(recipes, CraftLevel, BiomeLevels)
+    pieces = json.loads((valheim / "pieces.json").read_text(encoding="utf-8"))
+    craft_level = _CraftLevel(recipes, CraftLevel, BiomeLevels, {p: v.get("name") for p, v in pieces.items()})
 
     out = {}
     for prefab, shared in items.items():
@@ -171,9 +172,15 @@ def _implicits(item, prefab: str) -> list[dict]:
     Implicits = getattr(PassiveTree, "Implicits", None)
     if Implicits is None:  # older versions
         return []
-    for owner in ("Belts", "Rings", "StaffImplicits"):  # they register their implicits on first use (Implicits.Rows)
+    for owner in ("Belts", "Rings", "StaffImplicits", "BaseImplicits"):  # they register their implicits on first use (Implicits.Rows)
         if (cls := getattr(PassiveTree, owner, None)) is not None:
             cls.Touch()
+    quivers = getattr(PassiveTree, "Quivers", None)
+    kind = next((k for k in quivers.Kinds if str(k.Id) == prefab), None) if quivers is not None and hasattr(quivers, "Kinds") else None
+    if kind is not None:  # Quivers.ImplicitValue: the item's own roll within its quality's range
+        d = kind.Implicit
+        return [{"id": str(d.Id), "byQuality": [Implicits.Line(d, Implicits.Range(r.Item1, r.Item2) or str(r.Item1)) for r in kind.Range],
+                 "ranges": [[int(r.Item1), int(r.Item2)] for r in kind.Range]}]
     bases = clr.GetClrType(Implicits).GetField("bases", _ALL).GetValue(None)
     if not bases.ContainsKey(prefab):
         return []
@@ -205,13 +212,15 @@ def _mod_items(items: dict, build: "_Builder", tag_set, craft_level: "_CraftLeve
       tools with their own damage, attack costs, durability and recipes. Tables the mod keeps as
       data (StarterStaves.rungs, RuneVein.Chisels) are read from it; values the mod writes inline
       in code (Spark/Blood Seal staves, staves of bonds, the sceptre) are mirrored below.
-    Quivers (Quivers.cs) are left out: 5.1 never creates them (Quivers.Ensure is empty)."""
+    - Quivers (Quivers.Kinds, 6.0): copies of their arrow with the quiver's cells, recipe by
+      quality (QuiverRequirement.Amounts, UpgradeStation) and implicit range by quality. Before
+      6.0 the mod never creates them (5.1: Quivers.Ensure is empty)."""
     from PassiveTree import L
     from PassiveTree.Loot import ItemTags, LootCatalog
 
     LootCatalog.Ensure()
     out = {}
-    for spec in _rings_and_belts(items) + _weapons(items) + _bombs(items) + _rune(items):
+    for spec in _rings_and_belts(items) + _weapons(items) + _bombs(items) + _rune(items) + _quivers(items):
         prefab = spec["id"]
         try:
             source = items.get(spec["source"]) or {}
@@ -222,7 +231,8 @@ def _mod_items(items: dict, build: "_Builder", tag_set, craft_level: "_CraftLeve
             item = build.item(prefab, shared)
             recipe = spec.get("recipe")
             if recipe:
-                craft_level.recipe_of[prefab] = {"item": prefab, "enabled": True, "resources": recipe["resources"]}
+                craft_level.recipe_of[prefab] = {"item": prefab, "enabled": True, "resources": recipe["resources"],
+                                                 **({"station": recipe["station"]} if isinstance(recipe.get("station"), str) else {})}
             out[prefab] = {
                 "tags": sorted(str(t) for t in tag_set.GetValue(ItemTags.Of(item))),
                 "defence": None,
@@ -533,6 +543,39 @@ def _rune(items: dict) -> list[dict]:
              "extra": per_quality}]
 
 
+def _quivers(items: dict) -> list[dict]:
+    """Quivers (Quivers.Kinds, Quivers.Make, Quivers.Recipe): a copy of the quiver's arrow (else
+    ArrowWood) worn in the quiver slot, with its ammo cells (EquipmentTraits.ArrowSlots). Its recipe
+    costs a set amount per quality (QuiverRequirement.Amounts: crafting is quality 1) and each
+    quality asks its own station level (UpgradeStation: Kind.Levels)."""
+    import PassiveTree
+
+    quivers = getattr(PassiveTree, "Quivers", None)
+    if quivers is None or not hasattr(quivers, "Kinds"):  # before 6.0
+        return []
+    from PassiveTree import L
+
+    specs = []
+    for k in quivers.Kinds:
+        kid, cells = str(k.Id), int(k.Cells)
+        source = str(k.Arrow) if str(k.Arrow) in items else "ArrowWood"
+        description = f"A quiver worn on the back: it opens {cells} ammo cells for arrows and bolts. Upgraded at its station, it keeps its own roll."
+        resources = [{"item": str(c.Item1), "amount": int(c.Item2[0]), "perLevel": int(c.Item2[1]),
+                      "byQuality": [int(a) for a in c.Item2]} for c in k.Cost]
+        specs.append({
+            "id": kid, "source": source, "kind": "quiver", "icon": f"PassiveTree.item.{kid}.png",
+            "drop": ("m_equipStatusEffect", "m_setStatusEffect", "m_attackStatusEffect"),
+            "overrides": {"m_name": L.Id(f"item.{kid}.name", str(k.Name)), "m_description": L.Id(f"item.{kid}.description", description),
+                          "m_itemType": 18, "m_maxStackSize": 1, "m_weight": float(k.Weight), "m_maxQuality": 4,
+                          "m_useDurability": False, "m_damages": {}, "m_damagesPerLevel": {}, "m_ammoType": "",
+                          "m_setName": "", "m_teleportable": True},
+            "recipe": {"station": str(k.Station), "stationLevel": int(k.Levels[0]), "stationLevels": [int(v) for v in k.Levels],
+                       "resources": resources},
+            "drops": {"quiver": {"cells": cells}},
+        })
+    return specs
+
+
 def _projectile_source(source: dict | None, rung) -> bool:
     """StarterStaves.Source: a source staff must shoot projectiles, and not a beam of more than
     24 unless the rung cuts it to a volley. (Its check on projectiles that spawn something needs
@@ -564,11 +607,17 @@ class _CraftLevel:
     tables (CraftLevel.materials: material -> biome; BiomeLevels: biome -> item level) are read
     once into plain Python."""
 
-    def __init__(self, recipes: list, craft_level, biome_levels):
+    def __init__(self, recipes: list, craft_level, biome_levels, station_names: dict | None = None):
         t = clr.GetClrType(craft_level)
         materials = t.GetField("materials", _ALL).GetValue(None)
         self.materials = {str(kv.Key): int(kv.Value) for kv in materials}
-        self.by_prefix = t.GetMethod("ByPrefix", _ALL)
+        self.by_prefix = t.GetMethod("ByPrefix", _ALL)  # before 6.0: Mold*/Upgrader* by prefix
+        # 6.0: a recipe's station sets a floor (CraftLevel.stations, by the station's name token:
+        # the black forge and the mage table count as Mistlands); molds are Deep North, upgrade
+        # stones and upgrade-only materials count for nothing.
+        stations = t.GetField("stations", _ALL)
+        self.stations = {str(kv.Key): int(kv.Value) for kv in stations.GetValue(None)} if stations else {}
+        self.station_names = station_names or {}
         # 5.1.2: materials with amount 0 (Valheim lists upgrade-only materials that way) don't count.
         # Read from the version's own code: does Level read Requirement.m_amount?
         self.skip_empty = _reads_field([m for m in t.GetMethods(_ALL) if m.Name == "Level"], "m_amount")
@@ -584,14 +633,23 @@ class _CraftLevel:
             return 0
         if prefab in self.materials:
             return self.biome_level.get(self.materials[prefab], 0)
-        found = self.by_prefix.Invoke(None, [prefab])  # Mold*/Upgrader* items
-        if found is not None:
-            return self.biome_level.get(int(found), 0)
+        if self.by_prefix is not None:
+            found = self.by_prefix.Invoke(None, [prefab])  # Mold*/Upgrader* items
+            if found is not None:
+                return self.biome_level.get(int(found), 0)
+        elif prefab.startswith("Mold"):
+            return self.biome_level.get(64, 0)  # Deep North
+        elif prefab.startswith("Upgrader"):
+            return 0
         level = self.biome_level.get(1, 1)  # Meadows
         recipe = self.recipe_of.get(prefab)
+        if recipe and self.stations:
+            level = max(level, self.biome_level.get(self.stations.get(self.station_names.get(recipe.get("station")) or "", 0), 0))
         if recipe and depth < 5:
             for res in recipe["resources"]:
                 if self.skip_empty and res.get("amount", 1) <= 0:
+                    continue
+                if self.stations and res.get("upgrader"):  # Requirement.m_upgraderResource (6.0)
                     continue
                 level = max(level, self.level(res["item"], depth + 1))
         return level

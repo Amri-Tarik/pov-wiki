@@ -145,7 +145,7 @@ def _drops(ctx: Ctx) -> dict[str, dict]:
             lo, hi = e.get("stackMin", 1), e.get("stackMax", 1)
             amount = f" ×{lo}–{hi}" if hi > lo else (f" ×{lo}" if lo > 1 else "")
             lines.append(f"{name}{amount}: {_pct(t['chance'] * e['weight'] / total)}{bonus}")
-        creatures = t["creatures"]
+        creatures = t.get("creatures") or []
         first = creatures[0] if creatures else ""
         link = boss_path(first) if first in _mod_bosses(ctx) else f"{BOSSES_PAGE}#{first.lower()}"  # as creature_link
         out[t["id"]] = _entry(", ".join(ctx.loc.creature(c) for c in creatures), lines, link)
@@ -449,10 +449,16 @@ def _section(ctx: Ctx, sid: str, changes: dict, page: str) -> list[str]:
             continue
         kinds = any(k for k, _ in groups)
         md += [f"### {ui(title)} ({sum(len(es) for es in groups.values())})", ""]
-        md += _rows([ui("col.name"), *([ui("patch.kind")] if kinds else []), ui("patch.change")],
-                    [[_names(es, page, which != "old"), *([_cell(kind)] if kinds else []), "<br>".join(lines)]
-                     for (kind, lines), es in sorted(groups.items(), key=lambda kv: kv[1][0]["name"].lower())])
+        table = _rows([ui("col.name"), *([ui("patch.kind")] if kinds else []), ui("patch.change")],
+                      [[_names(es, page, which != "old"), *([_cell(kind)] if kinds else []), "<br>".join(lines)]
+                       for (kind, lines), es in sorted(groups.items(), key=lambda kv: kv[1][0]["name"].lower())])
+        if len(groups) > _OPEN_ROWS:  # a long table starts folded, so a big patch's page stays readable
+            table = ['<details markdown="1">', f"<summary>{ui('patch.show', n=len(groups))}</summary>", "", *table, "</details>", ""]
+        md += table
     return md
+
+
+_OPEN_ROWS = 20  # tables longer than this start folded
 
 
 def _rows(header: list[str], rows: list[list[str]]) -> list[str]:

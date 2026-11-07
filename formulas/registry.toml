@@ -1662,3 +1662,224 @@ anchors = [
 ]
 fingerprint = "2f4543397516"
 checked = "6.0.0"
+
+[[formula]]
+id = "treasure-maps"
+anchors = [
+    "PassiveTree.Loot/LootDrops.cs :: LootDrops.RollTreasureKind",
+    "PassiveTree.Loot/LootDrops.cs :: LootDrops.TreasureTable",
+    "PassiveTree.Loot/LootDrops.cs :: LootDrops.TreasureRewards",
+    "PassiveTree.Loot/LootDrops.cs :: LootDrops.Kept",
+    "PassiveTree.Loot/LootDrops.cs :: LootDrops.ExtraBonus#2",
+    "PassiveTree.Loot/LootDrops.cs :: LootDrops.FamilySubject",
+    "PassiveTree.Loot/LootCatalog.cs :: \"treasureKind\"",
+    "PassiveTree.Encounters/TreasureMaps.cs :: TreasureMaps.TargetBiome",
+    "PassiveTree.Encounters/TreasureMaps.cs :: TreasureMaps.LevelAtPoint",
+    "PassiveTree.Encounters/TreasureMaps.cs :: TreasureMaps.Valid",
+    "PassiveTree.Encounters/TreasureMaps.cs :: TreasureMaps.Find",
+    "PassiveTree.Encounters/TreasureMaps.cs :: TreasureMaps.FindWide",
+    "PassiveTree.Encounters/TreasureMaps.cs :: TreasureMaps.ServerMake",
+    "PassiveTree.Encounters/TreasureMaps.cs :: TreasureMaps.MapName",
+    "PassiveTree.Encounters/TreasureMaps.cs :: \"Treasure maps: nearest distance of the treasure from where the map was found\"",
+    "PassiveTree.Encounters/TreasureMaps.cs :: \"Treasure maps: farthest distance of the treasure from where the map was found\"",
+    "PassiveTree.Encounters/TreasureMaps.cs :: \"Treasure maps: the chest's own item rarity\"",
+    "PassiveTree.Encounters/TreasureMapCache.cs :: TreasureMapCache.RollKind",
+    "PassiveTree.Encounters/TreasureMapCache.cs :: TreasureMapCache.Interact",
+    "PassiveTree.Encounters/TreasureMapCache.cs :: TreasureMapCache.MapIn",
+    "PassiveTree.Encounters/TreasureMapCache.cs :: TreasureMapCache.Eject",
+    "PassiveTree.Encounters/EncounterLoot.cs :: EncounterLoot.Context",
+]
+
+[formula.values]
+near = 250
+far = 1400
+rarity = 1.5
+spill = 2
+location_margin = 15
+build_clear = 25
+treasure_gap = 60
+edge = 9600
+wide_step = 400
+wide_max = 12000
+
+[[formula]]
+id = "burial-ships"
+anchors = [
+    "PassiveTree.Encounters/BurialShip.cs :: Place.Postfix",
+    "PassiveTree.Encounters/BurialShip.cs :: NoDrops.Prefix",
+    "PassiveTree.Encounters/BurialShip.cs :: BurialShip.Knobs",
+    "PassiveTree.Encounters/BurialShip.cs :: BurialShip.Waves_",
+    "PassiveTree.Encounters/BurialShip.cs :: BurialShip.WaveCount",
+    "PassiveTree.Encounters/BurialShip.cs :: BurialShip.Roster",
+    "PassiveTree.Encounters/BurialShip.cs :: BurialShip.Spawn",
+    "PassiveTree.Encounters/BurialShip.cs :: BurialShip.Rolls",
+    "PassiveTree.Encounters/BurialShip.cs :: BurialShip.LootKind",
+    "PassiveTree.Encounters/BurialShip.cs :: BurialShip.HazardRarity",
+    "PassiveTree.Encounters/BurialShip.cs :: BurialShip.HazardQuantity",
+    "PassiveTree.Encounters/BurialShip.cs :: BurialShip.RollReward",
+    "PassiveTree.Encounters/BurialShip.cs :: BurialShip.Eject",
+    "PassiveTree.Encounters/BurialShip.cs :: BurialShip.Interact",
+    "PassiveTree.Encounters/Encounter.cs :: Encounter.LevelAt",
+    "PassiveTree.Encounters/EncounterLoot.cs :: EncounterLoot.Roll",
+    "PassiveTree.Encounters/EncounterLoot.cs :: EncounterLoot.Material",
+    "PassiveTree.Encounters/EncounterLoot.cs :: EncounterLoot.Materials",
+    "PassiveTree.Encounters/EncounterLoot.cs :: EncounterLoot.Coins",
+    "PassiveTree.Encounters.Halls/HallsParty.cs :: HallsParty.Knobs",
+    "PassiveTree.Encounters.Halls/HallsParty.cs :: HallsParty.Grow",
+    "PassiveTree.Encounters.Halls/HallsParty.cs :: HallsParty.Count",
+    "PassiveTree.Encounters.Halls/HallsParty.cs :: HallsParty.Elites",
+    "PassiveTree.Encounters.Halls/HallsParty.cs :: HallsParty.ShipWave",
+    "PassiveTree.Encounters.Halls/HallsParty.cs :: HallsParty.ShipGuardians",
+    "PassiveTree.Encounters.Halls/HallsDefs.cs :: \"Rune of the Open Gate: chance among the gifts of a burial ship\"",
+]
+
+[formula.values]
+per_zone = 0.018
+discover = 80
+wave_size = 4
+wave_pause = 4
+leave = 90
+leash = 45
+party_count = 0.5
+party_cap = 12
+elite_per = 2
+hazard_chance = 0.35
+four_waves = 0.2
+jarl_rarity = 0.5
+hazard_rarity = 0.25
+hazard_quantity = 0.15
+barrow_quantity = 0.3
+open_gate = 0.03
+coins = [15, 30]
+coins_per = 40
+
+[formula.values.rolls]
+warrior = [4, 6]
+guard = [4, 6]
+smith = [5, 8]
+runecarver = [4, 6]
+seafarer = [2, 4]
+jarl = [5, 7]
+
+[[formula.values.materials]]
+id = "Copper"
+level = 19
+min = 6
+max = 12
+
+[[formula.values.materials]]
+id = "Tin"
+level = 19
+min = 6
+max = 12
+
+[[formula.values.materials]]
+id = "Bronze"
+level = 19
+min = 4
+max = 8
+
+[[formula.values.materials]]
+id = "Iron"
+level = 43
+min = 4
+max = 9
+
+[[formula.values.materials]]
+id = "Silver"
+level = 77
+min = 4
+max = 8
+
+[[formula.values.materials]]
+id = "BlackMetal"
+level = 97
+min = 4
+max = 8
+
+[[formula.values.materials]]
+id = "Carapace"
+level = 130
+min = 4
+max = 9
+
+[[formula.values.materials]]
+id = "FlametalNew"
+level = 181
+min = 3
+max = 6
+
+[[formula]]
+id = "merchants"
+anchors = [
+    "PassiveTree.Encounters/Merchants.cs :: Merchants.Knobs",
+    "PassiveTree.Encounters/Merchants.cs :: Merchants.GroupOf",
+    "PassiveTree.Encounters/Merchants.cs :: Merchants.Fits",
+    "PassiveTree.Encounters/Merchants.cs :: Merchants.Bases",
+    "PassiveTree.Encounters/Merchants.cs :: Merchants.Base",
+    "PassiveTree.Encounters/Merchants.cs :: Merchants.Price",
+    "PassiveTree.Encounters/Merchants.cs :: Merchants.FindPrice",
+    "PassiveTree.Encounters/Merchants.cs :: Merchants.Odds",
+    "PassiveTree.Encounters/Merchants.cs :: Merchants.RollGamble",
+    "PassiveTree.Encounters/Merchants.cs :: Merchants.LevelOf",
+    "PassiveTree.Encounters/RagnStall.cs :: Place.Postfix",
+    "PassiveTree.Encounters.Halls/HallsDefs.cs :: \"Rune of the Open Gate: chance that Ragn's gamble bundle holds one instead of the gear\"",
+    "PassiveTree.Encounters/Sigrid.cs :: Sigrid.Knobs",
+    "PassiveTree.Encounters/Sigrid.cs :: Sigrid.GearPool",
+    "PassiveTree.Encounters/Sigrid.cs :: Sigrid.RollStock",
+    "PassiveTree.Encounters/SigridDirector.cs :: SigridDirector.Arrive",
+    "PassiveTree.Encounters/SigridDirector.cs :: SigridDirector.Roll",
+    "PassiveTree.Encounters/WorldReach.cs :: WorldReach.Level",
+    "PassiveTree.Encounters/Wanderer.cs :: Wanderer.Knobs",
+    "PassiveTree.Encounters/Wanderer.cs :: Wanderer.Pool",
+    "PassiveTree.Encounters/Wanderer.cs :: Wanderer.Roll",
+    "PassiveTree.Encounters/WandererDirector.cs :: WandererDirector.Place",
+    "PassiveTree.Encounters/WandererDirector.cs :: WandererDirector.Valid",
+    "PassiveTree.Encounters/Finds.cs :: Finds.PeriodNow",
+    "PassiveTree.Encounters/Finds.cs :: Finds.LevelFor",
+    "PassiveTree.Encounters/Finds.cs :: Finds.Make",
+    "PassiveTree.Encounters.HallMaps/HallMapShop.cs :: HallMapShop.ServerRenew",
+]
+
+[formula.values]
+ragn_cell = 10
+ragn_chance = 0.25
+ragn_discover = 300
+ragn_odds = [0.5, 0.35, 0.145, 0.005]
+ragn_open_gate = 0.02
+price_level = 0.04
+finds_min = 6
+finds_max = 8
+finds_days = 3
+finds_rare = 0.4
+finds_unique = 0.05
+finds_magic = 2.5
+finds_rare_x = 4
+finds_unique_x = 10
+sigrid_pause = 5
+sigrid_chance = 0.25
+sigrid_stay = 1
+sigrid_min = 30
+sigrid_max = 60
+sigrid_bed_merge = 40
+sigrid_active = 3
+sigrid_buyer = 20
+sigrid_gear = 90
+sigrid_rare = 2.5
+sigrid_legendary = 6
+sigrid_rune = 30
+sigrid_res = 3
+sigrid_map = 300
+sigrid_price_level = 0.02
+keeper_discover = 500
+keeper_leave = 80
+keeper_linger = 30
+keeper_move_min = 2000
+keeper_move_max = 3500
+keeper_base_clear = 500
+
+[formula.values.price]
+weapon = 80
+shield = 70
+armour = 70
+jewel = 120

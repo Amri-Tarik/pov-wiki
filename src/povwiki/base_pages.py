@@ -13,11 +13,11 @@ from .markup import rel
 from .pages import Ctx, _footer, _img, _table
 
 BASES_PAGE = "items/bases.md"
-_RPG = {"weapon", "armour", "shield", "trinket", "utility", "belt", "ring"}
+_RPG = {"weapon", "armour", "shield", "trinket", "utility", "belt", "ring", "quiver"}
 _NOT_RPG = {"tool", "fishing"}
 _SLOTS = ("slot.helmet", "slot.chest", "slot.legs", "slot.cape")
 _SHIELDS = ("shield.round", "shield.buckler", "shield.tower")
-_CLASSES = ("weapons", "armour", "shields", "jewellery", "trinkets", "utility")
+_CLASSES = ("weapons", "armour", "shields", "quivers", "jewellery", "trinkets", "utility")
 # Valheim damage types in its tooltip order, with their string keys.
 _DAMAGES = [
     ("m_blunt", "inventory_blunt"), ("m_slash", "inventory_slash"), ("m_pierce", "inventory_pierce"),
@@ -91,6 +91,8 @@ def _class(b: dict) -> tuple[str, str]:
         return "utility", "utility"
     if "shield" in tags:
         return "shields", next((t for t in _SHIELDS if t in tags), "shield")
+    if "quiver" in tags:  # Quivers (6.0): worn in their own slot, ItemTags "quiver"
+        return "quivers", "quiver"
     if "weapon" in tags:
         return "weapons", next((t for t in tags if t.startswith("kind.")), "weapon")
     if "armour" in tags:
@@ -144,6 +146,9 @@ def _summary(ctx: Ctx, b: dict) -> str:
     if "shield" in b["info"]["tags"]:
         parts.append(f"{vk('item_blockpower')} {_num(s.get('m_blockPower') or 0)}")
     parts += [i["text"] for i in b["info"].get("implicits") or [] if "text" in i]
+    parts += [i["byQuality"][0] for i in b["info"].get("implicits") or [] if i.get("ranges")]  # a quiver's, at quality 1
+    if quiver := (b["info"].get("mod") or {}).get("quiver"):
+        parts.append(f"{ctx.loc.ui('world.quiver_cells')} {quiver['cells']}")
     return ", ".join(parts)
 
 
@@ -178,6 +183,8 @@ def _stats(ctx: Ctx, b: dict) -> list[list[str]]:
         for key, label in (("m_attackStamina", "item_staminause"), ("m_attackEitr", "item_eitruse"),
                            ("m_attackHealth", "item_healthuse")):
             row(vk(label), [attack.get(key) or 0] * len(qs))
+    if quiver := (info.get("mod") or {}).get("quiver"):  # EquipmentTraits.ArrowSlots: the same at every quality
+        row(ui("world.quiver_cells"), [quiver["cells"]] * len(qs))
     if s.get("m_useDurability"):
         row(vk("item_durability"), [_at(s, "m_maxDurability", "m_durabilityPerLevel", q) for q in qs])
     row(vk("item_weight"), [s.get("m_weight") or 0] * len(qs))
@@ -307,7 +314,11 @@ def _implicits_section(ctx: Ctx, b: dict, qs: range) -> list[str]:
     md = [f"## {ui('items.implicits')}", "", ui("items.implicits_note"), ""]
     ranged = [i for i in implicits if "text" in i]
     md += [f"- {i['text']}" for i in ranged] + ([""] if ranged else [])
-    grows = [i for i in implicits if "byQuality" in i]
+    # A quiver's implicit (Quivers.ImplicitValue): its own roll within a range set per quality.
+    for i in (i for i in implicits if i.get("ranges")):
+        md += _table([ui("items.implicit"), *(ui("items.quality_n", n=q) for q in qs)],
+                     [[i["byQuality"][0], *(f"({lo}–{hi})" for lo, hi in i["ranges"])]])
+    grows = [i for i in implicits if "byQuality" in i and not i.get("ranges")]
     if grows and len(qs) > 1:
         md += _table([ui("items.implicit"), *(ui("items.quality_n", n=q) for q in qs)],
                      [[next(t for t in reversed(i["byQuality"]) if t), *(t or "—" for t in i["byQuality"])] for i in grows])
@@ -426,9 +437,15 @@ def _base_page(ctx: Ctx, prefab: str, b: dict, found: dict) -> str:
             link = f"[{name}]({rel(base_path(mat), page)})" if mat in found else name
             # Valheim's Requirement.GetAmount: crafting takes the amount, upgrading to quality q
             # takes (q - 1) x the per-level amount. Some of the mod's staves cost the per-level
-            # amount once per step ("flat": StarterStaves.UpgradeCost).
-            upgrades = [str(res["perLevel"] * (1 if res.get("flat") else q - 1)) for q in qs[1:]]
+            # amount once per step ("flat": StarterStaves.UpgradeCost); quivers set an amount per
+            # quality ("byQuality": QuiverRequirement.Amounts).
+            if by := res.get("byQuality"):
+                upgrades = [str(by[min(q, len(by)) - 1]) for q in qs[1:]]
+            else:
+                upgrades = [str(res["perLevel"] * (1 if res.get("flat") else q - 1)) for q in qs[1:]]
             rows.append([_icon(ctx, mat, page, 32), link, str(res["amount"]), *upgrades])
+        if levels := recipe.get("stationLevels"):  # Quivers.UpgradeStation: each quality's station level
+            rows.append(["", ui("world.quiver_station_level"), *(str(levels[min(q, len(levels)) - 1]) for q in qs)])
         header = ["", ui("items.material"), ui("items.craft"), *(ui("items.upgrade_n", n=q) for q in qs[1:])]
         md += _table(header, rows)
 

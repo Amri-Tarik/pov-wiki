@@ -271,6 +271,9 @@ def _currency_page(ctx: Ctx, item: str, catalog: dict, uses: dict, found: dict) 
     from .monster_pages import summons_section
 
     md += summons_section(ctx, item, page)
+    from .world_pages import renewal_section
+
+    md += renewal_section(ctx, item, page)  # the Rune of Renewed Trade: the merchants it renews
     from .patch_pages import history
 
     md += history(ctx, "currency", [item], page)

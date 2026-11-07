@@ -854,6 +854,16 @@ def _related_pages(ctx: Ctx) -> dict[str, list[tuple[str, str, str]]]:
         found["aura"].append((ctx.loc.ui("gems.group.Aura"), INDEX_PAGE + "#aura", ctx.loc.ui("gems.title")))
         found["eitr"].append((ctx.loc.ui("gems.eitr_title"), BOARD_PAGE + "#eitr", ctx.loc.ui("gems.title")))
         found["skill"].append((ctx.loc.ui("gems.board"), BOARD_PAGE, ctx.loc.ui("gems.title")))
+    from .world_pages import SHIPS_PAGE, TREASURE_PAGE, available
+
+    if available(ctx.data):  # treasure chests and burial ships roll with chest quantity and rarity
+        world = ctx.loc.ui("world.title")
+        for term in ("chest-item-quantity", "chest-item-rarity"):
+            found[term] += [(ctx.loc.ui("world.tmap.title"), TREASURE_PAGE + "#chest", world),
+                            (ctx.loc.ui("world.ship.title"), SHIPS_PAGE, world)]
+        found["undead"].append((ctx.loc.ui("world.ship.title"), SHIPS_PAGE, world))
+    if any((i.get("mod") or {}).get("quiver") for i in ctx.loc.items.values()):  # quivers hold arrows and bolts
+        found["arrows"].append((ctx.loc.ui("class.quivers"), "items/bases.md", ctx.loc.ui("items.bases")))
     rune = ctx.loc.items.get("PT_RuneOfResurrection")
     if rune and rune.get("mod"):  # brings a dead companion back
         found["companion"].append((rune["mod"]["shared"]["m_name"], "items/base/PT_RuneOfResurrection.md", ctx.loc.ui("items.bases")))
@@ -1015,6 +1025,7 @@ def nav(loc: Localizer | None = None) -> list:
     from .halls_pages import NAV as HALLS_NAV
     from .patch_pages import INDEX, patch_path, versions
     from .weapon_pages import WEAPON_TYPES, weapon_path
+    from .world_pages import MERCHANTS_PAGE, SHIPS_PAGE, TREASURE_PAGE, available
 
     return [
         ("nav.home", "index.md"),
@@ -1033,6 +1044,8 @@ def nav(loc: Localizer | None = None) -> list:
                             ("creatures.title", "monsters/creatures.md"), ("taming.title", "monsters/taming.md")]),
         ("ascendancy.title", "ascendancy/index.md"),
         *([("halls.title", HALLS_NAV)] if HALLS_NAV else []),  # only when this version has the halls' maps
+        *([("world.title", [("world.tmap.title", TREASURE_PAGE), ("world.ship.title", SHIPS_PAGE), ("world.merch.title", MERCHANTS_PAGE)])]
+          if loc is not None and available(loc.data) else []),
         ("formula.title", [("formula.creatures", "mechanics/creatures.md"), ("formula.experience_page", "mechanics/experience.md"),
                            ("formula.loot_page", "mechanics/loot.md"), ("formula.combat", "mechanics/combat.md"),
                            ("formula.summons_page", "mechanics/summons.md")]),

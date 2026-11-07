@@ -120,6 +120,10 @@ def _source(ctx: Ctx, affix: dict) -> str:
     if affix["source"] == "essence":
         return ui("items.source_essence", items=", ".join(_essences_for(ctx, affix)))
     if affix["source"] == "none":
+        from .enchant_pages import ENCHANT_PAGE, owners
+
+        if affix["id"] in owners(ctx):  # a tier of a Runecarver enchantment (Enchants.Rows)
+            return ctx.loc.ui("enchant.source_enchant", link=rel(ENCHANT_PAGE, mod_path(affix)))
         return _badge(ui("badge.broken"), ui("items.not_generated_tip"))
     return ui("items.source_loot")
 
@@ -156,10 +160,16 @@ def page_mods(ctx: Ctx) -> dict[str, str]:
         if len(key) > len(classes):  # jewel types
             title += ": " + ", ".join(ui(f"tag.{t}") for t in key[len(classes):])
         md += [f"## {title} ({len(groups[key])})", ""] + _table(header, rows(groups[key]))
-    for source, title, note in (("essence", "essence_only", "essence_only_note"), ("none", "not_generated", "not_generated_note")):
-        chosen = [a for a in affixes if a["source"] == source]
+    from .enchant_pages import owners
+
+    enchants = owners(ctx)
+    for source, title, note in (("essence", "items.essence_only", "items.essence_only_note"), ("enchant", "enchant.mods_only", "enchant.mods_only_note"),
+                                ("none", "items.not_generated", "items.not_generated_note")):
+        # Mods no loot rolls that are tiers of an enchantment get their own group (Enchants.Rows).
+        chosen = [a for a in affixes if (a["source"] == "none" and a["id"] in enchants) == (source == "enchant")
+                  and a["source"] == (source if source != "enchant" else "none")]
         if chosen:
-            md += [f"## {ui('items.' + title)} ({len(chosen)})", "", ui("items." + note), ""] + _table(header, rows(chosen))
+            md += [f"## {ui(title)} ({len(chosen)})", "", ui(note, link=rel("items/enchantments.md", MODS_PAGE)), ""] + _table(header, rows(chosen))
     pages[MODS_PAGE] = "\n".join(md + _footer(ctx))
 
     for a in affixes:
@@ -171,7 +181,9 @@ def _mod_page(ctx: Ctx, a: dict) -> dict[str, str]:
     loc, page = ctx.loc, mod_path(a)
     ui = loc.ui
     md = [f"# {_cell(_title(a))}", "", f"<b>{_place(ctx, a)}</b> · {_cell(_rule(ctx, a))}", ""]
-    if a["source"] == "none":
+    from .enchant_pages import mod_section, owners
+
+    if a["source"] == "none" and a["id"] not in owners(ctx):
         md += [f'!!! warning "{ui("page.unimplemented")}"', f"    {ui('items.not_generated_note')}", ""]
 
     info = [[ui("items.rolls_on"), _cell(_rule(ctx, a))], [ui("items.source"), _source(ctx, a)]]
@@ -201,6 +213,7 @@ def _mod_page(ctx: Ctx, a: dict) -> dict[str, str]:
             [[t["id"], *(_cell(_values(t["text"][s])) for s in ["base", *slots])] for t in a["tiers"]],
         )
 
+    md += mod_section(ctx, a["id"], page)
     from .patch_pages import history
 
     md += history(ctx, "mods", [a["id"]], page)

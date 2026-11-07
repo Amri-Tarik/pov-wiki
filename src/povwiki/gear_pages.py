@@ -114,7 +114,7 @@ def _tables_with(ctx: Ctx, item: str, page: str) -> list[list[str]]:
             chance = t["chance"] * e["weight"] / total
             amount = f"{e.get('stackMin', 1)}–{e.get('stackMax', 1)}" if e.get("stackMax", 1) > e.get("stackMin", 1) else str(e.get("stackMin", 1))
             first = ui("gear.first_drop", n=_num(t["firstDrop"])) if t.get("firstDrop", 1) > 1 else ""
-            for creature in t["creatures"]:
+            for creature in t.get("creatures") or []:
                 rows.append([creature_link(ctx, creature, page), _pct(chance), amount, first])
     return rows
 
@@ -221,7 +221,7 @@ def _obtained(ctx: Ctx, item: str, catalog: dict, page: str = CURRENCY_PAGE) -> 
     from .monster_pages import creature_link
 
     bosses = sorted({cr for t in ctx.data.loot.get("tables") or []
-                     if any(e["id"] == item for e in t["entries"]) for cr in t["creatures"]}, key=ctx.loc.creature)
+                     if any(e["id"] == item for e in t["entries"]) for cr in t.get("creatures") or []}, key=ctx.loc.creature)
     if bosses:
         parts.append(ui("gear.drops_bosses", bosses=", ".join(creature_link(ctx, cr, page) for cr in bosses)))
     return "; ".join(parts) or "—"
@@ -253,6 +253,9 @@ def _currency_page(ctx: Ctx, item: str, catalog: dict, uses: dict, found: dict) 
     md += _essence_section(ctx, item, page)
     md += _ascension_line(ctx, item, page)
     md += _dismantling_line(ctx, item, page)
+    from .enchant_pages import enchant_section
+
+    md += enchant_section(ctx, item, page)
     used = sorted(set(uses.get(item, [])), key=lambda i: _item_name(ctx, i))
     ground = _ground_into(ctx, item, page, found)
     if used or ground:
@@ -596,7 +599,7 @@ def _unique_sources(ctx: Ctx, item: str, catalog: dict, page: str) -> str:
     if item == "PT_Jewel_WombOfCorruption":
         parts.append(ui("gear.src_mist", chance=_pct(_values().get("loot", {}).get("womb_chance", 0)), link=_anchor("loot", page)))
     bosses = sorted({cr for t in ctx.data.loot.get("tables") or []
-                     if any(e["id"] == item for e in t["entries"]) for cr in t["creatures"]}, key=ctx.loc.creature)
+                     if any(e["id"] == item for e in t["entries"]) for cr in t.get("creatures") or []}, key=ctx.loc.creature)
     if bosses:
         parts.append(ui("gear.drops_bosses", bosses=", ".join(creature_link(ctx, cr, page) for cr in bosses)))
     return "; ".join(parts) or _badge(ui("badge.broken"), ui("gear.no_source"))

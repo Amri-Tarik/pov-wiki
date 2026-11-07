@@ -137,7 +137,8 @@ def render_items(valheim: Path, errors: list) -> dict:
     recipes = json.loads((valheim / "recipes.json").read_text(encoding="utf-8"))
     build = _Builder(effects)
     tag_set = clr.GetClrType(ItemTags).GetField("set", _INSTANCE)
-    craft_level = _CraftLevel(recipes, CraftLevel, BiomeLevels)
+    pieces = json.loads((valheim / "pieces.json").read_text(encoding="utf-8"))
+    craft_level = _CraftLevel(recipes, CraftLevel, BiomeLevels, {p: v.get("name") for p, v in pieces.items()})
 
     out = {}
     for prefab, shared in items.items():
@@ -564,11 +565,17 @@ class _CraftLevel:
     tables (CraftLevel.materials: material -> biome; BiomeLevels: biome -> item level) are read
     once into plain Python."""
 
-    def __init__(self, recipes: list, craft_level, biome_levels):
+    def __init__(self, recipes: list, craft_level, biome_levels, station_names: dict | None = None):
         t = clr.GetClrType(craft_level)
         materials = t.GetField("materials", _ALL).GetValue(None)
         self.materials = {str(kv.Key): int(kv.Value) for kv in materials}
-        self.by_prefix = t.GetMethod("ByPrefix", _ALL)
+        self.by_prefix = t.GetMethod("ByPrefix", _ALL)  # before 6.0: Mold*/Upgrader* by prefix
+        # 6.0: a recipe's station sets a floor (CraftLevel.stations, by the station's name token:
+        # the black forge and the mage table count as Mistlands); molds are Deep North, upgrade
+        # stones and upgrade-only materials count for nothing.
+        stations = t.GetField("stations", _ALL)
+        self.stations = {str(kv.Key): int(kv.Value) for kv in stations.GetValue(None)} if stations else {}
+        self.station_names = station_names or {}
         # 5.1.2: materials with amount 0 (Valheim lists upgrade-only materials that way) don't count.
         # Read from the version's own code: does Level read Requirement.m_amount?
         self.skip_empty = _reads_field([m for m in t.GetMethods(_ALL) if m.Name == "Level"], "m_amount")
@@ -584,14 +591,23 @@ class _CraftLevel:
             return 0
         if prefab in self.materials:
             return self.biome_level.get(self.materials[prefab], 0)
-        found = self.by_prefix.Invoke(None, [prefab])  # Mold*/Upgrader* items
-        if found is not None:
-            return self.biome_level.get(int(found), 0)
+        if self.by_prefix is not None:
+            found = self.by_prefix.Invoke(None, [prefab])  # Mold*/Upgrader* items
+            if found is not None:
+                return self.biome_level.get(int(found), 0)
+        elif prefab.startswith("Mold"):
+            return self.biome_level.get(64, 0)  # Deep North
+        elif prefab.startswith("Upgrader"):
+            return 0
         level = self.biome_level.get(1, 1)  # Meadows
         recipe = self.recipe_of.get(prefab)
+        if recipe and self.stations:
+            level = max(level, self.biome_level.get(self.stations.get(self.station_names.get(recipe.get("station")) or "", 0), 0))
         if recipe and depth < 5:
             for res in recipe["resources"]:
                 if self.skip_empty and res.get("amount", 1) <= 0:
+                    continue
+                if self.stations and res.get("upgrader"):  # Requirement.m_upgraderResource (6.0)
                     continue
                 level = max(level, self.level(res["item"], depth + 1))
         return level

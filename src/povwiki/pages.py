@@ -991,6 +991,7 @@ TREES = [PASSIVES, CRAFTING]
 def nav() -> list:
     """Navigation: (ui title key, page path | children). Titles are translated per language.
     Glossary term pages are reached from keyword links and search."""
+    from .enchant_pages import ENCHANT_PAGE, SCROLLS_PAGE, enchant_built
     from .gear_pages import _GROUPS, group_path
     from .patch_pages import INDEX, patch_path, versions
     from .weapon_pages import WEAPON_TYPES, weapon_path
@@ -1003,7 +1004,9 @@ def nav() -> list:
                          ("weapons.title", [(f"weapons.{slug}", weapon_path(slug)) for slug, *_ in WEAPON_TYPES]),
                          ("gear.currency", [("gear.currency_all", "items/currency.md"),
                                             *((f"gear.group.{g}", group_path(g)) for g in _GROUPS)]),
-                         ("gear.jewels", "items/jewels.md"), ("gear.uniques", "items/uniques.md")]),
+                         ("gear.jewels", "items/jewels.md"), ("gear.uniques", "items/uniques.md"),
+                         *([("enchant.title", [("enchant.all", ENCHANT_PAGE), ("enchant.scrolls_title", SCROLLS_PAGE)])]
+                           if enchant_built() else [])]),
         ("monsters.title", [("monsters.mods", "monsters/mods.md"), ("bosses.title", "monsters/bosses.md"),
                             ("creatures.title", "monsters/creatures.md"), ("taming.title", "monsters/taming.md")]),
         ("formula.title", [("formula.creatures", "mechanics/creatures.md"), ("formula.experience_page", "mechanics/experience.md"),

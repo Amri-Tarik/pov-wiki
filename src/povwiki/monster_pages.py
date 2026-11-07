@@ -88,7 +88,7 @@ def _mod_bosses(ctx: Ctx) -> dict[str, dict]:
 
 def _boss_tables(ctx: Ctx) -> set[str]:
     """Creatures with a loot table of the mod (Valheim's bosses, Kall included)."""
-    return {cr for t in ctx.data.loot.get("tables") or [] for cr in t["creatures"]}
+    return {cr for t in ctx.data.loot.get("tables") or [] for cr in t.get("creatures") or []}
 
 
 def creature_link(ctx: Ctx, prefab: str, page: str) -> str:
@@ -141,7 +141,7 @@ def _drops(ctx: Ctx, prefab: str, page: str) -> list[list[str]]:
 
     ui, rows, found = ctx.loc.ui, [], bases(ctx)
     for t in ctx.data.loot.get("tables") or []:
-        if prefab not in t["creatures"]:
+        if prefab not in (t.get("creatures") or []):
             continue
         total = sum(x["weight"] for x in t["entries"]) or 1
         first = ui("gear.first_drop", n=_num(t["firstDrop"])) if t.get("firstDrop", 1) > 1 else ""
@@ -160,7 +160,7 @@ def _drops_history(ctx: Ctx, prefab: str, page: str) -> list[str]:
     """What patches changed in this boss's drop tables."""
     from .patch_pages import history
 
-    return history(ctx, "drops", [t["id"] for t in ctx.data.loot.get("tables") or [] if prefab in t["creatures"]], page)
+    return history(ctx, "drops", [t["id"] for t in ctx.data.loot.get("tables") or [] if prefab in (t.get("creatures") or [])], page)
 
 
 def _drops_section(ctx: Ctx, prefab: str, page: str) -> list[str]:
@@ -190,11 +190,14 @@ def page_bosses(ctx: Ctx) -> dict[str, str]:
     # Valheim's bosses in biome order, then those that only have a loot table (Kall).
     order = list(biomes) + sorted(_boss_tables(ctx) - set(biomes) - set(mine))
     rows = []
+    from .enchant_pages import boss_scroll_link
+
     for prefab in order:
         anchor = f'<span id="{prefab.lower()}"></span>'
         biome = _biome_name(ctx, biomes[prefab]) if prefab in biomes else "—"
-        rows.append([_trophy(ctx, prefab, page, 40), f"{anchor}**{ctx.loc.creature(prefab)}**", biome,
-                     ", ".join(r[1] for r in _drops(ctx, prefab, page)) or "—"])
+        # Its Scroll of Ancient Will (EnchantLoot.BossDrop), one for each player nearby.
+        drops = [r[1] for r in _drops(ctx, prefab, page)] + [s for s in [boss_scroll_link(ctx, prefab, page)] if s]
+        rows.append([_trophy(ctx, prefab, page, 40), f"{anchor}**{ctx.loc.creature(prefab)}**", biome, ", ".join(drops) or "—"])
     md += _table(["", ui("col.name"), ui("bosses.biome"), ui("bosses.drops")], rows)
     pages[page] = "\n".join(md + _footer(ctx))
 

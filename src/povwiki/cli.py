@@ -1,4 +1,5 @@
 import argparse
+import sys
 import subprocess
 from pathlib import Path
 
@@ -20,6 +21,10 @@ def _extract(source: Path, render: bool) -> None:
 
 
 def main() -> None:
+    # Game text and decompiled code hold Russian and other non-ASCII text; a Windows console
+    # would fail printing it.
+    for stream in (sys.stdout, sys.stderr):
+        stream.reconfigure(encoding="utf-8", errors="replace")
     ap = argparse.ArgumentParser(prog="povwiki", description="Path of Valheiman wiki pipeline")
     sub = ap.add_subparsers(dest="cmd", required=True)
 

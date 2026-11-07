@@ -1894,6 +1894,8 @@ anchors = [
     "PassiveTree.RunicCraft/GlyphDef.cs :: GlyphDef.Divine",
     "PassiveTree.RunicCraft/Anvil.cs :: Anvil.Pay",
 ]
+fingerprint = "f030a516de6a"
+checked = "6.0.0"
 
 [formula.values]
 delay = 0.3
@@ -1907,6 +1909,8 @@ anchors = [
     "PassiveTree.RunicCraft/Craft.cs :: Craft.Mult",
     "PassiveTree.RunicCraft/Craft.cs :: Craft.DoForge",
 ]
+fingerprint = "7f94a60c2396"
+checked = "6.0.0"
 
 [formula.values]
 target = 0.35
@@ -1927,6 +1931,8 @@ anchors = [
     "PassiveTree.RunicCraft/ItemMarks.cs :: ItemMarks.DurabilityMult",
     "PassiveTree.RunicCraft/ItemMarks.cs :: ItemMarks.LevelCap",
 ]
+fingerprint = "9f75fd76e34a"
+checked = "6.0.0"
 
 [formula.values]
 echo = 0.35
@@ -1946,6 +1952,8 @@ anchors = [
     "PassiveTree.RunicCraft/GlyphLoot.cs :: GlyphLoot.Open",
     "PassiveTree.RunicCraft/Defs.cs :: Defs.Stage",
 ]
+fingerprint = "80089176f8fc"
+checked = "6.0.0"
 
 [[formula]]
 id = "unusual-ore"
@@ -1961,3 +1969,5 @@ anchors = [
     "PassiveTree.RunicCraft/TinMist.cs :: MistDrop.Prefix",
     "PassiveTree/Gathering.cs :: Gathering.Knock",
 ]
+fingerprint = "510fda5e6c4b"
+checked = "6.0.0"

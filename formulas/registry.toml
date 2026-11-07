@@ -1454,6 +1454,8 @@ anchors = [
     "PassiveTree.Encounters.HallMaps/HallMapServer.cs :: \"Vector3.Distance(((Component)allPlayer).transform.position, a.At) < 30f\"",
     "PassiveTree.Encounters.HallMaps/HallMapItems.cs :: \"if (Item(odb, d.Id, Name(d)\"",
 ]
+fingerprint = "9cc2b9228056"
+checked = "6.0.0"
 
 [formula.values]
 rooms_low = 5
@@ -1482,6 +1484,8 @@ anchors = [
     "PassiveTree.Encounters.Halls/HallsParty.cs :: HallsParty.Elites",
     "PassiveTree.Encounters.Halls/HallsParty.cs :: HallsParty.Hp",
 ]
+fingerprint = "bb7c7cfc4bb7"
+checked = "6.0.0"
 
 [formula.values]
 room_mobs = 28
@@ -1512,10 +1516,17 @@ anchors = [
     "PassiveTree.Encounters.HallMaps/HallMapRun.cs :: HallMapRun.AltarAsk",
     "PassiveTree.Encounters.HallMaps/HallMapWindow.cs :: HallMapWindow.PointsMark",
 ]
+fingerprint = "839e92ee883e"
+checked = "6.0.0"
 
 [formula.values]
 per_tier = 2
-tier_levels = [19, 77, 130, 181]
+tier_levels = [
+    19,
+    77,
+    130,
+    181,
+]
 
 [[formula]]
 id = "halls-merchant"
@@ -1528,11 +1539,21 @@ anchors = [
     "PassiveTree.Encounters.HallMaps/HallMapShop.cs :: HallMapShop.Ensure",
     "PassiveTree.Encounters.HallMaps/HallMapDefs.cs :: HallMapDefs.Obtainable",
 ]
+fingerprint = "47ed7e47b64c"
+checked = "6.0.0"
 
 [formula.values]
 count = 8
 days = 3
-prices = [40, 70, 110, 160, 220, 300, 400]
+prices = [
+    40,
+    70,
+    110,
+    160,
+    220,
+    300,
+    400,
+]
 
 [[formula]]
 id = "halls-room-drops"
@@ -1544,6 +1565,8 @@ anchors = [
     "PassiveTree.Encounters.HallMaps/HallMapDrops.cs :: HallMapDrops.RoomsBlockedAt",
     "PassiveTree.Encounters.HallMaps/HallMapDefs.cs :: HallMapDefs.Build",
 ]
+fingerprint = "18b3b5ddcb4f"
+checked = "6.0.0"
 
 [[formula]]
 id = "halls-map-modifiers"
@@ -1562,6 +1585,8 @@ anchors = [
     "PassiveTree.Encounters.HallMaps/HallMapServer.cs :: HallMapServer.Rune",
     "PassiveTree.Encounters.HallMaps/HallMapWindow.cs :: \"string text = HallMapAffixes.WhyNot((string)rune2, s.Map, s.Phase);\"",
 ]
+fingerprint = "d538efa63d4b"
+checked = "6.0.0"
 
 [formula.values]
 magic_max = 2

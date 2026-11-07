@@ -1404,3 +1404,5 @@ anchors = [
     "PassiveTree.RunicCraft/Defs.cs :: Defs.Stage",
     "PassiveTree.Loot/LootDrops.cs :: \"Reward reward6 = EnchantLoot.Roll(ctx, rng);\"",
 ]
+fingerprint = "0380031b6cc5"
+checked = "6.0.0"

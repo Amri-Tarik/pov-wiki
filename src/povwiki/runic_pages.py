@@ -454,7 +454,9 @@ def _alloys_page(ctx: Ctx) -> str:
         if not found:
             continue
         links = " · ".join(f"[{t}]({rel(mod_path(x), page)})" for t, x in found)
-        md += [f'??? note "{a["name"]} ({len(found)})"', "", f"    {links}", ""]
+        # Links to every favoured mod: long (54 KB in Russian), and each mod is searchable on its own page.
+        md += [f'??? note "{a["name"]} ({len(found)})"', "", '    <div data-search-exclude markdown="1">', "",
+               f"    {links}", "", "    </div>", ""]
     return "\n".join(md + _footer(ctx))
 
 

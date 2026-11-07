@@ -1982,6 +1982,8 @@ anchors = [
     "PassiveTree.Encounters.HallMaps/HallMapRun.cs :: \"LootDrops.SourceUnique(\"monolith\", lv\"",
     "PassiveTree.Encounters.HallMaps/HallMapRun.cs :: \"new Tunables.Knob(\"hmap.blight-unique\"\"",
 ]
+fingerprint = "fb25be1a5045"
+checked = "6.0.0"
 
 [formula.values]
 blight_hall = 0.2

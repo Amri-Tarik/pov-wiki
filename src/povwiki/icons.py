@@ -29,6 +29,7 @@ from .paths import ROOT
 DOCS_DIR = "assets/icons"
 ICON_SIZE = 96  # raw icons for the viewer
 FRAMED_SIZE = 160  # framed icons for pages; shown at 56-128 px
+ART_SIZE = 384  # larger art (class portraits behind the ascendancy circles and on their pages)
 FRAME_RING = 0.82  # UiKit.FrameRing: node box / frame size
 # Icon inset inside the node box, as a fraction of the box (TreeWindow node setup).
 INSET = {"keystone": 0.06, "notable": 0.0, "mastery-notable": 0.0, "normal": 0.02, "mastery": 0.025, "socket": 0.0}
@@ -67,6 +68,7 @@ class Icons:
         self.valheim = valheim / "icons" if valheim else None  # Valheim item icons: "vh:<prefab>"
         self.raw: set[str] = set()  # image ids
         self.framed: set[tuple[str, str]] = set()  # (image id, frame kind)
+        self.art: set[str] = set()  # image ids, at ART_SIZE
 
     def _exists(self, image: str | None) -> bool:
         if not image:
@@ -84,6 +86,13 @@ class Icons:
             return None
         self.raw.add(image)
         return f"{DOCS_DIR}/{_slug(image)}.webp"
+
+    def art_path(self, image: str | None) -> str | None:
+        """Docs path of a larger copy of an image (ART_SIZE square), or None when there is none."""
+        if not self._exists(image):
+            return None
+        self.art.add(image)
+        return f"{DOCS_DIR}/art/{_slug(image)}.webp"
 
     def framed_path(self, image: str | None, kind: str) -> str | None:
         """Docs path of the icon in its gold in-game frame (for pages)."""
@@ -103,6 +112,8 @@ class Icons:
         jobs: list[tuple[str, Callable[[], Image.Image]]] = []
         for image in sorted(self.raw):
             jobs.append((f"{_slug(image)}.webp", lambda image=image: self._load(image).resize((ICON_SIZE, ICON_SIZE), Image.LANCZOS)))
+        for image in sorted(self.art):
+            jobs.append((f"art/{_slug(image)}.webp", lambda image=image: self._load(image).resize((ART_SIZE, ART_SIZE), Image.LANCZOS)))
         for kind in FRAME_KINDS:
             for state in ("locked", "allocated"):
                 jobs.append((f"frame/{kind}-{state}.webp", lambda kind=kind, state=state: self._frame(kind, state, FRAMED_SIZE * 2)))

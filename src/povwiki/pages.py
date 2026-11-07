@@ -727,6 +727,13 @@ def page_tree(ctx: Ctx) -> dict[str, str]:
             continue
         c = curves.get(key)
         links.append([index[a], index[b], *c] if c else [index[a], index[b]])
+    rings = []
+    if ctx.spec is PASSIVES:  # the ascendancy classes in circles around the tree (6.0)
+        from .ascendancy_pages import overlay
+
+        extra, extra_links, rings = overlay(ctx, page, SIZES, FRAME_KINDS, frame_kind, ICONS_DIR)
+        links += [[a + len(nodes), b + len(nodes)] for a, b in extra_links]
+        nodes += extra
 
     data = {
         "nodes": nodes,
@@ -740,6 +747,7 @@ def page_tree(ctx: Ctx) -> dict[str, str]:
         "iconBase": f"../{rel(ICONS_DIR, page)}/" if ctx.icons else "",
         # The game's painted frames: iconBase + "frame/<kind>-<locked|allocated>.webp".
         "frames": list(FRAME_KINDS) if ctx.icons else [],
+        **({"classes": rings} if rings else {}),
     }
     md = [
         "---",
@@ -1006,6 +1014,7 @@ def nav() -> list:
                          ("gear.jewels", "items/jewels.md"), ("gear.uniques", "items/uniques.md")]),
         ("monsters.title", [("monsters.mods", "monsters/mods.md"), ("bosses.title", "monsters/bosses.md"),
                             ("creatures.title", "monsters/creatures.md"), ("taming.title", "monsters/taming.md")]),
+        ("ascendancy.title", "ascendancy/index.md"),
         ("formula.title", [("formula.creatures", "mechanics/creatures.md"), ("formula.experience_page", "mechanics/experience.md"),
                            ("formula.loot_page", "mechanics/loot.md"), ("formula.combat", "mechanics/combat.md"),
                            ("formula.summons_page", "mechanics/summons.md")]),

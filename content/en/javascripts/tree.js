@@ -8,6 +8,9 @@
  *   ui:       wiki strings
  *   iconBase: URL prefix for iconPath (icons can be turned off: then iconPath is "")
  *   frames:   frame kinds; iconBase + "frame/<kind>-<locked|allocated>.webp" (empty when icons are off)
+ *   classes:  optional ascendancy circles [{x, y, r, name, href, art}] (game coordinates), drawn under
+ *             the nodes like Path of Building's; their nodes are ordinary rows of `nodes` with branch -1
+ *             and an 11th field, the page (or #anchor) they open
  * Close up, a node is drawn like the game's tree window: dark backing, the painted icon cropped
  * to a circle (or a branch-coloured dot), then the painted frame at node size / 0.82. Frames are
  * silver, and gold for highlighted nodes, like allocated nodes in game.
@@ -54,7 +57,8 @@
       "</div>" +
       // Inline layout: the canvas is taken out of the flow, so its size can never feed back into
       // the box it is measured from, whatever the stylesheet says.
-      '<div class="pov-tree-wrap" style="position:relative;height:75vh;min-height:420px;overflow:hidden;touch-action:none">' +
+      '<div class="pov-tree-wrap" style="position:relative;height:' + (this.root.dataset.height || "75vh") +
+      ';min-height:420px;overflow:hidden;touch-action:none">' +
       '<canvas style="position:absolute;left:0;top:0;display:block"></canvas>' +
       '<div class="pov-tree-tip" style="position:absolute" hidden></div></div>' +
       '<div class="pov-tree-hint">' + ui.hint + "</div>";
@@ -73,7 +77,7 @@
       var node = {
         i: i, id: n[0], x: n[1], y: -n[2], size: n[3], branch: n[4], title: n[5], tip: n[6], flags: n[7],
         r: d.sizes[n[3]].d / 2, icon: n[8] ? d.iconBase + n[8] : null,
-        frame: d.frames.length ? d.frames[n[9]] : null,
+        frame: d.frames.length ? d.frames[n[9]] : null, href: n[10] || null,
       };
       // Searchable: title and tooltip text. Jewel sockets have neither, so their type name
       // ("Jewel socket") is searchable too.
@@ -85,6 +89,12 @@
       minY = Math.min(minY, node.y); maxY = Math.max(maxY, node.y);
       var key = Math.floor(node.x / CELL) + "," + Math.floor(node.y / CELL);
       (grid[key] = grid[key] || []).push(node);
+    });
+    this.rings = (d.classes || []).map(function (c) {
+      var ring = { x: c.x, y: -c.y, r: c.r, name: c.name, href: c.href, art: c.art || null };
+      minX = Math.min(minX, ring.x - ring.r); maxX = Math.max(maxX, ring.x + ring.r);
+      minY = Math.min(minY, ring.y - ring.r); maxY = Math.max(maxY, ring.y + ring.r + 60);
+      return ring;
     });
     this.nodes = nodes;
     this.byId = byId;
@@ -205,6 +215,30 @@
     var vx0 = a.x - m, vy0 = a.y - m, vx1 = b.x + m, vy1 = b.y + m;
     function visible(n) { return n.x > vx0 && n.x < vx1 && n.y > vy0 && n.y < vy1; }
 
+    // Ascendancy circles: the class's art, darkened, in a ring.
+    for (var q = 0; q < this.rings.length; q++) {
+      var ring = this.rings[q];
+      if (ring.x + ring.r < vx0 || ring.x - ring.r > vx1 || ring.y + ring.r < vy0 || ring.y - ring.r > vy1) continue;
+      c.save();
+      c.beginPath();
+      c.arc(ring.x, ring.y, ring.r, 0, Math.PI * 2);
+      c.fillStyle = "#0d0b09";
+      c.fill();
+      var art = ring.art ? this.image(ring.art) : null;
+      if (art) {
+        c.clip();
+        c.globalAlpha = matches ? 0.18 : 0.42;
+        c.drawImage(art, ring.x - ring.r, ring.y - ring.r, ring.r * 2, ring.r * 2);
+      }
+      c.restore();
+      c.globalAlpha = 1;
+      c.lineWidth = Math.max(10, 2 / s);
+      c.strokeStyle = "#8a6d3b";
+      c.beginPath();
+      c.arc(ring.x, ring.y, ring.r, 0, Math.PI * 2);
+      c.stroke();
+    }
+
     // Links: everything dim, then links between matched nodes bright.
     c.lineCap = "round";
     c.lineWidth = Math.max(5, 1.2 / s);
@@ -228,7 +262,7 @@
         this.drawFramed(c, n, r, unimpl, (matches && matches[n.i]) || lit[n.i]);
         continue;
       }
-      c.fillStyle = unimpl ? "#808080" : branches[n.branch].color;
+      c.fillStyle = unimpl ? "#808080" : n.branch < 0 ? "#c9a24a" : branches[n.branch].color;
       c.beginPath();
       this.shape(c, n, r);
       c.fill();
@@ -272,6 +306,16 @@
     c.font = "600 12px " + (css.getPropertyValue("--md-text-font-family").trim() || "sans-serif");
     c.textAlign = "center";
     c.textBaseline = "top";
+    for (var w = 0; w < this.rings.length; w++) {  // class names under their circles
+      var rg = this.rings[w], rx = rg.x * s + v.tx, ry = (rg.y + rg.r) * s + v.ty + 6;
+      if (rx < -150 || rx > this.w + 150 || ry < -20 || ry > this.h + 20) continue;
+      c.globalAlpha = matches ? 0.4 : 1;
+      c.lineWidth = 3;
+      c.strokeStyle = bg;
+      c.strokeText(rg.name, rx, ry);
+      c.fillStyle = "#d9b45a";
+      c.fillText(rg.name, rx, ry);
+    }
     for (var k = 0; k < this.nodes.length; k++) {
       var ln = this.nodes[k];
       if (!ln.title || (ln.flags & F_UNIMPL)) continue;
@@ -307,7 +351,7 @@
       c.restore();
     } else {
       // No art: a dot in the branch colour, like the game's small passives.
-      c.fillStyle = unimpl ? "#808080" : this.data.branches[n.branch].color;
+      c.fillStyle = unimpl ? "#808080" : n.branch < 0 ? "#c9a24a" : this.data.branches[n.branch].color;
       c.beginPath();
       c.arc(n.x, n.y, r * 0.36, 0, Math.PI * 2);
       c.fill();
@@ -419,9 +463,16 @@
       drag = null;
       if (e.type !== "pointerup" || !wasDrag || wasDrag.moved) return;
       var n = self.hit(p.x, p.y);
-      if (n && (n.flags & F_PAGE) && (self.pinned === n || e.pointerType === "mouse")) {
-        window.location.href = self.base + n.id + "/";
+      if (n && (n.href || (n.flags & F_PAGE)) && (self.pinned === n || e.pointerType === "mouse")) {
+        window.location.href = n.href || self.base + n.id + "/";
         return;
+      }
+      if (!n && self.rings.length > 1) {  // a click inside a class circle opens the class's page
+        var wp = self.toWorld(p.x, p.y);
+        for (var ri = 0; ri < self.rings.length; ri++) {
+          var rr = self.rings[ri];
+          if (Math.hypot(wp.x - rr.x, wp.y - rr.y) <= rr.r) { window.location.href = rr.href; return; }
+        }
       }
       // Touch, or nodes without a page: tap pins the tooltip (tap again to open the page).
       self.pinned = n;

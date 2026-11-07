@@ -9,6 +9,23 @@
 # or 'File.cs :: "text"' (the one statement holding that C# string or code).
 
 [[formula]]
+id = "ascendancy"
+anchors = [
+    "PassiveTree/ClassTrees.cs :: ClassTrees.Budget",
+    "PassiveTree/ClassTrees.cs :: ClassTrees.Normalize",
+    "PassiveTree/ClassTrees.cs :: ClassTrees.RefundCost",
+    "PassiveTree/Tunables.cs :: \"asc.points\"",
+    "PassiveTree/Tunables.cs :: \"asc.respec\"",
+    "PassiveTree.Encounters.Halls/HallsPoints.cs :: HallsPoints.Granted",
+]
+fingerprint = "9f4f2db1f153"
+checked = "6.0.0"
+
+[formula.values]
+per_tier = 2
+cap = 8
+
+[[formula]]
 id = "creature-level"
 anchors = [
     "PassiveTree/CreatureLevels.cs :: CreatureLevels.Of",

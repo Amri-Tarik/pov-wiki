@@ -1155,6 +1155,27 @@ text = "Socketed in an allocated socket (once identified), it turns the hidden n
 
 
 # Tools: calculators (tools_pages.py, javascripts/<tool>.js).
+[ascendancy]
+title = "Ascendancy"
+intro = "An Ascendancy class makes your path your own: a small tree of its own beside the passive tree. Each path has its classes, and the altar at the end of a Halls of Oaths run offers the classes of your path."
+how = "How it works"
+points = "A class tree has {points} points; each small or notable node costs one, and a node must connect back to the class's start. The points come from the Halls of Oaths: {per} for each tier of gates whose final boss you defeat, once per character, up to {points}."
+change = "With no class nodes taken, any completed halls altar lets you change your class within your path; your points stay. Refunding a class node costs {respec} times a passive point's refund."
+access_note = "Classes marked early access are opened through PoV Link; the others are open to everyone."
+viewer = "The classes are also drawn in circles around the [passive tree]({tree}), each on the side of its path."
+col_class = "Class"
+col_access = "Access"
+col_nodes = "Nodes"
+col_role = "Type"
+col_effect = "Effect"
+access_common = "Everyone"
+access_early = "Early access"
+class_line = "Path: {path} · {access} · all classes: [{title}]({index})"
+nodes = "Nodes"
+role_start = "Start"
+role_notable = "Notable"
+role_small = "Small"
+
 [tools]
 title = "Tools"
 noscript = "This calculator needs JavaScript."

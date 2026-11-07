@@ -253,6 +253,9 @@ def _currency_page(ctx: Ctx, item: str, catalog: dict, uses: dict, found: dict) 
     md += _essence_section(ctx, item, page)
     md += _ascension_line(ctx, item, page)
     md += _dismantling_line(ctx, item, page)
+    from .halls_pages import currency_section
+
+    md += currency_section(ctx, item, page)  # map runes, the merchant's rune, unique rooms' rewards
     used = sorted(set(uses.get(item, [])), key=lambda i: _item_name(ctx, i))
     ground = _ground_into(ctx, item, page, found)
     if used or ground:

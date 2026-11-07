@@ -196,7 +196,10 @@ def page_bosses(ctx: Ctx) -> dict[str, str]:
         rows.append([_trophy(ctx, prefab, page, 40), f"{anchor}**{ctx.loc.creature(prefab)}**", biome,
                      ", ".join(r[1] for r in _drops(ctx, prefab, page)) or "—"])
     md += _table(["", ui("col.name"), ui("bosses.biome"), ui("bosses.drops")], rows)
-    pages[page] = "\n".join(md + _footer(ctx))
+    from .halls_pages import bosses_note
+
+    md += bosses_note(ctx, page)  # their boss rooms in the Halls of Oaths
+    pages[page] ="\n".join(md + _footer(ctx))
 
     pages[boss_path(b["mistMother"]["prefab"])] = _mist_mother_page(ctx, b["mistMother"])
     for boss in b["monolith"]["bosses"]:

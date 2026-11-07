@@ -992,6 +992,7 @@ def nav() -> list:
     """Navigation: (ui title key, page path | children). Titles are translated per language.
     Glossary term pages are reached from keyword links and search."""
     from .gear_pages import _GROUPS, group_path
+    from .halls_pages import NAV as HALLS_NAV
     from .patch_pages import INDEX, patch_path, versions
     from .weapon_pages import WEAPON_TYPES, weapon_path
 
@@ -1006,6 +1007,7 @@ def nav() -> list:
                          ("gear.jewels", "items/jewels.md"), ("gear.uniques", "items/uniques.md")]),
         ("monsters.title", [("monsters.mods", "monsters/mods.md"), ("bosses.title", "monsters/bosses.md"),
                             ("creatures.title", "monsters/creatures.md"), ("taming.title", "monsters/taming.md")]),
+        *([("halls.title", HALLS_NAV)] if HALLS_NAV else []),  # only when this version has the halls' maps
         ("formula.title", [("formula.creatures", "mechanics/creatures.md"), ("formula.experience_page", "mechanics/experience.md"),
                            ("formula.loot_page", "mechanics/loot.md"), ("formula.combat", "mechanics/combat.md"),
                            ("formula.summons_page", "mechanics/summons.md")]),

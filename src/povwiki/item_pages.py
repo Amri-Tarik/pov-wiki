@@ -128,6 +128,12 @@ def _source(ctx: Ctx, affix: dict) -> str:
     return ui("items.source_loot")
 
 
+def _unsearched(lines: list[str]) -> list[str]:
+    """A long table left out of search: every mod has its own page there, and a group's table can
+    pass the search index's 32 KB per section (Russian weapon mods: 65 KB)."""
+    return ['<div data-search-exclude markdown="1">', "", *lines, "</div>", ""]
+
+
 def page_mods(ctx: Ctx) -> dict[str, str]:
     """All item mods: an index grouped by what they roll on, and a page per mod."""
     loc, affixes = ctx.loc, ctx.loc.loot["affixes"]
@@ -159,7 +165,7 @@ def page_mods(ctx: Ctx) -> dict[str, str]:
         title = " & ".join(ui(f"class.{c}") for c in classes) or ui("items.other")
         if len(key) > len(classes):  # jewel types
             title += ": " + ", ".join(ui(f"tag.{t}") for t in key[len(classes):])
-        md += [f"## {title} ({len(groups[key])})", ""] + _table(header, rows(groups[key]))
+        md += [f"## {title} ({len(groups[key])})", ""] + _unsearched(_table(header, rows(groups[key])))
     from .enchant_pages import owners
 
     enchants = owners(ctx)
@@ -169,7 +175,7 @@ def page_mods(ctx: Ctx) -> dict[str, str]:
         chosen = [a for a in affixes if (a["source"] == "none" and a["id"] in enchants) == (source == "enchant")
                   and a["source"] == (source if source != "enchant" else "none")]
         if chosen:
-            md += [f"## {ui(title)} ({len(chosen)})", "", ui(note, link=rel("items/enchantments.md", MODS_PAGE)), ""] + _table(header, rows(chosen))
+            md += [f"## {ui(title)} ({len(chosen)})", "", ui(note, link=rel("items/enchantments.md", MODS_PAGE)), ""] + _unsearched(_table(header, rows(chosen)))
     pages[MODS_PAGE] = "\n".join(md + _footer(ctx))
 
     for a in affixes:

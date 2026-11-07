@@ -1599,11 +1599,13 @@ anchors = [
     "PassiveTree.Gems/GemBoard.cs :: GemBoard.CapacityOf",
     "PassiveTree.Gems/GemPlayer.cs :: GemPlayer.Capacity",
     "PassiveTree/Progress.cs :: Progress.EarnedPoints",
-    'PassiveTree.Gems/GemCatalog.cs :: "gemDef2.Num("capacity""',
+    "PassiveTree.Gems/GemCatalog.cs :: \"gemDef2.Num(\"capacity\"\"",
     "PassiveTree.Gems/GemCatalog.cs :: GemCatalog.Knobs",
     "PassiveTree.Gems/GemBoard.cs :: GemBoard.Resolve",
     "PassiveTree.Gems/GemPlayer.cs :: GemPlayer.Validate",
 ]
+fingerprint = "8fb3cc414a8a"
+checked = "6.0.0"
 
 [[formula]]
 id = "gem-costs"
@@ -1617,6 +1619,8 @@ anchors = [
     "PassiveTree.Gems/GemRuntime.cs :: AttackCost.Postfix",
     "PassiveTree.Gems/GemRuntime.cs :: BlockCost.Postfix",
 ]
+fingerprint = "e2e050983972"
+checked = "6.0.0"
 
 [formula.values]
 duration_share = 0.5
@@ -1633,6 +1637,8 @@ anchors = [
     "PassiveTree/EffectDuration.cs :: EffectDuration.Factor",
     "PassiveTree.Gems/GemBoard.cs :: GemBoard.SupportOn",
 ]
+fingerprint = "6c88ba87604c"
+checked = "6.0.0"
 
 [formula.values]
 max = 0.75
@@ -1654,3 +1660,5 @@ anchors = [
     "PassiveTree.Gems/GemCut.cs :: GemCut.Cut",
     "PassiveTree.Gems/GemCut.cs :: GemCut.Raise",
 ]
+fingerprint = "2f4543397516"
+checked = "6.0.0"

@@ -1971,3 +1971,17 @@ anchors = [
 ]
 fingerprint = "510fda5e6c4b"
 checked = "6.0.0"
+
+[[formula]]
+id = "unique-gear-sources"
+anchors = [
+    "PassiveTree.Loot/LootDrops.cs :: LootDrops.SourceUnique",
+    "PassiveTree.Loot/LootDrops.cs :: LootDrops.InMist",
+    "PassiveTree.Loot/LootDrops.cs :: LootDrops.UniquePool",
+    "PassiveTree.Encounters.HallMaps/HallMapRun.cs :: \"LootDrops.SourceUnique(\"corrupted\", lv\"",
+    "PassiveTree.Encounters.HallMaps/HallMapRun.cs :: \"LootDrops.SourceUnique(\"monolith\", lv\"",
+    "PassiveTree.Encounters.HallMaps/HallMapRun.cs :: \"new Tunables.Knob(\"hmap.blight-unique\"\"",
+]
+
+[formula.values]
+blight_hall = 0.2

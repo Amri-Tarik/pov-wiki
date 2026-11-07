@@ -497,6 +497,10 @@ def _smite(ctx, page, v):
     shown = ctx.loc.gear.get("uniques") or {}
 
     def uname(u: str) -> str:
+        if u in shown:
+            from .gear_pages import _unique_name
+
+            return _unique_name(ctx, u)
         n = _item_name(ctx, u)
         return ctx.loc.text(f"@item.{u}.name", u) if n == u else n
 
@@ -798,11 +802,17 @@ def _base_roll_items(ctx, page, field: str) -> dict[float, str]:
     """Item bases whose base roll sets this field (ItemBaseRolls: bleedSeconds, armourBreakCoefficient),
     by value, linked."""
     from .base_pages import base_rolls, bases
+    from .gear_pages import unique_links
 
     out: dict[float, list[str]] = {}
     for prefab, roll in sorted(base_rolls(ctx).items()):
-        if roll.get(field):  # unique gear has no item base page: its own name, unlinked
-            name = _staff(ctx, prefab, page) if prefab in bases(ctx) else ctx.loc.text(f"@item.{prefab}.name", prefab)
+        if roll.get(field):  # unique gear has no item base page: linked to its unique page
+            if prefab in bases(ctx):
+                name = _staff(ctx, prefab, page)
+            elif prefab in (ctx.loc.gear.get("uniqueGear") or {}):
+                name = unique_links(ctx, [prefab], page)
+            else:
+                name = ctx.loc.text(f"@item.{prefab}.name", prefab)
             out.setdefault(roll[field], []).append(name)
     return {k: ", ".join(names) for k, names in out.items()}
 
@@ -1070,7 +1080,11 @@ def _limit(ctx, page, v):
 
     ui, t = ctx.loc.ui, ctx.loc.difficulty.get("tunables", {})
     knobs = ctx.loc.difficulty.get("knobs", {})
-    bell = rel(mod_path({"id": v["bell_mod"]}), page)  # the unique property calling the Bell (Bells, CreatedKind.Bell)
+    from .gear_pages import gear_owners, unique_path
+
+    # The unique calling the Bell (its property: Bells, CreatedKind.Bell), else that property's page.
+    bell_items = gear_owners(ctx).get(v["bell_mod"])
+    bell = rel(unique_path(bell_items[0]) if bell_items else mod_path({"id": v["bell_mod"]}), page)
     rows = [[ui("formula.limit.per_cast"), _n(v["per_cast"])],
             [ui("formula.limit.ballistas", ballista=_term(ctx, "ballista", page, start=True)), _n(knobs["ballista.limit"]["value"])],
             [ui("formula.limit.bells", bell=bell), _n(knobs["bell.limit"]["value"])],

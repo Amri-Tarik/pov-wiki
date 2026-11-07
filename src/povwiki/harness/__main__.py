@@ -115,7 +115,7 @@ def render_tree(data, language: str, valheim: Path | None = None) -> dict:
 
     return {
         "language": language, "revision": data.Revision, "errors": errors,
-        "nodes": nodes, "craft": craft, "loot": loot, "items": items, "gear": render_gear(errors),
+        "nodes": nodes, "craft": craft, "loot": loot, "items": items, "gear": render_gear(errors, valheim, items),
         "monsters": render_monsters(icons, errors),
         "buildings": render_buildings(errors), "bosses": render_bosses(errors),
         "veins": render_veins(errors), "difficulty": render_difficulty(errors), "wiki": render_wiki(errors),

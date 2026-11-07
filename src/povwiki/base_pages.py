@@ -402,6 +402,11 @@ def _base_page(ctx: Ctx, prefab: str, b: dict, found: dict) -> str:
 
     if prefab == "PT_SceptrePious" and shown(ctx, "smite"):  # Sceptres.Pious: its swing calls down Smite
         md += [loc.ui("formula.smite.item_link", title=loc.ui("formula.smite.title"), link=_anchor("smite", page)), ""]
+    made = [u for u, g in (loc.gear.get("uniqueGear") or {}).items() if g["donor"] == prefab]
+    if made:  # unique equipment made from this item (UniqueGear.Def.Donor)
+        from .gear_pages import unique_links
+
+        md += [ui("uniques.on_base", items=unique_links(ctx, made, page)), ""]
     summons = loc.difficulty.get("summons") or {}
     if any(c["id"] == prefab for c in summons.get("calls", []) + summons.get("vanilla", [])):
         from .formula_pages import SUMMONS_PAGE

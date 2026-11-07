@@ -5,7 +5,8 @@
 - Unlock: the craft masteries whose option grants the building's flag (the craft tree's
   "flag"); each of those mastery pages links back.
 - What it does: the kiln's conversions on the smelter's fuel and timing; what the rune carver
-  table crafts; the vacuum chest's radius and categories; the plants Wild Sowing can replant.
+  table crafts; the vacuum chest's radius and categories; the plants Wild Sowing can replant;
+  the Runic Anvil's upgrades and slots (runic_pages.anvil_section).
 - Materials link to their item pages, and those list the buildings they go into.
 """
 
@@ -175,6 +176,10 @@ def _building_page(ctx: Ctx, b: dict, found: dict, unlocks: dict) -> str:
     elif b["id"] == "PT_RuneVault":  # RuneChest: Slots(), one container slot, the recovery chest
         md += [f"## {ui('buildings.how_it_works')}", ""]
         md += [f"- {ui('buildings.vault_slots')}", f"- {ui('buildings.vault_work')}", f"- {ui('buildings.vault_recovery')}", ""]
+    elif b["id"] == "PT_RunicAnvil":  # RunicCraft.Anvil: its upgrades and slots
+        from .runic_pages import anvil_section
+
+        md += anvil_section(ctx, page)
     elif b["id"] == "PT_GoldlightGate":
         md += [f"## {ui('buildings.how_it_works')}", "", f"- {ui('buildings.gate_max', n=b['maxGates'])}", ""]
     return "\n".join(md + _footer(ctx))

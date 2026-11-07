@@ -145,7 +145,7 @@ def _drops(ctx: Ctx) -> dict[str, dict]:
             lo, hi = e.get("stackMin", 1), e.get("stackMax", 1)
             amount = f" ×{lo}–{hi}" if hi > lo else (f" ×{lo}" if lo > 1 else "")
             lines.append(f"{name}{amount}: {_pct(t['chance'] * e['weight'] / total)}{bonus}")
-        creatures = t["creatures"]
+        creatures = t.get("creatures") or []
         first = creatures[0] if creatures else ""
         link = boss_path(first) if first in _mod_bosses(ctx) else f"{BOSSES_PAGE}#{first.lower()}"  # as creature_link
         out[t["id"]] = _entry(", ".join(ctx.loc.creature(c) for c in creatures), lines, link)

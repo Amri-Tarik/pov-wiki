@@ -1267,3 +1267,87 @@ anchors = [
 ]
 fingerprint = "0faa3429152f"
 checked = "5.3.0"
+
+[[formula]]
+id = "runic-cost"
+anchors = [
+    "PassiveTree.RunicCraft/PotentialCost.cs :: PotentialCost.Of",
+    "PassiveTree.RunicCraft/PotentialCost.cs :: PotentialCost.Affordable",
+    "PassiveTree.RunicCraft/PotentialCost.cs :: PotentialCost.Roll",
+    "PassiveTree.RunicCraft/Potential.cs :: Potential.Eligible",
+    "PassiveTree.RunicCraft/Potential.cs :: Potential.Of",
+    "PassiveTree.RunicCraft/Craft.cs :: Craft.Me",
+    "PassiveTree.RunicCraft/Craft.cs :: Craft.Prepare",
+    "PassiveTree.RunicCraft/Craft.cs :: Craft.Apply",
+    "PassiveTree.RunicCraft/Defs.cs :: Defs.CostOf",
+    "PassiveTree.RunicCraft/GlyphDef.cs :: GlyphDef.Dust",
+    "PassiveTree.RunicCraft/GlyphDef.cs :: GlyphDef.Divine",
+    "PassiveTree.RunicCraft/Anvil.cs :: Anvil.Pay",
+]
+
+[formula.values]
+delay = 0.3
+cut_cap = 0.9
+
+[[formula]]
+id = "runic-alloys"
+anchors = [
+    "PassiveTree.RunicCraft/Craft.cs :: Craft.Target",
+    "PassiveTree.RunicCraft/Craft.cs :: Craft.Validate",
+    "PassiveTree.RunicCraft/Craft.cs :: Craft.Mult",
+    "PassiveTree.RunicCraft/Craft.cs :: Craft.DoForge",
+]
+
+[formula.values]
+target = 0.35
+min = 5
+max = 25
+depths = 3
+depths_weight = 300
+
+[[formula]]
+id = "runic-glyphs"
+anchors = [
+    "PassiveTree.RunicCraft/Craft.cs :: Craft.Validate",
+    "PassiveTree.RunicCraft/Craft.cs :: Craft.DoGlyph",
+    "PassiveTree.RunicCraft/Craft.cs :: Craft.DoForge",
+    "PassiveTree.RunicCraft/Craft.cs :: Craft.Apply",
+    "PassiveTree.RunicCraft/GlyphDef.cs :: GlyphDef.Main",
+    "PassiveTree.RunicCraft/ItemMarks.cs :: ItemMarks.Reinforce",
+    "PassiveTree.RunicCraft/ItemMarks.cs :: ItemMarks.DurabilityMult",
+    "PassiveTree.RunicCraft/ItemMarks.cs :: ItemMarks.LevelCap",
+]
+
+[formula.values]
+echo = 0.35
+void = 0.25
+last_heat = 0.5
+level_step = 5
+durability_cap = 40
+best_tier = 2
+
+[[formula]]
+id = "glyph-drops"
+anchors = [
+    "PassiveTree.RunicCraft/GlyphLoot.cs :: GlyphLoot.Chance",
+    "PassiveTree.RunicCraft/GlyphLoot.cs :: GlyphLoot.Default",
+    "PassiveTree.RunicCraft/GlyphLoot.cs :: GlyphLoot.Stage",
+    "PassiveTree.RunicCraft/GlyphLoot.cs :: GlyphLoot.Roll",
+    "PassiveTree.RunicCraft/GlyphLoot.cs :: GlyphLoot.Open",
+    "PassiveTree.RunicCraft/Defs.cs :: Defs.Stage",
+]
+
+[[formula]]
+id = "unusual-ore"
+anchors = [
+    "PassiveTree.RunicCraft/OreBonus.cs :: OreBonus.Table",
+    "PassiveTree.RunicCraft/OreBonus.cs :: Drops.Postfix",
+    "PassiveTree.RunicCraft/OreBonus.cs :: OreBonus.Chances",
+    "PassiveTree.RunicCraft/OreBonus.cs :: OreBonus.Begin",
+    "PassiveTree.RunicCraft/OreBonus.cs :: OreBonus.MinerChance",
+    "PassiveTree.RunicCraft/OreBonus.cs :: OreBonus.OnOreHit",
+    "PassiveTree.RunicCraft/OreBonus.cs :: OreBonus.OnVeinHit",
+    "PassiveTree.RunicCraft/Veins.cs :: Veins.Pick",
+    "PassiveTree.RunicCraft/TinMist.cs :: MistDrop.Prefix",
+    "PassiveTree/Gathering.cs :: Gathering.Knock",
+]

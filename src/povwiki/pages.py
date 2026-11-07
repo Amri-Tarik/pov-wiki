@@ -569,6 +569,9 @@ def page_options(ctx: Ctx) -> dict[str, str]:
             md += [f"## {loc.ui('buildings.unlocks')}", "", ", ".join(building_link(ctx, b, page) for b in unlocked), ""]
 
         md += merged_section(ctx, page)
+        from .runic_pages import see_runic
+
+        md += see_runic(ctx, page, [o["raw"].get("mods")], [x.get("flag") for x in g["options"]])
         md += _keywords_section(ctx, page, [x for opt in g["options"] for x in opt["stats"] + opt["extra"]], [o["raw"].get("mods")])
         md += [f"## {loc.ui('page.offered_by')} ({len(g['nodes'])})", ""]
         md += _node_table(
@@ -657,6 +660,9 @@ def page_nodes(ctx: Ctx) -> dict[str, str]:
 
         # Keywords.
         lines = r["stats"] + r["extra"] + [x for o in r["options"] for x in o["stats"] + o["extra"]]
+        from .runic_pages import see_runic
+
+        md += see_runic(ctx, page, [n.get("mods")], [])
         md += _keywords_section(ctx, page, lines, [n.get("mods"), *((o.get("raw") or {}).get("mods") for o in r["options"])])
 
         from .patch_pages import history
@@ -836,6 +842,10 @@ def _related_pages(ctx: Ctx) -> dict[str, list[tuple[str, str, str]]]:
         if item in (ctx.loc.loot.get("items") or {}):
             found.update({k: found[k] + [(ctx.loc.loot["items"][item]["name"], currency_path(item), ctx.loc.ui("gear.group.Sigil"))]
                           for k in keys})
+    from .runic_pages import related_terms
+
+    for term, entries in related_terms(ctx).items():
+        found[term] += entries
     rune = ctx.loc.items.get("PT_RuneOfResurrection")
     if rune and rune.get("mod"):  # brings a dead companion back
         found["companion"].append((rune["mod"]["shared"]["m_name"], "items/base/PT_RuneOfResurrection.md", ctx.loc.ui("items.bases")))
@@ -988,11 +998,13 @@ GLOBAL = [page_glossary]
 TREES = [PASSIVES, CRAFTING]
 
 
-def nav() -> list:
+def nav(data: GameData | None = None) -> list:
     """Navigation: (ui title key, page path | children). Titles are translated per language.
-    Glossary term pages are reached from keyword links and search."""
+    Glossary term pages are reached from keyword links and search. With the game data, sections
+    the version doesn't have are left out."""
     from .gear_pages import _GROUPS, group_path
     from .patch_pages import INDEX, patch_path, versions
+    from .runic_pages import nav_entry, runic_on
     from .weapon_pages import WEAPON_TYPES, weapon_path
 
     return [
@@ -1004,6 +1016,7 @@ def nav() -> list:
                          ("gear.currency", [("gear.currency_all", "items/currency.md"),
                                             *((f"gear.group.{g}", group_path(g)) for g in _GROUPS)]),
                          ("gear.jewels", "items/jewels.md"), ("gear.uniques", "items/uniques.md")]),
+        *([nav_entry()] if data is None or runic_on(data) else []),
         ("monsters.title", [("monsters.mods", "monsters/mods.md"), ("bosses.title", "monsters/bosses.md"),
                             ("creatures.title", "monsters/creatures.md"), ("taming.title", "monsters/taming.md")]),
         ("formula.title", [("formula.creatures", "mechanics/creatures.md"), ("formula.experience_page", "mechanics/experience.md"),

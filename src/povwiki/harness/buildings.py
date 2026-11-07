@@ -13,6 +13,8 @@ Make() changes, reading the mod's own tables where it has them:
   Table; needs Stat.VacuumChest. Radius and timing: its constants.
 - Runic Chest (RuneChest.Ensure, 5.3.3): a copy of piece_chest_private; its cost is written inline,
   built at the Rune Carver Table.
+- Runic Anvil (RunicCraft.Anvil.Ensure, 6.0.0): a copy of forge_ext4 with a one-slot container,
+  built with the hammer near a workbench; its cost is Anvil.Stages[0], its upgrades the later stages.
 - Wild Sowing (WildSowing.Build): one Cultivator sapling per wild plant that regrows; the plants
   come from Valheim's Pickables, so the page works them out (herbs, excluded plants and seeds
   are listed here).
@@ -88,6 +90,17 @@ def render_buildings(errors: list) -> list[dict]:
                 "resources": [{"item": "Iron", "amount": 10}, {"item": "PT_AzuriteDust", "amount": 2000},
                               {"item": "FineWood", "amount": 10}],  # inline in Ensure()
                 "station": "PT_RuneCarverTable",
+            })
+        anvil = _asm().GetType("PassiveTree.RunicCraft.Anvil")
+        if anvil is not None:
+            stages = anvil.GetField("Stages", _ANY).GetValue(None)
+            out.append({
+                "id": "PT_RunicAnvil", "source": "forge_ext4",
+                "name": text("piece.runicanvil.name"), "description": text("piece.runicanvil.desc"),
+                "icon": "PassiveTree.model.runic-anvil-icon.png",
+                "resources": [{"item": str(c.Item1), "amount": int(c.Item2)} for c in stages[0].Cost],
+                "station": "piece_workbench",  # Ensure(): m_craftingStation = piece_workbench
+                "runic": True,  # its stages and slots: the "runic" section (harness/runic.py)
             })
         seeds = _static("CraftItems", "Seeds")
         out.append({

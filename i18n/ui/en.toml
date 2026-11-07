@@ -814,7 +814,7 @@ text = "{shield} is a layer over your health. Of a hit that gets through {block}
 formula = "maximum = (base + flat + armour's rune shield + food + from health) × (1 + increases)"
 notes = "The base is {base} by default (a server setting): only the tree, gear and food give a shield. Stats that turn health into shield give maximum health × p ÷ (1 − p) for a share p, at most {cap}."
 ward = "Valheim's shield effects (such as the Staff of Protection's) become a ward on whoever gets them: it takes Valheim's amount of damage, everything but spirit and poison, for Valheim's duration (on you, longer with buff duration, at most × 3). While a ward holds, {stagger} taken is cut by {guard} too."
-recharge = "Damage you take restarts the wait. After {delay} s without damage, it recharges {rate} of its maximum per second ({full} s from empty), faster with shield regeneration. Recharge delay reductions cut the wait by at most {cap}, never below {floor} s."
+recharge = "Damage you take restarts the wait. After {delay} s without damage, it recharges {rate} of its maximum per second ({full} s from empty), faster with shield regeneration. Recharge delay reductions cut the wait by at most {cap}, never below {floor} s; flat recharge delay then adds or takes off seconds, still never below {floor} s."
 
 [formula.stagger]
 title = "Stagger"
@@ -834,6 +834,7 @@ parry = "parry: block power × the item's parry bonus × (1 + parry bonus increa
 parry_text = "A parry is a block within {window} s of raising your guard, with an item that has a parry bonus. A block costs Valheim's block stamina × the share of your block power the hit used; a parry costs a fixed amount."
 blocked = "What gets through works like {armour}: block power under half the hit takes that much off; more than that cuts the hit to hit² ÷ (4 × block power). The rest goes on to your armour and rune shield."
 guard = "If you're out of stamina, or the blocked hit's {stagger} breaks your guard, nothing is blocked. A hit that meets your block can't be a {glance}."
+sigils = "Sigils in the blocking item's {sockets} add to its own block power and parry bonus increases. Stats that share part of your block power increases with parry bonus add that part to parry bonus increases."
 
 [formula.glancing]
 title = "Glancing blows"
@@ -849,6 +850,7 @@ text = "{endurance}: while your health is under your endurance threshold, the pa
 formula = "damage taken = damage − (the part of it below the threshold) × endurance reduction"
 notes = "Reduction is {base} at base, × (1 + increases), at most {cap}. The threshold is in health points; with {rune} it's compared to your {shield} instead."
 order = "It applies last, after your {res}, {block} and {armour}, just before your {shield} takes the damage."
+berserker = "With {unbowed}, the threshold is at least {share} of your maximum health (of your maximum rune shield with {rune}). With {tempered}, fully breaking an enemy's armour makes your reduction × (1 + {more}) for {seconds} s (longer with effect duration), still at most {cap}."
 
 [formula.thorns]
 title = "Thorns"
@@ -857,6 +859,7 @@ formula = "thorns damage = flat thorns × (1 + damage increases + thorns increas
 type = "It's pierce damage, unless your stats convert part of it to other types or add more as extra damage."
 range = "Full damage to an attacker within {full} m of you (from its edge), falling to nothing at {zero} m."
 block = "On a shield block with {shield}: × {block}. Thorns that work with parries add to a parry's thorns."
+target = "Thorns increases and more multipliers that apply only against certain enemies (bosses, burning enemies and the like) count for the attacker and multiply on top, as their own factor."
 contact = "{carapace} also deals your thorns to enemies touching you, once every {interval} s per enemy, shorter with cooldown reduction and recovery."
 
 [formula.charged-attacks]
@@ -899,10 +902,12 @@ charged = "A {charged} that isn't a slam can make aftershocks too, from aftersho
 
 [formula.armour-break]
 title = "Armour break"
-text = "{brk}: a hit's blunt damage breaks the enemy's armour the way it would fill an {gauge}: blunt against its base health, raised by {buildup}. The broken share adds up to 100% and is shared by everyone hitting the enemy; {seconds} s after the last hit that added to it, it's gone."
+text = "{brk}: a hit's blunt damage breaks the enemy's armour the way it would fill an {gauge}: blunt against its base health, raised by {buildup}. The broken share adds up to 100%, and everyone's hits on the enemy add to the same share; {seconds} s after the last hit that added to it (longer with armour break duration), it's gone."
 fill = "broken share added by a hit = blunt ÷ (ailment threshold × the enemy's base health) × (1 + build-up)"
 formula = "your physical damage + the enemy's armour × broken share × (1 + armour break effect increases), that share at most 100%"
 notes = "Every hit of yours on an enemy with broken armour gets that added, including the hit that just added to it, spread over its blunt, slash and pierce (as blunt if it has none). It comes before the enemy's {armour}, so it pays back about as much as the armour takes."
+sources = "Curses that make the enemy take more armour break multiply the share each hit adds."
+bases = "Melee hits with {items} count × {coef} of their blunt damage."
 
 [formula.impale]
 title = "Impale"
@@ -1077,26 +1082,44 @@ unstable = "{unstable}: the first time a summon drops below {low} health from a 
 
 [formula.ailments]
 title = "Ailments"
-text = "{gauge}: {bleed}, {burn}, {poison}, {frost} and {shock} each fill their own on the enemy, from the matching part of your hits' damage as the enemy takes it, after its resistances and armour: slash, fire, poison, frost and lightning."
+text = "{ailment}: each comes from the matching part of your hits' damage, as the enemy takes it after its resistances and armour: {bleed} from slash, {burn} from fire, {poison} from poison, {frost} from frost and {shock} from lightning. Burning and shock roll against layers that recent hits leave on the enemy, bleeding and poison roll a chance on every hit, and chill fills a gauge."
+layers_title = "Burning and shock: layers"
+layer_formula = "{layer} left by a hit = {per} × {damage} ÷ ({threshold} × the enemy's base health) × (1 + {buildup}) × more"
+flammability = "flammability"
+conductivity = "conductivity"
+layers = "Every fire hit leaves a layer of flammability on the enemy and every lightning hit a layer of conductivity, each for {seconds} s. The hit then ignites or shocks with a chance equal to all of that kind's layers on the enemy, its own included, at most 100%, plus your flat chance to ignite or shock × (1 + {buildup}) × more. Base health is the enemy's maximum health without the mod's difficulty scaling."
+layer_example = "The layer one hit leaves, by its damage as a share of the enemy's base health:"
+layer_row = "{layer}, +{amount} {buildup}"
+tar = "A tarred enemy counts {tar} more flammability (layers and tar together at most 100%); on a {wet} enemy each flammability layer is × {share}."
+ground = "{ground} that burn or shock add layers the same way and apply their ailment once the enemy's layers reach {share}."
+chance_title = "Bleeding and poison: chance"
+chance_formula = "chance = flat chance × (1 + {buildup}) × more"
+chance_formula_base = "chance = ({base} + flat chance) × (1 + {buildup}) × more"
+chance = "Every hit with slash or poison damage rolls its chance to bleed or poison; how much damage the hit deals doesn't change the chance. There is no base chance: it comes from flat chance to bleed or poison and flat ailment chance, which {buildup} raises."
+chance_base = "Every hit with slash or poison damage rolls its chance to bleed or poison; how much damage the hit deals doesn't change the chance. Bleeding has a base chance of {bleed} and poison {poison}, raised by flat chance and {buildup}."
+stacks = "A hit bleeds at most once. For poison, every full 100% of chance applies one poison for certain and the rest is the chance of one more, each from the hit's poison damage."
+pierce = "With a stat that lets pierce damage bleed, {share} of the hit's pierce damage counts as slash for bleeding."
+gauge_title = "Chill: the gauge"
+apply_title = "Applying ailments"
 formula = "gauge filled by a hit = {damage} ÷ ({threshold} × the enemy's base health) × (1 + {buildup})"
-example = "How much of the gauge one hit fills, by its damage as a share of the enemy's base health (its maximum health without the mod's difficulty scaling):"
+example = "How much of the gauge one hit fills, by its damage as a share of the enemy's base health:"
 share = "Damage ÷ base health"
 fill = "Filled, +{amount} {buildup}"
-lasts = "At 100% the ailment starts, from the strongest matching hit since the gauge began to fill. The gauge then stays full, so every further matching hit applies the ailment again from its own damage. {hold} s after the last matching hit the gauge drains, {drain} per second. Chill ends when it is empty (at most {total} s after that hit); the other ailments run their own time."
-each = "What each ailment does with that damage:"
+lasts = "At 100% chill starts, from the strongest frost hit since the gauge began to fill. The gauge then stays full, so every further frost hit applies chill again from its own damage. {hold} s after the last frost hit the gauge drains, {drain} per second; chill ends when it is empty (at most {total} s after that hit)."
+counted = "A rune ward on the enemy doesn't lower the damage ailments count: they count the hit as if the ward weren't there (poison damage passes wards anyway). For bleeding, chill and shock, the extra damage the enemy takes from shock doesn't count."
+each_title = "What each ailment does"
 bleed = "{share} of the slash damage per second for {seconds} s ({total} in all), × your ailment damage multipliers and {dot} (physical). Longer duration adds seconds, so more damage. One bleed per player on an enemy: a new one replaces yours only if it deals at least as much per second."
-burn = "{share} of the fire damage per second for {seconds} s ({total} in all), × your ailment damage multipliers and {dot} (fire); fire damage increases don't apply again. Longer duration adds seconds, so more damage. One burn per player on an enemy: a new one replaces yours only if it deals at least as much per second. A wet enemy burns out {wet} times as fast."
-poison = "{share} of the poison damage per second for {seconds} s ({total} in all), × your ailment damage multipliers and {dot} (poison), plus any share of the enemy's base health your stats add, spread over the same {seconds} s (ailment damage doesn't raise that part). Longer duration adds seconds. Each player can keep {limit} poisons on an enemy (more with {limitterm} bonuses); past that, a new one replaces your weakest if it would deal more. Skeletons and the Charred take poison damage normally, but their poison gauge fills at half speed; summoned skeletons stay immune."
+bleed_bases = "Melee hits with {items} bleed for {seconds} s at base instead."
+burn = "{share} of the igniting hit's fire damage per second for {seconds} s ({total} in all), × your ailment damage multipliers and {dot} (fire); fire damage increases don't apply again. Longer duration adds seconds, so more damage. One burn per player on an enemy: a new one replaces yours only if it deals at least as much per second. A wet enemy burns out {wet} times as fast."
+poison = "{share} of the poison damage per second for {seconds} s ({total} in all), × your ailment damage multipliers and {dot} (poison), plus any share of the enemy's base health your stats add, spread over the same {seconds} s (ailment damage doesn't raise that part). Longer duration adds seconds. Each poison runs on its own timer, and each player can keep {limit} on an enemy (more with {limitterm} bonuses); past that, a new one replaces your weakest if it would deal more. Skeletons and the Charred take poison damage normally, but their chance to be poisoned is halved; summoned skeletons stay immune."
 chill = "Valheim's frost effect, its strength × (1 + your general and chill ailment damage increases); ailment and status duration make it last longer."
-shock = "for {seconds} s the enemy takes more damage from every source and builds up {stagger} faster, by the shock's strength. Only the strongest shock on an enemy acts, whoever applied it. Flat ailment damage does nothing for shock."
-damage = "matching damage"
-gauge_title = "Filling the gauge"
+shock = "for {seconds} s the enemy takes {base} increased damage from every source and builds up {stagger} faster by the same share. Shock effect raises it, at most {max}; the hit's damage doesn't change it. Only the strongest shock on an enemy acts, whoever applied it. Flat ailment damage does nothing for shock."
+shock_formula = "shock = {base} × (1 + ailment effect and shock effect increases) × more, at most {max}"
+shock_notes = "Increases to shock's ailment damage count as shock effect. Ailment and status duration make it last longer."
 how = "How it works"
-one = "{ailment} builds up on the enemy's {gauge} from {damage} as the enemy takes it, after its resistances and armour."
 does = "What it does: {text}"
-shock_formula = "shock strength = {coef} × (lightning damage ÷ ({threshold} × the enemy's base health))^{exp} × (1 + shock effect increases) × more, at most {max}; under {min}, no shock"
-shock_notes = "The lightning damage here is the hit's, before the enemy's resistances and armour."
 damaging = "Ailment damage multipliers for burning, poison and bleeding: × (1 + ailment damage increases, general and that ailment's) × their more multipliers; flat ailment damage adds its amount spread over {seconds} s. Each player's ailments tick on their own, once a second."
+speed = "{speed}: × (1 + its increases, general and that ailment's) × more, at least × {floor}. Burning, poison and bleeding deal their damage per second × that and end that much sooner, so the total stays the same."
 doom = "With {doom}, only critical strikes inflict ailments, and the damage over time of the ailments they inflict is × your critical strike multiplier."
 
 [formula.build-cost]

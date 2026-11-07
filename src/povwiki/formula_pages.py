@@ -652,22 +652,77 @@ def _attributes(ctx, page, v):
     return md
 
 
-# Each ailment: its keyword, and the keyword of the damage that fills its gauge (AilmentDamage.Component).
+# Each ailment: its keyword, and the keyword of the damage it comes from (AilmentDamage.Component).
 _AILMENTS = {"bleed": "slash", "burn": "fire-damage", "poison": "poison-damage", "frost": "frost-damage", "shock": "lightning-damage"}
+# Burning and shock roll against layers (AilmentGauges.Layered): the layer's name and its tunable.
+_LAYERED = {"burn": ("flammability", "ailment.flammability.per-threshold"), "shock": ("conductivity", "ailment.conductivity.per-threshold")}
 
 
 def _title_of(ctx, key: str) -> str:
     return plain(ctx.loc.wiki[key]["title"]) if key in ctx.loc.wiki else key
 
 
-def _ail_gauge(ctx, page, v, ailment: str | None = None) -> list[str]:
-    """The gauge: how much a hit fills, an example table, how long it lasts. With an ailment, the
-    formula names its damage type and the table (the same for every ailment) is left out."""
-    ui, t = ctx.loc.ui, ctx.loc.difficulty.get("tunables", {})
-    threshold = t["ailment.threshold"]
+def _tun(ctx, key: str) -> float:
+    """A tunable's value: the rendered tunables, else its default from the knob list."""
+    d = ctx.loc.difficulty
+    if key in d.get("tunables", {}):
+        return d["tunables"][key]
+    return d.get("knobs", {}).get(key, {}).get("value", 0.0)
+
+
+def _ail_layers(ctx, page, v, ailment: str | None = None) -> list[str]:
+    """Burning and shock (AilmentGauges.AddLayer/LayerOf/LevelOf, Fire.Prefix, Shock.Prefix): each hit
+    leaves a layer for a while and rolls against all of them, plus the flat chance. With an
+    ailment, only its own layer formula and no example table."""
+    ui = ctx.loc.ui
+    threshold, buildup = _tun(ctx, "ailment.threshold"), _title_of(ctx, "build-up").lower()
+    kinds = [ailment] if ailment else list(_LAYERED)
+    md = []
+    for a in kinds:
+        layer, key = _LAYERED[a]
+        md += _formula(ui("formula.ailments.layer_formula", layer=ui(f"formula.ailments.{layer}").capitalize(), per=_pct(_tun(ctx, key)),
+                          damage=_title_of(ctx, _AILMENTS[a]).lower(), threshold=_pct(threshold), buildup=buildup))
+    md += [ui("formula.ailments.layers", seconds=_n(_tun(ctx, "ailment.layer.duration")), buildup=_term(ctx, "build-up", page, lower=True)), ""]
+    if not ailment:
+        shares = (0.05, 0.1, 0.25, 0.5)
+        rows = [[ui("formula.ailments.layer_row", layer=ui(f"formula.ailments.{layer}").capitalize(), amount=_pct(b), buildup=buildup),
+                 *(_pct(_tun(ctx, key) * s / threshold * (1 + b)) for s in shares)]
+                for layer, key in _LAYERED.values() for b in (0, 1)]
+        md += [ui("formula.ailments.layer_example"), ""] + _table([ui("formula.ailments.share"), *(_pct(s) for s in shares)], rows)
+    if ailment in (None, "burn"):
+        md += [ui("formula.ailments.tar", tar=_pct(_tun(ctx, "ailment.flammability.tared")), wet=_term(ctx, "wet", page, lower=True),
+                  share=_n(_tun(ctx, "ailment.flammability.wet"))), ""]
+    md += [ui("formula.ailments.ground", ground=_term(ctx, "ground-effects", page, start=True),
+              share=_pct(_tun(ctx, "ailment.layer.ground-threshold"))), ""]
+    return md
+
+
+def _ail_chance(ctx, page, v, ailment: str | None = None) -> list[str]:
+    """Bleeding and poison (AilmentGauges.HitChance/RolledChance/Stacks, Poison.Prefix, Physical.Postfix):
+    a chance per hit, no base chance by default; every full 100% of poison chance is a certain poison."""
+    ui = ctx.loc.ui
     buildup = _title_of(ctx, "build-up").lower()
-    damage = _title_of(ctx, _AILMENTS[ailment]).lower() if ailment else ui("formula.ailments.damage")
-    md = _formula(ui("formula.ailments.formula", threshold=_pct(threshold), buildup=buildup, damage=damage))  # plain: no links in the block
+    bleed, poison = _tun(ctx, "ailment.bleeding.base-chance"), _tun(ctx, "ailment.poison.base-chance")
+    base = {"bleed": bleed, "poison": poison}.get(ailment, max(bleed, poison))
+    md = _formula(ui("formula.ailments.chance_formula", buildup=buildup) if not base
+                  else ui("formula.ailments.chance_formula_base", base=_pct(base), buildup=buildup))
+    term = _term(ctx, "build-up", page, lower=True)
+    md += [ui("formula.ailments.chance", buildup=term) if not (bleed or poison)
+           else ui("formula.ailments.chance_base", bleed=_pct(bleed), poison=_pct(poison), buildup=term), "",
+           ui("formula.ailments.stacks"), ""]
+    if ailment in (None, "bleed"):
+        md += [ui("formula.ailments.pierce", share=_pct(_tun(ctx, "ailment.bleeding.pierce-share"))), ""]
+    return md
+
+
+def _ail_gauge(ctx, page, v, ailment: str | None = None) -> list[str]:
+    """Chill's gauge (AilmentGauges.Feed/Melt, AilmentDamage.Grip): how much a hit fills, an example
+    table, how long it lasts. With the ailment named, the table is left out."""
+    ui = ctx.loc.ui
+    threshold = _tun(ctx, "ailment.threshold")
+    buildup = _title_of(ctx, "build-up").lower()
+    md = _formula(ui("formula.ailments.formula", threshold=_pct(threshold), buildup=buildup,
+                     damage=_title_of(ctx, _AILMENTS["frost"]).lower()))  # plain: no links in the block
     shares = (0.05, 0.1, 0.25, 0.5)
     md += [] if ailment else [ui("formula.ailments.example"), ""] + _table(
         [ui("formula.ailments.share"), *(_pct(s) for s in shares)],
@@ -675,54 +730,96 @@ def _ail_gauge(ctx, page, v, ailment: str | None = None) -> list[str]:
     return md + [ui("formula.ailments.lasts", hold=_n(v["hold"]), drain=_pct(v["drain"]), total=_n(v["hold"] + 1 / v["drain"])), ""]
 
 
+def _ail_apply(ctx, page, v, ailment: str) -> list[str]:
+    """How one ailment is applied: layers, a chance, or the gauge."""
+    if ailment in _LAYERED:
+        return _ail_layers(ctx, page, v, ailment)
+    if ailment == "frost":
+        return _ail_gauge(ctx, page, v, ailment)
+    return _ail_chance(ctx, page, v, ailment)
+
+
 _DAMAGING = {"burn": "burning", "poison": "poison", "bleed": "bleeding"}  # DamagingAilments' Tunables names
+
+
+def _base_roll_items(ctx, page, field: str) -> dict[float, str]:
+    """Item bases whose base roll sets this field (ItemBaseRolls: bleedSeconds, armourBreakCoefficient),
+    by value, linked."""
+    from .base_pages import base_rolls, bases
+
+    out: dict[float, list[str]] = {}
+    for prefab, roll in sorted(base_rolls(ctx).items()):
+        if roll.get(field):  # unique gear has no item base page: its own name, unlinked
+            name = _staff(ctx, prefab, page) if prefab in bases(ctx) else ctx.loc.text(f"@item.{prefab}.name", prefab)
+            out.setdefault(roll[field], []).append(name)
+    return {k: ", ".join(names) for k, names in out.items()}
 
 
 def _ail_effect(ctx, page, v, ailment: str) -> list[str]:
     """What one ailment does with the damage that set it off (DamagingAilments, ShockAilment)."""
-    ui, t = ctx.loc.ui, ctx.loc.difficulty.get("tunables", {})
+    ui = ctx.loc.ui
     if ailment in _DAMAGING:
         k = _DAMAGING[ailment]
-        share, seconds = t[f"ailment.{k}.dps-share"], t[f"ailment.{k}.duration"]
-        return [ui(f"formula.ailments.{ailment}", share=_pct(share), seconds=_n(seconds), total=_pct(share * seconds),
-                   dot=_term(ctx, "damage-over-time-multiplier", page, lower=True), wet=_n(v["wet_drain"]),
-                   limit=_n(t["ailment.poison.base-limit"]), limitterm=_term(ctx, "limit", page))]
+        share, seconds = _tun(ctx, f"ailment.{k}.dps-share"), _tun(ctx, f"ailment.{k}.duration")
+        md = [ui(f"formula.ailments.{ailment}", share=_pct(share), seconds=_n(seconds), total=_pct(share * seconds),
+                 dot=_term(ctx, "damage-over-time-multiplier", page, lower=True), wet=_n(v["wet_drain"]),
+                 limit=_n(_tun(ctx, "ailment.poison.base-limit")), limitterm=_term(ctx, "limit", page))]
+        if ailment == "bleed":  # a weapon base's own bleed duration for its melee hits (Combat.OpenWound)
+            md += ["", *(ui("formula.ailments.bleed_bases", items=items, seconds=_n(s))
+                         for s, items in _base_roll_items(ctx, page, "bleedSeconds").items())]
+        return md
     if ailment == "shock":
-        return ([ui("formula.ailments.shock", seconds=_n(t["shock.duration"]), stagger=_term(ctx, "stagger", page)), ""]
-                + _formula(ui("formula.ailments.shock_formula", coef=_n(t["shock.coefficient"]), exp=_n(t["shock.exponent"]),
-                              threshold=_pct(t["ailment.threshold"]), max=_pct(t["shock.maximum"]), min=_pct(t["shock.minimum"])))
+        base, top = _pct(_tun(ctx, "shock.base")), _pct(_tun(ctx, "shock.maximum"))
+        return ([ui("formula.ailments.shock", seconds=_n(_tun(ctx, "shock.duration")), base=base, max=top,
+                    stagger=_term(ctx, "stagger", page)), ""]
+                + _formula(ui("formula.ailments.shock_formula", base=base, max=top))
                 + [ui("formula.ailments.shock_notes")])
     return [ui("formula.ailments.chill")]
 
 
-def _ail_damaging(ctx) -> list[str]:
-    return [ctx.loc.ui("formula.ailments.damaging", seconds=_n(ctx.loc.difficulty.get("tunables", {})["ailment.burning.duration"])), ""]
+def _ail_damaging(ctx, page, v) -> list[str]:
+    """Ailment damage multipliers (DamagingAilments.Dps/Magnitude/Flat) and damage over time speed
+    (DamagingAilments.Rate/Faster)."""
+    ui = ctx.loc.ui
+    return [ui("formula.ailments.damaging", seconds=_n(_tun(ctx, "ailment.burning.duration"))), "",
+            ui("formula.ailments.speed", speed=_term(ctx, "damage-over-time-speed", page, start=True), floor=_n(v["speed_floor"])), ""]
 
 
 def _ailments(ctx, page, v):
-    """Ailments (AilmentGauges, Ailments, Combat.OpenWound): the gauge a hit fills, how long an
-    ailment lasts, and what each one does with the damage that set it off."""
+    """Ailments (AilmentGauges, DamagingAilments, ShockAilment, Combat.OpenWound): burning and shock
+    roll against layers, bleeding and poison a chance per hit, chill fills a gauge; what each one
+    does with the damage that set it off."""
     ui = ctx.loc.ui
     term = {k: _term(ctx, k, page) for k in _AILMENTS}
-    md = [ui("formula.ailments.text", gauge=_term(ctx, "ailment-gauge", page, start=True), **term), ""]
-    md += _ail_gauge(ctx, page, v)
-    md += [ui("formula.ailments.each"), ""]
+    md = [ui("formula.ailments.text", ailment=_term(ctx, "ailment", page, start=True), **term), ""]
+    md += [f"### {ui('formula.ailments.layers_title')}", ""] + _ail_layers(ctx, page, v)
+    md += [f"### {ui('formula.ailments.chance_title')}", ""] + _ail_chance(ctx, page, v)
+    md += [f"### {ui('formula.ailments.gauge_title')}", ""] + _ail_gauge(ctx, page, v)
+    md += [ui("formula.ailments.counted"), ""]
+    md += [f"### {ui('formula.ailments.each_title')}", ""]
     for a in _AILMENTS:
         first, *rest = _ail_effect(ctx, page, v, a)
         md += [f"- {_term(ctx, a, page, start=True)}: {first}"] + [f"    {line}" if line else "" for line in rest]
-    return md + [""] + _ail_damaging(ctx) + [ui("formula.ailments.doom", doom=_granted(ctx, "CritMultiplierAsDot", page)), ""]
+    return md + [""] + _ail_damaging(ctx, page, v) + [ui("formula.ailments.doom", doom=_granted(ctx, "CritMultiplierAsDot", page)), ""]
 
 
 def _ailment_view(ailment: str):
-    """One ailment's own entry, for its keyword page: what fills its gauge, what it does."""
+    """One ailment's own entry, for its keyword page: how it is applied, what it does."""
     def view(ctx, page, v):
         ui = ctx.loc.ui
-        return ([ui("formula.ailments.one", ailment=_title_of(ctx, ailment), damage=_term(ctx, _AILMENTS[ailment], page),
-                    gauge=_term(ctx, "ailment-gauge", page)), ""]
-                + _ail_gauge(ctx, page, v, ailment)
-                + [ui("formula.ailments.does", text=_ail_effect(ctx, page, v, ailment)[0]), ""] + [*_ail_effect(ctx, page, v, ailment)[1:], ""]
-                + (_ail_damaging(ctx) if ailment in _DAMAGING else []))
+        effect = _ail_effect(ctx, page, v, ailment)
+        return (_ail_apply(ctx, page, v, ailment)
+                + [ui("formula.ailments.does", text=effect[0]), ""] + [*effect[1:], ""]
+                + (_ail_damaging(ctx, page, v) if ailment in _DAMAGING else []))
     return view
+
+
+def _ail_application(ctx, page, v) -> list[str]:
+    """How ailments are applied, for the build-up keyword: layers, chance, gauge."""
+    ui = ctx.loc.ui
+    return ([f"### {ui('formula.ailments.layers_title')}", ""] + _ail_layers(ctx, page, v)
+            + [f"### {ui('formula.ailments.chance_title')}", ""] + _ail_chance(ctx, page, v)
+            + [f"### {ui('formula.ailments.gauge_title')}", ""] + _ail_gauge(ctx, page, v))
 
 
 def _rune_shield(ctx, page, v):
@@ -832,7 +929,7 @@ def _slams(ctx, page, v):
 
 
 def _block(ctx, page, v):
-    """Block (Valheim's Humanoid.BlockAttack; the mod's Preview.ShieldBlock and parry bonus)."""
+    """Block (Valheim's Humanoid.BlockAttack; the mod's Preview.ShieldBlock and parry bonus, ShieldOps)."""
     ui = ctx.loc.ui
     md = [ui("formula.block.text", block=_term(ctx, "block", page, start=True)), ""]
     md += _formula(ui("formula.block.power"))
@@ -841,6 +938,9 @@ def _block(ctx, page, v):
     md += [ui("formula.block.parry_text", window=_n(v["parry_window"])), "",
            ui("formula.block.blocked", armour=_term(ctx, "armor", page)), "",
            ui("formula.block.guard", stagger=_term(ctx, "stagger", page), glance=_term(ctx, "glance", page, start=True)), ""]
+    # Socketed sigils' local mods (ShieldOps.LocalPct: BossSigils.LocalSum); a share of block power
+    # increases as parry bonus (BossSigilPowers.ParryGift).
+    md += [ui("formula.block.sigils", sockets=_term(ctx, "sockets", page)), ""]
     return md
 
 
@@ -864,20 +964,24 @@ def _thorns(ctx, page, v):
     md += [ui("formula.thorns.type"), "",
            ui("formula.thorns.range", full=_n(v["full_range"]), zero=_n(v["zero_range"])), "",
            ui("formula.thorns.block", block=_pct(t["thorns.block.share"]), shield=_mastery_link(ctx, "ShieldBlockThorns", page)), "",
+           ui("formula.thorns.target"), "",  # Thorns.Complete: increases and more by the attacker's TargetSubjects
            ui("formula.thorns.contact", carapace=_mastery_link(ctx, "ThornsContact", page),
               interval=_n(ctx.loc.difficulty.get("tunables", {}).get("thorns.contact-interval", 0))), ""]
     return md
 
 
 def _armour_break(ctx, page, v):
-    """Armour break (Corrosion: Strike, Bite, Carry): blunt fills a broken share that adds the enemy's
-    armour back to your physical damage."""
+    """Armour break (Corrosion: Strike, Bite, Carry, Duration): blunt fills a broken share that adds the
+    enemy's armour back to your physical damage; everyone's hits add to the one share (AilmentShare)."""
     ui = ctx.loc.ui
     md = [ui("formula.armour-break.text", brk=_term(ctx, "corrosion", page, start=True), gauge=_term(ctx, "ailment-gauge", page),
              buildup=_term(ctx, "build-up", page), seconds=_n(v["seconds"])), ""]
     md += _formula(ui("formula.armour-break.fill"))
     md += _formula(ui("formula.armour-break.formula"))
-    md += [ui("formula.armour-break.notes", armour=_term(ctx, "armor", page)), ""]
+    md += [ui("formula.armour-break.notes", armour=_term(ctx, "armor", page)), "", ui("formula.armour-break.sources"), ""]
+    # A weapon base's armour break coefficient for its melee hits (ItemBaseRolls.BreakCoefficient).
+    md += [x for coef, items in _base_roll_items(ctx, page, "armourBreakCoefficient").items()
+           for x in (ui("formula.armour-break.bases", items=items, coef=_n(coef)), "")]
     return md
 
 
@@ -927,6 +1031,12 @@ def _endurance(ctx, page, v):
               rune=_mastery_link(ctx, "SteadfastRuneThreshold", page), shield=_term(ctx, "shield", page)), "",
            ui("formula.endurance.order", res=_term(ctx, "resist", page), block=_term(ctx, "block", page), armour=_term(ctx, "armor", page),
               shield=_term(ctx, "shield", page)), ""]
+    # The Berserker's UnbowedHead and TemperedOnFoe stats (Berserker.EnduranceThreshold/EnduranceMore).
+    if "@stat.UnbowedHead.ability" in ctx.loc.game:
+        md += [ui("formula.endurance.berserker", unbowed=ctx.loc.text("@stat.UnbowedHead.ability"), share=_pct(v["unbowed"]),
+                  rune=_mastery_link(ctx, "SteadfastRuneThreshold", page), tempered=ctx.loc.text("@stat.TemperedOnFoe.ability"),
+                  more=_pct(_tun(ctx, "berserker.temper-more")), seconds=_n(_tun(ctx, "berserker.temper-seconds")),
+                  cap=_pct(t["endurance.cap"])), ""]
     return md
 
 
@@ -1319,8 +1429,9 @@ TERM_FORMULAS = {
     "ailment": ["ailments"],
     "ailment-damage": ["ailments"],
     "damage-over-time-multiplier": ["ailments", "ground-effects"],
+    "damage-over-time-speed": ["ailments"],
     "ailment-gauge": ["ailments:gauge"],
-    "build-up": ["ailments:gauge"],
+    "build-up": ["ailments:apply"],
     "bleed": ["ailments:bleed"],
     "burn": ["ailments:burn"],
     "poison": ["ailments:poison"],
@@ -1359,7 +1470,8 @@ TERM_FORMULAS = {
 def _views() -> dict[tuple[str, str], tuple[str, object]]:
     """Parts of a formula a keyword page shows instead of the whole block: (formula, view) ->
     (heading ui key, body)."""
-    out = {("ailments", "gauge"): ("formula.ailments.gauge_title", lambda ctx, page, v: _ail_gauge(ctx, page, v))}
+    out = {("ailments", "gauge"): ("formula.ailments.gauge_title", lambda ctx, page, v: _ail_gauge(ctx, page, v)),
+           ("ailments", "apply"): ("formula.ailments.apply_title", _ail_application)}
     out.update({("ailments", a): ("formula.ailments.how", _ailment_view(a)) for a in _AILMENTS})
     out.update({("hit-damage", p): (f"formula.hit-damage.{p}_title", _hit_view(p)) for p in _HIT_PARTS})
     return out

@@ -7,7 +7,8 @@
 - Jewels: base jewels by type, with the mods each type rolls (catalog jewel.base.* pools); how
   often a drop is a jewel, by source (LootCatalog.Sources).
 - Uniques: unique jewels and belts with their lines (harness/gear.py), radius and limit, and where
-  they drop (LootCatalog.Uniques, boss loot tables, a jewel's own global weight).
+  they drop (LootCatalog.Uniques, boss and chest loot tables, a jewel's own global weight). Unique
+  equipment (UniqueGear, 6.0) adds its base: the donor item, item level, defence, stats and implicit.
 """
 
 from collections import defaultdict
@@ -550,9 +551,7 @@ def page_uniques(ctx: Ctx) -> dict[str, str]:
     md = [f"# {ui('gear.uniques')}", "", ui("gear.uniques_intro"), ""]
     kinds: dict[str, list[str]] = defaultdict(list)
     for item in sorted(uniques, key=lambda i: _unique_name(ctx, i)):
-        is_jewel = item in gear.get("jewels", {})
-        belt = "belt" in (ctx.loc.items.get(item, {}).get("tags") or [])
-        kinds[ui("class.jewels") if is_jewel else ui("class.belts") if belt else ui("class.utility")].append(item)
+        kinds[ui(f"class.{_unique_class(ctx, item)}")].append(item)
     pages = {}
     for kind, items in sorted(kinds.items(), key=lambda kv: -len(kv[1])):
         md += [f"## {kind} ({len(items)})", ""] + unique_table(ctx, items, page, catalog)
@@ -561,8 +560,40 @@ def page_uniques(ctx: Ctx) -> dict[str, str]:
     return pages
 
 
+# UniqueGear.Def.Kind -> the class it is listed under on the uniques page.
+_GEAR_CLASS = {"helmet": "armour", "chest": "armour", "legs": "armour", "cape": "armour", "shield": "shields",
+               "ring": "rings", "belt": "belts", "quiver": "quivers", "tool": "tools"}
+
+
+def _gear(ctx: Ctx, item: str) -> dict | None:
+    """A unique equipment item (UniqueGear, 6.0), as harness/gear.py renders it."""
+    return (ctx.loc.gear.get("uniqueGear") or {}).get(item)
+
+
+def gear_owners(ctx: Ctx) -> dict[str, list[str]]:
+    """unique.* affix id -> the unique equipment items with a row of it (UniqueGear.Def.Rows, at their tier U-<key>)."""
+    out: dict[str, list[str]] = defaultdict(list)
+    for item, g in (ctx.loc.gear.get("uniqueGear") or {}).items():
+        for line in g["lines"]:
+            out[line["affix"]].append(item)
+    return out
+
+
+def unique_links(ctx: Ctx, items: list[str], page: str) -> str:
+    """Uniques by name, linked to their pages."""
+    return ", ".join(f"[{_unique_name(ctx, i)}]({rel(unique_path(i), page)})" for i in sorted(items, key=lambda i: _unique_name(ctx, i)))
+
+
+def _unique_class(ctx: Ctx, item: str) -> str:
+    if item in ctx.loc.gear.get("jewels", {}):
+        return "jewels"
+    if g := _gear(ctx, item):
+        return _GEAR_CLASS.get(g["kind"], "weapons")
+    return "belts" if "belt" in (ctx.loc.items.get(item, {}).get("tags") or []) else "utility"
+
+
 def _unique_name(ctx: Ctx, item: str) -> str:
-    j = ctx.loc.gear.get("jewels", {}).get(item)
+    j = ctx.loc.gear.get("jewels", {}).get(item) or _gear(ctx, item)
     return j["name"] if j else _item_name(ctx, item)
 
 
@@ -572,6 +603,8 @@ def _unique_icon(ctx: Ctx, item: str, page: str, px: int) -> str:
 
 
 def _unique_kind(ctx: Ctx, item: str) -> str:
+    if g := _gear(ctx, item):
+        return ctx.loc.ui(f"uniques.kind.{g['kind']}")
     if item in ctx.loc.gear.get("jewels", {}):
         return ctx.loc.ui("tag.jewel").capitalize()
     tags = ctx.loc.items.get(item, {}).get("tags") or []
@@ -579,8 +612,8 @@ def _unique_kind(ctx: Ctx, item: str) -> str:
 
 
 def _unique_sources(ctx: Ctx, item: str, catalog: dict, page: str) -> str:
-    """Where a unique drops, in words: catalog sources, a jewel's own global weight, boss tables."""
-    from .monster_pages import creature_link
+    """Where a unique drops, in words: catalog sources, a jewel's own global weight, boss and chest tables."""
+    from .monster_pages import CREATURES_PAGE, creature_link
 
     ui, parts = ctx.loc.ui, []
     entry = catalog.get(item)
@@ -597,6 +630,10 @@ def _unique_sources(ctx: Ctx, item: str, catalog: dict, page: str) -> str:
             elif kind == "monolith":
                 chance = ctx.loc.gear.get("monolithUniqueChance")
                 parts.append(ui("gear.src_monolith", chance=_pct(chance)) if chance else ui("gear.src_monolith_kills"))
+                parts += _hall_source(ctx, "monolith", page)
+            elif kind == "corrupted":  # LootDrops.InMist: kills of blighted creatures in a Blight Mist
+                parts.append(ui("uniques.src_corrupted", link=rel(CREATURES_PAGE, page) + "#blight"))
+                parts += _hall_source(ctx, "corrupted", page)
             elif kind == "creature":
                 parts.append(ui("gear.src_creature", creature=creature_link(ctx, what, page)))
     elif j.get("globalWeight") or mod.get("globalMinLevel"):
@@ -612,7 +649,38 @@ def _unique_sources(ctx: Ctx, item: str, catalog: dict, page: str) -> str:
                      if any(e["id"] == item for e in t["entries"]) for cr in t.get("creatures") or []}, key=ctx.loc.creature)
     if bosses:
         parts.append(ui("gear.drops_bosses", bosses=", ".join(creature_link(ctx, cr, page) for cr in bosses)))
+    chests = sorted({_chest_name(ctx, c) for t in ctx.data.loot.get("tables") or []
+                     if any(e["id"] == item for e in t["entries"]) for c in t.get("chests") or []})
+    if chests:  # LootDrops.Roll: a table's chests (6.0), rolled when one is opened
+        parts.append(ui("uniques.src_chests", places=", ".join(chests)))
     return "; ".join(parts) or _badge(ui("badge.broken"), ui("gear.no_source"))
+
+
+def _chest_name(ctx: Ctx, chest: str) -> str:
+    """A dungeon's treasure chest by its location's name (TreasureChest_<location>: Valheim's
+    "location_<location>"), else the wiki's own name for it."""
+    where = chest.removeprefix("TreasureChest_")
+    return ctx.loc.vkey(f"location_{where}", ctx.loc.ui(f"uniques.chests.{where}"))
+
+
+def _hall_source(ctx: Ctx, source: str, page: str) -> list[str]:
+    """The halls maps' unique rooms that give a source's uniques (HallMapRun: the Blighted Hall's
+    chests, LootDrops.SourceUnique("corrupted") at hmap.blight-unique; the Hall of Three Monoliths'
+    won trials, SourceUnique("monolith") at monolith.unique-chance). Shown while checked."""
+    from .formula_pages import _values, shown
+
+    if not shown(ctx, "unique-gear-sources"):
+        return []
+    from .halls_pages import ROOMS_PAGE
+
+    link = rel(ROOMS_PAGE, page) + "#unique-rooms"
+    if source == "corrupted":
+        hall = ctx.loc.text("@enc.hmap.unique.blighthall", "Blighted Hall")
+        return [ctx.loc.ui("uniques.src_blight_hall", hall=f"[{hall}]({link})",
+                           chance=_pct(_values().get("unique-gear-sources", {}).get("blight_hall", 0)))]
+    chance = ctx.loc.gear.get("monolithUniqueChance")
+    hall = ctx.loc.text("@enc.hmap.unique.monolithhall", "Hall of Three Monoliths")
+    return [ctx.loc.ui("uniques.src_monolith_hall", hall=f"[{hall}]({link})", chance=_pct(chance))] if chance else []
 
 
 def unique_table(ctx: Ctx, items: list[str], page: str, catalog: dict | None = None, keyword: str | None = None) -> list[str]:
@@ -702,13 +770,109 @@ def _rift_section(ctx: Ctx, item: str, page: str) -> list[str]:
     return md + ["", ui("gear.rift.text"), ""]
 
 
+def _chest_tables_with(ctx: Ctx, item: str) -> list[list[str]]:
+    """Chest loot tables (LootCatalog.Tables "chests", 6.0) that can hold this item, per chest opened."""
+    rows = []
+    for t in ctx.data.loot.get("tables") or []:
+        for e in t["entries"]:
+            if e["id"] != item:
+                continue
+            total = sum(x["weight"] for x in t["entries"]) or 1
+            first = ctx.loc.ui("gear.first_drop", n=_num(t["firstDrop"])) if t.get("firstDrop", 1) > 1 else ""
+            rows += [[_chest_name(ctx, c), _pct(t["chance"] * e["weight"] / total), str(e.get("stackMin", 1)), first]
+                     for c in t.get("chests") or []]
+    return rows
+
+
+def _global_extras(ctx: Ctx, item: str, catalog: dict, page: str) -> list[str]:
+    """A unique of the global pool can also be a unique treasure map's prize (LootDrops.TreasureRewards:
+    LootDrops.UniquePool at the chest) and one of the Keeper of Forgotten Sagas' gifts (Wanderer.Pool:
+    global uniques only). Each part shown while its world formula is checked."""
+    from .formula_pages import shown
+    from .world_pages import MERCHANTS_PAGE, TREASURE_PAGE
+
+    entry = catalog.get(item) or {}
+    if entry.get("weight", 0) <= 0 or "global" not in (entry.get("sources") or ["global"]):
+        return []
+    parts = []
+    if shown(ctx, "treasure-maps"):
+        tmap = ctx.loc.text("@enc.tmap.kind.unique", "Unique Treasure Map")
+        parts.append(ctx.loc.ui("uniques.also_tmap", tmap=f"[{tmap}]({rel(TREASURE_PAGE, page)}#chest)"))
+    if shown(ctx, "merchants"):
+        keeper = ctx.loc.text("@enc.wand.name", "Keeper of Forgotten Sagas")
+        parts.append(ctx.loc.ui("uniques.also_keeper", keeper=f"[{keeper}]({rel(MERCHANTS_PAGE, page)}#keeper)"))
+    return [ctx.loc.ui("uniques.also", parts=ctx.loc.ui("uniques.and").join(parts)), ""] if parts else []
+
+
+def _gear_head(ctx: Ctx, item: str, g: dict, page: str) -> list[str]:
+    """A unique equipment item's base, as its tooltip heads it: the item it is made from (UniqueGear.Def.Donor),
+    its fixed item level (EnsureRolled: GearEnvelope.ItemLevel) and defence base (pov.defence.base)."""
+    ui, donor = ctx.loc.ui, g["donor"]
+    name = _item_name(ctx, donor)
+    facts = [ui("uniques.base", link=f"[{name}]({rel(base_path(donor), page)})" if donor in bases(ctx) else name),
+             ui("uniques.item_level", level=g["level"], biome=biome(ctx, g["level"]))]
+    if g.get("defence"):
+        facts.append(ui("uniques.defence_base", kind=ui(f"uniques.defence.{g['defence']}")))
+    md = [" · ".join(facts), ""]
+    if not g.get("loot", True):  # UniqueGear.Def.Loot: registered, never dropped
+        md += [f'!!! warning "{ui("page.unimplemented")}"', f"    {ui('uniques.not_loot')}", ""]
+        if g.get("pending"):
+            md += [f"    {ui('uniques.pending', what=g['pending'])}", ""]
+    return md
+
+
+def _gear_stats(ctx: Ctx, item: str, g: dict, page: str) -> list[str]:
+    """Its implicit (UniqueGear.RegisterImplicits) and stats: the donor's data with UniqueGear.ApplyBase
+    (harness/gear.py), at its only quality, and its base roll (ItemBaseRolls: crit chance, armour
+    break coefficient, bleed duration)."""
+    from .base_pages import _rolled, _stats, base_rolls
+    from .formula_pages import _term
+
+    ui, md = ctx.loc.ui, []
+    implicits = [i for i in g.get("implicits") or [] if "text" in i]
+    if implicits:
+        md += [f"## {ui('items.implicits')}", "", ui("items.implicits_note"), ""]
+        md += [f"- {i['text']}" for i in implicits] + [""]
+    if not g.get("shared"):
+        return md
+    roll = base_rolls(ctx).get(item) or {}
+    b = {"shared": _rolled(g["shared"], roll), "info": {"tags": g.get("tags") or [], "defences": g.get("defences") or []}}
+    rows = _stats(ctx, b)
+    base = g.get("base") or {}
+    attack = g["shared"].get("m_attack") or {}
+
+    def sec(v: float) -> str:
+        return ui("uniques.seconds", n=_num(v))
+
+    if "drawSeconds" in base:
+        rows.append([ui("uniques.draw"), sec(attack.get("m_drawDurationMin", base["drawSeconds"]))])
+    if "reloadSeconds" in base:
+        rows.append([ui("uniques.reload"), sec(attack.get("m_reloadTime", base["reloadSeconds"]))])
+    if "raisedMovement" in base:  # UniqueGear.RaisedMovement: jog speed while blocking with it (RaisedJog)
+        rows.append([ui("uniques.raised"), f"×{_num(min(1.0, max(0.05, base['raisedMovement'])))}"])
+    if roll.get("critChance", -1) >= 0:  # CriticalHits.Weapon: in place of the weapon kind's base
+        rows.append([ui("uniques.crit", crit=_term(ctx, "crit", page)), _pct(roll["critChance"])])
+    if "armourBreakCoefficient" in roll:  # ItemBaseRolls.BreakCoefficient
+        rows.append([ui("uniques.break", brk=_term(ctx, "corrosion", page, start=True)), f"×{_num(roll['armourBreakCoefficient'])}"])
+    if roll.get("bleedSeconds"):  # ItemBaseRolls.BleedSeconds
+        rows.append([ui("uniques.bleed", bleed=_term(ctx, "bleed", page, start=True)), sec(roll["bleedSeconds"])])
+    if rows:
+        md += [f"## {ui('items.stats')}", ""] + _table([ui("items.stat"), ui("col.value")], rows)
+    if base.get("noEquipEffect", 0) > 0.5:  # ApplyBase: the donor's equip status effect is dropped
+        md += [ui("uniques.no_equip_effect", donor=_item_name(ctx, g["donor"])), ""]
+    return md
+
+
 def _unique_page(ctx: Ctx, item: str, catalog: dict) -> str:
     ui, page = ctx.loc.ui, unique_path(item)
     j = ctx.loc.gear.get("jewels", {}).get(item)
     md = [f"# {_unique_name(ctx, item)}", ""]
     if art := _unique_icon(ctx, item, page, 96):
         md += [art, ""]
-    md += [f"<b>{ui('gear.unique')} {_unique_kind(ctx, item).lower()}</b>", ""]
+    g = _gear(ctx, item)
+    md += [f"<b>{_unique_kind(ctx, item)}</b>" if g else f"<b>{ui('gear.unique')} {_unique_kind(ctx, item).lower()}</b>", ""]
+    if g:
+        md += _gear_head(ctx, item, g, page)
     facts = []
     if j and j.get("radiusLine"):
         facts.append(j["radiusLine"])
@@ -720,14 +884,22 @@ def _unique_page(ctx: Ctx, item: str, catalog: dict) -> str:
     for line in ctx.loc.gear["uniques"][item]["lines"]:
         md += _line_md(ctx, line, page)
     md += [""]
-    flavor = j["flavor"] if j else (ctx.loc.items.get(item, {}).get("mod") or {}).get("shared", {}).get("m_description", "")
+    if g:
+        flavor = g["flavor"] + (f" <i>{g['quote']}</i>" if g.get("quote") else "")
+    else:
+        flavor = j["flavor"] if j else (ctx.loc.items.get(item, {}).get("mod") or {}).get("shared", {}).get("m_description", "")
     if flavor:
         md += [f"*{flavor}*".replace("\n", " "), ""]
+    if g:
+        md += _gear_stats(ctx, item, g, page)
     md += _rift_section(ctx, item, page)
     sources = _unique_sources(ctx, item, catalog, page)
     md += [f"## {ui('gear.drops')}", "", sources[:1].upper() + sources[1:] + ".", ""]
     if tables := _tables_with(ctx, item, page):
         md += [ui("gear.boss_tables"), ""] + _drop_table(ctx, tables)
+    if chests := _chest_tables_with(ctx, item):
+        md += [ui("uniques.chest_tables"), ""] + _table([ui("uniques.chest"), ui("gear.chance"), ui("gear.amount"), ""], chests)
+    md += _global_extras(ctx, item, catalog, page)
     if item in ctx.loc.items and (ctx.loc.items[item].get("mod") or {}).get("kind"):
         md += [ui("gear.see_base", link=f"[{_unique_name(ctx, item)}]({rel(base_path(item), page)})"), ""]
     from .formula_pages import _anchor, shown

@@ -117,14 +117,17 @@ def _essences_for(ctx: Ctx, affix: dict) -> list[str]:
 
 def _source(ctx: Ctx, affix: dict, page: str | None = None) -> str:
     """Where a mod comes from; links are relative to `page` (the mod's own page by default)."""
-    ui = ctx.loc.ui
+    ui, page = ctx.loc.ui, page or mod_path(affix)
     if affix["source"] == "essence":
         return ui("items.source_essence", items=", ".join(_essences_for(ctx, affix)))
     if affix["source"] == "none":
         from .enchant_pages import ENCHANT_PAGE, owners
+        from .gear_pages import gear_owners, unique_links
 
+        if items := gear_owners(ctx).get(affix["id"]):  # a row of unique equipment (UniqueGear.Def.Rows)
+            return ui("uniques.mod_source", items=unique_links(ctx, items, page))
         if affix["id"] in owners(ctx):  # a tier of a Runecarver enchantment (Enchants.Rows)
-            return ctx.loc.ui("enchant.source_enchant", link=rel(ENCHANT_PAGE, page or mod_path(affix)))
+            return ctx.loc.ui("enchant.source_enchant", link=rel(ENCHANT_PAGE, page))
         return _badge(ui("badge.broken"), ui("items.not_generated_tip"))
     return ui("items.source_loot")
 
@@ -168,15 +171,25 @@ def page_mods(ctx: Ctx) -> dict[str, str]:
             title += ": " + ", ".join(ui(f"tag.{t}") for t in key[len(classes):])
         md += [f"## {title} ({len(groups[key])})", ""] + _unsearched(_table(header, rows(groups[key])))
     from .enchant_pages import owners
+    from .gear_pages import gear_owners
 
-    enchants = owners(ctx)
+    enchants, uniques = owners(ctx), gear_owners(ctx)
+
+    def group_of(a: dict) -> str:
+        """Mods no loot rolls that are tiers of an enchantment (Enchants.Rows) or rows of unique
+        equipment (UniqueGear.Def.Rows) get their own groups."""
+        if a["source"] == "none" and a["id"] in enchants:
+            return "enchant"
+        if a["source"] == "none" and a["id"] in uniques:
+            return "unique"
+        return a["source"]
+
     for source, title, note in (("essence", "items.essence_only", "items.essence_only_note"), ("enchant", "enchant.mods_only", "enchant.mods_only_note"),
-                                ("none", "items.not_generated", "items.not_generated_note")):
-        # Mods no loot rolls that are tiers of an enchantment get their own group (Enchants.Rows).
-        chosen = [a for a in affixes if (a["source"] == "none" and a["id"] in enchants) == (source == "enchant")
-                  and a["source"] == (source if source != "enchant" else "none")]
+                                ("unique", "uniques.mods_only", "uniques.mods_only_note"), ("none", "items.not_generated", "items.not_generated_note")):
+        chosen = [a for a in affixes if group_of(a) == source]
         if chosen:
-            md += [f"## {ui(title)} ({len(chosen)})", "", ui(note, link=rel("items/enchantments.md", MODS_PAGE)), ""] + _unsearched(_table(header, rows(chosen)))
+            md += [f"## {ui(title)} ({len(chosen)})", "", ui(note, link=rel("items/enchantments.md", MODS_PAGE), uniques=rel("items/uniques.md", MODS_PAGE)), ""]
+            md += _unsearched(_table(header, rows(chosen)))
     pages[MODS_PAGE] = "\n".join(md + _footer(ctx))
 
     for a in affixes:
@@ -184,13 +197,25 @@ def page_mods(ctx: Ctx) -> dict[str, str]:
     return pages
 
 
+def _tier_name(ctx: Ctx, tier: str, page: str) -> str:
+    """A tier's id; a unique's own tier (UniqueGear.TierId: "U-<key>") names the unique, linked."""
+    if tier.startswith("U-"):
+        from .gear_pages import unique_links
+
+        item = next((g["id"] for g in ctx.data.loot.get("uniqueGear") or [] if f"U-{g['key']}" == tier), None)
+        if item in (ctx.loc.gear.get("uniqueGear") or {}):
+            return f"{tier}: {unique_links(ctx, [item], page)}"
+    return tier
+
+
 def _mod_page(ctx: Ctx, a: dict) -> dict[str, str]:
     loc, page = ctx.loc, mod_path(a)
     ui = loc.ui
     md = [f"# {_cell(_title(a))}", "", f"<b>{_place(ctx, a)}</b> · {_cell(_rule(ctx, a))}", ""]
     from .enchant_pages import mod_section, owners
+    from .gear_pages import gear_owners
 
-    if a["source"] == "none" and a["id"] not in owners(ctx):
+    if a["source"] == "none" and a["id"] not in owners(ctx) and a["id"] not in gear_owners(ctx):
         md += [f'!!! warning "{ui("page.unimplemented")}"', f"    {ui('items.not_generated_note')}", ""]
 
     info = [[ui("items.rolls_on"), _cell(_rule(ctx, a))], [ui("items.source"), _source(ctx, a)]]
@@ -205,13 +230,13 @@ def _mod_page(ctx: Ctx, a: dict) -> dict[str, str]:
     md += [f"## {ui('items.tiers')}", ""]
     md += _table(
         [ui("items.tier"), ui("items.item_level"), ui("items.value"), ui("items.weight"), ui("items.share")],
-        [[t["id"], _levels(ctx, t["minLevel"], t["maxLevel"]), _cell(to_md(t["text"]["base"], loc, page)),
+        [[_tier_name(ctx, t["id"], page), _levels(ctx, t["minLevel"], t["maxLevel"]), _cell(to_md(t["text"]["base"], loc, page)),
           f"{t['weight']:g}", f"{100 * t['weight'] / total:.1f}%"] for t in a["tiers"]],
     )
 
     # The same tiers on the slots this mod can roll on, when values scale with the slot.
     slots = [s for c in _classes(a) for s in _SLOTS_FOR.get(c, [])]
-    if not a["scaled"]:
+    if not a["scaled"] and a["id"] not in gear_owners(ctx):  # a unique's line has its own fixed range
         md += [f"*{ui('items.local_note')}*", ""]
     elif slots:
         md += [f"## {ui('items.slot_values')}", "", ui("items.slot_values_note"), ""]

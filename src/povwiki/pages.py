@@ -573,6 +573,9 @@ def page_options(ctx: Ctx) -> dict[str, str]:
             md += [f"## {loc.ui('buildings.unlocks')}", "", ", ".join(building_link(ctx, b, page) for b in unlocked), ""]
 
         md += merged_section(ctx, page)
+        from .runic_pages import see_runic
+
+        md += see_runic(ctx, page, [o["raw"].get("mods")], [x.get("flag") for x in g["options"]])
         md += _keywords_section(ctx, page, [x for opt in g["options"] for x in opt["stats"] + opt["extra"]], [o["raw"].get("mods")])
         md += [f"## {loc.ui('page.offered_by')} ({len(g['nodes'])})", ""]
         md += _node_table(
@@ -661,6 +664,9 @@ def page_nodes(ctx: Ctx) -> dict[str, str]:
 
         # Keywords.
         lines = r["stats"] + r["extra"] + [x for o in r["options"] for x in o["stats"] + o["extra"]]
+        from .runic_pages import see_runic
+
+        md += see_runic(ctx, page, [n.get("mods")], [])
         md += _keywords_section(ctx, page, lines, [n.get("mods"), *((o.get("raw") or {}).get("mods") for o in r["options"])])
 
         from .patch_pages import history
@@ -864,6 +870,10 @@ def _related_pages(ctx: Ctx) -> dict[str, list[tuple[str, str, str]]]:
         found["undead"].append((ctx.loc.ui("world.ship.title"), SHIPS_PAGE, world))
     if any((i.get("mod") or {}).get("quiver") for i in ctx.loc.items.values()):  # quivers hold arrows and bolts
         found["arrows"].append((ctx.loc.ui("class.quivers"), "items/bases.md", ctx.loc.ui("items.bases")))
+    from .runic_pages import related_terms
+
+    for term, entries in related_terms(ctx).items():
+        found[term] += entries
     rune = ctx.loc.items.get("PT_RuneOfResurrection")
     if rune and rune.get("mod"):  # brings a dead companion back
         found["companion"].append((rune["mod"]["shared"]["m_name"], "items/base/PT_RuneOfResurrection.md", ctx.loc.ui("items.bases")))
@@ -1024,6 +1034,7 @@ def nav(loc: Localizer | None = None) -> list:
     from .gear_pages import _GROUPS, group_path
     from .halls_pages import NAV as HALLS_NAV
     from .patch_pages import INDEX, patch_path, versions
+    from .runic_pages import nav_entry, runic_on
     from .weapon_pages import WEAPON_TYPES, weapon_path
     from .world_pages import MERCHANTS_PAGE, SHIPS_PAGE, TREASURE_PAGE, available
 
@@ -1040,6 +1051,7 @@ def nav(loc: Localizer | None = None) -> list:
                            if enchant_built() else []),
                          *([("gems.title", [("gems.all", "items/gems.md"), ("gems.board", "items/gems/board.md")])]
                            if loc is None or loc.gems.get("gems") else [])]),
+        *([nav_entry()] if loc is None or runic_on(loc.data) else []),
         ("monsters.title", [("monsters.mods", "monsters/mods.md"), ("bosses.title", "monsters/bosses.md"),
                             ("creatures.title", "monsters/creatures.md"), ("taming.title", "monsters/taming.md")]),
         ("ascendancy.title", "ascendancy/index.md"),

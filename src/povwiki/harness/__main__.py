@@ -111,6 +111,7 @@ def render_tree(data, language: str, valheim: Path | None = None) -> dict:
     from .classes import render_classes
     from .enchant import render_enchant
     from .gems import render_gems
+    from .runic import render_runic
 
     return {
         "language": language, "revision": data.Revision, "errors": errors,
@@ -122,6 +123,7 @@ def render_tree(data, language: str, valheim: Path | None = None) -> dict:
         "enchant": render_enchant(items, errors),
         # After the wiki: it adds the board's terms to the in-game wiki (keys with ":"), kept apart.
         "gems": render_gems(errors),
+        "runic": render_runic(errors),
     }
 
 

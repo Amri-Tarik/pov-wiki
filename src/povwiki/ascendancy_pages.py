@@ -9,6 +9,8 @@ TreePaths.GateOf), and alone on the class's page.
 import html
 import json
 import math
+import re
+import unicodedata
 
 from .markup import rel, to_html, to_md
 from .pages import Ctx, _footer, _img, _table
@@ -23,8 +25,19 @@ def classes(ctx: Ctx) -> dict:
     return ctx.loc.data.rendered(ctx.loc.lang.mod).get("classes") or {}
 
 
-def class_path(key: str) -> str:
-    return f"ascendancy/{key.removeprefix('asc-')}.md"
+_ENGLISH: dict[str, dict[str, str]] = {}
+
+
+def class_path(ctx: Ctx, key: str) -> str:
+    """A class's page, named after its English name in every language (the language switcher
+    and search links pair pages by path): "asc-gladiator-concept" -> ascendancy/arena-spearman."""
+    version = ctx.data.version
+    if version not in _ENGLISH:  # the rendered text is large: read once per version
+        _ENGLISH[version] = {c["key"]: c["name"] for c in
+                             (ctx.loc.data.rendered("english").get("classes") or {}).get("classes") or []}
+    name = _ENGLISH[version].get(key) or key.removeprefix("asc-")
+    slug = re.sub(r"[^a-z0-9]+", "-", unicodedata.normalize("NFKD", name).encode("ascii", "ignore").decode().lower()).strip("-")
+    return f"ascendancy/{slug or key}.md"
 
 
 def _art_image(c: dict) -> str:
@@ -122,7 +135,7 @@ def overlay(ctx: Ctx, page: str, sizes: list[str], frame_kinds: tuple, frame_kin
         cx, cy, _ = _extent(c)
         base = len(nodes)
         index = {}
-        href = f"../{rel(class_path(c['key']), page)}"
+        href = f"../{rel(class_path(ctx, c['key']), page)}"
         href = href.removesuffix(".md") + "/" if href.endswith(".md") else href
         for n in c["nodes"]:
             size = "Root" if n["role"] == "start" else n["size"] if n["size"] in sizes else "Small"
@@ -165,7 +178,7 @@ def page_ascendancy(ctx: Ctx) -> dict[str, str]:
         rows = []
         for c in mine:
             art = _art(ctx, c)
-            rows.append([_img(art, page, 64) if art else "", f"**[{c['name']}]({rel(class_path(c['key']), page)})**<br>{html.escape(c['sub'])}",
+            rows.append([_img(art, page, 64) if art else "", f"**[{c['name']}]({rel(class_path(ctx, c['key']), page)})**<br>{html.escape(c['sub'])}",
                          _access(ctx, c), str(sum(1 for n in c["nodes"] if n["role"] != "start"))])
         md += _table(["", ui("ascendancy.col_class"), ui("ascendancy.col_access"), ui("ascendancy.col_nodes")], rows)
     pages = {page: "\n".join(md + _footer(ctx))}
@@ -178,7 +191,7 @@ def _class_page(ctx: Ctx, data: dict, c: dict) -> dict[str, str]:
     from .icons import DOCS_DIR, FRAME_KINDS, frame_kind
     from .pages import DIAMETERS, SIZES
 
-    ui, page = ctx.loc.ui, class_path(c["key"])
+    ui, page = ctx.loc.ui, class_path(ctx, c["key"])
     data_path = page.removesuffix(".md") + "-tree.json"
     art = _art(ctx, c)
     md = [f"# {c['name']}", ""]

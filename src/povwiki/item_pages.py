@@ -115,7 +115,8 @@ def _essences_for(ctx: Ctx, affix: dict) -> list[str]:
     return [loot["items"].get(e, {}).get("name", e) for e, d in loot["essences"].items() if d["boss"] in affix["bossFamilies"]]
 
 
-def _source(ctx: Ctx, affix: dict) -> str:
+def _source(ctx: Ctx, affix: dict, page: str | None = None) -> str:
+    """Where a mod comes from; links are relative to `page` (the mod's own page by default)."""
     ui = ctx.loc.ui
     if affix["source"] == "essence":
         return ui("items.source_essence", items=", ".join(_essences_for(ctx, affix)))
@@ -123,7 +124,7 @@ def _source(ctx: Ctx, affix: dict) -> str:
         from .enchant_pages import ENCHANT_PAGE, owners
 
         if affix["id"] in owners(ctx):  # a tier of a Runecarver enchantment (Enchants.Rows)
-            return ctx.loc.ui("enchant.source_enchant", link=rel(ENCHANT_PAGE, mod_path(affix)))
+            return ctx.loc.ui("enchant.source_enchant", link=rel(ENCHANT_PAGE, page or mod_path(affix)))
         return _badge(ui("badge.broken"), ui("items.not_generated_tip"))
     return ui("items.source_loot")
 
@@ -253,7 +254,7 @@ def keyword_mods_section(ctx: Ctx, mods: list[dict], page: str) -> list[str]:
         f"[{_cell(_title(a))}]({rel(mod_path(a), page)})",
         _place(ctx, a),
         _cell(_rule(ctx, a)),
-        _source(ctx, a) if a["source"] != "loot" else f"{biome(ctx, _min_level(a))} <small>({_min_level(a)})</small>",
+        _source(ctx, a, page) if a["source"] != "loot" else f"{biome(ctx, _min_level(a))} <small>({_min_level(a)})</small>",
     ] for a in sorted(mods, key=lambda a: (a["source"] != "loot", _title(a).lower()))]
     table = _table([ui("items.mod"), ui("items.place"), ui("items.rolls_on"), ui("items.min_level")], rows)
     title = f"{ui('items.mods')} ({len(mods)})"

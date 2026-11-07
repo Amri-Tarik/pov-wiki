@@ -1038,10 +1038,16 @@ def nav(loc: Localizer | None = None) -> list:
     from .weapon_pages import WEAPON_TYPES, weapon_path
     from .world_pages import MERCHANTS_PAGE, SHIPS_PAGE, TREASURE_PAGE, available
 
+    # 6.0 sections join existing groups so the top bar keeps fitting: runic crafting under Crafting,
+    # the Halls of Oaths under World.
+    runic = [nav_entry()] if loc is None or runic_on(loc.data) else []
+    world = ([("world.tmap.title", TREASURE_PAGE), ("world.ship.title", SHIPS_PAGE), ("world.merch.title", MERCHANTS_PAGE)]
+             if loc is not None and available(loc.data) else [])
+    world = ([("halls.title", HALLS_NAV)] if HALLS_NAV else []) + world  # only when this version has the halls' maps
     return [
         ("nav.home", "index.md"),
         *((f"{t.key}.title", [(f"{t.key}.{p}", f"{t.key}/{p}.md") for p in t.pages]
-           + ([("buildings.title", "crafting/buildings.md")] if t is CRAFTING else [])) for t in TREES),
+           + ([("buildings.title", "crafting/buildings.md")] + runic if t is CRAFTING else [])) for t in TREES),
         ("items.title", [("items.mods", "items/mods.md"), ("items.bases", "items/bases.md"),
                          ("weapons.title", [(f"weapons.{slug}", weapon_path(slug)) for slug, *_ in WEAPON_TYPES]),
                          ("gear.currency", [("gear.currency_all", "items/currency.md"),
@@ -1051,13 +1057,10 @@ def nav(loc: Localizer | None = None) -> list:
                            if enchant_built() else []),
                          *([("gems.title", [("gems.all", "items/gems.md"), ("gems.board", "items/gems/board.md")])]
                            if loc is None or loc.gems.get("gems") else [])]),
-        *([nav_entry()] if loc is None or runic_on(loc.data) else []),
         ("monsters.title", [("monsters.mods", "monsters/mods.md"), ("bosses.title", "monsters/bosses.md"),
                             ("creatures.title", "monsters/creatures.md"), ("taming.title", "monsters/taming.md")]),
         ("ascendancy.title", "ascendancy/index.md"),
-        *([("halls.title", HALLS_NAV)] if HALLS_NAV else []),  # only when this version has the halls' maps
-        *([("world.title", [("world.tmap.title", TREASURE_PAGE), ("world.ship.title", SHIPS_PAGE), ("world.merch.title", MERCHANTS_PAGE)])]
-          if loc is not None and available(loc.data) else []),
+        *([("world.title", world)] if world else []),
         ("formula.title", [("formula.creatures", "mechanics/creatures.md"), ("formula.experience_page", "mechanics/experience.md"),
                            ("formula.loot_page", "mechanics/loot.md"), ("formula.combat", "mechanics/combat.md"),
                            ("formula.summons_page", "mechanics/summons.md")]),

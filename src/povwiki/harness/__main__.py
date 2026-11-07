@@ -93,8 +93,10 @@ def render_tree(data, language: str, valheim: Path | None = None) -> dict:
     from .quests import render_quests
 
     craft["quests"] = render_quests(craft_renderer.tree)
+    from . import unity
     from .loot import render_loot
 
+    unity.install()  # the loot catalog reads item rarities (Rarity: colours parsed by native Unity code)
     loot = render_loot(errors)
     items = {}
     if valheim is not None:

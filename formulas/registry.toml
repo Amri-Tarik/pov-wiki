@@ -572,11 +572,24 @@ id = "ailments"
 anchors = [
     "PassiveTree/CritAilments.cs :: CritAilments.Rule",
     "PassiveTree/CritAilments.cs :: CritAilments.Capture",
+    "PassiveTree/AilmentGauges.cs :: AilmentGauges.Layered",
     "PassiveTree/AilmentGauges.cs :: AilmentGauges.Feed",
     "PassiveTree/AilmentGauges.cs :: AilmentGauges.Melt",
     "PassiveTree/AilmentGauges.cs :: AilmentGauges.Live",
     "PassiveTree/AilmentGauges.cs :: AilmentGauges.Ended",
     "PassiveTree/AilmentGauges.cs :: AilmentGauges.Build",
+    "PassiveTree/AilmentGauges.cs :: AilmentGauges.FlatChance",
+    "PassiveTree/AilmentGauges.cs :: AilmentGauges.MoreBuild",
+    "PassiveTree/AilmentGauges.cs :: AilmentGauges.RolledChance",
+    "PassiveTree/AilmentGauges.cs :: AilmentGauges.Stacks",
+    "PassiveTree/AilmentGauges.cs :: AilmentGauges.LayerOf",
+    "PassiveTree/AilmentGauges.cs :: AilmentGauges.LevelOf",
+    "PassiveTree/AilmentGauges.cs :: AilmentGauges.Prune",
+    "PassiveTree/AilmentGauges.cs :: AilmentGauges.Level#2",
+    "PassiveTree/AilmentGauges.cs :: AilmentGauges.AddLayer",
+    "PassiveTree/AilmentGauges.cs :: AilmentGauges.Roll",
+    "PassiveTree/AilmentGauges.cs :: AilmentGauges.HitChance",
+    "PassiveTree/AilmentGauges.cs :: AilmentGauges.Whole",
     "PassiveTree/AilmentGauges.cs :: AilmentGauges.Ignite",
     "PassiveTree/AilmentGauges.cs :: AilmentGauges.Channel",
     "PassiveTree/AilmentGauges.cs :: Fire.Prefix",
@@ -586,10 +599,10 @@ anchors = [
     "PassiveTree/AilmentGauges.cs :: Physical.Postfix",
     "PassiveTree/AilmentGauges.cs :: \"public const float HoldSeconds\"",
     "PassiveTree/AilmentGauges.cs :: \"public const float MeltPerSecond\"",
+    "PassiveTree/RuneWard.cs :: RuneWard.Unwarded",
     "PassiveTree/AilmentDamage.cs :: AilmentDamage.Component",
     "PassiveTree/AilmentDamage.cs :: AilmentDamage.Grip",
     "PassiveTree/Ailments.cs :: Ailments.Grip",
-    "PassiveTree/Ailments.cs :: Ailments.Before",
     "PassiveTree/Ailments.cs :: SE_Frost_AddDamage.Prefix",
     "PassiveTree/ElementalBonuses.cs :: ElementalBonuses.Combined",
     "PassiveTree/CreatureAilmentTraits.cs :: CreatureAilmentTraits.BuildUp",
@@ -602,34 +615,53 @@ anchors = [
     "PassiveTree/DamagingAilments.cs :: DamagingAilments.More",
     "PassiveTree/DamagingAilments.cs :: DamagingAilments.Flat",
     "PassiveTree/DamagingAilments.cs :: DamagingAilments.Seconds",
+    "PassiveTree/DamagingAilments.cs :: DamagingAilments.Rate",
+    "PassiveTree/DamagingAilments.cs :: DamagingAilments.Faster",
     "PassiveTree/DamagingAilments.cs :: DamagingAilments.PoisonLimit",
     "PassiveTree/DamagingAilments.cs :: DamagingAilments.Dot",
     "PassiveTree/DamagingAilments.cs :: DamagingAilments.Prepare",
     "PassiveTree/DamagingAilments.cs :: DamagingAilments.Place",
     "PassiveTree/DamagingAilments.cs :: DamagingAilments.Accrue",
+    "PassiveTree/DamagingAilments.cs :: DamagingAilments.Apply",
     "PassiveTree/DamagingAilments.cs :: DamagingAilments.Step",
-    "PassiveTree/ShockAilment.cs :: ShockAilment.Raw",
     "PassiveTree/ShockAilment.cs :: ShockAilment.Potency",
+    "PassiveTree/ShockAilment.cs :: ShockAilment.Potency#2",
     "PassiveTree/ShockAilment.cs :: ShockAilment.Threshold",
     "PassiveTree/ShockAilment.cs :: ShockAilment.EffectInc",
     "PassiveTree/ShockAilment.cs :: ShockAilment.EffectMore",
     "PassiveTree/ShockAilment.cs :: ShockAilment.Seconds",
     "PassiveTree/ShockAilment.cs :: ShockAilment.Add",
     "PassiveTree/ShockAilment.cs :: ShockAilment.Acting",
+    "PassiveTree/ShockAilment.cs :: ShockAilment.FromHit",
     "PassiveTree/ShockAilment.cs :: DamageTaken.Prefix",
     "PassiveTree/ShockAilment.cs :: StaggerTaken.Prefix",
     "PassiveTree/DotMultiplier.cs :: DotMultiplier.Factor",
     "PassiveTree/DotMultiplier.cs :: DotMultiplier.TypeOf",
     "PassiveTree/Combat.cs :: Combat.OpenWound",
-    "PassiveTree/Combat.cs :: Combat.Wounded",
+    "PassiveTree/Combat.cs :: Combat.Wounded#2",
+    "PassiveTree.Loot/ItemBaseRolls.cs :: ItemBaseRolls.BleedSecondsFactor",
+    "PassiveTree/Tunables.cs :: \"shock.base\"",
+    "PassiveTree/Tunables.cs :: \"shock.maximum\"",
+    "PassiveTree/Tunables.cs :: \"shock.stagger-scale\"",
+    "PassiveTree/Tunables.cs :: \"shock.duration\"",
+    "PassiveTree/Tunables.cs :: \"ailment.flammability.per-threshold\"",
+    "PassiveTree/Tunables.cs :: \"ailment.conductivity.per-threshold\"",
+    "PassiveTree/Tunables.cs :: \"ailment.layer.duration\"",
+    "PassiveTree/Tunables.cs :: \"ailment.layer.ground-threshold\"",
+    "PassiveTree/Tunables.cs :: \"ailment.flammability.tared\"",
+    "PassiveTree/Tunables.cs :: \"ailment.flammability.wet\"",
+    "PassiveTree/Tunables.cs :: \"ailment.bleeding.base-chance\"",
+    "PassiveTree/Tunables.cs :: \"ailment.poison.base-chance\"",
+    "PassiveTree/Tunables.cs :: \"ailment.bleeding.pierce-share\"",
 ]
-fingerprint = "c54359e0e924"
-checked = "5.3.6"
+fingerprint = "d5ed31b4c420"
+checked = "6.0.0"
 
 [formula.values]
 hold = 3
 drain = 0.25
 wet_drain = 6
+speed_floor = 0.1
 
 [[formula]]
 id = "rune-shield"
@@ -653,8 +685,8 @@ anchors = [
     "PassiveTree/Tunables.cs :: \"shield.delay-cap\"",
     "valheim/Character.cs :: Character.RPC_Damage",
 ]
-fingerprint = "95a9aa950e54"
-checked = "5.3.2"
+fingerprint = "fd8d93d2186d"
+checked = "6.0.0"
 
 [formula.values]
 base = 0
@@ -690,8 +722,8 @@ anchors = [
     "valheim/HitData.cs :: DamageTypes.GetTotalStaggerDamage",
     "valheim/SE_Stats.cs :: SE_Stats.ModifyStagger",
 ]
-fingerprint = "f0a4c09af0d0"
-checked = "5.2.0"
+fingerprint = "90623bcbd23b"
+checked = "6.0.0"
 
 [formula.values]
 share = 0.2
@@ -782,14 +814,16 @@ anchors = [
     "PassiveTree/Effects.cs :: ItemData_GetBlockPower.Postfix",
     "PassiveTree/ShieldOps.cs :: ShieldOps.BlockPct",
     "PassiveTree/ShieldOps.cs :: ShieldOps.LocalPct",
-    "PassiveTree/SE_PassiveTree.cs :: \"base.m_timedBlockBonus = s.Get(Stat.ParryBonusPct);\"",
+    "PassiveTree/SE_PassiveTree.cs :: \"base.m_timedBlockBonus = s.Get(Stat.ParryBonusPct) + BossSigilPowers.ParryGift(s);\"",
+    "PassiveTree/BossSigilPowers.cs :: BossSigilPowers.ParryGift",
+    "PassiveTree.Loot/BossSigils.cs :: BossSigils.LocalSum",
     "valheim/Humanoid.cs :: Humanoid.BlockAttack",
     "valheim/ItemDrop.cs :: ItemData.GetBlockPower#2",
     "valheim/HitData.cs :: DamageTypes.ApplyArmor",
     "valheim/SE_Stats.cs :: SE_Stats.ModifyTimedBlockBonus",
 ]
-fingerprint = "df10e4255122"
-checked = "5.1.2"
+fingerprint = "6771ef69ec71"
+checked = "6.0.0"
 
 [formula.values]
 skill_share = 0.5
@@ -801,13 +835,14 @@ anchors = [
     "PassiveTree/Glancing.cs :: Glancing.Cut",
     "PassiveTree/Glancing.cs :: Glancing.Roll",
     "PassiveTree/Glancing.cs :: Glancing.WillMeetBlock",
+    "PassiveTree/Glancing.cs :: Glancing.BlockHeld",
     "PassiveTree/Glancing.cs :: AfterBlock.Postfix",
     "PassiveTree/Effects.cs :: Character_RPC_Damage.Prefix",
     "PassiveTree/Plugin.cs :: \"Glancing blow chance for everyone\"",
     "PassiveTree/Plugin.cs :: \"Glancing blow reduction\"",
 ]
-fingerprint = "f2569593dc86"
-checked = "5.3.6"
+fingerprint = "5c92fdf613c6"
+checked = "6.0.0"
 
 [formula.values]
 chance = 0.25
@@ -825,6 +860,7 @@ anchors = [
     "PassiveTree/Combat.cs :: Thorns.ResponseMultiplier",
     "PassiveTree/Combat.cs :: Thorns.WindowBase",
     "PassiveTree/Combat.cs :: Thorns.Complete",
+    "PassiveTree/StatSet.cs :: StatSet.Alt#2",
     "PassiveTree/Conversion.cs :: Conversion.Thorns",
     "PassiveTree/ContactThorns.cs :: ContactThorns.Run",
     "PassiveTree/Effects.cs :: Character_RPC_Damage.Prefix",
@@ -834,8 +870,8 @@ anchors = [
     "PassiveTree/Cooldowns.cs :: Cooldowns.Of",
     "PassiveTree/Tunables.cs :: \"thorns.contact-interval\"",
 ]
-fingerprint = "f7dc99695634"
-checked = "5.3.6"
+fingerprint = "bef41113e033"
+checked = "6.0.0"
 
 [formula.values]
 full_range = 3
@@ -892,9 +928,17 @@ anchors = [
     "PassiveTree/EnergyShield.cs :: Character_ApplyDamage_Shield.Prefix",
     "PassiveTree/Tunables.cs :: \"endurance.base\"",
     "PassiveTree/Tunables.cs :: \"endurance.cap\"",
+    "PassiveTree/Berserker.cs :: Berserker.EnduranceThreshold",
+    "PassiveTree/Berserker.cs :: Berserker.EnduranceMore",
+    "PassiveTree/Berserker.cs :: Berserker.Tempered",
+    "PassiveTree/Tunables.cs :: \"berserker.temper-more\"",
+    "PassiveTree/Tunables.cs :: \"berserker.temper-seconds\"",
 ]
-fingerprint = "ce1876829850"
-checked = "5.3.4"
+fingerprint = "ec6319ab5917"
+checked = "6.0.0"
+
+[formula.values]
+unbowed = 0.35
 
 [[formula]]
 id = "armour-break"
@@ -903,12 +947,17 @@ anchors = [
     "PassiveTree/Corrosion.cs :: Corrosion.Bite",
     "PassiveTree/Corrosion.cs :: Corrosion.Carry",
     "PassiveTree/Corrosion.cs :: Corrosion.On",
+    "PassiveTree/Corrosion.cs :: Corrosion.Shared",
+    "PassiveTree/Corrosion.cs :: Corrosion.Duration",
+    "PassiveTree/AilmentShare.cs :: AilmentShare.Store",
+    "PassiveTree.Gems/Curses.cs :: Curses.BreakTaken",
+    "PassiveTree.Loot/ItemBaseRolls.cs :: ItemBaseRolls.BreakCoefficient",
     "PassiveTree/AilmentDamage.cs :: AilmentDamage.Grip",
     "PassiveTree/AilmentDamage.cs :: AilmentDamage.Component",
     "PassiveTree/XpSources.cs :: Character_Damage.Prefix",
 ]
-fingerprint = "35b9aad08d79"
-checked = "5.3.6"
+fingerprint = "a8e6bcb1d815"
+checked = "6.0.0"
 
 [formula.values]
 seconds = 8

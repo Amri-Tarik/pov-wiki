@@ -58,6 +58,10 @@ def main() -> None:
     p.add_argument("--version", help="game data version (default: latest extracted)")
 
     sub.add_parser("deploy", help="build the site and publish it to GitHub Pages (gh-pages branch)")
+    p = sub.add_parser("archive", help="keep old versions' cached data in a local git store (.cache/archive.git) "
+                                       "and delete the copies the pipeline no longer needs")
+    p.add_argument("--dry-run", action="store_true", help="only say what would be stored and deleted")
+    p.add_argument("--restore", metavar="VERSION", help="put a stored version back into the cache")
 
     p = sub.add_parser("serve", help="generate pages and live-preview one language (fastest dev loop)")
     p.add_argument("--lang", default="en")
@@ -96,6 +100,14 @@ def main() -> None:
         elif args.diff is not None:
             diff(version, args.diff)
         report(version)
+    elif args.cmd == "archive":
+        from . import archive
+
+        if args.restore:
+            back = archive.restore(args.restore)
+            print(f"restored {args.restore}: {', '.join(back) or 'nothing (not stored, or already on disk)'}")
+        else:
+            archive.run(dry=args.dry_run)
     elif args.cmd == "patches":
         from .data import latest_version
         from .patch_pages import write

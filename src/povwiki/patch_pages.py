@@ -295,9 +295,15 @@ def compare(old: dict, new: dict) -> dict:
 
 
 def previous(version: str) -> str | None:
-    """The version before this one among those extracted (with rendered text)."""
-    older = [p.name for p in EXTRACTED.glob("*") if (p / "rendered").exists() and _version_key(p.name) < _version_key(version)]
-    return max(older, key=_version_key) if older else None
+    """The version before this one among those extracted (on disk or in the archive store),
+    restored from the store when it is only there."""
+    from .archive import ensure, versions_with
+
+    older = [v for v in versions_with("extracted") if _version_key(v) < _version_key(version)]
+    if not older:
+        return None
+    prev = max(older, key=_version_key)
+    return prev if ensure(prev, "extracted") and (EXTRACTED / prev / "rendered").exists() else None
 
 
 def update(ctxs: list[Ctx]) -> None:

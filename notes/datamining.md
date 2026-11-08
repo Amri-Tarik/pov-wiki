@@ -23,6 +23,18 @@ manifest resources named `PassiveTree.*`:
 The `Localization/` folder also ships `template.txt` and `english-for-translators.txt`. Those
 two are only in the zip, not in the DLL.
 
+### Old versions: the archive store (`povwiki archive`)
+
+Every version's unpacked mod, extracted data and decompiled code take about 900 MB together. Old
+versions live in a local git store, `.cache/archive.git` (a tag per version, never pushed). Git
+keeps a file shared by many versions once and packs the rest as deltas, so 18 versions fit in about
+500 MB. `povwiki archive` stores every version and checks each stored copy against the disk, then
+deletes the copies the pipeline doesn't need. It keeps the newest version whole and the previous
+version's extracted data. It also deletes mod zips whose unpacked mod is stored, except the newest.
+`povwiki archive --restore <version>` brings a version back. Patch records and
+`formulas --diff` restore what they need by themselves. Run it after a new version is extracted
+and shipped.
+
 ## Localization files
 
 `key<TAB>text`, `#` comments, `\n` for newlines, an empty right column means "show the key".

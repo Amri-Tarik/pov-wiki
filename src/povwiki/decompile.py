@@ -41,6 +41,11 @@ def decompile(version: str, force: bool = False) -> Path:
     stamp = out / ".ilspy"
     if not force and stamp.exists() and stamp.read_text() == ILSPY:
         return out
+    from .archive import ensure
+
+    if not force and not out.exists() and ensure(version, "decompiled") and stamp.exists() and stamp.read_text() == ILSPY:
+        return out  # an old version's code, back from the archive store
+    ensure(version, "mod")
     dll = next((MODS / version).rglob("PathOfValheiman.dll"), None)
     if dll is None:
         raise SystemExit(f"no PathOfValheiman.dll for {version} under {MODS / version}")

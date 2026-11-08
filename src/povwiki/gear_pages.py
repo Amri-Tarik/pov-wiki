@@ -863,6 +863,33 @@ def _gear_stats(ctx: Ctx, item: str, g: dict, page: str) -> list[str]:
     return md
 
 
+# SkeletonForms (6.0.3): the jewel that turns skeleton minions into a form, and the form.
+_SKELETON_FORMS = {"PT_Jewel_BarrowVolley": "archer", "PT_Jewel_SeidrOfTheSilent": "mage"}
+
+
+def _skeleton_form_section(ctx: Ctx, item: str, j: dict | None, page: str) -> list[str]:
+    """What a skeleton form jewel makes of your skeletons (SkeletonForms.Keep/Apply/Make), with the
+    form's tunables (skeleton-form.*)."""
+    from .formula_pages import _values, shown
+
+    form = _SKELETON_FORMS.get(item)
+    if not form or not shown(ctx, "skeleton-forms"):
+        return []
+    ui, v = ctx.loc.ui, _values()["skeleton-forms"]
+    knobs = (ctx.loc.difficulty or {}).get("knobs") or {}
+    k = lambda key, default: f"{(knobs.get(key) or {}).get('value', default):g}"  # noqa: E731
+    others = ", ".join(f"[{_unique_name(ctx, o)}]({rel(unique_path(o), page)})" for o in _SKELETON_FORMS if o != item)
+    md = [f"## {ui('gear.skeleton.title')}", "",
+          ui("gear.skeleton.text", summons=rel("mechanics/summons.md", page), others=others), ""]
+    if form == "archer":
+        md += [ui("gear.skeleton.archer", x=k("skeleton-form.archer-damage", 1)), ""]
+    else:
+        md += [ui("gear.skeleton.mage", x=k("skeleton-form.mage-damage", 1), interval=k("skeleton-form.mage-interval", 4),
+                  blast=k("skeleton-form.mage-blast", 2.5)), ""]
+    md += [ui("gear.skeleton.damage", default=f"{v['default_damage']:g}"), ""]
+    return md
+
+
 def _unique_page(ctx: Ctx, item: str, catalog: dict) -> str:
     ui, page = ctx.loc.ui, unique_path(item)
     j = ctx.loc.gear.get("jewels", {}).get(item)
@@ -893,6 +920,7 @@ def _unique_page(ctx: Ctx, item: str, catalog: dict) -> str:
     if g:
         md += _gear_stats(ctx, item, g, page)
     md += _rift_section(ctx, item, page)
+    md += _skeleton_form_section(ctx, item, j, page)
     sources = _unique_sources(ctx, item, catalog, page)
     md += [f"## {ui('gear.drops')}", "", sources[:1].upper() + sources[1:] + ".", ""]
     if tables := _tables_with(ctx, item, page):

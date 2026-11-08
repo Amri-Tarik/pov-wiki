@@ -929,6 +929,10 @@ def glossary_body(ctx: Ctx, key: str, page: str, definition: bool = True) -> lis
         from .runic_pages import socket_kinds
 
         md += socket_kinds(first, page)
+    if key == "ballista" and is_siege_hammer_shown(first):
+        from .base_pages import SIEGE_HAMMER, _siege_name
+
+        md += [loc.ui("items.siege.glossary_line", link=f"[{_siege_name(first)}]({rel(SIEGE_HAMMER, page)})"), ""]
     sections = [(t, _without(idx["refs"][t.spec.key][key], page, t)) for t in idx["trees"] if key in idx["refs"][t.spec.key]]
     sections = [(t, body) for t, ref in sections if (body := _references_section(t, ref, page))]
     if sections or terms.get(key) or mods.get(key) or uniques.get(key):
@@ -950,6 +954,12 @@ def glossary_body(ctx: Ctx, key: str, page: str, definition: bool = True) -> lis
         md.append("")
     md += history(first, "keywords", [key], page)
     return md
+
+
+def is_siege_hammer_shown(ctx: Ctx) -> bool:
+    from .formula_pages import shown
+
+    return ctx.loc.valheim is not None and shown(ctx, "siege-hammer")
 
 
 def _deeper(line: str) -> str:

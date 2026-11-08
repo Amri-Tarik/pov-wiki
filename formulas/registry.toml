@@ -9,6 +9,51 @@
 # or 'File.cs :: "text"' (the one statement holding that C# string or code).
 
 [[formula]]
+id = "siege-hammer"
+anchors = [
+    "PassiveTree/Ballista.cs :: Ballista.MakeHammer",
+    "PassiveTree/Ballista.cs :: Ballista.MakeRecipe",
+]
+fingerprint = "a8f06b60d6ac"
+checked = "6.0.3"
+
+[formula.values]
+station_level = 1
+recipe = [
+    [
+        "Wood",
+        10,
+    ],
+    [
+        "Copper",
+        2,
+    ],
+    [
+        "DeerHide",
+        1,
+    ],
+]
+
+[[formula]]
+id = "skeleton-forms"
+anchors = [
+    "PassiveTree/SkeletonForms.cs :: SkeletonForms.Current",
+    "PassiveTree/SkeletonForms.cs :: SkeletonForms.IsSkeleton",
+    "PassiveTree/SkeletonForms.cs :: SkeletonForms.Keep",
+    "PassiveTree/SkeletonForms.cs :: SkeletonForms.Apply",
+    "PassiveTree/SkeletonForms.cs :: SkeletonForms.DamageOf",
+    "PassiveTree/SkeletonForms.cs :: SkeletonForms.DefaultDamage",
+    "PassiveTree/SkeletonForms.cs :: SkeletonForms.Make",
+    "PassiveTree/SkeletonForms.cs :: SkeletonForms.Fire",
+    "PassiveTree/SkeletonForms.cs :: SkeletonForms.Ball",
+]
+fingerprint = "739c77f26461"
+checked = "6.0.3"
+
+[formula.values]
+default_damage = 10
+
+[[formula]]
 id = "socket-kinds"
 anchors = [
     "PassiveTree.Loot/ItemSockets.cs :: ItemSockets.Sigils",
@@ -1141,8 +1186,8 @@ anchors = [
     "PassiveTree/MinionLife.cs :: MinionLife.Expire",
     "PassiveTree/MinionLife.cs :: MinionLife.Keep",
 ]
-fingerprint = "4cf7e3ff4b5b"
-checked = "6.0.0"
+fingerprint = "815183604774"
+checked = "6.0.3"
 
 [[formula]]
 id = "vanilla-summons"
@@ -1208,8 +1253,8 @@ anchors = [
     "PassiveTree/CreatureBonuses.cs :: CreatureBonuses.LowHealth",
     "PassiveTree/CreatureBonuses.cs :: CreatureBonuses.MinionRegen",
 ]
-fingerprint = "19d6d23a2aa6"
-checked = "6.0.0"
+fingerprint = "b0ad894242e7"
+checked = "6.0.3"
 
 [formula.values]
 crit_chance = 0.05

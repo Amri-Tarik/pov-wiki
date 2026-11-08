@@ -382,10 +382,52 @@ def page_bases(ctx: Ctx) -> dict[str, str]:
                 _station(ctx, _recipe(ctx, p)),
                 biome(ctx, _level(ctx, p)) if _level(ctx, p) else "—",
             ] for p in prefabs])
+    siege = siege_hammer_page(ctx, found)
+    if siege:
+        md += [ui("items.siege.index_line", link=f"[{_siege_name(ctx)}]({rel(SIEGE_HAMMER, page)})"), ""]
     pages = {page: "\n".join(md + _footer(ctx))}
     for prefab, b in found.items():
         pages[base_path(prefab)] = _base_page(ctx, prefab, b, found)
+    pages.update(siege)
     return pages
+
+
+# ---- The siege hammer (6.0): made in code at start-up (Ballista.MakeHammer, Ballista.MakeRecipe),
+# so it is in no item data: its page is built from the code's recipe and the game's text. ----
+
+SIEGE_HAMMER = base_path("PT_SiegeHammer")
+
+
+def _siege_name(ctx: Ctx) -> str:
+    return ctx.loc.text("@item.PT_SiegeHammer.name")
+
+
+def siege_hammer_page(ctx: Ctx, found: dict) -> dict[str, str]:
+    from .formula_pages import _values, shown
+    from .item_pages import _title, mod_path
+
+    if not shown(ctx, "siege-hammer"):
+        return {}
+    ui, page, v = ctx.loc.ui, SIEGE_HAMMER, _values()["siege-hammer"]
+    md = [f"# {_siege_name(ctx)}", ""]
+    if art := _icon(ctx, "Hammer", page, 96):
+        md += [art, ""]
+    glossary = "glossary/ballista.md"
+    md += [f"<b>{ui('tag.tool').capitalize()}</b> · [{ctx.loc.wiki.get('ballista', {}).get('title') or 'ballista'}]({rel(glossary, page)})", "",
+           f"*{ctx.loc.text('@item.PT_SiegeHammer.desc')}*", "",
+           ui("items.siege.made", hammer=_item_name(ctx, "Hammer")), ""]
+    station = _station(ctx, {"station": "forge"})
+    md += [f"## {ui('items.recipe')}", "", f"{station} · {ui('items.station_level', n=v['station_level'])}", ""]
+    rows = []
+    for mat, n in v["recipe"]:
+        name = _item_name(ctx, mat)
+        rows.append([_icon(ctx, mat, page, 32), f"[{name}]({rel(base_path(mat), page)})" if mat in found else name, str(n)])
+    md += _table(["", ui("items.material"), ui("items.craft")], rows)
+    mods = [a for a in ctx.loc.loot["affixes"] if "ballista" in a.get("allowAll", []) + a.get("allowAny", [])]
+    if mods:
+        md += [f"## {ui('items.siege.mods')}", "", ui("items.siege.mods_text"), ""]
+        md += [f"- [{_title(a)}]({rel(mod_path(a), page)})" for a in sorted(mods, key=_title)] + [""]
+    return {page: "\n".join(md + _footer(ctx))}
 
 
 def _base_page(ctx: Ctx, prefab: str, b: dict, found: dict) -> str:

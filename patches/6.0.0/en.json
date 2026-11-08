@@ -9608,7 +9608,7 @@
      "lines": [
       "Your attacks cannot damage player-built pieces, including your own. Enemy attacks and natural objects are unaffected. You can still dismantle pieces with the hammer. Carts, ships and siege machines, which the hammer cannot dismantle, can still be broken."
      ],
-     "link": "crafting/mastery/o3305.md",
+     "link": "glossary/craft-careful-builder.md",
      "name": "Careful Builder"
     },
     "old": {
@@ -9616,7 +9616,7 @@
      "lines": [
       "Your attacks cannot damage player-built pieces, including your own. Enemy attacks and natural objects are unaffected. You can still dismantle pieces with the hammer."
      ],
-     "link": "crafting/mastery/o3305.md",
+     "link": "glossary/craft-careful-builder.md",
      "name": "Careful Builder"
     }
    },
@@ -9738,6 +9738,21 @@
      "link": "glossary/lightning-damage.md",
      "name": "Lightning damage"
     }
+   },
+   "mountain-bell": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Tags: skill, construct, area, damage, build-up.",
+      "Hold your alternative attack to see the place and the eitr it will reserve, release to call the Bell: it falls from the sky on the ground in front of you, up to 14 m away, and its landing hurts nobody. A bad spot or too little eitr refuses the call and costs nothing.",
+      "Cooldown 8 s, the same for every sceptre of this character. It stands 20 s (base 20), its wave reaches 4 m (base 4), you keep up to 1: a new Bell at the limit replaces your oldest. Each Bell reserves 35% of maximum eitr until it leaves, you die or the sceptre comes off.",
+      "Every weapon hit on it, yours or an ally's, shots included, rings it: a wave passes 40-60% of that hit to each enemy around, damage and every build-up alike. Crit, leech and kills belong to the one who struck; defence, resistances and conditions are the enemy's own. Enemy hits, damage over time and other waves do not ring it. Striking it is not hitting an enemy: the blow itself gives no on-hit reward.",
+      "Scales with: area of effect (it grows the area, so the radius grows as its square root), effect duration, construct and Bell rows, eitr reservation efficiency; the wave with the damage, build-up and area damage of the one who struck."
+     ],
+     "link": "glossary/mountain-bell.md",
+     "name": "Mountain Bell"
+    },
+    "old": null
    },
    "phantom-socket": {
     "new": {

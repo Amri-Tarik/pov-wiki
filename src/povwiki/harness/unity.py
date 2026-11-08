@@ -77,6 +77,31 @@ def install() -> None:
 
         _hooks.append(Hook(quivers.GetMethod("Is", _ALL, None, [item_data], None), Func[item_data, Boolean](is_quiver)))
 
+    # Bells.Now (6.0) fills the Mountain Bell article with the player's own values and reads
+    # Player.m_localPlayer first, whose type initializer can't run here. Without a player the game
+    # shows the base values; the eitr it reserves has no amount without a player, so it is marked
+    # (BELL_RESERVE) and render_wiki words it as the share of maximum eitr instead.
+    bells = _asm("PathOfValheiman").GetType("PassiveTree.Bells")
+    if bells is not None and bells.GetMethod("Now", _ALL) is not None:
+        def bell_now(key: str) -> str:
+            from PassiveTree import Tunables
+
+            one = lambda v: f"{round(v, 1):g}"  # noqa: E731  Bells.Now's One: "0.#"
+            if key == "bell.now-life":
+                return one(Tunables.Of("bell.life"))
+            if key == "bell.now-radius":
+                return one(Tunables.Of("bell.radius"))
+            if key == "bell.now-limit":
+                return str(round(Tunables.Of("bell.limit")))
+            if key == "bell.now-reserve":
+                return BELL_RESERVE
+            return {"bell.now-share": "35%", "bell.now-relay": "40-60%"}.get(key, key)
+
+        _hooks.append(Hook(bells.GetMethod("Now", _ALL), Func[String, String](bell_now)))
+
+
+BELL_RESERVE = "\u2063reserve\u2063"
+
 
 def name_of(o) -> str:
     return _names.get(RuntimeHelpers.GetHashCode(o), "") if o is not None else ""

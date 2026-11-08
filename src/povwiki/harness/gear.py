@@ -168,6 +168,33 @@ def _code_only_uniques(uniques: dict) -> None:
                        for d in LootAffixes.WombPenalties]}]}
 
 
+def _fixed_custom_uniques(uniques: dict, errors: list) -> None:
+    """Other uniques rolled in code (LootAffixes.UniqueDef.Custom) whose lines are fixed text, such
+    as the skeleton form jewels (6.0.3): roll them once and keep the lines, when every rolled line
+    has no number to roll (a single tier of 0). Rolls with numbers stay unknown rather than guessed."""
+    from PassiveTree import L, LootAffixes
+
+    table = clr.GetClrType(LootAffixes).GetField("uniques", _ALL)
+    if table is None:
+        return
+    for kv in table.GetValue(None):
+        item = str(kv.Key)
+        if item in uniques or kv.Value.Custom is None:
+            continue
+        try:
+            lines = []
+            for r in kv.Value.Custom.Invoke():
+                d = LootAffixes.Find(r.Id)
+                if d is None or d.Tiers is None or len(d.Tiers) != 1 or d.Tiers[0].Min != 0 or d.Tiers[0].Max != 0:
+                    lines = None
+                    break
+                lines.append({"affix": str(d.Id), "count": 1, "distinct": True, "text": str(L.Id("affix." + d.Id, d.Text))})
+            if lines:
+                uniques[item] = {"lines": lines}
+        except Exception as ex:
+            errors.append({"unique": item, "error": str(ex).split("\n")[0]})
+
+
 def _class_names() -> dict[str, str]:
     from PassiveTree import Subclasses
 
@@ -327,6 +354,7 @@ def render_gear(errors: list, valheim=None, items: dict | None = None) -> dict:
             errors.append({"unique": kv.Key, "error": str(ex).split("\n")[0]})
     _complete_kvasir(out["uniques"].get("PT_BeltKvasirsBlood"))
     _code_only_uniques(out["uniques"])
+    _fixed_custom_uniques(out["uniques"], errors)
     out["uniqueGear"] = _unique_gear(errors, valheim, items or {})
     for item, g in out["uniqueGear"].items():  # their rows are unique lines like the others'
         out["uniques"].setdefault(item, {"lines": g["lines"]})

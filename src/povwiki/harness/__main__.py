@@ -127,6 +127,19 @@ def render_tree(data, language: str, valheim: Path | None = None) -> dict:
     }
 
 
+def _bell_reserve(text: str) -> str:
+    """The Mountain Bell's "reserves {amount} eitr ({share} of maximum)" without a player to give the
+    amount (unity.BELL_RESERVE): "reserves {share} of maximum eitr", in every language."""
+    import re
+
+    from .unity import BELL_RESERVE
+
+    if BELL_RESERVE not in text:
+        return text
+    text = re.sub(re.escape(BELL_RESERVE) + r" (\S+) \(([^()]*)\)", r"\2 \1", text)
+    return text.replace(BELL_RESERVE, "35%")
+
+
 def render_wiki(errors: list) -> dict:
     """The mod's in-game wiki: every term as its article shows it (values filled in, links marked)."""
     from PassiveTree import Wiki
@@ -134,7 +147,7 @@ def render_wiki(errors: list) -> dict:
     terms = {}
     for t in Wiki.Terms:
         try:
-            terms[t.Key] = {"title": t.Shown, "text": _lines(Wiki.Article(t)), "forms": list(t.Said or [])}
+            terms[t.Key] = {"title": t.Shown, "text": _lines(_bell_reserve(Wiki.Article(t))), "forms": list(t.Said or [])}
         except Exception as ex:
             errors.append({"wiki": t.Key, "error": str(ex).split("\n")[0]})
     return terms

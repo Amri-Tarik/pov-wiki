@@ -1,0 +1,79 @@
+{
+ "changes": {
+  "uniques": {
+   "PT_Jewel_BarrowVolley": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Все призванные вами скелеты становятся скелетами-лучниками",
+      "Выпадает: выпадает где угодно с биома «Болото» (уровень предмета 43)"
+     ],
+     "link": "items/unique/PT_Jewel_BarrowVolley.md",
+     "name": "Залп курганов"
+    },
+    "old": null
+   },
+   "PT_Jewel_SeidrOfTheSilent": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Все призванные вами скелеты становятся скелетами-магами, мечущими огненные шары",
+      "Выпадает: выпадает где угодно с биома «Гора» (уровень предмета 77)"
+     ],
+     "link": "items/unique/PT_Jewel_SeidrOfTheSilent.md",
+     "name": "Сейд безмолвных"
+    },
+    "old": null
+   }
+  },
+  "values": {
+   "skeleton-form.archer-damage": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "1 x"
+     ],
+     "link": null,
+     "name": "Barrow Volley: skeleton archer's pierce damage from its own weapon's damage"
+    },
+    "old": null
+   },
+   "skeleton-form.mage-blast": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "2.5 m"
+     ],
+     "link": null,
+     "name": "Seidr of the Silent: fireball blast radius"
+    },
+    "old": null
+   },
+   "skeleton-form.mage-damage": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "1 x"
+     ],
+     "link": null,
+     "name": "Seidr of the Silent: skeleton mage's fireball fire damage from its own weapon's damage"
+    },
+    "old": null
+   },
+   "skeleton-form.mage-interval": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "4 s"
+     ],
+     "link": null,
+     "name": "Seidr of the Silent: seconds between a skeleton mage's casts"
+    },
+    "old": null
+   }
+  }
+ },
+ "date": "2026-11-08",
+ "from": "6.0.2",
+ "to": "6.0.3"
+}

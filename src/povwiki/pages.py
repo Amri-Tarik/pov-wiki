@@ -925,6 +925,10 @@ def glossary_body(ctx: Ctx, key: str, page: str, definition: bool = True) -> lis
     if definition:
         md += [to_md(line, loc, page) + "\n" for line in wiki[key]["text"]] or [f"*{loc.ui('page.no_text')}*", ""]
     md += term_formulas(first, key, page)  # the keyword's formulas, right under its definition
+    if key == "sockets":
+        from .runic_pages import socket_kinds
+
+        md += socket_kinds(first, page)
     sections = [(t, _without(idx["refs"][t.spec.key][key], page, t)) for t in idx["trees"] if key in idx["refs"][t.spec.key]]
     sections = [(t, body) for t, ref in sections if (body := _references_section(t, ref, page))]
     if sections or terms.get(key) or mods.get(key) or uniques.get(key):
@@ -1059,7 +1063,7 @@ def nav(loc: Localizer | None = None) -> list:
                            if loc is None or loc.gems.get("gems") else [])]),
         ("monsters.title", [("monsters.mods", "monsters/mods.md"), ("bosses.title", "monsters/bosses.md"),
                             ("creatures.title", "monsters/creatures.md"), ("taming.title", "monsters/taming.md")]),
-        ("ascendancy.title", "ascendancy/index.md"),
+        ("ascendancy.title", [("ascendancy.classes", "ascendancy/index.md"), ("ascendancy.notables", "ascendancy/notables.md")]),
         *([("world.title", world)] if world else []),
         ("formula.title", [("formula.creatures", "mechanics/creatures.md"), ("formula.experience_page", "mechanics/experience.md"),
                            ("formula.loot_page", "mechanics/loot.md"), ("formula.combat", "mechanics/combat.md"),

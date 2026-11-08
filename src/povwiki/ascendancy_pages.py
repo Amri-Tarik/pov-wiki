@@ -25,19 +25,41 @@ def classes(ctx: Ctx) -> dict:
     return ctx.loc.data.rendered(ctx.loc.lang.mod).get("classes") or {}
 
 
+NOTABLES = "ascendancy/notables.md"
 _ENGLISH: dict[str, dict[str, str]] = {}
 
 
-def class_path(ctx: Ctx, key: str) -> str:
-    """A class's page, named after its English name in every language (the language switcher
-    and search links pair pages by path): "asc-gladiator-concept" -> ascendancy/arena-spearman."""
+def _english(ctx: Ctx) -> dict[str, str]:
+    """Class key -> English name and node id -> English title. Pages are named after the English
+    text in every language (the language switcher and search links pair pages by path)."""
     version = ctx.data.version
     if version not in _ENGLISH:  # the rendered text is large: read once per version
-        _ENGLISH[version] = {c["key"]: c["name"] for c in
-                             (ctx.loc.data.rendered("english").get("classes") or {}).get("classes") or []}
-    name = _ENGLISH[version].get(key) or key.removeprefix("asc-")
-    slug = re.sub(r"[^a-z0-9]+", "-", unicodedata.normalize("NFKD", name).encode("ascii", "ignore").decode().lower()).strip("-")
-    return f"ascendancy/{slug or key}.md"
+        names = {}
+        for c in (ctx.loc.data.rendered("english").get("classes") or {}).get("classes") or []:
+            names[c["key"]] = c["name"]
+            names.update((n["id"], n["title"]) for n in c["nodes"])
+        _ENGLISH[version] = names
+    return _ENGLISH[version]
+
+
+def _slug(name: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "-", unicodedata.normalize("NFKD", name).encode("ascii", "ignore").decode().lower()).strip("-")
+
+
+def class_path(ctx: Ctx, key: str) -> str:
+    """A class's page: "asc-gladiator-concept" -> ascendancy/arena-spearman."""
+    return f"ascendancy/{_slug(_english(ctx).get(key) or key.removeprefix('asc-')) or key}.md"
+
+
+def notable_path(ctx: Ctx, n: dict) -> str:
+    """A class notable's page: ascendancy/notable/rhythm-of-the-colossus (titles are unique across classes)."""
+    return f"ascendancy/notable/{_slug(_english(ctx).get(n['id']) or n['local']) or n['local']}.md"
+
+
+def _page_url(path: str, page: str) -> str:
+    """A link from the viewer (which sits one folder deeper than its page) to a page's folder URL."""
+    href = f"../{rel(path, page)}"
+    return href.removesuffix(".md") + "/" if href.endswith(".md") else href
 
 
 def _art_image(c: dict) -> str:
@@ -135,8 +157,7 @@ def overlay(ctx: Ctx, page: str, sizes: list[str], frame_kinds: tuple, frame_kin
         cx, cy, _ = _extent(c)
         base = len(nodes)
         index = {}
-        href = f"../{rel(class_path(ctx, c['key']), page)}"
-        href = href.removesuffix(".md") + "/" if href.endswith(".md") else href
+        href = _page_url(class_path(ctx, c["key"]), page)
         for n in c["nodes"]:
             size = "Root" if n["role"] == "start" else n["size"] if n["size"] in sizes else "Small"
             tip = "".join(f'<div class="pov-tt-line">{to_html(s)}</div>' for s in n["stats"])
@@ -145,7 +166,7 @@ def overlay(ctx: Ctx, page: str, sizes: list[str], frame_kinds: tuple, frame_kin
             index[n["id"]] = base + len(index)
             nodes.append([n["id"], pc["x"] + n["x"] - cx, pc["y"] + n["y"] - cy, sizes.index(size), -1,
                           html.escape(n["title"]), tip, 0, icon, frame_kinds.index(frame_kind(size)),
-                          f"{href}#{n['local']}"])
+                          _page_url(notable_path(ctx, n), page) if n["role"] == "notable" else f"{href}#{n['local']}"])
         links += [[index[a], index[b]] for a, b in c["links"] if a in index and b in index]
         art = _art(ctx, c)
         rings.append({"x": pc["x"], "y": pc["y"], "r": pc["r"], "name": c["name"], "href": href,
@@ -169,7 +190,8 @@ def page_ascendancy(ctx: Ctx) -> dict[str, str]:
         md += [f"## {ui('ascendancy.how')}", "",
                ui("ascendancy.points", points=data.get("points") or v.get("cap", 8), per=v.get("per_tier", 2)), "",
                ui("ascendancy.change", respec=f"{(knobs.get('asc.respec') or {}).get('value', 5):g}"), ""]
-    md += [ui("ascendancy.access_note"), "", ui("ascendancy.viewer", tree=f"{rel('passives/tree.md', page)}"), ""]
+    md += [ui("ascendancy.access_note"), "", ui("ascendancy.viewer", tree=f"{rel('passives/tree.md', page)}"), "",
+           ui("ascendancy.notables_line", notables=rel(NOTABLES, page)), ""]
     for p in data.get("paths") or []:
         mine = [c for c in data["classes"] if c["path"] == p["key"]]
         if not mine:
@@ -184,7 +206,66 @@ def page_ascendancy(ctx: Ctx) -> dict[str, str]:
     pages = {page: "\n".join(md + _footer(ctx))}
     for c in data["classes"]:
         pages.update(_class_page(ctx, data, c))
+        for n in c["nodes"]:
+            if n["role"] == "notable":
+                pages.update(_notable_page(ctx, data, c, n))
+    pages.update(_notables_page(ctx, data))
     return pages
+
+
+def _class_link(ctx: Ctx, c: dict, page: str) -> str:
+    return f"[{c['name']}]({rel(class_path(ctx, c['key']), page)})"
+
+
+def _node_icon(ctx: Ctx, n: dict, page: str, px: int) -> str:
+    return _img(ctx.icons.path(n["icon"]), page, px) if ctx.icons and n["icon"] else ""
+
+
+def _node_name(ctx: Ctx, n: dict, page: str) -> str:
+    """A node's name in bold: notables link their own page."""
+    name = f"**{html.escape(n['title'])}**"
+    return f"[{name}]({rel(notable_path(ctx, n), page)})" if n["role"] == "notable" else name
+
+
+def _notables_page(ctx: Ctx, data: dict) -> dict[str, str]:
+    """Every class notable, by path and class."""
+    ui, page = ctx.loc.ui, NOTABLES
+    every = [n for c in data["classes"] for n in c["nodes"] if n["role"] == "notable"]
+    md = [f"# {ui('ascendancy.notables')}", "", ui("ascendancy.notables_intro", count=len(every), index=rel(INDEX, page)), ""]
+    for p in data.get("paths") or []:
+        mine = [c for c in data["classes"] if c["path"] == p["key"]]
+        if not mine:
+            continue
+        md += [f"## {p['name']}", ""]
+        for c in mine:
+            md += [f"### {_class_link(ctx, c, page)}", ""]
+            rows = [[_node_icon(ctx, n, page, 32), _node_name(ctx, n, page), _lines(ctx, n, page)]
+                    for n in _ordered(c) if n["role"] == "notable"]
+            md += _table(["", ui("col.name"), ui("ascendancy.col_effect")], rows)
+    return {page: "\n".join(md + _footer(ctx))}
+
+
+def _notable_page(ctx: Ctx, data: dict, c: dict, n: dict) -> dict[str, str]:
+    from .pages import _keywords_section
+
+    ui, page = ctx.loc.ui, notable_path(ctx, n)
+    md = [f"# {n['title']}", ""]
+    icon = _node_icon(ctx, n, page, 96)
+    md += [(f'<span class="pov-art-lg">{icon}</span>' if icon else "")
+           + f"<b>{ui('ascendancy.notable_kind')}</b> · {_class_link(ctx, c, page)} · {_path_name(data, c['path'])}"
+           + f" · [{ui('ascendancy.notables')}]({rel(NOTABLES, page)})", ""]
+    md += ['<div class="pov-tooltip" markdown>', "", _lines(ctx, n, page), "", "</div>", ""]
+    by_id = {m["id"]: m for m in c["nodes"]}
+    others = [b if a == n["id"] else a for a, b in c["links"] if n["id"] in (a, b)]
+    near = [by_id[i] for i in others if i in by_id]
+    if near:
+        md += [f"## {ui('page.connections')}", ""]
+        md += _table(["", ui("col.name"), ui("ascendancy.col_role"), ui("ascendancy.col_effect")],
+                     [[_node_icon(ctx, m, page, 32), _node_name(ctx, m, page),
+                       ui(f"ascendancy.role_{m['role']}") if m["role"] in _ROLE_ORDER else m["role"], _lines(ctx, m, page)]
+                      for m in near])
+    md += _keywords_section(ctx, page, n["stats"] + n["extra"], [])
+    return {page: "\n".join(md + _footer(ctx))}
 
 
 def _class_page(ctx: Ctx, data: dict, c: dict) -> dict[str, str]:
@@ -205,7 +286,8 @@ def _class_page(ctx: Ctx, data: dict, c: dict) -> dict[str, str]:
     nodes, links, rings = overlay(ctx, page, SIZES, FRAME_KINDS, frame_kind, DOCS_DIR,
                                   placed=[{"class": c, "x": 0.0, "y": 0.0, "r": radius}])
     for row in nodes:  # on its own page a node opens its row below
-        row[10] = "#" + row[10].split("#", 1)[1]
+        if "#" in row[10]:
+            row[10] = "#" + row[10].split("#", 1)[1]
     viewer = {
         "nodes": nodes, "links": links, "classes": rings,
         "sizes": [{"name": ui(f"{ctx.spec.sizes}.{s}"), "d": DIAMETERS.get(s, 30)} for s in SIZES],
@@ -217,8 +299,7 @@ def _class_page(ctx: Ctx, data: dict, c: dict) -> dict[str, str]:
     md += [f"## {ui('ascendancy.nodes')}", ""]
     rows = []
     for n in _ordered(c):
-        icon = _img(ctx.icons.path(n["icon"]), page, 32) if ctx.icons and n["icon"] else ""
-        rows.append([icon, f'<span id="{n["local"]}"></span>**{html.escape(n["title"])}**',
+        rows.append([_node_icon(ctx, n, page, 32), f'<span id="{n["local"]}"></span>' + _node_name(ctx, n, page),
                      ui(f"ascendancy.role_{n['role']}") if n["role"] in _ROLE_ORDER else n["role"], _lines(ctx, n, page)])
     md += _table(["", ui("col.name"), ui("ascendancy.col_role"), ui("ascendancy.col_effect")], rows)
     return {page: "\n".join(md + _footer(ctx)), data_path: json.dumps(viewer, ensure_ascii=False)}

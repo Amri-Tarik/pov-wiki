@@ -1,0 +1,191 @@
+{
+ "changes": {
+  "values": {
+   "forge.drain-per-blocked": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "0.5"
+     ],
+     "link": null,
+     "name": "Weapon Bulwark: durability the circling weapons lose per point of damage they take off a hit reaching you (less with minion life)"
+    },
+    "old": null
+   },
+   "forge.drain-per-hit": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "25"
+     ],
+     "link": null,
+     "name": "Living Steel: durability a living weapon's item loses per blow it lands (a swing in the hand loses 1)"
+    },
+    "old": null
+   },
+   "forge.fx-glow": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "1 ×"
+     ],
+     "link": null,
+     "name": "Living Steel look: strength of the ember glow on the weapon's edge, its light and the sparks off its tip (0 none)"
+    },
+    "old": null
+   },
+   "forge.fx-motion": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "1 ×"
+     ],
+     "link": null,
+     "name": "Living Steel look: scale of the living motion - hover, drift, wind-up, lunge, the bow of the flight back (0 holds the weapon in the hand's pose)"
+    },
+    "old": null
+   },
+   "forge.fx-sound-volume": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "1 ×"
+     ],
+     "link": null,
+     "name": "Living Steel sound: volume of a living weapon's own sounds - the hover hum, the whoosh of the lunge, the ring of its tip (0 silent)"
+    },
+    "old": null
+   },
+   "forge.fx-trail": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "1 ×"
+     ],
+     "link": null,
+     "name": "Living Steel look: width and life of the hot trail behind a fast-moving weapon (0 none)"
+    },
+    "old": null
+   },
+   "forge.health-per-durability": {
+    "new": null,
+    "old": {
+     "kind": "",
+     "lines": [
+      "1.5"
+     ],
+     "link": null,
+     "name": "Living Steel: health of a living weapon per point of its item's durability, before minion life"
+    }
+   },
+   "forge.leash-margin": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "5 m"
+     ],
+     "link": null,
+     "name": "Living Steel: a living weapon senses enemies only this much short of the leash, so it never engages what it would be pulled back from"
+    },
+    "old": null
+   },
+   "quiver.lean": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "5 deg"
+     ],
+     "link": null,
+     "name": "Quiver on the back: lean back at the top"
+    },
+    "old": null
+   },
+   "quiver.tilt": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "28 deg"
+     ],
+     "link": null,
+     "name": "Quiver on the back: tilt from vertical, top toward the right shoulder"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "20 deg"
+     ],
+     "link": null,
+     "name": "Quiver on the back: tilt"
+    }
+   },
+   "quiver.x": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "0.15 m"
+     ],
+     "link": null,
+     "name": "Quiver on the back: mouth to the right of the chest bone"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "0.12 m"
+     ],
+     "link": null,
+     "name": "Quiver on the back: sideways offset"
+    }
+   },
+   "quiver.y": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "0.01 m"
+     ],
+     "link": null,
+     "name": "Quiver on the back: mouth above the chest bone"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "0.2 m"
+     ],
+     "link": null,
+     "name": "Quiver on the back: height offset"
+    }
+   },
+   "quiver.z": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "0.21 m"
+     ],
+     "link": null,
+     "name": "Quiver on the back: mouth behind the chest bone"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "0.18 m"
+     ],
+     "link": null,
+     "name": "Quiver on the back: distance behind"
+    }
+   },
+   "wanderer.pool-per-offer": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "2"
+     ],
+     "link": null,
+     "name": "Wanderer: uniques of the place's level per gift offered (6 of a pool of 12 or more, never fewer than 3)"
+    },
+    "old": null
+   }
+  }
+ },
+ "date": "2026-11-08",
+ "from": "6.0.1",
+ "to": "6.0.2"
+}

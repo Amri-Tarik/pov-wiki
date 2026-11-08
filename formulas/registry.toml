@@ -9,6 +9,40 @@
 # or 'File.cs :: "text"' (the one statement holding that C# string or code).
 
 [[formula]]
+id = "socket-kinds"
+anchors = [
+    "PassiveTree.Loot/ItemSockets.cs :: ItemSockets.Sigils",
+    "PassiveTree.Loot/ItemSockets.cs :: ItemSockets.HowMany",
+    "PassiveTree.Loot/ItemSockets.cs :: ItemSockets.MaxOf",
+    "PassiveTree.Loot/ItemSockets.cs :: ItemSockets.Fits",
+    "PassiveTree.Loot/ItemSockets.cs :: ItemSockets.CanPunch",
+    "PassiveTree.Loot/ItemSockets.cs :: ItemSockets.Punch",
+    "PassiveTree.Loot/ItemSockets.cs :: ItemSockets.DropChance",
+    "PassiveTree.Loot/ItemSockets.cs :: ItemSockets.Roll",
+    "PassiveTree.Loot/BossSigils.cs :: BossSigils.Mult",
+    "PassiveTree/ItemCorruption.cs :: ItemCorruption.ExtraSockets",
+    "PassiveTree/ItemCorruption.cs :: ItemCorruption.SigilMult",
+    "PassiveTree/Tunables.cs :: \"corrupt.imp-sigils\"",
+]
+fingerprint = "71a70abc6c7d"
+checked = "6.0.2"
+
+[formula.values]
+max = 3
+punch_up = 0.35
+divine = 1.5
+corrupt_sigils = 0.25
+drop_normal = 0.01
+drop_magic = 0.02
+drop_rare = 0.04
+drop_unique = 0.06
+how_many = [
+    0.85,
+    0.13,
+    0.02,
+]
+
+[[formula]]
 id = "ascendancy"
 anchors = [
     "PassiveTree/ClassTrees.cs :: ClassTrees.Budget",
@@ -217,10 +251,14 @@ anchors = [
     "PassiveTree/CreatureStars.cs :: CreatureStars.StarShare",
     "PassiveTree/CreatureStars.cs :: CreatureStars.BonusLootFactor",
     "PassiveTree/CreatureStars.cs :: CreatureStars.LootStars",
+    "PassiveTree/CreatureStars.cs :: CreatureStars.VanillaLootFactor",
+    "PassiveTree/CreatureStars.cs :: CreatureStars.Trophy",
+    "PassiveTree/CreatureStars.cs :: CreatureStars.Single",
+    "PassiveTree/CreatureStars.cs :: CreatureStars.OwnStars",
     "PassiveTree/MonolithGuards.cs :: MonolithGuards.BiomeBonus",
 ]
-fingerprint = "cb903af9cd7c"
-checked = "6.0.0"
+fingerprint = "10ff4aaca4b9"
+checked = "6.0.2"
 
 [formula.values]
 per_star = 0.5
@@ -1395,8 +1433,8 @@ anchors = [
     "PassiveTree/CraftSalvage.cs :: CraftSalvage.DisenchantSeconds",
     "PassiveTree/CraftSalvage.cs :: CraftSalvage.DisenchantStep",
 ]
-fingerprint = "75f611c066f8"
-checked = "6.0.0"
+fingerprint = "e02c28cf0ad2"
+checked = "6.0.2"
 
 [formula.values]
 seconds = 0.5
@@ -1820,6 +1858,9 @@ anchors = [
     "PassiveTree.Encounters/Wanderer.cs :: Wanderer.Knobs",
     "PassiveTree.Encounters/Wanderer.cs :: Wanderer.Pool",
     "PassiveTree.Encounters/Wanderer.cs :: Wanderer.Roll",
+    "PassiveTree.Encounters/Wanderer.cs :: Wanderer.OffersFor",
+    "PassiveTree.Encounters/OpenGear.cs :: OpenGear.KnownMaterial",
+    "PassiveTree.Encounters/Sigrid.cs :: Sigrid.EarlyGoods",
     "PassiveTree.Encounters/WandererDirector.cs :: WandererDirector.Place",
     "PassiveTree.Encounters/WandererDirector.cs :: WandererDirector.Valid",
     "PassiveTree.Encounters/Finds.cs :: Finds.PeriodNow",
@@ -1827,10 +1868,14 @@ anchors = [
     "PassiveTree.Encounters/Finds.cs :: Finds.Make",
     "PassiveTree.Encounters.HallMaps/HallMapShop.cs :: HallMapShop.ServerRenew",
 ]
-fingerprint = "96a87fa5ecc4"
-checked = "6.0.0"
+fingerprint = "b91b1639bc21"
+checked = "6.0.2"
 
 [formula.values]
+sigrid_material_tries = 6
+keeper_per_offer = 2
+keeper_offers_min = 3
+keeper_offers_max = 6
 ragn_cell = 10
 ragn_chance = 0.25
 ragn_discover = 300

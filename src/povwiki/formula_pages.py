@@ -348,10 +348,11 @@ def _loot_scale(ctx, v) -> list[str]:
 def _vanilla_drops(ctx, page, v):
     ui = ctx.loc.ui
     return ([ui("formula.vanilla-drops.text"), ""]
-            + _formula(ui("formula.vanilla-drops.formula", cap=v["cap"]))
-            + [ui("formula.vanilla-drops.monolith"), ""]
-            + _formula(ui("formula.vanilla-drops.monolith_formula", s=_n(v["per_star"]), stars=v["star_cap"], cap=v["cap"]))
-            + ([ui("formula.vanilla-drops.star_share", loot=_anchor("loot", page)), ""] if ctx.loc.difficulty.get("lootScale") else []))
+            + _formula(ui("formula.vanilla-drops.formula", s=_n(v["per_star"]), stars=v["star_cap"], cap=v["cap"]))
+            + [ui("formula.vanilla-drops.rounding"), ""]
+            + ([ui("formula.vanilla-drops.star_share", loot=_anchor("loot", page)), ""] if ctx.loc.difficulty.get("lootScale") else [])
+            + [ui("formula.vanilla-drops.monolith"), "", ui("formula.vanilla-drops.foreign"), ""]
+            + _formula(ui("formula.vanilla-drops.foreign_formula", cap=v["cap"])))
 
 
 def _experience(ctx, page, v):

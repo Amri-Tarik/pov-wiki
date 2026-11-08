@@ -359,6 +359,10 @@ def _price(base: float, level: int, per: float) -> int:
     return max(5, _round_half_even(base * (1 + max(0, level) * per) / 5) * 5)
 
 
+# Sigrid.EarlyGoods: what she sells when no material her roll finds is known in the world.
+_EARLY_GOODS = (("Flint", 10, 20), ("LeatherScraps", 10, 20), ("DeerHide", 5, 10), ("Resin", 10, 20))
+
+
 def _merchants_page(ctx: Ctx) -> str:
     ui, page, vk = ctx.loc.ui, MERCHANTS_PAGE, ctx.loc.vkey
     md = [f"# {ui('world.merch.title')}", "", ui("world.merch.intro"), ""]
@@ -399,6 +403,8 @@ def _merchants_page(ctx: Ctx) -> str:
                 [ui("world.merch.sigrid_materials"), "2", ui("world.merch.sigrid_material_price", base=_n(v["sigrid_res"]))],
                 [f"[{ui('world.tmap.title_one')}]({rel(TREASURE_PAGE, page)})", "1", ui("world.merch.sigrid_map_price", base=_n(v["sigrid_map"]))]]
         md += _table([ui("world.merch.goods"), ui("world.merch.count"), ui("world.merch.price")], rows)
+        early = ", ".join(f"{_item(ctx, i, page)} ×{lo}–{hi}" for i, lo, hi in _EARLY_GOODS)
+        md += [ui("world.merch.sigrid_materials_note", tries=_n(v["sigrid_material_tries"]), early=early), ""]
         md += [ui("world.merch.sigrid_prices", per=_pct(v["sigrid_price_level"])), ""]
         md += _table([ui("world.merch.level"), ui("world.tmap.title_one"), ui("world.merch.sigrid_gear_magic")],
                      [[f"{_biome(ctx, b['id'])} ({b['level']})", str(_price(v["sigrid_map"], b["level"], v["sigrid_price_level"])),
@@ -410,6 +416,7 @@ def _merchants_page(ctx: Ctx) -> str:
         md += gate
     else:
         md += [ui("world.merch.keeper_text", sub=_g(ctx, "enc.wand.sub"), uniques=rel("items/uniques.md", page),
+                  per=_n(v["keeper_per_offer"]), least=_n(v["keeper_offers_min"]), most=_n(v["keeper_offers_max"]),
                   kinds=", ".join(_g(ctx, f"enc.wand.kind.{k}").lower() for k in _GIFT_KINDS[:-1])), "",
                ui("world.merch.keeper_where", near=_n(v["keeper_move_min"] / 2), min=_n(v["keeper_move_min"]), max=_n(v["keeper_move_max"]),
                   clear=_n(v["keeper_base_clear"]), linger=_n(v["keeper_linger"]), leave=_n(v["keeper_leave"]), discover=_n(v["keeper_discover"])), ""]

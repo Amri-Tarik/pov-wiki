@@ -482,3 +482,41 @@ def _glyphs_page(ctx: Ctx) -> str:
     md += [ui("runic.glyphs_rules", link=f"{rel(RUNIC_PAGE, page)}#runic-glyphs"), ""]
     md += _block(ctx, "glyph-drops", page, _drops)
     return "\n".join(md + _footer(ctx))
+
+
+# ---- Socket kinds (the sockets glossary page) ----------------------------------------------------
+
+_BLIGHT_SIGILS = ("PT_SigilOathDevourer", "PT_SigilCrimsonBrood")  # ItemSockets.Sigils with Blight = true
+
+
+def socket_kinds(ctx: Ctx, page: str) -> list[str]:
+    """The kinds of sockets (ItemSockets: runic, divine, corrupted, phantom), what each takes and
+    how it is made, then how dropped items get sockets. On the sockets glossary page."""
+    from .formula_pages import _values, shown
+
+    if not shown(ctx, "socket-kinds"):
+        return []
+    ui, v = ctx.loc.ui, _values()["socket-kinds"]
+    pct = lambda x: f"{round(x * 100, 2):g}%"  # noqa: E731
+    punch = {k: _named(ctx, f"PT_{k}Punch", page) for k in ("Runic", "Divine", "Corrupted")}
+    blight = ", ".join(_named(ctx, s, page) for s in _BLIGHT_SIGILS)
+    rows = [
+        [f"**{ui('sockets.runic')}**", ui("sockets.takes_any"), "—",
+         ui("sockets.runic_how", punch=punch["Runic"], up=pct(v["punch_up"]), down=pct(1 - v["punch_up"]))],
+        [f"**{ui('sockets.divine')}**", ui("sockets.takes_any"), ui("sockets.divine_effect", more=pct(v["divine"] - 1)),
+         ui("sockets.divine_how", punch=punch["Divine"], runic=punch["Runic"])],
+        [f"**{ui('sockets.corrupted')}**", ui("sockets.takes_blight", sigils=blight), "—",
+         ui("sockets.corrupted_how", punch=punch["Corrupted"])],
+        [f"**{_term(ctx, 'phantom-socket', page, start=True)}**", ui("sockets.takes_any"), "—",
+         ui("sockets.phantom_how", page=rel(RUNIC_PAGE, page) + "#phantom-socket")],
+    ]
+    md = [f"## {ui('sockets.kinds')}", ""]
+    md += _table([ui("sockets.col_kind"), ui("sockets.col_takes"), ui("sockets.col_effect"), ui("sockets.col_how")], rows)
+    md += ['!!! note ""', "    " + ui("sockets.blight_note", sigils=blight), "",
+           ui("sockets.punch_rules"), "",
+           ui("sockets.corruption", term=_term(ctx, "corruption", page), more=pct(v["corrupt_sigils"]), most=v["max"]), ""]
+    md += [f"## {ui('sockets.drops')}", "",
+           ui("sockets.drops_text", normal=pct(v["drop_normal"]), magic=pct(v["drop_magic"]), rare=pct(v["drop_rare"]),
+              unique=pct(v["drop_unique"]), one=pct(v["how_many"][0]), two=pct(v["how_many"][1]), three=pct(v["how_many"][2])), ""]
+    return md
+

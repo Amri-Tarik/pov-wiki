@@ -436,7 +436,12 @@ def _base_page(ctx: Ctx, prefab: str, b: dict, found: dict) -> str:
         if (makes := recipe.get("makes") or recipe.get("amount") or 1) > 1:
             md += [ui("items.makes", n=makes), ""]
         rows = []
+        # Valheim's upgrade idols (Requirement.m_upgraderResource) are not spent at the crafting
+        # station: they upgrade the item at the Forge of Potential. They get a line of their own.
+        idols = [res for res in recipe["resources"] if res.get("upgrader")]
         for res in recipe["resources"]:
+            if res.get("upgrader"):
+                continue
             mat = res["item"]
             name = _item_name(ctx, mat)
             link = f"[{name}]({rel(base_path(mat), page)})" if mat in found else name
@@ -453,6 +458,15 @@ def _base_page(ctx: Ctx, prefab: str, b: dict, found: dict) -> str:
             rows.append(["", ui("world.quiver_station_level"), *(str(levels[min(q, len(levels)) - 1]) for q in qs)])
         header = ["", ui("items.material"), ui("items.craft"), *(ui("items.upgrade_n", n=q) for q in qs[1:])]
         md += _table(header, rows)
+        if idols:
+            forge = _station(ctx, {"station": "piece_upgradestation"})
+            names = []
+            for res in idols:
+                mat = res["item"]
+                name = _item_name(ctx, mat)
+                link = f"[{name}]({rel(base_path(mat), page)})" if mat in found else name
+                names.append(f"{_icon(ctx, mat, page, 32)} **{link}**".strip())
+            md += [f"### {forge}", "", ui("items.upgrader_text", forge=forge, idols=", ".join(names)), ""]
 
     level = _level(ctx, prefab)
     md += [f"## {ui('items.item_level')}", ""]

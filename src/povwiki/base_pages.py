@@ -457,6 +457,8 @@ def _base_page(ctx: Ctx, prefab: str, b: dict, found: dict) -> str:
 
     qs = _qualities(b)
     md += _implicits_section(ctx, b, qs)
+    if (info.get("mod") or {}).get("quiver"):  # Quivers.ForAmmo (6.0.4): its shot lines are for bow and crossbow shots
+        md += [ui("items.quiver_shots"), ""]
     stats = _stats(ctx, b)
     if stats:
         md += [f"## {ui('items.stats')}", ""]

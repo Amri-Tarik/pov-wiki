@@ -1045,7 +1045,8 @@ def _armour_break(ctx, page, v):
              buildup=_term(ctx, "build-up", page), seconds=_n(v["seconds"])), ""]
     md += _formula(ui("formula.armour-break.fill"))
     md += _formula(ui("formula.armour-break.formula"))
-    md += [ui("formula.armour-break.notes", armour=_term(ctx, "armor", page)), "", ui("formula.armour-break.sources"), ""]
+    md += [ui("formula.armour-break.notes", armour=_term(ctx, "armor", page)), "", ui("formula.armour-break.sources"), "",
+           ui("formula.armour-break.shots"), ""]
     # A weapon base's armour break coefficient for its melee hits (ItemBaseRolls.BreakCoefficient).
     md += [x for coef, items in _base_roll_items(ctx, page, "armourBreakCoefficient").items()
            for x in (ui("formula.armour-break.bases", items=items, coef=_n(coef)), "")]
@@ -1125,7 +1126,7 @@ def _hit_flat(ctx, page, v):
     """Flat damage (Effects.AddFlatDamage, Oils.AddTo): what goes where, × the skill roll."""
     ui = ctx.loc.ui
     md = [ui("formula.hit-damage.flat", flat=_term(ctx, "flat-damage", page, start=True), factor=_term(ctx, "skill-factor", page)), ""]
-    md += [f"- {ui(f'formula.hit-damage.flat_{k}')}" for k in ("main", "physical", "typed", "element", "elemental")] + [""]
+    md += [f"- {ui(f'formula.hit-damage.flat_{k}')}" for k in ("main", "physical", "typed", "element", "elemental", "shot")] + [""]
     return md + [ui("formula.hit-damage.oil", oil=_term(ctx, "oil", page)), "", ui("formula.hit-damage.harmless"), ""]
 
 

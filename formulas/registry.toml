@@ -1026,6 +1026,7 @@ unbowed = 0.35
 [[formula]]
 id = "armour-break"
 anchors = [
+    "PassiveTree/Corrosion.cs :: Corrosion.ShotBuild",
     "PassiveTree/Corrosion.cs :: Corrosion.Strike",
     "PassiveTree/Corrosion.cs :: Corrosion.Bite",
     "PassiveTree/Corrosion.cs :: Corrosion.Carry",
@@ -1039,8 +1040,8 @@ anchors = [
     "PassiveTree/AilmentDamage.cs :: AilmentDamage.Component",
     "PassiveTree/XpSources.cs :: Character_Damage.Prefix",
 ]
-fingerprint = "a8e6bcb1d815"
-checked = "6.0.0"
+fingerprint = "152b7fa46930"
+checked = "6.0.4"
 
 [formula.values]
 seconds = 8
@@ -1048,6 +1049,10 @@ seconds = 8
 [[formula]]
 id = "hit-damage"
 anchors = [
+    "PassiveTree/DamageModel.cs :: DamageModel.ShotIncrease",
+    "PassiveTree/DamageModel.cs :: DamageModel.ShotFlat",
+    "PassiveTree/Effects.cs :: Effects.AddTypedFlat",
+    "PassiveTree/Quivers.cs :: Quivers.ForAmmo",
     "PassiveTree/SE_PassiveTree.cs :: SE_PassiveTree.ModifyAttackBuild",
     "PassiveTree/Effects.cs :: Effects.AddFlatDamage",
     "PassiveTree/Effects.cs :: Effects.AddToMain",
@@ -1088,8 +1093,8 @@ anchors = [
     "PassiveTree/ItemAffixes.cs :: ItemAffixes.AddLocalGains",
     "PassiveTree/ProjectileMods.cs :: ProjectileMods.ShotDamage",
 ]
-fingerprint = "98a8c130a628"
-checked = "6.0.0"
+fingerprint = "2bb5a37f9d14"
+checked = "6.0.4"
 
 [formula.values]
 staggered = 0.15
@@ -1107,8 +1112,8 @@ anchors = [
     "PassiveTree/ConsumeOps.cs :: ConsumeOps.Hit",
     "PassiveTree/RangedFalloff.cs :: RangedFalloff.Applies",
 ]
-fingerprint = "8be2862f06e3"
-checked = "6.0.0"
+fingerprint = "e63bea397f9a"
+checked = "6.0.4"
 
 [[formula]]
 id = "player-penetration"
@@ -1971,6 +1976,8 @@ jewel = 120
 [[formula]]
 id = "runic-cost"
 anchors = [
+    "PassiveTree.RunicCraft/Anvil.cs :: Anvil.NearDust",
+    "PassiveTree.RunicCraft/Anvil.cs :: Anvil.AnvilsNear",
     "PassiveTree.RunicCraft/PotentialCost.cs :: PotentialCost.Of",
     "PassiveTree.RunicCraft/PotentialCost.cs :: PotentialCost.Affordable",
     "PassiveTree.RunicCraft/PotentialCost.cs :: PotentialCost.Roll",
@@ -1984,8 +1991,8 @@ anchors = [
     "PassiveTree.RunicCraft/GlyphDef.cs :: GlyphDef.Divine",
     "PassiveTree.RunicCraft/Anvil.cs :: Anvil.Pay",
 ]
-fingerprint = "f030a516de6a"
-checked = "6.0.0"
+fingerprint = "ac673267346b"
+checked = "6.0.4"
 
 [formula.values]
 delay = 0.3

@@ -1,0 +1,140 @@
+{
+ "changes": {
+  "keywords": {
+   "shield": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Защитный слой перед здоровьем: принимает только тот урон, что остался после всех снижений (сопротивлений, блока, брони и остальных). Урон духом и ядом проходит сквозь него. После паузы без урона щит восстанавливается; задержка и регенерация управляют этим восстановлением."
+     ],
+     "link": "glossary/shield.md",
+     "name": "Рунный щит"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Защитный слой, поглощающий урон после сопротивлений, но перед блоком и бронёй. Урон духом и ядом проходит сквозь него. После паузы без урона щит восстанавливается; задержка и регенерация управляют этим восстановлением."
+     ],
+     "link": "glossary/shield.md",
+     "name": "Рунный щит"
+    }
+   }
+  },
+  "monster-mods": {
+   "deathward": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Пока он жив, связанные с ним существа не могут отстать по здоровью больше чем на 15% от самого здорового из них.",
+      "Радиус защиты: 12.0 m",
+      "Разрыв здоровья: 15%"
+     ],
+     "link": "monsters/mods.md#mod-deathward",
+     "name": "Хранитель"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Пока он жив, существа вокруг не падают ниже 1 здоровья.",
+      "Радиус защиты: 12.0 m"
+     ],
+     "link": "monsters/mods.md#mod-deathward",
+     "name": "Хранитель"
+    }
+   }
+  },
+  "values": {
+   "modfx.area-floor": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "35%"
+     ],
+     "link": null,
+     "name": "Enemy effects: harmful ground areas and explosions never fall below this share of brightness"
+    },
+    "old": null
+   },
+   "modfx.crowd-cap": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "1.8 x"
+     ],
+     "link": null,
+     "name": "Enemy effects: overlapping effects share a brightness budget of this many full effects"
+    },
+    "old": null
+   },
+   "modfx.crowd-floor": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "30%"
+     ],
+     "link": null,
+     "name": "Enemy effects: the budget never takes one effect below this share of brightness"
+    },
+    "old": null
+   },
+   "modfx.far": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "60 m"
+     ],
+     "link": null,
+     "name": "Enemy effects: distance at which they reach the long-range share"
+    },
+    "old": null
+   },
+   "modfx.far-keep": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "30%"
+     ],
+     "link": null,
+     "name": "Enemy effects: share of their brightness kept at long range"
+    },
+    "old": null
+   },
+   "modfx.near": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "12 m"
+     ],
+     "link": null,
+     "name": "Enemy effects: distance from the camera up to which brightness is not reduced"
+    },
+    "old": null
+   },
+   "modfx.night-keep": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "22%"
+     ],
+     "link": null,
+     "name": "Enemy effects: share of their brightness kept at full night or in the dark"
+    },
+    "old": null
+   },
+   "modfx.warn-floor": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "55%"
+     ],
+     "link": null,
+     "name": "Enemy effects: warnings of an incoming blow never fall below this share of brightness"
+    },
+    "old": null
+   }
+  }
+ },
+ "date": "2026-11-08",
+ "from": "6.0.3",
+ "to": "6.0.4"
+}

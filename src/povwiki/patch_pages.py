@@ -41,7 +41,8 @@ def versions() -> list[str]:
 
 def _md_plain(s: str) -> str:
     """Markdown or game text as plain text: links, emphasis and tags dropped."""
-    s = re.sub(r"\[([^\]]*)\]\([^)]*\)", r"\1", plain(s))
+    # [text](url "title"): the title (a keyword's definition) can hold parentheses of its own.
+    s = re.sub(r'\[([^\]]*)\]\([^)"\s]*(?:\s+"[^"]*")?\)', r"\1", plain(s))
     s = re.sub(r"<[^>]+>|\{[^{}]*\}", "", s)  # tags, and attribute lists ({ .pov-kw })
     return html.unescape(s.replace("**", "").replace("*", "")).strip()
 

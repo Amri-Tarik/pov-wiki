@@ -210,7 +210,8 @@ def anvil_section(ctx: Ctx, page: str) -> list[str]:
         cost = "<br>".join(f"{_icon(ctx, c['item'], page, 24)} {item_link(ctx, c['item'], page)} ×{c['amount']}" for c in s["cost"])
         rows.append([f"**{s['name']}**", str(s["slots"]), ui("runic.built") if i == 0 else cost])
     md += _table([ui("runic.stage"), ui("runic.slots"), ui("runic.upgrade_cost")], rows)
-    md += [ui("runic.upgrade_dust", dust=item_link(ctx, r["dust"], page)), "", ui("runic.shared"), ""]
+    md += [ui("runic.upgrade_dust", dust=item_link(ctx, r["dust"], page)), "", ui("runic.shared"), "",
+           ui("runic.table_dust", dust=item_link(ctx, "PT_AzuriteDust", page), divine=item_link(ctx, "PT_DivineAzuriteDust", page)), ""]
     md += [f"## {ui('runic.title')}", "", ui("runic.anvil_links", forging=rel(RUNIC_PAGE, page), alloys=rel(ALLOYS_PAGE, page),
                                               glyphs=rel(GLYPHS_PAGE, page), ores=rel(ORES_PAGE, page)), ""]
     return md

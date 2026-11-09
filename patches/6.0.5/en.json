@@ -1,0 +1,464 @@
+{
+ "changes": {
+  "keywords": {
+   "armor": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Reduces damage remaining after block and resistances, before endurance and the rune shield. It absorbs a greater share of smaller hits; armour penetration ignores part of this protection."
+     ],
+     "link": "glossary/armor.md",
+     "name": "Armour"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Reduces damage remaining after rune shield and block. It absorbs a greater share of smaller hits; armour penetration ignores part of this protection."
+     ],
+     "link": "glossary/armor.md",
+     "name": "Armour"
+    }
+   },
+   "conversion": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Changes part of one damage type into another before percentage bonuses apply. Converted damage uses the ailments and resistances of its new type and the increases of both its new and its original type, and cannot be converted again; excessive conversion shares are reduced proportionally."
+     ],
+     "link": "glossary/conversion.md",
+     "name": "Damage conversion"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Changes part of one damage type into another before percentage bonuses apply. Converted damage uses its new type's bonuses, ailments and resistances and cannot be converted again; excessive conversion shares are reduced proportionally."
+     ],
+     "link": "glossary/conversion.md",
+     "name": "Damage conversion"
+    }
+   },
+   "crafting-basics": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Workbench crafting makes an item and sets its quality; salvage, runes and the runic anvil then change it. Each item's rarity limits its random affixes."
+     ],
+     "link": "glossary/crafting-basics.md",
+     "name": "Crafting basics"
+    },
+    "old": null
+   },
+   "damage-over-time": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Bleeding, burning and poison deal damage per second for a limited time. Their strength comes from the hit that applied them, with their own increased bonuses and damage over time multipliers on top."
+     ],
+     "link": "glossary/damage-over-time.md",
+     "name": "Damage over time"
+    },
+    "old": null
+   },
+   "defences": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Defences are armour, evasion rating and rune shield together. An increase to defences applies to all three: it joins each one's own increases in one sum and is not a separate multiplier."
+     ],
+     "link": "glossary/defences.md",
+     "name": "Defences"
+    },
+    "old": null
+   },
+   "incoming-damage": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "The order in which a hit on you is reduced: dodge and evasion, enemy scaling, damage taken, explosion and passive resistances, block, gear resistances, armour, endurance, rune shield, then health."
+     ],
+     "link": "glossary/incoming-damage.md",
+     "name": "Incoming damage calculation"
+    },
+    "old": null
+   },
+   "increased-more": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "All increased percentages of a number add into one sum; more multipliers each multiply the result. An increase is worth less the more you already have, a more multiplier always keeps its full value."
+     ],
+     "link": "glossary/increased-more.md",
+     "name": "Increased and more"
+    },
+    "old": null
+   },
+   "level-scaling": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Every biome has a level, and so does every creature. Experience fades as you outlevel a biome, while enemy difficulty, stars and modifiers follow the biome and the world's difficulty preset."
+     ],
+     "link": "glossary/level-scaling.md",
+     "name": "Level scaling"
+    },
+    "old": null
+   },
+   "outgoing-damage": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "How the damage of one hit is built: base damage, flat damage, conversion and gained-as-extra damage, increased damage, more multipliers, then the critical hit, the target layer and the target's resistances."
+     ],
+     "link": "glossary/outgoing-damage.md",
+     "name": "Outgoing damage calculation"
+    },
+    "old": null
+   },
+   "physical": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Includes slash, pierce and blunt damage. Each type has its own ailment; converted damage keeps growing from the bonuses of its original type as well, while resistances and ailments follow its new type."
+     ],
+     "link": "glossary/physical.md",
+     "name": "Physical damage"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Includes slash, pierce and blunt damage. Each type has its own ailment; converted damage instead uses the bonuses and resistances of its new type."
+     ],
+     "link": "glossary/physical.md",
+     "name": "Physical damage"
+    }
+   },
+   "resist": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Reduces damage of the matching type, up to the limit of 75%. Every source adds to one sum per type: the passive tree, gear, shields while blocking and status effects such as meads and forsaken powers, each showing its number on the thing itself. Resistance above the limit does nothing unless a mastery uses it; resistance penetration can lower effective resistance below zero and increase damage taken."
+     ],
+     "link": "glossary/resist.md",
+     "name": "Resistances"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Reduces damage of the matching type, up to the limit of 75%; resistance above it does nothing unless a mastery uses it. Resistance penetration can lower effective resistance below zero and increase damage taken."
+     ],
+     "link": "glossary/resist.md",
+     "name": "Resistances"
+    }
+   }
+  },
+  "mods": {
+   "armour.defences": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 130–∞, weight 180): (8–11)% increased defences",
+      "T4 (item level 181–∞, weight 60): (11–15)% increased defences",
+      "T0 (item level 1–∞, weight 0): (17–21)% increased defences"
+     ],
+     "link": "items/mod/armour.defences.md",
+     "name": "#% increased defences"
+    },
+    "old": null
+   },
+   "jewel.defences": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (item level 130–∞, weight 600): (4–5)% increased defences",
+      "T4 (item level 181–∞, weight 250): (5–6.5)% increased defences",
+      "T0 (item level 1–∞, weight 0): (7–8.5)% increased defences"
+     ],
+     "link": "items/mod/jewel.defences.md",
+     "name": "#% increased defences"
+    },
+    "old": null
+   }
+  },
+  "passives": {
+   "own12833": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "15% reduced construct decay",
+      "25% increased construct durability",
+      "Unbowed Frame: Your constructs cannot lose more than 20% of their health pool to a single hit"
+     ],
+     "link": "passives/node/own12833.md",
+     "name": "Bound with Iron"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "15% reduced construct decay",
+      "25% increased construct durability"
+     ],
+     "link": "passives/node/own12833.md",
+     "name": "Bound with Iron"
+    }
+   },
+   "own13136": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+5% construct ailment chance",
+      "Shared Defences: Your constructs inherit your defences: armour, evasion and rune shield"
+     ],
+     "link": "passives/node/own13136.md",
+     "name": "Barbed Fittings"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "+5% construct ailment chance"
+     ],
+     "link": "passives/node/own13136.md",
+     "name": "Barbed Fittings"
+    }
+   }
+  },
+  "values": {
+   "construct.hit-limit": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "20%"
+     ],
+     "link": null,
+     "name": "Constructs: the most of their health pool one hit can take with the mastery option"
+    },
+    "old": null
+   },
+   "forge.drain-per-hit": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "40%"
+     ],
+     "link": null,
+     "name": "Living Steel: share of a blow's damage that a living weapon's item loses as durability"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "25"
+     ],
+     "link": null,
+     "name": "Living Steel: durability a living weapon's item loses per blow it lands (a swing in the hand loses 1)"
+    }
+   },
+   "forge.hit-wear": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "1"
+     ],
+     "link": null,
+     "name": "Living Steel: durability a living weapon's item loses per point of damage of a hit on it"
+    },
+    "old": null
+   },
+   "forge.hit-wear-cap": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "100%"
+     ],
+     "link": null,
+     "name": "Living Steel: the most of a living weapon's durability one hit can take (100% = no limit)"
+    },
+    "old": null
+   },
+   "halls.first-forest-rank": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "3"
+     ],
+     "link": null,
+     "name": "Halls of Oaths: the first Black Forest entrance replaces this dungeon in order of distance from the start (new worlds)"
+    },
+    "old": null
+   },
+   "resist.vanilla.immune": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "50%"
+     ],
+     "link": null,
+     "name": "Vanilla grades: Immune gives this many resistance points (and is no longer complete immunity)"
+    },
+    "old": null
+   },
+   "resist.vanilla.resistant": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "20%"
+     ],
+     "link": null,
+     "name": "Vanilla grades: Resistant gives this many resistance points"
+    },
+    "old": null
+   },
+   "resist.vanilla.slight": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "10%"
+     ],
+     "link": null,
+     "name": "Vanilla grades: Slightly resistant gives this many resistance points"
+    },
+    "old": null
+   },
+   "resist.vanilla.very": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "30%"
+     ],
+     "link": null,
+     "name": "Vanilla grades: Very resistant gives this many resistance points"
+    },
+    "old": null
+   },
+   "sigrid.price-res": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "3 coins"
+     ],
+     "link": null,
+     "name": "Sigrid: price of one unit of a material without a price of its own"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "3 coins"
+     ],
+     "link": null,
+     "name": "Sigrid: price of one unit of a material at level 0"
+    }
+   },
+   "sigrid.res.blackmetal": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "20 coins"
+     ],
+     "link": null,
+     "name": "Sigrid: black metal, per unit, at every level"
+    },
+    "old": null
+   },
+   "sigrid.res.bronze": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "6 coins"
+     ],
+     "link": null,
+     "name": "Sigrid: bronze, per unit, at every level"
+    },
+    "old": null
+   },
+   "sigrid.res.carapace": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "25 coins"
+     ],
+     "link": null,
+     "name": "Sigrid: carapace, per unit, at every level"
+    },
+    "old": null
+   },
+   "sigrid.res.copper-tin": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "4 coins"
+     ],
+     "link": null,
+     "name": "Sigrid: copper and tin, per unit, at every level"
+    },
+    "old": null
+   },
+   "sigrid.res.flametal": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "40 coins"
+     ],
+     "link": null,
+     "name": "Sigrid: flametal, per unit, at every level"
+    },
+    "old": null
+   },
+   "sigrid.res.hide": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "2 coins"
+     ],
+     "link": null,
+     "name": "Sigrid: deer hide, per unit, at every level"
+    },
+    "old": null
+   },
+   "sigrid.res.iron": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "10 coins"
+     ],
+     "link": null,
+     "name": "Sigrid: iron, per unit, at every level"
+    },
+    "old": null
+   },
+   "sigrid.res.plain": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "1 coins"
+     ],
+     "link": null,
+     "name": "Sigrid: flint, resin, leather scraps, per unit, at every level"
+    },
+    "old": null
+   },
+   "sigrid.res.silver": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "15 coins"
+     ],
+     "link": null,
+     "name": "Sigrid: silver, per unit, at every level"
+    },
+    "old": null
+   },
+   "unique.repair-dust": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "5"
+     ],
+     "link": null,
+     "name": "Repairing a unique at a Runic Anvil or a Rune Carver Table: azurite dust per repair (to full durability)"
+    },
+    "old": null
+   }
+  }
+ },
+ "date": "2026-11-09",
+ "from": "6.0.4",
+ "to": "6.0.5"
+}

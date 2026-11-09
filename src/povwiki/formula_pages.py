@@ -407,9 +407,19 @@ def _evasion(ctx, page, v):
 
 def _resistances(ctx, page, v):
     ui = ctx.loc.ui
-    return ([ui("formula.resistances.text", term=_term(ctx, "resist", page, start=True)), ""]
-            + _formula(ui("formula.resistances.formula", cap=_pct(v["cap"]), hard=_pct(v["hard_cap"])))
-            + [ui("formula.resistances.notes"), ""])
+    knobs = (ctx.loc.difficulty or {}).get("knobs") or {}
+    md = ([ui("formula.resistances.text", term=_term(ctx, "resist", page, start=True)), ""]
+          + _formula(ui("formula.resistances.formula", cap=_pct(v["cap"]), hard=_pct(v["hard_cap"])))
+          + [ui("formula.resistances.notes"), ""])
+    if "resist.vanilla.slight" in knobs:  # VanillaResists (6.0.5): Valheim's grades become resistance points
+        grade = lambda k: _pct(knobs[f"resist.vanilla.{k}"]["value"])  # noqa: E731
+        md += [ui("formula.resistances.vanilla"), ""]
+        md += _table([ui("formula.resistances.grade"), ui("formula.resistances.points")],
+                     [[ui(f"formula.resistances.grade_{k}"), "+" + grade(k)] for k in ("slight", "resistant", "very", "immune")])
+        md += [ui("formula.resistances.vanilla_notes"), ""]
+        md += _table([ui("formula.resistances.weakness"), ui("formula.resistances.taken")],
+                     [[ui(f"formula.resistances.weak_{k}"), f"× {_n(x)}"] for k, x in v["weakness"].items()])
+    return md
 
 
 def _armour(ctx, page, v):

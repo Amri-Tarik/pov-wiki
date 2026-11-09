@@ -1,0 +1,464 @@
+{
+ "changes": {
+  "keywords": {
+   "armor": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Снижает урон, оставшийся после блока и сопротивлений, до стойкости и рунного щита. Чем слабее удар, тем большую его долю поглощает броня; пробивание брони обходит часть этой защиты."
+     ],
+     "link": "glossary/armor.md",
+     "name": "Броня"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Снижает урон, оставшийся после рунного щита и блока. Поглощает большую долю слабых ударов; пробивание брони игнорирует часть защиты."
+     ],
+     "link": "glossary/armor.md",
+     "name": "Броня"
+    }
+   },
+   "conversion": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Превращает часть одного типа урона в другой до применения процентных бонусов. Конвертированный урон подчиняется недугам и сопротивлениям нового типа, получает увеличения и нового, и исходного типа и повторно не конвертируется; при избытке доли конвертации снижаются пропорционально."
+     ],
+     "link": "glossary/conversion.md",
+     "name": "Конвертация урона"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Меняет часть одного типа урона на другой до процентных бонусов. Полученный урон использует бонусы, недуги и сопротивления нового типа и не конвертируется снова; избыточные доли уменьшаются пропорционально."
+     ],
+     "link": "glossary/conversion.md",
+     "name": "Конвертация урона"
+    }
+   },
+   "crafting-basics": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Верстак создаёт предмет и задаёт его качество; разбор, руны и рунная наковальня затем его меняют. Редкость предмета ограничивает число случайных аффиксов."
+     ],
+     "link": "glossary/crafting-basics.md",
+     "name": "Основы ремесла"
+    },
+    "old": null
+   },
+   "damage-over-time": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Кровотечение, горение и отравление наносят урон в секунду в течение ограниченного времени. Их сила зависит от наложившего их удара, а сверху действуют собственные увеличения и множители длительного урона."
+     ],
+     "link": "glossary/damage-over-time.md",
+     "name": "Длительный урон"
+    },
+    "old": null
+   },
+   "defences": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Защиты - это броня, рейтинг уклонения и рунный щит вместе. Прибавка к защитам действует на все три сразу: она складывается с их собственными прибавками в одну сумму и не считается отдельным множителем."
+     ],
+     "link": "glossary/defences.md",
+     "name": "Защиты"
+    },
+    "old": null
+   },
+   "incoming-damage": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Порядок снижения удара по персонажу: перекат и уклонение, масштабирование врага, получаемый урон, сопротивление взрывам и пассивные сопротивления, блок, сопротивления снаряжения, броня, стойкость, рунный щит, затем здоровье."
+     ],
+     "link": "glossary/incoming-damage.md",
+     "name": "Расчёт входящего урона"
+    },
+    "old": null
+   },
+   "increased-more": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Все процентные увеличения одного числа складываются в общую сумму; каждый конечный множитель умножает результат. Чем больше уже накоплено увеличений, тем меньше весит новое, а конечный множитель всегда сохраняет полную силу."
+     ],
+     "link": "glossary/increased-more.md",
+     "name": "Увеличения и конечные множители"
+    },
+    "old": null
+   },
+   "level-scaling": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Свой уровень есть у каждого биома и каждого существа. Когда персонаж перерастает биом, опыт снижается, а сложность врагов, звёзды и модификаторы зависят от биома и пресета сложности мира."
+     ],
+     "link": "glossary/level-scaling.md",
+     "name": "Масштабирование по уровням"
+    },
+    "old": null
+   },
+   "outgoing-damage": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Как складывается урон одного удара: базовый урон, плоский урон, конвертация и дополнительный урон, увеличения урона, конечные множители, затем критический удар, слой цели и сопротивления цели."
+     ],
+     "link": "glossary/outgoing-damage.md",
+     "name": "Расчёт исходящего урона"
+    },
+    "old": null
+   },
+   "physical": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Включает рассекающий, колющий и дробящий урон. У каждого типа собственный недуг; конвертированный урон продолжает расти и от бонусов исходного типа, а сопротивления и недуги определяет его новый тип."
+     ],
+     "link": "glossary/physical.md",
+     "name": "Физический урон"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Объединяет рассекающий, колющий и дробящий урон. У каждого типа свой недуг; конвертированный урон использует бонусы и сопротивления нового типа."
+     ],
+     "link": "glossary/physical.md",
+     "name": "Физический урон"
+    }
+   },
+   "resist": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Снижает урон подходящего типа до предела в 75%. Всё, что даёт сопротивление, складывается в одну сумму на тип: пассивное дерево, снаряжение, щиты при блоке и эффекты состояния вроде медовух и сил богов; число написано на самой вещи. Сопротивление сверх предела ничего не даёт, если его не использует мастерство; пробивание сопротивлений может опустить итоговое сопротивление ниже нуля и повысить получаемый урон."
+     ],
+     "link": "glossary/resist.md",
+     "name": "Сопротивления"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Снижает урон подходящего типа до предела в 75%; сопротивление сверх него ничего не даёт, если его не использует мастерство. Пробивание сопротивлений может уменьшить итоговое сопротивление ниже нуля и повысить получаемый урон."
+     ],
+     "link": "glossary/resist.md",
+     "name": "Сопротивления"
+    }
+   }
+  },
+  "mods": {
+   "armour.defences": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (уровень предмета 130–∞, вес 180): (8–11)% увеличение защит",
+      "T4 (уровень предмета 181–∞, вес 60): (11–15)% увеличение защит",
+      "T0 (уровень предмета 1–∞, вес 0): (17–21)% увеличение защит"
+     ],
+     "link": "items/mod/armour.defences.md",
+     "name": "#% увеличение защит"
+    },
+    "old": null
+   },
+   "jewel.defences": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T5 (уровень предмета 130–∞, вес 600): (4–5)% увеличение защит",
+      "T4 (уровень предмета 181–∞, вес 250): (5–6.5)% увеличение защит",
+      "T0 (уровень предмета 1–∞, вес 0): (7–8.5)% увеличение защит"
+     ],
+     "link": "items/mod/jewel.defences.md",
+     "name": "#% увеличение защит"
+    },
+    "old": null
+   }
+  },
+  "passives": {
+   "own12833": {
+    "new": {
+     "kind": "Средний узел",
+     "lines": [
+      "15% уменьшение конструктов decay",
+      "25% увеличение прочности конструктов",
+      "Несгибаемый каркас: Ваши конструкты не могут потерять больше 20% запаса здоровья от одного удара"
+     ],
+     "link": "passives/node/own12833.md",
+     "name": "Окованная железом"
+    },
+    "old": {
+     "kind": "Средний узел",
+     "lines": [
+      "15% уменьшение конструктов decay",
+      "25% увеличение прочности конструктов"
+     ],
+     "link": "passives/node/own12833.md",
+     "name": "Окованная железом"
+    }
+   },
+   "own13136": {
+    "new": {
+     "kind": "Средний узел",
+     "lines": [
+      "+5% конструктов ailment chance",
+      "Общая защита: Ваши конструкты наследуют вашу защиту: броню, уклонение и рунный щит"
+     ],
+     "link": "passives/node/own13136.md",
+     "name": "Шипастая оснастка"
+    },
+    "old": {
+     "kind": "Средний узел",
+     "lines": [
+      "+5% конструктов ailment chance"
+     ],
+     "link": "passives/node/own13136.md",
+     "name": "Шипастая оснастка"
+    }
+   }
+  },
+  "values": {
+   "construct.hit-limit": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "20%"
+     ],
+     "link": null,
+     "name": "Constructs: the most of their health pool one hit can take with the mastery option"
+    },
+    "old": null
+   },
+   "forge.drain-per-hit": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "40%"
+     ],
+     "link": null,
+     "name": "Living Steel: share of a blow's damage that a living weapon's item loses as durability"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "25"
+     ],
+     "link": null,
+     "name": "Living Steel: durability a living weapon's item loses per blow it lands (a swing in the hand loses 1)"
+    }
+   },
+   "forge.hit-wear": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "1"
+     ],
+     "link": null,
+     "name": "Living Steel: durability a living weapon's item loses per point of damage of a hit on it"
+    },
+    "old": null
+   },
+   "forge.hit-wear-cap": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "100%"
+     ],
+     "link": null,
+     "name": "Living Steel: the most of a living weapon's durability one hit can take (100% = no limit)"
+    },
+    "old": null
+   },
+   "halls.first-forest-rank": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "3"
+     ],
+     "link": null,
+     "name": "Halls of Oaths: the first Black Forest entrance replaces this dungeon in order of distance from the start (new worlds)"
+    },
+    "old": null
+   },
+   "resist.vanilla.immune": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "50%"
+     ],
+     "link": null,
+     "name": "Vanilla grades: Immune gives this many resistance points (and is no longer complete immunity)"
+    },
+    "old": null
+   },
+   "resist.vanilla.resistant": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "20%"
+     ],
+     "link": null,
+     "name": "Vanilla grades: Resistant gives this many resistance points"
+    },
+    "old": null
+   },
+   "resist.vanilla.slight": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "10%"
+     ],
+     "link": null,
+     "name": "Vanilla grades: Slightly resistant gives this many resistance points"
+    },
+    "old": null
+   },
+   "resist.vanilla.very": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "30%"
+     ],
+     "link": null,
+     "name": "Vanilla grades: Very resistant gives this many resistance points"
+    },
+    "old": null
+   },
+   "sigrid.price-res": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "3 coins"
+     ],
+     "link": null,
+     "name": "Sigrid: price of one unit of a material without a price of its own"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "3 coins"
+     ],
+     "link": null,
+     "name": "Sigrid: price of one unit of a material at level 0"
+    }
+   },
+   "sigrid.res.blackmetal": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "20 coins"
+     ],
+     "link": null,
+     "name": "Sigrid: black metal, per unit, at every level"
+    },
+    "old": null
+   },
+   "sigrid.res.bronze": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "6 coins"
+     ],
+     "link": null,
+     "name": "Sigrid: bronze, per unit, at every level"
+    },
+    "old": null
+   },
+   "sigrid.res.carapace": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "25 coins"
+     ],
+     "link": null,
+     "name": "Sigrid: carapace, per unit, at every level"
+    },
+    "old": null
+   },
+   "sigrid.res.copper-tin": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "4 coins"
+     ],
+     "link": null,
+     "name": "Sigrid: copper and tin, per unit, at every level"
+    },
+    "old": null
+   },
+   "sigrid.res.flametal": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "40 coins"
+     ],
+     "link": null,
+     "name": "Sigrid: flametal, per unit, at every level"
+    },
+    "old": null
+   },
+   "sigrid.res.hide": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "2 coins"
+     ],
+     "link": null,
+     "name": "Sigrid: deer hide, per unit, at every level"
+    },
+    "old": null
+   },
+   "sigrid.res.iron": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "10 coins"
+     ],
+     "link": null,
+     "name": "Sigrid: iron, per unit, at every level"
+    },
+    "old": null
+   },
+   "sigrid.res.plain": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "1 coins"
+     ],
+     "link": null,
+     "name": "Sigrid: flint, resin, leather scraps, per unit, at every level"
+    },
+    "old": null
+   },
+   "sigrid.res.silver": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "15 coins"
+     ],
+     "link": null,
+     "name": "Sigrid: silver, per unit, at every level"
+    },
+    "old": null
+   },
+   "unique.repair-dust": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "5"
+     ],
+     "link": null,
+     "name": "Repairing a unique at a Runic Anvil or a Rune Carver Table: azurite dust per repair (to full durability)"
+    },
+    "old": null
+   }
+  }
+ },
+ "date": "2026-11-09",
+ "from": "6.0.4",
+ "to": "6.0.5"
+}

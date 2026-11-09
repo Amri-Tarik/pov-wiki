@@ -245,7 +245,8 @@ def _treasure_page(ctx: Ctx) -> str:
 
     md += [f"## {ui('world.tmap.open')} {{ #open }}", "",
            ui("world.tmap.open_text", dig=_g(ctx, "enc.tmap.dig"), bearer=_g(ctx, "enc.tmap.bearer-only"),
-              read=_g(ctx, "enc.tmap.read-name"), lost=_g(ctx, "enc.tmap.lost"), other=_g(ctx, "enc.tmap.other-world")), ""]
+              read=_g(ctx, "enc.tmap.read-name"), lost=_g(ctx, "enc.tmap.lost"), other=_g(ctx, "enc.tmap.other-world")), "",
+           ui("world.tmap.open_owed"), ""]
     return "\n".join(md + _footer(ctx))
 
 
@@ -359,6 +360,18 @@ def _price(base: float, level: int, per: float) -> int:
     return max(5, _round_half_even(base * (1 + max(0, level) * per) / 5) * 5)
 
 
+# Sigrid.MaterialKnob: each material's price setting (6.0.5).
+_SIGRID_MATERIALS = (("sigrid.res.plain", ("Flint", "Resin", "LeatherScraps")), ("sigrid.res.hide", ("DeerHide",)),
+                     ("sigrid.res.copper-tin", ("Copper", "Tin")), ("sigrid.res.bronze", ("Bronze",)),
+                     ("sigrid.res.iron", ("Iron",)), ("sigrid.res.silver", ("Silver",)),
+                     ("sigrid.res.blackmetal", ("BlackMetal",)), ("sigrid.res.carapace", ("Carapace",)),
+                     ("sigrid.res.flametal", ("FlametalNew",)))
+
+
+def _knob(ctx: Ctx, key: str) -> float:
+    return ((ctx.loc.difficulty or {}).get("knobs") or {})[key]["value"]
+
+
 # Sigrid.EarlyGoods: what she sells when no material her roll finds is known in the world.
 _EARLY_GOODS = (("Flint", 10, 20), ("LeatherScraps", 10, 20), ("DeerHide", 5, 10), ("Resin", 10, 20))
 
@@ -400,11 +413,15 @@ def _merchants_page(ctx: Ctx) -> str:
                ui("world.merch.sigrid_stock", maps=rel(TREASURE_PAGE, page)), ""]
         rows = [[ui("world.merch.sigrid_gear"), "3", ui("world.merch.sigrid_gear_price", base=_n(v["sigrid_gear"]), rare=_n(v["sigrid_rare"]), legendary=_n(v["sigrid_legendary"]))],
                 [ui("world.merch.sigrid_currency"), "3", ui("world.merch.sigrid_currency_price", base=_n(v["sigrid_rune"]))],
-                [ui("world.merch.sigrid_materials"), "2", ui("world.merch.sigrid_material_price", base=_n(v["sigrid_res"]))],
+                [ui("world.merch.sigrid_materials"), "2", ui("world.merch.sigrid_material_price_own")],
                 [f"[{ui('world.tmap.title_one')}]({rel(TREASURE_PAGE, page)})", "1", ui("world.merch.sigrid_map_price", base=_n(v["sigrid_map"]))]]
         md += _table([ui("world.merch.goods"), ui("world.merch.count"), ui("world.merch.price")], rows)
         early = ", ".join(f"{_item(ctx, i, page)} ×{lo}–{hi}" for i, lo, hi in _EARLY_GOODS)
         md += [ui("world.merch.sigrid_materials_note", tries=_n(v["sigrid_material_tries"]), early=early), ""]
+        # Sigrid.MaterialPrice (6.0.5): a price per unit for each material, the same at every level.
+        md += [ui("world.merch.sigrid_material_prices", other=_n(_knob(ctx, "sigrid.price-res"))), ""]
+        md += _table([ui("world.merch.material"), ui("world.merch.unit_price")],
+                     [[", ".join(_item(ctx, m, page) for m in mats), _n(_knob(ctx, key))] for key, mats in _SIGRID_MATERIALS])
         md += [ui("world.merch.sigrid_prices", per=_pct(v["sigrid_price_level"])), ""]
         md += _table([ui("world.merch.level"), ui("world.tmap.title_one"), ui("world.merch.sigrid_gear_magic")],
                      [[f"{_biome(ctx, b['id'])} ({b['level']})", str(_price(v["sigrid_map"], b["level"], v["sigrid_price_level"])),
@@ -432,6 +449,22 @@ def _merchants_page(ctx: Ctx) -> str:
                   locked=_g(ctx, "enc.finds.locked"), tab=_g(ctx, "enc.finds.tab")), "",
                ui("world.merch.finds_price", magic=_n(v["finds_magic"]), rare=_n(v["finds_rare_x"]), unique=_n(v["finds_unique_x"]),
                   ragn="#ragn"), ""]
+
+    # Selling (MerchantSale, 6.0.6): the traders' sell tab and the Halls merchant's window.
+    if not gate and "merch.purse" in ((ctx.loc.difficulty or {}).get("knobs") or {}):
+        from .halls_pages import HALLS_PAGE as HALLS
+
+        md += [f"## {ui('world.merch.sell_title')} {{ #selling }}", "",
+               ui("world.merch.sell_text", names=names, halls=rel(HALLS, page)), ""]
+        md += _table([ui("world.merch.goods"), ui("world.merch.sell_pays")], [
+            [ui("world.merch.sell_magic"), _n(_knob(ctx, "merch.sell.magic"))],
+            [ui("world.merch.sell_rare"), _n(_knob(ctx, "merch.sell.rare"))],
+            [ui("world.merch.sell_unique"), _n(_knob(ctx, "merch.sell.unique"))],
+            [ui("world.merch.sell_cur", tier=1), _n(_knob(ctx, "merch.sell.cur1"))],
+            [ui("world.merch.sell_cur", tier=2), _n(_knob(ctx, "merch.sell.cur2"))],
+            [ui("world.merch.sell_cur3"), _n(_knob(ctx, "merch.sell.cur3"))],
+        ])
+        md += [ui("world.merch.sell_rules"), "", ui("world.merch.sell_purse", purse=_n(_knob(ctx, "merch.purse"))), ""]
 
     # The Rune of Renewed Trade.
     rune = "PT_RuneOfRenewedTrade"

@@ -389,22 +389,34 @@ anchors = [
     "PassiveTree/Evasion.cs :: Evasion.IsHit",
     "PassiveTree/Evasion.cs :: Evasion.StaminaCost",
 ]
-fingerprint = "2f0961c5bd35"
-checked = "5.3.6"
+fingerprint = "de5896c65977"
+checked = "6.0.6"
 
 [[formula]]
 id = "resistances"
 anchors = [
     "PassiveTree/Resistances.cs :: Resistances.Of",
     "PassiveTree/Resistances.cs :: Resistances.Cap",
-    "PassiveTree/Effects.cs :: \"s.Get(Stat.ElementalResistPct) - num2\"",
+    "PassiveTree/VanillaResists.cs :: VanillaResists.Mitigate",
+    "PassiveTree/VanillaResists.cs :: VanillaResists.Layer",
+    "PassiveTree/VanillaResists.cs :: VanillaResists.Read",
+    "PassiveTree/VanillaResists.cs :: VanillaResists.Points",
+    "PassiveTree/VanillaResists.cs :: VanillaResists.Weakness",
+    "PassiveTree/VanillaResists.cs :: VanillaResists.ShieldPoints",
+    "PassiveTree/VanillaResists.cs :: VanillaResists.AtDamageStep",
+    "PassiveTree/Tunables.cs :: \"resist.vanilla.slight\"",
 ]
-fingerprint = "5d7f1f7e8d83"
-checked = "5.1.1"
+fingerprint = "f2bb3cab705e"
+checked = "6.0.6"
 
 [formula.values]
 cap = 0.75
 hard_cap = 0.9
+
+[formula.values.weakness]
+slight = 1.25
+weak = 1.5
+very = 2
 
 [[formula]]
 id = "enemy-penetration"
@@ -737,8 +749,8 @@ anchors = [
     "PassiveTree/Tunables.cs :: \"ailment.poison.base-chance\"",
     "PassiveTree/Tunables.cs :: \"ailment.bleeding.pierce-share\"",
 ]
-fingerprint = "d5ed31b4c420"
-checked = "6.0.0"
+fingerprint = "ceaacf968795"
+checked = "6.0.6"
 
 [formula.values]
 hold = 3
@@ -749,6 +761,8 @@ speed_floor = 0.1
 [[formula]]
 id = "rune-shield"
 anchors = [
+    "PassiveTree/EnergyShield.cs :: EnergyShield.Interrupt",
+    "PassiveTree/Evasion.cs :: Evasion.TryEvade",
     "PassiveTree/EnergyShield.cs :: EnergyShield.Max",
     "PassiveTree/EnergyShield.cs :: EnergyShield.Delay",
     "PassiveTree/EnergyShield.cs :: EnergyShield.FromLife",
@@ -768,8 +782,8 @@ anchors = [
     "PassiveTree/Tunables.cs :: \"shield.delay-cap\"",
     "valheim/Character.cs :: Character.RPC_Damage",
 ]
-fingerprint = "fd8d93d2186d"
-checked = "6.0.0"
+fingerprint = "3a1d72b1a9d6"
+checked = "6.0.6"
 
 [formula.values]
 base = 0
@@ -1754,6 +1768,7 @@ checked = "6.0.0"
 [[formula]]
 id = "treasure-maps"
 anchors = [
+    "PassiveTree.Encounters/TreasureMapCache.cs :: TreasureMapCache.OwedTo",
     "PassiveTree.Loot/LootDrops.cs :: LootDrops.RollTreasureKind",
     "PassiveTree.Loot/LootDrops.cs :: LootDrops.TreasureTable",
     "PassiveTree.Loot/LootDrops.cs :: LootDrops.TreasureRewards",
@@ -1777,8 +1792,8 @@ anchors = [
     "PassiveTree.Encounters/TreasureMapCache.cs :: TreasureMapCache.Eject",
     "PassiveTree.Encounters/EncounterLoot.cs :: EncounterLoot.Context",
 ]
-fingerprint = "cc1840721f8b"
-checked = "6.0.0"
+fingerprint = "2bf4996ef7f5"
+checked = "6.0.6"
 
 [formula.values]
 near = 250
@@ -1887,6 +1902,13 @@ jarl = [
 [[formula]]
 id = "merchants"
 anchors = [
+    "PassiveTree.Encounters/Sigrid.cs :: Sigrid.MaterialPrice",
+    "PassiveTree.Encounters/Sigrid.cs :: Sigrid.MaterialKnob",
+    "PassiveTree.Encounters/MerchantSale.cs :: MerchantSale.Of",
+    "PassiveTree.Encounters/MerchantSale.cs :: MerchantSale.Barred",
+    "PassiveTree.Encounters/MerchantSale.cs :: MerchantSale.CurrencyKind",
+    "PassiveTree.Encounters/MerchantSale.cs :: MerchantSale.RarityKind",
+    "PassiveTree.Encounters/Finds.cs :: Finds.IsHaldor",
     "PassiveTree.Encounters/Merchants.cs :: Merchants.Knobs",
     "PassiveTree.Encounters/Merchants.cs :: Merchants.GroupOf",
     "PassiveTree.Encounters/Merchants.cs :: Merchants.Fits",
@@ -1918,8 +1940,8 @@ anchors = [
     "PassiveTree.Encounters/Finds.cs :: Finds.Make",
     "PassiveTree.Encounters.HallMaps/HallMapShop.cs :: HallMapShop.ServerRenew",
 ]
-fingerprint = "b91b1639bc21"
-checked = "6.0.2"
+fingerprint = "53f06169089a"
+checked = "6.0.6"
 
 [formula.values]
 sigrid_material_tries = 6
@@ -2006,8 +2028,8 @@ anchors = [
     "PassiveTree.RunicCraft/Craft.cs :: Craft.Mult",
     "PassiveTree.RunicCraft/Craft.cs :: Craft.DoForge",
 ]
-fingerprint = "7f94a60c2396"
-checked = "6.0.0"
+fingerprint = "40a1d249f1d1"
+checked = "6.0.6"
 
 [formula.values]
 target = 0.35
@@ -2019,6 +2041,8 @@ depths_weight = 300
 [[formula]]
 id = "runic-glyphs"
 anchors = [
+    "PassiveTree.Loot/LootRoller.cs :: LootRoller.Ladder",
+    "PassiveTree.Loot/LootRoller.cs :: LootRoller.CanTierUp",
     "PassiveTree.RunicCraft/Craft.cs :: Craft.Validate",
     "PassiveTree.RunicCraft/Craft.cs :: Craft.DoGlyph",
     "PassiveTree.RunicCraft/Craft.cs :: Craft.DoForge",
@@ -2028,8 +2052,8 @@ anchors = [
     "PassiveTree.RunicCraft/ItemMarks.cs :: ItemMarks.DurabilityMult",
     "PassiveTree.RunicCraft/ItemMarks.cs :: ItemMarks.LevelCap",
 ]
-fingerprint = "9f75fd76e34a"
-checked = "6.0.0"
+fingerprint = "01d0e55880b9"
+checked = "6.0.6"
 
 [formula.values]
 echo = 0.35

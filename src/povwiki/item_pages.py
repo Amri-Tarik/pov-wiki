@@ -233,6 +233,13 @@ def _mod_page(ctx: Ctx, a: dict) -> dict[str, str]:
         [[_tier_name(ctx, t["id"], page), _levels(ctx, t["minLevel"], t["maxLevel"]), _cell(to_md(t["text"]["base"], loc, page)),
           f"{t['weight']:g}", f"{100 * t['weight'] / total:.1f}%"] for t in a["tiers"]],
     )
+    # T3-T1 (6.0.6): above T4, never rolled (LootRoller.Ladder with endgame); reached only by
+    # corruption (ItemCorruption) and the Glyphs of Tempering and of the Last Heat (Craft.DoGlyph).
+    if any(t["id"] in ("T1", "T2", "T3") and not t["weight"] for t in a["tiers"]):
+        from .runic_pages import item_link
+
+        md += [ui("items.endgame_tiers", corruption=rel("glossary/corruption.md", page),
+                  tempering=item_link(ctx, "PT_GlyphTempering", page), last_heat=item_link(ctx, "PT_GlyphLastHeat", page)), ""]
 
     # The same tiers on the slots this mod can roll on, when values scale with the slot.
     slots = [s for c in _classes(a) for s in _SLOTS_FOR.get(c, [])]

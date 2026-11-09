@@ -549,6 +549,13 @@ def page_uniques(ctx: Ctx) -> dict[str, str]:
         return {}
     catalog = {u["id"]: u for u in ctx.data.loot.get("uniques") or []}
     md = [f"# {ui('gear.uniques')}", "", ui("gear.uniques_intro"), ""]
+    knobs = (ctx.loc.difficulty or {}).get("knobs") or {}
+    if "unique.repair-dust" in knobs:  # UniqueRepair (6.0.5): only the runic stations repair uniques
+        from .building_pages import building_path
+        from .runic_pages import item_link
+
+        md += [ui("gear.unique_repair", dust=f"{knobs['unique.repair-dust']['value']:g}", azurite=item_link(ctx, "PT_AzuriteDust", page),
+                  anvil=rel(building_path("PT_RunicAnvil"), page), table=rel(building_path("PT_RuneCarverTable"), page)), ""]
     kinds: dict[str, list[str]] = defaultdict(list)
     for item in sorted(uniques, key=lambda i: _unique_name(ctx, i)):
         kinds[ui(f"class.{_unique_class(ctx, item)}")].append(item)

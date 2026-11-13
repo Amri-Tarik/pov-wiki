@@ -33,10 +33,10 @@ BIOME_BOSS = {"Meadows": "Eikthyr", "Forest": "gd_king", "Swamp": "Bonemass", "M
 # HallsBosses.Defs: the Deep North herald's name key.
 HALLS_BOSS_NAMES = {"PoV_HallsBoss7": "@enc.halls.boss7"}
 # HallMapDefs.Normal: ordinary room types in the code's order; then boss rooms.
-TYPES = ("Armory", "Treasury", "Forge", "OreHall", "Burial", "Cartographer")
+TYPES = ("Armory", "Treasury", "Forge", "OreHall", "Burial", "Cartographer", "Gemcutter")
 # HallMapItems.TypeSign: the item pictured on a room type's tablet.
 TYPE_SIGN = {"Armory": "SwordIron", "Treasury": "Coins", "Forge": "Bronze", "OreHall": "CopperOre", "Burial": "TrophySkeleton",
-             "BossRoom": "TrophyDraugrElite"}
+             "Gemcutter": "PT_GemUncutEffect", "BossRoom": "TrophyDraugrElite"}
 # HallMapDefs.Build: the boss rooms of the halls' own bosses (their biome).
 HILDIR = {"Brenna": "Forest", "Geirrhafa": "Mountain", "ZilThungr": "Plains", "Reto": "Ash"}
 # HallMapDefs.Build: unique rooms -> (room type, biome, rule); HallMapItems.UniqueSign / RuleText.
@@ -50,7 +50,8 @@ MAP_RUNES = ("PT_RuneOfSpark", "PT_RuneOfWeaving", "PT_RuneOfChange", "PT_RuneOf
 RENEW_RUNE = "PT_RuneOfRenewedTrade"  # HallMapShop.RuneId
 TIERS = 4  # HallsPoints.Tiers
 # HallMapItems.EnglishType / BiomeOf: a room's English name when it has no localisation line.
-ENGLISH_TYPE = {"Cartographer": "Cartographer's Hall", "BossRoom": "Boss Room", "Burial": "Burial Hall", "OreHall": "Ore Hall"}
+ENGLISH_TYPE = {"Cartographer": "Cartographer's Hall", "BossRoom": "Boss Room", "Burial": "Burial Hall", "OreHall": "Ore Hall",
+                "Gemcutter": "Gemcutter's Hall"}
 ENGLISH_OF = {"Meadows": "the Meadows", "Forest": "the Black Forest", "Swamp": "the Swamp", "Mountain": "the Mountains",
               "Plains": "the Plains", "Mist": "the Mistlands", "Ash": "the Ashlands", "North": "the Deep North"}
 # The section's navigation, filled when this version has the halls' maps (nav() in pages.py).
@@ -83,6 +84,14 @@ def rooms(ctx: Ctx) -> list[dict]:
                 continue
         out.append({"id": item, "kind": kind, "type": rtype, "theme": theme, "key": key, "row": c})
     return out
+
+
+def room_boost(ctx: Ctx) -> float:
+    """The loot sources' "boost" of the halls-rooms family (LootCatalog ExtraDef.Boost), when they
+    all share one; 0 when none has it."""
+    boosts = {x.get("boost", 0) for s in ctx.data.loot.get("sources") or [] for x in s.get("extra") or []
+              if x.get("family") == "halls-rooms"}
+    return boosts.pop() if len(boosts) == 1 else 0
 
 
 def _theme_level(ctx: Ctx, theme: str) -> int:
@@ -332,7 +341,13 @@ def _rooms_page(ctx: Ctx) -> str:
     def drops(v):
         from .gear_pages import CURRENCY_PAGE
 
-        return [ui("halls.rooms_drops", currency=rel(CURRENCY_PAGE, page)), ""]
+        md = [ui("halls.rooms_drops", currency=rel(CURRENCY_PAGE, page)), ""]
+        # LootDrops.Roll (6.0.8): a source's "boost" extra adds Poisson(currency rolls × boost × the
+        # family's share of the currency weight) rows of the family (FamilyShare, FamilyReward).
+        boost = room_boost(ctx)
+        if boost:
+            md += [ui("halls.rooms_boost", boost=_num(boost), x=_num(boost + 1)), ""]
+        return md
 
     md += _section(ctx, "halls-room-drops", ui("halls.rooms_drops_title"), drops)
 

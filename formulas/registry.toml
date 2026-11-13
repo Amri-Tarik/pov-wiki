@@ -212,6 +212,8 @@ anchors = [
     "PassiveTree/BossStars.cs :: BossStars.Cap",
     "PassiveTree/BossStars.cs :: Bowl_Spawn.Postfix",
     "PassiveTree/RarityRoll.cs :: RarityRoll.StarMore",
+    "PassiveTree/BossStars.cs :: BossStars.Reborn",
+    "PassiveTree/DungeonReawaken.cs :: DungeonReawaken.Respawn",
 ]
 fingerprint = "e717e30f0638"
 checked = "6.0.0"
@@ -273,6 +275,8 @@ anchors = [
     "PassiveTree.Loot/LootDifficulty.cs :: LootDifficulty.MeanStars",
     "PassiveTree.Loot/LootDifficulty.cs :: LootDifficulty.PerArea",
     "PassiveTree/WombOfCorruption.cs :: WombOfCorruption.Drops",
+    "PassiveTree.Loot/LootDrops.cs :: LootDrops.FamilyShare",
+    "PassiveTree.Loot/LootDrops.cs :: LootDrops.FamilyReward",
 ]
 fingerprint = "f1cfc3d2ed7d"
 checked = "6.0.0"
@@ -1441,6 +1445,9 @@ anchors = [
     "PassiveTree.Loot/ItemAscension.cs :: ItemAscension.LevelOnlyKind",
     "PassiveTree.Loot/RuneActions.cs :: RuneActions.CanTarget",
     "PassiveTree/Rarity.cs :: Rarity.CanHave",
+    "PassiveTree.Loot/ItemAscension.cs :: ItemAscension.Step",
+    "PassiveTree.Loot/ItemAscension.cs :: ItemAscension.CurveRatio",
+    "PassiveTree.Loot/ItemAscension.cs :: ItemAscension.BiomeOf",
 ]
 fingerprint = "91da9ccd093c"
 checked = "6.0.0"
@@ -1666,6 +1673,11 @@ anchors = [
     "PassiveTree.Loot/LootCatalog.cs :: CurrencyDef.From",
     "PassiveTree.Encounters.HallMaps/HallMapDrops.cs :: HallMapDrops.RoomsBlockedAt",
     "PassiveTree.Encounters.HallMaps/HallMapDefs.cs :: HallMapDefs.Build",
+    "PassiveTree.Encounters.HallMaps/HallMapDefs.cs :: HallMapDefs.TypeWeight",
+    "PassiveTree.Loot/LootDrops.cs :: LootDrops.Roll",
+    "PassiveTree.Loot/LootDrops.cs :: LootDrops.FamilyShare",
+    "PassiveTree.Loot/LootDrops.cs :: LootDrops.FamilyReward",
+    "PassiveTree.Loot/LootCatalog.cs :: \"boost\"",
 ]
 fingerprint = "18b3b5ddcb4f"
 checked = "6.0.0"
@@ -1791,6 +1803,9 @@ anchors = [
     "PassiveTree.Encounters/TreasureMapCache.cs :: TreasureMapCache.MapIn",
     "PassiveTree.Encounters/TreasureMapCache.cs :: TreasureMapCache.Eject",
     "PassiveTree.Encounters/EncounterLoot.cs :: EncounterLoot.Context",
+    "PassiveTree.Encounters/TreasureMapKinds.cs :: TreasureMapKinds.Roll",
+    "PassiveTree.Loot/LootCatalog.cs :: \"kindMinLevel\"",
+    "PassiveTree.Loot/LootDrops.cs :: LootDrops.FamilyReward",
 ]
 fingerprint = "2bf4996ef7f5"
 checked = "6.0.6"
@@ -1835,7 +1850,6 @@ anchors = [
     "PassiveTree.Encounters.Halls/HallsParty.cs :: HallsParty.Elites",
     "PassiveTree.Encounters.Halls/HallsParty.cs :: HallsParty.ShipWave",
     "PassiveTree.Encounters.Halls/HallsParty.cs :: HallsParty.ShipGuardians",
-    "PassiveTree.Encounters.Halls/HallsDefs.cs :: \"Rune of the Open Gate: chance among the gifts of a burial ship\"",
 ]
 fingerprint = "6d294027e9f9"
 checked = "6.0.0"
@@ -1856,7 +1870,6 @@ jarl_rarity = 0.5
 hazard_rarity = 0.25
 hazard_quantity = 0.15
 barrow_quantity = 0.3
-open_gate = 0.03
 coins = [
     15,
     30,
@@ -1920,7 +1933,6 @@ anchors = [
     "PassiveTree.Encounters/Merchants.cs :: Merchants.RollGamble",
     "PassiveTree.Encounters/Merchants.cs :: Merchants.LevelOf",
     "PassiveTree.Encounters/RagnStall.cs :: Place.Postfix",
-    "PassiveTree.Encounters.Halls/HallsDefs.cs :: \"Rune of the Open Gate: chance that Ragn's gamble bundle holds one instead of the gear\"",
     "PassiveTree.Encounters/Sigrid.cs :: Sigrid.Knobs",
     "PassiveTree.Encounters/Sigrid.cs :: Sigrid.GearPool",
     "PassiveTree.Encounters/Sigrid.cs :: Sigrid.RollStock",
@@ -1957,7 +1969,6 @@ ragn_odds = [
     0.145,
     0.005,
 ]
-ragn_open_gate = 0.02
 price_level = 0.04
 finds_min = 6
 finds_max = 8
@@ -2012,6 +2023,11 @@ anchors = [
     "PassiveTree.RunicCraft/GlyphDef.cs :: GlyphDef.Dust",
     "PassiveTree.RunicCraft/GlyphDef.cs :: GlyphDef.Divine",
     "PassiveTree.RunicCraft/Anvil.cs :: Anvil.Pay",
+    "PassiveTree.RunicCraft/Potential.cs :: Potential.Bonus",
+    "PassiveTree.RunicCraft/Potential.cs :: Potential.MaxOf",
+    "PassiveTree.RunicCraft/Potential.cs :: Potential.Read",
+    "PassiveTree.RunicCraft/Potential.cs :: Potential.Set",
+    "PassiveTree/Jewels.cs :: Jewels.IsSpecial",
 ]
 fingerprint = "ac673267346b"
 checked = "6.0.4"

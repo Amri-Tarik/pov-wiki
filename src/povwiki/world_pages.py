@@ -1,8 +1,9 @@
 """World: treasure maps, burial ships and merchants (6.0).
 
 - Treasure maps (PassiveTree.Encounters.TreasureMaps, TreasureMapCache, TreasureMapKinds): a
-  currency row of the loot catalog (PoV_TreasureMap) that becomes a map of one of nine kinds
-  (LootDrops.RollTreasureKind over the catalog's "treasureKind" tables), leading to a buried chest
+  currency row of the loot catalog (PoV_TreasureMap) that becomes a map of one of its kinds
+  (LootDrops.RollTreasureKind over the catalog's "treasureKind" tables, each from its
+  "kindMinLevel"), leading to a buried chest
   in the land of the map's level (TreasureMaps.TargetBiome, Find, FindWide, Valid). The chest holds
   the kind's loot (LootDrops.TreasureRewards, Kept); only the map's bearer opens it
   (TreasureMapCache.Interact).
@@ -135,9 +136,10 @@ def _creature(ctx: Ctx, prefab: str, page: str) -> str:
 
 def _kinds(ctx: Ctx) -> list[dict]:
     """The catalog's treasure map tables (LootCatalog: "treasureKind", "kindWeight"), in the order
-    of LootDrops.TreasureKinds."""
+    of LootDrops.TreasureKinds (6.0.8: "rooms", rooms of the halls)."""
     tables = {t["treasureKind"]: t for t in ctx.data.loot.get("tables") or [] if t.get("treasureKind")}
-    return [tables[k] for k in ("weapons", "armour", "currency", "alloys", "runes", "jewellery", "jewels", "gems", "unique") if k in tables]
+    return [tables[k] for k in ("weapons", "armour", "currency", "alloys", "runes", "jewellery", "jewels", "gems", "unique", "rooms")
+            if k in tables]
 
 
 def kind_anchor(kind: str) -> str:
@@ -192,14 +194,25 @@ def _treasure_page(ctx: Ctx) -> str:
     example = f"{_g(ctx, 'enc.tmap.kind.weapons')} · {_g(ctx, 'enc.tmap.biome.swamp')}"
     md += [f"## {ui('world.tmap.kinds')} {{ #kinds }}", "", ui("world.tmap.kinds_text", example=example), ""]
     gate = _gate(ctx, "treasure-maps")
+    # LootDrops.RollTreasureKind: a kind is in the roll only from its "kindMinLevel" (the map's level).
     total = sum(t.get("kindWeight", 0) for t in kinds) or 1
+    late = [t for t in kinds if t.get("kindMinLevel", 0) > 1]
     rows = []
     for t in kinds:
         k = t["treasureKind"]
+        holds = _g(ctx, f"enc.tmap.holds.{k}")
+        if k == "rooms":
+            from .halls_pages import ROOMS_PAGE
+
+            holds = f"[{holds}]({rel(ROOMS_PAGE, page)})"
+        if t.get("kindMinLevel", 0) > 1:
+            holds += f"<br><small>{ui('world.tmap.from_level', level=t['kindMinLevel'])}</small>"
         rows.append([f'<span id="{kind_anchor(k)}"></span>' + _icon(ctx, f"PassiveTree.item.PoV_TreasureMap_{k}.png", page, 40),
-                     f"**{_g(ctx, f'enc.tmap.kind.{k}')}**", _g(ctx, f"enc.tmap.holds.{k}"),
+                     f"**{_g(ctx, f'enc.tmap.kind.{k}')}**", holds,
                      "—" if gate else _pct(t.get("kindWeight", 0) / total)])
     md += _table(["", ui("col.name"), ui("world.tmap.holds"), ui("world.tmap.chance")], rows)
+    if late and not gate:
+        md += [ui("world.tmap.kinds_late"), ""]
 
     md += [f"## {ui('world.tmap.chest_title')} {{ #chest }}", ""]
     if gate:
@@ -210,7 +223,8 @@ def _treasure_page(ctx: Ctx) -> str:
                ui("world.tmap.chest_text", rarity=_pct(v["rarity"]), quantity=_term(ctx, "chest-item-quantity", page),
                   chest_rarity=_term(ctx, "chest-item-rarity", page), n=v["spill"]), ""]
         md += [ui("world.tmap.rule_kept"), ""]
-        md += [f"- {ui(f'world.tmap.kept.{k}')}" for k in ("weapons", "armour", "jewellery", "jewels", "gems", "currency", "runes", "alloys")]
+        md += [f"- {ui(f'world.tmap.kept.{k}')}" for k in ("weapons", "armour", "jewellery", "jewels", "gems", "currency", "runes", "alloys", "rooms")
+               if k in {t["treasureKind"] for t in kinds}]
         md += [f"- {ui('world.tmap.rule_unique', unique=_g(ctx, 'enc.tmap.kind.unique'))}", ""]
         for t in kinds:
             entries = t.get("entries") or []
@@ -223,6 +237,16 @@ def _treasure_page(ctx: Ctx) -> str:
             md += _table([ui("world.item"), ui("world.amount"), ui("world.share")],
                          [[_item(ctx, e["id"], page), _amount(e), _pct(e["weight"] / weights)]
                           for e in sorted(entries, key=lambda e: -e["weight"])])
+        # LootDrops.TreasureRewards (6.0.8): a kind with a currency "family" makes attempts × chance
+        # rows of it by the rows' weights and place rules (LootDrops.FamilyReward).
+        for t in kinds:
+            if t.get("family") != "halls-rooms" or not t.get("attempts"):
+                continue
+            from .halls_pages import ROOMS_PAGE
+
+            md += [f"### {_g(ctx, 'enc.tmap.kind.' + t['treasureKind'])}", "",
+                   ui("world.tmap.family_rooms", n=_n(t["attempts"]), chance=_pct(t.get("chance", 1)),
+                      rooms=f"{rel(ROOMS_PAGE, page)}#halls-room-drops"), ""]
 
     # Where the treasure lies.
     md += [f"## {ui('world.tmap.place')} {{ #place }}", ""]
@@ -297,10 +321,6 @@ def _ship_page(ctx: Ctx) -> str:
         md += _table([ui("world.item"), ui("world.amount"), ui("world.from_level")],
                      [[_item(ctx, m["id"], page), f"{m['min']}–{m['max']}", f"{m['level']} ({_biome_at(ctx, m['level'])})"] for m in mats])
     md += [ui("world.ship.coins", base=f"{v['coins'][0]}–{v['coins'][1]}", per=_n(v["coins_per"])), ""]
-    gate_rune = "PT_RuneOpenGate"
-    rune = _item(ctx, gate_rune, page) if gate_rune in (ctx.loc.loot.get("items") or {}) else ""
-    if rune:
-        md += [ui("world.ship.open_gate", chance=_pct(v["open_gate"]), rune=rune), ""]
 
     md += [f"## {ui('world.ship.hazards')} {{ #hazards }}", "",
            ui("world.ship.hazards_text", chance=_pct(v["hazard_chance"]), rarity=_pct(v["hazard_rarity"]),
@@ -393,8 +413,7 @@ def _merchants_page(ctx: Ctx) -> str:
         odds = v["ragn_odds"]
         md += _table([ui("world.merch.rarity"), ui("world.share")],
                      [[ui(f"world.rarity.{r}"), _pct(odds[i] / sum(odds))] for i, r in enumerate(("common", "magic", "rare", "unique"))])
-        rune = _item(ctx, "PT_RuneOpenGate", page) if "PT_RuneOpenGate" in (ctx.loc.loot.get("items") or {}) else ""
-        md += [ui("world.merch.ragn_odds", trinket=_g(ctx, "enc.ragn.trinket-cap"), gate=_pct(v["ragn_open_gate"]), rune=rune), ""]
+        md += [ui("world.merch.ragn_odds", trinket=_g(ctx, "enc.ragn.trinket-cap")), ""]
         groups = ("weapon", "shield", "armour", "jewel")
         md += [f"### {ui('world.merch.prices')}", "", ui("world.merch.prices_text", per=_pct(v["price_level"])), ""]
         md += _table([ui("world.merch.kind"), *(f"{_biome(ctx, b['id'])} ({b['level']})" for b in biomes)],

@@ -93,7 +93,37 @@ def _affix(d, boss_families: set) -> dict:
         "source": "loot" if d.Generation else ("essence" if boss else "none"),
         "bossFamilies": boss,
         "tiers": tiers,
+        **_catalog(d.Id),
     }
+
+
+def _catalog(affix_id: str) -> dict:
+    """The affix's theme and the alloys that favour it, as the mod's public API reports them
+    (Valheiman.Api.AffixCatalog, API 1.9.0 / PoV 6.0.12). Both are worked out in code: the theme
+    by Enchants.ThemeOf, the alloys by each AlloyDef.Matches. Empty before 6.0.12."""
+    catalog = _api_catalog()
+    if catalog is None:
+        return {}
+    d = catalog.Get(affix_id)
+    if d is None:
+        return {}
+    return {"theme": str(d.Theme or "") or None, "alloys": [str(a) for a in d.Alloys]}
+
+
+def _api_catalog():
+    try:
+        from Valheiman.Api import AffixCatalog
+    except ImportError:
+        return None
+    return AffixCatalog
+
+
+def _themes() -> list[dict]:
+    """Enchantment themes in the game's order, with their names (AffixCatalog.Themes)."""
+    catalog = _api_catalog()
+    if catalog is None:
+        return []
+    return [{"id": str(kv.Key), "name": str(kv.Value)} for kv in catalog.Themes]
 
 
 def render_loot(errors: list) -> dict:
@@ -122,7 +152,7 @@ def render_loot(errors: list) -> dict:
         for k in Runes.All
     }
     return {"affixes": affixes, "essences": essences, "items": items, "slotMults": SLOT_MULTS, "biomes": _biomes(),
-            "ascension": _ascension()}
+            "ascension": _ascension(), "themes": _themes()}
 
 
 def _ascension() -> dict:

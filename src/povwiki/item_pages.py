@@ -197,6 +197,88 @@ def page_mods(ctx: Ctx) -> dict[str, str]:
     return pages
 
 
+# ---- Categories: group, families, theme and alloys (Valheiman.Api.AffixCatalog, PoV 6.0.12) ------
+
+CATEGORIES_PAGE = "items/mod-categories.md"
+
+
+def _group_members(ctx: Ctx) -> dict[str, list[dict]]:
+    """group -> its affixes (LootCatalog: a missing group is the affix's own id)."""
+    out = defaultdict(list)
+    for a in ctx.loc.loot["affixes"]:
+        out[a["group"] or a["id"]].append(a)
+    return out
+
+
+def _themes(ctx: Ctx) -> dict[str, str]:
+    return {t["id"]: t["name"] for t in ctx.loc.loot.get("themes") or []}
+
+
+def _alloy_links(ctx: Ctx, alloys: list[str], page: str) -> str:
+    from .runic_pages import item_link
+
+    return ", ".join(item_link(ctx, x, page) for x in alloys)
+
+
+def _category_rows(ctx: Ctx, a: dict, page: str) -> list[list[str]]:
+    """The categories a mod belongs to, for its page: theme, alloys that favour it, families,
+    and its group with the other mods in it."""
+    ui, rows = ctx.loc.ui, []
+    cats = rel(CATEGORIES_PAGE, page)
+    if a.get("theme"):
+        rows.append([ui("items.theme"), f"[{_themes(ctx).get(a['theme'], a['theme'])}]({cats}#theme-{a['theme']}) — {ui('items.theme_note')}"])
+    if "alloys" in a:
+        rows.append([ui("items.alloys"), (_alloy_links(ctx, a["alloys"], page) + f" — {ui('items.alloys_note')}") if a["alloys"] else ui("items.alloys_none")])
+    if a["families"]:
+        rows.append([ui("items.families"), ", ".join(f"[{f}]({cats}#family-{f})" for f in a["families"])])
+    group = a["group"] or a["id"]
+    others = [o for o in _group_members(ctx)[group] if o["id"] != a["id"]]
+    if a["group"] or others:
+        line = f"`{group}` — {ui('items.group_note')}"
+        if others:
+            line += "<br>" + ui("items.group_others", mods=", ".join(f"[{_cell(_title(o))}]({rel(mod_path(o), page)})"
+                                                                      for o in sorted(others, key=lambda o: _title(o).lower())))
+        rows.append([ui("items.group"), line])
+    return rows
+
+
+def page_mod_categories(ctx: Ctx) -> dict[str, str]:
+    """Every mod by theme, by family and by shared group (the categories of the mod's public API,
+    Valheiman.Api.AffixCatalog). Only when the rendered data has the themes (6.0.12 on)."""
+    themes = ctx.loc.loot.get("themes") or []
+    if not themes:
+        return {}
+    ui, page, affixes = ctx.loc.ui, CATEGORIES_PAGE, ctx.loc.loot["affixes"]
+
+    def links(items: list[dict]) -> str:
+        return ", ".join(f"[{_cell(_title(a))}]({rel(mod_path(a), page)})" for a in sorted(items, key=lambda a: _title(a).lower()))
+
+    md = [f"# {ui('items.categories')}", "", ui("items.categories_intro", mods=rel(MODS_PAGE, page)), ""]
+    md += [f"## {ui('items.themes')}", "", ui("items.themes_intro", enchants=rel("items/enchantments.md", page),
+                                              alloys=rel("items/runic/alloys.md", page)), ""]
+    alloys_of = defaultdict(set)
+    for a in affixes:
+        if a.get("theme"):
+            alloys_of[a["theme"]].update(a.get("alloys") or [])
+    for th in themes:
+        mine = [a for a in affixes if a.get("theme") == th["id"]]
+        md += [f"### {th['name']} ({len(mine)}) {{ #theme-{th['id']} }}", ""]
+        if alloys_of[th["id"]]:
+            md += [ui("items.theme_alloys", alloys=_alloy_links(ctx, sorted(alloys_of[th["id"]]), page)), ""]
+        md += _unsearched([links(mine), ""])
+    families = defaultdict(list)
+    for a in affixes:
+        for f in a["families"]:
+            families[f].append(a)
+    md += [f"## {ui('items.families')}", "", ui("items.families_intro"), ""]
+    for f in sorted(families):
+        md += [f"### {f} ({len(families[f])}) {{ #family-{f} }}", ""] + _unsearched([links(families[f]), ""])
+    shared = {g: m for g, m in _group_members(ctx).items() if len(m) > 1}
+    md += [f"## {ui('items.groups')}", "", ui("items.groups_intro", n=len(shared)), ""]
+    md += _unsearched(_table([ui("items.group"), ui("items.mods")], [[f"`{g}`", links(shared[g])] for g in sorted(shared)]))
+    return {page: "\n".join(md + _footer(ctx))}
+
+
 def _tier_name(ctx: Ctx, tier: str, page: str) -> str:
     """A tier's id; a unique's own tier (UniqueGear.TierId: "U-<key>") names the unique, linked."""
     if tier.startswith("U-"):
@@ -219,10 +301,7 @@ def _mod_page(ctx: Ctx, a: dict) -> dict[str, str]:
         md += [f'!!! warning "{ui("page.unimplemented")}"', f"    {ui('items.not_generated_note')}", ""]
 
     info = [[ui("items.rolls_on"), _cell(_rule(ctx, a))], [ui("items.source"), _source(ctx, a)]]
-    if a["families"]:
-        info.append([ui("items.families"), ", ".join(a["families"])])
-    if a["group"]:
-        info.append([ui("items.group"), f"`{a['group']}` — {ui('items.group_note')}"])
+    info += _category_rows(ctx, a, page)
     md += _table([loc.ui("col.property"), loc.ui("col.value")], info)
 
     # Tiers, as a regular item rolls them.

@@ -131,7 +131,7 @@ def build_language(lang: Language, default: Language, enabled: list[Language], d
     jobs += [(gen.__name__, gen, ctxs[0]) for gen in GLOBAL]
     from .base_pages import page_bases
     from .gear_pages import page_currency, page_jewels, page_uniques
-    from .item_pages import page_mods
+    from .item_pages import page_mod_categories, page_mods
     from .building_pages import page_buildings
     from .formula_pages import page_formulas
     from .halls_pages import page_halls
@@ -145,7 +145,7 @@ def build_language(lang: Language, default: Language, enabled: list[Language], d
     from .weapon_pages import page_weapons
     from .world_pages import page_world
 
-    jobs += [(gen.__name__, gen, ctxs[0]) for gen in (page_mods, page_bases, page_weapons, page_currency, page_jewels, page_uniques, page_gems,
+    jobs += [(gen.__name__, gen, ctxs[0]) for gen in (page_mods, page_mod_categories, page_bases, page_weapons, page_currency, page_jewels, page_uniques, page_gems,
                                                       page_monster_mods, page_bosses, page_creatures, page_taming, page_halls, page_buildings, page_enchant, page_world,
                                                       page_formulas, page_patches, page_tools, page_ascendancy, page_runic)]
     for label, gen, ctx in jobs:

@@ -256,14 +256,26 @@ def _stars(ctx, page, v):
             + _table([ui("monsters.stars"), ui("formula.odds")], odds))
 
 
+def _currency_link(ctx, item: str, page: str) -> str:
+    """A currency item by its name, linked to its page when the catalog lists it."""
+    from .gear_pages import currency_path
+
+    info = (ctx.loc.loot.get("items") or {}).get(item)
+    if info:
+        return f"[{info['name']}]({rel(currency_path(item), page)})"
+    return ctx.loc.text(f"@item.{item}.name", item)
+
+
 def _boss_stars(ctx, page, v):
     from .monster_pages import BOSSES_PAGE
 
     ui = ctx.loc.ui
     cap = int((ctx.loc.difficulty.get("presets", {}).get("normal") or {}).get("MaxStars", 0))
+    # BossStars.Reborn (6.0.9): bosses a Great Rune of Awakening brings back with their place roll too.
+    rune = _currency_link(ctx, "PT_GreatRuneOfAwakening", page)
     return ([ui("formula.boss-stars.text", chance=_pct(v["chance"]), two=_pct(v["two"]), bosses=rel(BOSSES_PAGE, page),
                     max=_n(v["blood_max"]), above=_pct(_values()["stars"]["above_two"]), cap=cap,
-                    stars=_anchor("stars", page)), ""]
+                    stars=_anchor("stars", page), rune=rune), ""]
             + _formula(ui("formula.boss-stars.health", h=_n(v["health"]))) + _formula(ui("formula.boss-stars.damage", d=_n(v["damage"])))
             + [ui("formula.boss-stars.notes", mods=v["mods_per_star"]), ""])
 
@@ -313,10 +325,21 @@ def _loot(ctx, page, v):
             + [f"### {ui('formula.loot.sources')}", "", ui("formula.loot.sources_note"), ""]
             + _table([ui("gear.source_label"), ui("formula.loot.gear"), ui("formula.loot.currency"), ui("formula.loot.jewel")], sources)
             + [ui("formula.loot.gates"), ""]
+            + _loot_rooms(ctx, page)
             + [f"### {ui('formula.loot.by_level')}", "", ui("formula.loot.by_level_note", white=_pct(ctx.loc.difficulty.get("tunables", {}).get("loot.white-jewel-weight", 0))), ""]
             + _formula(ui("formula.loot.curve"))
             + _table([ui("formula.level"), ui("formula.loot.common"), ui("formula.loot.magic"), ui("formula.loot.rare")], levels)
             + [ui("formula.loot.unique", chance=_pct(loot.get("uniqueChance", 0)), level=loot.get("rareGuaranteeMinLevel", 0)), ""])
+
+
+def _loot_rooms(ctx, page) -> list[str]:
+    """Halls room items' extra rolls (LootDrops.Roll: a source's "boost" extra, 6.0.8)."""
+    from .halls_pages import ROOMS_PAGE, room_boost
+
+    boost = room_boost(ctx)
+    if not boost:
+        return []
+    return [ctx.loc.ui("formula.loot.rooms", halls=_halls(ctx), boost=_n(boost), link=f"{rel(ROOMS_PAGE, page)}#halls-room-drops"), ""]
 
 
 def _womb(ctx, page, v) -> list[str]:

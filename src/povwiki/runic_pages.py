@@ -228,7 +228,9 @@ def _slot_mod(m: dict) -> bool:
 def _cost(ctx: Ctx, page: str, v: dict) -> list[str]:
     """PotentialCost.Of/Affordable/Roll, Craft.Me, Craft.Prepare, Craft.Apply."""
     ui, r = ctx.loc.ui, ctx.loc.runic
-    md = [ui("runic.cost_text", base=r["baseCost"], potential=_term(ctx, "potential", page), dust=r["baseDust"],
+    # Defs (6.0.10): alloys cost no potential, only dust.
+    free = all(not a.get("cost") for a in r.get("alloys") or [])
+    md = [ui("runic.cost_text_free" if free else "runic.cost_text", base=r["baseCost"], potential=_term(ctx, "potential", page), dust=r["baseDust"],
              azurite=item_link(ctx, r["dust"], page), divine=item_link(ctx, r["divineDust"], page)), ""]
     md += _formula(ui("runic.cost_formula", base=r["baseCost"], cap=_pct(v["cut_cap"])))
     md += [ui("runic.cost_crit", crit=_pct(r["baseCrit"]), tree="#craft-tree"), "",
@@ -345,6 +347,17 @@ def page_runic(ctx: Ctx) -> dict[str, str]:
     return {RUNIC_PAGE: _runic_page(ctx), ORES_PAGE: _ores_page(ctx), ALLOYS_PAGE: _alloys_page(ctx), GLYPHS_PAGE: _glyphs_page(ctx)}
 
 
+def _potential_mod(ctx: Ctx) -> tuple[str, str] | None:
+    """The item mod that raises an item's potential (Potential.Bonus: the item's own CapacityPct,
+    "% increased item potential", 6.0.10): its name and page."""
+    from .item_pages import _title, mod_path
+
+    found = next((a["id"] for a in ctx.data.loot.get("affixes", [])
+                  if any(m.get("stat") == "CapacityPct" and "ItemPotential" in (m.get("subjects") or []) for m in a.get("mods") or [])), None)
+    a = next((a for a in ctx.loc.loot.get("affixes", []) if a["id"] == found), None)
+    return (_title(a), rel(mod_path(a), RUNIC_PAGE)) if a else None
+
+
 def _runic_page(ctx: Ctx) -> str:
     ui, r, page = ctx.loc.ui, ctx.loc.runic, RUNIC_PAGE
     anvil = f"[{ui('runic.anvil')}]({rel(ANVIL_PAGE, page)})"
@@ -355,8 +368,10 @@ def _runic_page(ctx: Ctx) -> str:
            ui("runic.anvil_text", anvil=anvil, slots=", ".join(f"{s['name']}: {s['slots']}" for s in stages), max=r["maxSlots"],
               vise=_option_link(ctx, page, match=_slot_mod)), "",
            ui("runic.stock"), ""]
+    mod = _potential_mod(ctx)
     md += [f"## {ui('runic.potential_title')} {{ #potential }}", "",
-           ui("runic.potential_text", potential=_term(ctx, "potential", page, start=True), n=r["potential"]), ""]
+           ui("runic.potential_text", potential=_term(ctx, "potential", page, start=True), n=r["potential"],
+              mod=mod[0] if mod else "", link=mod[1] if mod else ""), ""]
     md += _block(ctx, "runic-cost", page, _cost, level=3)
     md += [f"## {ui('runic.forge_title')} {{ #forging }}", "",
            ui("runic.forge_text", pre=r["prefixes"], suf=r["suffixes"], rarity=_term(ctx, "rarity", page)), ""]
@@ -364,7 +379,7 @@ def _runic_page(ctx: Ctx) -> str:
     md += _block(ctx, "runic-glyphs", page, _glyph_rules)
     md += [f"## {ui('runic.refused_title')} {{ #refused }}", "", ui("runic.refused_text"), ""]
     keys = ("two-main", "duplicate", "slots", "alloy-main", "alloy-none", "forge-only", "norns", "echo", "memory", "no-potential",
-            "potential", "unique", "not-eligible", "no-rare", "pool", "sockets", "no-tier", "max-level", "durability", "sealed-all")
+            "potential", "unique", "not-eligible", "no-rare", "pool", "sockets", "no-tier", "max-level", "durability", "sealed-all", "jewel-quality")
     md += [f"- {plain(ctx.loc.text('@runic.why.' + k)).replace('{0}', '…').replace('{1}', '…')}" for k in keys
            if f"@runic.why.{k}" in ctx.loc.game]
     md += [""]

@@ -398,8 +398,9 @@ def _evasion(ctx, page, v):
             + _formula(ui("formula.evasion.chance", ratio=_n(t["evasion.full-ratio"]), cap=_pct(t["evasion.cap"])))
             + [ui("formula.evasion.regen", unbroken=_granted(ctx, "UninterruptedEvasion", page)), ""]
             + [ui("formula.evasion.avoided"), ""]
+            # Evasion.StaminaCost: cost reductions take off at most Caps.StaminaCost (-85%).
             + [ui("formula.evasion.cost", min=_pct(t["evasion.stamina-cost-min"]), max=_pct(t["evasion.stamina-cost"]),
-                  low=_pct(t["evasion.cost-low-hit"]), full=_n(t["evasion.cost-full-hit"])), ""]
+                  low=_pct(t["evasion.cost-low-hit"]), full=_n(t["evasion.cost-full-hit"]), cap=_pct(v["cost_cap"])), ""]
             + [ui("formula.evasion.notes", decay=_pct(t["evasion.decay"]), reset=_n(t["evasion.decay-reset"]),
                   boss=_n(t["evasion.decay-reset-boss"]), stamina=_pct(t["evasion.stamina-cost"])), ""]
             + _table([ui("bosses.biome"), ui("formula.evasion.acc_col"), *(ui("formula.evasion.rating_col", n=r) for r in ratings)], rows))
@@ -890,6 +891,11 @@ def _ail_effect(ctx, page, v, ailment: str) -> list[str]:
         if ailment == "bleed":  # a weapon base's own bleed duration for its melee hits (Combat.OpenWound)
             md += ["", *(ui("formula.ailments.bleed_bases", items=items, seconds=_n(s))
                          for s, items in _base_roll_items(ctx, page, "bleedSeconds").items())]
+        # DamagingAilments.IgniteAsSpirit: burning conversion to spirit (Flame Without a Burial's row)
+        # makes the ticks spirit damage, × the spirit damage over time multiplier (DamagingAilments.Dot).
+        flame = _unique_jewel(ctx, "PT_Jewel_FlameWithoutABurial", page) if ailment == "burn" else None
+        if flame:
+            md += ["", ui("formula.ailments.burn_spirit", jewel=flame, dot=_term(ctx, "damage-over-time-multiplier", page, lower=True))]
         return md
     if ailment == "shock":
         base, top = _pct(_tun(ctx, "shock.base")), _pct(_tun(ctx, "shock.maximum"))
@@ -898,6 +904,16 @@ def _ail_effect(ctx, page, v, ailment: str) -> list[str]:
                 + _formula(ui("formula.ailments.shock_formula", base=base, max=top))
                 + [ui("formula.ailments.shock_notes")])
     return [ui("formula.ailments.chill")]
+
+
+def _unique_jewel(ctx, item: str, page: str) -> str | None:
+    """A unique jewel's name linked to its page, or None when this version has no such jewel."""
+    from .gear_pages import unique_path
+
+    jewel = (ctx.loc.gear.get("jewels") or {}).get(item)
+    if not jewel or item not in (ctx.loc.gear.get("uniques") or {}):
+        return None
+    return f"[{jewel['name']}]({rel(unique_path(item), page)})"
 
 
 def _ail_damaging(ctx, page, v) -> list[str]:
@@ -1169,12 +1185,24 @@ def _endurance(ctx, page, v):
               rune=_mastery_link(ctx, "SteadfastRuneThreshold", page), shield=_term(ctx, "shield", page)), "",
            ui("formula.endurance.order", res=_term(ctx, "resist", page), block=_term(ctx, "block", page), armour=_term(ctx, "armor", page),
               shield=_term(ctx, "shield", page)), ""]
-    # The Berserker's UnbowedHead and TemperedOnFoe stats (Berserker.EnduranceThreshold/EnduranceMore).
+    # The Berserker's UnbowedHead and TemperedOnFoe stats (Berserker.EnduranceThreshold; Berserker.AddStats
+    # adds Tempered as a more multiplier of SteadfastReductionPct).
     if "@stat.UnbowedHead.ability" in ctx.loc.game:
         md += [ui("formula.endurance.berserker", unbowed=ctx.loc.text("@stat.UnbowedHead.ability"), share=_pct(v["unbowed"]),
                   rune=_mastery_link(ctx, "SteadfastRuneThreshold", page), tempered=ctx.loc.text("@stat.TemperedOnFoe.ability"),
                   more=_pct(_tun(ctx, "berserker.temper-more")), seconds=_n(_tun(ctx, "berserker.temper-seconds")),
                   cap=_pct(t["endurance.cap"])), ""]
+    # Oath of Iron (SteadfastGear): Endurance.WearAfter on the wear DurabilityAffixes.Refund leaves.
+    oath = _unique_jewel(ctx, "PT_Jewel_OathOfIron", page)
+    if oath:
+        md += [ui("formula.endurance.gear", oath=oath), ""]
+    # Winter's Debt (DeferredBlows): WintersDebt.Defer after Endurance.Reduce; WintersDebt.Pay skips both
+    # and ShockAilment's DamageTaken, but not the rune shield's Absorb.
+    debt = _unique_jewel(ctx, "PT_Jewel_WintersDebt", page)
+    if debt:
+        md += [ui("formula.endurance.debt", debt=debt, share=_pct(_tun(ctx, "winter-debt.share")),
+                  seconds=_n(_tun(ctx, "winter-debt.seconds")), shield=_term(ctx, "shield", page),
+                  shock=_term(ctx, "shock", page)), ""]
     return md
 
 

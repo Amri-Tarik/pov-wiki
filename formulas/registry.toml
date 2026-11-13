@@ -343,7 +343,8 @@ id = "crit-multiplier"
 anchors = [
     "PassiveTree/CriticalHits.cs :: CriticalHits.Scale",
     "PassiveTree/CriticalHits.cs :: CriticalHits.DamageFactor",
-    "PassiveTree/CriticalHits.cs :: \"num7 = DamageFactor(s.Has(Stat.CritNoBonus)\"",
+    "PassiveTree/CriticalHits.cs :: \"DamageFactor(s.Has(Stat.CritNoBonus), value2.Mult, bonus)\"",
+    "PassiveTree/CriticalHits.cs :: CriticalHits.Bonus",
     "PassiveTree/WeaponAffixes.cs :: WeaponAffixes.ColumnStat",
     "PassiveTree/CriticalHits.cs :: CriticalHits.MagazineCritBonus",
 ]
@@ -388,9 +389,13 @@ anchors = [
     "PassiveTree/Evasion.cs :: Evasion.ChanceAgainst",
     "PassiveTree/Evasion.cs :: Evasion.IsHit",
     "PassiveTree/Evasion.cs :: Evasion.StaminaCost",
+    "PassiveTree/Caps.cs :: \"public const float StaminaCost\"",
 ]
 fingerprint = "de5896c65977"
 checked = "6.0.6"
+
+[formula.values]
+cost_cap = 0.85
 
 [[formula]]
 id = "resistances"
@@ -550,6 +555,9 @@ anchors = [
     "PassiveTree/JewelReveal.cs :: JewelReveal.BecomeRift",
     "PassiveTree/JewelReveal.cs :: JewelReveal.PathHidden",
     "PassiveTree/JewelReveal.cs :: JewelReveal.Refresh",
+    "PassiveTree/JewelReveal.cs :: JewelReveal.Wanted",
+    "PassiveTree/JewelReveal.cs :: JewelReveal.Shape",
+    "PassiveTree/JewelReveal.cs :: JewelReveal.Arrange",
     "PassiveTree/Tree.cs :: Tree.Around",
 ]
 fingerprint = "f7bedc6dcc1a"
@@ -618,6 +626,7 @@ anchors = [
     "PassiveTree/Phantoms.cs :: Phantoms.Builds",
     "PassiveTree/Phantoms.cs :: Phantoms.Strike",
     "PassiveTree/CriticalHits.cs :: CriticalHits.PhantomCrit",
+    "PassiveTree/CriticalHits.cs :: CriticalHits.Bonus",
     "PassiveTree/AilmentGauges.cs :: AilmentGauges.Phantom",
     "PassiveTree/AilmentGauges.cs :: AilmentGauges.Direct",
     "PassiveTree/HitKinds.cs :: HitKinds.IsAttackHit",
@@ -692,6 +701,7 @@ anchors = [
     "PassiveTree/AilmentGauges.cs :: Frost.Prefix",
     "PassiveTree/AilmentGauges.cs :: Shock.Prefix",
     "PassiveTree/AilmentGauges.cs :: Physical.Postfix",
+    "PassiveTree/AilmentGauges.cs :: AilmentGauges.Parts",
     "PassiveTree/AilmentGauges.cs :: \"public const float HoldSeconds\"",
     "PassiveTree/AilmentGauges.cs :: \"public const float MeltPerSecond\"",
     "PassiveTree/RuneWard.cs :: RuneWard.Unwarded",
@@ -714,6 +724,8 @@ anchors = [
     "PassiveTree/DamagingAilments.cs :: DamagingAilments.Faster",
     "PassiveTree/DamagingAilments.cs :: DamagingAilments.PoisonLimit",
     "PassiveTree/DamagingAilments.cs :: DamagingAilments.Dot",
+    "PassiveTree/DamagingAilments.cs :: DamagingAilments.IgniteAsSpirit",
+    "PassiveTree/DamagingAilments.cs :: DamagingAilments.Pay",
     "PassiveTree/DamagingAilments.cs :: DamagingAilments.Prepare",
     "PassiveTree/DamagingAilments.cs :: DamagingAilments.Place",
     "PassiveTree/DamagingAilments.cs :: DamagingAilments.Accrue",
@@ -1022,11 +1034,21 @@ anchors = [
     "PassiveTree/Endurance.cs :: Endurance.Reduction",
     "PassiveTree/Endurance.cs :: Endurance.Checked",
     "PassiveTree/Endurance.cs :: Endurance.Reduce",
+    "PassiveTree/Endurance.cs :: Endurance.Works",
+    "PassiveTree/Endurance.cs :: Endurance.Active",
+    "PassiveTree/Endurance.cs :: Endurance.WearAfter",
+    "PassiveTree/DurabilityAffixes.cs :: DurabilityAffixes.Refund",
     "PassiveTree/EnergyShield.cs :: Character_ApplyDamage_Shield.Prefix",
+    "PassiveTree/WintersDebt.cs :: WintersDebt.Defer",
+    "PassiveTree/WintersDebt.cs :: WintersDebt.Pay",
+    "PassiveTree/WintersDebt.cs :: Tick.Postfix",
+    "PassiveTree/ShockAilment.cs :: DamageTaken.Prefix",
+    "PassiveTree/Tunables.cs :: \"winter-debt.share\"",
+    "PassiveTree/Tunables.cs :: \"winter-debt.seconds\"",
     "PassiveTree/Tunables.cs :: \"endurance.base\"",
     "PassiveTree/Tunables.cs :: \"endurance.cap\"",
     "PassiveTree/Berserker.cs :: Berserker.EnduranceThreshold",
-    "PassiveTree/Berserker.cs :: Berserker.EnduranceMore",
+    "PassiveTree/Berserker.cs :: Berserker.AddStats",
     "PassiveTree/Berserker.cs :: Berserker.Tempered",
     "PassiveTree/Tunables.cs :: \"berserker.temper-more\"",
     "PassiveTree/Tunables.cs :: \"berserker.temper-seconds\"",
@@ -1076,6 +1098,9 @@ anchors = [
     "PassiveTree/Smite.cs :: Smite.DirectArea",
     "PassiveTree/Effects.cs :: Effects.LayerOn",
     "PassiveTree/Effects.cs :: SkillFactor.Postfix",
+    "PassiveTree/Effects.cs :: Effects.BuildBlow",
+    "PassiveTree/Effects.cs :: Effects.DirectArea",
+    "PassiveTree/HitContext.cs :: HitContext.SourceOf",
     "PassiveTree/CombatCategories.cs :: CombatCategories.DamageBonus",
     "PassiveTree/DamageModel.cs :: DamageModel.TypeIncrease",
     "PassiveTree/DamageModel.cs :: DamageModel.Increase#2",
@@ -1117,9 +1142,11 @@ staggered = 0.15
 id = "hit-order"
 anchors = [
     "PassiveTree/SE_PassiveTree.cs :: SE_PassiveTree.ModifyAttackBuild",
+    "PassiveTree/Effects.cs :: Effects.BuildBlow",
     "PassiveTree/XpSources.cs :: Character_Damage.Prepare",
     "PassiveTree/XpSources.cs :: XpSources.CrossDamage",
     "PassiveTree/CriticalHits.cs :: CriticalHits.Apply",
+    "PassiveTree/CriticalHits.cs :: CriticalHits.Bonus",
     "PassiveTree/Penetration.cs :: Penetration.Apply",
     "valheim/Attack.cs :: Attack.ModifyDamage",
     "valheim/Character.cs :: Character.RPC_Damage",

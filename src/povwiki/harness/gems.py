@@ -3,7 +3,7 @@
 - Gems (GemCatalog.All): name, role (a curse is an effect with a curse), tags, the tooltip text
   at every rank (GemCatalog.Describe), the item properties of the bag tooltip (GemText.Properties:
   tags or supported tags, capacity, a trigger's stamina cost per effect, an aura's eitr reserve),
-  every number with whether it grows with rank (GemCatalog.Ranks), and the boss whose defeat
+  every number with whether it grows with rank (its value at each rank), and the boss whose defeat
   allows cutting it (GemCatalog.Gate, GemText.BossWord; the boss's prefab from CreatureLevels.Bosses).
 - What works with what: each trigger and effect pair (GemBoard.WhyNotFeed: null when the trigger
   starts the effect, else the game's reason), and each support on each effect or aura
@@ -44,9 +44,11 @@ def render_gems(errors: list) -> dict:
             params = []
             for kv in g.Params:
                 name = str(kv.Key)
+                # Whether it grows with rank, from its value at each rank (GemCatalog.Value): the
+                # rule behind it changed (Ranks(name), Ranks(g, name) in 6.0.7, gone in 6.0.9).
+                by_rank = [float(GemCatalog.Value(g, name, r)) for r in range(1, GemCatalog.MaxRank + 1)]
                 params.append({"name": name, "value": float(Tunables.Of(f"gem.{g.Id}.{name}")),
-                               "pct": bool(g.PctParam[name]), "ranks": bool(GemCatalog.Ranks(name)),
-                               "byRank": [float(GemCatalog.Value(g, name, r)) for r in range(1, GemCatalog.MaxRank + 1)]})
+                               "pct": bool(g.PctParam[name]), "ranks": len(set(by_rank)) > 1, "byRank": by_rank})
             # GemText.Properties, without an item.
             props = []
             if g.Role == Role.Support:

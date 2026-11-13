@@ -8,6 +8,7 @@ author's code: it stays in .cache, never in the repo).
 
 import io
 import subprocess
+import tempfile
 import zipfile
 from pathlib import Path
 
@@ -50,10 +51,67 @@ def decompile(version: str, force: bool = False) -> Path:
     if dll is None:
         raise SystemExit(f"no PathOfValheiman.dll for {version} under {MODS / version}")
     print(f"decompiling {version} with ilspycmd {ILSPY}")
-    subprocess.run(["dotnet", str(_ilspy()), "-p", "-o", str(out), str(dll)], check=True,
-                   stdout=subprocess.DEVNULL)
+    run = ["dotnet", str(_ilspy()), "-p", "-o", str(out)]
+    if subprocess.run([*run, str(dll)], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL).returncode != 0:
+        # ILSpy stops the whole project on one method it can't decompile (6.0.9: a method of the
+        # mod's in-game self test). Decompile a copy whose self-test methods are emptied instead:
+        # nothing the wiki reads lives there, and every other type comes out as it is.
+        print(f"ilspycmd failed on {version}; decompiling again without the self test")
+        with tempfile.TemporaryDirectory() as tmp:
+            stripped = Path(tmp) / dll.name
+            _without_self_test(dll, stripped)
+            subprocess.run([*run, str(stripped)], check=True, stdout=subprocess.DEVNULL)
     stamp.write_text(ILSPY)
     return out
+
+
+_STRIP = r"""
+import sys
+from pythonnet import load
+load("coreclr")
+import clr
+clr.AddReference(sys.argv[1])
+from Mono.Cecil import DefaultAssemblyResolver, ModuleDefinition, ReaderParameters
+from Mono.Cecil.Cil import OpCodes
+
+resolver = DefaultAssemblyResolver()
+for d in sys.argv[4:]:
+    resolver.AddSearchDirectory(d)
+params = ReaderParameters()
+params.AssemblyResolver = resolver
+module = ModuleDefinition.ReadModule(sys.argv[2], params)
+def walk(types):
+    for t in types:
+        yield t
+        yield from walk(t.NestedTypes)
+emptied = 0
+for t in walk(module.Types):
+    if t.FullName == "PassiveTree.SelfTest" or t.FullName.startswith("PassiveTree.SelfTest/"):
+        for m in t.Methods:
+            if m.HasBody:
+                body = m.Body
+                body.Instructions.Clear(); body.ExceptionHandlers.Clear(); body.Variables.Clear()
+                il = body.GetILProcessor()
+                il.Append(il.Create(OpCodes.Ldnull)); il.Append(il.Create(OpCodes.Throw))
+                emptied += 1
+module.Write(sys.argv[3])
+print(f"emptied {emptied} self-test methods")
+"""
+
+
+def _without_self_test(dll: Path, out: Path) -> None:
+    """A copy of the mod's DLL with the bodies of PassiveTree.SelfTest (and its nested types)
+    replaced by `throw null` (Mono.Cecil, the copy shipped with ilspycmd)."""
+    import sys
+
+    from .render import valheim_managed
+
+    # Where the types it refers to live (writing resolves enum constants): Valheim and Unity, the
+    # mod's own folder, and its dependencies (BepInEx, Jotunn, MonoMod).
+    dirs = {str(dll.parent), str(valheim_managed())}
+    dirs |= {str(f.parent) for f in (CACHE / "deps").rglob("*.dll") if not f.is_relative_to(_TOOL)}
+    subprocess.run([sys.executable, "-I", "-c", _STRIP, str(_TOOL / "Mono.Cecil.dll"), str(dll), str(out), *sorted(dirs)],
+                   check=True)
 
 
 def valheim_type(type_name: str) -> Path:

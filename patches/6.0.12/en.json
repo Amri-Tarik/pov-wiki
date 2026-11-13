@@ -95,6 +95,101 @@
    }
   },
   "mods": {
+   "tree.attackspeedpct-minion.w": {
+    "new": null,
+    "old": {
+     "kind": "",
+     "lines": [
+      "T8 (item level 1–42, weight 1000): (1.7–2.3)% increased attack speed for minions",
+      "T7 (item level 19–76, weight 700): (2.7–3.7)% increased attack speed for minions",
+      "T6 (item level 43–129, weight 400): (3.7–5.1)% increased attack speed for minions",
+      "T5 (item level 77–∞, weight 180): (4.8–6.4)% increased attack speed for minions",
+      "T4 (item level 130–∞, weight 60): (6–8)% increased attack speed for minions",
+      "T3 (item level 181–∞, weight 0): (8–10.2)% increased attack speed for minions",
+      "T2 (item level 246–∞, weight 0): (10.2–12.6)% increased attack speed for minions",
+      "T1 (item level 320–∞, weight 0): (12.6–15)% increased attack speed for minions",
+      "T0 (item level 1–∞, weight 0): (15–17.6)% increased attack speed for minions"
+     ],
+     "link": "items/mod/tree.attackspeedpct-minion.w.md",
+     "name": "#% increased attack speed for minions"
+    }
+   },
+   "tree.critchance-minion.w": {
+    "new": null,
+    "old": {
+     "kind": "",
+     "lines": [
+      "T8 (item level 1–42, weight 1000): (10–14)% increased critical strike chance for minions",
+      "T7 (item level 19–76, weight 700): (16–22)% increased critical strike chance for minions",
+      "T6 (item level 43–129, weight 400): (22–30)% increased critical strike chance for minions",
+      "T5 (item level 77–∞, weight 180): (29–39)% increased critical strike chance for minions",
+      "T4 (item level 130–∞, weight 60): (36–48)% increased critical strike chance for minions",
+      "T3 (item level 181–∞, weight 0): (49–61)% increased critical strike chance for minions",
+      "T2 (item level 246–∞, weight 0): (62–76)% increased critical strike chance for minions",
+      "T1 (item level 320–∞, weight 0): (77–91)% increased critical strike chance for minions",
+      "T0 (item level 1–∞, weight 0): (92–108)% increased critical strike chance for minions"
+     ],
+     "link": "items/mod/tree.critchance-minion.w.md",
+     "name": "#% increased critical strike chance for minions"
+    }
+   },
+   "tree.critdamagepct-minion-flat.w": {
+    "new": null,
+    "old": {
+     "kind": "",
+     "lines": [
+      "T8 (item level 1–42, weight 1000): +(5–7)% critical strike damage for minions",
+      "T7 (item level 19–76, weight 700): +(8–11)% critical strike damage for minions",
+      "T6 (item level 43–129, weight 400): +(11–15)% critical strike damage for minions",
+      "T5 (item level 77–∞, weight 180): +(14.5–19.5)% critical strike damage for minions",
+      "T4 (item level 130–∞, weight 60): +(18–24)% critical strike damage for minions",
+      "T3 (item level 181–∞, weight 0): +(24–30)% critical strike damage for minions",
+      "T2 (item level 246–∞, weight 0): +(30–37)% critical strike damage for minions",
+      "T1 (item level 320–∞, weight 0): +(37–44)% critical strike damage for minions",
+      "T0 (item level 1–∞, weight 0): +(44–52)% critical strike damage for minions"
+     ],
+     "link": "items/mod/tree.critdamagepct-minion-flat.w.md",
+     "name": "+#% critical strike damage for minions"
+    }
+   },
+   "tree.miniondamagepct-nearkeeper.w": {
+    "new": null,
+    "old": {
+     "kind": "",
+     "lines": [
+      "T8 (item level 1–42, weight 1000): (10–14)% increased damage for minions near its keeper",
+      "T7 (item level 19–76, weight 700): (16–22)% increased damage for minions near its keeper",
+      "T6 (item level 43–129, weight 400): (22–30)% increased damage for minions near its keeper",
+      "T5 (item level 77–∞, weight 180): (29–39)% increased damage for minions near its keeper",
+      "T4 (item level 130–∞, weight 60): (36–48)% increased damage for minions near its keeper",
+      "T3 (item level 181–∞, weight 0): (49–61)% increased damage for minions near its keeper",
+      "T2 (item level 246–∞, weight 0): (62–76)% increased damage for minions near its keeper",
+      "T1 (item level 320–∞, weight 0): (77–91)% increased damage for minions near its keeper",
+      "T0 (item level 1–∞, weight 0): (92–108)% increased damage for minions near its keeper"
+     ],
+     "link": "items/mod/tree.miniondamagepct-nearkeeper.w.md",
+     "name": "#% increased damage for minions near its keeper"
+    }
+   },
+   "tree.miniondamagepct.w": {
+    "new": null,
+    "old": {
+     "kind": "",
+     "lines": [
+      "T8 (item level 1–42, weight 1000): (7–9)% increased damage for minions",
+      "T7 (item level 19–76, weight 700): (11–15)% increased damage for minions",
+      "T6 (item level 43–129, weight 400): (15–20)% increased damage for minions",
+      "T5 (item level 77–∞, weight 180): (19–26)% increased damage for minions",
+      "T4 (item level 130–∞, weight 60): (24–32)% increased damage for minions",
+      "T3 (item level 181–∞, weight 0): (33–41)% increased damage for minions",
+      "T2 (item level 246–∞, weight 0): (42–52)% increased damage for minions",
+      "T1 (item level 320–∞, weight 0): (53–63)% increased damage for minions",
+      "T0 (item level 1–∞, weight 0): (64–74)% increased damage for minions"
+     ],
+     "link": "items/mod/tree.miniondamagepct.w.md",
+     "name": "#% increased damage for minions"
+    }
+   },
    "utility.finder-chest-rarity": {
     "new": {
      "kind": "",

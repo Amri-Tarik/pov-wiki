@@ -568,6 +568,31 @@ def _staff(ctx, staff: str, page: str) -> str:
     return f"[{name}]({rel(base_path(staff), page)})" if staff in bases(ctx) else name
 
 
+def _throne(ctx, page: str) -> str | None:
+    """The Empty Throne jewel (RadiusJewels, Stat.LoneThrall), linked to its page; None before 6.0.7."""
+    from .gear_pages import _unique_name, unique_path
+
+    item = "PT_Jewel_EmptyThrone"
+    if item not in (ctx.loc.gear or {}).get("uniques", {}):
+        return None
+    return f"[{_unique_name(ctx, item)}]({rel(unique_path(item), page)})"
+
+
+def _living_steel(ctx) -> str | None:
+    """The Forge Master's Living Steel (ForgeHost, Minions.Bound): a minion that is not expendable."""
+    key = "@creature.PT_ForgeBlade.name"
+    return ctx.loc.text(key) if key in ctx.loc.game else None
+
+
+def _bell(ctx, page: str, mod: str = "unique.bell-summon") -> str:
+    """The unique calling the Mountain Bell (its property: Bells, CreatedKind.Bell), else that property's page."""
+    from .gear_pages import gear_owners, unique_path
+    from .item_pages import mod_path
+
+    items = gear_owners(ctx).get(mod)
+    return rel(unique_path(items[0]) if items else mod_path({"id": mod}), page)
+
+
 def _summon_staves(ctx, page, v):
     """The summoning staves (StarterStaves.Calls, SummonStaff, Summon_Cast): thralls, cast, quality."""
     ui, d = ctx.loc.ui, ctx.loc.difficulty
@@ -583,8 +608,14 @@ def _summon_staves(ctx, page, v):
                   ui("formula.health"), ui("formula.damage"), ui("formula.summoning-staves.life"),
                   ui("formula.summoning-staves.eitr"), ui("formula.summoning-staves.stamina"),
                   ui("formula.summoning-staves.bench")], rows)
-    return md + [ui("formula.summoning-staves.cast"), "", ui("formula.summoning-staves.sacrifice", reach=_n(v["sacrifice_reach"])), "",
-                 ui("formula.summoning-staves.quality", health=_pct(v["quality_health"]), eitr=_pct(v["quality_reserve"])), ""]
+    md += [ui("formula.summoning-staves.cast", limit=_anchor("limit", page), held=_anchor("held-eitr", page)), ""]
+    # Summon_Cast.Postfix: one thrall per cast under the Empty Throne; RadiusJewels.TrimThrone dismisses the oldest.
+    if throne := _throne(ctx, page):
+        md += [ui("formula.summoning-staves.throne", throne=throne, n=_n(max(1, round(_tun(ctx, "empty-throne.limit"))))), ""]
+    md += [ui("formula.summoning-staves.sacrifice", reach=_n(v["sacrifice_reach"])), ""]
+    if steel := _living_steel(ctx):  # MinionSacrifice.Victim: only expendable minions
+        md += [ui("formula.summoning-staves.sacrifice_steel", steel=steel), ""]
+    return md + [ui("formula.summoning-staves.quality", health=_pct(v["quality_health"]), eitr=_pct(v["quality_reserve"])), ""]
 
 
 def _held_eitr(ctx, page, v):
@@ -592,7 +623,18 @@ def _held_eitr(ctx, page, v):
     ui = ctx.loc.ui
     md = [ui("formula.held-eitr.text", eitr=_term(ctx, "eitr", page, start=True)), ""]
     md += _formula(ui("formula.held-eitr.formula", q=_pct(v["quality_reserve"])))
-    return md + [ui("formula.held-eitr.notes", floor=_n(v["floor"])), "", ui("formula.held-eitr.short"), ""]
+    md += [ui("formula.held-eitr.notes", floor=_n(v["floor"])), "", ui("formula.held-eitr.short"), ""]
+    # MinionReserve.Refresh: the Bell's hold is a construct's; Reserve.Postfix takes the auras (GemPlayer.HoldFrom) after.
+    md += [ui("formula.held-eitr.bell", bell=_bell(ctx, page)), ""]
+    if ctx.loc.gems.get("gems"):
+        from .gem_pages import BOARD_PAGE
+
+        md += [ui("formula.held-eitr.auras", auras=rel(BOARD_PAGE, page) + "#eitr"), ""]
+    # MinionReserve.InHealth / CanPay: Blood Reserve (minions) moves the holds to health unless Soul Vessel is taken.
+    if "@stat.BloodReserve.ability" in ctx.loc.game:
+        md += [ui("formula.held-eitr.blood", blood=_granted(ctx, "BloodReserve", page), vessel=_granted(ctx, "SoulVessel", page),
+                  rate=_n(_tun(ctx, "summon.reserve-health-rate"))), ""]
+    return md
 
 
 def _summon_lifetime(ctx, page, v):
@@ -627,6 +669,7 @@ def _summon_strength(ctx, page, v):
     md += _formula(ui("formula.summon-strength.formula"))
     return md + [ui("formula.summon-strength.terms", stages=_anchor("creature-strength", page),
                     quality=_pct(v["quality_health"])), "",
+                 ui("formula.summon-strength.skeleton", bonuses=_anchor("minion-bonuses", page)), "",
                  ui("formula.summon-strength.ascended", asc=_anchor("ascension", page)), "",
                  ui("formula.summon-strength.roots"), ""]
 
@@ -642,16 +685,23 @@ def _minion_bonuses(ctx, page, v):
             "pet_resist": _pct(v["pet_resist_cap"]), "pets": _term(ctx, "pets", page, start=True),
             "companions": _term(ctx, "companion", page)}
     md = [ui("formula.minion-bonuses.text"), ""]
-    md += [f"- {ui(f'formula.minion-bonuses.{k}', **nums)}" for k in ("damage", "low_damage", "health", "taken", "ailments")] + [""]
+    md += [f"- {ui(f'formula.minion-bonuses.{k}', **nums)}" for k in ("damage", "low_damage", "health", "skeleton", "taken", "ailments")] + [""]
     md += [ui("formula.minion-bonuses.managed"), ""]
     md += [f"- {ui(f'formula.minion-bonuses.{k}', **nums)}" for k in ("resists", "armour", "regen", "speed", "own_shield", "crit", "seek")]
     md += ["", ui("formula.minion-bonuses.pet_resists", **nums)]
-    return md + ["", ui("formula.minion-bonuses.guard", guard=_granted(ctx, "MinionSharedGuard", page),
-                        seconds=_n(t["minion.guard-seconds"]), share=_pct(t["minion.guard-share"]), shield=shield), "",
-                 ui("formula.minion-bonuses.last", last=_granted(ctx, "MinionLastStand", page), shield=shield), "",
-                 ui("formula.minion-bonuses.both"), "",
-                 ui("formula.minion-bonuses.unstable", unstable=_granted(ctx, "MinionInstability", page), low=_pct(v["low"]),
-                    share=_pct(t["minion.instability-share"]), radius=_n(t["minion.instability-radius"])), ""]
+    md += ["", ui("formula.minion-bonuses.guard", guard=_granted(ctx, "MinionSharedGuard", page),
+                  seconds=_n(t["minion.guard-seconds"]), share=_pct(t["minion.guard-share"]), shield=shield), "",
+           ui("formula.minion-bonuses.last", last=_granted(ctx, "MinionLastStand", page), shield=shield), "",
+           ui("formula.minion-bonuses.both"), "",
+           ui("formula.minion-bonuses.unstable", unstable=_granted(ctx, "MinionInstability", page), low=_pct(v["low"]),
+              share=_pct(t["minion.instability-share"]), radius=_n(t["minion.instability-radius"])), ""]
+    if steel := _living_steel(ctx):  # MinionInstability.Check: only expendable minions
+        md += [ui("formula.minion-bonuses.unstable_steel", steel=steel), ""]
+    # CreatureBonuses.Of: under the Empty Throne a skeleton minion is a Companion too; its more damage and health.
+    if throne := _throne(ctx, page):
+        md += [ui("formula.minion-bonuses.throne", throne=throne, companion=_term(ctx, "companion", page),
+                  damage=_n(1 + _tun(ctx, "empty-throne.damage-more")), health=_n(1 + _tun(ctx, "empty-throne.health-more"))), ""]
+    return md
 
 
 def _ally_kills(ctx, page, v):
@@ -1088,15 +1138,9 @@ def _limit(ctx, page, v):
     """Limits (Stat.Limit): an unscoped bonus raises every limit that reads it; ally links
     (AllyLinks.Limit, slotted rows only) and Chain Lightning (ChainLightning.Targets) count only
     their own; ballistas and Mountain Bells add construct bonuses (Ballista.Limit, CreatedTargets.Limit)."""
-    from .item_pages import mod_path
-
     ui, t = ctx.loc.ui, ctx.loc.difficulty.get("tunables", {})
     knobs = ctx.loc.difficulty.get("knobs", {})
-    from .gear_pages import gear_owners, unique_path
-
-    # The unique calling the Bell (its property: Bells, CreatedKind.Bell), else that property's page.
-    bell_items = gear_owners(ctx).get(v["bell_mod"])
-    bell = rel(unique_path(bell_items[0]) if bell_items else mod_path({"id": v["bell_mod"]}), page)
+    bell = _bell(ctx, page, v["bell_mod"])
     rows = [[ui("formula.limit.per_cast"), _n(v["per_cast"])],
             [ui("formula.limit.ballistas", ballista=_term(ctx, "ballista", page, start=True)), _n(knobs["ballista.limit"]["value"])],
             [ui("formula.limit.bells", bell=bell), _n(knobs["bell.limit"]["value"])],
@@ -1111,7 +1155,9 @@ def _limit(ctx, page, v):
     md = [ui("formula.limit.text", limit=_term(ctx, "limit", page, start=True)), ""]
     md += _table([ui("formula.limit.effect"), ui("formula.limit.base")], rows)
     return md + [ui("formula.limit.constructs", construct=_term(ctx, "construct", page)), "",
-                 ui("formula.limit.own", link=_term(ctx, "ally-link", page), n=_n(t["chain.targets"])), ""]
+                 ui("formula.limit.own", link=_term(ctx, "ally-link", page), n=_n(t["chain.targets"])), "",
+                 # ChainLightning.Targets: chain chance naming it overflows into targets (ProjectileMods.Overflow)
+                 ui("formula.limit.chain"), ""]
 
 
 def _endurance(ctx, page, v):

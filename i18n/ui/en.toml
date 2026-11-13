@@ -274,7 +274,7 @@ unique_repair = "Unique items are repaired only at a [Runic Anvil]({anvil}) or a
 skeleton.title = "Skeleton form"
 skeleton.text = "While this jewel is socketed in your tree, every skeleton you summon ([summons]({summons})) takes this form as it rises and keeps it while it lives. Its weapons and shield are taken away and replaced by the form's own. Only one skeleton form jewel can be socketed (the other: {others})."
 skeleton.archer = "It becomes a skeleton archer with a Barrow Bow. The bow deals pierce damage of {x} × the total damage of the weapon the skeleton had."
-skeleton.mage = "It becomes a skeleton mage with a Silent Seidr Staff, casting a fireball every {interval} s. The fireball deals fire damage of {x} × the total damage of the weapon the skeleton had, in a {blast} m blast."
+skeleton.mage = "It becomes a skeleton mage with a Silent Seidr Staff, casting a fireball every {interval} s. The fireball deals fire damage of {x} × the total damage of the weapon the skeleton had, in a {blast} m blast. The fireball flies straight, without dropping."
 skeleton.damage = "The weapon it had is the one in its hands, or else the first in its inventory, or else the skeleton's default weapon; with none, {default}."
 src_mist = "from a creature, elite or boss killed in the Blight Mist, {chance} each ([loot]({link}))"
 one_in = "1 in {n}"
@@ -1459,6 +1459,7 @@ ground = "{ground}: patches at once"
 infusion = "{infusion}: units stored"
 constructs = "Ballistas and Mountain Bells also count limit bonuses that name {construct}s; spores, ice crystals and armour shards don't."
 own = "The exceptions: your {link}s count only limit bonuses that name ally links, and Chain Lightning's targets ({n}) only those that name Chain Lightning."
+chain = "Chance to chain that names Chain Lightning adds targets too: each full 100% is one more, and the rest is the chance of one more on each cast."
 
 [formula.lifesteal]
 title = "Life leech"
@@ -1558,8 +1559,10 @@ life = "Lifetime"
 eitr = "Eitr held"
 stamina = "Stamina per cast"
 bench = "Workbench level"
-cast = "Each cast calls one thrall. There's no limit on how many stand at once: only your free eitr limits them."
+cast = "Each cast calls one thrall, more with [limit]({limit}) bonuses for minions. There's no limit on how many stand at once: only the eitr they hold (or health: [held eitr]({held})) limits them."
+throne = "{throne}: each cast calls one thrall whatever your limit bonuses, and only {n} skeleton of yours stands at once: when one more rises, the oldest leaves. All the thralls of these staves are skeletons, and so are Dead Raiser's."
 sacrifice = "Alternative cast, Sacrifice: kills one of your summons, the one under your crosshair (up to {reach} m away) or else the one with the least health. It costs nothing; with no summon around, nothing happens."
+sacrifice_steel = "{steel} can't be sacrificed: your aim passes through it."
 quality = "Each staff quality above 1 gives its thralls +{health} health and makes them hold +{eitr} more eitr."
 
 [formula.held-eitr]
@@ -1568,6 +1571,9 @@ text = "{eitr} a summon holds comes off your maximum eitr while it lives, and ei
 formula = "eitr held = base × (1 + {q} × (staff quality − 1)) ÷ (1 + reservation efficiency for minions)"
 notes = "The divisor is at least {floor}: +100% reservation efficiency halves what a summon holds, −20% makes it hold 25% more. The hold ends when the summon dies or its lifetime ends, and comes back if you log in with your summons still alive."
 short = "A summoning staff can't call a thrall unless you have that much eitr free. Valheim's own staves can't be cast at all then."
+bell = "The [Mountain Bell]({bell}) holds eitr the same way, from the same maximum."
+auras = "Switched-on gem auras reserve theirs from the maximum eitr left after these holds ([eitr reserve]({auras}))."
+blood = "{blood}: your summons hold health instead of eitr, {rate} health per point of eitr. It comes off your maximum health, which keeps at least 1, and health above the new maximum is lost. A summoning staff then calls a thrall only if at least 1 maximum health would be left after it; Valheim's staves likewise. With {vessel} they hold eitr. The Mountain Bell always holds eitr."
 
 [formula.summon-lifetime]
 title = "Lifetime and withering"
@@ -1582,6 +1588,7 @@ title = "Summon strength"
 text = "Summons don't take a creature's usual scaling: no [stars]({stars}), tamed share, [Monster Power]({power}) or Blight Mist."
 formula = "summon health or damage = base × the biome's health factor × summon power"
 terms = "The biome is the staff's (in the tables here), with its factor from the [biome table]({stages}), softened by the difficulty preset; health and damage both use the health column. The global enemy offense and defense settings apply too. Health is also × (1 + your minion health increases) and +{quality} per staff quality above 1. Summon power is only for Valheim's staves (below)."
+skeleton = "A skeleton's health is also × (1 + your skeleton health bonuses), multiplied separately ([your stats for minions]({bonuses}))."
 ascended = "A staff [ascended]({asc}) with a Lord's Brand calls its thralls as of the brand's biome when that's later than its own; Valheim's staves too."
 roots = "Roots a staff grows are scaled like its summons."
 
@@ -1599,6 +1606,7 @@ text = "Your stats for minions reach your summons, and some of them your pets:"
 damage = "damage: × (1 + minion damage increases) (pets add tamed damage increases)"
 low_damage = "while a summon is below {low} health, your minion damage bonuses that apply at low health count for its hits too"
 health = "health: × (1 + minion health increases)"
+skeleton = "skeletons (the thralls of the mod's summoning staves, Dead Raiser's skeletons): damage × (1 + skeleton damage bonuses) and health × (1 + skeleton health bonuses), each multiplied separately"
 taken = "damage they take: × (1 + minion damage taken), between {lo} and {hi}"
 ailments = "ailments on them (burning, poison, frost, shock) last × (1 − minion ailment resistance), at most {ailment} shorter"
 managed = "Summons the mod manages also get:"
@@ -1614,6 +1622,8 @@ last = "{last}: damage that would take a minion below 1 health comes off your {s
 both = "Both protect pets too, and only while your rune shield lasts."
 pet_resists = "{pets} take fire, frost, lightning, poison and spirit damage cut by your pet resistance, and {companions}s by companion resistance as well, at most {pet_resist} in all."
 unstable = "{unstable}: the first time a summon drops below {low} health from a hit, it explodes for {share} of its maximum health as fire damage to enemies within {radius} m, and dies."
+unstable_steel = "{steel} doesn't explode."
+throne = "{throne}: your one skeleton also counts as your {companion}: your companion damage, health, damage taken, armour, regeneration and resistance bonuses reach it as well. The jewel gives skeletons ×{damage} damage and ×{health} health."
 
 [formula.ailments]
 title = "Ailments"

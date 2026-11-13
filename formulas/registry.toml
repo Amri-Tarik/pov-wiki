@@ -1167,6 +1167,12 @@ anchors = [
     "PassiveTree/MinionSacrifice.cs :: MinionSacrifice.Pick",
     "PassiveTree/MinionSacrifice.cs :: MinionSacrifice.Aimed",
     "PassiveTree/MinionSacrifice.cs :: \"private const float Reach\"",
+    "PassiveTree/MinionSacrifice.cs :: MinionSacrifice.Victim",
+    "PassiveTree/Minions.cs :: Minions.Expendable",
+    "PassiveTree/RadiusJewels.cs :: RadiusJewels.ThroneOn",
+    "PassiveTree/RadiusJewels.cs :: RadiusJewels.TrimThrone",
+    "PassiveTree/SkeletonForms.cs :: SkeletonForms.IsSkeleton",
+    "PassiveTree/Tunables.cs :: \"empty-throne.limit\"",
     "PassiveTree/MinionLife.cs :: MinionLife.Scale",
 ]
 fingerprint = "f8f94b3aabbb"
@@ -1186,6 +1192,15 @@ anchors = [
     "PassiveTree/MinionReserve.cs :: Reserve.Postfix",
     "PassiveTree/MinionReserve.cs :: MinionReserve.Tick",
     "PassiveTree/MinionReserve.cs :: MinionReserve.Refresh",
+    "PassiveTree/MinionReserve.cs :: MinionReserve.InHealth",
+    "PassiveTree/MinionReserve.cs :: MinionReserve.CanPay",
+    "PassiveTree/StarterStaves.cs :: StarterStaves.EitrForCall",
+    "PassiveTree/Reservation.cs :: Reservation.Fits",
+    "PassiveTree/Reservation.cs :: Reservation.FitsHealth",
+    "PassiveTree/Reservation.cs :: Reservation.HealthLeft",
+    "PassiveTree.Gems/GemPlayer.cs :: GemPlayer.HoldFrom",
+    "PassiveTree/Bells.cs :: \"MinionReserve.Hold(zDO.m_uid, spot.Reserve\"",
+    "PassiveTree/Tunables.cs :: \"summon.reserve-health-rate\"",
     "PassiveTree/MinionLife.cs :: MinionLife.Keep",
 ]
 fingerprint = "bd124e4d1a15"
@@ -1236,6 +1251,7 @@ anchors = [
     "PassiveTree/MinionLife.cs :: MinionLife.Scale",
     "PassiveTree/StarterStaves.cs :: StarterStaves.VanillaPower",
     "PassiveTree/CreatureBonuses.cs :: CreatureBonuses.HealthFactor",
+    "PassiveTree/SkeletonForms.cs :: SkeletonForms.IsSkeleton",
 ]
 fingerprint = "8583fdcacc40"
 checked = "6.0.0"
@@ -1262,6 +1278,11 @@ anchors = [
     "PassiveTree/ShieldOps.cs :: MinionGuard.Prefix",
     "PassiveTree/MinionInstability.cs :: MinionInstability.Check",
     "PassiveTree/MinionInstability.cs :: MinionInstability.Explode",
+    "PassiveTree/Minions.cs :: Minions.Expendable",
+    "PassiveTree/SkeletonForms.cs :: SkeletonForms.IsSkeleton",
+    "PassiveTree/RadiusJewels.cs :: RadiusJewels.RowsOf",
+    "PassiveTree/Tunables.cs :: \"empty-throne.damage-more\"",
+    "PassiveTree/Tunables.cs :: \"empty-throne.health-more\"",
     "PassiveTree/Levels.cs :: Levels.IsLow",
     "PassiveTree/Tunables.cs :: \"minion.instability-share\"",
     "PassiveTree/Tunables.cs :: \"minion.instability-radius\"",
@@ -1328,6 +1349,8 @@ anchors = [
     "PassiveTree/Tunables.cs :: \"shard.limit\"",
     "PassiveTree/Tunables.cs :: \"impale.limit\"",
     "PassiveTree/Tunables.cs :: \"chain.targets\"",
+    "PassiveTree/ChainLightning.cs :: ChainLightning.Targets#2",
+    "PassiveTree/ProjectileMods.cs :: ProjectileMods.Overflow#2",
 ]
 fingerprint = "0fc59054f6c3"
 checked = "6.0.0"

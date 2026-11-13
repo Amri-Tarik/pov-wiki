@@ -138,6 +138,42 @@ def _unsearched(lines: list[str]) -> list[str]:
     return ['<div data-search-exclude markdown="1">', "", *lines, "</div>", ""]
 
 
+def _order_key(key: tuple) -> tuple:
+    classes = [c for c in key if c in _CLASS_ORDER]
+    return [_CLASS_ORDER.index(c) for c in classes] or [99], len(classes), key
+
+
+def _group_title(ctx: Ctx, key: tuple) -> str:
+    """A _group_key in words: "Weapons & Shields", "Jewels: Cut jewel"."""
+    ui = ctx.loc.ui
+    classes = [c for c in key if c in _CLASS_ORDER]
+    title = " & ".join(ui(f"class.{c}") for c in classes) or ui("items.other")
+    if len(key) > len(classes):  # jewel types
+        title += ": " + ", ".join(ui(f"tag.{t}") for t in key[len(classes):])
+    return title
+
+
+def theme_link(ctx: Ctx, theme: str, page: str) -> str:
+    """A theme linked to its section of the property categories page."""
+    return f"[{_themes(ctx).get(theme, theme)}]({rel(CATEGORIES_PAGE, page)}#theme-{theme})"
+
+
+def mod_tables(ctx: Ctx, mods: list[dict], page: str, level: str = "##") -> list[str]:
+    """Mods in tables by what they roll on (the mods index's grouping), each left out of search."""
+    ui, groups = ctx.loc.ui, defaultdict(list)
+    for a in mods:
+        groups[_group_key(a)].append(a)
+    header = [ui("items.mod"), ui("items.place"), ui("items.rolls_on"), ui("items.theme"), ui("items.min_level")]
+    md = []
+    for key in sorted(groups, key=_order_key):
+        rows = [[f"[{_cell(_title(a))}]({rel(mod_path(a), page)})", _place(ctx, a), _cell(_rule(ctx, a)),
+                 theme_link(ctx, a["theme"], page) if a.get("theme") else "—",
+                 f"{biome(ctx, _min_level(a))} <small>({_min_level(a)})</small>"]
+                for a in sorted(groups[key], key=lambda a: (a["place"], _title(a).lower()))]
+        md += [f"{level} {_group_title(ctx, key)} ({len(rows)})", ""] + _unsearched(_table(header, rows))
+    return md
+
+
 def page_mods(ctx: Ctx) -> dict[str, str]:
     """All item mods: an index grouped by what they roll on, and a page per mod."""
     loc, affixes = ctx.loc, ctx.loc.loot["affixes"]
@@ -160,16 +196,8 @@ def page_mods(ctx: Ctx) -> dict[str, str]:
         if a["source"] == "loot":
             groups[_group_key(a)].append(a)
     md = [f"# {ui('items.mods')}", "", ui("items.mods_intro"), ""]
-    def order(key: tuple) -> tuple:
-        classes = [c for c in key if c in _CLASS_ORDER]
-        return [_CLASS_ORDER.index(c) for c in classes] or [99], len(classes), key
-
-    for key in sorted(groups, key=order):
-        classes = [c for c in key if c in _CLASS_ORDER]
-        title = " & ".join(ui(f"class.{c}") for c in classes) or ui("items.other")
-        if len(key) > len(classes):  # jewel types
-            title += ": " + ", ".join(ui(f"tag.{t}") for t in key[len(classes):])
-        md += [f"## {title} ({len(groups[key])})", ""] + _unsearched(_table(header, rows(groups[key])))
+    for key in sorted(groups, key=_order_key):
+        md += [f"## {_group_title(ctx, key)} ({len(groups[key])})", ""] + _unsearched(_table(header, rows(groups[key])))
     from .enchant_pages import owners
     from .gear_pages import gear_owners
 
@@ -226,7 +254,7 @@ def _category_rows(ctx: Ctx, a: dict, page: str) -> list[list[str]]:
     ui, rows = ctx.loc.ui, []
     cats = rel(CATEGORIES_PAGE, page)
     if a.get("theme"):
-        rows.append([ui("items.theme"), f"[{_themes(ctx).get(a['theme'], a['theme'])}]({cats}#theme-{a['theme']}) — {ui('items.theme_note')}"])
+        rows.append([ui("items.theme"), f"{theme_link(ctx, a['theme'], page)} — {ui('items.theme_note')}"])
     if "alloys" in a:
         rows.append([ui("items.alloys"), (_alloy_links(ctx, a["alloys"], page) + f" — {ui('items.alloys_note')}") if a["alloys"] else ui("items.alloys_none")])
     if a["families"]:

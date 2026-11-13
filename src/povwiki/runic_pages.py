@@ -24,6 +24,12 @@ RUNIC_PAGE = "crafting/runic.md"
 ORES_PAGE = "items/runic/ores.md"
 ALLOYS_PAGE = "items/runic/alloys.md"
 GLYPHS_PAGE = "items/runic/glyphs.md"
+
+
+def alloy_path(alloy: str) -> str:
+    return f"items/runic/alloy/{alloy}.md"
+
+
 ANVIL_ID = "PT_RunicAnvil"
 ANVIL_PAGE = f"crafting/building/{ANVIL_ID}.md"  # building_pages.building_path
 # GlyphLoot.Chance: the drop sources, highest first (the catalog's glyphSources ids).
@@ -73,7 +79,7 @@ def _defs(ctx: Ctx) -> dict[str, dict]:
     """item id -> its runic definition, with "kind" (ore, alloy, glyph) and the page it is on."""
     r, out = ctx.loc.runic, {}
     for a in r.get("alloys", []):
-        out[a["id"]] = {**a, "kind": "alloy", "page": ALLOYS_PAGE}
+        out[a["id"]] = {**a, "kind": "alloy", "page": alloy_path(a["id"])}
         out[a["ore"]] = {"id": a["ore"], "name": a["oreName"], "flavor": a["oreFlavor"], "alloy": a["id"], "kind": "ore", "page": ORES_PAGE}
     for g in r.get("glyphs", []):
         out[g["id"]] = {**g, "kind": "glyph", "page": GLYPHS_PAGE}
@@ -83,6 +89,8 @@ def _defs(ctx: Ctx) -> dict[str, dict]:
 def item_link(ctx: Ctx, item: str, page: str) -> str:
     """An ore, alloy or glyph linked to its row; any other item to its own page when it has one."""
     d = _defs(ctx).get(item)
+    if d and d["kind"] == "alloy":  # its own page
+        return f"[{d['name']}]({rel(d['page'], page)})"
     if d:
         return f"[{d['name']}]({rel(d['page'], page)}#{item})" if d["page"] != page else f"[{d['name']}](#{item})"
     from .base_pages import bases
@@ -347,7 +355,10 @@ def page_runic(ctx: Ctx) -> dict[str, str]:
     r = ctx.loc.runic
     if not r or not r.get("alloys"):
         return {}
-    return {RUNIC_PAGE: _runic_page(ctx), ORES_PAGE: _ores_page(ctx), ALLOYS_PAGE: _alloys_page(ctx), GLYPHS_PAGE: _glyphs_page(ctx)}
+    pages = {RUNIC_PAGE: _runic_page(ctx), ORES_PAGE: _ores_page(ctx), ALLOYS_PAGE: _alloys_page(ctx), GLYPHS_PAGE: _glyphs_page(ctx)}
+    for a in r["alloys"]:
+        pages[alloy_path(a["id"])] = _alloy_page(ctx, a)
+    return pages
 
 
 def _potential_mod(ctx: Ctx) -> tuple[str, str] | None:
@@ -455,37 +466,52 @@ def _ores_page(ctx: Ctx) -> str:
 
 
 def _alloys_page(ctx: Ctx) -> str:
-    from .item_pages import mod_path
-
     ui, r, page = ctx.loc.ui, ctx.loc.runic, ALLOYS_PAGE
     md = [f"# {ui('runic.alloys')}", "", ui("runic.alloys_intro", ores=rel(ORES_PAGE, page), forging=rel(RUNIC_PAGE, page)), ""]
     rows = []
     for a in r["alloys"]:
-        name = f"{_anchor(a['id'])}**{a['name']}**<br><small>*{a['flavor']}*</small>"
-        theme = a["theme"]["name"] if a.get("theme") else "—"
-        rows.append([_icon(ctx, a["id"], page, 40), name, theme, to_md(a["lines"][0], ctx.loc, page), str(a["cost"]), str(a["dust"]),
-                     _named(ctx, a["ore"], page), str(len(_favoured(ctx, a)))])
+        link = rel(alloy_path(a["id"]), page)
+        name = f"{_anchor(a['id'])}**[{a['name']}]({link})**<br><small>*{a['flavor']}*</small>"
+        rows.append([_icon(ctx, a["id"], page, 40), name, _theme(ctx, a, page), to_md(a["lines"][0], ctx.loc, page), str(a["cost"]), str(a["dust"]),
+                     _named(ctx, a["ore"], page), f"[{len(_favoured(ctx, a))}]({link}#favoured)"])
     md += _table(["", ui("runic.alloy"), ui("runic.theme"), ui("col.effect"), ui("runic.potential_col"), ui("runic.dust_col"),
                   ui("runic.smelted_from"), ui("runic.favoured")], rows)
     md += [ui("runic.alloys_rule", link=f"{rel(RUNIC_PAGE, page)}#runic-alloys"), ""]
-    md += [f"## {ui('runic.favoured_title')} {{ #favoured }}", "", ui("runic.favoured_text"), ""]
-    for a in r["alloys"]:
-        found = _favoured(ctx, a)
-        if not found:
-            continue
-        links = " · ".join(f"[{t}]({rel(mod_path(x), page)})" for t, x in found)
-        # Links to every favoured mod: long (54 KB in Russian), and each mod is searchable on its own page.
-        md += [f'??? note "{a["name"]} ({len(found)})"', "", '    <div data-search-exclude markdown="1">', "",
-               f"    {links}", "", "    </div>", ""]
     return "\n".join(md + _footer(ctx))
 
 
-def _favoured(ctx: Ctx, a: dict) -> list[tuple[str, dict]]:
-    """The item mods an alloy favours, one per name (a mod's tiers and slot variants share it)."""
-    from .item_pages import _title
+def _theme(ctx: Ctx, a: dict, page: str) -> str:
+    from .item_pages import theme_link
 
+    if not a.get("theme"):
+        return "—"
+    return theme_link(ctx, a["theme"]["id"], page) if ctx.loc.loot.get("themes") else a["theme"]["name"]
+
+
+def _favoured(ctx: Ctx, a: dict) -> list[dict]:
+    """The item mods an alloy favours (every variant: a mod's slot variants roll on different items)."""
     affixes = {x["id"]: x for x in ctx.loc.loot.get("affixes", [])}
-    return sorted({_title(affixes[i]): affixes[i] for i in a["affixes"] if i in affixes}.items())
+    return [affixes[i] for i in a["affixes"] if i in affixes]
+
+
+def _alloy_page(ctx: Ctx, a: dict) -> str:
+    """One alloy: what it is, its cost, and every property it favours, in tables by what they roll on."""
+    from .item_pages import mod_tables
+
+    ui, page = ctx.loc.ui, alloy_path(a["id"])
+    md = [f"# {a['name']}", "", _icon(ctx, a["id"], page, 64), "", f"*{a['flavor']}*", ""]
+    md += _table(["", ""], [
+        [ui("runic.theme"), _theme(ctx, a, page)],
+        [ui("col.effect"), to_md(a["lines"][0], ctx.loc, page)],
+        [ui("runic.potential_col"), str(a["cost"])],
+        [ui("runic.dust_col"), str(a["dust"])],
+        [ui("runic.smelted_from"), _named(ctx, a["ore"], page)],
+    ])
+    md += [ui("runic.alloy_page_links", alloys=rel(ALLOYS_PAGE, page), link=f"{rel(RUNIC_PAGE, page)}#runic-alloys"), ""]
+    found = _favoured(ctx, a)
+    md += [f"## {ui('runic.favoured_title')} ({len(found)}) {{ #favoured }}", "", ui("runic.favoured_text", alloy=a["name"]), ""]
+    md += mod_tables(ctx, found, page, "###")
+    return "\n".join(md + _footer(ctx))
 
 
 def _glyphs_page(ctx: Ctx) -> str:

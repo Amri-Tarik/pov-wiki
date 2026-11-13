@@ -154,21 +154,21 @@ def _group_title(ctx: Ctx, key: tuple) -> str:
 
 
 def theme_link(ctx: Ctx, theme: str, page: str) -> str:
-    """A theme linked to its section of the property categories page."""
-    return f"[{_themes(ctx).get(theme, theme)}]({rel(CATEGORIES_PAGE, page)}#theme-{theme})"
+    """A theme linked to its page."""
+    return f"[{_themes(ctx).get(theme, theme)}]({rel(theme_path(theme), page)})"
 
 
-def mod_tables(ctx: Ctx, mods: list[dict], page: str, level: str = "##") -> list[str]:
+def mod_tables(ctx: Ctx, mods: list[dict], page: str, level: str = "##", theme: bool = True) -> list[str]:
     """Mods in tables by what they roll on (the mods index's grouping), each left out of search."""
     ui, groups = ctx.loc.ui, defaultdict(list)
     for a in mods:
         groups[_group_key(a)].append(a)
-    header = [ui("items.mod"), ui("items.place"), ui("items.rolls_on"), ui("items.theme"), ui("items.min_level")]
+    header = [ui("items.mod"), ui("items.place"), ui("items.rolls_on"), *([ui("items.theme")] if theme else []), ui("items.min_level")]
     md = []
     for key in sorted(groups, key=_order_key):
         rows = [[f"[{_cell(_title(a))}]({rel(mod_path(a), page)})", _place(ctx, a), _cell(_rule(ctx, a)),
-                 theme_link(ctx, a["theme"], page) if a.get("theme") else "—",
-                 f"{biome(ctx, _min_level(a))} <small>({_min_level(a)})</small>"]
+                 *([theme_link(ctx, a["theme"], page) if a.get("theme") else "—"] if theme else []),
+                 _source(ctx, a, page) if a["source"] != "loot" else f"{biome(ctx, _min_level(a))} <small>({_min_level(a)})</small>"]
                 for a in sorted(groups[key], key=lambda a: (a["place"], _title(a).lower()))]
         md += [f"{level} {_group_title(ctx, key)} ({len(rows)})", ""] + _unsearched(_table(header, rows))
     return md
@@ -228,6 +228,46 @@ def page_mods(ctx: Ctx) -> dict[str, str]:
 # ---- Categories: group, families, theme and alloys (Valheiman.Api.AffixCatalog, PoV 6.0.12) ------
 
 CATEGORIES_PAGE = "items/mod-categories.md"
+GROUPS_PAGE = "items/mod-groups.md"
+
+
+def theme_path(theme: str) -> str:
+    return f"items/theme/{theme}.md"
+
+
+def family_path(family: str) -> str:
+    return f"items/family/{family}.md"
+
+
+def _family_name(ctx: Ctx, family: str) -> str:
+    """A family's name: the wiki's word for it when it has one, else its id with a capital."""
+    key = f"family.{family}"
+    name = ctx.loc.ui(key)
+    return family.replace("-", " ").capitalize() if name == key else name
+
+
+def family_link(ctx: Ctx, family: str, page: str) -> str:
+    return f"[{_family_name(ctx, family)}]({rel(family_path(family), page)})"
+
+
+def _families(ctx: Ctx) -> dict[str, list[dict]]:
+    out = defaultdict(list)
+    for a in ctx.loc.loot["affixes"]:
+        for f in a["families"]:
+            out[f].append(a)
+    return out
+
+
+def _counts(items: list[str], links: dict[str, str] | None = None, top: int = 0) -> str:
+    """"Weapons 120 · Armour 80": how many of each, most first."""
+    from collections import Counter
+
+    found = Counter(items).most_common(top or None)
+    return " · ".join(f"{(links or {}).get(k, k)} {n}" for k, n in found)
+
+
+def _rolls_on(ctx: Ctx, mods: list[dict]) -> str:
+    return _counts([ctx.loc.ui(f"class.{c}") for a in mods for c in _classes(a)])
 
 
 def _group_members(ctx: Ctx) -> dict[str, list[dict]]:
@@ -252,17 +292,16 @@ def _category_rows(ctx: Ctx, a: dict, page: str) -> list[list[str]]:
     """The categories a mod belongs to, for its page: theme, alloys that favour it, families,
     and its group with the other mods in it."""
     ui, rows = ctx.loc.ui, []
-    cats = rel(CATEGORIES_PAGE, page)
     if a.get("theme"):
         rows.append([ui("items.theme"), f"{theme_link(ctx, a['theme'], page)} — {ui('items.theme_note')}"])
     if "alloys" in a:
         rows.append([ui("items.alloys"), (_alloy_links(ctx, a["alloys"], page) + f" — {ui('items.alloys_note')}") if a["alloys"] else ui("items.alloys_none")])
     if a["families"]:
-        rows.append([ui("items.families"), ", ".join(f"[{f}]({cats}#family-{f})" for f in a["families"])])
+        rows.append([ui("items.families"), ", ".join(family_link(ctx, f, page) for f in a["families"])])
     group = a["group"] or a["id"]
     others = [o for o in _group_members(ctx)[group] if o["id"] != a["id"]]
     if a["group"] or others:
-        line = f"`{group}` — {ui('items.group_note')}"
+        line = (f"[`{group}`]({rel(GROUPS_PAGE, page)}#group-{group})" if others else f"`{group}`") + f" — {ui('items.group_note')}"
         if others:
             line += "<br>" + ui("items.group_others", mods=", ".join(f"[{_cell(_title(o))}]({rel(mod_path(o), page)})"
                                                                       for o in sorted(others, key=lambda o: _title(o).lower())))
@@ -271,40 +310,75 @@ def _category_rows(ctx: Ctx, a: dict, page: str) -> list[list[str]]:
 
 
 def page_mod_categories(ctx: Ctx) -> dict[str, str]:
-    """Every mod by theme, by family and by shared group (the categories of the mod's public API,
-    Valheiman.Api.AffixCatalog). Only when the rendered data has the themes (6.0.12 on)."""
+    """The categories of the mod's public API (Valheiman.Api.AffixCatalog, 6.0.12 on): an overview,
+    a page per theme and per family, and the groups that hold more than one property."""
     themes = ctx.loc.loot.get("themes") or []
     if not themes:
         return {}
     ui, page, affixes = ctx.loc.ui, CATEGORIES_PAGE, ctx.loc.loot["affixes"]
-
-    def links(items: list[dict]) -> str:
-        return ", ".join(f"[{_cell(_title(a))}]({rel(mod_path(a), page)})" for a in sorted(items, key=lambda a: _title(a).lower()))
+    by_theme = {th["id"]: [a for a in affixes if a.get("theme") == th["id"]] for th in themes}
+    families = _families(ctx)
+    shared = {g: m for g, m in _group_members(ctx).items() if len(m) > 1}
 
     md = [f"# {ui('items.categories')}", "", ui("items.categories_intro", mods=rel(MODS_PAGE, page)), ""]
-    md += [f"## {ui('items.themes')}", "", ui("items.themes_intro", enchants=rel("items/enchantments.md", page),
-                                              alloys=rel("items/runic/alloys.md", page)), ""]
-    alloys_of = defaultdict(set)
-    for a in affixes:
-        if a.get("theme"):
-            alloys_of[a["theme"]].update(a.get("alloys") or [])
+    md += [f"## {ui('items.themes')} {{ #themes }}", "", ui("items.themes_intro", enchants=rel("items/enchantments.md", page),
+                                                              alloys=rel("items/runic/alloys.md", page)), ""]
+    rows = []
     for th in themes:
-        mine = [a for a in affixes if a.get("theme") == th["id"]]
-        md += [f"### {th['name']} ({len(mine)}) {{ #theme-{th['id']} }}", ""]
-        if alloys_of[th["id"]]:
-            md += [ui("items.theme_alloys", alloys=_alloy_links(ctx, sorted(alloys_of[th["id"]]), page)), ""]
-        md += _unsearched([links(mine), ""])
-    families = defaultdict(list)
-    for a in affixes:
-        for f in a["families"]:
-            families[f].append(a)
-    md += [f"## {ui('items.families')}", "", ui("items.families_intro"), ""]
-    for f in sorted(families):
-        md += [f"### {f} ({len(families[f])}) {{ #family-{f} }}", ""] + _unsearched([links(families[f]), ""])
-    shared = {g: m for g, m in _group_members(ctx).items() if len(m) > 1}
-    md += [f"## {ui('items.groups')}", "", ui("items.groups_intro", n=len(shared)), ""]
-    md += _unsearched(_table([ui("items.group"), ui("items.mods")], [[f"`{g}`", links(shared[g])] for g in sorted(shared)]))
-    return {page: "\n".join(md + _footer(ctx))}
+        mine = by_theme[th["id"]]
+        alloys = sorted({x for a in mine for x in a.get("alloys") or []})
+        rows.append([theme_link(ctx, th["id"], page), str(len(mine)), _alloy_links(ctx, alloys, page) or "—", _rolls_on(ctx, mine)])
+    md += _table([ui("items.theme"), ui("items.mods"), ui("items.alloys"), ui("items.rolls_on")], rows)
+    md += [f"## {ui('items.families')} {{ #families }}", "", ui("items.families_intro"), ""]
+    names = _themes(ctx)
+    rows = [[family_link(ctx, f, page), str(len(families[f])),
+             _counts([a["theme"] for a in families[f] if a.get("theme")], {k: theme_link(ctx, k, page) for k in names}, 3)]
+            for f in sorted(families, key=lambda f: (-len(families[f]), _family_name(ctx, f)))]
+    md += _table([ui("items.family"), ui("items.mods"), ui("items.main_themes")], rows)
+    md += [f"## {ui('items.groups')} {{ #groups }}", "", ui("items.groups_intro", n=len(shared), link=rel(GROUPS_PAGE, page)), ""]
+    pages = {page: "\n".join(md + _footer(ctx))}
+
+    for th in themes:
+        p, mine = theme_path(th["id"]), by_theme[th["id"]]
+        alloys = sorted({x for a in mine for x in a.get("alloys") or []})
+        fams = _counts([f for a in mine for f in a["families"]], {f: family_link(ctx, f, p) for f in families}, 8)
+        md = [f"# {th['name']}", "", ui("items.theme_page_intro", n=len(mine), theme=th["name"], link=rel(CATEGORIES_PAGE, p)), ""]
+        if alloys:
+            md += [ui("items.theme_alloys", alloys=_alloy_links(ctx, alloys, p)), ""]
+        if fams:
+            md += [ui("items.theme_families", families=fams), ""]
+        md += mod_tables(ctx, mine, p, "##", theme=False)
+        pages[p] = "\n".join(md + _footer(ctx))
+
+    for f, mine in families.items():
+        p = family_path(f)
+        md = [f"# {_family_name(ctx, f)}", "", ui("items.family_page_intro", n=len(mine), link=rel(CATEGORIES_PAGE, p) + "#families"), ""]
+        md += [ui("items.family_themes", themes=_counts([a["theme"] for a in mine if a.get("theme")],
+                                                        {k: theme_link(ctx, k, p) for k in names})), ""]
+        md += mod_tables(ctx, mine, p, "##")
+        pages[p] = "\n".join(md + _footer(ctx))
+
+    # Shared groups, under the theme most of their properties have.
+    p = GROUPS_PAGE
+    md = [f"# {ui('items.groups')}", "", ui("items.groups_page_intro", n=len(shared), link=rel(CATEGORIES_PAGE, p)), ""]
+    under = defaultdict(list)
+    for g, mods in shared.items():
+        from collections import Counter
+
+        top = Counter(a.get("theme") or "" for a in mods).most_common(1)[0][0]
+        under[top].append(g)
+    order = [th["id"] for th in themes] + [""]
+    for th in [x for x in order if under.get(x)]:
+        title = names.get(th) or ui("items.other")
+        rows = []
+        for g in sorted(under[th]):
+            mods = sorted(shared[g], key=lambda a: _title(a).lower())
+            rows.append([f'<span id="group-{g}"></span>`{g}`',
+                         "<br>".join(f"[{_cell(_title(a))}]({rel(mod_path(a), p)}) <small>{_place(ctx, a)} · {_group_title(ctx, _group_key(a))}</small>"
+                                     for a in mods)])
+        md += [f"## {title} ({len(rows)})", ""] + _unsearched(_table([ui("items.group"), ui("items.mods")], rows))
+    pages[p] = "\n".join(md + _footer(ctx))
+    return pages
 
 
 def _tier_name(ctx: Ctx, tier: str, page: str) -> str:

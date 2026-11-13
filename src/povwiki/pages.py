@@ -1064,7 +1064,7 @@ def nav(loc: Localizer | None = None) -> list:
         ("nav.home", "index.md"),
         *((f"{t.key}.title", [(f"{t.key}.{p}", f"{t.key}/{p}.md") for p in t.pages]
            + ([("buildings.title", "crafting/buildings.md")] + runic if t is CRAFTING else [])) for t in TREES),
-        ("items.title", [("items.mods", "items/mods.md"), *([("items.categories", "items/mod-categories.md")] if loc is None or loc.loot.get("themes") else []), ("items.bases", "items/bases.md"),
+        ("items.title", [("items.mods", "items/mods.md"), *([("items.categories", "items/mod-categories.md"), ("items.groups", "items/mod-groups.md")] if loc is None or loc.loot.get("themes") else []), ("items.bases", "items/bases.md"),
                          ("weapons.title", [(f"weapons.{slug}", weapon_path(slug)) for slug, *_ in WEAPON_TYPES]),
                          ("gear.currency", [("gear.currency_all", "items/currency.md"),
                                             *((f"gear.group.{g}", group_path(g)) for g in _GROUPS)]),

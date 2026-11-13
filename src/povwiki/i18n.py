@@ -105,8 +105,14 @@ class Localizer:
 
     @cached_property
     def loot(self) -> dict:
-        """Item mods, essences and the mod's own items (harness/loot.py)."""
-        return self.data.rendered(self.lang.mod)["loot"]
+        """Item mods, essences and the mod's own items (harness/loot.py). Mods no player can get are
+        left out: the game never generates them (source "none") and no enchantment tier
+        (Enchants.Rows) or unique equipment row (UniqueGear.Def.Rows) carries them."""
+        rendered = self.data.rendered(self.lang.mod)
+        loot = rendered["loot"]
+        carried = {t["owner"] for r in (rendered.get("enchant") or {}).get("rows", []) for t in r["tiers"] if t}
+        carried |= {line["affix"] for g in ((rendered.get("gear") or {}).get("uniqueGear") or {}).values() for line in g["lines"]}
+        return {**loot, "affixes": [a for a in loot["affixes"] if a["source"] != "none" or a["id"] in carried]}
 
     @cached_property
     def gear(self) -> dict:

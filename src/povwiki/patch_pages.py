@@ -382,10 +382,12 @@ def _lines(old: list[str], new: list[str]) -> list[str]:
     return out
 
 
-def _link(entry: dict, page: str, count: int = 1) -> str:
+def _link(entry: dict, page: str, count: int = 1, mods: set[str] | None = None) -> str:
+    """An entry's name linked to its page; a mod with no page now (one no player can get) unlinked."""
     name = _cell(html.escape(entry["name"]))
     times = f" ×{count}" if count > 1 else ""
-    if not entry.get("link"):
+    link = entry.get("link") or ""
+    if not link or (mods is not None and link.startswith("items/mod/") and link not in mods):
         return f"**{name}**{times}"
     target, _, anchor = entry["link"].partition("#")
     if target.startswith("glossary/") and target.endswith(".md"):  # merged into a page since
@@ -428,18 +430,21 @@ def _moved(changes: dict) -> dict:
     return out
 
 
-def _names(entries: list[dict], page: str, linked: bool) -> str:
+def _names(entries: list[dict], page: str, linked: bool, mods: set[str] | None = None) -> str:
     """The name cell of a row: each name once, with how many entries carry it, linked to the first."""
     by_name: dict[str, list[dict]] = {}
     for e in entries:
         by_name.setdefault(e["name"], []).append(e)
     if linked:
-        return ", ".join(_link(es[0], page, len(es)) for es in by_name.values())
+        return ", ".join(_link(es[0], page, len(es), mods) for es in by_name.values())
     return ", ".join(f"**{_cell(html.escape(n))}**" + (f" ×{len(es)}" if len(es) > 1 else "") for n, es in by_name.items())
 
 
 def _section(ctx: Ctx, sid: str, changes: dict, page: str) -> list[str]:
+    from .item_pages import mod_path
+
     ui = ctx.loc.ui
+    mods = {mod_path(a) for a in ctx.loc.loot["affixes"]}
     changes = _moved(changes)
     md = [f"## {ui(SECTIONS[sid][0])}", ""]
     for title, which in (("patch.changed", "both"), ("patch.added", "new"), ("patch.removed", "old")):
@@ -457,7 +462,7 @@ def _section(ctx: Ctx, sid: str, changes: dict, page: str) -> list[str]:
         kinds = any(k for k, _ in groups)
         md += [f"### {ui(title)} ({sum(len(es) for es in groups.values())})", ""]
         table = _rows([ui("col.name"), *([ui("patch.kind")] if kinds else []), ui("patch.change")],
-                      [[_names(es, page, which != "old"), *([_cell(kind)] if kinds else []), "<br>".join(lines)]
+                      [[_names(es, page, which != "old", mods), *([_cell(kind)] if kinds else []), "<br>".join(lines)]
                        for (kind, lines), es in sorted(groups.items(), key=lambda kv: kv[1][0]["name"].lower())])
         if len(groups) > _OPEN_ROWS:  # a long table starts folded, so a big patch's page stays readable
             table = ['<details markdown="1">', f"<summary>{ui('patch.show', n=len(groups))}</summary>", "", *table, "</details>", ""]

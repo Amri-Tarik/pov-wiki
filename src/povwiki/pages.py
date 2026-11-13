@@ -860,6 +860,8 @@ def _related_pages(ctx: Ctx) -> dict[str, list[tuple[str, str, str]]]:
         found["aura"].append((ctx.loc.ui("gems.group.Aura"), INDEX_PAGE + "#aura", ctx.loc.ui("gems.title")))
         found["eitr"].append((ctx.loc.ui("gems.eitr_title"), BOARD_PAGE + "#eitr", ctx.loc.ui("gems.title")))
         found["skill"].append((ctx.loc.ui("gems.board"), BOARD_PAGE, ctx.loc.ui("gems.title")))
+        if any(g.get("counts") for g in ctx.loc.gems["gems"]):  # supports' +N (GemDef.Counts, 6.0.9 on)
+            found["overflow-chance"].append((ctx.loc.ui("gems.ranks_title"), BOARD_PAGE + "#ranks", ctx.loc.ui("gems.title")))
     from .world_pages import SHIPS_PAGE, TREASURE_PAGE, available
 
     if available(ctx.data):  # treasure chests and burial ships roll with chest quantity and rarity

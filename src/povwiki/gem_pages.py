@@ -13,9 +13,14 @@
   "skill-gems").
 - The board page: the 19 cells (GemBoard.Cells), adjacency (GemBoard.Resolve), capacity
   (GemBoard.CapacityOf), stamina cost and eitr reserve (GemBoard.Resolve, GemBoard.ReserveOf),
-  curses (Curses.Limit, Curses.Store), ranks and cutting (GemCatalog.Rank, GemCut).
+  auras at work (GemAuras.Strength, Pulse, Retort, Projection; GemCast.With), curses (Curses.Limit,
+  Curses.Store), ranks and cutting (GemCatalog.Value: growing numbers, drawbacks, overflowing
+  chances, trigger chances and cooldowns; GemCut).
+- On each support, its aura form under the Circle of Gifts (GemAuras.Projection), and on the
+  circle every support's.
 """
 
+import re
 from collections import defaultdict
 
 from .markup import plain, rel, to_md
@@ -26,6 +31,7 @@ BOARD_PAGE = "items/gems/board.md"
 _GROUPS = ("Trigger", "Effect", "Curse", "Support", "Aura")  # index order; a curse is an effect
 _UNCUT = {"Trigger": "PT_GemUncutTrigger", "Effect": "PT_GemUncutEffect", "Support": "PT_GemUncutSupport", "Aura": "PT_GemUncutEffect"}
 CHISEL = "PT_GemPatternChisel"
+_PERIODIC = ("poison-aura", "effect-retort")  # auras dealing damage over time, not hits (GemHits.DealPeriodic)
 
 
 def gem_path(gid: str) -> str:
@@ -80,11 +86,13 @@ def item_link(ctx: Ctx, prefab: str, page: str) -> str:
 
 
 def _code_ranks(g: dict, p: dict) -> bool:
-    """Whether a number grows with rank in what the game does. GemCatalog.Ranks says which numbers
-    the tooltip ranks; supports read their drawbacks ("less", "self", "shorter") with GemDef.P,
-    rank 1 (GemBoard.SupportOn), and Plague Breath its own share ("self", GemAuras.Pulse)."""
-    if not p["ranks"]:
-        return False
+    """Whether a number changes with rank in what the game does. From 6.0.7 (the gem lists its
+    drawbacks) the game reads every number at the gem's rank (GemCatalog.Value), as the tooltip
+    does. Before, GemCatalog.Ranks said which numbers the tooltip ranks, while supports read their
+    drawbacks ("less", "self", "shorter") with GemDef.P, rank 1 (GemBoard.SupportOn), and Plague
+    Breath its own share ("self", GemAuras.Pulse)."""
+    if not p["ranks"] or "drawbacks" in g:
+        return p["ranks"]
     if g["role"] == "Support" and p["name"] in ("less", "self", "shorter"):
         return False
     return not (g["id"] == "poison-aura" and p["name"] == "self")
@@ -97,6 +105,26 @@ def _num(v: float) -> str:
 
 def _value(g: dict, p: dict, rank: int) -> float:
     return p["byRank"][rank - 1] if _code_ranks(g, p) else p["byRank"][0]
+
+
+_NUMBER = re.compile(r"(\d+(?:\.\d+)?)")
+
+
+def _merge(lo: str, hi: str) -> str:
+    """Two renderings of one line at rank 1 and the top rank as one line, each number that differs
+    written as its range ("+200–340% overflowing chance")."""
+    a, b = _NUMBER.split(lo), _NUMBER.split(hi)
+    if len(a) != len(b) or a[::2] != b[::2]:
+        return lo
+    return "".join(x if i % 2 == 0 or x == y else f"{x}–{y}" for i, (x, y) in enumerate(zip(a, b)))
+
+
+def _count_text(g: dict, name: str, rank: int | None) -> str | None:
+    """An overflowing chance (GemDef.Counts) as the game writes it: a stat line (GemCatalog.Row)."""
+    c = (g.get("counts") or {}).get(name)
+    if not c:
+        return None
+    return c["text"][rank - 1] if rank else _merge(c["text"][0], c["text"][-1])
 
 
 def _shown(g: dict, p: dict, lo: float, hi: float) -> str:
@@ -113,24 +141,25 @@ def _template(ctx: Ctx, g: dict) -> str:
     return ctx.loc.text(f"@gem.{g['id']}.text", "")
 
 
-def gem_text(ctx: Ctx, g: dict, rank: int | None = None) -> str:
-    """The tooltip text (GemCatalog.Describe) at one rank, or with each number over ranks 1-5."""
-    import re
-
+def gem_text(ctx: Ctx, g: dict, rank: int | None = None, page: str | None = None) -> str:
+    """The tooltip text (GemCatalog.Describe) at one rank, or with each number over ranks 1-5;
+    as Markdown for `page` (an overflowing chance's line has keyword links), else plain."""
     params = {p["name"]: p for p in g["params"]}
     template = _template(ctx, g)
-    if not template:  # no localised template: the rendered text at rank 1
-        return g["text"][0]
     top = _data(ctx).get("maxRank", 5)
 
     def fill(m: re.Match) -> str:
+        if (line := _count_text(g, m.group(1), rank)) is not None:
+            return line
         p = params.get(m.group(1))
         if p is None:
             return m.group(0)
         lo, hi = (_value(g, p, rank), _value(g, p, rank)) if rank else (_value(g, p, 1), _value(g, p, top))
         return _shown(g, p, lo, hi)
 
-    return re.sub(r"\{([a-z\-]+)\}", fill, template)
+    # No localised template: the rendered text at that rank (rank 1 for the range).
+    text = re.sub(r"\{([a-z\-]+)\}", fill, template) if template else g["text"][(rank or 1) - 1]
+    return to_md(text, ctx.loc, page) if page else plain(text)
 
 
 def _ranked(g: dict) -> bool:
@@ -183,7 +212,7 @@ def page_gems(ctx: Ctx) -> dict[str, str]:
         if not gs:
             continue
         md += [f"## {ui(f'gems.group.{role}')} ({len(gs)}) {{ #{role.lower()} }}", "", ui(f"gems.group_intro.{role}"), ""]
-        rows = [[_icon(ctx, g, page, 40), f"[**{g['name']}**]({rel(gem_path(g['id']), page)})", gem_text(ctx, g),
+        rows = [[_icon(ctx, g, page, 40), f"[**{g['name']}**]({rel(gem_path(g['id']), page)})", gem_text(ctx, g, page=page),
                  _capacity(ctx, g), _price(ctx, g), _source(ctx, g, page)] for g in gs]
         md += _table(["", ui("col.name"), ui("col.effect"), ui("gems.capacity"), ui("gems.price"), ui("gems.source")], rows)
     md += [f"## {ui('gems.materials')} {{ #materials }}", "", ui("gems.materials_intro", chisel=item_link(ctx, CHISEL, page)), ""]
@@ -227,16 +256,23 @@ def _gem_page(ctx: Ctx, g: dict) -> str:
     if ctx.icons:
         md += [f"{_icon(ctx, g, page, 96)} {_hex(ctx, g, page, 96)}", ""]
     md += [f"<b>{g['type']}</b> · [{ui('gems.title')}]({rel(INDEX_PAGE, page)}#{_group(g).lower()})", ""]
-    md += [gem_text(ctx, g), ""]
+    md += [gem_text(ctx, g, page=page), ""]
     md += _table([ui("col.property"), ui("col.value")], [[label, value] for label, value in g["properties"]])
     if g.get("costText"):
         md += [g["costText"], ""]
     if g.get("reserve") is not None:
         md += [ui("gems.reserve_line", n=_num(g["reserve"]), link=rel(BOARD_PAGE, page) + "#eitr"), ""]
+    elif g.get("reserveShare") is not None:
+        md += [ui("gems.reserve_share_line", n=_pct(g["reserveShare"]), link=rel(BOARD_PAGE, page) + "#eitr"), ""]
+    if g["id"] in _PERIODIC and "countStep" in data:  # GemAuras.Pulse, GemAuras.Retort (6.0.9 on)
+        md += [ui("gems.periodic_line", link=rel(BOARD_PAGE, page) + "#auras"), ""]
     if _ranked(g):
         md += [f"## {ui('gems.by_rank')}", "", ui("gems.by_rank_intro", link=rel(BOARD_PAGE, page) + "#ranks"), ""]
         md += _table([ui("gems.rank"), ui("col.effect")],
-                     [[str(r), gem_text(ctx, g, r)] for r in range(1, data.get("maxRank", 5) + 1)])
+                     [[str(r), gem_text(ctx, g, r, page)] for r in range(1, data.get("maxRank", 5) + 1)])
+    md += _aura_form(ctx, g, page)
+    if g["gifts"]:
+        md += _gift_forms(ctx, page)
     md += _works_with(ctx, g, page)
     md += _staff_section(ctx, g, page)
     md += [f"## {ui('gems.how_to_get')}", ""]
@@ -246,6 +282,43 @@ def _gem_page(ctx: Ctx, g: dict) -> str:
     if sigils := [s for s, given in data.get("sigils", {}).items() if f"gem:{g['id']}" in given]:
         md += [ui("gems.from_sigils", sigils=", ".join(_sigil_link(ctx, s, page) for s in sigils), rank=data.get("sigilRank", 3)), ""]
     return "\n".join(md + _footer(ctx))
+
+
+def _pct(v: float) -> str:
+    return f"{_num(v * 100)}%"
+
+
+def _form_lines(ctx: Ctx, lines: list[str], page: str) -> str:
+    return "<br>".join(to_md(line, ctx.loc, page) for line in lines)
+
+
+def _aura_form(ctx: Ctx, g: dict, page: str) -> list[str]:
+    """What the Circle of Gifts grants from this support at each of its ranks (GemAuras.Projection,
+    at the circle's strength 1)."""
+    forms = g.get("auraForm")
+    gifts = next((x for x in _data(ctx)["gems"] if x["gifts"]), None)
+    if not forms or not gifts:
+        return []
+    ui = ctx.loc.ui
+    md = [f"## {ui('gems.aura_form')} {{ #aura-form }}", "",
+          ui("gems.aura_form_text", gifts=gem_link(ctx, gifts["id"], page), link=rel(BOARD_PAGE, page) + "#auras"), ""]
+    return md + _table([ui("gems.rank"), ui("gems.aura_form")],
+                       [[str(r), _form_lines(ctx, lines, page)] for r, lines in enumerate(forms, 1)])
+
+
+def _gift_forms(ctx: Ctx, page: str) -> list[str]:
+    """On the Circle of Gifts: every support's aura form, its numbers over the support's ranks."""
+    sups = [g for g in _data(ctx)["gems"] if g.get("auraForm")]
+    if not sups:
+        return []
+    ui = ctx.loc.ui
+    rows = []
+    for g in sups:
+        lo, hi = g["auraForm"][0], g["auraForm"][-1]
+        lines = [_merge(a, b) for a, b in zip(lo, hi)] if len(lo) == len(hi) else lo
+        rows.append([_icon(ctx, g, page, 32), gem_link(ctx, g["id"], page), _form_lines(ctx, lines, page)])
+    return ([f"## {ui('gems.aura_forms')} {{ #aura-forms }}", "", ui("gems.aura_forms_text", link=rel(BOARD_PAGE, page) + "#auras"), ""]
+            + _table(["", ui("col.name"), ui("gems.aura_form")], rows))
 
 
 def _names(ctx: Ctx, ids: list[str], page: str) -> str:
@@ -336,7 +409,7 @@ def _item_page(ctx: Ctx, prefab: str) -> str:
         md += [f"## {ui('gems.cuts_into')}", ""]
         gems = _by_id(ctx)
         md += _table(["", ui("col.name"), ui("col.effect"), ""],
-                     [[_icon(ctx, gems[i], page, 32), gem_link(ctx, i, page), gem_text(ctx, gems[i]),
+                     [[_icon(ctx, gems[i], page, 32), gem_link(ctx, i, page), gem_text(ctx, gems[i], page=page),
                        _after_boss(ctx, gems[i], page) if gems[i].get("boss") else ""] for i in it["cuts"]])
         md += [ui("gems.cutting", link=rel(BOARD_PAGE, page) + "#ranks"), ""]
     else:
@@ -417,7 +490,7 @@ def _hidden(ctx: Ctx, fid: str) -> list[str]:
 
 
 def _board_page(ctx: Ctx) -> str:
-    from .formula_pages import _formula, _term, _values
+    from .formula_pages import _anchor, _formula, _term, _values
 
     ui, page, data = ctx.loc.ui, BOARD_PAGE, _data(ctx)
     costs, curses = _values().get("gem-costs", {}), _values().get("gem-curses", {})
@@ -473,13 +546,18 @@ def _board_page(ctx: Ctx) -> str:
 
     md += [f"## {ui('gems.eitr_title')} {{ #eitr }}", "", _term_text(ctx, "gem:reserve", page), ""]
     auras = [g for g in gems if g["role"] == "Aura"]
+    shares = any(g.get("reserveShare") is not None for g in auras)  # 6.0.7 on: a share of maximum eitr
     md += _hidden(ctx, "gem-costs") or (
-        _formula(ui("gems.eitr_formula", support=_num(t["gem.board.support-reserve"])))
-        + [ui("gems.eitr_terms", eitr=_term(ctx, "eitr", page), waiting=data["text"]["state.suspended"],
-                  cap=_num(costs.get("efficiency_cap", 0.75) * 100)), ""]
+        _formula(ui("gems.eitr_formula_share" if shares else "gems.eitr_formula", support=_num(t["gem.board.support-reserve"])))
+        + ([ui("gems.eitr_share_terms", eitr=_term(ctx, "eitr", page), held=_anchor("held-eitr", page),
+                  waiting=data["text"]["state.suspended"], cap=_num(costs.get("efficiency_cap", 0.75) * 100)), ""] if shares else
+           [ui("gems.eitr_terms", eitr=_term(ctx, "eitr", page), waiting=data["text"]["state.suspended"],
+               cap=_num(costs.get("efficiency_cap", 0.75) * 100)), ""])
         + [_eitr_circles(ctx, n), ""]
+        + _eitr_example(ctx, page, n)
         + _table(["", ui("col.name"), ui("gems.price"), ui("gems.per_link")],
-                 [[_icon(ctx, g, page, 32), gem_link(ctx, g["id"], page), _num(g["reserve"]), _per_link(ctx, g)] for g in auras]))
+                 [[_icon(ctx, g, page, 32), gem_link(ctx, g["id"], page), _reserve_word(g), _per_link(ctx, g)] for g in auras]))
+    md += _auras_section(ctx, page, n)
 
     md += [f"## {ui('gems.curses_title')} {{ #curses }}", "", _term_text(ctx, "gem:curse", page), ""]
     md += _hidden(ctx, "gem-curses") or (
@@ -492,12 +570,13 @@ def _board_page(ctx: Ctx) -> str:
                       seconds=_num(curses.get("max_seconds", 120))))
         + [ui("gems.curse_duration_terms", nodes=_curse_nodes(ctx, "EffectDurationPct", page) or "—"), ""]
         + _table(["", ui("col.name"), ui("col.effect")],
-                 [[_icon(ctx, g, page, 32), gem_link(ctx, g["id"], page), gem_text(ctx, g)] for g in gems if g["curse"]]))
+                 [[_icon(ctx, g, page, 32), gem_link(ctx, g["id"], page), gem_text(ctx, g, page=page)] for g in gems if g["curse"]]))
 
     md += [f"## {ui('gems.ranks_title')} {{ #ranks }}", ""]
     md += _hidden(ctx, "gem-ranks") or (
-        [ui("gems.ranks_text", top=data.get("maxRank", 5), step=_num(data.get("rankStep", 0.1) * 100)), ""]
-        + _formula(ui("gems.rank_formula", step=_num(data.get("rankStep", 0.1) * 100)))
+        (_rank_rules(ctx, page) if "countStep" in data else
+         [ui("gems.ranks_text", top=data.get("maxRank", 5), step=_num(data.get("rankStep", 0.1) * 100)), ""]
+         + _formula(ui("gems.rank_formula", step=_num(data.get("rankStep", 0.1) * 100))))
         + [ui("gems.rank_level_text", step=_num(t["gem.rank.drop-step"])), ""]
         + _rank_table(ctx)
         + [ui("gems.cutting_text", trigger=item_link(ctx, _UNCUT["Trigger"], page), effect=item_link(ctx, _UNCUT["Effect"], page),
@@ -551,8 +630,81 @@ def _eitr_circles(ctx: Ctx, n: dict) -> str:
     if not malice or not heavy:
         return ""
     per = _param(malice, "per-curse")
+    # The Heavy Word's own rank (GemCatalog.Value of "shorter", 6.0.9 on), rank 1 before.
+    shorter = next(p for p in heavy["params"] if p["name"] == "shorter")
+    lo, hi = _value(heavy, shorter, 1) * per, _value(heavy, shorter, _data(ctx).get("maxRank", 5)) * per
+    more = _num(lo) if _num(lo) == _num(hi) else f"{_num(lo)}–{_num(hi)}"
     return ctx.loc.ui("gems.eitr_circles", gifts=n["gifts"], malice=n["malice"], heavy=n["support-curse-power"],
-                      curse=_num(per), more=_num(_param(heavy, "shorter") * per))
+                      curse=_num(per), more=more)
+
+
+def _reserve_word(g: dict) -> str:
+    """An aura's own reserve: a share of maximum eitr (6.0.7 on), before a flat amount."""
+    return _pct(g["reserveShare"]) if g.get("reserveShare") is not None else _num(g.get("reserve") or 0)
+
+
+def _eitr_example(ctx: Ctx, page: str, n: dict) -> list[str]:
+    """An aura reserving a share of 200 maximum eitr with one support (GemBoard.ReserveOf)."""
+    g = _by_id(ctx).get("renewal-aura")
+    if not g or g.get("reserveShare") is None:
+        return []
+    eitr, support = 200, _data(ctx)["tunables"]["gem.board.support-reserve"]
+    return [ctx.loc.ui("gems.eitr_example", aura=n["renewal-aura"], share=_pct(g["reserveShare"]), eitr=eitr,
+                       support=_num(support), total=_num(g["reserveShare"] * eitr + support)), ""]
+
+
+def _rank_rules(ctx: Ctx, page: str) -> list[str]:
+    """What each rank above 1 changes (GemCatalog.Value): growing numbers, drawbacks (Soften),
+    overflowing chances (CountChance), trigger chances (Rank, at most 100%) and the cooldowns of
+    triggers that always fire (SureTrigger), and the numbers that stay unless a gem makes them its
+    benefit (rankFree, GemDef.Grows)."""
+    from .formula_pages import _formula, _term
+
+    ui, data = ctx.loc.ui, _data(ctx)
+    step, soft = _num(data["rankStep"] * 100), _num(data["drawbackStep"] * 100)
+    count, cd = _num(data["countStep"] * 100), _num(data["cooldownStep"] * 100)
+    gems = data["gems"]
+    counts = ", ".join(gem_link(ctx, g["id"], page) for g in gems if g.get("counts"))
+    grows = ", ".join(gem_link(ctx, g["id"], page) for g in gems if g.get("grows"))
+    sure = ", ".join(gem_link(ctx, g["id"], page) for g in gems
+                     if g["role"] == "Trigger" and next((p["value"] for p in g["params"] if p["name"] == "chance"), 0) >= 1)
+    overflow = _term(ctx, "overflow-chance", page) or "overflowing chance"
+    md = [ui("gems.ranks_rules", top=data.get("maxRank", 5)), ""]
+    md += [f"- {ui('gems.rank_grow', step=step)}", f"- {ui('gems.rank_drawback', soft=soft)}",
+           f"- {ui('gems.rank_count', gems=counts, overflow=overflow, count=count)}",
+           f"- {ui('gems.rank_chance', step=step)}", f"- {ui('gems.rank_sure', gems=sure, cd=cd)}",
+           f"- {ui('gems.rank_fixed', gems=grows)}", ""]
+    md += _formula(ui("gems.rank_formula", step=step))
+    md += _formula(ui("gems.rank_drawback_formula", soft=soft))
+    md += _formula(ui("gems.rank_count_formula", count=count))
+    md += _formula(ui("gems.rank_sure_formula", cd=cd))
+    return md
+
+
+def _auras_section(ctx: Ctx, page: str, n: dict) -> list[str]:
+    """How a working aura's effect is reckoned (GemAuras.Strength), Inner Circle (BearerOnly), the
+    Circle of Gifts' aura forms (Projection), the damage-over-time auras (GemAuras.Pulse, Retort,
+    GemCast.Periodic) and the character's stats in gem effects (GemCast.With)."""
+    from .formula_pages import _formula, _values
+
+    data, ui, t = _data(ctx), ctx.loc.ui, _data(ctx)["tunables"]
+    gems, v = _by_id(ctx), _values().get("gem-auras", {})
+    step = _num(data.get("rankStep", 0.1) * 100)
+    if "countStep" not in data or not all(k in gems for k in ("aura-self", "wide", "poison-aura", "effect-retort")):
+        return []  # 6.0.9 on
+    md = [f"## {ui('gems.auras_title')} {{ #auras }}", ""]
+    hidden = _hidden(ctx, "gem-auras")
+    if hidden:
+        return md + hidden
+    md += _formula(ui("gems.aura_strength_formula", step=step))
+    md += [ui("gems.aura_strength_terms", inner=n["aura-self"], wide=n["wide"]), ""]
+    md += [ui("gems.aura_inner", inner=n["aura-self"]), ""]
+    if n.get("gifts"):
+        md += [ui("gems.aura_gifts", gifts=n["gifts"], forms=rel(gem_path(next(g["id"] for g in data["gems"] if g["gifts"])), page) + "#aura-forms", step=step), ""]
+    md += [ui("gems.aura_periodic", plague=n[_PERIODIC[0]], heat=n[_PERIODIC[1]], pulse=_num(t["gem.board.aura-pulse"]),
+                  tick=_num(v.get("retort_tick", 0.25))), ""]
+    md += [f"### {ui('gems.stats_title')}", "", ui("gems.stats_text"), ""]
+    return md
 
 
 def _capacity_rows(ctx: Ctx) -> list[list[str]]:

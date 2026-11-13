@@ -5,6 +5,10 @@
   tags or supported tags, capacity, a trigger's stamina cost per effect, an aura's eitr reserve),
   every number with whether it grows with rank (its value at each rank), and the boss whose defeat
   allows cutting it (GemCatalog.Gate, GemText.BossWord; the boss's prefab from CreatureLevels.Bosses).
+- How each number ranks (6.0.7 on): drawbacks (GemDef.Drawbacks), overflowing chances with their
+  stat line at each rank (GemDef.Counts, GemCatalog.Row, StatText.DescribeHead/DescribeTail) and
+  numbers that grow although such numbers usually do not (GemDef.Grows); a support's aura form,
+  what the Circle of Gifts grants from it at each rank (GemAuras.Projection at strength 1).
 - What works with what: each trigger and effect pair (GemBoard.WhyNotFeed: null when the trigger
   starts the effect, else the game's reason), and each support on each effect or aura
   (GemBoard.Supports).
@@ -32,8 +36,8 @@ def _role(r) -> str:
 
 
 def render_gems(errors: list) -> dict:
-    from PassiveTree import CreatureLevels, L, Tunables, Wiki
-    from PassiveTree.Gems import GemBoard, GemCatalog, GemItems, GemText, Role, SigilMigration, StaffCurse, Tag
+    from PassiveTree import CreatureLevels, L, StatText, Tunables, Wiki
+    from PassiveTree.Gems import GemAuras, GemBoard, GemCatalog, GemInstance, GemItems, GemText, Role, SigilMigration, StaffCurse, Tag
     from System import String
 
     out: dict = {}
@@ -62,8 +66,29 @@ def render_gems(errors: list) -> dict:
             if g.Role == Role.Trigger:
                 label = L.Id("gem.prop.block-cost", "Block stamina cost") if block else L.Id("gem.prop.attack-cost", "Attack stamina cost")
                 props.append([label, String.Format(L.Id("gem.prop.per-effect", "+{0}% per effect"), round(float(g.P("cost")) * 100))])
+            names = {str(kv.Key) for kv in g.Params}
+            share = "reserve-share" in names  # 6.0.7 on: a share of maximum eitr, before a flat "reserve"
             if g.IsAura:
-                props.append([L.Id("gem.prop.reserve", "Eitr reserve"), str(round(float(g.P("reserve"))))])
+                props.append([L.Id("gem.prop.reserve", "Eitr reserve"),
+                              f"{round(float(g.P('reserve-share')) * 100)}%" if share else str(round(float(g.P("reserve"))))])
+            ranking = {}
+            if hasattr(g, "Drawbacks"):
+                ranking["drawbacks"] = [str(x) for x in g.Drawbacks]
+            if hasattr(g, "Counts"):
+                ranking["counts"] = {str(kv.Key): {"stat": str(kv.Value), "text": [_row_text(StatText, GemCatalog.Row(g, str(kv.Key), r))
+                                                                              for r in range(1, GemCatalog.MaxRank + 1)]}
+                                     for kv in g.Counts}
+            if hasattr(g, "Grows"):
+                ranking["grows"] = [str(x) for x in g.Grows]
+            if g.Role == Role.Support:
+                forms = []
+                for r in range(1, GemCatalog.MaxRank + 1):
+                    inst = GemInstance()
+                    inst.Def, inst.Rank = g, r
+                    mods = GemAuras.Projection(inst, 1.0)
+                    forms.append([line for line in str(StatText.DescribeAll(mods)).splitlines() if line] if len(mods) else [])
+                if any(forms):
+                    ranking["auraForm"] = forms
             gems.append({
                 "id": str(g.Id), "prefab": str(g.PrefabId), "name": GemCatalog.Name(g),
                 "role": _role(g.Role), "roleLabel": GemCatalog.RoleLabel(g), "curse": bool(g.IsCurse),
@@ -76,13 +101,15 @@ def render_gems(errors: list) -> dict:
                 "capacity": float(g.P("capacity")),
                 "cost": float(g.P("cost")) if g.Role == Role.Trigger else None,
                 "costText": GemText.TriggerCost(g) if g.Role == Role.Trigger else None,
-                "reserve": float(g.P("reserve")) if g.IsAura else None,
+                "reserve": float(g.P("reserve")) if g.IsAura and not share else None,
+                "reserveShare": float(g.P("reserve-share")) if g.IsAura and share else None,
                 "gifts": bool(g.Gifts), "malice": bool(g.Malice),
                 "bossKey": str(g.BossKey) if g.BossKey else None,
                 "boss": GemText.BossWord(g) if g.BossKey else None,
                 "bossPrefab": bosses.get(str(g.BossKey)) if g.BossKey else None,
                 "notInDrops": bool(g.NotInDrops),
                 "params": params,
+                **ranking,
             })
         out["gems"] = gems
         by_role = {r: [g for g in GemCatalog.All if g.Role == getattr(Role, r)] for r in ("Trigger", "Effect", "Support", "Aura")}
@@ -93,6 +120,9 @@ def render_gems(errors: list) -> dict:
         out["tunables"] = {str(k.Id): float(Tunables.Of(k.Id)) for k in Tunables.All
                            if str(k.Id).startswith(("gem.board.", "gem.curse.", "gem.rank.", "gem.staff."))}
         out["rankStep"] = float(GemCatalog.RankStep)
+        for key, const in (("countStep", "CountStep"), ("drawbackStep", "DrawbackStep"), ("cooldownStep", "CooldownStep")):
+            if hasattr(GemCatalog, const):  # 6.0.9 on
+                out[key] = float(getattr(GemCatalog, const))
         out["maxRank"] = int(GemCatalog.MaxRank)
         items = {}
         for prefab, role in ((GemItems.UncutTrigger, "Trigger"), (GemItems.UncutEffect, "Effect"), (GemItems.UncutSupport, "Support")):
@@ -124,6 +154,11 @@ def render_gems(errors: list) -> dict:
     except Exception as ex:
         errors.append({"gems": "board", "error": str(ex).split("\n")[0]})
     return out
+
+
+def _row_text(StatText, mod) -> str:
+    """An overflowing chance as GemCatalog.Describe writes it: the stat line of GemCatalog.Row."""
+    return "" if mod is None else str(StatText.DescribeHead(mod, None)) + str(StatText.DescribeTail(mod))
 
 
 def _type(name: str):

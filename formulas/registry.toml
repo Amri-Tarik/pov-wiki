@@ -1778,7 +1778,10 @@ anchors = [
     "PassiveTree.Gems/GemBoard.cs :: GemBoard.ReserveOf",
     "PassiveTree.Gems/GemBoard.cs :: GemBoard.SupportOn",
     "PassiveTree.Gems/GemPlayer.cs :: GemPlayer.Efficiency",
-    "PassiveTree.Gems/GemPlayer.cs :: MaxEitr.Postfix",
+    "PassiveTree.Gems/GemPlayer.cs :: GemPlayer.HoldFrom",
+    "PassiveTree/MinionReserve.cs :: Reserve.Postfix",
+    "PassiveTree/Reservation.cs :: Reservation.Fits",
+    "PassiveTree.Gems/GemText.cs :: GemText.Properties",
     "PassiveTree.Gems/GemPlayer.cs :: GemPlayer.Validate",
     "PassiveTree.Gems/GemRuntime.cs :: AttackCost.Postfix",
     "PassiveTree.Gems/GemRuntime.cs :: BlockCost.Postfix",
@@ -1814,6 +1817,11 @@ id = "gem-ranks"
 anchors = [
     "PassiveTree.Gems/GemCatalog.cs :: GemCatalog.Rank",
     "PassiveTree.Gems/GemCatalog.cs :: GemCatalog.Value",
+    "PassiveTree.Gems/GemCatalog.cs :: GemCatalog.Above",
+    "PassiveTree.Gems/GemCatalog.cs :: GemCatalog.Soften",
+    "PassiveTree.Gems/GemCatalog.cs :: GemCatalog.CountChance",
+    "PassiveTree.Gems/GemCatalog.cs :: GemCatalog.SureTrigger",
+    "PassiveTree.Gems/GemCatalog.cs :: GemCatalog.Row",
     "PassiveTree.Gems/GemCatalog.cs :: GemCatalog.rankFree",
     "PassiveTree.Gems/GemBoard.cs :: GemBoard.SupportOn",
     "PassiveTree.Gems/GemAuras.cs :: GemAuras.Strength",
@@ -1826,6 +1834,26 @@ anchors = [
 ]
 fingerprint = "2f4543397516"
 checked = "6.0.0"
+
+[[formula]]
+id = "gem-auras"
+anchors = [
+    "PassiveTree.Gems/GemAuras.cs :: GemAuras.Strength",
+    "PassiveTree/Auras.cs :: Auras.Strength",
+    "PassiveTree.Gems/GemAuras.cs :: GemAuras.BearerOnly",
+    "PassiveTree.Gems/GemAuras.cs :: GemAuras.Pulse",
+    "PassiveTree.Gems/GemAuras.cs :: GemAuras.Projection",
+    "PassiveTree.Gems/GemAuras.cs :: GemAuras.FireTaken",
+    "PassiveTree.Gems/GemAuras.cs :: GemAuras.Retort",
+    "PassiveTree.Gems/GemHits.cs :: GemHits.DealPeriodic",
+    "PassiveTree.Gems/GemCast.cs :: GemCast.Periodic#2",
+    "PassiveTree.Gems/GemCast.cs :: GemCast.OwnRows",
+    "PassiveTree.Gems/GemCast.cs :: GemCast.Build",
+    "PassiveTree.Gems/GemBoard.cs :: GemBoard.SupportOn",
+]
+
+[formula.values]
+retort_tick = 0.25
 
 [[formula]]
 id = "treasure-maps"

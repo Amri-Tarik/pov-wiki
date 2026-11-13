@@ -230,16 +230,19 @@ def _cost(ctx: Ctx, page: str, v: dict) -> list[str]:
     ui, r = ctx.loc.ui, ctx.loc.runic
     # Defs (6.0.10): alloys cost no potential, only dust.
     free = all(not a.get("cost") for a in r.get("alloys") or [])
-    md = [ui("runic.cost_text_free" if free else "runic.cost_text", base=r["baseCost"], potential=_term(ctx, "potential", page), dust=r["baseDust"],
+    # PotentialCost.Of (6.0.11): no base cost, so only glyphs cost potential and the cost can be 0.
+    glyphs_only = free and not r["baseCost"]
+    text = "runic.cost_text_glyphs" if glyphs_only else "runic.cost_text_free" if free else "runic.cost_text"
+    md = [ui(text, base=r["baseCost"], potential=_term(ctx, "potential", page), dust=r["baseDust"],
              azurite=item_link(ctx, r["dust"], page), divine=item_link(ctx, r["divineDust"], page)), ""]
-    md += _formula(ui("runic.cost_formula", base=r["baseCost"], cap=_pct(v["cut_cap"])))
+    md += _formula(ui("runic.cost_formula_glyphs" if glyphs_only else "runic.cost_formula", base=r["baseCost"], cap=_pct(v["cut_cap"])))
     md += [ui("runic.cost_crit", crit=_pct(r["baseCrit"]), tree="#craft-tree"), "",
            ui("runic.cost_delay", delay=_pct(v["delay"]), glyph=item_link(ctx, "PT_GlyphDelay", page)), "",
            ui("runic.cost_afford", touch=_option_link(ctx, page, flag=OVERDRAFT)), ""]
     # A few sums of alloys and glyphs, without reductions: the cost and a critical craft's.
     rows = []
-    for s in (0, 3, 5, 10, 20, 35):
-        normal = max(1, math.ceil(r["baseCost"] + s - 0.0001))
+    for s in ((3, 5, 10, 20, 35) if glyphs_only else (0, 3, 5, 10, 20, 35)):
+        normal = max(0 if glyphs_only else 1, math.ceil(r["baseCost"] + s - 0.0001))
         rows.append([str(s), str(normal), str(math.ceil(normal / 2)), str(r["potential"] // normal)])
     md += _table([ui("runic.cost_sum"), ui("runic.cost_normal"), ui("runic.cost_critical"), ui("runic.cost_actions")], rows)
     return md
@@ -379,7 +382,8 @@ def _runic_page(ctx: Ctx) -> str:
     md += _block(ctx, "runic-glyphs", page, _glyph_rules)
     md += [f"## {ui('runic.refused_title')} {{ #refused }}", "", ui("runic.refused_text"), ""]
     keys = ("two-main", "duplicate", "slots", "alloy-main", "alloy-none", "forge-only", "norns", "echo", "memory", "no-potential",
-            "potential", "unique", "not-eligible", "no-rare", "pool", "sockets", "no-tier", "max-level", "durability", "sealed-all", "jewel-quality")
+            "potential", "unique", "not-eligible", "no-rare", "pool", "sockets", "no-tier", "max-level", "durability", "sealed-all", "jewel-quality",
+            "utility-quality")
     md += [f"- {plain(ctx.loc.text('@runic.why.' + k)).replace('{0}', '…').replace('{1}', '…')}" for k in keys
            if f"@runic.why.{k}" in ctx.loc.game]
     md += [""]

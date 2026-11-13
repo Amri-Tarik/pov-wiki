@@ -1,0 +1,27 @@
+{
+ "changes": {
+  "keywords": {
+   "potential": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "An item's budget for runic crafting: 65 on every ordinary piece of equipment. Each runic action costs 0 plus the costs of its glyphs (alloys cost no potential); a critical craft costs half. At zero the item still works, but runic crafting is closed. Repairs and workbench upgrades do not restore it. Base jewels have potential too. The property «increased item potential» raises the maximum; the item remembers what it has spent, so a reroll gives potential back only by rolling higher than the value it was spent under."
+     ],
+     "link": "glossary/potential.md",
+     "name": "Potential"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "An item's budget for runic crafting: 65 on every ordinary piece of equipment. Each runic action costs 15 plus the costs of its glyphs (alloys cost no potential); a critical craft costs half. At zero the item still works, but runic crafting is closed. Repairs and workbench upgrades do not restore it. Base jewels have potential too. The property «increased item potential» raises the maximum; the item remembers what it has spent, so a reroll gives potential back only by rolling higher than the value it was spent under."
+     ],
+     "link": "glossary/potential.md",
+     "name": "Potential"
+    }
+   }
+  }
+ },
+ "date": "2026-11-13",
+ "from": "6.0.10",
+ "to": "6.0.11"
+}

@@ -1,0 +1,1252 @@
+{
+ "changes": {
+  "mods": {
+   "bonemass.low-health-damage-taken": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T8 (item level 1–∞, weight 100): 3% reduced damage taken at low life",
+      "T7 (item level 1–∞, weight 100): 4% reduced damage taken at low life",
+      "T6 (item level 1–∞, weight 100): 5% reduced damage taken at low life",
+      "T5 (item level 1–∞, weight 100): 7% reduced damage taken at low life",
+      "T4 (item level 1–∞, weight 100): 9% reduced damage taken at low life"
+     ],
+     "link": "items/mod/bonemass.low-health-damage-taken.md",
+     "name": "#% reduced damage taken at low life"
+    },
+    "old": null
+   },
+   "bonemass.physical-taken-as-poison": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T8 (item level 1–∞, weight 100): 6% of physical damage taken is taken as poison damage",
+      "T7 (item level 1–∞, weight 100): 7.5% of physical damage taken is taken as poison damage",
+      "T6 (item level 1–∞, weight 100): 9% of physical damage taken is taken as poison damage",
+      "T5 (item level 1–∞, weight 100): 10.5% of physical damage taken is taken as poison damage",
+      "T4 (item level 1–∞, weight 100): 12% of physical damage taken is taken as poison damage"
+     ],
+     "link": "items/mod/bonemass.physical-taken-as-poison.md",
+     "name": "#% of physical damage taken is taken as poison damage"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "T8 (item level 1–∞, weight 100): 10% of physical damage taken is taken as poison damage",
+      "T7 (item level 1–∞, weight 100): 15% of physical damage taken is taken as poison damage",
+      "T6 (item level 1–∞, weight 100): 20% of physical damage taken is taken as poison damage",
+      "T5 (item level 1–∞, weight 100): 25% of physical damage taken is taken as poison damage",
+      "T4 (item level 1–∞, weight 100): 30% of physical damage taken is taken as poison damage"
+     ],
+     "link": "items/mod/bonemass.physical-taken-as-poison.md",
+     "name": "#% of physical damage taken is taken as poison damage"
+    }
+   },
+   "bonemass.poison-ground-health-regen": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T8 (item level 1–∞, weight 100): 20% increased health regeneration while on Poisoned Ground",
+      "T7 (item level 1–∞, weight 100): 30% increased health regeneration while on Poisoned Ground",
+      "T6 (item level 1–∞, weight 100): 40% increased health regeneration while on Poisoned Ground",
+      "T5 (item level 1–∞, weight 100): 50% increased health regeneration while on Poisoned Ground",
+      "T4 (item level 1–∞, weight 100): 60% increased health regeneration while on Poisoned Ground"
+     ],
+     "link": "items/mod/bonemass.poison-ground-health-regen.md",
+     "name": "#% increased health regeneration while on Poisoned Ground"
+    },
+    "old": null
+   },
+   "bonemass.swim-speed": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T8 (item level 1–∞, weight 100): 20% increased swim speed while in water",
+      "T7 (item level 1–∞, weight 100): 30% increased swim speed while in water",
+      "T6 (item level 1–∞, weight 100): 40% increased swim speed while in water",
+      "T5 (item level 1–∞, weight 100): 50% increased swim speed while in water",
+      "T4 (item level 1–∞, weight 100): 60% increased swim speed while in water"
+     ],
+     "link": "items/mod/bonemass.swim-speed.md",
+     "name": "#% increased swim speed while in water"
+    },
+    "old": null
+   },
+   "eikthyr.physical-taken-as-lightning": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T8 (item level 1–∞, weight 100): 6% of physical damage taken is taken as lightning damage",
+      "T7 (item level 1–∞, weight 100): 7.5% of physical damage taken is taken as lightning damage",
+      "T6 (item level 1–∞, weight 100): 9% of physical damage taken is taken as lightning damage",
+      "T5 (item level 1–∞, weight 100): 10.5% of physical damage taken is taken as lightning damage",
+      "T4 (item level 1–∞, weight 100): 12% of physical damage taken is taken as lightning damage"
+     ],
+     "link": "items/mod/eikthyr.physical-taken-as-lightning.md",
+     "name": "#% of physical damage taken is taken as lightning damage"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "T8 (item level 1–∞, weight 100): 10% of physical damage taken is taken as lightning damage",
+      "T7 (item level 1–∞, weight 100): 15% of physical damage taken is taken as lightning damage",
+      "T6 (item level 1–∞, weight 100): 20% of physical damage taken is taken as lightning damage",
+      "T5 (item level 1–∞, weight 100): 25% of physical damage taken is taken as lightning damage",
+      "T4 (item level 1–∞, weight 100): 30% of physical damage taken is taken as lightning damage"
+     ],
+     "link": "items/mod/eikthyr.physical-taken-as-lightning.md",
+     "name": "#% of physical damage taken is taken as lightning damage"
+    }
+   },
+   "eikthyr.rain-crit": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T8 (item level 1–∞, weight 100): 20% increased critical strike chance in the rain",
+      "T7 (item level 1–∞, weight 100): 30% increased critical strike chance in the rain",
+      "T6 (item level 1–∞, weight 100): 40% increased critical strike chance in the rain",
+      "T5 (item level 1–∞, weight 100): 50% increased critical strike chance in the rain",
+      "T4 (item level 1–∞, weight 100): 60% increased critical strike chance in the rain"
+     ],
+     "link": "items/mod/eikthyr.rain-crit.md",
+     "name": "#% increased critical strike chance in the rain"
+    },
+    "old": null
+   },
+   "eikthyr.wet-move": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T8 (item level 1–∞, weight 100): 5% increased movement speed while wet",
+      "T7 (item level 1–∞, weight 100): 8% increased movement speed while wet",
+      "T6 (item level 1–∞, weight 100): 10% increased movement speed while wet",
+      "T5 (item level 1–∞, weight 100): 12% increased movement speed while wet",
+      "T4 (item level 1–∞, weight 100): 15% increased movement speed while wet"
+     ],
+     "link": "items/mod/eikthyr.wet-move.md",
+     "name": "#% increased movement speed while wet"
+    },
+    "old": null
+   },
+   "eikthyr.wind-stamina": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T8 (item level 1–∞, weight 100): 20% increased stamina regeneration in the wind",
+      "T7 (item level 1–∞, weight 100): 30% increased stamina regeneration in the wind",
+      "T6 (item level 1–∞, weight 100): 40% increased stamina regeneration in the wind",
+      "T5 (item level 1–∞, weight 100): 50% increased stamina regeneration in the wind",
+      "T4 (item level 1–∞, weight 100): 60% increased stamina regeneration in the wind"
+     ],
+     "link": "items/mod/eikthyr.wind-stamina.md",
+     "name": "#% increased stamina regeneration in the wind"
+    },
+    "old": null
+   },
+   "elder.chopped-attack-speed": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T8 (item level 1–∞, weight 100): 5% increased attack speed after hitting a tree (2 s)",
+      "T7 (item level 1–∞, weight 100): 8% increased attack speed after hitting a tree (2 s)",
+      "T6 (item level 1–∞, weight 100): 10% increased attack speed after hitting a tree (2 s)",
+      "T5 (item level 1–∞, weight 100): 12% increased attack speed after hitting a tree (2 s)",
+      "T4 (item level 1–∞, weight 100): 15% increased attack speed after hitting a tree (2 s)"
+     ],
+     "link": "items/mod/elder.chopped-attack-speed.md",
+     "name": "#% increased attack speed after hitting a tree (# s)"
+    },
+    "old": null
+   },
+   "elder.physical-taken-as-spirit": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T8 (item level 1–∞, weight 100): 6% of physical damage taken is taken as spirit damage",
+      "T7 (item level 1–∞, weight 100): 7.5% of physical damage taken is taken as spirit damage",
+      "T6 (item level 1–∞, weight 100): 9% of physical damage taken is taken as spirit damage",
+      "T5 (item level 1–∞, weight 100): 10.5% of physical damage taken is taken as spirit damage",
+      "T4 (item level 1–∞, weight 100): 12% of physical damage taken is taken as spirit damage"
+     ],
+     "link": "items/mod/elder.physical-taken-as-spirit.md",
+     "name": "#% of physical damage taken is taken as spirit damage"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "T8 (item level 1–∞, weight 100): 10% of physical damage taken is taken as spirit damage",
+      "T7 (item level 1–∞, weight 100): 15% of physical damage taken is taken as spirit damage",
+      "T6 (item level 1–∞, weight 100): 20% of physical damage taken is taken as spirit damage",
+      "T5 (item level 1–∞, weight 100): 25% of physical damage taken is taken as spirit damage",
+      "T4 (item level 1–∞, weight 100): 30% of physical damage taken is taken as spirit damage"
+     ],
+     "link": "items/mod/elder.physical-taken-as-spirit.md",
+     "name": "#% of physical damage taken is taken as spirit damage"
+    }
+   },
+   "elder.still-armour": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T8 (item level 1–∞, weight 100): 15% increased armour while standing still",
+      "T7 (item level 1–∞, weight 100): 20% increased armour while standing still",
+      "T6 (item level 1–∞, weight 100): 30% increased armour while standing still",
+      "T5 (item level 1–∞, weight 100): 40% increased armour while standing still",
+      "T4 (item level 1–∞, weight 100): 50% increased armour while standing still"
+     ],
+     "link": "items/mod/elder.still-armour.md",
+     "name": "#% increased armour while standing still"
+    },
+    "old": null
+   },
+   "elder.still-health-regen": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T8 (item level 1–∞, weight 100): 20% increased health regeneration while standing still",
+      "T7 (item level 1–∞, weight 100): 30% increased health regeneration while standing still",
+      "T6 (item level 1–∞, weight 100): 40% increased health regeneration while standing still",
+      "T5 (item level 1–∞, weight 100): 50% increased health regeneration while standing still",
+      "T4 (item level 1–∞, weight 100): 60% increased health regeneration while standing still"
+     ],
+     "link": "items/mod/elder.still-health-regen.md",
+     "name": "#% increased health regeneration while standing still"
+    },
+    "old": null
+   },
+   "fader.burning-knockback": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T8 (item level 1–∞, weight 100): +10% knockback resistance while burning",
+      "T7 (item level 1–∞, weight 100): +15% knockback resistance while burning",
+      "T6 (item level 1–∞, weight 100): +20% knockback resistance while burning",
+      "T5 (item level 1–∞, weight 100): +25% knockback resistance while burning",
+      "T4 (item level 1–∞, weight 100): +30% knockback resistance while burning"
+     ],
+     "link": "items/mod/fader.burning-knockback.md",
+     "name": "+#% knockback resistance while burning"
+    },
+    "old": null
+   },
+   "fader.fire-ground-resist": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T8 (item level 1–∞, weight 100): +8% fire resistance while on Burning Ground",
+      "T7 (item level 1–∞, weight 100): +12% fire resistance while on Burning Ground",
+      "T6 (item level 1–∞, weight 100): +16% fire resistance while on Burning Ground",
+      "T5 (item level 1–∞, weight 100): +20% fire resistance while on Burning Ground",
+      "T4 (item level 1–∞, weight 100): +25% fire resistance while on Burning Ground"
+     ],
+     "link": "items/mod/fader.fire-ground-resist.md",
+     "name": "+#% fire resistance while on Burning Ground"
+    },
+    "old": null
+   },
+   "fader.full-health-move": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T8 (item level 1–∞, weight 100): 5% increased movement speed at full life",
+      "T7 (item level 1–∞, weight 100): 8% increased movement speed at full life",
+      "T6 (item level 1–∞, weight 100): 10% increased movement speed at full life",
+      "T5 (item level 1–∞, weight 100): 12% increased movement speed at full life",
+      "T4 (item level 1–∞, weight 100): 15% increased movement speed at full life"
+     ],
+     "link": "items/mod/fader.full-health-move.md",
+     "name": "#% increased movement speed at full life"
+    },
+    "old": null
+   },
+   "fader.physical-taken-as-fire": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T8 (item level 1–∞, weight 100): 6% of physical damage taken is taken as fire damage",
+      "T7 (item level 1–∞, weight 100): 7.5% of physical damage taken is taken as fire damage",
+      "T6 (item level 1–∞, weight 100): 9% of physical damage taken is taken as fire damage",
+      "T5 (item level 1–∞, weight 100): 10.5% of physical damage taken is taken as fire damage",
+      "T4 (item level 1–∞, weight 100): 12% of physical damage taken is taken as fire damage"
+     ],
+     "link": "items/mod/fader.physical-taken-as-fire.md",
+     "name": "#% of physical damage taken is taken as fire damage"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "T8 (item level 1–∞, weight 100): 10% of physical damage taken is taken as fire damage",
+      "T7 (item level 1–∞, weight 100): 15% of physical damage taken is taken as fire damage",
+      "T6 (item level 1–∞, weight 100): 20% of physical damage taken is taken as fire damage",
+      "T5 (item level 1–∞, weight 100): 25% of physical damage taken is taken as fire damage",
+      "T4 (item level 1–∞, weight 100): 30% of physical damage taken is taken as fire damage"
+     ],
+     "link": "items/mod/fader.physical-taken-as-fire.md",
+     "name": "#% of physical damage taken is taken as fire damage"
+    }
+   },
+   "gear.durability-loss": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T8 (item level 1–42, weight 1000): (8–12)% reduced durability loss",
+      "T7 (item level 19–76, weight 700): (13–18)% reduced durability loss",
+      "T6 (item level 43–129, weight 400): (19–25)% reduced durability loss",
+      "T5 (item level 77–∞, weight 180): (26–33)% reduced durability loss",
+      "T4 (item level 130–∞, weight 60): (34–40)% reduced durability loss",
+      "T3 (item level 181–∞, weight 0): (41–47)% reduced durability loss",
+      "T2 (item level 246–∞, weight 0): (48–54)% reduced durability loss",
+      "T1 (item level 320–∞, weight 0): (55–63)% reduced durability loss"
+     ],
+     "link": "items/mod/gear.durability-loss.md",
+     "name": "#% reduced durability loss"
+    },
+    "old": null
+   },
+   "moder.airborne-attack-speed": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T8 (item level 1–∞, weight 100): 5% increased attack speed while airborne",
+      "T7 (item level 1–∞, weight 100): 8% increased attack speed while airborne",
+      "T6 (item level 1–∞, weight 100): 10% increased attack speed while airborne",
+      "T5 (item level 1–∞, weight 100): 12% increased attack speed while airborne",
+      "T4 (item level 1–∞, weight 100): 15% increased attack speed while airborne"
+     ],
+     "link": "items/mod/moder.airborne-attack-speed.md",
+     "name": "#% increased attack speed while airborne"
+    },
+    "old": null
+   },
+   "moder.clear-eitr-regen": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T8 (item level 1–∞, weight 100): 20% increased eitr regeneration in clear weather",
+      "T7 (item level 1–∞, weight 100): 30% increased eitr regeneration in clear weather",
+      "T6 (item level 1–∞, weight 100): 40% increased eitr regeneration in clear weather",
+      "T5 (item level 1–∞, weight 100): 50% increased eitr regeneration in clear weather",
+      "T4 (item level 1–∞, weight 100): 60% increased eitr regeneration in clear weather"
+     ],
+     "link": "items/mod/moder.clear-eitr-regen.md",
+     "name": "#% increased eitr regeneration in clear weather"
+    },
+    "old": null
+   },
+   "moder.fall-and-jump": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T8 (item level 1–∞, weight 100): 10% reduced fall damage, 10% increased jump height",
+      "T7 (item level 1–∞, weight 100): 15% reduced fall damage, 15% increased jump height",
+      "T6 (item level 1–∞, weight 100): 20% reduced fall damage, 20% increased jump height",
+      "T5 (item level 1–∞, weight 100): 25% reduced fall damage, 25% increased jump height",
+      "T4 (item level 1–∞, weight 100): 30% reduced fall damage, 30% increased jump height"
+     ],
+     "link": "items/mod/moder.fall-and-jump.md",
+     "name": "#% reduced fall damage, #% increased jump height"
+    },
+    "old": null
+   },
+   "moder.physical-taken-as-frost": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T8 (item level 1–∞, weight 100): 6% of physical damage taken is taken as frost damage",
+      "T7 (item level 1–∞, weight 100): 7.5% of physical damage taken is taken as frost damage",
+      "T6 (item level 1–∞, weight 100): 9% of physical damage taken is taken as frost damage",
+      "T5 (item level 1–∞, weight 100): 10.5% of physical damage taken is taken as frost damage",
+      "T4 (item level 1–∞, weight 100): 12% of physical damage taken is taken as frost damage"
+     ],
+     "link": "items/mod/moder.physical-taken-as-frost.md",
+     "name": "#% of physical damage taken is taken as frost damage"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "T8 (item level 1–∞, weight 100): 10% of physical damage taken is taken as frost damage",
+      "T7 (item level 1–∞, weight 100): 15% of physical damage taken is taken as frost damage",
+      "T6 (item level 1–∞, weight 100): 20% of physical damage taken is taken as frost damage",
+      "T5 (item level 1–∞, weight 100): 25% of physical damage taken is taken as frost damage",
+      "T4 (item level 1–∞, weight 100): 30% of physical damage taken is taken as frost damage"
+     ],
+     "link": "items/mod/moder.physical-taken-as-frost.md",
+     "name": "#% of physical damage taken is taken as frost damage"
+    }
+   },
+   "queen.hurt-stagger-resist": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T8 (item level 1–∞, weight 100): +8% stagger resistance after recently taking damage",
+      "T7 (item level 1–∞, weight 100): +12% stagger resistance after recently taking damage",
+      "T6 (item level 1–∞, weight 100): +16% stagger resistance after recently taking damage",
+      "T5 (item level 1–∞, weight 100): +20% stagger resistance after recently taking damage",
+      "T4 (item level 1–∞, weight 100): +25% stagger resistance after recently taking damage"
+     ],
+     "link": "items/mod/queen.hurt-stagger-resist.md",
+     "name": "+#% stagger resistance after recently taking damage"
+    },
+    "old": null
+   },
+   "queen.physical-taken-as-poison": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T8 (item level 1–∞, weight 100): 6% of physical damage taken is taken as poison damage",
+      "T7 (item level 1–∞, weight 100): 7.5% of physical damage taken is taken as poison damage",
+      "T6 (item level 1–∞, weight 100): 9% of physical damage taken is taken as poison damage",
+      "T5 (item level 1–∞, weight 100): 10.5% of physical damage taken is taken as poison damage",
+      "T4 (item level 1–∞, weight 100): 12% of physical damage taken is taken as poison damage"
+     ],
+     "link": "items/mod/queen.physical-taken-as-poison.md",
+     "name": "#% of physical damage taken is taken as poison damage"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "T8 (item level 1–∞, weight 100): 10% of physical damage taken is taken as poison damage",
+      "T7 (item level 1–∞, weight 100): 15% of physical damage taken is taken as poison damage",
+      "T6 (item level 1–∞, weight 100): 20% of physical damage taken is taken as poison damage",
+      "T5 (item level 1–∞, weight 100): 25% of physical damage taken is taken as poison damage",
+      "T4 (item level 1–∞, weight 100): 30% of physical damage taken is taken as poison damage"
+     ],
+     "link": "items/mod/queen.physical-taken-as-poison.md",
+     "name": "#% of physical damage taken is taken as poison damage"
+    }
+   },
+   "queen.reservation-efficiency": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T8 (item level 1–∞, weight 100): +4% eitr reservation efficiency",
+      "T7 (item level 1–∞, weight 100): +6% eitr reservation efficiency",
+      "T6 (item level 1–∞, weight 100): +8% eitr reservation efficiency",
+      "T5 (item level 1–∞, weight 100): +10% eitr reservation efficiency",
+      "T4 (item level 1–∞, weight 100): +12% eitr reservation efficiency"
+     ],
+     "link": "items/mod/queen.reservation-efficiency.md",
+     "name": "+#% eitr reservation efficiency"
+    },
+    "old": null
+   },
+   "queen.sneak-move": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T8 (item level 1–∞, weight 100): 10% increased movement speed while sneaking",
+      "T7 (item level 1–∞, weight 100): 15% increased movement speed while sneaking",
+      "T6 (item level 1–∞, weight 100): 20% increased movement speed while sneaking",
+      "T5 (item level 1–∞, weight 100): 25% increased movement speed while sneaking",
+      "T4 (item level 1–∞, weight 100): 30% increased movement speed while sneaking"
+     ],
+     "link": "items/mod/queen.sneak-move.md",
+     "name": "#% increased movement speed while sneaking"
+    },
+    "old": null
+   },
+   "yagluth.burning-crit": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T8 (item level 1–∞, weight 100): 20% increased critical strike chance while burning",
+      "T7 (item level 1–∞, weight 100): 30% increased critical strike chance while burning",
+      "T6 (item level 1–∞, weight 100): 40% increased critical strike chance while burning",
+      "T5 (item level 1–∞, weight 100): 50% increased critical strike chance while burning",
+      "T4 (item level 1–∞, weight 100): 60% increased critical strike chance while burning"
+     ],
+     "link": "items/mod/yagluth.burning-crit.md",
+     "name": "#% increased critical strike chance while burning"
+    },
+    "old": null
+   },
+   "yagluth.burning-stamina": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T8 (item level 1–∞, weight 100): 20% increased stamina regeneration while burning",
+      "T7 (item level 1–∞, weight 100): 30% increased stamina regeneration while burning",
+      "T6 (item level 1–∞, weight 100): 40% increased stamina regeneration while burning",
+      "T5 (item level 1–∞, weight 100): 50% increased stamina regeneration while burning",
+      "T4 (item level 1–∞, weight 100): 60% increased stamina regeneration while burning"
+     ],
+     "link": "items/mod/yagluth.burning-stamina.md",
+     "name": "#% increased stamina regeneration while burning"
+    },
+    "old": null
+   },
+   "yagluth.fire-ground-move": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T8 (item level 1–∞, weight 100): 5% increased movement speed while on Burning Ground",
+      "T7 (item level 1–∞, weight 100): 8% increased movement speed while on Burning Ground",
+      "T6 (item level 1–∞, weight 100): 10% increased movement speed while on Burning Ground",
+      "T5 (item level 1–∞, weight 100): 12% increased movement speed while on Burning Ground",
+      "T4 (item level 1–∞, weight 100): 15% increased movement speed while on Burning Ground"
+     ],
+     "link": "items/mod/yagluth.fire-ground-move.md",
+     "name": "#% increased movement speed while on Burning Ground"
+    },
+    "old": null
+   },
+   "yagluth.physical-taken-as-fire": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T8 (item level 1–∞, weight 100): 6% of physical damage taken is taken as fire damage",
+      "T7 (item level 1–∞, weight 100): 7.5% of physical damage taken is taken as fire damage",
+      "T6 (item level 1–∞, weight 100): 9% of physical damage taken is taken as fire damage",
+      "T5 (item level 1–∞, weight 100): 10.5% of physical damage taken is taken as fire damage",
+      "T4 (item level 1–∞, weight 100): 12% of physical damage taken is taken as fire damage"
+     ],
+     "link": "items/mod/yagluth.physical-taken-as-fire.md",
+     "name": "#% of physical damage taken is taken as fire damage"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "T8 (item level 1–∞, weight 100): 10% of physical damage taken is taken as fire damage",
+      "T7 (item level 1–∞, weight 100): 15% of physical damage taken is taken as fire damage",
+      "T6 (item level 1–∞, weight 100): 20% of physical damage taken is taken as fire damage",
+      "T5 (item level 1–∞, weight 100): 25% of physical damage taken is taken as fire damage",
+      "T4 (item level 1–∞, weight 100): 30% of physical damage taken is taken as fire damage"
+     ],
+     "link": "items/mod/yagluth.physical-taken-as-fire.md",
+     "name": "#% of physical damage taken is taken as fire damage"
+    }
+   }
+  },
+  "monster-mods": {
+   "leader": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Keeps lesser minions of its land around it. They are faster near it, lost without it, and worth nothing.",
+      "Pack reach: 10.0 m",
+      "Pack speed: 1.20×",
+      "Fear after its death: 3.0 s",
+      "Minions: 6",
+      "Minions in the Halls: 2",
+      "Minion return: 20.0 s",
+      "Minion health: 0.60",
+      "Minion damage: 0.70",
+      "Calls within: 40 m"
+     ],
+     "link": "monsters/mods.md#mod-leader",
+     "name": "Leader"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Keeps lesser minions of its land around it. They are faster near it, lost without it, and worth nothing.",
+      "Pack reach: 10.0 m",
+      "Pack speed: 1.20×",
+      "Fear after its death: 3.0 s",
+      "Minions: 6",
+      "Minion return: 20.0 s",
+      "Minion health: 0.60",
+      "Minion damage: 0.70",
+      "Calls within: 40 m"
+     ],
+     "link": "monsters/mods.md#mod-leader",
+     "name": "Leader"
+    }
+   }
+  },
+  "passives": {
+   "own10349": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "7.5% increased maximum health for minions",
+      "3.75% reduced damage taken for minions",
+      "Your minions gain 25% of your maximum health bonuses",
+      "Shared Rune: After blocking, your rune shield absorbs 30% of your minions’ incoming damage for 3 s; While you block, part of the damage your minions take goes to your rune shield. An empty shield takes nothing.",
+      "Last Service: A killing blow on your minion first drains your rune shield by the rest of its damage. If the shield runs out, the minion falls.",
+      "Blood Reserve: Minions reserve health instead of eitr, one point for one point. While Soul Vessel is taken, they keep reserving eitr."
+     ],
+     "link": "passives/node/own10349.md",
+     "name": "Bones Under Oath"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "7.5% increased maximum health for minions",
+      "3.75% reduced damage taken for minions",
+      "Your minions gain 25% of your maximum health bonuses",
+      "Shared Rune: After blocking, your rune shield absorbs 30% of your minions’ incoming damage for 3 s; While you block, part of the damage your minions take goes to your rune shield. An empty shield takes nothing.",
+      "Last Service: A killing blow on your minion first drains your rune shield by the rest of its damage. If the shield runs out, the minion falls."
+     ],
+     "link": "passives/node/own10349.md",
+     "name": "Bones Under Oath"
+    }
+   },
+   "own11329": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "3.75% reduced damage taken for minions",
+      "Shared Rune: After blocking, your rune shield absorbs 30% of your minions’ incoming damage for 3 s; While you block, part of the damage your minions take goes to your rune shield. An empty shield takes nothing.",
+      "Last Service: A killing blow on your minion first drains your rune shield by the rest of its damage. If the shield runs out, the minion falls.",
+      "Blood Reserve: Minions reserve health instead of eitr, one point for one point. While Soul Vessel is taken, they keep reserving eitr."
+     ],
+     "link": "passives/node/own11329.md",
+     "name": "Summoner's Veil"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "3.75% reduced damage taken for minions",
+      "Shared Rune: After blocking, your rune shield absorbs 30% of your minions’ incoming damage for 3 s; While you block, part of the damage your minions take goes to your rune shield. An empty shield takes nothing.",
+      "Last Service: A killing blow on your minion first drains your rune shield by the rest of its damage. If the shield runs out, the minion falls."
+     ],
+     "link": "passives/node/own11329.md",
+     "name": "Summoner's Veil"
+    }
+   },
+   "own11472": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "10% increased durability of equipped items"
+     ],
+     "link": "passives/tree/#own11472",
+     "name": "Item Durability"
+    },
+    "old": null
+   },
+   "own11478": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "10% increased durability of equipped items"
+     ],
+     "link": "passives/tree/#own11478",
+     "name": "Item Durability"
+    },
+    "old": null
+   },
+   "own11484": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "10% increased durability of equipped items"
+     ],
+     "link": "passives/tree/#own11484",
+     "name": "Item Durability"
+    },
+    "old": null
+   },
+   "own11490": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "25% increased durability of equipped items"
+     ],
+     "link": "passives/node/own11490.md",
+     "name": "Built to Last"
+    },
+    "old": null
+   },
+   "own12119": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% reduced durability loss of equipped items"
+     ],
+     "link": "passives/tree/#own12119",
+     "name": "Durability Loss"
+    },
+    "old": null
+   },
+   "own12125": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% reduced durability loss of equipped items"
+     ],
+     "link": "passives/tree/#own12125",
+     "name": "Durability Loss"
+    },
+    "old": null
+   },
+   "own12131": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% reduced durability loss of equipped items"
+     ],
+     "link": "passives/tree/#own12131",
+     "name": "Durability Loss"
+    },
+    "old": null
+   },
+   "own12137": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "6% reduced durability loss of equipped armour"
+     ],
+     "link": "passives/tree/#own12137",
+     "name": "Armour Upkeep"
+    },
+    "old": null
+   },
+   "own12143": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "15% reduced durability loss of equipped armour"
+     ],
+     "link": "passives/node/own12143.md",
+     "name": "Riveted Plates"
+    },
+    "old": null
+   },
+   "own12149": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "15% reduced durability loss of equipped items"
+     ],
+     "link": "passives/node/own12149.md",
+     "name": "Well-Maintained Gear"
+    },
+    "old": null
+   }
+  },
+  "uniques": {
+   "PT_Jewel_EmptyThrone": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "If no Notable Passives are Allocated in Radius, you can have only 1 summoned Skeleton. It deals ×2 Damage, has ×2 Health and counts as your Companion",
+      "Drops: drops anywhere from the Plains (item level 97)"
+     ],
+     "link": "items/unique/PT_Jewel_EmptyThrone.md",
+     "name": "The Empty Throne"
+    },
+    "old": null
+   },
+   "PT_Jewel_FlameWithoutABurial": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "If no Notable Passives are Allocated in Radius, your Ignites deal Spirit damage instead of Fire damage",
+      "Drops: drops anywhere from the Plains (item level 97)"
+     ],
+     "link": "items/unique/PT_Jewel_FlameWithoutABurial.md",
+     "name": "Flame Without a Burial"
+    },
+    "old": null
+   },
+   "PT_Jewel_OathOfIron": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "If no Notable Passives are Allocated in Radius, your Endurance also reduces the durability your Equipment loses from incoming damage",
+      "Drops: drops anywhere from the Plains (item level 97)"
+     ],
+     "link": "items/unique/PT_Jewel_OathOfIron.md",
+     "name": "Oath of Iron"
+    },
+    "old": null
+   },
+   "PT_Jewel_WanderingHearth": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "If no Notable Passives are Allocated in Radius, the timer of your Rested effect does not run down",
+      "Drops: drops anywhere from the Plains (item level 97)"
+     ],
+     "link": "items/unique/PT_Jewel_WanderingHearth.md",
+     "name": "Wandering Hearth"
+    },
+    "old": null
+   },
+   "PT_Jewel_WintersDebt": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "If no Notable Passives are Allocated in Radius, 30% of Damage from Enemy Hits against you is dealt to you evenly over 3 seconds instead",
+      "Drops: drops anywhere from the Plains (item level 97)"
+     ],
+     "link": "items/unique/PT_Jewel_WintersDebt.md",
+     "name": "Winter's Debt"
+    },
+    "old": null
+   }
+  },
+  "values": {
+   "empty-throne.damage-more": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "100%"
+     ],
+     "link": null,
+     "name": "The Empty Throne: more damage of the summoned skeleton (a share: 1 = x2)"
+    },
+    "old": null
+   },
+   "empty-throne.health-more": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "100%"
+     ],
+     "link": null,
+     "name": "The Empty Throne: more health of the summoned skeleton (a share: 1 = x2)"
+    },
+    "old": null
+   },
+   "empty-throne.limit": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "1"
+     ],
+     "link": null,
+     "name": "The Empty Throne: summoned skeletons at once"
+    },
+    "old": null
+   },
+   "forge.extra-reserve": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "100 eitr"
+     ],
+     "link": null,
+     "name": "Living Steel: eitr reserved by each living weapon after the first (minion reservation efficiency applies)"
+    },
+    "old": null
+   },
+   "forge.quench-per-100": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "3"
+     ],
+     "link": null,
+     "name": "Edge of Ages: base damage added per 100 of the weapon's current durability"
+    },
+    "old": null
+   },
+   "forge.quench-per-durability": {
+    "new": null,
+    "old": {
+     "kind": "",
+     "lines": [
+      "6%"
+     ],
+     "link": null,
+     "name": "Edge of Ages: base damage added per point of the weapon's maximum durability"
+    }
+   },
+   "gem.activate-air-aura.reserve": {
+    "new": null,
+    "old": {
+     "kind": "",
+     "lines": [
+      "25"
+     ],
+     "link": null,
+     "name": "Skill gem Storm Crown: reserve"
+    }
+   },
+   "gem.activate-air-aura.reserve-share": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "15%"
+     ],
+     "link": null,
+     "name": "Skill gem Storm Crown: reserve-share"
+    },
+    "old": null
+   },
+   "gem.activate-aura.reserve": {
+    "new": null,
+    "old": {
+     "kind": "",
+     "lines": [
+      "15"
+     ],
+     "link": null,
+     "name": "Skill gem Circle of Gifts: reserve"
+    }
+   },
+   "gem.activate-aura.reserve-share": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "50%"
+     ],
+     "link": null,
+     "name": "Skill gem Circle of Gifts: reserve-share"
+    },
+    "old": null
+   },
+   "gem.aura-curses.reserve": {
+    "new": null,
+    "old": {
+     "kind": "",
+     "lines": [
+      "15"
+     ],
+     "link": null,
+     "name": "Skill gem Circle of Malice: reserve"
+    }
+   },
+   "gem.aura-curses.reserve-share": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "50%"
+     ],
+     "link": null,
+     "name": "Skill gem Circle of Malice: reserve-share"
+    },
+    "old": null
+   },
+   "gem.effect-rain.reserve": {
+    "new": null,
+    "old": {
+     "kind": "",
+     "lines": [
+      "12"
+     ],
+     "link": null,
+     "name": "Skill gem Rain Underfoot: reserve"
+    }
+   },
+   "gem.effect-rain.reserve-share": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "15%"
+     ],
+     "link": null,
+     "name": "Skill gem Rain Underfoot: reserve-share"
+    },
+    "old": null
+   },
+   "gem.effect-retort.reserve": {
+    "new": null,
+    "old": {
+     "kind": "",
+     "lines": [
+      "20"
+     ],
+     "link": null,
+     "name": "Skill gem Answering Heat: reserve"
+    }
+   },
+   "gem.effect-retort.reserve-share": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "15%"
+     ],
+     "link": null,
+     "name": "Skill gem Answering Heat: reserve-share"
+    },
+    "old": null
+   },
+   "gem.endurance-aura.reserve": {
+    "new": null,
+    "old": {
+     "kind": "",
+     "lines": [
+      "20"
+     ],
+     "link": null,
+     "name": "Skill gem Steadfast Circle: reserve"
+    }
+   },
+   "gem.endurance-aura.reserve-share": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "50%"
+     ],
+     "link": null,
+     "name": "Skill gem Steadfast Circle: reserve-share"
+    },
+    "old": null
+   },
+   "gem.poison-aura.reserve": {
+    "new": null,
+    "old": {
+     "kind": "",
+     "lines": [
+      "20"
+     ],
+     "link": null,
+     "name": "Skill gem Plague Breath: reserve"
+    }
+   },
+   "gem.poison-aura.reserve-share": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "25%"
+     ],
+     "link": null,
+     "name": "Skill gem Plague Breath: reserve-share"
+    },
+    "old": null
+   },
+   "gem.renewal-aura.reserve": {
+    "new": null,
+    "old": {
+     "kind": "",
+     "lines": [
+      "20"
+     ],
+     "link": null,
+     "name": "Skill gem Warm Hearth: reserve"
+    }
+   },
+   "gem.renewal-aura.reserve-share": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "25%"
+     ],
+     "link": null,
+     "name": "Skill gem Warm Hearth: reserve-share"
+    },
+    "old": null
+   },
+   "gem.rune-aura.reserve": {
+    "new": null,
+    "old": {
+     "kind": "",
+     "lines": [
+      "20"
+     ],
+     "link": null,
+     "name": "Skill gem Rune Veil: reserve"
+    }
+   },
+   "gem.rune-aura.reserve-share": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "25%"
+     ],
+     "link": null,
+     "name": "Skill gem Rune Veil: reserve-share"
+    },
+    "old": null
+   },
+   "halls.cooldown-days": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "0 d"
+     ],
+     "link": null,
+     "name": "Halls of Oaths: in-game days a gate's halls rest once a run of it begins its first trial room (0 - no rest)"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "1 d"
+     ],
+     "link": null,
+     "name": "Halls of Oaths: in-game days a gate's halls rest once a run of it begins its first trial room (0 - no rest)"
+    }
+   },
+   "halls.opengate-boss": {
+    "new": null,
+    "old": {
+     "kind": "",
+     "lines": [
+      "0.05"
+     ],
+     "link": null,
+     "name": "Rune of the Open Gate: chance in each floor-boss chest of the halls"
+    }
+   },
+   "halls.opengate-ragn": {
+    "new": null,
+    "old": {
+     "kind": "",
+     "lines": [
+      "0.02"
+     ],
+     "link": null,
+     "name": "Rune of the Open Gate: chance that Ragn's gamble bundle holds one instead of the gear"
+    }
+   },
+   "halls.opengate-ship": {
+    "new": null,
+    "old": {
+     "kind": "",
+     "lines": [
+      "0.03"
+     ],
+     "link": null,
+     "name": "Rune of the Open Gate: chance among the gifts of a burial ship"
+    }
+   },
+   "halls.opengate-treasury": {
+    "new": null,
+    "old": {
+     "kind": "",
+     "lines": [
+      "0.1"
+     ],
+     "link": null,
+     "name": "Rune of the Open Gate: chance in each treasury chest of the halls"
+    }
+   },
+   "hmap.shadows": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "2"
+     ],
+     "link": null,
+     "name": "Halls room maps: how many of a cell's lights keep their shadows (the strongest; 99 = all; hmapperf 10.11: two take a fight in a room from 23-25 ms to 18 ms a frame)"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "99"
+     ],
+     "link": null,
+     "name": "Halls room maps: how many of a cell's lights keep their shadows (the strongest; 99 = all; hmapperf 04.11: fewer did not pay)"
+    }
+   },
+   "modgroup.aura.near": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "2"
+     ],
+     "link": null,
+     "name": "Enemy modifiers: auras and links rolled within the radius, in total"
+    },
+    "old": null
+   },
+   "modgroup.aura.one": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "2"
+     ],
+     "link": null,
+     "name": "Enemy modifiers: auras and links one enemy can roll"
+    },
+    "old": null
+   },
+   "modgroup.radius": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "40 m"
+     ],
+     "link": null,
+     "name": "Enemy modifiers: radius of the nearby limits around an enemy that appears"
+    },
+    "old": null
+   },
+   "modgroup.shell.near": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "3"
+     ],
+     "link": null,
+     "name": "Enemy modifiers: shells rolled within the radius, in total"
+    },
+    "old": null
+   },
+   "modgroup.shell.one": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "1"
+     ],
+     "link": null,
+     "name": "Enemy modifiers: shells one enemy can roll"
+    },
+    "old": null
+   },
+   "modgroup.summon.near": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "2"
+     ],
+     "link": null,
+     "name": "Enemy modifiers: summons and ground effects rolled within the radius, in total"
+    },
+    "old": null
+   },
+   "modgroup.summon.one": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "3"
+     ],
+     "link": null,
+     "name": "Enemy modifiers: summons and ground effects one enemy can roll"
+    },
+    "old": null
+   },
+   "summon.reserve-health-rate": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "1 x"
+     ],
+     "link": null,
+     "name": "Minions reserving health: health held per point of eitr they would hold"
+    },
+    "old": null
+   },
+   "tmap.beacon": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "40 m"
+     ],
+     "link": null,
+     "name": "Treasure maps: how far the Wishbone hears a buried chest"
+    },
+    "old": null
+   },
+   "winter-debt.seconds": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "3 s"
+     ],
+     "link": null,
+     "name": "Winter's Debt: seconds over which the deferred damage is dealt"
+    },
+    "old": null
+   },
+   "winter-debt.share": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "30%"
+     ],
+     "link": null,
+     "name": "Winter's Debt: share of the damage of each enemy hit that is deferred"
+    },
+    "old": null
+   }
+  }
+ },
+ "date": "2026-11-13",
+ "from": "6.0.6",
+ "to": "6.0.7"
+}

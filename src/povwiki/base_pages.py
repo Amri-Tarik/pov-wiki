@@ -8,7 +8,7 @@ and fishing gear are left out, and so are monster attacks (which have no name).
 
 from collections import defaultdict
 
-from .item_pages import biome
+from .item_pages import _unsearched, biome
 from .markup import rel
 from .pages import Ctx, _footer, _img, _table
 
@@ -676,9 +676,11 @@ def _mods_section(ctx: Ctx, b: dict, page: str) -> list[str]:
             continue
         total = sum(a["weight"] for a in chosen)
         md += [f"### {ui('items.' + place)} ({len(chosen)})", ""]
-        md += _table(header, [[
+        # Left out of search: every mod has its own page, and a long list (6.0.10's leg pools in
+        # Russian) passes the search index's 32 KB per section.
+        md += _unsearched(_table(header, [[
             link(a), values(a), level(a), str(len(_rollable_tiers(a))), f"{a['weight']:g}", f"{100 * a['weight'] / total:.1f}%",
-        ] for a in chosen])
+        ] for a in chosen]))
     if essence:
         from .item_pages import _essences_for
 

@@ -47,8 +47,8 @@ anchors = [
     "PassiveTree/SkeletonForms.cs :: SkeletonForms.Fire",
     "PassiveTree/SkeletonForms.cs :: SkeletonForms.Ball",
 ]
-fingerprint = "739c77f26461"
-checked = "6.0.3"
+fingerprint = "92889daa8acb"
+checked = "6.0.10"
 
 [formula.values]
 default_damage = 10
@@ -215,8 +215,8 @@ anchors = [
     "PassiveTree/BossStars.cs :: BossStars.Reborn",
     "PassiveTree/DungeonReawaken.cs :: DungeonReawaken.Respawn",
 ]
-fingerprint = "e717e30f0638"
-checked = "6.0.0"
+fingerprint = "b02a7d7ec3b5"
+checked = "6.0.10"
 
 [formula.values]
 blood_max = 5
@@ -278,8 +278,8 @@ anchors = [
     "PassiveTree.Loot/LootDrops.cs :: LootDrops.FamilyShare",
     "PassiveTree.Loot/LootDrops.cs :: LootDrops.FamilyReward",
 ]
-fingerprint = "f1cfc3d2ed7d"
-checked = "6.0.0"
+fingerprint = "8c2db293d5e8"
+checked = "6.0.10"
 
 [formula.values]
 per_modifier = 0.5
@@ -352,8 +352,8 @@ anchors = [
     "PassiveTree/WeaponAffixes.cs :: WeaponAffixes.ColumnStat",
     "PassiveTree/CriticalHits.cs :: CriticalHits.MagazineCritBonus",
 ]
-fingerprint = "92be8453b945"
-checked = "5.3.6"
+fingerprint = "ca4432ba9df1"
+checked = "6.0.10"
 
 [formula.values]
 base = 1.5
@@ -395,8 +395,8 @@ anchors = [
     "PassiveTree/Evasion.cs :: Evasion.StaminaCost",
     "PassiveTree/Caps.cs :: \"public const float StaminaCost\"",
 ]
-fingerprint = "de5896c65977"
-checked = "6.0.6"
+fingerprint = "0e1d5ac5026d"
+checked = "6.0.10"
 
 [formula.values]
 cost_cap = 0.85
@@ -564,8 +564,8 @@ anchors = [
     "PassiveTree/JewelReveal.cs :: JewelReveal.Arrange",
     "PassiveTree/Tree.cs :: Tree.Around",
 ]
-fingerprint = "f7bedc6dcc1a"
-checked = "5.1.1"
+fingerprint = "905c7755e6c4"
+checked = "6.0.10"
 
 [[formula]]
 id = "strikes"
@@ -585,8 +585,8 @@ anchors = [
     "PassiveTree/Tunables.cs :: \"strike.reach\"",
     "PassiveTree/Tunables.cs :: \"strike.radius\"",
 ]
-fingerprint = "5a43d0f7c7f2"
-checked = "6.0.0"
+fingerprint = "8cfe49977a56"
+checked = "6.0.12"
 
 [[formula]]
 id = "smite"
@@ -608,8 +608,8 @@ anchors = [
     "PassiveTree/Smite.cs :: Smite.DirectArea",
     "PassiveTree/SpellGround.cs :: SpellGround.Impact",
 ]
-fingerprint = "c3f419cda81d"
-checked = "6.0.0"
+fingerprint = "a0a175ec101a"
+checked = "6.0.12"
 
 [formula.values]
 eitr = 5
@@ -642,8 +642,8 @@ anchors = [
     "PassiveTree/Tunables.cs :: \"phantom.interval\"",
     "PassiveTree/Tunables.cs :: \"phantom.delay\"",
 ]
-fingerprint = "7d12fc126264"
-checked = "6.0.0"
+fingerprint = "e320c6fb233d"
+checked = "6.0.12"
 
 [formula.values]
 max_pending = 96
@@ -765,8 +765,8 @@ anchors = [
     "PassiveTree/Tunables.cs :: \"ailment.poison.base-chance\"",
     "PassiveTree/Tunables.cs :: \"ailment.bleeding.pierce-share\"",
 ]
-fingerprint = "ceaacf968795"
-checked = "6.0.6"
+fingerprint = "cdb9486959af"
+checked = "6.0.10"
 
 [formula.values]
 hold = 3
@@ -798,8 +798,8 @@ anchors = [
     "PassiveTree/Tunables.cs :: \"shield.delay-cap\"",
     "valheim/Character.cs :: Character.RPC_Damage",
 ]
-fingerprint = "3a1d72b1a9d6"
-checked = "6.0.6"
+fingerprint = "f62d6ceffb26"
+checked = "6.0.10"
 
 [formula.values]
 base = 0
@@ -876,8 +876,8 @@ anchors = [
     "PassiveTree/Tunables.cs :: \"movement.charge-distance\"",
     "PassiveTree/FistDash.cs :: Humanoid_StartAttack.Postfix",
 ]
-fingerprint = "3dd10b73902a"
-checked = "6.0.0"
+fingerprint = "de0d7cfa459a"
+checked = "6.0.12"
 
 [formula.values]
 increase = 0.25
@@ -885,12 +885,15 @@ increase = 0.25
 [[formula]]
 id = "area"
 anchors = [
+    "PassiveTree/AreaReach.cs :: AreaReach.Applies",
+    "PassiveTree/AreaReach.cs :: AreaReach.Reaches",
     "PassiveTree/Blasts.cs :: Blasts.AreaFactor#2",
 ]
-fingerprint = "b82d1801899c"
-checked = "5.1.2"
+fingerprint = "5636db514ae1"
+checked = "6.0.12"
 
 [formula.values]
+walls = true
 floor = 0.1
 
 [[formula]]
@@ -917,8 +920,8 @@ anchors = [
     "PassiveTree/Tunables.cs :: \"slam.cutting-to-blunt\"",
     "PassiveTree/Slams.cs :: Slams.ExtraFlat",
 ]
-fingerprint = "7ffe42ef2370"
-checked = "6.0.0"
+fingerprint = "96d8c45db4b7"
+checked = "6.0.12"
 
 [[formula]]
 id = "block"
@@ -1057,8 +1060,8 @@ anchors = [
     "PassiveTree/Tunables.cs :: \"berserker.temper-more\"",
     "PassiveTree/Tunables.cs :: \"berserker.temper-seconds\"",
 ]
-fingerprint = "ec6319ab5917"
-checked = "6.0.0"
+fingerprint = "06d44c07a035"
+checked = "6.0.10"
 
 [formula.values]
 unbowed = 0.35
@@ -1136,8 +1139,8 @@ anchors = [
     "PassiveTree/ItemAffixes.cs :: ItemAffixes.AddLocalGains",
     "PassiveTree/ProjectileMods.cs :: ProjectileMods.ShotDamage",
 ]
-fingerprint = "2bb5a37f9d14"
-checked = "6.0.4"
+fingerprint = "fb0626d9c5c8"
+checked = "6.0.10"
 
 [formula.values]
 staggered = 0.15
@@ -1157,8 +1160,8 @@ anchors = [
     "PassiveTree/ConsumeOps.cs :: ConsumeOps.Hit",
     "PassiveTree/RangedFalloff.cs :: RangedFalloff.Applies",
 ]
-fingerprint = "e63bea397f9a"
-checked = "6.0.4"
+fingerprint = "b1fb60e4fbab"
+checked = "6.0.10"
 
 [[formula]]
 id = "player-penetration"
@@ -1206,8 +1209,8 @@ anchors = [
     "PassiveTree/Tunables.cs :: \"empty-throne.limit\"",
     "PassiveTree/MinionLife.cs :: MinionLife.Scale",
 ]
-fingerprint = "f8f94b3aabbb"
-checked = "6.0.0"
+fingerprint = "65b4360b55ae"
+checked = "6.0.10"
 
 [formula.values]
 quality_health = 0.25
@@ -1234,8 +1237,8 @@ anchors = [
     "PassiveTree/Tunables.cs :: \"summon.reserve-health-rate\"",
     "PassiveTree/MinionLife.cs :: MinionLife.Keep",
 ]
-fingerprint = "bd124e4d1a15"
-checked = "6.0.0"
+fingerprint = "f0e7abef4435"
+checked = "6.0.10"
 
 [formula.values]
 quality_reserve = 0.15
@@ -1251,8 +1254,8 @@ anchors = [
     "PassiveTree/MinionLife.cs :: MinionLife.Expire",
     "PassiveTree/MinionLife.cs :: MinionLife.Keep",
 ]
-fingerprint = "815183604774"
-checked = "6.0.3"
+fingerprint = "7e70bf67f502"
+checked = "6.0.10"
 
 [[formula]]
 id = "vanilla-summons"
@@ -1265,8 +1268,8 @@ anchors = [
     "PassiveTree/StarterStaves.cs :: Vanilla_Gate.Prefix",
     "PassiveTree/MinionLife.cs :: MinionLife.Scale",
 ]
-fingerprint = "a8fb6c9cf262"
-checked = "6.0.0"
+fingerprint = "995d0fb50f97"
+checked = "6.0.10"
 
 [formula.values]
 quality_health = 0.25
@@ -1284,8 +1287,8 @@ anchors = [
     "PassiveTree/CreatureBonuses.cs :: CreatureBonuses.HealthFactor",
     "PassiveTree/SkeletonForms.cs :: SkeletonForms.IsSkeleton",
 ]
-fingerprint = "8583fdcacc40"
-checked = "6.0.0"
+fingerprint = "d00f494ee71f"
+checked = "6.0.10"
 
 [formula.values]
 quality_health = 0.25
@@ -1324,8 +1327,8 @@ anchors = [
     "PassiveTree/CreatureBonuses.cs :: CreatureBonuses.LowHealth",
     "PassiveTree/CreatureBonuses.cs :: CreatureBonuses.MinionRegen",
 ]
-fingerprint = "b0ad894242e7"
-checked = "6.0.3"
+fingerprint = "58739ec9d88a"
+checked = "6.0.12"
 
 [formula.values]
 crit_chance = 0.05
@@ -1383,8 +1386,8 @@ anchors = [
     "PassiveTree/ChainLightning.cs :: ChainLightning.Targets#2",
     "PassiveTree/ProjectileMods.cs :: ProjectileMods.Overflow#2",
 ]
-fingerprint = "0fc59054f6c3"
-checked = "6.0.0"
+fingerprint = "d8c3e85ccadf"
+checked = "6.0.10"
 
 [formula.values]
 per_cast = 1
@@ -1443,8 +1446,8 @@ anchors = [
     "PassiveTree/GroundSliding.cs :: Traction.Postfix",
     "PassiveTree/Effects.cs :: Effects.LayerOn",
 ]
-fingerprint = "5d503f613875"
-checked = "5.3.2"
+fingerprint = "0a4bef835192"
+checked = "6.0.12"
 
 [formula.values]
 max_radius = 12
@@ -1499,8 +1502,8 @@ anchors = [
     "PassiveTree.Loot/ItemAscension.cs :: ItemAscension.CurveRatio",
     "PassiveTree.Loot/ItemAscension.cs :: ItemAscension.BiomeOf",
 ]
-fingerprint = "91da9ccd093c"
-checked = "6.0.0"
+fingerprint = "f95b169c34a0"
+checked = "6.0.12"
 
 [formula.values]
 min_damage = 5
@@ -1643,8 +1646,8 @@ anchors = [
     "PassiveTree.Encounters.Halls/HallsParty.cs :: HallsParty.Elites",
     "PassiveTree.Encounters.Halls/HallsParty.cs :: HallsParty.Hp",
 ]
-fingerprint = "bb7c7cfc4bb7"
-checked = "6.0.0"
+fingerprint = "09c2c065e0ce"
+checked = "6.0.10"
 
 [formula.values]
 room_mobs = 28
@@ -1729,8 +1732,8 @@ anchors = [
     "PassiveTree.Loot/LootDrops.cs :: LootDrops.FamilyReward",
     "PassiveTree.Loot/LootCatalog.cs :: \"boost\"",
 ]
-fingerprint = "18b3b5ddcb4f"
-checked = "6.0.0"
+fingerprint = "fb1cd59b2957"
+checked = "6.0.10"
 
 [[formula]]
 id = "halls-map-modifiers"
@@ -1768,8 +1771,8 @@ anchors = [
     "PassiveTree.Gems/GemBoard.cs :: GemBoard.Resolve",
     "PassiveTree.Gems/GemPlayer.cs :: GemPlayer.Validate",
 ]
-fingerprint = "8fb3cc414a8a"
-checked = "6.0.0"
+fingerprint = "b8fb98378de6"
+checked = "6.0.10"
 
 [[formula]]
 id = "gem-costs"
@@ -1786,8 +1789,8 @@ anchors = [
     "PassiveTree.Gems/GemRuntime.cs :: AttackCost.Postfix",
     "PassiveTree.Gems/GemRuntime.cs :: BlockCost.Postfix",
 ]
-fingerprint = "e2e050983972"
-checked = "6.0.0"
+fingerprint = "608abee4a801"
+checked = "6.0.10"
 
 [formula.values]
 duration_share = 0.5
@@ -1804,8 +1807,8 @@ anchors = [
     "PassiveTree/EffectDuration.cs :: EffectDuration.Factor",
     "PassiveTree.Gems/GemBoard.cs :: GemBoard.SupportOn",
 ]
-fingerprint = "6c88ba87604c"
-checked = "6.0.0"
+fingerprint = "dff0c4c89cc3"
+checked = "6.0.10"
 
 [formula.values]
 max = 0.75
@@ -1832,8 +1835,8 @@ anchors = [
     "PassiveTree.Gems/GemCut.cs :: GemCut.Cut",
     "PassiveTree.Gems/GemCut.cs :: GemCut.Raise",
 ]
-fingerprint = "2f4543397516"
-checked = "6.0.0"
+fingerprint = "84b9915989a6"
+checked = "6.0.10"
 
 [[formula]]
 id = "gem-auras"
@@ -1851,6 +1854,8 @@ anchors = [
     "PassiveTree.Gems/GemCast.cs :: GemCast.Build",
     "PassiveTree.Gems/GemBoard.cs :: GemBoard.SupportOn",
 ]
+fingerprint = "5622a7acbcd9"
+checked = "6.0.10"
 
 [formula.values]
 retort_tick = 0.25
@@ -1885,8 +1890,8 @@ anchors = [
     "PassiveTree.Loot/LootCatalog.cs :: \"kindMinLevel\"",
     "PassiveTree.Loot/LootDrops.cs :: LootDrops.FamilyReward",
 ]
-fingerprint = "2bf4996ef7f5"
-checked = "6.0.6"
+fingerprint = "2bb393787286"
+checked = "6.0.12"
 
 [formula.values]
 near = 250
@@ -1929,8 +1934,8 @@ anchors = [
     "PassiveTree.Encounters.Halls/HallsParty.cs :: HallsParty.ShipWave",
     "PassiveTree.Encounters.Halls/HallsParty.cs :: HallsParty.ShipGuardians",
 ]
-fingerprint = "6d294027e9f9"
-checked = "6.0.0"
+fingerprint = "e92afc54cd75"
+checked = "6.0.10"
 
 [formula.values]
 per_zone = 0.018
@@ -2030,8 +2035,8 @@ anchors = [
     "PassiveTree.Encounters/Finds.cs :: Finds.Make",
     "PassiveTree.Encounters.HallMaps/HallMapShop.cs :: HallMapShop.ServerRenew",
 ]
-fingerprint = "53f06169089a"
-checked = "6.0.6"
+fingerprint = "1aff1dc0e4ad"
+checked = "6.0.10"
 
 [formula.values]
 sigrid_material_tries = 6
@@ -2107,8 +2112,8 @@ anchors = [
     "PassiveTree.RunicCraft/Potential.cs :: Potential.Set",
     "PassiveTree/Jewels.cs :: Jewels.IsSpecial",
 ]
-fingerprint = "ac673267346b"
-checked = "6.0.4"
+fingerprint = "e40b3dc11ffb"
+checked = "6.0.12"
 
 [formula.values]
 delay = 0.3
@@ -2122,8 +2127,8 @@ anchors = [
     "PassiveTree.RunicCraft/Craft.cs :: Craft.Mult",
     "PassiveTree.RunicCraft/Craft.cs :: Craft.DoForge",
 ]
-fingerprint = "40a1d249f1d1"
-checked = "6.0.6"
+fingerprint = "b3fd03847358"
+checked = "6.0.12"
 
 [formula.values]
 target = 0.35
@@ -2146,8 +2151,8 @@ anchors = [
     "PassiveTree.RunicCraft/ItemMarks.cs :: ItemMarks.DurabilityMult",
     "PassiveTree.RunicCraft/ItemMarks.cs :: ItemMarks.LevelCap",
 ]
-fingerprint = "01d0e55880b9"
-checked = "6.0.6"
+fingerprint = "82d5711ec964"
+checked = "6.0.12"
 
 [formula.values]
 echo = 0.35

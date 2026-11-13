@@ -1,0 +1,18 @@
+{
+ "changes": {
+  "drops": {
+   "treasure-rooms": {
+    "new": {
+     "kind": "",
+     "lines": [],
+     "link": "monsters/bosses.md#",
+     "name": ""
+    },
+    "old": null
+   }
+  }
+ },
+ "date": "2026-11-13",
+ "from": "6.0.7",
+ "to": "6.0.8"
+}

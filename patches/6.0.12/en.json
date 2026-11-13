@@ -1,0 +1,302 @@
+{
+ "changes": {
+  "bases": {
+   "Lantern": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 130",
+      "(12-20)% increased item pickup range"
+     ],
+     "link": "items/base/Lantern.md",
+     "name": "Dvergr Lantern"
+    },
+    "old": null
+   },
+   "Lantern_DN": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "(12-20)% increased item pickup range"
+     ],
+     "link": "items/base/Lantern_DN.md",
+     "name": "Salvaged Lantern"
+    },
+    "old": null
+   },
+   "Lantern_hooded": {
+    "new": {
+     "kind": "",
+     "lines": [],
+     "link": "items/base/Lantern_hooded.md",
+     "name": "Hooded Lantern"
+    },
+    "old": null
+   },
+   "Sparkler": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "(12-20)% increased item pickup range"
+     ],
+     "link": "items/base/Sparkler.md",
+     "name": "Sparkler"
+    },
+    "old": null
+   }
+  },
+  "keywords": {
+   "area": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Increases the size or reach of supported attacks and effects. It does not increase their damage; area damage is separate. An area never reaches through walls: an explosion, a ground slam, a burst or a chain hits only those with nothing solid between them and its centre."
+     ],
+     "link": "glossary/area.md",
+     "name": "Area of effect"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Increases the size or reach of supported attacks and effects. It does not increase their damage; area damage is separate."
+     ],
+     "link": "glossary/area.md",
+     "name": "Area of effect"
+    }
+   },
+   "ascension": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "A Lord's Brand ascends any piece of equipment to the biome after its boss. Weapons (pickaxes too), shields, armour and summoning staves: base damage (in the item's own damage types), durability, block and armour rise to that biome's items of the same kind and slot - nothing goes down; a summoning staff's minion becomes as strong as that biome's creatures. Their workbench upgrades start over at quality 1 and then cost what that biome's reference item costs. Properties, sockets, sigils and implicits stay. Equipment with nothing to compare - rings, belts, amulets, trinkets, utility items, capes without armour, other tools - gains only item level, unlocking higher property tiers on future rolls; its properties, implicit effects, base stats, durability and quality remain unchanged. One brand per item, and only upward."
+     ],
+     "link": "glossary/ascension.md",
+     "name": "Ascension"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "A Lord's Brand ascends any piece of equipment to the biome after its boss. Weapons, shields, armour and summoning staves: base damage (in the item's own damage types), durability, block and armour rise to that biome's items of the same kind and slot - nothing goes down; a summoning staff's minion becomes as strong as that biome's creatures. Their workbench upgrades start over at quality 1 and then cost what that biome's reference item costs. Properties, sockets, sigils and implicits stay. Equipment with nothing to compare - rings, belts, amulets, trinkets, utility items, capes without armour, tools - gains only item level, unlocking higher property tiers on future rolls; its properties, implicit effects, base stats, durability and quality remain unchanged. One brand per item, and only upward."
+     ],
+     "link": "glossary/ascension.md",
+     "name": "Ascension"
+    }
+   },
+   "utility-items": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "The Wishbone, the Wisplight and the Dvergr lanterns are Magic at most: one prefix and one suffix, rolled from each item's own pool (its detection range, its mist-clearing area, its light and warmth, and a few common rows). They take no sockets and no quality: nothing on them scales with it. A Lord's Brand still raises their item level, which opens higher tiers for the next roll."
+     ],
+     "link": "glossary/utility-items.md",
+     "name": "Utility items"
+    },
+    "old": null
+   }
+  },
+  "mods": {
+   "utility.finder-chest-rarity": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T8 (item level 1–42, weight 1000): (8–12)% increased chest item rarity",
+      "T7 (item level 19–76, weight 700): (13–18)% increased chest item rarity",
+      "T6 (item level 43–129, weight 400): (19–24)% increased chest item rarity",
+      "T5 (item level 77–∞, weight 180): (25–30)% increased chest item rarity",
+      "T4 (item level 130–∞, weight 60): (31–40)% increased chest item rarity",
+      "T3 (item level 181–∞, weight 0): (41–51)% increased chest item rarity",
+      "T2 (item level 246–∞, weight 0): (52–62)% increased chest item rarity",
+      "T1 (item level 320–∞, weight 0): (63–75)% increased chest item rarity",
+      "T0 (item level 1–∞, weight 0): (76–88)% increased chest item rarity"
+     ],
+     "link": "items/mod/utility.finder-chest-rarity.md",
+     "name": "#% increased chest item rarity"
+    },
+    "old": null
+   },
+   "utility.finder-range": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T8 (item level 1–42, weight 1000): (10–15)% increased Wishbone detection range",
+      "T7 (item level 19–76, weight 700): (16–24)% increased Wishbone detection range",
+      "T6 (item level 43–129, weight 400): (25–34)% increased Wishbone detection range",
+      "T5 (item level 77–∞, weight 180): (35–46)% increased Wishbone detection range",
+      "T4 (item level 130–∞, weight 60): (47–60)% increased Wishbone detection range",
+      "T3 (item level 181–∞, weight 0): (61–75)% increased Wishbone detection range",
+      "T2 (item level 246–∞, weight 0): (76–90)% increased Wishbone detection range",
+      "T1 (item level 320–∞, weight 0): (91–107)% increased Wishbone detection range",
+      "T0 (item level 1–∞, weight 0): (108–124)% increased Wishbone detection range"
+     ],
+     "link": "items/mod/utility.finder-range.md",
+     "name": "#% increased Wishbone detection range"
+    },
+    "old": null
+   },
+   "utility.finder-treasure-maps": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T8 (item level 1–42, weight 1000): +(1–2)% chance of an extra treasure map from chests",
+      "T7 (item level 19–76, weight 700): +(2–3)% chance of an extra treasure map from chests",
+      "T6 (item level 43–129, weight 400): +(3–4)% chance of an extra treasure map from chests",
+      "T5 (item level 77–∞, weight 180): +(4–5)% chance of an extra treasure map from chests",
+      "T4 (item level 130–∞, weight 60): +(5–6)% chance of an extra treasure map from chests",
+      "T3 (item level 181–∞, weight 0): +(7–8)% chance of an extra treasure map from chests",
+      "T2 (item level 246–∞, weight 0): +(9–10)% chance of an extra treasure map from chests",
+      "T1 (item level 320–∞, weight 0): +(11–12)% chance of an extra treasure map from chests",
+      "T0 (item level 1–∞, weight 0): +(13–14)% chance of an extra treasure map from chests"
+     ],
+     "link": "items/mod/utility.finder-treasure-maps.md",
+     "name": "+#% chance of an extra treasure map from chests"
+    },
+    "old": null
+   },
+   "utility.light-cold-resist": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T8 (item level 1–42, weight 1000): +(6–9)% cold resistance",
+      "T7 (item level 19–76, weight 700): +(10–14)% cold resistance",
+      "T6 (item level 43–129, weight 400): +(15–20)% cold resistance",
+      "T5 (item level 77–∞, weight 180): +(21–27)% cold resistance",
+      "T4 (item level 130–∞, weight 60): +(28–35)% cold resistance",
+      "T3 (item level 181–∞, weight 0): +(36–44)% cold resistance",
+      "T2 (item level 246–∞, weight 0): +(45–53)% cold resistance",
+      "T1 (item level 320–∞, weight 0): +(54–62)% cold resistance",
+      "T0 (item level 1–∞, weight 0): +(63–73)% cold resistance"
+     ],
+     "link": "items/mod/utility.light-cold-resist.md",
+     "name": "+#% cold resistance"
+    },
+    "old": null
+   },
+   "utility.light-comfort": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T4 (item level 130–∞, weight 60): +1 comfort level with a lit torch or lantern on you or nearby",
+      "T3 (item level 181–∞, weight 0): +1 comfort level with a lit torch or lantern on you or nearby",
+      "T2 (item level 246–∞, weight 0): +1 comfort level with a lit torch or lantern on you or nearby",
+      "T1 (item level 320–∞, weight 0): +2 comfort level with a lit torch or lantern on you or nearby",
+      "T0 (item level 1–∞, weight 0): +3 comfort level with a lit torch or lantern on you or nearby"
+     ],
+     "link": "items/mod/utility.light-comfort.md",
+     "name": "+# comfort level with a lit torch or lantern on you or nearby"
+    },
+    "old": null
+   },
+   "utility.light-radius": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T8 (item level 1–42, weight 1000): (10–15)% increased light radius of a carried torch or lantern",
+      "T7 (item level 19–76, weight 700): (16–24)% increased light radius of a carried torch or lantern",
+      "T6 (item level 43–129, weight 400): (25–34)% increased light radius of a carried torch or lantern",
+      "T5 (item level 77–∞, weight 180): (35–46)% increased light radius of a carried torch or lantern",
+      "T4 (item level 130–∞, weight 60): (47–60)% increased light radius of a carried torch or lantern",
+      "T3 (item level 181–∞, weight 0): (61–75)% increased light radius of a carried torch or lantern",
+      "T2 (item level 246–∞, weight 0): (76–90)% increased light radius of a carried torch or lantern",
+      "T1 (item level 320–∞, weight 0): (91–107)% increased light radius of a carried torch or lantern",
+      "T0 (item level 1–∞, weight 0): (108–124)% increased light radius of a carried torch or lantern"
+     ],
+     "link": "items/mod/utility.light-radius.md",
+     "name": "#% increased light radius of a carried torch or lantern"
+    },
+    "old": null
+   },
+   "utility.max-stamina": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T8 (item level 1–42, weight 1000): +(5–9) maximum stamina",
+      "T7 (item level 19–76, weight 700): +(10–14) maximum stamina",
+      "T6 (item level 43–129, weight 400): +(15–22) maximum stamina",
+      "T5 (item level 77–∞, weight 180): +(23–30) maximum stamina",
+      "T4 (item level 130–∞, weight 60): +(31–40) maximum stamina",
+      "T3 (item level 181–∞, weight 0): +(41–51) maximum stamina",
+      "T2 (item level 246–∞, weight 0): +(52–62) maximum stamina",
+      "T1 (item level 320–∞, weight 0): +(63–75) maximum stamina",
+      "T0 (item level 1–∞, weight 0): +(76–88) maximum stamina"
+     ],
+     "link": "items/mod/utility.max-stamina.md",
+     "name": "+# maximum stamina"
+    },
+    "old": null
+   },
+   "utility.stamina-regen": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T8 (item level 1–42, weight 1000): (4–6)% increased stamina regeneration",
+      "T7 (item level 19–76, weight 700): (7–10)% increased stamina regeneration",
+      "T6 (item level 43–129, weight 400): (11–15)% increased stamina regeneration",
+      "T5 (item level 77–∞, weight 180): (16–20)% increased stamina regeneration",
+      "T4 (item level 130–∞, weight 60): (21–26)% increased stamina regeneration",
+      "T3 (item level 181–∞, weight 0): (27–33)% increased stamina regeneration",
+      "T2 (item level 246–∞, weight 0): (34–40)% increased stamina regeneration",
+      "T1 (item level 320–∞, weight 0): (41–47)% increased stamina regeneration",
+      "T0 (item level 1–∞, weight 0): (48–54)% increased stamina regeneration"
+     ],
+     "link": "items/mod/utility.stamina-regen.md",
+     "name": "#% increased stamina regeneration"
+    },
+    "old": null
+   },
+   "utility.wisp-mistlands-damage": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T8 (item level 1–42, weight 1000): (6–9)% increased damage against Mistlands dwellers",
+      "T7 (item level 19–76, weight 700): (10–14)% increased damage against Mistlands dwellers",
+      "T6 (item level 43–129, weight 400): (15–20)% increased damage against Mistlands dwellers",
+      "T5 (item level 77–∞, weight 180): (21–27)% increased damage against Mistlands dwellers",
+      "T4 (item level 130–∞, weight 60): (28–35)% increased damage against Mistlands dwellers",
+      "T3 (item level 181–∞, weight 0): (36–44)% increased damage against Mistlands dwellers",
+      "T2 (item level 246–∞, weight 0): (45–53)% increased damage against Mistlands dwellers",
+      "T1 (item level 320–∞, weight 0): (54–62)% increased damage against Mistlands dwellers",
+      "T0 (item level 1–∞, weight 0): (63–73)% increased damage against Mistlands dwellers"
+     ],
+     "link": "items/mod/utility.wisp-mistlands-damage.md",
+     "name": "#% increased damage against Mistlands dwellers"
+    },
+    "old": null
+   },
+   "utility.wisp-radius": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "T8 (item level 1–42, weight 1000): (10–15)% increased Wisplight mist-clearing radius",
+      "T7 (item level 19–76, weight 700): (16–24)% increased Wisplight mist-clearing radius",
+      "T6 (item level 43–129, weight 400): (25–34)% increased Wisplight mist-clearing radius",
+      "T5 (item level 77–∞, weight 180): (35–46)% increased Wisplight mist-clearing radius",
+      "T4 (item level 130–∞, weight 60): (47–60)% increased Wisplight mist-clearing radius",
+      "T3 (item level 181–∞, weight 0): (61–75)% increased Wisplight mist-clearing radius",
+      "T2 (item level 246–∞, weight 0): (76–90)% increased Wisplight mist-clearing radius",
+      "T1 (item level 320–∞, weight 0): (91–107)% increased Wisplight mist-clearing radius",
+      "T0 (item level 1–∞, weight 0): (108–124)% increased Wisplight mist-clearing radius"
+     ],
+     "link": "items/mod/utility.wisp-radius.md",
+     "name": "#% increased Wisplight mist-clearing radius"
+    },
+    "old": null
+   }
+  },
+  "values": {
+   "tmap.apart": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "120 m"
+     ],
+     "link": null,
+     "name": "Treasure maps: least distance of a new treasure from any shut treasure chest"
+    },
+    "old": null
+   }
+  }
+ },
+ "date": "2026-11-13",
+ "from": "6.0.11",
+ "to": "6.0.12"
+}

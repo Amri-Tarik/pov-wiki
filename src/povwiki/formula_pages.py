@@ -1076,7 +1076,9 @@ def _area(ctx, page, v):
     ui = ctx.loc.ui
     return ([ui("formula.area.text", area=_term(ctx, "area", page, start=True)), ""]
             + _formula(ui("formula.area.formula", floor=_n(v["floor"])))
-            + [ui("formula.area.notes", slam=_term(ctx, "slam", page)), ""])
+            + [ui("formula.area.notes", slam=_term(ctx, "slam", page)), ""]
+            # AreaReach (6.0.12): a wall between the hit's centre and a target shields it.
+            + ([ui("formula.area.walls"), ""] if "walls" in v else []))
 
 
 def _slams(ctx, page, v):

@@ -1,0 +1,97 @@
+{
+ "changes": {
+  "keywords": {
+   "endurance": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "While your health is below the endurance threshold, the part of any incoming damage (hits and damage over time alike) that falls below it is reduced: 20% at base, at most 75%. The threshold is counted in health points. With Rune Bulwark the rune shield is checked instead of health, and while the rune shield is broken, endurance does not work."
+     ],
+     "link": "glossary/endurance.md",
+     "name": "Endurance"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "While your health is below the endurance threshold, the part of any incoming damage (hits and damage over time alike) that falls below it is reduced: 20% at base, at most 75%. The threshold is counted in health points. With Rune Bulwark the rune shield is checked instead of health."
+     ],
+     "link": "glossary/endurance.md",
+     "name": "Endurance"
+    }
+   }
+  },
+  "passives": {
+   "own10519": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+12.5 endurance threshold",
+      "+7.5% endurance with the shield up",
+      "Unshaken: While Endurance is active, its damage reduction also reduces the incoming stagger build-up left after your stagger resistance.",
+      "Rune Line: Endurance checks your current rune shield instead of your health, with the same threshold. Requires a rune shield; while it is broken, Endurance does not work. It adds no second reduction."
+     ],
+     "link": "passives/node/own10519.md",
+     "name": "Shieldbearer's Oath"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "+12.5 endurance threshold",
+      "+7.5% endurance with the shield up",
+      "Unshaken: While Endurance is active, its damage reduction also reduces the incoming stagger build-up left after your stagger resistance.",
+      "Rune Line: Endurance checks your current rune shield instead of your health, with the same threshold. Requires a rune shield; it adds no second reduction."
+     ],
+     "link": "passives/node/own10519.md",
+     "name": "Shieldbearer's Oath"
+    }
+   },
+   "own10990": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+1 endurance threshold per 10 points of maximum health",
+      "Unshaken: While Endurance is active, its damage reduction also reduces the incoming stagger build-up left after your stagger resistance.",
+      "Rune Line: Endurance checks your current rune shield instead of your health, with the same threshold. Requires a rune shield; while it is broken, Endurance does not work. It adds no second reduction."
+     ],
+     "link": "passives/node/own10990.md",
+     "name": "Reserve of Resolve"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "+1 endurance threshold per 10 points of maximum health",
+      "Unshaken: While Endurance is active, its damage reduction also reduces the incoming stagger build-up left after your stagger resistance.",
+      "Rune Line: Endurance checks your current rune shield instead of your health, with the same threshold. Requires a rune shield; it adds no second reduction."
+     ],
+     "link": "passives/node/own10990.md",
+     "name": "Reserve of Resolve"
+    }
+   }
+  },
+  "uniques": {
+   "PT_Jewel_WanderingHearth": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "If no Notable Passives are Allocated in Radius, burning, getting wet, cold and damage do not switch off your Comfort",
+      "Drops: drops anywhere from the Plains (item level 97)"
+     ],
+     "link": "items/unique/PT_Jewel_WanderingHearth.md",
+     "name": "Wandering Hearth"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "If no Notable Passives are Allocated in Radius, the timer of your Rested effect does not run down",
+      "Drops: drops anywhere from the Plains (item level 97)"
+     ],
+     "link": "items/unique/PT_Jewel_WanderingHearth.md",
+     "name": "Wandering Hearth"
+    }
+   }
+  }
+ },
+ "date": "2026-11-13",
+ "from": "6.0.8",
+ "to": "6.0.9"
+}

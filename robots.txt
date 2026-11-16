@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://povdb.wiki/en/sitemap.xml
+Sitemap: https://povdb.wiki/ru/sitemap.xml

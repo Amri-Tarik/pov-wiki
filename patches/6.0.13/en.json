@@ -1,0 +1,520 @@
+{
+ "changes": {
+  "bases": {
+   "ArmorBerserkerUndeadChest": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 97",
+      "Quality 1: Armour 18, Evasion 24.3",
+      "Quality 2: Armour 20, Evasion 27",
+      "Quality 3: Armour 22, Evasion 29.7",
+      "Quality 4: Armour 24, Evasion 32.4",
+      "(11-18)% increased critical damage bonus"
+     ],
+     "link": "items/base/ArmorBerserkerUndeadChest.md",
+     "name": "Vilebone Cage"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 97",
+      "Quality 1: Armour 18, Evasion 24.3",
+      "Quality 2: Armour 20, Evasion 27",
+      "Quality 3: Armour 22, Evasion 29.7",
+      "Quality 4: Armour 24, Evasion 32.4",
+      "(5-8)% increased critical damage bonus"
+     ],
+     "link": "items/base/ArmorBerserkerUndeadChest.md",
+     "name": "Vilebone Cage"
+    }
+   },
+   "ArmorBerserkerUndeadLegs": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 97",
+      "Quality 1: Armour 18, Evasion 24.3",
+      "Quality 2: Armour 20, Evasion 27",
+      "Quality 3: Armour 22, Evasion 29.7",
+      "Quality 4: Armour 24, Evasion 32.4",
+      "(11-18)% increased movement speed on low health"
+     ],
+     "link": "items/base/ArmorBerserkerUndeadLegs.md",
+     "name": "Vilebone Drapes"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 97",
+      "Quality 1: Armour 18, Evasion 24.3",
+      "Quality 2: Armour 20, Evasion 27",
+      "Quality 3: Armour 22, Evasion 29.7",
+      "Quality 4: Armour 24, Evasion 32.4",
+      "(5-8)% increased movement speed on low health"
+     ],
+     "link": "items/base/ArmorBerserkerUndeadLegs.md",
+     "name": "Vilebone Drapes"
+    }
+   },
+   "Battleaxe": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 43",
+      "Damage: Slash 70, Chop 40",
+      "Per quality: Slash 6, Chop 2.5",
+      "(8-12)% increased armour break build-up"
+     ],
+     "link": "items/base/Battleaxe.md",
+     "name": "Battleaxe"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 43",
+      "Damage: Slash 70, Chop 40",
+      "Per quality: Slash 6, Chop 2.5",
+      "(5-8)% increased armour break build-up"
+     ],
+     "link": "items/base/Battleaxe.md",
+     "name": "Battleaxe"
+    }
+   },
+   "FistFenrirClaw": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 77",
+      "Damage: Slash 60",
+      "Per quality: Slash 4",
+      "(9-15)% reduced stamina cost of attacks"
+     ],
+     "link": "items/base/FistFenrirClaw.md",
+     "name": "Flesh Rippers"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 77",
+      "Damage: Slash 60",
+      "Per quality: Slash 4",
+      "(5-8)% reduced stamina cost of attacks"
+     ],
+     "link": "items/base/FistFenrirClaw.md",
+     "name": "Flesh Rippers"
+    }
+   },
+   "HelmetBerserkerUndead": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 97",
+      "Damage: Blunt 10",
+      "Quality 1: Armour 12",
+      "Quality 2: Armour 14",
+      "Quality 3: Armour 16",
+      "Quality 4: Armour 18",
+      "(11-18)% increased bleeding chance"
+     ],
+     "link": "items/base/HelmetBerserkerUndead.md",
+     "name": "Vilebone Visage"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 97",
+      "Damage: Blunt 10",
+      "Quality 1: Armour 12",
+      "Quality 2: Armour 14",
+      "Quality 3: Armour 16",
+      "Quality 4: Armour 18",
+      "(5-8)% increased bleeding chance"
+     ],
+     "link": "items/base/HelmetBerserkerUndead.md",
+     "name": "Vilebone Visage"
+    }
+   },
+   "KnifeSkollAndHati": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 130",
+      "Damage: Slash 45, Pierce 45",
+      "Per quality: Slash 1, Pierce 1",
+      "(11-18)% increased ailment build-up with attacks"
+     ],
+     "link": "items/base/KnifeSkollAndHati.md",
+     "name": "Skoll and Hati"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 130",
+      "Damage: Slash 45, Pierce 45",
+      "Per quality: Slash 1, Pierce 1",
+      "(5-8)% increased ailment build-up with attacks"
+     ],
+     "link": "items/base/KnifeSkollAndHati.md",
+     "name": "Skoll and Hati"
+    }
+   },
+   "ShieldBanded": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 43",
+      "Damage: Blunt 10",
+      "Quality 1: Armour 200, Evasion 135",
+      "Quality 2: Armour 201, Evasion 135.675",
+      "Quality 3: Armour 202, Evasion 136.35",
+      "(8-12)% increased stamina regeneration if you blocked recently"
+     ],
+     "link": "items/base/ShieldBanded.md",
+     "name": "Banded Shield"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 43",
+      "Damage: Blunt 10",
+      "Quality 1: Armour 200, Evasion 135",
+      "Quality 2: Armour 201, Evasion 135.675",
+      "Quality 3: Armour 202, Evasion 136.35",
+      "(5-8)% increased stamina regeneration if you blocked recently"
+     ],
+     "link": "items/base/ShieldBanded.md",
+     "name": "Banded Shield"
+    }
+   },
+   "ShieldBoneTower": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 19",
+      "Quality 1: Armour 100",
+      "Quality 2: Armour 101",
+      "Quality 3: Armour 102",
+      "(6-10)% reduced stamina cost of blocking"
+     ],
+     "link": "items/base/ShieldBoneTower.md",
+     "name": "Bone Tower Shield"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 19",
+      "Quality 1: Armour 100",
+      "Quality 2: Armour 101",
+      "Quality 3: Armour 102",
+      "(5-8)% reduced stamina cost of blocking"
+     ],
+     "link": "items/base/ShieldBoneTower.md",
+     "name": "Bone Tower Shield"
+    }
+   },
+   "ShieldSerpentscale": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 43",
+      "Damage: Blunt 10",
+      "Quality 1: Armour 300",
+      "Quality 2: Armour 301",
+      "Quality 3: Armour 302",
+      "(9-15)% reduced stamina cost of blocking"
+     ],
+     "link": "items/base/ShieldSerpentscale.md",
+     "name": "Serpent Scale Shield"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 43",
+      "Damage: Blunt 10",
+      "Quality 1: Armour 300",
+      "Quality 2: Armour 301",
+      "Quality 3: Armour 302",
+      "(5-8)% reduced stamina cost of blocking"
+     ],
+     "link": "items/base/ShieldSerpentscale.md",
+     "name": "Serpent Scale Shield"
+    }
+   },
+   "SledgeDemolisher": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 130",
+      "Damage: Blunt 145",
+      "Per quality: Blunt 6",
+      "(12-20)% increased area of slams"
+     ],
+     "link": "items/base/SledgeDemolisher.md",
+     "name": "Demolisher"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Crafted item level 130",
+      "Damage: Blunt 145",
+      "Per quality: Blunt 6",
+      "(5-8)% increased area of slams"
+     ],
+     "link": "items/base/SledgeDemolisher.md",
+     "name": "Demolisher"
+    }
+   }
+  },
+  "crafting": {
+   "own663": {
+    "new": {
+     "kind": "Craft notable",
+     "lines": [
+      "15% increased building and pure-wood equipment durability",
+      "Open-Air Bench: The bench works under open sky",
+      "Floor as Roof: Floors you build are a full roof: what is under them stays dry, is sheltered from rain and counts as under a roof for fires, beds, rest and stations",
+      "Auto Doors: Doors you build open as anyone approaches and close behind them",
+      "Nearby Chests (building): Building draws materials from nearby chests",
+      "Light Frame: Pieces you built lose only 50% of the usual support",
+      "Weatherproof: Pieces you built take no damage from rain, water or waves",
+      "Hugin's Flight: , with a building tool in hand, sends the sight aloft as Hugin: the body hovers in place and pieces are placed within building range of the raven, up to 30 m from the body; [Space] rises, [Ctrl] sinks, [Shift] flies faster,  again returns; With a hammer or hoe in hand, press B to send your sight aloft like Odin's raven and build from the air while your body stays safe on the ground. The view flies up to 30 m from you; pieces are placed within your Building range of the view and still need a workbench in reach and your materials",
+      "No Bounds: Build and remove pieces where building is forbidden: dungeons, boss altars, traders' camps and other no-build places",
+      "Careful Builder: You cannot damage player-built pieces"
+     ],
+     "link": "crafting/node/own663.md",
+     "name": "Building durability"
+    },
+    "old": {
+     "kind": "Craft notable",
+     "lines": [
+      "+25% rain resistance of buildings",
+      "Open-Air Bench: The bench works under open sky",
+      "Floor as Roof: Floors you build are a full roof: what is under them stays dry, is sheltered from rain and counts as under a roof for fires, beds, rest and stations",
+      "Auto Doors: Doors you build open as anyone approaches and close behind them",
+      "Nearby Chests (building): Building draws materials from nearby chests",
+      "Light Frame: Pieces you built lose only 50% of the usual support",
+      "Weatherproof: Pieces you built take no damage from rain, water or waves",
+      "Hugin's Flight: , with a building tool in hand, sends the sight aloft as Hugin: the body hovers in place and pieces are placed within building range of the raven, up to 30 m from the body; [Space] rises, [Ctrl] sinks, [Shift] flies faster,  again returns; With a hammer or hoe in hand, press B to send your sight aloft like Odin's raven and build from the air while your body stays safe on the ground. The view flies up to 30 m from you; pieces are placed within your Building range of the view and still need a workbench in reach and your materials",
+      "No Bounds: Build and remove pieces where building is forbidden: dungeons, boss altars, traders' camps and other no-build places",
+      "Careful Builder: You cannot damage player-built pieces"
+     ],
+     "link": "crafting/node/own663.md",
+     "name": "Building rain damage resistance"
+    }
+   },
+   "own664": {
+    "new": {
+     "kind": "Craft node",
+     "lines": [
+      "6% increased building and pure-wood equipment durability"
+     ],
+     "link": "crafting/tree/#own664",
+     "name": "Building durability"
+    },
+    "old": {
+     "kind": "Craft node",
+     "lines": [
+      "+10% rain resistance of buildings"
+     ],
+     "link": "crafting/tree/#own664",
+     "name": "Building rain damage resistance"
+    }
+   },
+   "own665": {
+    "new": {
+     "kind": "Craft node",
+     "lines": [
+      "6% increased building and pure-wood equipment durability"
+     ],
+     "link": "crafting/tree/#own665",
+     "name": "Building durability"
+    },
+    "old": {
+     "kind": "Craft node",
+     "lines": [
+      "+10% rain resistance of buildings"
+     ],
+     "link": "crafting/tree/#own665",
+     "name": "Building rain damage resistance"
+    }
+   },
+   "own666": {
+    "new": {
+     "kind": "Craft node",
+     "lines": [
+      "6% increased building and pure-wood equipment durability"
+     ],
+     "link": "crafting/tree/#own666",
+     "name": "Building durability"
+    },
+    "old": {
+     "kind": "Craft node",
+     "lines": [
+      "+10% rain resistance of buildings"
+     ],
+     "link": "crafting/tree/#own666",
+     "name": "Building rain damage resistance"
+    }
+   }
+  },
+  "keywords": {
+   "ascension": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "A Lord's Brand ascends any piece of equipment to the biome after its boss. Weapons (pickaxes too), shields, armour and summoning staves: base damage (in the item's own damage types), durability, block and armour rise to that biome's items of the same kind and slot (armour and shields: those made at the same station), and always by at least the step between lands - nothing goes down; a summoning staff's minion becomes as strong as that biome's creatures. Their workbench upgrades start over at quality 1 and then cost what that biome's reference item costs. Properties, sockets, sigils and implicits stay. Equipment with nothing to compare - rings, belts, amulets, trinkets, utility items, capes without armour, other tools - gains only item level, unlocking higher property tiers on future rolls; its properties, implicit effects, base stats, durability and quality remain unchanged. One brand per item, and only upward."
+     ],
+     "link": "glossary/ascension.md",
+     "name": "Ascension"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "A Lord's Brand ascends any piece of equipment to the biome after its boss. Weapons (pickaxes too), shields, armour and summoning staves: base damage (in the item's own damage types), durability, block and armour rise to that biome's items of the same kind and slot - nothing goes down; a summoning staff's minion becomes as strong as that biome's creatures. Their workbench upgrades start over at quality 1 and then cost what that biome's reference item costs. Properties, sockets, sigils and implicits stay. Equipment with nothing to compare - rings, belts, amulets, trinkets, utility items, capes without armour, other tools - gains only item level, unlocking higher property tiers on future rolls; its properties, implicit effects, base stats, durability and quality remain unchanged. One brand per item, and only upward."
+     ],
+     "link": "glossary/ascension.md",
+     "name": "Ascension"
+    }
+   },
+   "ballista": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "A crossbow construct, set up with the siege hammer by any character. It is a skill, not a building: it costs nothing and can stand anywhere, bound only by the ballista limit. It carries a copy of the crossbow in the siege crossbow cell and shoots real bolts from the bolt magazine. When set up it records the crossbow's own damage and a share of its builder's crossbow, projectile, reload and fire-rate bonuses; changing gear later does not change it. Its durability is its crossbow's and runs out by itself in its lifetime, 12 seconds at base; every shot wears it a little more, at zero it falls, and the hammer repairs it. It shoots only while its builder is near; when no creature is in sight it shoots wild birds."
+     ],
+     "link": "glossary/ballista.md",
+     "name": "Ballista"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "A crossbow construct, set up with the siege hammer by any character. It is a skill, not a building: it costs nothing and can stand anywhere, bound only by the ballista limit. It carries a copy of the crossbow in the siege crossbow cell and shoots real bolts from the bolt magazine. When set up it records the crossbow's own damage and a share of its builder's crossbow, projectile, reload and fire-rate bonuses; changing gear later does not change it. Its durability is its crossbow's and runs out by itself in its lifetime, 12 seconds at base; every shot wears it a little more, at zero it falls, and the hammer repairs it. It shoots only while its builder is near."
+     ],
+     "link": "glossary/ballista.md",
+     "name": "Ballista"
+    }
+   },
+   "cooldown": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "The waiting time before an ability can trigger again: its base divided by 1 plus every increased cooldown recovery rate, so +100% halves it and nothing takes it to zero. It is separate from loading a crossbow magazine."
+     ],
+     "link": "glossary/cooldown.md",
+     "name": "Ability cooldown"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "The waiting time before an ability can trigger again. It is separate from loading a crossbow magazine."
+     ],
+     "link": "glossary/cooldown.md",
+     "name": "Ability cooldown"
+    }
+   },
+   "skill": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "A skill here is an ability: a passive from the tree or a power from a boss sigil that fires by itself when its trigger comes, then waits out its cooldown; cooldown recovery rate shortens that wait. Valheim's own skills (swords, running and the rest) are another thing: their growth goes into tree experience, and governing attributes set weapon damage through the skill multiplier."
+     ],
+     "link": "glossary/skill.md",
+     "name": "Skill"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "A skill here is an ability: a passive from the tree or a power from a boss sigil that fires by itself when its trigger comes, then waits out its cooldown; skill cooldown shortens that wait. Valheim's own skills (swords, running and the rest) are another thing: their growth goes into tree experience, and governing attributes set weapon damage through the skill multiplier."
+     ],
+     "link": "glossary/skill.md",
+     "name": "Skill"
+    }
+   }
+  },
+  "monster-mods": {
+   "deathward": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "Links up to 5 creatures near it, and new ones in place of the lost only 25 s after it last linked. While it lives, they cannot fall more than 15% of health below the healthiest of them.",
+      "Ward reach: 12.0 m",
+      "Health gap: 15%",
+      "Relink time: 25 s"
+     ],
+     "link": "monsters/mods.md#mod-deathward",
+     "name": "Deathward"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "Links up to 5 creatures near it. While it lives, they cannot fall more than 15% of health below the healthiest of them.",
+      "Ward reach: 12.0 m",
+      "Health gap: 15%"
+     ],
+     "link": "monsters/mods.md#mod-deathward",
+     "name": "Deathward"
+    }
+   }
+  },
+  "passives": {
+   "own9586": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+10% cooldown recovery rate of passive effects"
+     ],
+     "link": "passives/tree/#own9586",
+     "name": "Skill cooldown"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "10% reduced skill cooldown"
+     ],
+     "link": "passives/tree/#own9586",
+     "name": "Skill cooldown"
+    }
+   },
+   "own9598": {
+    "new": {
+     "kind": "Notable",
+     "lines": [
+      "+25% cooldown recovery rate of passive effects"
+     ],
+     "link": "passives/node/own9598.md",
+     "name": "Norns' Patience"
+    },
+    "old": {
+     "kind": "Notable",
+     "lines": [
+      "25% reduced skill cooldown"
+     ],
+     "link": "passives/node/own9598.md",
+     "name": "Norns' Patience"
+    }
+   },
+   "own9610": {
+    "new": {
+     "kind": "Passive",
+     "lines": [
+      "+10% cooldown recovery rate of passive effects"
+     ],
+     "link": "passives/tree/#own9610",
+     "name": "Skill cooldown"
+    },
+    "old": {
+     "kind": "Passive",
+     "lines": [
+      "10% reduced skill cooldown"
+     ],
+     "link": "passives/tree/#own9610",
+     "name": "Skill cooldown"
+    }
+   }
+  }
+ },
+ "date": "2026-11-16",
+ "from": "6.0.12",
+ "to": "6.0.13"
+}

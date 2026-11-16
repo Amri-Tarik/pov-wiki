@@ -1,0 +1,33 @@
+{
+ "changes": {
+  "monster-mods": {
+   "mirror": {
+    "new": {
+     "kind": "",
+     "lines": [
+      "During its rune barrier, reflects 8% of ranged hit damage without preventing the hit.",
+      "Between barriers: 10.0 s",
+      "Barrier lasts: 2.0 s",
+      "Reflected: 8%"
+     ],
+     "link": "monsters/mods.md#mod-mirror",
+     "name": "Mirror"
+    },
+    "old": {
+     "kind": "",
+     "lines": [
+      "During its rune barrier, reflects 15% of ranged hit damage without preventing the hit.",
+      "Between barriers: 10.0 s",
+      "Barrier lasts: 2.0 s",
+      "Reflected: 0.08"
+     ],
+     "link": "monsters/mods.md#mod-mirror",
+     "name": "Mirror"
+    }
+   }
+  }
+ },
+ "date": "2026-11-16",
+ "from": "6.0.13",
+ "to": "6.0.14"
+}

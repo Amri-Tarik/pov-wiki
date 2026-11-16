@@ -106,10 +106,18 @@ def _halls(ctx) -> str:
 
 def _level(ctx, page, v):
     ui = ctx.loc.ui
-    rows = [[_biome(ctx, b), str(b["level"]), str(_range_end(b))] for b in _area_biomes(ctx)]
-    return ([ui("formula.creature-level.text", falloff=_anchor("experience-falloff", page)), "",
-             ui("formula.creature-level.arena", halls=_halls(ctx)), "", ui("formula.creature-level.blight"), ""]
-            + _table([ui("bosses.biome"), ui("formula.level"), ui("formula.creature-level.full_col")], rows))
+    from .monster_pages import creature_link
+
+    # CreatureLevels.Ladder: each biome's reference is its Blight Mist anchor (RunicKin.anchors), 6.0.14 on.
+    anchors = (ctx.loc.bosses.get("mistMother") or {}).get("anchors") or {} if v.get("lifted") else {}
+    rows = [[_biome(ctx, b), str(b["level"]), str(_range_end(b)),
+             *([creature_link(ctx, anchors[b["id"]], page) if b["id"] in anchors else "—"] if anchors else [])] for b in _area_biomes(ctx)]
+    md = [ui("formula.creature-level.text", falloff=_anchor("experience-falloff", page)), "",
+          ui("formula.creature-level.arena", halls=_halls(ctx)), "", ui("formula.creature-level.blight"), ""]
+    if v.get("lifted"):
+        md += [ui("formula.creature-level.lifted", halls=_halls(ctx)), "", ui("formula.creature-level.ladder"), ""]
+    return md + _table([ui("bosses.biome"), ui("formula.level"), ui("formula.creature-level.full_col"),
+                        *([ui("formula.creature-level.ref_col")] if anchors else [])], rows)
 
 
 def _item_level(ctx, page, v):
@@ -1027,7 +1035,7 @@ def _charged(ctx, page, v):
                 else ctx.loc.text("@stat.ChargeApplicability.ability", "Charged Casts")), ""]
             + _formula(ui("formula.charged-attacks.formula", inc=_pct(v["increase"])))
             + [ui("formula.charged-attacks.cooldown", source=_n(t["charge.source-cooldown"]), crit=_n(t["charge.source-cooldown.crit"]),
-                  shared=_n(t["charge.cooldown"])), "",
+                  shared=_n(t["charge.cooldown"])), "", ui("formula.cooldown_rate"), "",
                ui("formula.charged-attacks.dash", dash=_granted(ctx, "FistDash", page)), "",
                *_charge_sources(ctx, page),
                ui("formula.charged-attacks.alt", only_alt=_mastery_link(ctx, "MasteryCharged1", page),
@@ -1134,7 +1142,7 @@ def _thorns(ctx, page, v):
            ui("formula.thorns.block", block=_pct(t["thorns.block.share"]), shield=_mastery_link(ctx, "ShieldBlockThorns", page)), "",
            ui("formula.thorns.target"), "",  # Thorns.Complete: increases and more by the attacker's TargetSubjects
            ui("formula.thorns.contact", carapace=_mastery_link(ctx, "ThornsContact", page),
-              interval=_n(ctx.loc.difficulty.get("tunables", {}).get("thorns.contact-interval", 0))), ""]
+              interval=_n(ctx.loc.difficulty.get("tunables", {}).get("thorns.contact-interval", 0))), "", ui("formula.cooldown_rate"), ""]
     return md
 
 
@@ -1430,6 +1438,7 @@ def _ascension(ctx, page, v):
            f"- {ui('formula.ascension.armour', armour=ctx.loc.vkey('item_armor', 'Armor').lower())}",
            f"- {ui('formula.ascension.staves', strength=strength)}",
            f"- {ui('formula.ascension.durability', durability=ctx.loc.vkey('item_durability', 'Durability').lower())}", "",
+           ui("formula.ascension.step"), "",
            ui("formula.ascension.level_only", min=_n(v["min_damage"])), ""]
     from .pages import ASCENSION_ON
     from .tools_pages import ASCENSION_PAGE

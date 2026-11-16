@@ -126,9 +126,17 @@ anchors = [
     "PassiveTree/CreatureLevels.cs :: CreatureLevels.ArenaAt#2",
     "PassiveTree/MonolithBoss.cs :: \"area = CreatureLevels.AddArea(home, DomeRadius\"",
     "PassiveTree/Evasion.cs :: \"return AccuracyAt(CreatureLevels.Combat(attacker)\"",
+    "PassiveTree/CreatureLevels.cs :: CreatureLevels.Across",
+    "PassiveTree/CreatureLevels.cs :: CreatureLevels.Scale",
+    "PassiveTree/CreatureLevels.cs :: CreatureLevels.Ref",
+    "PassiveTree/CreatureLevels.cs :: CreatureLevels.Ladder",
+    "PassiveTree/CreatureLevels.cs :: CreatureLevels.Rising",
 ]
-fingerprint = "aed9e3cf812f"
-checked = "6.0.0"
+fingerprint = "f1b2daa25194"
+checked = "6.0.14"
+
+[formula.values]
+lifted = true
 
 [[formula]]
 id = "creature-strength"
@@ -150,8 +158,8 @@ anchors = [
     "PassiveTree/RarityMods3.cs :: RarityMods3.SoulFactor",
     "PassiveTree/RarityRoll.cs :: RarityRoll.StarMore",
 ]
-fingerprint = "e376da41d9b3"
-checked = "6.0.0"
+fingerprint = "0ce29dc59d40"
+checked = "6.0.14"
 
 [formula.values]
 tamed = 0.5
@@ -765,8 +773,8 @@ anchors = [
     "PassiveTree/Tunables.cs :: \"ailment.poison.base-chance\"",
     "PassiveTree/Tunables.cs :: \"ailment.bleeding.pierce-share\"",
 ]
-fingerprint = "cdb9486959af"
-checked = "6.0.10"
+fingerprint = "7f7e5587e73a"
+checked = "6.0.14"
 
 [formula.values]
 hold = 3
@@ -846,7 +854,8 @@ stagger_guard = 0.5
 [[formula]]
 id = "charged-attacks"
 anchors = [
-    "PassiveTree/Cooldowns.cs :: Cooldowns.Shorten",
+    "PassiveTree/Cooldowns.cs :: Cooldowns.Rate",
+    "PassiveTree/SkillCooldown.cs :: SkillCooldown.Live",
     "PassiveTree/ChargedAttacks.cs :: ChargedAttacks.Increase",
     "PassiveTree/ChargedAttacks.cs :: ChargedAttacks.SharedFor",
     "PassiveTree/ChargedAttacks.cs :: ChargedAttacks.SourceCooldownOf",
@@ -876,8 +885,8 @@ anchors = [
     "PassiveTree/Tunables.cs :: \"movement.charge-distance\"",
     "PassiveTree/FistDash.cs :: Humanoid_StartAttack.Postfix",
 ]
-fingerprint = "de0d7cfa459a"
-checked = "6.0.12"
+fingerprint = "820abeede9cb"
+checked = "6.0.14"
 
 [formula.values]
 increase = 0.25
@@ -920,8 +929,8 @@ anchors = [
     "PassiveTree/Tunables.cs :: \"slam.cutting-to-blunt\"",
     "PassiveTree/Slams.cs :: Slams.ExtraFlat",
 ]
-fingerprint = "96d8c45db4b7"
-checked = "6.0.12"
+fingerprint = "7ef17de09ee9"
+checked = "6.0.14"
 
 [[formula]]
 id = "block"
@@ -984,10 +993,12 @@ anchors = [
     "PassiveTree/Tunables.cs :: \"thorns.block.share\"",
     "PassiveTree/Tunables.cs :: \"thorns.riposte.share\"",
     "PassiveTree/Cooldowns.cs :: Cooldowns.Of",
+    "PassiveTree/Cooldowns.cs :: Cooldowns.Rate",
+    "PassiveTree/SkillCooldown.cs :: SkillCooldown.Live",
     "PassiveTree/Tunables.cs :: \"thorns.contact-interval\"",
 ]
-fingerprint = "bef41113e033"
-checked = "6.0.0"
+fingerprint = "86e544f4b63d"
+checked = "6.0.14"
 
 [formula.values]
 full_range = 3
@@ -1139,8 +1150,8 @@ anchors = [
     "PassiveTree/ItemAffixes.cs :: ItemAffixes.AddLocalGains",
     "PassiveTree/ProjectileMods.cs :: ProjectileMods.ShotDamage",
 ]
-fingerprint = "fb0626d9c5c8"
-checked = "6.0.10"
+fingerprint = "29eb08c2cc73"
+checked = "6.0.14"
 
 [formula.values]
 staggered = 0.15
@@ -1160,8 +1171,8 @@ anchors = [
     "PassiveTree/ConsumeOps.cs :: ConsumeOps.Hit",
     "PassiveTree/RangedFalloff.cs :: RangedFalloff.Applies",
 ]
-fingerprint = "b1fb60e4fbab"
-checked = "6.0.10"
+fingerprint = "3d25405cc589"
+checked = "6.0.14"
 
 [[formula]]
 id = "player-penetration"
@@ -1287,8 +1298,8 @@ anchors = [
     "PassiveTree/CreatureBonuses.cs :: CreatureBonuses.HealthFactor",
     "PassiveTree/SkeletonForms.cs :: SkeletonForms.IsSkeleton",
 ]
-fingerprint = "d00f494ee71f"
-checked = "6.0.10"
+fingerprint = "c256d37a656d"
+checked = "6.0.14"
 
 [formula.values]
 quality_health = 0.25
@@ -1501,9 +1512,14 @@ anchors = [
     "PassiveTree.Loot/ItemAscension.cs :: ItemAscension.Step",
     "PassiveTree.Loot/ItemAscension.cs :: ItemAscension.CurveRatio",
     "PassiveTree.Loot/ItemAscension.cs :: ItemAscension.BiomeOf",
+    "PassiveTree.Loot/ItemAscension.cs :: ItemAscension.SameStation",
+    "PassiveTree.Loot/ItemAscension.cs :: ItemAscension.ClassStep",
+    "PassiveTree.Loot/ItemAscension.cs :: ItemAscension.StationOf",
+    "PassiveTree.Loot/ItemAscension.cs :: ItemAscension.RefFor",
+    "PassiveTree.Loot/ItemAscension.cs :: ItemAscension.RefNow",
 ]
-fingerprint = "f95b169c34a0"
-checked = "6.0.12"
+fingerprint = "b58301cbe1c6"
+checked = "6.0.14"
 
 [formula.values]
 min_damage = 5
@@ -2035,8 +2051,8 @@ anchors = [
     "PassiveTree.Encounters/Finds.cs :: Finds.Make",
     "PassiveTree.Encounters.HallMaps/HallMapShop.cs :: HallMapShop.ServerRenew",
 ]
-fingerprint = "1aff1dc0e4ad"
-checked = "6.0.10"
+fingerprint = "77125ad1ef84"
+checked = "6.0.14"
 
 [formula.values]
 sigrid_material_tries = 6
@@ -2112,8 +2128,8 @@ anchors = [
     "PassiveTree.RunicCraft/Potential.cs :: Potential.Set",
     "PassiveTree/Jewels.cs :: Jewels.IsSpecial",
 ]
-fingerprint = "e40b3dc11ffb"
-checked = "6.0.12"
+fingerprint = "6787cdd25282"
+checked = "6.0.14"
 
 [formula.values]
 delay = 0.3

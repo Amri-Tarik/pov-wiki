@@ -1150,6 +1150,7 @@ Trophy = "Each one's page shows how to get it and what it is used for."
 
 [formula]
 mechanics = "How it works"
+cooldown_rate = "A skill cooldown is divided by 1 + your cooldown recovery rate, which never counts below −50%: a cooldown at most doubles, and +100% recovery halves it. Skill cooldown reduction adds to the recovery rate: 10% reduced cooldown is +10% recovery, and 50% less cooldown is +100%."
 title = "Mechanics"
 creatures = "Creature scaling"
 loot_page = "Loot and experience"
@@ -1196,10 +1197,13 @@ resist = "Resistance ignored"
 
 [formula.creature-level]
 title = "Area levels"
-text = "Every biome has a fixed level. A creature's level is the level of the biome it stands in (stars don't change it): it sets the creature's accuracy and the item level of its loot, a chest takes the level of its biome, and gear bought from a trader the level of the biome the trader is in. It doesn't scale health or damage, except for the monolith bosses. With the Raid level scaling setting (off by default, on in Merciless), raiders take the level of the biome the raid comes from, and scale with it. Each biome also has a recommended player level: up to the next biome's, it gives full experience; past it, experience [falls off]({falloff})."
+text = "Every biome has a fixed level. A creature's level is the level of the biome it stands in (stars don't change it): it sets the creature's accuracy and the item level of its loot, a chest takes the level of its biome, and gear bought from a trader the level of the biome the trader is in. It doesn't scale health or damage, except for creatures lifted to another level (below). With the Raid level scaling setting (off by default, on in Merciless), raiders take the level of the biome the raid comes from, and scale with it. Each biome also has a recommended player level: up to the next biome's, it gives full experience; past it, experience [falls off]({falloff})."
 arena = "Inside an arena with its own level (the dome of a rune monolith's boss, a map of the {halls}), creatures fight at that level and their loot takes it."
 blight = "A creature in the Blight Mist takes the level of the next boss's biome by the world's progress (the first boss not yet defeated; the Deep North once Fader is), wherever it stands."
 full_col = "Full experience up to level"
+ref_col = "Reference creature"
+lifted = "A creature lifted to another level (maps of the {halls}, burial ships, raids with Raid level scaling, the servants of a rune monolith) is made as strong as that level. When the level belongs to another biome than its own, the creature takes the health and damage of that biome's reference creature at that level, in place of its own base, biome factor and Blight Mist factor; stars, Monster Power and its other factors still apply on top. Within its own biome, and for bosses, it grows by the reference's growth from its own level to the new one."
+ladder = "The reference health and damage grow smoothly from one biome's level to the next, and past the last biome keep growing at the rate of its last step. They never fall: each biome's reference is at least as strong as the one before."
 
 [formula.creature-strength]
 title = "Health and damage"
@@ -1441,13 +1445,13 @@ type = "It's pierce damage, unless your stats convert part of it to other types 
 range = "Full damage to an attacker within {full} m of you (from its edge), falling to nothing at {zero} m."
 block = "On a shield block with {shield}: × {block}. Thorns that work with parries add to a parry's thorns."
 target = "Thorns increases and more multipliers that apply only against certain enemies (bosses, burning enemies and the like) count for the attacker and multiply on top, as their own factor."
-contact = "{carapace} also deals your thorns to enemies touching you, once every {interval} s per enemy, shorter with cooldown reduction and recovery."
+contact = "{carapace} also deals your thorns to enemies touching you, once every {interval} s per enemy, a skill cooldown."
 
 [formula.charged-attacks]
 title = "Charged attacks"
 text = "{charged}: something charges your next weapon attack, and the next melee or ranged attack you release spends it, hit or miss (spells only with {spells}). One charge waits at a time; it doesn't stack or expire."
 formula = "charged attack: + {inc} increased damage, added to your other damage increases, and rows that work with charged attacks apply"
-cooldown = "A source charges again only {source} s after it last charged the attack (critical hits: {crit} s). After any charge, every source also waits the shorter of its own cooldown and {shared} s (cut by cooldown reduction and recovery). A perfect dodge ignores both cooldowns, but can't charge an attack that's already charged."
+cooldown = "A source charges again only {source} s after it last charged the attack (critical hits: {crit} s). After any charge, every source also waits the shorter of its own cooldown and {shared} s, a skill cooldown. A perfect dodge ignores both cooldowns, but can't charge an attack that's already charged."
 alt = "With {only_alt}, only alternative attacks spend the charge; with {no_alt}, alternative attacks don't spend it."
 double = "{double}: rolled once when the charge is spent. On success the attack gets {inc} increased damage instead, and every row that works with charged attacks counts twice."
 splash = "{splash}: a charged attack's first hit on an enemy also hits every other enemy within {radius} m × (1 + {area} increases), for your splash share of its damage."
@@ -1587,7 +1591,7 @@ target = "Increases {target} join the sum; then flat damage against the enemy, w
 both = "Increases and more multipliers that need the hit and the enemy together."
 physical = "{brk} adds to the hit's physical damage, and {impale} multiplies it."
 falloff = "Bows: {falloff}, × its factor."
-consume = "Hits that consume: a hit that consumes a fully broken armour is × (1 + its more damage); one that consumes bleeding gains that share of the bleeding's remaining damage, added to its largest of pierce, slash and blunt; spent rune shield added to the next hit comes in here as well."
+consume = "Hits that consume: a hit that consumes a fully broken armour is × (1 + its more damage); one that consumes bleeding gains that share of the bleeding's remaining damage, added to its largest of pierce, slash and blunt once every multiplier above is done, and that part of the hit doesn't build up new bleeding; spent rune shield added to the next hit comes in here as well."
 resist = "Valheim applies the creature's resistances, with {pen} for fire, frost, lightning and poison."
 notes = "So flat damage grows with every increase and multiplier after it, increases only add to each other, and a critical strike multiplies everything except flat damage against the enemy."
 
@@ -2082,13 +2086,14 @@ essence = "Brand"
 how = "Weapons, shields, armour and summoning staves are compared with Valheim's own items of their kind from that biome (weapon kind and one- or two-handed, kind of shield, or armour slot) and raised to their median; they never go down:"
 weapons = "weapons: combat damage (everything but chopping and mining) rises to the highest median of that kind's weapons among the biomes from the item's own up to the brand's, keeping its damage types; it also rises at least by Valheim's weapon damage growth from the item's biome to the brand's, and never by less than one average biome step (the damage growth from the first biome to the last, spread evenly over the steps between them); so does damage per quality level. Kinds with no Valheim weapon of their own, elemental staves and sceptres rise by the most weapon damage grows from the item's biome to any biome up to the brand's, × the item's ascension damage multiplier from the server's item base rolls, if it has one."
 one_handed = "{items}: compared with all of Valheim's one-handed weapons instead, the same way; its damage per quality level becomes that of the brand's biome."
-shields = "shields: {block} and {force}, and their gain per quality level, become at least those of the biome's median shield of that kind."
+shields = "shields: {block} and its gain per quality level rise to at least the median of the biome's shields of that kind made at the same crafting station as the shield's own recipe (of all shields of that kind when the biome has none from that station), and at least by one step of that median's growth; {force} and its gain become at least those of the biome's median shield of that kind."
 staves = "summoning staves: the staff itself doesn't change, but its thralls are called as of the new biome ({strength})."
-armour = "armour pieces (helmets, chest pieces, leg pieces and capes with armour): their {armour} and its gain per quality level become at least those of the biome's median piece of that slot."
+armour = "armour pieces (helmets, chest pieces, leg pieces and capes with armour): their {armour} and its gain per quality level rise to at least the median of the biome's pieces of that slot made at the same crafting station as the piece's own recipe (of all pieces of that slot when the biome has none from that station), and at least by one step of that median's growth, so a piece already above the biome's median still grows."
+step = "One step: how much that kind's median grows per biome on average, from the first biome that has the kind to the last. It counts once, however many biomes the brand skips."
 level_only = "Any other equipment that rolls properties (rings, belts, amulets, trinkets, utility items, capes without armour, tools, torches, bombs, traps and weapons with less than {min} combat damage) gains only item level: its quality, stats and properties stay."
 durability = "{durability} and its gain per quality level become at least the biome's."
 keeps = "An upgraded item keeps at least the damage, block, parry force, armour and durability it had at its quality."
-after = "A weapon, shield, armour piece or staff goes back to quality 1, and upgrading it costs what the biome's reference item costs, at that item's station. Every ascended item's item level rises to the biome's level. Properties, sockets and sigils stay. Corrupted and unidentified items and jewels can't ascend."
+after = "A weapon, shield, armour piece or staff goes back to quality 1, and upgrading it costs what a reference item of the biome costs, at that item's station: one of the same kind, made at the same station as the item's own recipe when the biome has one, the closest in damage, block or armour. Every ascended item's item level rises to the biome's level. Properties, sockets and sigils stay. Corrupted and unidentified items and jewels can't ascend."
 vanilla = "Valheim's own summoning staves ascend as summoning staves only while the server setting Vanilla summoning staves is off; while it's on, they ascend like any other weapon and their summons don't change."
 
 [formula.dismantling]
